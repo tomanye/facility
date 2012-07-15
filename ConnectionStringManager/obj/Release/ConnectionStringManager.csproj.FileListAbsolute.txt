@@ -1,0 +1,8 @@
+C:\JSI\HCMIS\ConnectionStringManager\bin\Release\ConnectionStringManager.dll
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\ResolveAssemblyReference.cache
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\ConnectionStringManager.ConnectionStringManager.resources
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\ConnectionStringManager.Properties.Resources.resources
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\GenerateResource.read.1.tlog
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\GenerateResource.write.1.tlog
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\ConnectionStringManager.dll.licenses
+C:\JSI\HCMIS\ConnectionStringManager\obj\Release\ConnectionStringManager.dll

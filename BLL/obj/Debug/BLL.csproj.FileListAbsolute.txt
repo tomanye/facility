@@ -1,0 +1,12 @@
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\BLL.dll
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\BLL.pdb
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\DAL.dll
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\EthiopianDate.dll
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\MyGeneration.dOOdads.dll
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\DAL.pdb
+D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\BLL.dll
+D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\BLL.pdb
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\StockoutIndexBuilder.pdb
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\StockoutIndexBuilder.dll
+D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\EntityFramework.dll

@@ -1,0 +1,8 @@
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\obj\Debug\ResolveAssemblyReference.cache
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll.config
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.pdb
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\bin\Debug\EntityFramework.dll
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\bin\Debug\EntityFramework.xml
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.dll
+E:\Code\Learn\Deliver\AMC_Calculator\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.pdb

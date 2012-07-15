@@ -31,10 +31,10 @@ namespace PharmInventory.ViewModels
             set { _indexed = value; }
         }
 
-        //public string FullItemName
-        //{
-        //    get { return String.Format("{0}{1}{2}", StockCode, Strength,IINID); }
-        //}
+        public string FullItemName
+        {
+            get { return String.Format("{0}{1}{2}", StockCode, Strength, IINID); }
+        }
         
     }
 }

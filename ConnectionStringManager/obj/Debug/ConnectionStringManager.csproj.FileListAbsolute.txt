@@ -1,0 +1,30 @@
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\bin\Debug\ConnectionStringManager.dll
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\bin\Debug\ConnectionStringManager.pdb
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ResolveAssemblyReference.cache
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ConnectionStringManager.ConnectionStringManager.resources
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ConnectionStringManager.Properties.Resources.resources
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\GenerateResource.read.1.tlog
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\GenerateResource.write.1.tlog
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll.licenses
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll
+D:\JSI\HCMIS\Facility Edition\PharmInventory\ConnectionStringManager\obj\Debug\ConnectionStringManager.pdb
+C:\JSI\HCMIS\ConnectionStringManager\bin\Debug\ConnectionStringManager.dll
+C:\JSI\HCMIS\ConnectionStringManager\bin\Debug\ConnectionStringManager.pdb
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ResolveAssemblyReference.cache
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ConnectionStringManager.ConnectionStringManager.resources
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ConnectionStringManager.Properties.Resources.resources
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\GenerateResource.read.1.tlog
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\GenerateResource.write.1.tlog
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll.licenses
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll
+C:\JSI\HCMIS\ConnectionStringManager\obj\Debug\ConnectionStringManager.pdb
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\bin\Debug\ConnectionStringManager.dll
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\bin\Debug\ConnectionStringManager.pdb
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ConnectionStringManager.ConnectionStringManager.resources
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ConnectionStringManager.Properties.Resources.resources
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\GenerateResource.read.1.tlog
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\GenerateResource.write.1.tlog
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll.licenses
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ConnectionStringManager.dll
+D:\Projects\JSI\FacilityEdition\ConnectionStringManager\obj\Debug\ConnectionStringManager.pdb
