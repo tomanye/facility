@@ -1,0 +1,243 @@
+using System;
+using System.Data;
+using System.Windows.Forms;
+using BLL;
+
+namespace PharmInventory.Forms.Modals
+{
+    /// <summary>
+    /// Interaction logic for EditReceive Form
+    /// </summary>
+    public partial class EditReceive : Form
+    {
+        readonly int _tranId = 0;
+        
+        public EditReceive()
+        {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Initialize the form with transaction id and with partial or full edit previleges.
+        /// </summary>
+        /// <param name="tId">The Receive ID</param>
+        /// <param name="allowOnlyPartialEdit">True to allow only partial edit</param>
+        public EditReceive(int tId,bool allowOnlyPartialEdit)
+        {
+            InitializeComponent();
+            _tranId = tId;
+            
+            if (allowOnlyPartialEdit)
+            {
+                cboStores.Enabled = false;
+                txtPack.Properties.ReadOnly = true;
+                txtQtyPack.Properties.ReadOnly = true;
+                txtQuantity.Properties.ReadOnly = true;
+                txtReceivedBy.Properties.ReadOnly = true;
+            }
+        }
+        
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// Load the lookups and Prepare the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditReceive_Load(object sender, EventArgs e)
+        {
+            Stores str = new Stores();
+            str.LoadAll();
+            cboStores.DataSource = str.DefaultView;
+
+            Supplier sup = new Supplier();
+            sup.GetActiveSuppliers();
+            cboSupplier.DataSource = sup.DefaultView;
+
+            if(_tranId != 0)
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                Items itm = new Items();
+
+                
+                rec.LoadByPrimaryKey(_tranId);
+                
+                DataTable dtItm = itm.GetItemById(rec.ItemID);
+                string itemName = dtItm.Rows[0]["ItemName"].ToString() + " - " + dtItm.Rows[0]["DosageForm"].ToString() + " - " + dtItm.Rows[0]["Strength"].ToString();
+
+                txtRefNo.Text = rec.RefNo;
+                txtBatchNo.Text = rec.BatchNo;
+                try
+                {
+                    txtPack.Text = rec.NoOfPack.ToString();
+                    txtQtyPack.Text =rec.QtyPerPack.ToString();
+                    txtPrice.Text = (rec.Cost * rec.QtyPerPack).ToString();
+                }
+                catch
+                {
+                    txtPack.Text = "0";
+                    txtQtyPack.Text = "0";
+                    txtPrice.Text = (rec.Cost * 1).ToString();
+                }
+                txtQuantity.Text = rec.Quantity.ToString();
+                DateTime dtDate = Convert.ToDateTime(rec.Date.ToString("MM/dd/yyyy"));
+                txtDate.Text = dtDate.ToShortDateString();
+                dtRecDate.Value = DateTime.Now;
+                dtRecDate.CustomFormat = "MM/dd/yyyy";
+                //DateTime dtCurrent = Convert.ToDateTime(dtRecDate.Text);
+               
+                //long tic = (DateTime.Now.Ticks - dtCurrent.Ticks);
+                //DateTime dtRecG = dtDate.AddTicks(tic);
+                //// for tikmet were it adds two days it has to stop
+                //dtRecDate.Value = dtRecG;
+                if (!rec.IsColumnNull("ExpDate"))
+                    dtExpiryDate.Value = rec.ExpDate;
+                cboStores.SelectedValue = rec.StoreID;
+                cboSupplier.SelectedValue = rec.SupplierID;
+                txtItemName.Text = itemName;
+                txtReceivedBy.Text = rec.ReceivedBy;
+                txtRemark.Text = rec.Remark;
+                
+            }
+        }
+
+        /// <summary>
+        /// Calculates the quantity based on the amount of packs and quantity per pack supplied
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtQtyPack_TextChanged(object sender, EventArgs e)
+        {
+            if (txtQtyPack.Text != "" && txtPack.Text != "")
+            {
+                try
+                {
+                    txtQuantity.Text = (Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text)).ToString();
+                }
+                catch
+                {
+                    MessageBox.Show("Pack & Qty Per Pack should be a Number!");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Performs validation of form items.
+        /// </summary>
+        /// <returns>String value indicating the error is returned.  If the form items are all valid, a string value of "true" is returned.</returns>
+        private string ValidateFields()
+        {
+            string valid = "true";
+            if (_tranId == 0)
+                valid = "This is not a valid Transaction!";
+            else
+            {
+                if (txtRefNo.Text != "" && cboStores.SelectedValue != null && cboSupplier.SelectedValue != null && txtDate.Text != "" && txtBatchNo.Text != "" && txtPack.Text != "" && txtQtyPack.Text != "")
+                    valid = "true";
+                else
+                {
+                    valid = "All * marked fields are required!";
+                    return valid;
+                }
+                try
+                {
+                    int pk = Convert.ToInt32(txtPack.Text);
+                    int qtPk = Convert.ToInt32(txtQtyPack.Text);
+                }
+                catch
+                {
+                    valid = "Both Pack & Qty/Pack should be a Valid Number!";
+                }
+
+                try
+                {
+                    double price = Convert.ToDouble(txtPrice.Text);
+                }
+                catch
+                {
+                    valid = "Price should be a Valid Number!";
+                }
+            }
+
+            return valid;
+        }
+
+        /// <summary>
+        /// After doing validation, the receive information is saved to the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string valid = ValidateFields();
+            if ( valid == "true")
+            {
+                if (MessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    ReceiveDoc rec = new ReceiveDoc();
+                    rec.LoadByPrimaryKey(_tranId);
+                    rec.RefNo = txtRefNo.Text;
+                    dtRecDate.CustomFormat = "MM/dd/yyyy";
+                     string dtValid  = "";
+                    try
+                     {
+                         rec.Date = Convert.ToDateTime(txtDate.Text);
+                     }
+                     catch
+                     {
+                         string year = "";
+                         if (Convert.ToInt32(txtDate.Text.Substring(0, 2)) == 13)
+                         {
+                             dtValid = txtDate.Text;
+                             year = dtValid.Substring(dtValid.Length - 4, 4);
+                             rec.Date = Convert.ToDateTime("12/30/" + year);
+                         }
+                         else if (Convert.ToInt32(txtDate.Text.Substring(0, 2)) == 2)
+                         {
+                             dtValid = txtDate.Text;
+                             year = dtValid.Substring(dtValid.Length - 4, 4);
+                             rec.Date = Convert.ToDateTime("2/28/" + year);
+                         }
+                     }
+
+                    rec.BatchNo = txtBatchNo.Text;
+                    rec.ExpDate = dtExpiryDate.Value;
+                    rec.NoOfPack = Convert.ToInt32(txtPack.Text);
+                    rec.QtyPerPack = Convert.ToInt32(txtQtyPack.Text);
+                    rec.Quantity = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
+                    rec.QuantityLeft = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
+                    rec.Out = false;
+                    rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
+                    rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
+                    rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
+                    rec.Remark = txtRemark.Text;
+                    rec.ReceivedBy = txtReceivedBy.Text;
+                    rec.Save();
+                    MessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            groupBox1.Visible = true;
+
+        }
+
+        private void xpButton1_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            txtDate.Text = dtRecDate.Text;
+        }
+    }
+}

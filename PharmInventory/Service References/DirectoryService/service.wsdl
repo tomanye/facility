@@ -1,0 +1,1868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ds.pfsa.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ds.pfsa.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ds.pfsa.org/">
+      <s:element name="GetLastVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLastVersionResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDrugItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDrugItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDrugItemsResult" type="tns:ArrayOfItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Items" nillable="true" type="tns:Items" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Items">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Strength" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DosageFormID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VEN" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ABC" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtyPerPack" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EDL" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pediatric" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IINID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NeedExpiryBatch" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StockCodeDACA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NearExpiryTrigger" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="StorageTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsStackStored" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCommodityTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCommodityTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommodityTypesResult" type="tns:ArrayOfCommodityType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCommodityType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CommodityType" nillable="true" type="tns:CommodityType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CommodityType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSupplyItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplyItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSupplyItemsResult" type="tns:ArrayOfItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductsResult" type="tns:ArrayOfProduct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Product">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDosageForms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDosageFormsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDosageFormsResult" type="tns:ArrayOfDosageForm" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDosageForm">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DosageForm" nillable="true" type="tns:DosageForm" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DosageForm">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Form" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUnits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitsResult" type="tns:ArrayOfUnit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUnit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Unit" nillable="true" type="tns:Unit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Unit">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDrugCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDrugCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDrugCategoryResult" type="tns:ArrayOfDrugCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDrugCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DrugCategory" nillable="true" type="tns:DrugCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DrugCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDrugSubCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDrugSubCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDrugSubCategoryResult" type="tns:ArrayOfDrugSubCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDrugSubCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DrugSubCategory" nillable="true" type="tns:DrugSubCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DrugSubCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubCategoryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubCategoryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDrugItemSubCategory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDrugItemSubCategoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDrugItemSubCategoryResult" type="tns:ArrayOfDrugItemSubCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDrugItemSubCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DrugItemSubCategory" nillable="true" type="tns:DrugItemSubCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DrugItemSubCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubCategoryID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSupplyCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupplyCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSupplyCategoriesResult" type="tns:ArrayOfSupplyCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSupplyCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SupplyCategory" nillable="true" type="tns:SupplyCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SupplyCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetItemSupplyCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemSupplyCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemSupplyCategoriesResult" type="tns:ArrayOfItemSupplyCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfItemSupplyCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemSupplyCategory" nillable="true" type="tns:ItemSupplyCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemSupplyCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CategoryID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetManufacturer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetManufacturerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetManufacturerResult" type="tns:ArrayOfManufacturer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfManufacturer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Manufacturer" nillable="true" type="tns:Manufacturer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Manufacturer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryOfOrigin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PFSAManufCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPrograms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProgramsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProgramsResult" type="tns:ArrayOfProgram" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProgram">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Program" nillable="true" type="tns:Program" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Program">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProgramCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSuppliers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSuppliersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSuppliersResult" type="tns:ArrayOfSupplier" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSupplier">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Supplier" nillable="true" type="tns:Supplier" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Supplier">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRegions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRegionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRegionsResult" type="tns:ArrayOfRegion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRegion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Region" nillable="true" type="tns:Region" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Region">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetWoredas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWoredasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWoredasResult" type="tns:ArrayOfWoreda" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfWoreda">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Woreda" nillable="true" type="tns:Woreda" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Woreda">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="WoredaName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ZoneID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="WoredaCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetZones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZonesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZonesResult" type="tns:ArrayOfZone" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfZone">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Zone" nillable="true" type="tns:Zone" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Zone">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegionId" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZoneCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFacilities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacilitiesResult" type="tns:ArrayOfFacility" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFacility">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Facility" nillable="true" type="tns:Facility" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Facility">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Woreda" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Route" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RouteSequence" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrimaryHubID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecondaryHubID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportPeriod" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFacilityForHubs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hubID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilityForHubsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacilityForHubsResult" type="tns:ArrayOfFacility" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHubs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hubID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHubsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHubsResult" type="tns:ArrayOfHub" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHub">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Hub" nillable="true" type="tns:Hub" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Hub">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HubName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Woreda" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zone" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Region" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telephone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HospitalContact" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeadTime" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Min" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Max" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SafteyStock" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AMCRange" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReviewPeriod" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EOP" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEven" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Logo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DUMin" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DUMax" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DUAMCRange" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastBackUp" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FacilityID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpload" nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="HCMISAppVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFacilityDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="facilityID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilityDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacilityDetailResult" type="tns:FacilityDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FacilityDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Facility" type="tns:Facility" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportTypes" type="tns:ArrayOfFacilityReports" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFacilityReports">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FacilityReports" nillable="true" type="tns:FacilityReports" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FacilityReports">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FacilityID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFacilityReportingPeriods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilityReportingPeriodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacilityReportingPeriodsResult" type="tns:ArrayOfFacilityReportingPeriod" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFacilityReportingPeriod">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FacilityReportingPeriod" nillable="true" type="tns:FacilityReportingPeriod" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FacilityReportingPeriod">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReportTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportTypesResult" type="tns:ArrayOfReportTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReportTypes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReportTypes" nillable="true" type="tns:ReportTypes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReportTypes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReportItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportItemsResult" type="tns:ArrayOfReportItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReportItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReportItems" nillable="true" type="tns:ReportItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReportItems">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetItemsInReportType">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="reportType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemsInReportTypeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemsInReportTypeResult" type="tns:ArrayOfReportItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilityTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacilityTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacilityTypesResult" type="tns:ArrayOfFacilityType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFacilityType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FacilityType" nillable="true" type="tns:FacilityType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FacilityType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMasterLookups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMasterLookupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMasterLookupsResult" type="tns:ArrayOfMasterLookup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMasterLookup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MasterLookup" nillable="true" type="tns:MasterLookup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MasterLookup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetailLookups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailLookupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailLookupsResult" type="tns:ArrayOfDetailLookup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDetailLookup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetailLookup" nillable="true" type="tns:DetailLookup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetailLookup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetailsOfMasterID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsOfMasterIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsOfMasterIDResult" type="tns:ArrayOfDetailLookup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHubVersionString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hubID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHubVersionStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHubVersionStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetHubVersionString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="hubID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="versionString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetHubVersionStringResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLastVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetLastVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDrugItems" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDrugItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCommodityTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCommodityTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetCommodityTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCommodityTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSupplyItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplyItems" />
+  </wsdl:message>
+  <wsdl:message name="GetSupplyItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplyItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDosageFormsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDosageForms" />
+  </wsdl:message>
+  <wsdl:message name="GetDosageFormsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDosageFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnits" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDrugCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDrugCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugSubCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDrugSubCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugSubCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDrugSubCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugItemSubCategorySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDrugItemSubCategory" />
+  </wsdl:message>
+  <wsdl:message name="GetDrugItemSubCategorySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDrugItemSubCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSupplyCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupplyCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetSupplyCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupplyCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemSupplyCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemSupplyCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetItemSupplyCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemSupplyCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetManufacturerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetManufacturer" />
+  </wsdl:message>
+  <wsdl:message name="GetManufacturerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetManufacturerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProgramsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPrograms" />
+  </wsdl:message>
+  <wsdl:message name="GetProgramsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProgramsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSuppliersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSuppliers" />
+  </wsdl:message>
+  <wsdl:message name="GetSuppliersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSuppliersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRegionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRegions" />
+  </wsdl:message>
+  <wsdl:message name="GetRegionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRegionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWoredasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWoredas" />
+  </wsdl:message>
+  <wsdl:message name="GetWoredasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWoredasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZonesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZones" />
+  </wsdl:message>
+  <wsdl:message name="GetZonesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacilities" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityForHubsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacilityForHubs" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityForHubsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacilityForHubsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHubsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHubs" />
+  </wsdl:message>
+  <wsdl:message name="GetHubsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHubsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacilityDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacilityDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityReportingPeriodsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacilityReportingPeriods" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityReportingPeriodsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacilityReportingPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetReportTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportItems" />
+  </wsdl:message>
+  <wsdl:message name="GetReportItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsInReportTypeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemsInReportType" />
+  </wsdl:message>
+  <wsdl:message name="GetItemsInReportTypeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemsInReportTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacilityTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetFacilityTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacilityTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMasterLookupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMasterLookups" />
+  </wsdl:message>
+  <wsdl:message name="GetMasterLookupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMasterLookupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailLookupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailLookups" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailLookupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailLookupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsOfMasterIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailsOfMasterID" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsOfMasterIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsOfMasterIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHubVersionStringSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHubVersionString" />
+  </wsdl:message>
+  <wsdl:message name="GetHubVersionStringSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHubVersionStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetHubVersionStringSoapIn">
+    <wsdl:part name="parameters" element="tns:SetHubVersionString" />
+  </wsdl:message>
+  <wsdl:message name="SetHubVersionStringSoapOut">
+    <wsdl:part name="parameters" element="tns:SetHubVersionStringResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetLastVersion">
+      <wsdl:input message="tns:GetLastVersionSoapIn" />
+      <wsdl:output message="tns:GetLastVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItems">
+      <wsdl:input message="tns:GetDrugItemsSoapIn" />
+      <wsdl:output message="tns:GetDrugItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommodityTypes">
+      <wsdl:input message="tns:GetCommodityTypesSoapIn" />
+      <wsdl:output message="tns:GetCommodityTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyItems">
+      <wsdl:input message="tns:GetSupplyItemsSoapIn" />
+      <wsdl:output message="tns:GetSupplyItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input message="tns:GetProductsSoapIn" />
+      <wsdl:output message="tns:GetProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDosageForms">
+      <wsdl:input message="tns:GetDosageFormsSoapIn" />
+      <wsdl:output message="tns:GetDosageFormsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnits">
+      <wsdl:input message="tns:GetUnitsSoapIn" />
+      <wsdl:output message="tns:GetUnitsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugCategory">
+      <wsdl:input message="tns:GetDrugCategorySoapIn" />
+      <wsdl:output message="tns:GetDrugCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugSubCategory">
+      <wsdl:input message="tns:GetDrugSubCategorySoapIn" />
+      <wsdl:output message="tns:GetDrugSubCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItemSubCategory">
+      <wsdl:input message="tns:GetDrugItemSubCategorySoapIn" />
+      <wsdl:output message="tns:GetDrugItemSubCategorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyCategories">
+      <wsdl:input message="tns:GetSupplyCategoriesSoapIn" />
+      <wsdl:output message="tns:GetSupplyCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemSupplyCategories">
+      <wsdl:input message="tns:GetItemSupplyCategoriesSoapIn" />
+      <wsdl:output message="tns:GetItemSupplyCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetManufacturer">
+      <wsdl:input message="tns:GetManufacturerSoapIn" />
+      <wsdl:output message="tns:GetManufacturerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrograms">
+      <wsdl:input message="tns:GetProgramsSoapIn" />
+      <wsdl:output message="tns:GetProgramsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSuppliers">
+      <wsdl:input message="tns:GetSuppliersSoapIn" />
+      <wsdl:output message="tns:GetSuppliersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <wsdl:input message="tns:GetRegionsSoapIn" />
+      <wsdl:output message="tns:GetRegionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWoredas">
+      <wsdl:input message="tns:GetWoredasSoapIn" />
+      <wsdl:output message="tns:GetWoredasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <wsdl:input message="tns:GetZonesSoapIn" />
+      <wsdl:output message="tns:GetZonesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilities">
+      <wsdl:input message="tns:GetFacilitiesSoapIn" />
+      <wsdl:output message="tns:GetFacilitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityForHubs">
+      <wsdl:input message="tns:GetFacilityForHubsSoapIn" />
+      <wsdl:output message="tns:GetFacilityForHubsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHubs">
+      <wsdl:input message="tns:GetHubsSoapIn" />
+      <wsdl:output message="tns:GetHubsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityDetail">
+      <wsdl:input message="tns:GetFacilityDetailSoapIn" />
+      <wsdl:output message="tns:GetFacilityDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityReportingPeriods">
+      <wsdl:input message="tns:GetFacilityReportingPeriodsSoapIn" />
+      <wsdl:output message="tns:GetFacilityReportingPeriodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportTypes">
+      <wsdl:input message="tns:GetReportTypesSoapIn" />
+      <wsdl:output message="tns:GetReportTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportItems">
+      <wsdl:input message="tns:GetReportItemsSoapIn" />
+      <wsdl:output message="tns:GetReportItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsInReportType">
+      <wsdl:input message="tns:GetItemsInReportTypeSoapIn" />
+      <wsdl:output message="tns:GetItemsInReportTypeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityTypes">
+      <wsdl:input message="tns:GetFacilityTypesSoapIn" />
+      <wsdl:output message="tns:GetFacilityTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMasterLookups">
+      <wsdl:input message="tns:GetMasterLookupsSoapIn" />
+      <wsdl:output message="tns:GetMasterLookupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailLookups">
+      <wsdl:input message="tns:GetDetailLookupsSoapIn" />
+      <wsdl:output message="tns:GetDetailLookupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsOfMasterID">
+      <wsdl:input message="tns:GetDetailsOfMasterIDSoapIn" />
+      <wsdl:output message="tns:GetDetailsOfMasterIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHubVersionString">
+      <wsdl:input message="tns:GetHubVersionStringSoapIn" />
+      <wsdl:output message="tns:GetHubVersionStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetHubVersionString">
+      <wsdl:input message="tns:SetHubVersionStringSoapIn" />
+      <wsdl:output message="tns:SetHubVersionStringSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastVersion">
+      <soap:operation soapAction="http://ds.pfsa.org/GetLastVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItems">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDrugItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommodityTypes">
+      <soap:operation soapAction="http://ds.pfsa.org/GetCommodityTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyItems">
+      <soap:operation soapAction="http://ds.pfsa.org/GetSupplyItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://ds.pfsa.org/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDosageForms">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDosageForms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnits">
+      <soap:operation soapAction="http://ds.pfsa.org/GetUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugCategory">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDrugCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugSubCategory">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDrugSubCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItemSubCategory">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDrugItemSubCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyCategories">
+      <soap:operation soapAction="http://ds.pfsa.org/GetSupplyCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemSupplyCategories">
+      <soap:operation soapAction="http://ds.pfsa.org/GetItemSupplyCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetManufacturer">
+      <soap:operation soapAction="http://ds.pfsa.org/GetManufacturer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrograms">
+      <soap:operation soapAction="http://ds.pfsa.org/GetPrograms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSuppliers">
+      <soap:operation soapAction="http://ds.pfsa.org/GetSuppliers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <soap:operation soapAction="http://ds.pfsa.org/GetRegions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWoredas">
+      <soap:operation soapAction="http://ds.pfsa.org/GetWoredas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <soap:operation soapAction="http://ds.pfsa.org/GetZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilities">
+      <soap:operation soapAction="http://ds.pfsa.org/GetFacilities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityForHubs">
+      <soap:operation soapAction="http://ds.pfsa.org/GetFacilityForHubs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHubs">
+      <soap:operation soapAction="http://ds.pfsa.org/GetHubs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityDetail">
+      <soap:operation soapAction="http://ds.pfsa.org/GetFacilityDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityReportingPeriods">
+      <soap:operation soapAction="http://ds.pfsa.org/GetFacilityReportingPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportTypes">
+      <soap:operation soapAction="http://ds.pfsa.org/GetReportTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportItems">
+      <soap:operation soapAction="http://ds.pfsa.org/GetReportItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsInReportType">
+      <soap:operation soapAction="http://ds.pfsa.org/GetItemsInReportType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityTypes">
+      <soap:operation soapAction="http://ds.pfsa.org/GetFacilityTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMasterLookups">
+      <soap:operation soapAction="http://ds.pfsa.org/GetMasterLookups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailLookups">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDetailLookups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsOfMasterID">
+      <soap:operation soapAction="http://ds.pfsa.org/GetDetailsOfMasterID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHubVersionString">
+      <soap:operation soapAction="http://ds.pfsa.org/GetHubVersionString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetHubVersionString">
+      <soap:operation soapAction="http://ds.pfsa.org/SetHubVersionString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastVersion">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetLastVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItems">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDrugItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommodityTypes">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetCommodityTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyItems">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetSupplyItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDosageForms">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDosageForms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnits">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetUnits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugCategory">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDrugCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugSubCategory">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDrugSubCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrugItemSubCategory">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDrugItemSubCategory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupplyCategories">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetSupplyCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemSupplyCategories">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetItemSupplyCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetManufacturer">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetManufacturer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPrograms">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetPrograms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSuppliers">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetSuppliers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRegions">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetRegions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWoredas">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetWoredas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZones">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetZones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilities">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetFacilities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityForHubs">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetFacilityForHubs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHubs">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetHubs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityDetail">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetFacilityDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityReportingPeriods">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetFacilityReportingPeriods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportTypes">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetReportTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportItems">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetReportItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsInReportType">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetItemsInReportType" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacilityTypes">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetFacilityTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMasterLookups">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetMasterLookups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailLookups">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDetailLookups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsOfMasterID">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetDetailsOfMasterID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHubVersionString">
+      <soap12:operation soapAction="http://ds.pfsa.org/GetHubVersionString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetHubVersionString">
+      <soap12:operation soapAction="http://ds.pfsa.org/SetHubVersionString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://pds.pdsdb.org/services/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://pds.pdsdb.org/services/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
