@@ -12,6 +12,7 @@ namespace PharmInventory
     static class Program
     {
         public const string RegKey = "Software\\JSI\\HCMIS\\Configuration";
+        public const string PrevConnectionStringKey = "Software\\JSI\\HCMIS\\Configuration\\ConnectionStringManager\\History";
 
         public static ConnectionStringManager.ConnectionStringManager ConnStringManager;
 
@@ -31,7 +32,8 @@ namespace PharmInventory
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey);
+            ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
+
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 HCMIS = ApplicationDeployment.CurrentDeployment;

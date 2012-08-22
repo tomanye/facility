@@ -19,6 +19,7 @@ namespace BLL
             string query = string.Format("select distinct vw.ID, vw.FullItemName from vwGetAllItems vw join ReceiveDoc rd on vw.ID = rd.ItemID where rd.StoreID = {0}", storeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
+            
         }
 
         public DataTable GetActiveStores()

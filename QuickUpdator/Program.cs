@@ -9,6 +9,9 @@ namespace QuickUpdator
     static class Program
     {
         public const string RegKey = "Software\\JSI\\HCMIS\\Configuration";
+        public const string PrevConnectionStringKey = "Software\\JSI\\HCMIS\\Configuration\\ConnectionStringManager\\History";
+
+        
         public static ConnectionStringManager.ConnectionStringManager ConnectionManager;
         /// <summary>
         /// The main entry point for the application.
@@ -19,7 +22,7 @@ namespace QuickUpdator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //MyGeneration.dOOdads.BusinessEntity.RegistryConnectionString = System.Configuration.ConfigurationManager.AppSettings.Get("dbConnection");
-            ConnectionManager=new ConnectionStringManager.ConnectionStringManager(RegKey);
+            ConnectionManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
             MyGeneration.dOOdads.BusinessEntity.RegistryConnectionString = ConnectionManager.GetFromRegistry();
             Application.Run(new UpdatorForm());
         }

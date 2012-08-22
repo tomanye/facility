@@ -449,7 +449,7 @@ namespace BLL
         public DataTable GetRecievedItemsWithBalance(int itemID)
         {
 
-            string query = String.Format("select BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID, RefNo, Cost, Balance, ManufacturerID,m.Name as ManufacturerName,ReceiveID, PalletID, EurDate, PalletNo from ReceiveDoc rd join ReceivePallet rp on rd.ID = rp.ReceiveID join Manufacturers m on m.ID = rd.ManufacturerID left join Pallet p on p.ID = rp.PalletID where ItemID = {0} and QuantityLeft > 0", itemID);
+            string query = String.Format("select BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID, QuantityLeft, RefNo, Cost, Balance, ManufacturerID,m.Name as ManufacturerName,ReceiveID, PalletID, EurDate, PalletNo from ReceiveDoc rd join ReceivePallet rp on rd.ID = rp.ReceiveID join Manufacturers m on m.ID = rd.ManufacturerID left join Pallet p on p.ID = rp.PalletID where ItemID = {0} and QuantityLeft > 0", itemID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -457,7 +457,7 @@ namespace BLL
         public DataTable GetRecievedItemsWithBalanceForStore(int storeID)
         {
 
-            string query = String.Format("select BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID, RefNo, Cost, Balance, ManufacturerID,m.Name as ManufacturerName,ReceiveID, PalletID, EurDate, PalletNo from ReceiveDoc rd join ReceivePallet rp on rd.ID = rp.ReceiveID join Manufacturers m on m.ID = rd.ManufacturerID left join Pallet p on p.ID = rp.PalletID where StoreID = {0} and QuantityLeft > 0", storeID);
+            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and QuantityLeft > 0", storeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

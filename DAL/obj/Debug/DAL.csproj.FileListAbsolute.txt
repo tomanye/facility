@@ -1,0 +1,6 @@
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\bin\Debug\DAL.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\bin\Debug\DAL.pdb
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\bin\Debug\MyGeneration.dOOdads.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\obj\Debug\DAL.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\DAL\obj\Debug\DAL.pdb

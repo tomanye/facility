@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors;
+using DevExpress.Data.Filtering;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 
@@ -81,11 +82,10 @@ namespace PharmInventory
                 dtItem.Columns.Add("IsSelected", typeof(bool));
             }
             catch { }
-
             gridItemsChoice.DataSource = dtItem;
             string today = DateTime.Now.ToString("M/dd/yyyy");
             if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = "[ExpDate] < #" + today + "# AND [QuantityLeft] != 0";
+                gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
             else
                 gridItemChoiceView.ActiveFilterString = "";
         }
@@ -94,7 +94,7 @@ namespace PharmInventory
         {
 
             if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%' AND [ExpDate] < '" + DateTime.Now.ToShortDateString() + "'";
+                gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%' AND [ExpiryDate] < '" + DateTime.Now.ToShortDateString() + "'";
             else
                 gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%'";
         }
@@ -141,7 +141,7 @@ namespace PharmInventory
             foreach (DataRow dr in dtSelectedTable.Rows)
             {
                 rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
-                int id = Convert.ToInt32(dr["ID"]);
+                int id = Convert.ToInt32(dr["ItemID"]);
                 double price = 0;
                 if (!rec.IsColumnNull("Cost"))
                 {
@@ -168,7 +168,7 @@ namespace PharmInventory
         private string ValidateFields()
         {
             string valid = "true";
-            if (txtRefNo.Text == "" || cboStores.EditValue == null)
+            if (!dxValidation.Validate())
             {
                 valid = "All * marked fields are required!";
                 return valid;
@@ -390,6 +390,7 @@ namespace PharmInventory
                 DataTable dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue));  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
                 PopulateItemList(dtItem);
             }
+            lkCategories_EditValueChanged(null, null);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -402,7 +403,7 @@ namespace PharmInventory
         {
 
             if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = string.Format("[ExpDate] < #{0}#", DateTime.Now);
+                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
             else
                 gridItemChoiceView.ActiveFilterString = "";
             gridItemChoiceView.RefreshData();
@@ -528,6 +529,9 @@ namespace PharmInventory
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+           // gridItemChoiceView.ActiveFilterString = string.Format("ItemID={0}", Convert.ToInt32(lkCategories.EditValue));
+            
+
         }
 
 
