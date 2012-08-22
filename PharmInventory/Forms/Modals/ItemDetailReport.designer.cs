@@ -332,9 +332,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // chartBar
             // 
-            this.chartBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
@@ -347,11 +347,11 @@ namespace PharmInventory.Forms.Modals
             this.chartBar.Name = "chartBar";
             this.chartBar.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
             sideBySideBarSeriesLabel1.LineVisible = true;
-            series1.Label = sideBySideBarSeriesLabel1;
-            series1.Name = "Series 1";
             pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Number;
             pointOptions1.ValueNumericOptions.Precision = 3;
-            series1.PointOptions = pointOptions1;
+            sideBySideBarSeriesLabel1.PointOptions = pointOptions1;
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.Name = "Series 1";
             sideBySideBarSeriesLabel2.LineVisible = true;
             series2.Label = sideBySideBarSeriesLabel2;
             series2.Name = "Series 2";
@@ -365,9 +365,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Location = new System.Drawing.Point(1, 63);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabPage = this.tabPage11;
@@ -392,7 +392,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.PageVisible = false;
-            this.tabPage11.Size = new System.Drawing.Size(902, 534);
+            this.tabPage11.Size = new System.Drawing.Size(902, 532);
             this.tabPage11.Text = "Dispensery Unit Balances";
             // 
             // gridDispensaryView
@@ -401,7 +401,7 @@ namespace PharmInventory.Forms.Modals
             this.gridDispensaryView.Location = new System.Drawing.Point(3, 3);
             this.gridDispensaryView.MainView = this.gridView1;
             this.gridDispensaryView.Name = "gridDispensaryView";
-            this.gridDispensaryView.Size = new System.Drawing.Size(896, 528);
+            this.gridDispensaryView.Size = new System.Drawing.Size(896, 526);
             this.gridDispensaryView.TabIndex = 0;
             this.gridDispensaryView.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -490,7 +490,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Controls.Add(this.label2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(902, 534);
+            this.tabPage4.Size = new System.Drawing.Size(902, 532);
             this.tabPage4.Text = "Summary";
             // 
             // lblItemID
@@ -840,7 +840,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage5.Controls.Add(this.label28);
             this.tabPage5.Controls.Add(this.label27);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(902, 534);
+            this.tabPage5.Size = new System.Drawing.Size(902, 532);
             this.tabPage5.Text = "Bin Card";
             // 
             // cboFiscalYear
@@ -863,9 +863,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // gridItemsList
             // 
-            this.gridItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridItemsList.Location = new System.Drawing.Point(11, 68);
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
@@ -1073,7 +1073,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage1.Controls.Add(this.chartBar);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(902, 534);
+            this.tabPage1.Size = new System.Drawing.Size(902, 532);
             this.tabPage1.Text = "SOH Trend";
             // 
             // lkShowTable
@@ -1107,7 +1107,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage9.Controls.Add(this.consuTrend);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(902, 534);
+            this.tabPage9.Size = new System.Drawing.Size(902, 532);
             this.tabPage9.Text = "Consumption Trend";
             // 
             // lkDetailCons
@@ -1133,9 +1133,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // consuTrend
             // 
-            this.consuTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.consuTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.consuTrend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
@@ -1170,7 +1170,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage2.Controls.Add(this.chartAmc);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(902, 534);
+            this.tabPage2.Size = new System.Drawing.Size(902, 532);
             this.tabPage2.Text = "AMC Trend";
             // 
             // lkDetailAmc
@@ -1196,9 +1196,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // chartAmc
             // 
-            this.chartAmc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartAmc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartAmc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             xyDiagram3.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram3.AxisX.Range.SideMarginsEnabled = true;
@@ -1233,7 +1233,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage3.Controls.Add(this.chartMOS);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(902, 534);
+            this.tabPage3.Size = new System.Drawing.Size(902, 532);
             this.tabPage3.Text = "MOS Trend";
             // 
             // lkDetailMos
@@ -1259,9 +1259,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // chartMOS
             // 
-            this.chartMOS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartMOS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartMOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             xyDiagram4.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram4.AxisX.Range.SideMarginsEnabled = true;
@@ -1295,7 +1295,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage6.Controls.Add(this.chartComp);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(902, 534);
+            this.tabPage6.Size = new System.Drawing.Size(902, 532);
             this.tabPage6.Text = "Activity Trend";
             // 
             // label36
@@ -1310,9 +1310,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // chartComp
             // 
-            this.chartComp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartComp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartComp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             xyDiagram5.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram5.AxisX.Range.SideMarginsEnabled = true;
@@ -1349,7 +1349,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage7.Controls.Add(this.tableLayoutPanel1);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.PageVisible = false;
-            this.tabPage7.Size = new System.Drawing.Size(902, 534);
+            this.tabPage7.Size = new System.Drawing.Size(902, 532);
             this.tabPage7.Text = "Stock Status Trend";
             // 
             // label20
@@ -1394,7 +1394,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 163F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -1619,7 +1619,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage8.Controls.Add(this.label21);
             this.tabPage8.Controls.Add(this.label17);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(902, 534);
+            this.tabPage8.Size = new System.Drawing.Size(902, 532);
             this.tabPage8.Text = "Transaction";
             // 
             // lblAvgIssues
@@ -1711,12 +1711,12 @@ namespace PharmInventory.Forms.Modals
             this.tabPage10.Controls.Add(this.chartPie);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(902, 534);
+            this.tabPage10.Size = new System.Drawing.Size(902, 532);
             this.tabPage10.Text = "Stock Expiry Status";
             // 
             // chartPie
             // 
-            this.chartPie.AppearanceName = "Chameleon";
+            this.chartPie.AppearanceNameSerializable = "Chameleon";
             this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             this.chartPie.BorderOptions.Visible = false;
             simpleDiagram3D1.RotationMatrixSerializable = "1;0;0;0;0;0.5;-0.866025403784439;0;0;0.866025403784439;0.5;0;0;0;0;1";
@@ -1731,18 +1731,18 @@ namespace PharmInventory.Forms.Modals
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(67)))), ((int)(((byte)(4))))), System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(67)))), ((int)(((byte)(4)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(188)))), ((int)(((byte)(254))))), System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(188)))), ((int)(((byte)(254))))))}));
             pie3DSeriesLabel1.LineVisible = true;
-            series11.Label = pie3DSeriesLabel1;
-            series11.Name = "Series 1";
             piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            series11.PointOptions = piePointOptions1;
+            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            series11.Label = pie3DSeriesLabel1;
+            series11.Name = "Series 1";
             series11.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series11};
             pie3DSeriesLabel2.LineVisible = true;
             this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
             this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
-            this.chartPie.Size = new System.Drawing.Size(896, 528);
+            this.chartPie.Size = new System.Drawing.Size(896, 526);
             this.chartPie.TabIndex = 21;
             // 
             // lblStatus
@@ -1812,9 +1812,9 @@ namespace PharmInventory.Forms.Modals
             // 
             // chartControl1
             // 
-            this.chartControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chartControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chartControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             this.chartControl1.Location = new System.Drawing.Point(7, 25);
             this.chartControl1.Name = "chartControl1";

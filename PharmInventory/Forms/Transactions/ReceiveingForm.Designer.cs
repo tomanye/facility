@@ -310,6 +310,7 @@ namespace PharmInventory.Forms.Transactions
             this.treeListColumn1});
             this.treeCategory.Location = new System.Drawing.Point(4, 41);
             this.treeCategory.Name = "treeCategory";
+            this.treeCategory.OptionsPrint.UsePrintStyles = true;
             this.treeCategory.OptionsView.ShowIndicator = false;
             this.treeCategory.ParentFieldName = "Parent";
             this.treeCategory.Size = new System.Drawing.Size(228, 487);

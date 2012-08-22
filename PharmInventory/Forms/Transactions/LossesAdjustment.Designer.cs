@@ -296,6 +296,7 @@ namespace PharmInventory
             this.gridItemsChoice.TabIndex = 17;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridItemChoiceView});
+            
             // 
             // gridItemChoiceView
             // 

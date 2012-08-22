@@ -900,11 +900,12 @@ namespace BLL
             return 0;
         }
 
-        public DataTable GetBinCard(int storeID, int itemID)
+        public DataTable GetBinCard(int storeID, int itemID, int year)
         {
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@StoreID", storeID);
             ld.Add("@ItemID", itemID);
+            ld.Add("@Year", year);
             
             this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             return this.DataTable;

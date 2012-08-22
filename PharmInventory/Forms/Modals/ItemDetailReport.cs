@@ -900,173 +900,337 @@ namespace PharmInventory.Forms.Modals
             #endregion
         }
 
+        //private void GenerateBinCardNew()
+        //{
+        //    ReceiveDoc rec = new ReceiveDoc();
+        //    IssueDoc iss = new IssueDoc();
+        //    Disposal dis = new Disposal();
+        //    DisposalReasons res = new DisposalReasons();
+        //    Balance bal = new Balance();
+        //    GeneralInfo info = new GeneralInfo();
+        //    YearEnd yEnd = new YearEnd();
+        //    Items itm = new Items();
+        //    info.LoadAll();
+        //    if (cboFiscalYear.SelectedItem == null)
+        //        PopulateBinCardYearCombo();
+        //    _year = Convert.ToInt32(cboFiscalYear.SelectedItem);
+        //    //_year = Convert.ToInt32(cboYear.SelectedItem);
+        //    int yer = _year;
+        //    //int mth = (_year > _dtCurrent.Year) ? _dtCurrent.Month : 10;
+        //    int mth = _dtCurrent.Month;
+        //    EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(_year, 1, 1);
+
+        //    //if (_dtCurrent.Month < 11)
+        //    //{
+        //    //    yer = _year;
+        //    //}
+        //    //else
+        //    //{
+        //    //    yer = _year - 1;
+        //    //}
+        //    //DataTable dtRec = rec.GetAllTransaction(_itemId, _storeId, ethioDate.Month,ethioDate.Year);
+        //    DataTable dtRec = rec.GetAllTransaction(_itemId, _storeId, _year);
+        //    DataTable dtIss = iss.GetTransactionByItemId(_storeId, _itemId, _year);
+        //    DataTable dtDis = dis.GetTransactionByItemId(_storeId, _itemId, _year);
+
+        //    Int64[] cStockout = { 0, 0, 0 };
+        //    Int64[] cOverStock = { 0, 0, 0 };
+        //    Int64[] cNearStockOut = { 0, 0, 0 };
+        //    Int64[] cBelowMin = { 0, 0, 0 };
+
+
+
+        //    //DateTime dtThree = dtCurrent.AddMonths(3);
+
+        //    DataTable dtbin = new DataTable();
+        //    string[] col = { "Date", "RefNo", "Receive", "Issue", "Unit Price", "Balance", "Batch No", "Expiry Date", "ToFrom" };
+        //    foreach (string str in col)
+        //    {
+        //        dtbin.Columns.Add(str);
+        //    }
+        //    int i = 0;
+        //    Int64 bBalance = 0;
+        //    dtDate.Value = DateTime.Now;
+        //    dtDate.CustomFormat = "MM/dd/yyyy";
+        //    _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+        //    //bBalance = yEnd.GetBBalance(_year, _storeId, _itemId, _dtCurrent.Month);
+        //    bBalance = yEnd.GetBBalance(_year, _storeId, _itemId);
+        //    Int64 balanceAmount = bBalance;
+
+        //    DateTime dtT = new DateTime();
+        //    string balanceAm = "";
+
+
+        //    txtBBalance.Text = bBalance.ToString();
+        //    string ddDate = "";
+        //    string batNo = "";
+        //    foreach (DataRow dvRec in dtRec.Rows)
+        //    {
+        //        i++;
+        //        if (Convert.ToInt32(dvRec["Transact"]) == 1)
+        //        {
+        //            rec.LoadByPrimaryKey(Convert.ToInt32(dvRec["ID"]));
+        //            if (dvRec["Quantity"] == DBNull.Value)
+        //            {
+        //                dvRec["Quantity"] = 0;
+        //            }
+        //            balanceAmount = balanceAmount + Convert.ToInt64(dvRec["Quantity"]);
+        //            balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
+        //            itm.LoadByPrimaryKey(rec.ItemID);
+        //            if (itm.NeedExpiryBatch)
+        //            {
+        //                if (!rec.IsColumnNull("ExpDate"))
+        //                {
+        //                    ddDate = rec.ExpDate.ToString("MMM dd,yyyy");
+        //                    batNo = rec.BatchNo;
+        //                }
+        //            }
+        //            Supplier sup = new Supplier();
+        //            sup.LoadByPrimaryKey(rec.SupplierID);
+        //            object[] obj = { Convert.ToDateTime(dvRec["Date"]).ToString("MM dd,yyyy"), dvRec["RefNo"], Convert.ToInt64(dvRec["Quantity"]).ToString("#,###"), "", Convert.ToDouble(dvRec["Cost"]).ToString("C"), balanceAm, batNo, ddDate, sup.CompanyName };
+        //            dtbin.Rows.Add(obj);
+        //            //For stock Out
+        //            dtT = Convert.ToDateTime(dvRec["Date"]);
+
+        //        }
+        //        else if (Convert.ToInt32(dvRec["Transact"]) == 0)
+        //        {
+        //            iss.LoadByPrimaryKey(Convert.ToInt32(dvRec["ID"]));
+        //            try
+        //            {
+        //                rec.LoadByPrimaryKey(iss.RecievDocID);
+        //            }
+        //            catch
+        //            {
+        //                rec.GetTransactionByBatch(_itemId, dvRec["BatchNo"].ToString(), _storeId);
+        //            }
+
+        //            ReceivingUnits recUnit = new ReceivingUnits();
+        //            recUnit.LoadByPrimaryKey(iss.ReceivingUnitID);
+        //            string issuedTo = recUnit.Name;
+        //            balanceAmount = balanceAmount - Convert.ToInt64(dvRec["Quantity"]);
+
+        //            balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
+        //            itm.LoadByPrimaryKey(iss.ItemID);
+        //            if (itm.NeedExpiryBatch)
+        //            {
+        //                ddDate = ((rec.RowCount > 0) ? rec.ExpDate.ToString("MMM dd,yyyy") : ""); ;
+        //                batNo = dvRec["BatchNo"].ToString(); //rec.BatchNo;
+        //            }
+        //            else
+        //            {
+        //                ddDate = "";
+        //                batNo = "";
+        //            }
+        //            object[] obj = { Convert.ToDateTime(dvRec["Date"]).ToString("MM dd,yyyy"), dvRec["RefNo"], "", Convert.ToInt64(dvRec["Quantity"]).ToString("#,###"), Convert.ToDouble(dvRec["Cost"]).ToString("C"), balanceAm, batNo, ddDate, issuedTo };
+        //            dtbin.Rows.Add(obj);
+        //            //For stock Out
+        //            dtT = Convert.ToDateTime(dvRec["Date"]);
+
+        //        }
+
+        //        foreach (DataRow drDis in dtDis.Rows)
+        //        {
+        //            DateTime dteDis = Convert.ToDateTime(drDis["Date"]);
+        //            DateTime dteRec = Convert.ToDateTime(dvRec["Date"]);
+
+        //            res.LoadByPrimaryKey(Convert.ToInt32(drDis["ReasonId"]));
+        //            rec.GetTransactionByBatch(_itemId, drDis["BatchNo"].ToString(), _storeId);
+        //            DateTime dteNextRec = (i <= dtRec.Rows.Count - 1) ? Convert.ToDateTime(dtRec.Rows[i]["Date"]) : _dtCurrent.AddDays(1);
+        //            if ((dteRec <= dteDis) && (dteDis < dteNextRec))
+        //            {
+        //                if (Convert.ToBoolean(drDis["Losses"]))
+        //                {
+        //                    balanceAmount = balanceAmount - Convert.ToInt64(drDis["Quantity"]);
+        //                    balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
+        //                    if (rec.RowCount > 0)
+        //                    {
+        //                        object[] objIss = { Convert.ToDateTime(drDis["Date"]).ToString("MM dd,yyyy"), drDis["RefNo"], "", Convert.ToInt64(drDis["Quantity"]).ToString("#,###"), Convert.ToDouble(drDis["Cost"]).ToString("C"), balanceAm, drDis["BatchNo"], rec.ExpDate.ToString("MMM dd,yyyy"), res.Reason };
+        //                        dtbin.Rows.Add(objIss);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    balanceAmount = balanceAmount + Convert.ToInt64(drDis["Quantity"]);
+        //                    balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
+        //                    object[] objIss2 = { Convert.ToDateTime(drDis["Date"]).ToString("MM dd,yyyy"), drDis["RefNo"], Convert.ToInt64(drDis["Quantity"]).ToString("#,###"), "", Convert.ToDouble(drDis["Cost"]).ToString("C"), balanceAm, drDis["BatchNo"], rec.ExpDate.ToString("MMM dd,yyyy"), res.Reason };
+        //                    dtbin.Rows.Add(objIss2);
+
+        //                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //                dtT = Convert.ToDateTime(dvRec["Date"]);
+
+        //            }
+        //        }
+
+        //    }
+
+        //    gridItemsList.DataSource = dtbin;
+        //}
+
+        /// <summary>
+        /// uses the stored procedure rpt_BinCard
+        /// </summary>
         private void GenerateBinCardNew()
         {
-            ReceiveDoc rec = new ReceiveDoc();
-            IssueDoc iss = new IssueDoc();
-            Disposal dis = new Disposal();
-            DisposalReasons res = new DisposalReasons();
-            Balance bal = new Balance();
-            GeneralInfo info = new GeneralInfo();
-            YearEnd yEnd = new YearEnd();
-            Items itm = new Items();
-            info.LoadAll();
-            if (cboFiscalYear.SelectedItem == null)
-                PopulateBinCardYearCombo();
-            _year =  Convert.ToInt32(cboFiscalYear.SelectedItem);
-            //_year = Convert.ToInt32(cboYear.SelectedItem);
-            int yer = _year;
-            //int mth = (_year > _dtCurrent.Year) ? _dtCurrent.Month : 10;
-            int mth = _dtCurrent.Month;
-            EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(_year, 1, 1);
 
-            //if (_dtCurrent.Month < 11)
-            //{
-            //    yer = _year;
-            //}
-            //else
-            //{
-            //    yer = _year - 1;
-            //}
-            //DataTable dtRec = rec.GetAllTransaction(_itemId, _storeId, ethioDate.Month,ethioDate.Year);
-            DataTable dtRec = rec.GetAllTransaction(_itemId, _storeId, _year);
-            DataTable dtIss = iss.GetTransactionByItemId(_storeId, _itemId, _year);
-            DataTable dtDis = dis.GetTransactionByItemId(_storeId, _itemId, _year);
-
-            Int64[] cStockout = { 0, 0, 0 };
-            Int64[] cOverStock = { 0, 0, 0 };
-            Int64[] cNearStockOut = { 0, 0, 0 };
-            Int64[] cBelowMin = { 0, 0, 0 };
+            //Get the bin card.
+            Balance balance = new Balance();
+            gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId,Convert.ToInt32(cboFiscalYear.EditValue));
 
 
-
-            //DateTime dtThree = dtCurrent.AddMonths(3);
-
-            DataTable dtbin = new DataTable();
-            string[] col = { "Date", "RefNo", "Receive", "Issue", "Unit Price", "Balance", "Batch No", "Expiry Date", "ToFrom" };
-            foreach (string str in col)
-            {
-                dtbin.Columns.Add(str);
-            }
-            int i = 0;
-            Int64 bBalance = 0;
-            dtDate.Value = DateTime.Now;
-            dtDate.CustomFormat = "MM/dd/yyyy";
-            _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-            //bBalance = yEnd.GetBBalance(_year, _storeId, _itemId, _dtCurrent.Month);
-            bBalance = yEnd.GetBBalance(_year, _storeId, _itemId);
-            Int64 balanceAmount = bBalance;
-
-            DateTime dtT = new DateTime();
-            string balanceAm = "";
-
-
-            txtBBalance.Text = bBalance.ToString();
-            string ddDate = "";
-            string batNo = "";
-            foreach (DataRow dvRec in dtRec.Rows)
-            {
-                i++;
-                if (Convert.ToInt32(dvRec["Transact"]) == 1)
-                {
-                    rec.LoadByPrimaryKey(Convert.ToInt32(dvRec["ID"]));
-                    if (dvRec["Quantity"] == DBNull.Value)
-                    {
-                        dvRec["Quantity"] = 0;
-                    }
-                    balanceAmount = balanceAmount + Convert.ToInt64(dvRec["Quantity"]);
-                    balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
-                    itm.LoadByPrimaryKey(rec.ItemID);
-                    if (itm.NeedExpiryBatch)
-                    {
-                        if (!rec.IsColumnNull("ExpDate"))
-                        {
-                            ddDate = rec.ExpDate.ToString("MMM dd,yyyy");
-                            batNo = rec.BatchNo;
-                        }
-                    }
-                    Supplier sup = new Supplier();
-                    sup.LoadByPrimaryKey(rec.SupplierID);
-                    object[] obj = { Convert.ToDateTime(dvRec["Date"]).ToString("MM dd,yyyy"), dvRec["RefNo"], Convert.ToInt64(dvRec["Quantity"]).ToString("#,###"), "", Convert.ToDouble(dvRec["Cost"]).ToString("C"), balanceAm, batNo, ddDate, sup.CompanyName };
-                    dtbin.Rows.Add(obj);
-                    //For stock Out
-                    dtT = Convert.ToDateTime(dvRec["Date"]);
-
-                }
-                else if (Convert.ToInt32(dvRec["Transact"]) == 0)
-                {
-                    iss.LoadByPrimaryKey(Convert.ToInt32(dvRec["ID"]));
-                    try
-                    {
-                        rec.LoadByPrimaryKey(iss.RecievDocID);
-                    }
-                    catch
-                    {
-                        rec.GetTransactionByBatch(_itemId, dvRec["BatchNo"].ToString(), _storeId);
-                    }
-
-                    ReceivingUnits recUnit = new ReceivingUnits();
-                    recUnit.LoadByPrimaryKey(iss.ReceivingUnitID);
-                    string issuedTo = recUnit.Name;
-                    balanceAmount = balanceAmount - Convert.ToInt64(dvRec["Quantity"]);
-
-                    balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
-                    itm.LoadByPrimaryKey(iss.ItemID);
-                    if (itm.NeedExpiryBatch)
-                    {
-                        ddDate = ((rec.RowCount > 0) ? rec.ExpDate.ToString("MMM dd,yyyy") : ""); ;
-                        batNo = dvRec["BatchNo"].ToString(); //rec.BatchNo;
-                    }
-                    else
-                    {
-                        ddDate = "";
-                        batNo = "";
-                    }
-                    object[] obj = { Convert.ToDateTime(dvRec["Date"]).ToString("MM dd,yyyy"), dvRec["RefNo"], "", Convert.ToInt64(dvRec["Quantity"]).ToString("#,###"), Convert.ToDouble(dvRec["Cost"]).ToString("C"), balanceAm, batNo, ddDate, issuedTo };
-                    dtbin.Rows.Add(obj);
-                    //For stock Out
-                    dtT = Convert.ToDateTime(dvRec["Date"]);
-
-                }
-
-                foreach (DataRow drDis in dtDis.Rows)
-                {
-                    DateTime dteDis = Convert.ToDateTime(drDis["Date"]);
-                    DateTime dteRec = Convert.ToDateTime(dvRec["Date"]);
-
-                    res.LoadByPrimaryKey(Convert.ToInt32(drDis["ReasonId"]));
-                    rec.GetTransactionByBatch(_itemId, drDis["BatchNo"].ToString(), _storeId);
-                    DateTime dteNextRec = (i <= dtRec.Rows.Count - 1) ? Convert.ToDateTime(dtRec.Rows[i]["Date"]) : _dtCurrent.AddDays(1);
-                    if ((dteRec <= dteDis) && (dteDis < dteNextRec))
-                    {
-                        if (Convert.ToBoolean(drDis["Losses"]))
-                        {
-                            balanceAmount = balanceAmount - Convert.ToInt64(drDis["Quantity"]);
-                            balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
-                            if (rec.RowCount > 0)
-                            {
-                                object[] objIss = { Convert.ToDateTime(drDis["Date"]).ToString("MM dd,yyyy"), drDis["RefNo"], "", Convert.ToInt64(drDis["Quantity"]).ToString("#,###"), Convert.ToDouble(drDis["Cost"]).ToString("C"), balanceAm, drDis["BatchNo"], rec.ExpDate.ToString("MMM dd,yyyy"), res.Reason };
-                                dtbin.Rows.Add(objIss);
-                            }
-                        }
-                        else
-                        {
-                            balanceAmount = balanceAmount + Convert.ToInt64(drDis["Quantity"]);
-                            balanceAm = (balanceAmount > 0) ? balanceAmount.ToString("#,###") : "0";
-                            object[] objIss2 = { Convert.ToDateTime(drDis["Date"]).ToString("MM dd,yyyy"), drDis["RefNo"], Convert.ToInt64(drDis["Quantity"]).ToString("#,###"), "", Convert.ToDouble(drDis["Cost"]).ToString("C"), balanceAm, drDis["BatchNo"], rec.ExpDate.ToString("MMM dd,yyyy"), res.Reason };
-                            dtbin.Rows.Add(objIss2);
-
-                        }
-
-                        dtT = Convert.ToDateTime(dvRec["Date"]);
-
-                    }
-                }
-
-            }
-
-            gridItemsList.DataSource = dtbin;
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -2333,7 +2497,7 @@ namespace PharmInventory.Forms.Modals
 
         private void cboFiscalYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //GenerateBinCard();
+            
             GenerateBinCardNew();
         }
     }
