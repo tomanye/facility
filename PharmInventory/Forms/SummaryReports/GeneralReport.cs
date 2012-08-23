@@ -70,6 +70,8 @@ namespace PharmInventory
 
         private void PopulateSStatus1()
         {
+
+
             if (curMont != 0 && curYear != 0)
             {
                 storeId = Convert.ToInt32(cboStores.SelectedValue);
@@ -91,29 +93,68 @@ namespace PharmInventory
                                where m["Status"].ToString() == "Normal"
                                && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                select m).Count();
+                if (stockin == 0)
+                {
+                    listInStock.Visible = false;
+                }
+                else
+                {
+                    listInStock.Visible = true;
+                }
+                
                 //progressBar1.PerformStep();
                 int stockout = (from m in dtbl.AsEnumerable()
                                 where m["Status"].ToString() == "Stock Out"
                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                 select m).Count();
-
-
+                if (stockout == 0)
+                {
+                    listStockOut.Visible = false;
+                }
+                else
+                {
+                    listStockOut.Visible = true;
+                }
                 //((ckExclude.Checked)? (bal.CountStockOut(storeId, curMont, curYear)- neverRec) : bal.CountStockOut(storeId, curMont, curYear));
                 //progressBar1.PerformStep();
                 int overstock = (from m in dtbl.AsEnumerable()
                                  where m["Status"].ToString() == "Over Stocked"
                                  && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                  select m).Count();
+                if (overstock == 0)
+                {
+                    listOverstock.Visible = false;
+                }
+                else
+                {
+                    listOverstock.Visible = true;
+                }
                 // progressBar1.PerformStep();
                 int nearEOP = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Near EOP"
                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                select m).Count();
+                if (nearEOP == 0)
+                {
+                    listNearEOP.Visible = false;
+                }
+                else 
+                { 
+                    listNearEOP.Visible = true; 
+                }
                 //progressBar1.PerformStep();
                 int belowEOP = (from m in dtbl.AsEnumerable()
                                 where m["Status"].ToString() == "Below EOP"
                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                 select m).Count();
+                if (belowEOP == 0)
+                {
+                    linkLabel23.Visible = false;
+                }
+                else
+                {
+                    listNearEOP.Visible = true;
+                }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
@@ -121,6 +162,14 @@ namespace PharmInventory
                                     where m["Status"].ToString() == "Stock Out"
                                     && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                     select m).Count();
+                if (freeStockOut == 0)
+                {
+                    lblFreeStockedout.Visible = false;
+                }
+                else
+                {
+                    lblFreeStockedout.Visible = true;
+                }
                 // progressBar1.PerformStep();
                 int vitalStockOut = bal.CountVitalItemsStockOut(storeId, curMont, curYear);
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
@@ -139,6 +188,7 @@ namespace PharmInventory
                 lblOverStocked.Text = overstock.ToString() + " (" + percen.ToString("#.0") + "%)";
                 percen = ((totalItm != 0) ? (Convert.ToDecimal(nearEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
+                
                 lblNearEOP.Text = nearEOP.ToString() + " (" + percen.ToString("#.0") + "%)";
                 percen = ((totalItm != 0) ? (Convert.ToDecimal(belowEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -147,11 +197,27 @@ namespace PharmInventory
                 percen = Decimal.Round(percen, 0);
                 lblBelowMin.Text = belowMin.ToString() + " (" + percen.ToString("#.0") + "%)";
                 lblFreeStockedout.Text = freeStockOut.ToString();
+                if (freeStockOut == 0)
+                {
+                    linkLabel6.Visible = false;
+                }
+                else
+                {
+                    linkLabel6.Visible = true;
+                }
                 int totalFree = itm.CountFreeItems();
                 percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
                 lblFreeStock.Text = freeStockOut.ToString() + " (" + percen.ToString("#.0") + "%)";
                 lblVitalStockedout.Text = vitalStockOut.ToString();
+                if (vitalStockOut == 0)
+                {
+                    linkLabel7.Visible = false;
+                }
+                else
+                {
+                    linkLabel7.Visible = true;
+                }
                 totalFree = itm.CountVitalItems();
                 percen = ((totalFree != 0) ? (Convert.ToDecimal(vitalStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -212,7 +278,23 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId).ToString();
+                if (rec.CountNeverReceivedItems(storeId) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else 
+                {
+                    linkLabel10.Visible = true;
+                }
                 lblNeverIssued.Text = rec.CountReceivedNotIssuedItems(storeId).ToString();
+                if (rec.CountReceivedNotIssuedItems(storeId) == 0)
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
                // progressBar1.PerformStep();
                 DataTable dtIss = iss.GetTopIssuedItems(storeId);
                // groupIssued.Text = "Top 10 Most Issued Items";
@@ -317,13 +399,35 @@ namespace PharmInventory
         {
             Items itm = new Items();
             lblAll.Text = itm.CountAllItems().ToString();
-
+            if (itm.CountAllItems() == 0)
+            {
+                listAll.Visible = false;
+                listAll.Text = "";
+            }
             lblNotEDL.Text = itm.CountEDLItems().ToString();
+            if (itm.CountEDLItems() == 0)
+            {
+                listNotEDL.Visible = false;
+                listNotEDL.Text = "";
+            }
             lblFree.Text = itm.CountFreeItems().ToString();
+            if (itm.CountFreeItems() == 0)
+            {
+                listFree.Visible = false;
+                listFree.Text = "";
+            }
             lblRefrigerated.Text = itm.CountRefrigeratedItems().ToString();
+            if (itm.CountRefrigeratedItems() == 0)
+            {
+                listRefrigerated.Visible = false;
+                listRefrigerated.Text = "";
+            }
             lblPediatric.Text = itm.CountPediatricItems().ToString();
-
-            
+            if (itm.CountPediatricItems() == 0)
+            {
+                listPediatric.Visible = false;
+                listPediatric.Text = "";
+            }
         }
 
         private void listAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -401,9 +505,16 @@ namespace PharmInventory
         private void listFree_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Items itm = new Items();
-            DataTable dtItm = itm.GetFreeItems();
-           // groupList.Text = "Free Items";
-            PopulateList(dtItm,lstDetail);
+            if (itm.GetFreeItems().Rows.Count != 0)
+            {
+                DataTable dtItm = itm.GetFreeItems();
+                // groupList.Text = "Free Items";
+                PopulateList(dtItm, lstDetail);
+            }
+            else
+            { 
+                //nothing happenes
+            }
         }
 
         private void listRefrigerated_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -452,6 +563,7 @@ namespace PharmInventory
 
         private void listNearEOP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            //if (lblNearEOP.Text)
             Balance bal = new Balance();
             DataTable stockout = bal.GetNearEOP(storeId, curMont, curYear);
            // StatusGroup.Text = "Near EOP Items";
@@ -719,6 +831,27 @@ namespace PharmInventory
             else
                 cboStores.Visible = true;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+ /*       
+        private void EnableList()
+        {
+            if (lblAll.Text == "0")
+            {
+                listAll.Enabled = false;
+                //list
+            }
+        }
+
+        private void DisableList()
+        { 
+            
+        }
+  */
 
     }
 }

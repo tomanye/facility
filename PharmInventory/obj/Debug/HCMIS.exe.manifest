@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>PF0XSoGVr58hDpcEgVGeg/9haT8=</dsig:DigestValue>
+        <dsig:DigestValue>jlZHz/fzOZdj6XhE7AVRbjLq2LQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1123,14 +1123,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1805824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1806336">
       <assemblyIdentity name="HCMIS" version="2.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>p+r8xvZkWXt0bqlJT2LFKJSFhRk=</dsig:DigestValue>
+        <dsig:DigestValue>uteI5pfbtRPRR65c1975YhYX7QY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1329,13 +1329,22 @@
       <dsig:DigestValue>YkGr/LTNYUHMjs0EmQUdk24GhuE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\rpt_BinCard.sql" size="3078">
+  <file name="Scripts\12_rpt_BinCard.sql" size="2962">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>wKr6ebq3Mf4bsDn+KDftlxFvWt0=</dsig:DigestValue>
+      <dsig:DigestValue>BmaeRFpc9PjOGWSoOtXo5fZaB7s=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Scripts\13_EnableEthiopianDate.sql" size="2962">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>BmaeRFpc9PjOGWSoOtXo5fZaB7s=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

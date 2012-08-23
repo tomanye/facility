@@ -279,8 +279,8 @@ namespace PharmInventory
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabControl1.Location = new System.Drawing.Point(3, 34);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedTabPage = this.tabPage1;
@@ -340,12 +340,12 @@ namespace PharmInventory
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.PageVisible = false;
-            this.tabPage1.Size = new System.Drawing.Size(1055, 518);
+            this.tabPage1.Size = new System.Drawing.Size(1055, 516);
             this.tabPage1.Text = "Inventory";
             // 
             // lstDetail
             // 
-            this.lstDetail.Location = new System.Drawing.Point(396, 20);
+            this.lstDetail.Location = new System.Drawing.Point(-44, -45);
             this.lstDetail.MainView = this.gridView6;
             this.lstDetail.Name = "lstDetail";
             this.lstDetail.Size = new System.Drawing.Size(639, 492);
@@ -740,6 +740,7 @@ namespace PharmInventory
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "All Items :";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tabPage3
             // 
@@ -767,14 +768,14 @@ namespace PharmInventory
             this.tabPage3.Controls.Add(this.label25);
             this.tabPage3.Controls.Add(this.listInStock);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1055, 518);
+            this.tabPage3.Size = new System.Drawing.Size(1055, 516);
             this.tabPage3.Text = "Stock Status Summary";
             // 
             // listStatused
             // 
-            this.listStatused.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listStatused.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listStatused.Location = new System.Drawing.Point(416, 14);
             this.listStatused.MainView = this.gridView2;
             this.listStatused.Name = "listStatused";
@@ -824,8 +825,8 @@ namespace PharmInventory
             // chartPie
             // 
             simpleDiagram3D1.RotationMatrixSerializable = "0.721958041191101;-0.528816044330597;0.446248203516006;0;0.691937506198883;0.5492" +
-                "16389656067;-0.46860808134079;0;0.00272014550864697;0.647088348865509;0.76241779" +
-                "3273926;0;0;0;0;1";
+    "16389656067;-0.46860808134079;0;0.00272014550864697;0.647088348865509;0.76241779" +
+    "3273926;0;0;0;0;1";
             this.chartPie.Diagram = simpleDiagram3D1;
             this.chartPie.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Left;
             this.chartPie.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Bottom;
@@ -855,11 +856,11 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pie3DSeriesLabel1.LineVisible = true;
-            series1.Label = pie3DSeriesLabel1;
-            series1.Name = "Series 1";
             piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            series1.PointOptions = piePointOptions1;
+            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            series1.Label = pie3DSeriesLabel1;
+            series1.Name = "Series 1";
             series1.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
@@ -1065,14 +1066,14 @@ namespace PharmInventory
             this.tabPage7.Controls.Add(this.lblVitalStockedout);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.PageVisible = false;
-            this.tabPage7.Size = new System.Drawing.Size(1055, 518);
+            this.tabPage7.Size = new System.Drawing.Size(1055, 516);
             this.tabPage7.Text = "Stock Status Trend";
             // 
             // listStatusTrend
             // 
-            this.listStatusTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listStatusTrend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listStatusTrend.Location = new System.Drawing.Point(416, 16);
             this.listStatusTrend.MainView = this.gridView3;
             this.listStatusTrend.Name = "listStatusTrend";
@@ -1150,7 +1151,7 @@ namespace PharmInventory
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 202F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label22, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
@@ -1490,15 +1491,15 @@ namespace PharmInventory
             this.tabPage8.Controls.Add(this.label40);
             this.tabPage8.Controls.Add(this.label38);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1055, 518);
+            this.tabPage8.Size = new System.Drawing.Size(1055, 516);
             this.tabPage8.Text = "Receive Summary";
             this.tabPage8.Click += new System.EventHandler(this.tabPage8_Click);
             // 
             // listReceiveSum
             // 
-            this.listReceiveSum.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listReceiveSum.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listReceiveSum.Location = new System.Drawing.Point(416, 20);
             this.listReceiveSum.MainView = this.gridView4;
             this.listReceiveSum.Name = "listReceiveSum";
@@ -1564,11 +1565,11 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pointSeriesLabel1.LineVisible = true;
-            series2.Label = pointSeriesLabel1;
-            series2.Name = "Series 1";
             pointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            series2.PointOptions = pointOptions1;
+            pointSeriesLabel1.PointOptions = pointOptions1;
+            series2.Label = pointSeriesLabel1;
+            series2.Name = "Series 1";
             series2.View = lineSeriesView1;
             this.chartReceiveCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
@@ -1699,14 +1700,14 @@ namespace PharmInventory
             this.tabPage9.Controls.Add(this.label57);
             this.tabPage9.Controls.Add(this.label58);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1055, 518);
+            this.tabPage9.Size = new System.Drawing.Size(1055, 516);
             this.tabPage9.Text = "Issue Summary";
             // 
             // listIssued
             // 
-            this.listIssued.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listIssued.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listIssued.Location = new System.Drawing.Point(416, 18);
             this.listIssued.MainView = this.gridView5;
             this.listIssued.Name = "listIssued";
@@ -1772,11 +1773,11 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pointSeriesLabel3.LineVisible = true;
-            series3.Label = pointSeriesLabel3;
-            series3.Name = "Series 1";
             pointOptions2.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             pointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            series3.PointOptions = pointOptions2;
+            pointSeriesLabel3.PointOptions = pointOptions2;
+            series3.Label = pointSeriesLabel3;
+            series3.Name = "Series 1";
             series3.View = lineSeriesView3;
             this.chartIssueCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3};
@@ -1945,8 +1946,8 @@ namespace PharmInventory
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.listView1);
             this.groupBox1.Location = new System.Drawing.Point(457, 3);
             this.groupBox1.Name = "groupBox1";
@@ -2128,8 +2129,8 @@ namespace PharmInventory
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.listView2);
             this.groupBox2.Location = new System.Drawing.Point(462, 3);
             this.groupBox2.Name = "groupBox2";

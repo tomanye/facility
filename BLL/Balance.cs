@@ -456,6 +456,7 @@ namespace BLL
                                where m["Status"].ToString() == "Near EOP"
                                select m).CopyToDataTable();
             return items;
+
         }
 
         public DataTable GetBelowEOP(int storeId, int month, int year)
@@ -465,8 +466,6 @@ namespace BLL
                                where m["Status"].ToString() == "Below EOP"
                                select m).CopyToDataTable();
             return items;
-
-          
         }
 
         public int CountStockOut(int storeId, int month, int year)
@@ -1152,7 +1151,6 @@ namespace BLL
             DataTable dtItem = ((selectedType == "Drug")? itmB.GetAllItems(1) : itmB.GetAllSupply());
             int curYear = dtCurrent.Year;
             int curMonth = dtCurrent.Month;
-
             foreach (DataRow dr in dtItem.Rows)
             {
                 int yer = (curMonth < 11) ? curYear : curYear - 1;

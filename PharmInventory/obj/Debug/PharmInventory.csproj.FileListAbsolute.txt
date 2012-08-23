@@ -169,3 +169,5 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\de\DevExpress.X
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\es\DevExpress.XtraTreeList.v12.1.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ja\DevExpress.XtraTreeList.v12.1.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ru\DevExpress.XtraTreeList.v12.1.resources.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\12_rpt_BinCard.sql
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\13_EnableEthiopianDate.sql
