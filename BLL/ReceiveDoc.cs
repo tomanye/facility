@@ -517,11 +517,10 @@ namespace BLL
         public static DateTime GetLastReceivedDate()
         {
             BLL.ReceiveDoc rd = new ReceiveDoc();
-            
             rd.LoadFromRawSql(String.Format("SELECT TOP (1) EurDate FROM ReceiveDoc ORDER BY EurDate DESC"));
             DateTime dt = (rd.DataTable.Rows.Count > 0) ? Convert.ToDateTime(rd.DataTable.Rows[0]["EurDate"]) : new DateTime();
-
             return dt;
         }
+        
     }
 }

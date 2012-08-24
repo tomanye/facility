@@ -283,6 +283,7 @@ namespace PharmInventory
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();
+                        
 
                         rec.LoadByPrimaryKey(Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]));
 

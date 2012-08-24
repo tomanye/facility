@@ -159,5 +159,48 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridAdjustments.DataSource = dtRec;
         }
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRow dataRow = gridView1.GetFocusedDataRow();
+            if (dataRow == null) return;
+            int ID = Convert.ToInt32(dataRow["ID"]);
+            Disposal disposal = new Disposal();
+            ReceiveDoc receiveDoc = new ReceiveDoc();
+            disposal.LoadByPrimaryKey(ID);
+            int itemId = disposal.ItemID;
+            int storeID = disposal.StoreId;
+            int recieveID = disposal.RecID;
+            receiveDoc.LoadByPrimaryKey(recieveID);
+            
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //check for losss
+                if (disposal.Losses)
+                {
+                    receiveDoc.Quantity += disposal.Quantity;
+                    receiveDoc.QuantityLeft += disposal.Quantity;
+                    if (receiveDoc.Out)
+                        receiveDoc.Out = false;
+                    disposal.Quantity = 0;
+                }
+                else // it was adjustment
+                {
+                    receiveDoc.Quantity -= disposal.Quantity;
+                    receiveDoc.QuantityLeft -= disposal.Quantity;
+                    if (receiveDoc.Quantity == 0)
+                        receiveDoc.Out = true;
+                    disposal.Quantity = 0;
+                }
+                // proceed deletion
+                disposal.Save();
+                receiveDoc.Save();
+                receiveDoc.AcceptChanges();
+                disposal.MarkAsDeleted();
+                //disposal.MarkAsDeleted();
+                MessageBox.Show("Item has been deleted");
+
+            }
+        }
+       
     }
 }
