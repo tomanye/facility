@@ -28,7 +28,6 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -96,10 +95,10 @@ namespace PharmInventory.Forms.Reports
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.label20 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.pcl = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.pcl = new DevExpress.XtraPrinting.PrintableComponentLink();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -551,7 +550,7 @@ namespace PharmInventory.Forms.Reports
             this.VEN.Caption = "AMC";
             this.VEN.DisplayFormat.FormatString = "##0.#0";
             this.VEN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.VEN.FieldName = "amc";
+            this.VEN.FieldName = "AMC";
             this.VEN.Name = "VEN";
             this.VEN.OptionsColumn.AllowEdit = false;
             this.VEN.OptionsColumn.AllowIncrementalSearch = false;
@@ -1084,7 +1083,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.pcl.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("pcl.ImageCollection.ImageStream")));
-           
+            this.pcl.Owner = null;
             this.pcl.PrintingSystem = this.printingSystem1;
             this.pcl.PrintingSystemBase = this.printingSystem1;
             // 

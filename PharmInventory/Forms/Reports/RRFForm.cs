@@ -462,23 +462,35 @@ namespace PharmInventory.Forms.Reports
         }
         
         private void grdRRF_DoubleClick(object sender, EventArgs e)
-        {
+        {   
+            ProgressCheckingVisibility(true);
             int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
-            ShowRRFDetailWindow(rrfID);
+            RRF rrf = new RRF();
+            rrf.LoadByPrimaryKey(rrfID);
+
+            cboFromMonth.EditValue = rrf.FromMonth;
+            cboFromYear.EditValue = rrf.FromYear;
+            cboToMonth.EditValue = rrf.ToMonth;
+            cboToYear.EditValue = rrf.ToYear;
+            cboStores.EditValue = rrf.RRFType;
+            bwRRFDetail.RunWorkerAsync();
+            
+            //ShowRRFDetailWindow(rrfID);
+           
         }
 
         private void ShowRRFDetailWindow(int rrfID)
         {
             RRF rrf = new RRF();
             rrf.LoadByPrimaryKey(rrfID);
-            
-            cboFromMonth.EditValue = rrf.FromMonth;
-            cboFromYear.EditValue = rrf.FromYear;
-            cboToMonth.EditValue = rrf.ToMonth;
-            cboToYear.EditValue = rrf.ToYear;
-            cboStores.EditValue = rrf.RRFType;
 
-            PopulateList();
+            //cboFromMonth.EditValue = rrf.FromMonth;
+            //cboFromYear.EditValue = rrf.FromYear;
+            //cboToMonth.EditValue = rrf.ToMonth;
+            //cboToYear.EditValue = rrf.ToYear;
+            //cboStores.EditValue = rrf.RRFType;
+
+            PopulateList(rrf.RRFType, rrf.FromMonth, rrf.FromYear,rrf.ToMonth, rrf.ToYear);
             //Handle Edits here (Populate exact values from the database)
             if (!rrf.IsColumnNull("LastRRFStatus"))
             {
@@ -491,7 +503,29 @@ namespace PharmInventory.Forms.Reports
             }
             else
                 btnAutoPushToPFSA.Enabled = true;
-            WindowVisibility(true);
+           // WindowVisibility(true);
+        }
+
+        private void PopulateList(int storeId, int fromMonth, int fromYear, int toMonth, int toYear)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            BLL.Region reg = new BLL.Region();
+            Zone zon = new Zone();
+            Woreda wor = new Woreda();
+
+            _storeID = storeId;// Convert.ToInt32(cboStores.EditValue);
+            Items itm = new Items();
+
+            _fromMonth = fromMonth; // int.Parse(cboFromMonth.EditValue.ToString());
+            _toMonth = toMonth; // int.Parse(cboToMonth.EditValue.ToString());
+            _toYear = toYear; // int.Parse(cboToYear.EditValue.ToString());
+            _fromYear = fromYear; // int.Parse(cboFromYear.EditValue.ToString());
+
+            tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+            gridItemsChoice.DataSource = tblRRF;
+
+            ChooseGridView();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -501,7 +535,7 @@ namespace PharmInventory.Forms.Reports
 
         private void WindowVisibility(bool rrfDetailVisible)
         {
-            if(rrfDetailVisible)
+            if (rrfDetailVisible)
             {
                 lcRRFInformation.Visibility = LayoutVisibility.Always;
                 lcRRFList.Visibility = LayoutVisibility.Never;
@@ -511,15 +545,17 @@ namespace PharmInventory.Forms.Reports
                 lcRRFInformation.Visibility = LayoutVisibility.Never;
                 lcRRFList.Visibility = LayoutVisibility.Always;
             }
+
         }
 
         private void btnNewRRF_Click(object sender, EventArgs e)
         {
             ProgressCheckingVisibility(true);
-            var ethiopianDate = new EthiopianDate.EthiopianDate();
-            PopulateCurrentMonthRRF(ethiopianDate);
-            WindowVisibility(true);
-          
+            //var ethiopianDate = new EthiopianDate.EthiopianDate();
+
+            //PopulateCurrentMonthRRF(ethiopianDate);
+            //WindowVisibility(true);
+            brRRFCurrent.RunWorkerAsync();
             
         }
 
@@ -577,6 +613,39 @@ namespace PharmInventory.Forms.Reports
             PopulateListByProgram();
         }
 
+
+        private void bwRRFDetail_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ProgressCheckingVisibility(true);
+            int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
+            ShowRRFDetailWindow(rrfID);
+            
+        }
+
+        private void bwRRFDetail_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ProgressCheckingVisibility(false);
+            WindowVisibility(true);
+            XtraMessageBox.Show("RRF detail generated successfully!");
+            
+        }
+
+        private void brRRFCurrent_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            ProgressCheckingVisibility(true);
+            var ethiopianDate = new EthiopianDate.EthiopianDate();
+            PopulateCurrentMonthRRF(ethiopianDate);
+        }
+
+        private void brRRFCurrent_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            ProgressCheckingVisibility(false);
+            WindowVisibility(true);
+            XtraMessageBox.Show("Current RRF generated successfully");
+
+        }
+
+       
        
     }
 }

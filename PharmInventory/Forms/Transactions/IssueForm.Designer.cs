@@ -30,7 +30,6 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -114,9 +113,12 @@ namespace PharmInventory.Forms.Transactions
             this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.issueGrid = new DevExpress.XtraGrid.GridControl();
             this.issueGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -124,12 +126,13 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn16 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -215,18 +218,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
-            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -758,7 +757,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn14.Caption = "AMC";
             this.gridColumn14.DisplayFormat.FormatString = "#,##0";
             this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn14.FieldName = "NewAMC";
+            this.gridColumn14.FieldName = "AMC";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.OptionsColumn.ReadOnly = true;
@@ -1314,6 +1313,22 @@ namespace PharmInventory.Forms.Transactions
             this.issueGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridItemChoiceView_RowClick_1);
             this.issueGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
+            // gridBand3
+            // 
+            this.gridBand3.Columns.Add(this.bandedGridColumn13);
+            this.gridBand3.Columns.Add(this.gridColumn3);
+            this.gridBand3.Columns.Add(this.gridColumn4);
+            this.gridBand3.Columns.Add(this.gridColumn6);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.Width = 344;
+            // 
+            // bandedGridColumn13
+            // 
+            this.bandedGridColumn13.Caption = "StoreName";
+            this.bandedGridColumn13.FieldName = "StoreID";
+            this.bandedGridColumn13.Name = "bandedGridColumn13";
+            this.bandedGridColumn13.Visible = true;
+            // 
             // gridColumn3
             // 
             this.gridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1364,6 +1379,19 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn6.ToolTip = "Store Stock On Hand";
             this.gridColumn6.Visible = true;
             this.gridColumn6.Width = 58;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Auto Calculated Fields";
+            this.gridBand2.Columns.Add(this.gridColumn5);
+            this.gridBand2.Columns.Add(this.bandedGridColumn12);
+            this.gridBand2.Columns.Add(this.gridColumn9);
+            this.gridBand2.Columns.Add(this.gridColumn23);
+            this.gridBand2.Columns.Add(this.gridColumn16);
+            this.gridBand2.Columns.Add(this.gridColumn17);
+            this.gridBand2.Columns.Add(this.gridColumn18);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.Width = 460;
             // 
             // gridColumn5
             // 
@@ -1483,6 +1511,16 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.Visible = true;
             this.gridColumn18.Width = 100;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Override Section";
+            this.gridBand4.Columns.Add(this.gridColumn19);
+            this.gridBand4.Columns.Add(this.gridColumn20);
+            this.gridBand4.Columns.Add(this.gridColumn21);
+            this.gridBand4.Columns.Add(this.gridColumnRemove);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.Width = 219;
             // 
             // gridColumn19
             // 
@@ -2586,45 +2624,6 @@ namespace PharmInventory.Forms.Transactions
             this.printableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.printableComponentLink2.PrintingSystem = this.printingSystem1;
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
-            // 
-            // bandedGridColumn13
-            // 
-            this.bandedGridColumn13.Caption = "StoreName";
-            this.bandedGridColumn13.FieldName = "StoreID";
-            this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.Visible = true;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Columns.Add(this.bandedGridColumn13);
-            this.gridBand3.Columns.Add(this.gridColumn3);
-            this.gridBand3.Columns.Add(this.gridColumn4);
-            this.gridBand3.Columns.Add(this.gridColumn6);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 344;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Auto Calculated Fields";
-            this.gridBand2.Columns.Add(this.gridColumn5);
-            this.gridBand2.Columns.Add(this.bandedGridColumn12);
-            this.gridBand2.Columns.Add(this.gridColumn9);
-            this.gridBand2.Columns.Add(this.gridColumn23);
-            this.gridBand2.Columns.Add(this.gridColumn16);
-            this.gridBand2.Columns.Add(this.gridColumn17);
-            this.gridBand2.Columns.Add(this.gridColumn18);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.Width = 460;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "Override Section";
-            this.gridBand4.Columns.Add(this.gridColumn19);
-            this.gridBand4.Columns.Add(this.gridColumn20);
-            this.gridBand4.Columns.Add(this.gridColumn21);
-            this.gridBand4.Columns.Add(this.gridColumnRemove);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 219;
             // 
             // IssueForm
             // 

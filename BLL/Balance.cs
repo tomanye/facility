@@ -763,16 +763,15 @@ namespace BLL
             
             dtbl.Columns.Add("MOS",typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
-            dtbl.Columns.Add("DaysStockedOut", typeof(int));
-            dtbl.Columns.Add("amc", typeof(double));
+           // dtbl.Columns.Add("DaysStockedOut", typeof(int));
+            //dtbl.Columns.Add("amc", typeof(double));
+            int amc;
             foreach (DataRow dr in dtbl.Rows)
             {
-                //previous amc calculation
-               // amc = Convert.ToInt32(dr["AMC"]);
-                dr["amc"] =  Builder.CachedAMC((int)dr["ID"], storeId);
-                if ((double)dr["amc"] > 0)
+               amc = Convert.ToInt32(dr["AMC"]);
+                if (amc > 0)
                 {
-                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / (double) dr["amc"];
+                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
                 }
                 else
                 {
@@ -781,11 +780,11 @@ namespace BLL
                 // 
                 int reorder =  Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
-
                
             }
             return dtbl;
-        }
+
+          }
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
@@ -1123,7 +1122,7 @@ namespace BLL
             foreach (DataRow row in this.DataTable.Rows)
             {
                 row.BeginEdit();
-                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
+               // row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
 
             }
             return this.DataTable;
