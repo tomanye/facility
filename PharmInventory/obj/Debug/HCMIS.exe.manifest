@@ -1142,7 +1142,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>VgFDj6QsQ98g5Cl5B42EYApPQ+Q=</dsig:DigestValue>
+        <dsig:DigestValue>SDN9NMC6bN5yWd71PN7tZArCcSo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1154,7 +1154,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1eu6zcTURWUgKY4XVCYqfZDAHDI=</dsig:DigestValue>
+        <dsig:DigestValue>6WyZdgDGTTVkma0JtI1B1m4u9Xc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1191,13 +1191,13 @@
       <dsig:DigestValue>b1N4ZR/WLn6zyDdKP1pM1iNJ3tQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="HCMIS.exe.config" size="8615">
+  <file name="HCMIS.exe.config" size="8966">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>KkpTBqPXSPZVXZgeAXzXb/tDpMQ=</dsig:DigestValue>
+      <dsig:DigestValue>P9jSXGNKazryycN46YTiQt0bTUM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Icon.ico" size="15086">

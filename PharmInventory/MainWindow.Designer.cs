@@ -602,7 +602,7 @@ namespace PharmInventory
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.Location = new System.Drawing.Point(199, 126);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(894, 465);
+            this.mainPanel.Size = new System.Drawing.Size(894, 447);
             this.mainPanel.TabIndex = 16;
             // 
             // panelControl2

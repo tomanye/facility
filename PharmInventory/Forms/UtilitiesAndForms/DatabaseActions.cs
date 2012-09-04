@@ -154,7 +154,6 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnRefreshDirectoryService_Click(object sender, EventArgs e)
         {
-            var client = new Service1SoapClient();
             SyncImageVisibility(true);
             btnRefreshDirectoryService.Enabled = false;
             bw.RunWorkerAsync(MainWindow.LoggedinId);

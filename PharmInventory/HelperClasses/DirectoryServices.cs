@@ -19,8 +19,8 @@ namespace PharmInventory.HelperClasses
 {
     static class DirectoryServices
     {
-        private static string userName = "hcmisfe";
-        private static string password = "hcmisfe";
+        private static string userName = "hcmishe";
+        private static string password = "hcmishe";
         public static void RefreshFromDirectoryServices()
         {
             DirectoryService.Service1SoapClient soapClient = new Service1SoapClient();

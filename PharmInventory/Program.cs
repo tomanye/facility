@@ -23,8 +23,6 @@ namespace PharmInventory
         public static ApplicationDeployment HCMIS;
 
         public static bool UpdateRunning, RestartRequired;
-
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -70,15 +68,15 @@ namespace PharmInventory
             string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
             LogManager.ConnectionString = connectionString;
             IErrorLog logger = LogManager.GetErrorLogger();
-            logger.SaveError(1, 1, 1, 1, connectionString, "WareHouse", e.Exception);
+            logger.SaveError(1, 1, 1, 1, "Activity", "WareHouse", e.Exception);
         }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
             LogManager.ConnectionString = connectionString;
             IErrorLog logger = LogManager.GetErrorLogger();
-            logger.SaveError(1, 1, 1, 1, connectionString, "Warehouse", (Exception)e.ExceptionObject);
- 
+            logger.SaveError(1, 1, 1, 1, "Activity", "Warehouse", (Exception)e.ExceptionObject);
+
         } 
         public static string HCMISVersionString
         {

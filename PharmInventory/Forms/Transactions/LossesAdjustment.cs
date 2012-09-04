@@ -312,7 +312,7 @@ namespace PharmInventory
 
                         dtAdjustDate.Value = xx;
                     }
-                    MessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Transaction successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetFields();
                 }
             }
