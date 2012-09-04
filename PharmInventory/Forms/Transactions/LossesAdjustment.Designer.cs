@@ -296,7 +296,6 @@ namespace PharmInventory
             this.gridItemsChoice.TabIndex = 17;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridItemChoiceView});
-            
             // 
             // gridItemChoiceView
             // 
@@ -839,6 +838,7 @@ namespace PharmInventory
             // 
             this.gridColumn22.Caption = "Reason";
             this.gridColumn22.ColumnEdit = this.ReasonLookup;
+            this.gridColumn22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn22.FieldName = "Reason";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
@@ -848,6 +848,10 @@ namespace PharmInventory
             // 
             // ReasonLookup
             // 
+            this.ReasonLookup.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.ReasonLookup.Appearance.Options.UseForeColor = true;
+            this.ReasonLookup.AppearanceDropDown.ForeColor = System.Drawing.Color.Black;
+            this.ReasonLookup.AppearanceDropDown.Options.UseForeColor = true;
             this.ReasonLookup.AutoHeight = false;
             this.ReasonLookup.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1304,13 +1308,13 @@ namespace PharmInventory
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.detailToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 26);
             // 
             // detailToolStripMenuItem
             // 
             this.detailToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.report;
             this.detailToolStripMenuItem.Name = "detailToolStripMenuItem";
-            this.detailToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.detailToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.detailToolStripMenuItem.Text = "detail";
             // 
             // layoutControlItem10

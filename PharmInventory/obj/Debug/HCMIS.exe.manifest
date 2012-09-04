@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Tn9miNokCVWhyTWZm2fMd2RcOMU=</dsig:DigestValue>
+        <dsig:DigestValue>4bsBiB5+eeS8PuqwlW6MZfx365U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WFr+oFH7D/W0RpshcYtWf/D9DB0=</dsig:DigestValue>
+        <dsig:DigestValue>iauKhT7u3K7tJI/1UG88Zu8BcM8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1111,6 +1111,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFramework.dll" size="1118296">
+      <assemblyIdentity name="EntityFramework" version="4.4.0.0" publicKeyToken="B77A5C561934E089" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>p3RTOcdrbvVmL3DQTyBOKmm3qw8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EthiopianDate.dll" size="9216">
       <assemblyIdentity name="EthiopianDate" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -1123,14 +1135,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1806336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1830912">
       <assemblyIdentity name="HCMIS" version="2.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+7+3XtIyFEZwHy5PHULi6ndsJ4g=</dsig:DigestValue>
+        <dsig:DigestValue>oxU+Lq0rvYWeSFVXQmHBX1Xyvis=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.Logging.dll" size="20480">
+      <assemblyIdentity name="HCMIS.Logging" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>KUxdDkERZzGw0o+NO9AxGXCkP+0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1167,13 +1191,13 @@
       <dsig:DigestValue>b1N4ZR/WLn6zyDdKP1pM1iNJ3tQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="HCMIS.exe.config" size="6881">
+  <file name="HCMIS.exe.config" size="8608">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>2MlIE+G1JfNcEkcjKJvwiA9OvC0=</dsig:DigestValue>
+      <dsig:DigestValue>5iCHeyvmiwdaaTJAYF+CfSUejHU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Icon.ico" size="15086">

@@ -159,46 +159,65 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridAdjustments.DataSource = dtRec;
         }
+        /// <summary>
+        /// Delete a row of adjustmen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataRow dataRow = gridView1.GetFocusedDataRow();
             if (dataRow == null) return;
+            
+            //get the primary key of the row
             int ID = Convert.ToInt32(dataRow["ID"]);
+
             Disposal disposal = new Disposal();
             ReceiveDoc receiveDoc = new ReceiveDoc();
+            
+            //Retrieve the adjustment with the value of the primary key(id)
             disposal.LoadByPrimaryKey(ID);
+
+
             int itemId = disposal.ItemID;
             int storeID = disposal.StoreId;
             int recieveID = disposal.RecID;
+            
             receiveDoc.LoadByPrimaryKey(recieveID);
             
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //check for losss
-                if (disposal.Losses)
+                if (disposal.Losses) //it was loss
                 {
-                    receiveDoc.Quantity += disposal.Quantity;
-                    receiveDoc.QuantityLeft += disposal.Quantity;
+                    receiveDoc.Quantity = receiveDoc.Quantity + disposal.Quantity;
+                    receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + disposal.Quantity;
                     if (receiveDoc.Out)
                         receiveDoc.Out = false;
                     disposal.Quantity = 0;
                 }
                 else // it was adjustment
                 {
-                    receiveDoc.Quantity -= disposal.Quantity;
-                    receiveDoc.QuantityLeft -= disposal.Quantity;
+                    receiveDoc.Quantity = receiveDoc.Quantity - disposal.Quantity;
+                    receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - disposal.Quantity;
                     if (receiveDoc.Quantity == 0)
                         receiveDoc.Out = true;
                     disposal.Quantity = 0;
                 }
-                // proceed deletion
-                disposal.Save();
-                receiveDoc.Save();
-                receiveDoc.AcceptChanges();
-                disposal.MarkAsDeleted();
-                //disposal.MarkAsDeleted();
-                MessageBox.Show("Item has been deleted");
 
+                // proceed deletion and make the necessary changes on the database tables.
+                receiveDoc.Save();
+                disposal.MarkAsDeleted();
+                disposal.Save();
+                
+                //Repopulate the grid
+                DataTable dtRec;
+                dtFrom.CustomFormat = "MM/dd/yyyy";
+                dtTo.CustomFormat = "MM/dd/yyyy";
+                DateTime from = ConvertDate.DateConverter(dtFrom.Text);
+                DateTime to = ConvertDate.DateConverter(dtTo.Text);
+                dtRec = disposal.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), from, to);
+                gridAdjustments.DataSource = dtRec;
             }
         }
        

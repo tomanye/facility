@@ -559,15 +559,14 @@ namespace PharmInventory.Forms.Transactions
                 string batchNo = dr["Batch No."].ToString();
                 int recID = int.Parse(dr["RecID"].ToString());
                 BLL.ReceiveDoc rec = new ReceiveDoc();
-                rec.LoadByPrimaryKey(recID);
-                int itemID = rec.ItemID;
-                if(recID==-1)
+                if (recID == -1)
                 {
                     XtraMessageBox.Show("Use this button only on invalid batches", "Nothing to Remove",
                                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
-
+                rec.LoadByPrimaryKey(recID);
+                int itemID = rec.ItemID;
                 //Do another validation here (Make sure that the items that they try to remove have issues like the Total SOH not being equal to the sum of the listed batches and so forth.
                 int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
                 int month = EthiopianDate.EthiopianDate.Now.Month;
@@ -580,7 +579,7 @@ namespace PharmInventory.Forms.Transactions
                 long currentBalance = bal.GetSOH(itemID, storeId, month, year);
                 long totalQuantityLeftInBatches = itm.TotalQuantityLeftInAllBatches(storeId);
 
-                if(currentBalance==totalQuantityLeftInBatches)
+                if (currentBalance == totalQuantityLeftInBatches)
                 {
                     XtraMessageBox.Show(
                         "You do not have to use this button to remove this batch.  Please set the physical inventory 0 instead.  Use this button only for items with discrepancies.",
@@ -590,7 +589,7 @@ namespace PharmInventory.Forms.Transactions
 
                 if (XtraMessageBox.Show("This will make the quantity left for this received batch zero and remove it from this list.  Are you sure you want to continue?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if(BLL.ReceiveDoc.MarkReceivedBatchAsEmpty(recID))
+                    if (BLL.ReceiveDoc.MarkReceivedBatchAsEmpty(recID))
                     {
                         dr.Delete();
                     }

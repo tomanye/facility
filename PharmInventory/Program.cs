@@ -6,6 +6,11 @@ using PharmInventory.Forms.Modals;
 using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
+using System.Threading;
+using HCMIS.Logging;
+
+
+
 
 namespace PharmInventory
 {
@@ -27,6 +32,17 @@ namespace PharmInventory
         [STAThread]
         static void Main()
         {
+           
+            //                              ERROR LOGGING                                    ///
+
+            // Add the event handler for handling UI thread exceptions to the event.
+            Application.ThreadException += new ThreadExceptionEventHandler(LogUnhandledException);
+            // Set the unhandled exception mode to force all Windows Forms errors to go through 
+            // our handler.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            // Add the event handler for handling non-UI thread exceptions to the event. 
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+           //                                                                            //            
             DevExpress.UserSkins.OfficeSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
@@ -40,7 +56,7 @@ namespace PharmInventory
                 HCMIS.CheckForUpdateCompleted += new CheckForUpdateCompletedEventHandler(HCMIS_CheckForUpdateCompleted);
                 HCMIS.UpdateCompleted += new System.ComponentModel.AsyncCompletedEventHandler(HCMIS_UpdateCompleted);
             }
-
+            
             //If the user opens the application while holding down the shift key, we want to open the configuration options before the login form.
             if (Control.ModifierKeys == Keys.Shift)
             {
@@ -50,6 +66,21 @@ namespace PharmInventory
             Application.Run(new LoginForm());
         }
 
+        static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)
+        {
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IErrorLog logger = LogManager.GetErrorLogger();
+            logger.SaveError(1, 1, 1, 1, connectionString, "WareHouse", e.Exception);
+        }
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IErrorLog logger = LogManager.GetErrorLogger();
+            logger.SaveError(1, 1, 1, 1, connectionString, "Warehouse", (Exception)e.ExceptionObject);
+ 
+        } 
         public static string HCMISVersionString
         {
             get
@@ -208,9 +239,6 @@ namespace PharmInventory
             MainWindow.Instance.mnuCheckForUpdates.Text = "Check for Updates";
         }
 
-
-
-
-
+        
     }
 }

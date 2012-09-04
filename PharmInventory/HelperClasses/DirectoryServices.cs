@@ -23,7 +23,7 @@ namespace PharmInventory.HelperClasses
         private static string password = "hcmisfe";
         public static void RefreshFromDirectoryServices()
         {
-            DirectoryService.ServiceSoapClient soapClient = new ServiceSoapClient();
+            DirectoryService.Service1SoapClient soapClient = new Service1SoapClient();
             int notFound = 0;
             int exactNameNotFound = 0;
             int different = 0;
@@ -45,7 +45,7 @@ namespace PharmInventory.HelperClasses
                 }
             }
 
-            RefreshAdminUnits(soapClient, previousVersion);
+            //RefreshAdminUnits(soapClient, previousVersion);
             RefreshUnits(soapClient, previousVersion);
             RefreshSuppliers(soapClient, previousVersion);
             RefreshDosageForms(soapClient, previousVersion);
@@ -66,7 +66,7 @@ namespace PharmInventory.HelperClasses
             generalInfo.Save();
         }
 
-        private static void RefreshTypes(ServiceSoapClient soapClient, int? previousVersion)
+        private static void RefreshTypes(Service1SoapClient soapClient, int? previousVersion)
         {
             List<DirectoryService.CommodityType> dsCommodityTypeList = soapClient.GetCommodityTypes(userName, password, previousVersion, null);
             BLL.Type localCommodityType = new BLL.Type();
@@ -92,7 +92,7 @@ namespace PharmInventory.HelperClasses
             }
         }
 
-        private static void RefreshDrugItemCategory(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshDrugItemCategory(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -156,7 +156,7 @@ namespace PharmInventory.HelperClasses
             return different;
         }
 
-        private static void RefreshItems(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshItems(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -230,7 +230,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Items\nSimilar Items: " + similar + "\nDifferent Items: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshProducts(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshProducts(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -285,7 +285,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Products\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshPrograms(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshPrograms(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -347,7 +347,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Programs\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshDrugSubCategory(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshDrugSubCategory(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -415,7 +415,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Drug Sub Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshItemSupplyCategory(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshItemSupplyCategory(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -510,14 +510,14 @@ namespace PharmInventory.HelperClasses
 
 
 
-        private static void RefreshDrugCategory(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshDrugCategory(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
             int exactNameNotFound;
             int notFound;
             List<DirectoryService.DrugCategory> dsDrugCategorysList = soapClient.GetDrugCategory(userName, password, lastVersionNumber, null);
-            BLL.Category localDrugCategory = new Category();
+            BLL.Category localDrugCategory = new BLL.Category();
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsDrugCategory in dsDrugCategorysList)
             {
@@ -574,7 +574,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshSupplyCategory(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshSupplyCategory(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -648,7 +648,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshDosageForms(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshDosageForms(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -707,7 +707,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Dosage Forms\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshSuppliers(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshSuppliers(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
@@ -773,23 +773,23 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Suppliers\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static void RefreshUnits(ServiceSoapClient soapClient, int? lastVersionNumber)
+        private static void RefreshUnits(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
             int different;
             int exactNameNotFound;
             int notFound;
-            List<DirectoryService.Unit> dsUnitsList = soapClient.GetUnits(userName, password, lastVersionNumber, null);
+            List<DirectoryService.Units> dsUnitsList = soapClient.GetUnits(userName, password, lastVersionNumber, null);
             BLL.Unit localUnit = new Unit();
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsUnit in dsUnitsList)
             {
-                Console.WriteLine(dsUnit.Name);
+                //Console.WriteLine(dsUnit.Name);
                 localUnit.LoadByPrimaryKey(int.Parse(dsUnit.ID.Value.ToString()));
                 if (localUnit.RowCount > 0)
                 {
                     Console.Write(localUnit.Unit);
-                    if (dsUnit.Name.Replace(" ", "") == localUnit.Unit.Replace(" ", ""))
+                   if (dsUnit.Name.Replace(" ", "") == localUnit.Unit.Replace(" ", ""))
                     {
                         similar++;
                         localUnit.MappingID = dsUnit.ID; //They still need to be mapped.
@@ -812,7 +812,7 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Units\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static int HandleDifferentUnits(DirectoryService.Unit dsUnit, Unit localUnit, int different, int exactNameNotFound, int notFound)
+        private static int HandleDifferentUnits(DirectoryService.Units dsUnit, Unit localUnit, int different, int exactNameNotFound, int notFound)
         {
             Console.WriteLine("Not Found!");
             different++;
@@ -828,7 +828,7 @@ namespace PharmInventory.HelperClasses
                 notFound++;
 
                 localUnit.AddNew();
-                localUnit.Unit = dsUnit.Name;
+                //localUnit.Unit = dsUnit.Name;
                 localUnit.MappingID = dsUnit.ID;
                 localUnit.Save();
                 //}
@@ -844,81 +844,81 @@ namespace PharmInventory.HelperClasses
         }
 
 
-        private static void RefreshAdminUnits(ServiceSoapClient soapClient, int? lastVersionNumber)
-        {
-            BLL.GeneralInfo gInfo = new GeneralInfo();
-            if (lastVersionNumber.HasValue)
-                return;
+        //private static void RefreshAdminUnits(Service1SoapClient soapClient, int? lastVersionNumber)
+        //{
+        //    BLL.GeneralInfo gInfo = new GeneralInfo();
+        //    if (lastVersionNumber.HasValue)
+        //        return;
 
-            BLL.Woreda localWoreda = new Woreda();
-            BLL.Zone localZone = new Zone();
-            BLL.Region localRegion = new Region();
-            localWoreda.LoadAll();
-            localWoreda.DeleteAll();
-            localWoreda.Save();
+        //    BLL.Woreda localWoreda = new Woreda();
+        //    BLL.Zone localZone = new Zone();
+        //    BLL.Region localRegion = new Region();
+        //    localWoreda.LoadAll();
+        //    localWoreda.DeleteAll();
+        //    localWoreda.Save();
 
-            localZone.LoadAll();
-            localZone.DeleteAll();
-            localZone.Save();
+        //    localZone.LoadAll();
+        //    localZone.DeleteAll();
+        //    localZone.Save();
 
-            localRegion.LoadAll();
-            localRegion.DeleteAll();
-            localRegion.Save();
+        //    localRegion.LoadAll();
+        //    localRegion.DeleteAll();
+        //    localRegion.Save();
 
-            //List<DirectoryService.Region> dsRegionsList = soapClient.GetRegions(userName, password,null, null);
-            List<DirectoryService.Region> dsRegionsList = soapClient.GetRegions(userName, password, lastVersionNumber, null);
+        //    //List<DirectoryService.Region> dsRegionsList = soapClient.GetRegions(userName, password,null, null);
+        //    List<DirectoryService.Region> dsRegionsList = soapClient.GetRegions(userName, password, lastVersionNumber, null);
 
-            foreach (var dsRegion in dsRegionsList)
-            {
-                string insertQuery =
-                    string.Format(
-                        "SET IDENTITY_INSERT [dbo].[Region] ON INSERT Region(ID,RegionName,RegionCode) Values ({0},'{1}',{2}) SET IDENTITY_INSERT [dbo].[Region] OFF",
-                        dsRegion.ID.Value, dsRegion.RegionName, dsRegion.RegionCode ?? "'NULL'");
-                ABC queryRunner = new ABC();
-                queryRunner.LoadQuery(insertQuery);
-                //localRegion.AddNew();
-                //localRegion.RegionName = dsRegion.RegionName;
-                //if(dsRegion.RegionCode!=null) localRegion.RegionCode = dsRegion.RegionCode;
-                //localRegion.Save();
-            }
+        //    foreach (var dsRegion in dsRegionsList)
+        //    {
+        //        string insertQuery =
+        //            string.Format(
+        //                "SET IDENTITY_INSERT [dbo].[Region] ON INSERT Region(ID,RegionName,RegionCode) Values ({0},'{1}',{2}) SET IDENTITY_INSERT [dbo].[Region] OFF",
+        //                dsRegion.ID.Value, dsRegion.RegionName, dsRegion.RegionCode ?? "'NULL'");
+        //        ABC queryRunner = new ABC();
+        //        queryRunner.LoadQuery(insertQuery);
+        //        //localRegion.AddNew();
+        //        //localRegion.RegionName = dsRegion.RegionName;
+        //        //if(dsRegion.RegionCode!=null) localRegion.RegionCode = dsRegion.RegionCode;
+        //        //localRegion.Save();
+        //    }
 
-            List<DirectoryService.Zone> dsZonesList = soapClient.GetZones(userName, password, lastVersionNumber, null);
+        //    List<DirectoryService.Zone> dsZonesList = soapClient.GetZones(userName, password, lastVersionNumber, null);
 
-            foreach (var dsZone in dsZonesList)
-            {
-                string insertQuery =
-                    string.Format("SET IDENTITY_INSERT [dbo].[Zone] ON INSERT Zone(ID,ZoneName,ZoneCode,RegionId) Values ({0},'{1}',{2},{3}) SET IDENTITY_INSERT [dbo].[Zone] OFF",
-                                  dsZone.ID.Value, dsZone.ZoneName, dsZone.ZoneCode ?? "'NULL'", dsZone.RegionId.Value);
-                ABC queryRunner = new ABC();
-                queryRunner.LoadQuery(insertQuery);
+        //    foreach (var dsZone in dsZonesList)
+        //    {
+        //        string insertQuery =
+        //            string.Format("SET IDENTITY_INSERT [dbo].[Zone] ON INSERT Zone(ID,ZoneName,ZoneCode,RegionId) Values ({0},'{1}',{2},{3}) SET IDENTITY_INSERT [dbo].[Zone] OFF",
+        //                          dsZone.ID.Value, dsZone.ZoneName, dsZone.ZoneCode ?? "'NULL'", dsZone.RegionId.Value);
+        //        ABC queryRunner = new ABC();
+        //        queryRunner.LoadQuery(insertQuery);
 
-                //localZone.AddNew();
+        //        //localZone.AddNew();
 
-                //localZone.ID = dsZone.ID.Value;
-                //localZone.ZoneName = dsZone.ZoneName;
-                //if (dsZone.RegionId.HasValue) localZone.RegionId = dsZone.RegionId.Value;
-                //if (dsZone.ZoneCode != null) localZone.ZoneCode = dsZone.ZoneCode;
-                //localZone.Save();
-            }
+        //        //localZone.ID = dsZone.ID.Value;
+        //        //localZone.ZoneName = dsZone.ZoneName;
+        //        //if (dsZone.RegionId.HasValue) localZone.RegionId = dsZone.RegionId.Value;
+        //        //if (dsZone.ZoneCode != null) localZone.ZoneCode = dsZone.ZoneCode;
+        //        //localZone.Save();
+        //    }
 
-            List<DirectoryService.Woreda> dsWoredasList = soapClient.GetWoredas(userName, password, lastVersionNumber, null);
+        //    List<DirectoryService.Woreda> dsWoredasList = soapClient.GetWoredas(userName, password, lastVersionNumber, null);
 
-            foreach (var dsWoreda in dsWoredasList)
-            {
-                string insertQuery =
-                    string.Format("SET IDENTITY_INSERT [dbo].[Woreda] ON INSERT Woreda(ID,WoredaName,WoredaCode,ZoneId) Values ({0},'{1}',{2},{3}) SET IDENTITY_INSERT [dbo].[Woreda] OFF",
-                                  dsWoreda.ID.Value, dsWoreda.WoredaName, dsWoreda.WoredaCode ?? "'NULL'", dsWoreda.ZoneID.Value);
-                ABC queryRunner = new ABC();
-                queryRunner.LoadQuery(insertQuery);
+        //    foreach (var dsWoreda in dsWoredasList)
+        //    {
+        //        string insertQuery =
+        //            string.Format("SET IDENTITY_INSERT [dbo].[Woreda] ON INSERT Woreda(ID,WoredaName,WoredaCode,ZoneId) Values ({0},'{1}',{2},{3}) SET IDENTITY_INSERT [dbo].[Woreda] OFF",
+        //                          dsWoreda.ID.Value, dsWoreda.WoredaName, dsWoreda.WoredaCode ?? "'NULL'", dsWoreda.ZoneID.Value);
+        //        ABC queryRunner = new ABC();
+        //        queryRunner.LoadQuery(insertQuery);
 
-                //localWoreda.AddNew();
-                //localWoreda.ID = dsWoreda.ID.Value;
-                //localWoreda.WoredaName = dsWoreda.WoredaName;
-                //if (dsWoreda.ZoneID.HasValue) localWoreda.ZoneID = dsWoreda.ZoneID.Value;
-                //if (dsWoreda.WoredaCode != null) localWoreda.WoredaCode = dsWoreda.WoredaCode;
-                //localWoreda.Save();
-            }
-        }
+        //        //localWoreda.AddNew();
+        //        //localWoreda.ID = dsWoreda.ID.Value;
+        //        //localWoreda.WoredaName = dsWoreda.WoredaName;
+        //        //if (dsWoreda.ZoneID.HasValue) localWoreda.ZoneID = dsWoreda.ZoneID.Value;
+        //        //if (dsWoreda.WoredaCode != null) localWoreda.WoredaCode = dsWoreda.WoredaCode;
+        //        //localWoreda.Save();
+        //    }
+        //}
 
         private static int HandleDifferentItems(int exactNameNotFound, ref int notFound, DirectoryService.Items dsItem, Items localItem)
         {
@@ -993,7 +993,7 @@ namespace PharmInventory.HelperClasses
 
             if (dsItem.VEN.HasValue) localItem.VEN = dsItem.VEN.Value;
             if (dsItem.ABC.HasValue) localItem.ABC = dsItem.ABC.Value;
-            if (dsItem.IsDeleted.HasValue) localItem.IsDiscontinued = dsItem.IsDeleted.Value;
+            localItem.IsDiscontinued = dsItem.IsDeleted;
             if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value; //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
             if (dsItem.EDL.HasValue) localItem.EDL = dsItem.EDL.Value;
             if (dsItem.Pediatric.HasValue) localItem.Pediatric = dsItem.Pediatric.Value;

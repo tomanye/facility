@@ -20,10 +20,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://pds.pdsdb.org/services/service.asmx?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://pds.hcmisonline.org/PDSService/Service1.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="d1ceeb10-bd4e-4116-8254-cdade866a024" SourceId="1" SourceUrl="http://pds.pdsdb.org/services/service.asmx?wsdl" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="5d1b7125-f17e-4e65-9c15-c6646a269f72" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?wsdl" />
+    <MetadataFile FileName="Service11.disco" MetadataType="Disco" ID="37e9e6ff-a3fd-48f3-a8af-cd7297e88566" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

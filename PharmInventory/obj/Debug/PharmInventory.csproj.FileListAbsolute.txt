@@ -56,7 +56,10 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\PharmInventory.
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\PharmInventory.Forms.Transactions.YearEndProcess.resources
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\GenerateResource.read.1.tlog
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\GenerateResource.write.1.tlog
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.exe.config
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\11_vwGetAllItems.sql
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\12_rpt_BinCard.sql
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\13_EnableEthiopianDate.sql
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\01_HCMIS Queries.sql
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\02_QueryGetTransactionDetails.sql
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\03_GetConsumptionTrendByMonth.sql
@@ -67,7 +70,6 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\07_Supp
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\08_Type_IDModification.sql
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\09_Type_StoredProcs.sql
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\10_SOH_TypeIDAddition.sql
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.exe.config
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.exe.manifest
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.application
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.exe
@@ -76,15 +78,6 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\BLL.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\CalendarLib.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ConnectionStringManager.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DAL.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\EthiopianDate.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\MyGeneration.dOOdads.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\PrintableListView.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\BLL.pdb
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DAL.pdb
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.exe.manifest
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.application
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.exe
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.pdb
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Charts.v12.1.Core.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Data.v12.1.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Office.v12.1.Core.dll
@@ -101,6 +94,13 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Xtra
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.XtraPrinting.v12.1.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.XtraRichEdit.v12.1.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.XtraTreeList.v12.1.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\EthiopianDate.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.Logging.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\MyGeneration.dOOdads.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\PrintableListView.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\EntityFramework.dll
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\BLL.pdb
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DAL.pdb
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Printing.v12.1.Core.xml
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Data.v12.1.xml
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Utils.v12.1.xml
@@ -116,6 +116,8 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.Offi
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.RichEdit.v12.1.Core.xml
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.XtraRichEdit.v12.1.xml
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\DevExpress.XtraTreeList.v12.1.xml
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\HCMIS.Logging.pdb
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\EntityFramework.xml
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\de\DevExpress.Printing.v12.1.Core.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\es\DevExpress.Printing.v12.1.Core.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ja\DevExpress.Printing.v12.1.Core.resources.dll
@@ -169,5 +171,7 @@ C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\de\DevExpress.X
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\es\DevExpress.XtraTreeList.v12.1.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ja\DevExpress.XtraTreeList.v12.1.resources.dll
 C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\ru\DevExpress.XtraTreeList.v12.1.resources.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\12_rpt_BinCard.sql
-C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\bin\Debug\Scripts\13_EnableEthiopianDate.sql
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.exe.manifest
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.application
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.exe
+C:\Projects\Code\DELIVER\HCMIS.Facility\PharmInventory\obj\Debug\HCMIS.pdb
