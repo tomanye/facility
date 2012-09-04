@@ -157,7 +157,6 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.lblSync.TabIndex = 7;
             this.lblSync.Text = "Synchronizing with Directory Services";
             this.lblSync.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
             // 
             // btnRefreshDirectoryService
             // 

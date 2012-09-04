@@ -68,6 +68,7 @@ namespace PharmInventory
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.consumablesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuRegistration = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDatabaseCleaning = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,7 +118,6 @@ namespace PharmInventory
             this.lbiRRF = new DevExpress.XtraNavBar.NavBarItem();
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.mnuDatabaseCleaning = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
@@ -503,6 +503,14 @@ namespace PharmInventory
             this.mnuRegistration.Text = "Registration...";
             this.mnuRegistration.Click += new System.EventHandler(this.mnuRegistration_Click);
             // 
+            // mnuDatabaseCleaning
+            // 
+            this.mnuDatabaseCleaning.Image = global::PharmInventory.Properties.Resources.report;
+            this.mnuDatabaseCleaning.Name = "mnuDatabaseCleaning";
+            this.mnuDatabaseCleaning.Size = new System.Drawing.Size(194, 22);
+            this.mnuDatabaseCleaning.Text = "Database Cleaning...";
+            this.mnuDatabaseCleaning.Click += new System.EventHandler(this.mnuDatabaseCleaning_Click);
+            // 
             // utilitiesToolStripMenuItem
             // 
             this.utilitiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -578,8 +586,8 @@ namespace PharmInventory
             // 
             // picLogo
             // 
-            this.picLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.picLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picLogo.ErrorImage = null;
             this.picLogo.Location = new System.Drawing.Point(199, 0);
             this.picLogo.Name = "picLogo";
@@ -589,18 +597,18 @@ namespace PharmInventory
             // 
             // mainPanel
             // 
-            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.Location = new System.Drawing.Point(199, 126);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(894, 468);
+            this.mainPanel.Size = new System.Drawing.Size(894, 465);
             this.mainPanel.TabIndex = 16;
             // 
             // panelControl2
             // 
-            this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl2.Controls.Add(this.logoPic);
             this.panelControl2.Controls.Add(this.picLogo);
             this.panelControl2.Location = new System.Drawing.Point(0, 24);
@@ -612,8 +620,8 @@ namespace PharmInventory
             // 
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.AllowSelectedLink = true;
-            this.navBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.navBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.navBarControl1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.None;
             this.navBarControl1.EachGroupHasSelectedLink = true;
@@ -941,8 +949,8 @@ namespace PharmInventory
             // 
             // ttlBar
             // 
-            this.ttlBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ttlBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ttlBar.AppearanceCaption.Font = new System.Drawing.Font("Verdana", 15F);
             this.ttlBar.AppearanceCaption.Options.UseFont = true;
             this.ttlBar.Location = new System.Drawing.Point(199, 96);
@@ -970,14 +978,6 @@ namespace PharmInventory
             this.menuStrip2.Size = new System.Drawing.Size(1093, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
-            // 
-            // mnuDatabaseCleaning
-            // 
-            this.mnuDatabaseCleaning.Image = global::PharmInventory.Properties.Resources.report;
-            this.mnuDatabaseCleaning.Name = "mnuDatabaseCleaning";
-            this.mnuDatabaseCleaning.Size = new System.Drawing.Size(194, 22);
-            this.mnuDatabaseCleaning.Text = "Database Cleaning...";
-            this.mnuDatabaseCleaning.Click += new System.EventHandler(this.mnuDatabaseCleaning_Click);
             // 
             // MainWindow
             // 

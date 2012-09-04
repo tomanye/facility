@@ -11,7 +11,6 @@ using HCMIS.Logging;
 
 
 
-
 namespace PharmInventory
 {
     static class Program

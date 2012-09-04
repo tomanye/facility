@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4bsBiB5+eeS8PuqwlW6MZfx365U=</dsig:DigestValue>
+        <dsig:DigestValue>GMFnka6yDvPTrO3dtsrLghvofe0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -86,7 +86,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>iauKhT7u3K7tJI/1UG88Zu8BcM8=</dsig:DigestValue>
+        <dsig:DigestValue>w6gFz0Xk2jL63qDinYwQHf0763Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1135,14 +1135,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1830912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1833472">
       <assemblyIdentity name="HCMIS" version="2.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>oxU+Lq0rvYWeSFVXQmHBX1Xyvis=</dsig:DigestValue>
+        <dsig:DigestValue>VgFDj6QsQ98g5Cl5B42EYApPQ+Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1154,7 +1154,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KUxdDkERZzGw0o+NO9AxGXCkP+0=</dsig:DigestValue>
+        <dsig:DigestValue>1eu6zcTURWUgKY4XVCYqfZDAHDI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1191,13 +1191,13 @@
       <dsig:DigestValue>b1N4ZR/WLn6zyDdKP1pM1iNJ3tQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="HCMIS.exe.config" size="8608">
+  <file name="HCMIS.exe.config" size="8615">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>5iCHeyvmiwdaaTJAYF+CfSUejHU=</dsig:DigestValue>
+      <dsig:DigestValue>KkpTBqPXSPZVXZgeAXzXb/tDpMQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Icon.ico" size="15086">
