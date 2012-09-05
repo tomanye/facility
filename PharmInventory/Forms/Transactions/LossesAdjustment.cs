@@ -462,17 +462,22 @@ namespace PharmInventory
         private void gridItemChoiceView_DoubleClick(object sender, EventArgs e)
         {
             GridView view = sender as GridView;
-            DataRow dr = view.GetFocusedDataRow();
-            if (dr != null)
+            if (view != null)
             {
-                dtAdjustDate.Value = DateTime.Now;
-                dtAdjustDate.CustomFormat = "MM/dd/yyyy";
-                DateTime dtCur = ConvertDate.DateConverter(dtAdjustDate.Text);
-                int year = ((dtCur.Month < 11) ? dtCur.Year : dtCur.Year + 1);
-                dtAdjustDate.CustomFormat = "MMM dd,yyyy";
-                int itemId = Convert.ToInt32(dr["ID"]);
-                ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-                con.ShowDialog();
+                DataRow dr = view.GetFocusedDataRow();
+                if (dr != null)
+                {
+                    dtAdjustDate.Value = DateTime.Now;
+                    dtAdjustDate.CustomFormat = "MM/dd/yyyy";
+                    DateTime dtCur = ConvertDate.DateConverter(dtAdjustDate.Text);
+                    int month = dtCur.Month;
+                    //int year = ((month < 11) ? dtCur.Year : dtCur.Year + 1);
+                    int year = dtCur.Year;
+                    dtAdjustDate.CustomFormat = "MMM dd,yyyy";
+                    int itemId = Convert.ToInt32(dr["ItemID"]);
+                    ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                    con.ShowDialog();
+                }
             }
         }
 

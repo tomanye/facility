@@ -396,7 +396,6 @@ namespace PharmInventory.Forms.Transactions
                                                 rec.Out = rec.QuantityLeft == 0;
                                                 rec.Save();
                                             }
-
                                             k++;
                                             if (k >= yearEndTable.Rows.Count)
                                                 break;
@@ -559,9 +558,6 @@ namespace PharmInventory.Forms.Transactions
                 string batchNo = dr["Batch No."].ToString();
                 int recID = int.Parse(dr["RecID"].ToString());
                 BLL.ReceiveDoc rec = new ReceiveDoc();
-               
-                rec.LoadByPrimaryKey(recID);
-                int itemID = rec.ItemID;
 
                 if (recID == -1)
                 {
@@ -569,6 +565,9 @@ namespace PharmInventory.Forms.Transactions
                                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
+                rec.LoadByPrimaryKey(recID);
+                int itemID = rec.ItemID;
+
                 //Do another validation here (Make sure that the items that they try to remove have issues like the Total SOH not being equal to the sum of the listed batches and so forth.
                 int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
                 int month = EthiopianDate.EthiopianDate.Now.Month;
