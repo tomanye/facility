@@ -50,7 +50,6 @@ namespace PharmInventory
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(frm);
             frm.Dock = DockStyle.Fill;
-
             ttlBar.Text = title;
             frm.Show();
         }

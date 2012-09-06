@@ -239,10 +239,10 @@
     <Compile Include="Forms\Modals\AddSupply.designer.cs">
       <DependentUpon>AddSupply.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\ManageItems.cs">
+    <Compile Include="Forms\Modals\Profiles\ManageItems.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\ManageItems.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\ManageItems.Designer.cs">
       <DependentUpon>ManageItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\ConsumptionTrendReport.cs">
@@ -387,10 +387,10 @@
       <DependentUpon>GeneralExpiryChart.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\ListViewItemComparer.cs" />
-    <Compile Include="Forms\Profiles\ManageSupply.cs">
+    <Compile Include="Forms\Modals\Profiles\ManageSupply.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\ManageSupply.designer.cs">
+    <Compile Include="Forms\Modals\Profiles\ManageSupply.designer.cs">
       <DependentUpon>ManageSupply.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\DataSet1.cs">
@@ -501,10 +501,10 @@
     <Compile Include="Forms\Modals\ItemPolicy.Designer.cs">
       <DependentUpon>ItemPolicy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\CustomDrugList.cs">
+    <Compile Include="Forms\Modals\Profiles\CustomDrugList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\CustomDrugList.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\CustomDrugList.Designer.cs">
       <DependentUpon>CustomDrugList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\ItemReport.cs">
@@ -525,16 +525,16 @@
     <Compile Include="Forms\Transactions\IssueForm.Designer.cs">
       <DependentUpon>IssueForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\Hospital.cs">
+    <Compile Include="Forms\Modals\Profiles\Hospital.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\Hospital.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\Hospital.Designer.cs">
       <DependentUpon>Hospital.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\HospitalSettings.cs">
+    <Compile Include="Forms\Modals\Profiles\HospitalSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\HospitalSettings.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\HospitalSettings.Designer.cs">
       <DependentUpon>HospitalSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Modals\LoginForm.cs">
@@ -549,10 +549,10 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\Pipeline.cs">
+    <Compile Include="Forms\Modals\Profiles\Pipeline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\Pipeline.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\Pipeline.Designer.cs">
       <DependentUpon>Pipeline.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -572,7 +572,7 @@
       <DependentUpon>AddSupply.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\ManageItems.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\ManageItems.resx">
       <DependentUpon>ManageItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ConsumptionTrendReport.resx">
@@ -643,7 +643,7 @@
       <DependentUpon>GeneralExpiryChart.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\ManageSupply.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\ManageSupply.resx">
       <DependentUpon>ManageSupply.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -709,7 +709,7 @@
       <DependentUpon>ItemPolicy.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\CustomDrugList.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\CustomDrugList.resx">
       <DependentUpon>CustomDrugList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -725,11 +725,11 @@
       <DependentUpon>IssueForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\Hospital.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\Hospital.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Hospital.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\HospitalSettings.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\HospitalSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>HospitalSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -741,7 +741,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\Pipeline.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\Pipeline.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Pipeline.cs</DependentUpon>
     </EmbeddedResource>
@@ -754,14 +754,14 @@
       <SubType>Designer</SubType>
       <DependentUpon>ReceiveingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\SystemSetting.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\SystemSetting.resx">
       <DependentUpon>SystemSetting.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tools\ConnectionStringGenerator.resx">
       <DependentUpon>ConnectionStringGenerator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Profiles\UserAccounts.resx">
+    <EmbeddedResource Include="Forms\Modals\Profiles\UserAccounts.resx">
       <SubType>Designer</SubType>
       <DependentUpon>UserAccounts.cs</DependentUpon>
     </EmbeddedResource>
@@ -788,10 +788,10 @@
     <Compile Include="Forms\Transactions\ReceiveingForm.Designer.cs">
       <DependentUpon>ReceiveingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\SystemSetting.cs">
+    <Compile Include="Forms\Modals\Profiles\SystemSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\SystemSetting.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\SystemSetting.Designer.cs">
       <DependentUpon>SystemSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tools\ConnectionStringGenerator.cs">
@@ -800,10 +800,10 @@
     <Compile Include="Forms\Tools\ConnectionStringGenerator.Designer.cs">
       <DependentUpon>ConnectionStringGenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\UserAccounts.cs">
+    <Compile Include="Forms\Modals\Profiles\UserAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Profiles\UserAccounts.Designer.cs">
+    <Compile Include="Forms\Modals\Profiles\UserAccounts.Designer.cs">
       <DependentUpon>UserAccounts.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transactions\YearEndProcess.cs">

@@ -149,7 +149,6 @@ namespace PharmInventory.Forms.Modals
 
             PopulateBinCardYearCombo();
             cboFiscalYear.SelectedItem = _year;
-
             BLL.Items itm = new Items();
             DataTable dtItm = itm.GetItemById(_itemId);
             string itemName = dtItm.Rows[0]["ItemName"].ToString() + " - " + dtItm.Rows[0]["DosageForm"].ToString() + " - " + dtItm.Rows[0]["Strength"].ToString();

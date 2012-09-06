@@ -47,6 +47,8 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             lstTree.DataSource = dtRec;
             lstTree.ExpandAll();
+
+            // show the last entry
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -233,6 +235,7 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridReceives.DataSource = dtRec;
         }
+        
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
