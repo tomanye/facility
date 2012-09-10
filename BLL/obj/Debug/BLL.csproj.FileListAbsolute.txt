@@ -1,9 +1,0 @@
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\BLL.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\BLL.pdb
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\DAL.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\EthiopianDate.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\MyGeneration.dOOdads.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\bin\Debug\DAL.pdb
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\obj\Debug\ResolveAssemblyReference.cache
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\obj\Debug\BLL.dll
-C:\Projects\Code\DELIVER\HCMIS.Facility\BLL\obj\Debug\BLL.pdb

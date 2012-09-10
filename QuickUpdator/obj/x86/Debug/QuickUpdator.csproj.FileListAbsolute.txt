@@ -1,6 +1,0 @@
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\QuickUpdator.UpdatorForm.resources
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\QuickUpdator.Properties.Resources.resources
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Projects\Code\DELIVER\HCMIS.Facility\QuickUpdator\obj\x86\Debug\QuickUpdator.exe.licenses

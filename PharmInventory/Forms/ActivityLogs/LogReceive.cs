@@ -47,8 +47,8 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             lstTree.DataSource = dtRec;
             lstTree.ExpandAll();
-
             // show the last entry
+
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
