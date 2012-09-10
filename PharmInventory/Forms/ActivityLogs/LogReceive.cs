@@ -41,6 +41,36 @@ namespace PharmInventory.Forms.ActivityLogs
             // bind the current dates
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
+
+           //CALENDAR:
+
+            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+                                                      {
+                                                          CustomFormat = "MM/dd/yyyy",
+                                                          Value = DateTime.Now
+                                                      };
+            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+            if (dr == null) return;
+            
+            ReceiveDoc rec = new ReceiveDoc();
+            DataTable dtRec;
+            if (dr["ParentID"] == DBNull.Value)
+            {
+                int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
+                DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
+                string dateString = dr["RefNo"].ToString();
+                lblRecDate.Text = dateString;
+            }
+            else
+            {
+                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+            }
+            gridReceives.DataSource = dtRec;
         }
 
         private void PopulateDocuments(DataTable dtRec)
@@ -48,7 +78,8 @@ namespace PharmInventory.Forms.ActivityLogs
             lstTree.DataSource = dtRec;
             lstTree.ExpandAll();
             // show the last entry
-
+            //tree.SetFocusedNode(tree.Nodes(i))
+            //lstTree.SetFocusedNode(lstTree.Nodes[0].FirstNode);
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -76,7 +107,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private void cboSupplier_EditValueChanged(object sender, EventArgs e)
         {
             if (cboSupplier.EditValue == null) return;
-
             ReceiveDoc rec = new ReceiveDoc();
             DataTable dtRec = rec.GetTransactionBySupplierId(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(cboSupplier.EditValue));
             gridReceives.DataSource = dtRec;
@@ -214,7 +244,6 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
-
             if (dr == null) return;
             
             ReceiveDoc rec = new ReceiveDoc();
@@ -235,6 +264,8 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridReceives.DataSource = dtRec;
         }
+     
+
         
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
