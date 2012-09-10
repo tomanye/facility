@@ -34,6 +34,45 @@ namespace PharmInventory.Forms.ActivityLogs
             Stores stor = new Stores();
 
             cboStores.Properties.DataSource = stor.GetActiveStores();
+
+
+
+            try
+            {
+                //CALENDAR:
+                CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+                {
+                    CustomFormat = "MM/dd/yyyy",
+                    Value = DateTime.Now
+                };
+                DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+
+                DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+
+                if (dr == null) return;
+
+                Disposal disp = new Disposal();
+                DataTable dtRec;
+                if (dr["ParentID"] == DBNull.Value)
+                {
+                    int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
+                    DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                    DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                    dtRec = disp.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
+                    string dateString = dr["RefNo"].ToString();
+                    lblAdjDate.Text = dateString;
+                }
+                else
+                {
+                    dtRec = disp.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                    lblAdjDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+                }
+                gridAdjustments.DataSource = dtRec;
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)

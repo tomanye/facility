@@ -44,6 +44,36 @@ namespace PharmInventory.Forms.ActivityLogs
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
+
+            try
+            {
+                DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+
+                if (dr == null) return;
+
+                //lstTransactions.Items.Clear();                
+                IssueDoc iss = new IssueDoc();
+                DataTable dtRec;
+                if (dr["ParentID"] == DBNull.Value)
+                {
+                    EthiopianDate.EthiopianDate ethiopianDate = new EthiopianDate.EthiopianDate(Convert.ToInt32(dr["ID"]), 1, 1);
+                    dtRec = iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), ethiopianDate.StartOfFiscalYear.ToGregorianDate(), ethiopianDate.EndOfFiscalYear.ToGregorianDate());
+                    string dateString = dr["RefNo"].ToString();
+                    lblIssDate.Text = dateString;
+                }
+                else
+                {
+                    //dtRec = iss.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                    dtRec = iss.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToDateTime(dr["Date"]));
+                    lblIssDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+                }
+                gridIssues.DataSource = dtRec;
+            }
+            catch (Exception ex)
+            {
+                // do nothing
+            }
+            
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)

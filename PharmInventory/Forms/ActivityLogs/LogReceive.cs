@@ -42,7 +42,9 @@ namespace PharmInventory.Forms.ActivityLogs
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
 
-           //CALENDAR:
+            try
+            {
+                 //CALENDAR:
 
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
                                                       {
@@ -71,6 +73,11 @@ namespace PharmInventory.Forms.ActivityLogs
                 lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
             gridReceives.DataSource = dtRec;
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         private void PopulateDocuments(DataTable dtRec)
