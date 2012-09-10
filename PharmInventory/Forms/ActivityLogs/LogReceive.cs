@@ -21,7 +21,6 @@ namespace PharmInventory.Forms.ActivityLogs
         }
 
         readonly CalendarLib.DateTimePickerEx _dtDate = new CalendarLib.DateTimePickerEx();
-
         private void ManageItems_Load(object sender, EventArgs e)
         {
             Supplier sup = new Supplier();
@@ -54,6 +53,7 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+
             if (dr == null) return;
             
             ReceiveDoc rec = new ReceiveDoc();
@@ -97,7 +97,6 @@ namespace PharmInventory.Forms.ActivityLogs
 
             DataTable dtRec = rec.GetDistinctRecDocments(Convert.ToInt32(cboStores.EditValue));
             PopulateDocuments(dtRec);
-
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           CustomFormat = "MM/dd/yyyy",
@@ -231,7 +230,11 @@ namespace PharmInventory.Forms.ActivityLogs
                                                           CustomFormat = "MM/dd/yyyy"
                                                       };
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+           // original header
+           // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+            // header with reference number
+            string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
+            string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy") + "\nRefNo  " + refNumber;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 40),
                                                  DevExpress.XtraPrinting.BorderSide.None);
@@ -251,6 +254,7 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+
             if (dr == null) return;
             
             ReceiveDoc rec = new ReceiveDoc();
