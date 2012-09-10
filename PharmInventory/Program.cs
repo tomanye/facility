@@ -65,17 +65,17 @@ namespace PharmInventory
 
         static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)
         {
-            //string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
-            //LogManager.ConnectionString = connectionString;
-            //IErrorLog logger = LogManager.GetErrorLogger();
-            //logger.SaveError(1, 1, 1, 1, "Activity", "WareHouse", e.Exception);
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IErrorLog logger = LogManager.GetErrorLogger();
+            logger.SaveError(1, 1, 1, 1, "Activity", "WareHouse", e.Exception);
         }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            //string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
-            //LogManager.ConnectionString = connectionString;
-            //IErrorLog logger = LogManager.GetErrorLogger();
-            //logger.SaveError(1, 1, 1, 1, "Activity", "Warehouse", (Exception)e.ExceptionObject);
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IErrorLog logger = LogManager.GetErrorLogger();
+            logger.SaveError(1, 1, 1, 1, "Activity", "Warehouse", (Exception)e.ExceptionObject);
 
         } 
         public static string HCMISVersionString
