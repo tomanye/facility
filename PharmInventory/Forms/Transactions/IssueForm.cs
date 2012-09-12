@@ -10,6 +10,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraEditors;
 using PharmInventory.HelperClasses;
 using System.Drawing.Printing;
+using DevExpress.XtraGrid.Columns;
 
 namespace PharmInventory.Forms.Transactions
 {
@@ -521,6 +522,8 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+            //Print after confirm
+            xpButton2_Click(sender, e);
         }
 
 
@@ -578,16 +581,16 @@ namespace PharmInventory.Forms.Transactions
 
         private void xpButton2_Click(object sender, EventArgs e)
         {
-            if(printableComponentLink2==null)
-                printableComponentLink2 = new PrintableComponentLink();
-            printableComponentLink2.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
+            //if(printableComponentLink2==null)
+            //    printableComponentLink2 = new PrintableComponentLink();
+            //printableComponentLink2.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
 
-            printableComponentLink2.CreateDocument();
-            printableComponentLink2.Landscape = true;
-            PrinterSettings settings = new PrinterSettings();
-            //Console.WriteLine(settings.PrinterName);
-            printableComponentLink2.Print(settings.PrinterName);
-            //printableComponentLink2.PrintDlg();
+            //printableComponentLink2.CreateDocument();
+            //printableComponentLink2.Landscape = true;
+            //PrinterSettings settings = new PrinterSettings();
+            ////Console.WriteLine(settings.PrinterName);
+            //printableComponentLink2.Print(settings.PrinterName);
+            ////printableComponentLink2.PrintDlg();
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -876,5 +879,9 @@ namespace PharmInventory.Forms.Transactions
         {
             gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
+        private void toolTipController1_BeforeShow(object sender, DevExpress.Utils.ToolTipControllerShowEventArgs e)
+        {
+            
+        } 
     }
 }

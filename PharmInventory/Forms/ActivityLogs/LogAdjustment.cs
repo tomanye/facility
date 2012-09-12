@@ -158,8 +158,11 @@ namespace PharmInventory.Forms.ActivityLogs
                                                           CustomFormat = "MM/dd/yyyy"
                                                       };
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            //Old header
             string header = info.HospitalName + " Loss/Adjustment Activity Log " + dtCurrent.ToString("MM dd,yyyy");
-
+            //string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
+            //header with reference number
+            //string header = info.HospitalName + " Loss/Adjustment Activity Log" + refNumber;
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 40),
                                                  DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Arial", 16);
