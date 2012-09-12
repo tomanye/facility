@@ -74,8 +74,17 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string header = info.HospitalName + "Inventory Log of " + lblAdjDate.Text;
-            
+            // old header 
+            //string header = info.HospitalName + "Inventory Log of " + lblAdjDate.Text;
+
+            //header with reference number  and date included
+            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            {
+                Value = DateTime.Now,
+                CustomFormat = "MM/dd/yyyy"
+            };
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            string header = info.HospitalName + "Inventory Log of " + lblAdjDate.Text + "    " + dtCurrent.ToString("MM dd,yyyy");
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString("", Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
