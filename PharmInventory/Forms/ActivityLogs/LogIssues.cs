@@ -79,7 +79,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             if (cboStores.EditValue == null) return;
-
             IssueDoc iss = new IssueDoc();
             DataTable dtRec = iss.GetDistinctIssueDocments(Convert.ToInt32(cboStores.EditValue));
             lstTree.DataSource = dtRec;
@@ -172,7 +171,6 @@ namespace PharmInventory.Forms.ActivityLogs
             int tranId = Convert.ToInt32(dr["ID"]);
             EditIssue edRec = new EditIssue(tranId);
             MainWindow.ShowForms(edRec);
-
             IssueDoc iss = new IssueDoc();
             DataTable dtRec = iss.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
             /*PopulateTransaction(dtRec);*/
@@ -187,6 +185,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (DialogResult.OK == saveDlg.ShowDialog())
             {
                 gridIssues.MainView.ExportToXls(saveDlg.FileName);
+                
             }
         }
 
@@ -200,6 +199,7 @@ namespace PharmInventory.Forms.ActivityLogs
             pcl.Landscape = true;
             pcl.CreateDocument();
             ps.PreviewFormEx.ShowDialog();
+
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
@@ -217,9 +217,9 @@ namespace PharmInventory.Forms.ActivityLogs
             
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
             //header that includes refno
-            string header = info.HospitalName + " Issue Activity Log " + dtCurrent.ToString("MM dd,yyyy") + "\n RefNumber" + refNumber;
+            string header = info.HospitalName + " Issue Activity Log \n" + dtCurrent.ToString("MM dd,yyyy") + "  RefNumber  " + refNumber;
 
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 40),
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 40),
                                                  DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Arial", 16);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);

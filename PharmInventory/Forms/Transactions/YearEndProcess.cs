@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
 using EthiopianDate;
+using HCMIS.Logging;
 
 namespace PharmInventory.Forms.Transactions
 {
@@ -56,6 +57,8 @@ namespace PharmInventory.Forms.Transactions
             str.GetActiveStores();
             cboStores.Properties.DataSource = str.DefaultView;
             dtDate.CustomFormat = "MMMM dd, yyyy";
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
         }
 
         /// <summary>
@@ -405,6 +408,8 @@ namespace PharmInventory.Forms.Transactions
                             }
                         }
                     }
+                    IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+                    logger.SaveAction(1, 1, "Transaction\\YearEndProcess.cs", "Inventory has been saved");
                     MessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
@@ -501,6 +506,9 @@ namespace PharmInventory.Forms.Transactions
             if (DialogResult.OK == saveDlg.ShowDialog())
             {
                 grdYearEnd.MainView.ExportToXls(saveDlg.FileName);
+                IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+                //ActivityId for export is 4
+                logger.SaveAction(1, 4, "Transaction\\YearEndProcess.cs", "Export on Inventory took place");
             }
             //for (int i = 0; i < grdYearEnd.Rows.Count; i++)
             //{
@@ -524,6 +532,9 @@ namespace PharmInventory.Forms.Transactions
             pcl.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
             pcl.CreateDocument();
             pcl.ShowPreview();
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+            //ActivityID for print is 2
+            logger.SaveAction(1, 2, "Transaction\\YearEndProcess.cs", "Inventory Print took place");
             //grdYearEnd.Print();
         }
 
@@ -593,6 +604,10 @@ namespace PharmInventory.Forms.Transactions
                     if (BLL.ReceiveDoc.MarkReceivedBatchAsEmpty(recID))
                     {
                         dr.Delete();
+                        // ActivityId 0 is for Delete
+                        IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+                        //ActivityID for print is 2
+                        logger.SaveAction(1, 0, "Transaction\\YearEndProcess.cs", "An Item with " + itemID +" Item id, "+batchNo +" Batch No and "+ storeId + "Store Id has been deleted.");
                     }
                 }
             }

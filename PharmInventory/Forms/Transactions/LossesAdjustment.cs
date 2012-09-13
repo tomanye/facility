@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using HCMIS.Logging;
 
 namespace PharmInventory
 {
@@ -232,6 +233,10 @@ namespace PharmInventory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Log this activity
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
             string valid = ValidateFields();
             if (valid == "true")
             {
@@ -283,7 +288,6 @@ namespace PharmInventory
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();
-                        
 
                         rec.LoadByPrimaryKey(Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]));
 
@@ -297,6 +301,8 @@ namespace PharmInventory
                                 else
                                     rec.Out = false;
                                 rec.Save();
+                                //Log Activity, ActivityID for save is 1
+                                logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity +" LOSS has been made.");
                             }
                             else
                             {
@@ -306,6 +312,8 @@ namespace PharmInventory
                                 else
                                     rec.Out = true;
                                 rec.Save();
+                                //Log Activity, ActivityID for save is 1
+                                logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity + " ADJUSTMENT has been made.");
                             }
                         }
 

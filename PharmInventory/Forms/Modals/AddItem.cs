@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using HCMIS.Logging;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -177,6 +178,12 @@ namespace PharmInventory.Forms.Modals
                 }
             }
             MessageBox.Show( "Item is Saved Successfully!" , "Confirmation" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Log this activity
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+            //logger.SaveAction(1, 5, "ActivityLog\\LogReceive.cs", "A Print of this page has been made by ");
+            logger.SaveAction(1, 5, "Modals\\AddItem.cs", "And Item type with " + itm.ID + " ItemID has been Edited." ); 
             this.Close();
             
         }
@@ -286,6 +293,9 @@ namespace PharmInventory.Forms.Modals
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
             if (lstCat.SelectedItems.Count > 0)
             {
                 if (lstCat.SelectedItems[0] != null)
@@ -298,6 +308,7 @@ namespace PharmInventory.Forms.Modals
                         prodCate.GetProductCategory(_itemId, id);
                         prodCate.MarkAsDeleted();
                         prodCate.Save();
+                        logger.SaveAction(1, 5, "Modals\\AddItem.cs", "And Item type with " + _itemId + " ItemID has been Removed."); 
                     }
                     lstCat.Items.Remove(lstCat.SelectedItems[0]);
                 }

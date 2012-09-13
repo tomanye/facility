@@ -7,6 +7,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using HCMIS.Logging;
 
 namespace PharmInventory.Forms.ActivityLogs
 {
@@ -15,6 +16,7 @@ namespace PharmInventory.Forms.ActivityLogs
     /// </summary>
     public partial class LogReceive : XtraForm
     {
+        
         public LogReceive()
         {
             InitializeComponent();
@@ -186,7 +188,11 @@ namespace PharmInventory.Forms.ActivityLogs
                 {
                     rec.MarkAsDeleted();
                     rec.Save();
-
+                    // Log this activity
+                    string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+                    LogManager.ConnectionString = connectionString;
+                    IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+                    logger.SaveAction(1, 0, "ActivityLogs\\LogReceive.cs", "A transaction with " + rec.ItemID +" Item ID has been deleted");
                     _dtDate.Value = DateTime.Now;
                     _dtDate.CustomFormat = "MM/dd/yyyy";
                     dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
@@ -204,6 +210,11 @@ namespace PharmInventory.Forms.ActivityLogs
             string fileName = MainWindow.GetNewFileName("xls");
             gridReceives.ExportToXls(fileName);
             MainWindow.OpenInExcel(fileName);
+            // Log this activity
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+            logger.SaveAction(1, 5, "ActivityLog\\LogReceive.cs", "An export of this page has been made by ");
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -218,6 +229,12 @@ namespace PharmInventory.Forms.ActivityLogs
 
             pcl.CreateDocument();
             ps.PreviewFormEx.ShowDialog();
+            // Log this activity
+            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+            LogManager.ConnectionString = connectionString;
+            IActivityLog logger = LogManager.GetActivityLogger(this.Name);
+            logger.SaveAction(1, 5, "ActivityLog\\LogReceive.cs", "A Print of this page has been made by ");
+
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
