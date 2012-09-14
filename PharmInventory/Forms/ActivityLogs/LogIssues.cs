@@ -199,7 +199,6 @@ namespace PharmInventory.Forms.ActivityLogs
             pcl.Landscape = true;
             pcl.CreateDocument();
             ps.PreviewFormEx.ShowDialog();
-
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
@@ -248,9 +247,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
-
             if (dr == null) return;
-
             //lstTransactions.Items.Clear();                
             IssueDoc iss = new IssueDoc();
             DataTable dtRec;
