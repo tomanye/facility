@@ -477,6 +477,7 @@ namespace PharmInventory.Forms.Transactions
             if (cboStores.EditValue != null)
             {
                 LoadInventoryItems();
+                //btnSave.Enabled = true;
             }
         }
 
