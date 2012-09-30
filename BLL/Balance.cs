@@ -907,6 +907,16 @@ namespace BLL
             ld.Add("@Year", year);
             
             this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
+            
+            // Set the balance  
+            int balance = 0;
+            while (!EOF)
+            {
+                balance += Convert.ToInt32(GetColumn("Balance"));
+                SetColumn("Balance",balance);
+                MoveNext();
+            }
+
             return this.DataTable;
         }
                 

@@ -1,14 +1,5 @@
-use fe
-/****** Object:  StoredProcedure [dbo].[Rpt_BinCard]    Script Date: 8/22/2012 10:05:10 AM ******/
-SET ANSI_NULLS ON
+DROP PROC RPT_BinCard
 GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-DROP PROC Rpt_BinCard
-GO
-
 Create PROC [dbo].[Rpt_BinCard]
     @StoreID as int,
     @ItemID as int,
@@ -29,12 +20,16 @@ Union
 -- select the Found/Adjusted
 select d.ID, rd.ItemID, ISNULL(d.RefNo,'') , ISNULL(d.Date,''), ISNULL(rd.BatchNo,''), ISNULL(d.Quantity,0) as Received, Issued = null, ISNULL(rd.Cost,0) UnitPrice, ISNULL(rd.Cost * d.Quantity, 0) as TotalPrice, Balance = 0, ExpDate ,Precedance = 2, ToFrom = (SELECT cast(Reason as Varchar) from DisposalReasons where ID = d.ReasonId) from Disposal d join ReceiveDoc rd on d.RecID = rd.ID where d.ItemID = @ItemID  and d.StoreID=@StoreID  and d.Losses = 0  and dbo.ToEthiopianDate(rd.EurDate).FiscalYear = @Year
 -- return the table.
-) results order by [Date],Precedance
+) results order by [Date], Precedance
 
 DECLARE @Balance as int
 set @Balance = 0
 select  @Balance = ISNULL(ye.PhysicalInventory,0) from YearEnd ye where ye.Year = dbo.ToEthiopianDate(GetDATE()).FiscalYear and ye.StoreID = @StoreID 
 
-update t set @Balance = Balance = (@Balance + ISNULL(Received,0) - ISNULL(Issued, 0)) from #tmp t
+update t set  Balance = (@Balance + ISNULL(Received,0) - ISNULL(Issued, 0)) from #tmp t 
+
+
 select * from #tmp
+order by [date],Precedance
+
 GO

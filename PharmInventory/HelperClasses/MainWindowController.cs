@@ -129,8 +129,8 @@ namespace PharmInventory
                     AddTab("Manage Drug List", frm);
                     break;
                 case "Supplies List":
-                    frm = new ManageItems();
-                    //frm = new ManageSupply();
+                    //frm = new ManageItems();
+                    frm = new ManageSupplies();
                     AddTab("Manage Supplies List", frm);
                     break;
                 case "Customize Druglist":
@@ -254,7 +254,7 @@ namespace PharmInventory
                     AddTab("Stock Status", frm);
                     break;
                 case "Consumables List":
-                    frm = new ManageSupply();
+                    frm = new ManageSupplies();
                     AddTab("Supplies List", frm);
                     break;
                 case "RRF Form":

@@ -1,13 +1,14 @@
 using System;
 using System.Windows.Forms;
 using BLL;
+using DevExpress.XtraEditors;
 
 namespace PharmInventory.Forms.Modals
 {
     /// <summary>
     /// Interaction logic for AddSupply Form
     /// </summary>
-    public partial class AddSupply : Form
+    public partial class AddSupply : XtraForm
     {
         public AddSupply()
         {
@@ -38,12 +39,12 @@ namespace PharmInventory.Forms.Modals
             Items itm = new Items();
 
             itm.LoadByPrimaryKey(_itemId);
-            cboIIN.SelectedValue = itm.IINID.ToString();
+            cboIIN.EditValue = itm.IINID;
             INN nInn = new INN();
             nInn.LoadByPrimaryKey(itm.IINID);
             txtStrength.Text = itm.Strength;
-            cboDosageForm.SelectedValue = itm.DosageFormID.ToString();
-            cboUnit.SelectedValue = itm.UnitID.ToString();
+            cboDosageForm.EditValue = itm.DosageFormID;
+            cboUnit.EditValue = itm.UnitID;
             string code = itm.StockCode;
             txtStockCode.Text = code;
             ckNeedExp.Checked = itm.NeedExpiryBatch;
@@ -58,19 +59,19 @@ namespace PharmInventory.Forms.Modals
             doFrm.GetDosageForSupply();
             
             doFrm.Sort = "Form";
-            cboDosageForm.DataSource = doFrm.DefaultView;
+            cboDosageForm.Properties.DataSource = doFrm.DefaultView;
 
             Unit un = new Unit();
             un.LoadAll();
             un.Sort = "Unit";
-            cboUnit.DataSource = un.DefaultView;
+            cboUnit.Properties.DataSource = un.DefaultView;
 
 
             Product pInn = new Product();
             pInn.GetInnForSupply();
             
             pInn.Sort = "IIN";
-            cboIIN.DataSource = pInn.DefaultView;
+            cboIIN.Properties.DataSource = pInn.DefaultView;
 
             //if (categoryId != 0)
             //{
@@ -104,15 +105,15 @@ namespace PharmInventory.Forms.Modals
                 itm.AddNew();
                 itm.IsInHospitalList = true;
             }
-            itm.IINID = Convert.ToInt32(cboIIN.SelectedValue);
+            itm.IINID = Convert.ToInt32(cboIIN.EditValue);
             //itm.StockCode = txtCatCode.Text + "-" + txtStockCode.Text;
             itm.StockCode = txtStockCode.Text;
             itm.Strength = txtStrength.Text;
-            itm.DosageFormID = Convert.ToInt32(cboDosageForm.SelectedValue);
+            itm.DosageFormID = Convert.ToInt32(cboDosageForm.EditValue);
             //itm.IsDiscontinued = false;
             //itm.IsFree = ckIsFree.Checked;
             //itm.EDL = ckIsEDL.Checked;
-            itm.UnitID = Convert.ToInt32(cboUnit.SelectedValue);
+            itm.UnitID = Convert.ToInt32(cboUnit.EditValue);
             itm.NeedExpiryBatch = ckNeedExp.Checked ;
             //itm.Pediatric = ckIsPedatric.Checked;
             //itm.Refrigeratored = ckIsRefrigerated.Checked;
@@ -139,12 +140,6 @@ namespace PharmInventory.Forms.Modals
             
         }
 
-        private void cboIIN_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboIIN.SelectedValue == null) return;
-
-            INN getinn = new INN();
-            getinn.LoadByPrimaryKey(Convert.ToInt32(cboIIN.SelectedValue));
-        }
+       
     }
 }

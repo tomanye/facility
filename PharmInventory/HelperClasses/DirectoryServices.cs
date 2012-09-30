@@ -60,7 +60,9 @@ namespace PharmInventory.HelperClasses
 
             //RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
+
             SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
+           
             RefreshItems(soapClient, previousVersion);
 
             RefreshDrugItemCategory(soapClient, previousVersion);
@@ -216,10 +218,6 @@ namespace PharmInventory.HelperClasses
                             exactNameNotFound = HandleDifferentItems(exactNameNotFound, ref notFound, dsItem, localItem);
 
                         }
-
-
-
-
 
                     }
                     else
@@ -1120,6 +1118,7 @@ namespace PharmInventory.HelperClasses
 
                 if (v.IINID.HasValue)
                     bv.IINID = product.ID; //v.IINID.Value;
+
                 if (v.NeedExpiryBatch.HasValue)
                 {
                     bv.NeedExpiryBatch = v.NeedExpiryBatch.Value;

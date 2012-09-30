@@ -1,3 +1,5 @@
+using DevExpress.XtraEditors;
+
 namespace PharmInventory.Forms.Modals
 {
     partial class AddSupply
@@ -37,10 +39,10 @@ namespace PharmInventory.Forms.Modals
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtStrength = new DevExpress.XtraEditors.TextEdit();
-            this.cboUnit = new System.Windows.Forms.ComboBox();
-            this.cboDosageForm = new System.Windows.Forms.ComboBox();
+            this.cboUnit = new DevExpress.XtraEditors.LookUpEdit();
+            this.cboDosageForm = new DevExpress.XtraEditors.LookUpEdit();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cboIIN = new System.Windows.Forms.ComboBox();
+            this.cboIIN = new DevExpress.XtraEditors.LookUpEdit();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtStockCode = new DevExpress.XtraEditors.TextEdit();
@@ -52,7 +54,10 @@ namespace PharmInventory.Forms.Modals
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckNeedExp.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrength.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUnit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDosageForm.Properties)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIIN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStockCode.Properties)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +88,7 @@ namespace PharmInventory.Forms.Modals
             this.groupBox7.Controls.Add(this.cboDosageForm);
             this.groupBox7.Location = new System.Drawing.Point(36, 124);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(345, 184);
+            this.groupBox7.Size = new System.Drawing.Size(345, 163);
             this.groupBox7.TabIndex = 13;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Detail";
@@ -138,25 +143,33 @@ namespace PharmInventory.Forms.Modals
             // 
             // cboUnit
             // 
-            this.cboUnit.DisplayMember = "Unit";
-            this.cboUnit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboUnit.FormattingEnabled = true;
             this.cboUnit.Location = new System.Drawing.Point(113, 82);
             this.cboUnit.Name = "cboUnit";
-            this.cboUnit.Size = new System.Drawing.Size(220, 21);
+            this.cboUnit.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUnit.Properties.Appearance.Options.UseFont = true;
+            this.cboUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboUnit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Unit", "Name")});
+            this.cboUnit.Properties.DisplayMember = "Unit";
+            this.cboUnit.Properties.ValueMember = "ID";
+            this.cboUnit.Size = new System.Drawing.Size(220, 20);
             this.cboUnit.TabIndex = 10;
-            this.cboUnit.ValueMember = "ID";
             // 
             // cboDosageForm
             // 
-            this.cboDosageForm.DisplayMember = "Form";
-            this.cboDosageForm.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboDosageForm.FormattingEnabled = true;
             this.cboDosageForm.Location = new System.Drawing.Point(113, 50);
             this.cboDosageForm.Name = "cboDosageForm";
-            this.cboDosageForm.Size = new System.Drawing.Size(220, 21);
+            this.cboDosageForm.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDosageForm.Properties.Appearance.Options.UseFont = true;
+            this.cboDosageForm.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboDosageForm.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Form", "Name")});
+            this.cboDosageForm.Properties.DisplayMember = "Form";
+            this.cboDosageForm.Properties.ValueMember = "ID";
+            this.cboDosageForm.Size = new System.Drawing.Size(220, 20);
             this.cboDosageForm.TabIndex = 10;
-            this.cboDosageForm.ValueMember = "ID";
             // 
             // groupBox5
             // 
@@ -169,19 +182,22 @@ namespace PharmInventory.Forms.Modals
             this.groupBox5.Size = new System.Drawing.Size(345, 78);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Drug Name";
+            this.groupBox5.Text = "Supply Name";
             // 
             // cboIIN
             // 
-            this.cboIIN.DisplayMember = "IIN";
-            this.cboIIN.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboIIN.FormattingEnabled = true;
             this.cboIIN.Location = new System.Drawing.Point(112, 13);
             this.cboIIN.Name = "cboIIN";
-            this.cboIIN.Size = new System.Drawing.Size(220, 21);
+            this.cboIIN.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboIIN.Properties.Appearance.Options.UseFont = true;
+            this.cboIIN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboIIN.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IIN", "Name")});
+            this.cboIIN.Properties.DisplayMember = "IIN";
+            this.cboIIN.Properties.ValueMember = "ID";
+            this.cboIIN.Size = new System.Drawing.Size(220, 20);
             this.cboIIN.TabIndex = 10;
-            this.cboIIN.ValueMember = "ID";
-            this.cboIIN.SelectedIndexChanged += new System.EventHandler(this.cboIIN_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -241,27 +257,29 @@ namespace PharmInventory.Forms.Modals
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(113, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 26);
             // 
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.cancel_16;
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.removeToolStripMenuItem.Text = "remove";
             // 
             // AddSupply
             // 
+            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 424);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddSupply";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supply Details";
             this.Load += new System.EventHandler(this.AddItem_Load);
             this.groupBox1.ResumeLayout(false);
@@ -269,8 +287,11 @@ namespace PharmInventory.Forms.Modals
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckNeedExp.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStrength.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUnit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDosageForm.Properties)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboIIN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStockCode.Properties)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -286,9 +307,9 @@ namespace PharmInventory.Forms.Modals
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
-        private System.Windows.Forms.ComboBox cboUnit;
-        private System.Windows.Forms.ComboBox cboDosageForm;
-        private System.Windows.Forms.ComboBox cboIIN;
+        private LookUpEdit cboUnit;
+        private LookUpEdit cboDosageForm;
+        private LookUpEdit cboIIN;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox5;

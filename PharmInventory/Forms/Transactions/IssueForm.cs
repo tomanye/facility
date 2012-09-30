@@ -9,9 +9,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraEditors;
 using PharmInventory.HelperClasses;
-using System.Drawing.Printing;
-using DevExpress.XtraGrid.Columns;
-using HCMIS.Logging;
+
 
 namespace PharmInventory.Forms.Transactions
 {
@@ -510,12 +508,7 @@ namespace PharmInventory.Forms.Transactions
                         recDoc.Out = (recDoc.QuantityLeft == 0) ? true : false;
                         recDoc.Save();
                         //Log Activity
-                        string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
-                        LogManager.ConnectionString = connectionString;
-                        IActivityLog logger = LogManager.GetActivityLogger(this.Name);
-                        //ActivityId 1 for saving
-                        logger.SaveAction(1, 1, "Transaction\\IssueForm.cs", "Item(s) has Been Issued by " + issDoc.IssuedBy + "at store id " + issDoc.StoreId + "With item ID of " + issDoc.ItemID + " and " + issDoc.Quantity + " quantity.");
-                        dtIssueDate.Value = xx;
+                       dtIssueDate.Value = xx;
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetValues();

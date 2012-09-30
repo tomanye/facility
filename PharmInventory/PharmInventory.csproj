@@ -149,7 +149,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
@@ -273,17 +272,23 @@
     <Compile Include="Forms\Modals\AddSupply.designer.cs">
       <DependentUpon>AddSupply.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\ManageItems.cs">
+    <Compile Include="Forms\Profiles\ManageSupplies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\ManageItems.Designer.cs">
+    <Compile Include="Forms\Profiles\ManageSupplies.Designer.cs">
+      <DependentUpon>ManageSupplies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\ManageItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Profiles\ManageItems.Designer.cs">
       <DependentUpon>ManageItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ConsumptionTrendReport.cs">
+    <Compile Include="Forms\Reports\BalanceReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Reports\ConsumptionTrendReport.Designer.cs">
-      <DependentUpon>ConsumptionTrendReport.cs</DependentUpon>
+    <Compile Include="Forms\Reports\BalanceReport.Designer.cs">
+      <DependentUpon>BalanceReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\ConsumptionByUnits.cs">
       <SubType>Form</SubType>
@@ -291,17 +296,53 @@
     <Compile Include="Forms\Reports\ConsumptionByUnits.Designer.cs">
       <DependentUpon>ConsumptionByUnits.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\ConsumptionTrendReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ConsumptionTrendReport.Designer.cs">
+      <DependentUpon>ConsumptionTrendReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\CostReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Reports\CostReport.Designer.cs">
       <DependentUpon>CostReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\ExpiredProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ExpiredProducts.Designer.cs">
+      <DependentUpon>ExpiredProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\ExpiredProductsReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Reports\ExpiredProductsReport.Designer.cs">
       <DependentUpon>ExpiredProductsReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\ItemReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ItemReport.Designer.cs">
+      <DependentUpon>ItemReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\NearlyExpired.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\NearlyExpired.Designer.cs">
+      <DependentUpon>NearlyExpired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\OtherItemReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\OtherItemReport.Designer.cs">
+      <DependentUpon>OtherItemReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\RRFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\RRFForm.Designer.cs">
+      <DependentUpon>RRFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tools\AutoBackup.cs">
       <SubType>Form</SubType>
@@ -343,12 +384,6 @@
     <Compile Include="Forms\Legacy\ConsumptionTrend.Designer.cs">
       <DependentUpon>ConsumptionTrend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\BalanceReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\BalanceReport.Designer.cs">
-      <DependentUpon>BalanceReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelperClasses\ConvertDate.cs" />
     <Compile Include="HelperClasses\DirectoryServices.cs" />
     <Compile Include="Forms\ActivityLogs\LogPickList.cs">
@@ -364,12 +399,6 @@
     </Compile>
     <Compile Include="Forms\Transactions\LossesAdjustment.Designer.cs">
       <DependentUpon>LossesAdjustment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\OtherItemReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\OtherItemReport.Designer.cs">
-      <DependentUpon>OtherItemReport.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\MainWindowController.cs">
       <SubType>Form</SubType>
@@ -421,12 +450,6 @@
       <DependentUpon>GeneralExpiryChart.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\ListViewItemComparer.cs" />
-    <Compile Include="Forms\Modals\Profiles\ManageSupply.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Modals\Profiles\ManageSupply.designer.cs">
-      <DependentUpon>ManageSupply.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -441,12 +464,6 @@
     </Compile>
     <Compile Include="Reports\RRFReport.Designer.cs">
       <DependentUpon>RRFReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\RRFForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\RRFForm.Designer.cs">
-      <DependentUpon>RRFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Modals\EditIssue.cs">
       <SubType>Form</SubType>
@@ -511,18 +528,6 @@
     <Compile Include="Forms\Trends\ReceiveTrend.Designer.cs">
       <DependentUpon>ReceiveTrend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\NearlyExpired.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\NearlyExpired.Designer.cs">
-      <DependentUpon>NearlyExpired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\ExpiredProducts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\ExpiredProducts.Designer.cs">
-      <DependentUpon>ExpiredProducts.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Legacy\IssuesByDep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -535,17 +540,11 @@
     <Compile Include="Forms\Modals\ItemPolicy.Designer.cs">
       <DependentUpon>ItemPolicy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\CustomDrugList.cs">
+    <Compile Include="Forms\Profiles\CustomDrugList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\CustomDrugList.Designer.cs">
+    <Compile Include="Forms\Profiles\CustomDrugList.Designer.cs">
       <DependentUpon>CustomDrugList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\ItemReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\ItemReport.Designer.cs">
-      <DependentUpon>ItemReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UtilitiesAndForms\DatabaseActions.cs">
       <SubType>Form</SubType>
@@ -559,16 +558,16 @@
     <Compile Include="Forms\Transactions\IssueForm.Designer.cs">
       <DependentUpon>IssueForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\Hospital.cs">
+    <Compile Include="Forms\Profiles\Hospital.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\Hospital.Designer.cs">
+    <Compile Include="Forms\Profiles\Hospital.Designer.cs">
       <DependentUpon>Hospital.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\HospitalSettings.cs">
+    <Compile Include="Forms\Profiles\HospitalSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\HospitalSettings.Designer.cs">
+    <Compile Include="Forms\Profiles\HospitalSettings.Designer.cs">
       <DependentUpon>HospitalSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Modals\LoginForm.cs">
@@ -583,10 +582,10 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\Pipeline.cs">
+    <Compile Include="Forms\Profiles\Pipeline.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\Pipeline.Designer.cs">
+    <Compile Include="Forms\Profiles\Pipeline.Designer.cs">
       <DependentUpon>Pipeline.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -606,24 +605,41 @@
       <DependentUpon>AddSupply.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\ManageItems.resx">
+    <EmbeddedResource Include="Forms\Profiles\ManageSupplies.resx">
+      <DependentUpon>ManageSupplies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Profiles\ManageItems.resx">
       <DependentUpon>ManageItems.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\ConsumptionTrendReport.resx">
-      <DependentUpon>ConsumptionTrendReport.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Forms\Reports\BalanceReport.resx">
+      <DependentUpon>BalanceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ConsumptionByUnits.resx">
       <DependentUpon>ConsumptionByUnits.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ConsumptionTrendReport.resx">
+      <DependentUpon>ConsumptionTrendReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\CostReport.resx">
       <DependentUpon>CostReport.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ExpiredProducts.resx">
+      <DependentUpon>ExpiredProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ExpiredProductsReport.resx">
       <DependentUpon>ExpiredProductsReport.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ItemReport.resx">
+      <DependentUpon>ItemReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\NearlyExpired.resx">
+      <DependentUpon>NearlyExpired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\OtherItemReport.resx">
+      <DependentUpon>OtherItemReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\RRFForm.resx">
+      <DependentUpon>RRFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tools\AutoBackup.resx">
       <DependentUpon>AutoBackup.cs</DependentUpon>
@@ -643,20 +659,12 @@
       <DependentUpon>ConsumptionTrend.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\BalanceReport.resx">
-      <DependentUpon>BalanceReport.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ActivityLogs\LogPickList.resx">
       <DependentUpon>LogPickList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\LossesAdjustment.resx">
       <DependentUpon>LossesAdjustment.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\OtherItemReport.resx">
-      <DependentUpon>OtherItemReport.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
@@ -677,15 +685,8 @@
       <DependentUpon>GeneralExpiryChart.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\ManageSupply.resx">
-      <DependentUpon>ManageSupply.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RRFReport.resx">
       <DependentUpon>RRFReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\RRFForm.resx">
-      <DependentUpon>RRFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditIssue.resx">
       <SubType>Designer</SubType>
@@ -727,14 +728,6 @@
       <DependentUpon>ReceiveTrend.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\NearlyExpired.resx">
-      <DependentUpon>NearlyExpired.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\ExpiredProducts.resx">
-      <DependentUpon>ExpiredProducts.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Legacy\IssuesByDep.resx">
       <DependentUpon>IssuesByDep.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -743,12 +736,8 @@
       <DependentUpon>ItemPolicy.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\CustomDrugList.resx">
+    <EmbeddedResource Include="Forms\Profiles\CustomDrugList.resx">
       <DependentUpon>CustomDrugList.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\ItemReport.resx">
-      <DependentUpon>ItemReport.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilitiesAndForms\DatabaseActions.resx">
@@ -759,11 +748,11 @@
       <DependentUpon>IssueForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\Hospital.resx">
+    <EmbeddedResource Include="Forms\Profiles\Hospital.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Hospital.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\HospitalSettings.resx">
+    <EmbeddedResource Include="Forms\Profiles\HospitalSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>HospitalSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -775,7 +764,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\Pipeline.resx">
+    <EmbeddedResource Include="Forms\Profiles\Pipeline.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Pipeline.cs</DependentUpon>
     </EmbeddedResource>
@@ -788,14 +777,14 @@
       <SubType>Designer</SubType>
       <DependentUpon>ReceiveingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\SystemSetting.resx">
+    <EmbeddedResource Include="Forms\Profiles\SystemSetting.resx">
       <DependentUpon>SystemSetting.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tools\ConnectionStringGenerator.resx">
       <DependentUpon>ConnectionStringGenerator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\Profiles\UserAccounts.resx">
+    <EmbeddedResource Include="Forms\Profiles\UserAccounts.resx">
       <SubType>Designer</SubType>
       <DependentUpon>UserAccounts.cs</DependentUpon>
     </EmbeddedResource>
@@ -822,10 +811,10 @@
     <Compile Include="Forms\Transactions\ReceiveingForm.Designer.cs">
       <DependentUpon>ReceiveingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\SystemSetting.cs">
+    <Compile Include="Forms\Profiles\SystemSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\SystemSetting.Designer.cs">
+    <Compile Include="Forms\Profiles\SystemSetting.Designer.cs">
       <DependentUpon>SystemSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tools\ConnectionStringGenerator.cs">
@@ -834,10 +823,10 @@
     <Compile Include="Forms\Tools\ConnectionStringGenerator.Designer.cs">
       <DependentUpon>ConnectionStringGenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\UserAccounts.cs">
+    <Compile Include="Forms\Profiles\UserAccounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\Profiles\UserAccounts.Designer.cs">
+    <Compile Include="Forms\Profiles\UserAccounts.Designer.cs">
       <DependentUpon>UserAccounts.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transactions\YearEndProcess.cs">
@@ -952,10 +941,6 @@
     <None Include="Service References\RRFService\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\libraries\Logging\HCMIS.Logging.csproj">
-      <Project>{8DB7D300-436F-4089-849B-717A39E64199}</Project>
-      <Name>HCMIS.Logging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{4D833455-E466-4E4F-AD03-352C114711E1}</Project>
       <Name>BLL</Name>

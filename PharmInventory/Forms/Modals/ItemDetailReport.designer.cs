@@ -272,6 +272,7 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn7
@@ -279,7 +280,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn7.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn7.Caption = "Receive";
-            this.gridColumn7.FieldName = "Receive";
+            this.gridColumn7.FieldName = "Received";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -296,7 +297,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn8.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn8.Caption = "Issue";
-            this.gridColumn8.FieldName = "Issue";
+            this.gridColumn8.FieldName = "Issued";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -955,7 +956,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn10.Caption = "Unit Price";
-            this.gridColumn10.FieldName = "Unit Price";
+            this.gridColumn10.FieldName = "UnitPrice";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -985,7 +986,7 @@ namespace PharmInventory.Forms.Modals
             // gridColumn12
             // 
             this.gridColumn12.Caption = "Batch No";
-            this.gridColumn12.FieldName = "Batch No";
+            this.gridColumn12.FieldName = "BatchNo";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -1001,7 +1002,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn13.Caption = "Expiry Date";
             this.gridColumn13.DisplayFormat.FormatString = "MMM dd,YYYY";
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn13.FieldName = "Expiry Date";
+            this.gridColumn13.FieldName = "ExpiryDate";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -1394,7 +1395,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -2012,6 +2013,7 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

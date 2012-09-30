@@ -52,11 +52,9 @@ namespace BLL
 
         public DataTable GetInnForSupply()
         {
-            this.FlushData();
-            this.Where.WhereClauseReset();
-            //Products p = new Products();
-            this.Where.TypeID.Value = 2;
-            this.Query.Load();
+            //TODO: Remove this hardcoded piece of code
+            string query = string.Format("select * from Product where TypeID not in (1,7)");
+            this.LoadFromRawSql(query);
             return this.DataTable;
         }
 

@@ -7,7 +7,6 @@ using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Threading;
-using HCMIS.Logging;
 
 
 
@@ -40,7 +39,7 @@ namespace PharmInventory
             // Add the event handler for handling non-UI thread exceptions to the event. 
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
            //                                                                            //            
-            DevExpress.UserSkins.OfficeSkins.Register();
+            //DevExpress.UserSkins.OfficeSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -65,17 +64,11 @@ namespace PharmInventory
 
         static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)
         {
-            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
-            LogManager.ConnectionString = connectionString;
-            IErrorLog logger = LogManager.GetErrorLogger();
-            logger.SaveError(1, 1, 1, 1, "Activity", "WareHouse", e.Exception);
+        
         }
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
-            LogManager.ConnectionString = connectionString;
-            IErrorLog logger = LogManager.GetErrorLogger();
-            logger.SaveError(1, 1, 1, 1, "Activity", "Warehouse", (Exception)e.ExceptionObject);
+        
 
         } 
         public static string HCMISVersionString

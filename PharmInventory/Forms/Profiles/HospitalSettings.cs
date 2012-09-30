@@ -84,50 +84,10 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="sup"></param>
         private void PopulateSupplier(Supplier sup)
         {
-
-            lstSuppliers.Items.Clear();
-            int count = 1;
-            int col = 0;
-            foreach (DataRowView dv in sup.DefaultView)
-            {
-                string[] str = { count.ToString(), dv["CompanyName"].ToString(), dv["Telephone"].ToString(), dv["ContactPerson"].ToString(), dv["Mobile"].ToString(), ((Convert.ToBoolean(dv["IsActive"])) ? "Active" : "InActive") };
-                ListViewItem lst = new ListViewItem(str) { Tag = dv["ID"] };
-                if (col != 0)
-                {
-                    lst.BackColor = Color.FromArgb(233, 247, 248);
-                    col = 0;
-                }
-                else
-                    col++;
-                lstSuppliers.Items.Add(lst);
-                count++;
-            }
+            lstSuppliers.DataSource = sup.DefaultView;
         }
 
-        /// <summary>
-        /// Fills the form fieds based on the chosen supplier
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lstSuppliers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstSuppliers.SelectedItems.Count > 0)
-            {
-                int selected = Convert.ToInt32(lstSuppliers.SelectedItems[0].Tag);
-                Supplier sup = new Supplier();
-                sup.LoadByPrimaryKey(selected);
-                txtCompanyName.Text = sup.CompanyName;
-                txtAddress.Text = sup.Address;
-                txtContactPerson.Text = sup.ContactPerson;
-                txtMobile.Text = sup.Mobile;
-                txtTelephone.Text = sup.Telephone;
-                txtEmail.Text = sup.Email;
-                ckIsActive.Checked = sup.IsActive;
-                _supplierId = sup.ID;
-                cboCompanyInfo.SelectedItem = sup.CompanyInfo;
-                btnSupplierSave.Text = "Update";
-            }
-        }
+ 
 
         /// <summary>
         /// Saves supplier information
@@ -190,29 +150,7 @@ namespace PharmInventory.Forms.Profiles
             txtCompanyName.BackColor = Color.White;
         }
 
-        /// <summary>
-        /// Handles column click event of the lstSupplier.
-        /// Handles Sorting specifically
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lstSuppliers_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            Supplier sup = new Supplier();
-            sup.LoadAll();
-            if (_sortSupplier == "ASC")
-            {
-                sup.Sort = "CompanyName ASC";
-                _sortSupplier = "DESC";
-            }
-            else
-            {
-                sup.Sort = "CompanyName DESC";
-                _sortSupplier = "ASC";
-            }
-            PopulateSupplier(sup);
-        }
-
+        
         #endregion
 
         #region Stores
@@ -685,6 +623,27 @@ namespace PharmInventory.Forms.Profiles
         }
 
         #endregion
+
+        private void viewSupplies_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            DataRow dr = viewSupplies.GetFocusedDataRow();
+            if (dr != null)
+            {
+                int selected = Convert.ToInt32(dr["ID"]);
+                Supplier sup = new Supplier();
+                sup.LoadByPrimaryKey(selected);
+                txtCompanyName.Text = sup.CompanyName;
+                txtAddress.Text = sup.Address;
+                txtContactPerson.Text = sup.ContactPerson;
+                txtMobile.Text = sup.Mobile;
+                txtTelephone.Text = sup.Telephone;
+                txtEmail.Text = sup.Email;
+                ckIsActive.Checked = sup.IsColumnNull("IsActive")?false: sup.IsActive;
+                _supplierId = sup.ID;
+                cboCompanyInfo.SelectedItem = sup.CompanyInfo;
+                btnSupplierSave.Text = "Update";
+            }
+        }
 
 
     }
