@@ -168,19 +168,25 @@ namespace PharmInventory.HelperClasses
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsDrugItemSubCategory in dsDrugItemSubCategorysList)
             {
-                Console.WriteLine(dsDrugItemSubCategory.SubCategoryID.Value);
+                if (dsDrugItemSubCategory.SubCategoryID.HasValue)
+                    Console.WriteLine(dsDrugItemSubCategory.SubCategoryID.Value);
                 localDrugItemSubCategory.LoadByPrimaryKey(int.Parse(dsDrugItemSubCategory.ID.Value.ToString()));
                 if (localDrugItemSubCategory.RowCount > 0)
                 {
-                    Console.Write(localDrugItemSubCategory.SubCategoryID);
-                    if (dsDrugItemSubCategory.SubCategoryID.Value == localDrugItemSubCategory.SubCategoryID && dsDrugItemSubCategory.ItemId.Value == localDrugItemSubCategory.ItemId)
+                    if (dsDrugItemSubCategory.SubCategoryID.HasValue)
                     {
-                        similar++;
-                    }
+                        Console.Write(localDrugItemSubCategory.SubCategoryID);
+                        if (dsDrugItemSubCategory.SubCategoryID.Value == localDrugItemSubCategory.SubCategoryID &&
+                            dsDrugItemSubCategory.ItemId.Value == localDrugItemSubCategory.ItemId)
+                        {
+                            similar++;
+                        }
 
-                    else//Needs more consideration
-                    {
-                        different = HandleDifferentDrugItemSubCategories(dsDrugItemSubCategory, localDrugItemSubCategory, different);
+                        else //Needs more consideration
+                        {
+                            different = HandleDifferentDrugItemSubCategories(dsDrugItemSubCategory,
+                                                                             localDrugItemSubCategory, different);
+                        }
                     }
                 }
                 else
@@ -209,6 +215,9 @@ namespace PharmInventory.HelperClasses
             }
 
             ABC comp = new ABC();
+
+            if (!dsDrugItemSubCategory.SubCategoryID.HasValue)
+                return -1;
 
             comp.LoadQuery(string.Format("Select * from ProductsCategory WHERE SubCategoryID = {0} and ItemId={1}", dsDrugItemSubCategory.SubCategoryID.Value, itm.ID));
             if (comp.RowCount > 0)//The mapping already exists. We are not going to save the newly created entry
@@ -1112,8 +1121,8 @@ namespace PharmInventory.HelperClasses
             BLL.Unit unit = new Unit();
             if (unit.LoadByMappingID(dsItem.UnitID.Value) != -1) localItem.UnitID = unit.ID; //We put the ID of the mapped unit
 
-            if (dsItem.VEN.HasValue) localItem.VEN = dsItem.VEN.Value;
-            if (dsItem.ABC.HasValue) localItem.ABC = dsItem.ABC.Value;
+            if (dsItem.VEN.HasValue && dsItem.VEN.Value != 0) localItem.VEN = dsItem.VEN.Value;
+            if (dsItem.ABC.HasValue && dsItem.ABC.Value != 0) localItem.ABC = dsItem.ABC.Value;
             if (dsItem.IsDeleted.HasValue) localItem.IsDiscontinued = dsItem.IsDeleted.Value;
             if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value; //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
             if (dsItem.EDL.HasValue) localItem.EDL = dsItem.EDL.Value;
@@ -1128,7 +1137,7 @@ namespace PharmInventory.HelperClasses
             if (dsItem.NeedExpiryBatch.HasValue) localItem.NeedExpiryBatch = dsItem.NeedExpiryBatch.Value;
             if (dsItem.StockCodeDACA != null) localItem.StockCodeDACA = dsItem.StockCodeDACA;
             if (dsItem.NearExpiryTrigger.HasValue) localItem.NearExpiryTrigger = dsItem.NearExpiryTrigger.Value;
-            if (dsItem.StorageTypeID.HasValue) localItem.StorageTypeID = dsItem.StorageTypeID.Value;
+            //if (dsItem.StorageTypeID.HasValue) localItem.StorageTypeID = dsItem.StorageTypeID.Value;
             if (localItem.IsColumnNull("IsInHospitalList")) localItem.IsInHospitalList = false;
             localItem.Code = dsItem.ID.Value.ToString(); //Mapping done here.
             localItem.Save();
