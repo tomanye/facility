@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -15,6 +14,7 @@ using Unit = BLL.Unit;
 using Woreda = BLL.Woreda;
 using Zone = BLL.Zone;
 using ABC = BLL.ABC;
+using System.ServiceModel;
 
 namespace PharmInventory.HelperClasses
 {
@@ -25,9 +25,10 @@ namespace PharmInventory.HelperClasses
         public static void RefreshFromDirectoryServices()
         {
             DirectoryService.Service1SoapClient soapClient = new Service1SoapClient();
-            BasicHttpBinding binding = (BasicHttpBinding) soapClient.Endpoint.Binding;
+            BasicHttpBinding binding = (BasicHttpBinding)soapClient.Endpoint.Binding;
             binding.MaxReceivedMessageSize = binding.ReaderQuotas.MaxArrayLength = binding.ReaderQuotas.MaxStringContentLength = 630000000;
-            
+
+
             int notFound = 0;
             int exactNameNotFound = 0;
             int different = 0;
@@ -51,6 +52,8 @@ namespace PharmInventory.HelperClasses
 
             //RefreshAdminUnits(soapClient, previousVersion);
             RefreshUnits(soapClient, previousVersion);
+            RefreshVEN(soapClient, previousVersion);
+            RefreshABC(soapClient, previousVersion);
             RefreshSuppliers(soapClient, previousVersion);
             RefreshDosageForms(soapClient, previousVersion);
             RefreshTypes(soapClient, previousVersion);
@@ -60,16 +63,72 @@ namespace PharmInventory.HelperClasses
 
             //RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
-
-            SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
-           
-            RefreshItems(soapClient, previousVersion);
+            //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
+            RefreshItems(soapClient, previousVersion, 1);
+            RefreshItems(soapClient, previousVersion, 2);
 
             RefreshDrugItemCategory(soapClient, previousVersion);
             RefreshItemSupplyCategory(soapClient, previousVersion);
 
             generalInfo.HospitalContact = lastVersion.ToString();
             generalInfo.Save();
+        }
+
+        private static void RefreshABC(Service1SoapClient soapClient, int? previousVersion)
+        {
+            List<DirectoryService.ABC> list = soapClient.GetABCs(userName, password, previousVersion, null);
+            
+            BLL.ABC bv = new BLL.ABC();
+            foreach (PharmInventory.DirectoryService.ABC v in list)
+            {
+                // try to load by primary key
+                bv.LoadByPrimaryKey(v.ID.Value);
+
+                // if the entry doesn't exist, create it
+                if (bv.RowCount == 0)
+                {
+                    bv.AddNew();
+                }
+                // populate the contents of v on the to the database list
+                if (v.ID.HasValue)
+                    bv.ID = v.ID.Value;
+                if (v.Value != "" && v.Value != null)
+                    bv.Value = v.Value;
+                if (v.Description != "" && v.Description != null)
+                    bv.Description = v.Description;
+
+                bv.Save();
+            }
+        }
+
+        private static void RefreshVEN(Service1SoapClient soapClient, int? previousVersion)
+        {
+            List<DirectoryService.VEN> list = soapClient.GetVENs(userName, password, previousVersion, null);
+            BLL.VEN bv = new BLL.VEN();
+            foreach (PharmInventory.DirectoryService.VEN v in list)
+            {
+                // try to load by primary key
+                bv.LoadByPrimaryKey(v.ID.Value);
+
+                // if the entry doesn't exist, create it
+                if (bv.RowCount == 0)
+                {
+                    bv.AddNew();
+                }
+                // populate the contents of v on the to the database list
+                if (v.ID.HasValue)
+                    bv.ID = v.ID.Value;
+                if (v.Value != "" && v.Value != null)
+                    bv.Value = v.Value;
+                if (v.Description != "" && v.Description != null)
+                    bv.Description = v.Description;
+                //if( v.IsDeleted.HasValue )
+                //     bv.IsDeleted = v.IsDeleted.Value;
+                //if( v.UpdateTime.HasValue )
+                //     bv.UpdateTime = v.UpdateTime.Value;
+
+                bv.Save();
+            }
         }
 
         private static void RefreshTypes(Service1SoapClient soapClient, int? previousVersion)
@@ -109,19 +168,25 @@ namespace PharmInventory.HelperClasses
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsDrugItemSubCategory in dsDrugItemSubCategorysList)
             {
-                Console.WriteLine(dsDrugItemSubCategory.SubCategoryID.Value);
+                if (dsDrugItemSubCategory.SubCategoryID.HasValue)
+                    Console.WriteLine(dsDrugItemSubCategory.SubCategoryID.Value);
                 localDrugItemSubCategory.LoadByPrimaryKey(int.Parse(dsDrugItemSubCategory.ID.Value.ToString()));
                 if (localDrugItemSubCategory.RowCount > 0)
                 {
-                    Console.Write(localDrugItemSubCategory.SubCategoryID);
-                    if (dsDrugItemSubCategory.SubCategoryID.Value == localDrugItemSubCategory.SubCategoryID && dsDrugItemSubCategory.ItemId.Value == localDrugItemSubCategory.ItemId)
+                    if (dsDrugItemSubCategory.SubCategoryID.HasValue)
                     {
-                        similar++;
-                    }
+                        Console.Write(localDrugItemSubCategory.SubCategoryID);
+                        if (dsDrugItemSubCategory.SubCategoryID.Value == localDrugItemSubCategory.SubCategoryID &&
+                            dsDrugItemSubCategory.ItemId.Value == localDrugItemSubCategory.ItemId)
+                        {
+                            similar++;
+                        }
 
-                    else//Needs more consideration
-                    {
-                        different = HandleDifferentDrugItemSubCategories(dsDrugItemSubCategory, localDrugItemSubCategory, different);
+                        else //Needs more consideration
+                        {
+                            different = HandleDifferentDrugItemSubCategories(dsDrugItemSubCategory,
+                                                                             localDrugItemSubCategory, different);
+                        }
                     }
                 }
                 else
@@ -151,6 +216,9 @@ namespace PharmInventory.HelperClasses
 
             ABC comp = new ABC();
 
+            if (!dsDrugItemSubCategory.SubCategoryID.HasValue)
+                return -1;
+
             comp.LoadQuery(string.Format("Select * from ProductsCategory WHERE SubCategoryID = {0} and ItemId={1}", dsDrugItemSubCategory.SubCategoryID.Value, itm.ID));
             if (comp.RowCount > 0)//The mapping already exists. We are not going to save the newly created entry
                 return different;
@@ -162,13 +230,28 @@ namespace PharmInventory.HelperClasses
             return different;
         }
 
-        private static void RefreshItems(Service1SoapClient soapClient, int? lastVersionNumber)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="soapClient"></param>
+        /// <param name="lastVersionNumber"></param>
+        /// <param name="DrugsOrSuppliesMode">1- Drugs, 2-Supplies</param>
+        private static void RefreshItems(Service1SoapClient soapClient, int? lastVersionNumber, int DrugsOrSuppliesMode)
         {
             int similar;
             int different;
             int exactNameNotFound;
             int notFound;
-            List<DirectoryService.Items> dsItemsList = soapClient.GetDrugItems(userName, password, lastVersionNumber, null);
+            List<DirectoryService.Items> dsItemsList = new List<DirectoryService.Items>();
+            if (DrugsOrSuppliesMode == 1)
+            {
+                dsItemsList = soapClient.GetDrugItems(userName, password, lastVersionNumber, null);
+            }
+            else if (DrugsOrSuppliesMode == 2)
+            {
+                dsItemsList = soapClient.GetSupplyItems(userName, password, lastVersionNumber, null);
+            }
+
             BLL.Items localItem = new Items();
 
             similar = 0;
@@ -218,6 +301,10 @@ namespace PharmInventory.HelperClasses
                             exactNameNotFound = HandleDifferentItems(exactNameNotFound, ref notFound, dsItem, localItem);
 
                         }
+
+
+
+
 
                     }
                     else
@@ -519,7 +606,7 @@ namespace PharmInventory.HelperClasses
             int exactNameNotFound;
             int notFound;
             List<DirectoryService.DrugCategory> dsDrugCategorysList = soapClient.GetDrugCategory(userName, password, lastVersionNumber, null);
-            BLL.Category localDrugCategory = new BLL.Category();
+            BLL.Category localDrugCategory = new Category();
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsDrugCategory in dsDrugCategorysList)
             {
@@ -650,6 +737,18 @@ namespace PharmInventory.HelperClasses
             //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
+
+        private static void FillDosageFormAttributes(DirectoryService.DosageForm dsDosageForm, DosageForm localDosageForm)
+        {
+            localDosageForm.Form = dsDosageForm.Form;
+            
+            //localDosageForm.TypeID = int.Parse(dsDosageForm.TypeID.Value.ToString());
+            
+            if (dsDosageForm.ID.HasValue) 
+                localDosageForm.Description = dsDosageForm.ID.Value.ToString(); //Mapping done here
+            localDosageForm.Save();
+        }
+
         private static void RefreshDosageForms(Service1SoapClient soapClient, int? lastVersionNumber)
         {
             int similar;
@@ -662,51 +761,60 @@ namespace PharmInventory.HelperClasses
             foreach (var dsDosageForm in dsDosageFormsList)
             {
                 Console.WriteLine(dsDosageForm.Form);
-                localDosageForm.LoadByPrimaryKey(int.Parse(dsDosageForm.ID.Value.ToString()));
-                if (localDosageForm.RowCount > 0)
+                localDosageForm.LoadByMappingID(int.Parse(dsDosageForm.ID.Value.ToString())); //.LoadByPrimaryKey(int.Parse(dsDosageForm.ID.Value.ToString()));
+                if (localDosageForm.RowCount > 0)//Dosage Form already mapped.
                 {
-                    Console.Write(localDosageForm.Form);
-                    if (dsDosageForm.Form.Replace(" ", "") == localDosageForm.Form.Replace(" ", ""))
-                    {
-                        similar++;
-                    }
-
-                    else//Needs more consideration
-                    {
-                        different++;
-                    }
+                    FillDosageFormAttributes(dsDosageForm, localDosageForm);
                 }
-                else
+
+                else//Dosage Form is not mapped.  We need to do searching
                 {
-                    Console.WriteLine("Not Found!");
-                    different++;
-
-                    ABC comp = new ABC();
-                    comp.LoadQuery(string.Format("Select * from DosageForm WHERE Form = '{0}'", dsDosageForm.Form));
-                    if (comp.RowCount == 0)
+                    localDosageForm.LoadByPrimaryKey(int.Parse(dsDosageForm.ID.Value.ToString()));
+                    if (localDosageForm.RowCount > 0 && localDosageForm.IsMapped == false)
                     {
-                        exactNameNotFound++;
-                        //ABC similarComp = new ABC();
-                        //similarComp.LoadQuery(string.Format("Select * from DosageForm WHERE soundex(IIN)=soundex('{0}')", item.Name));
-                        //if (similarComp.RowCount == 0)
-                        //{
-                        notFound++;
+                        Console.Write(localDosageForm.Form);
+                        if (dsDosageForm.Form.Replace(" ", "") == localDosageForm.Form.Replace(" ", ""))
+                        {
+                            similar++;
+                            FillDosageFormAttributes(dsDosageForm, localDosageForm);
+                        }
 
-                        localDosageForm.AddNew();
-                        localDosageForm.Form = dsDosageForm.Form; //What about TypeID and Description
-                        localDosageForm.Save();
-                        //}
+                        else //Needs more consideration
+                        {
+                            different++;
+                            HandleDifferentDosageForms(dsDosageForm, localDosageForm);
+                        }
                     }
 
-                    else//It is found (No mapping done here though) - Assuming all the tables are similar
+                    else
                     {
-                        //localDosageForm.LoadByPrimaryKey(int.Parse(comp.GetColumn("ID").ToString()));
-                        ////Do something here
-                        //localDosageForm.Save();
+                        Console.WriteLine("Not Found!");
+                        different++;
+                        HandleDifferentDosageForms(dsDosageForm, localDosageForm);
                     }
                 }
             }
             //MessageBox.Show("Dosage Forms\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            
+        }
+
+        private static void HandleDifferentDosageForms(DirectoryService.DosageForm dsDosageForm, DosageForm localDosageForm)
+        {
+            ABC comp = new ABC();
+            comp.LoadQuery(string.Format("Select * from DosageForm WHERE Form = '{0}'", dsDosageForm.Form));
+
+            if (comp.RowCount == 0)
+            {
+                localDosageForm.AddNew();
+                FillDosageFormAttributes(dsDosageForm, localDosageForm);
+            }
+
+            else//It is found
+            {
+                localDosageForm.LoadByPrimaryKey(int.Parse(comp.GetColumn("ID").ToString()));
+                
+                FillDosageFormAttributes(dsDosageForm, localDosageForm);
+            }
         }
 
         private static void RefreshSuppliers(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -786,12 +894,12 @@ namespace PharmInventory.HelperClasses
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsUnit in dsUnitsList)
             {
-                //Console.WriteLine(dsUnit.Name);
+                Console.WriteLine(dsUnit.Name);
                 localUnit.LoadByPrimaryKey(int.Parse(dsUnit.ID.Value.ToString()));
                 if (localUnit.RowCount > 0)
                 {
                     Console.Write(localUnit.Unit);
-                   if (dsUnit.Name.Replace(" ", "") == localUnit.Unit.Replace(" ", ""))
+                    if (dsUnit.Name.Replace(" ", "") == localUnit.Unit.Replace(" ", ""))
                     {
                         similar++;
                         localUnit.MappingID = dsUnit.ID; //They still need to be mapped.
@@ -830,7 +938,7 @@ namespace PharmInventory.HelperClasses
                 notFound++;
 
                 localUnit.AddNew();
-                //localUnit.Unit = dsUnit.Name;
+                localUnit.Unit = dsUnit.Name;
                 localUnit.MappingID = dsUnit.ID;
                 localUnit.Save();
                 //}
@@ -924,19 +1032,32 @@ namespace PharmInventory.HelperClasses
 
         private static int HandleDifferentItems(int exactNameNotFound, ref int notFound, DirectoryService.Items dsItem, Items localItem)
         {
+            BLL.Product product = new Product();
+            BLL.DosageForm dosageForm = new DosageForm();
+
+            product.LoadByMappingID(dsItem.IINID.Value);
+            
             ABC comp = new ABC();
             if (dsItem.Strength != null && dsItem.DosageFormID != null) //This is a drugItem
             {
+                //string query = string.Format("Select * from Items WHERE IINID = {0} and DosageFormID={1} and Strength='{2}'",
+                //                  dsItem.IINID, dsItem.DosageFormID, dsItem.Strength.Replace("'", "''"));
+                dosageForm.LoadByMappingID(dsItem.DosageFormID.Value);
                 string query = string.Format("Select * from Items WHERE IINID = {0} and DosageFormID={1} and Strength='{2}'",
-                                  dsItem.IINID, dsItem.DosageFormID, dsItem.Strength.Replace("'", "''"));
-
+                                  product.ID, dosageForm.ID, dsItem.Strength.Replace("'", "''"));
                 comp.LoadQuery(query);
             }
             else
             {
-                string dosageFormParam = dsItem.DosageFormID.HasValue ? string.Format(" and DosageFormID={0} ", dsItem.DosageFormID.Value) : "";
+                if (dsItem.DosageFormID.HasValue)
+                    dosageForm.LoadByMappingID(dsItem.DosageFormID.Value);
+
+                string dosageFormParam = dsItem.DosageFormID.HasValue ? string.Format(" and DosageFormID={0} ", dosageForm.ID) : "";
                 string strengthParam = !string.IsNullOrEmpty(dsItem.Strength) ? string.Format(" and Strength='{0}' ", dsItem.Strength.Replace("'", "''")) : "";
-                comp.LoadQuery(string.Format("Select * from Items WHERE IINID = {0} {1}{2}", dsItem.IINID, dosageFormParam, strengthParam));
+                //comp.LoadQuery(string.Format("Select * from Items WHERE IINID = {0} {1}{2}", dsItem.IINID, dosageFormParam, strengthParam));
+                comp.LoadQuery(string.Format("Select * from Items WHERE IINID = {0} {1}{2}", product.ID, dosageFormParam,
+                                             strengthParam));
+
 
             }
 
@@ -988,14 +1109,21 @@ namespace PharmInventory.HelperClasses
         {
             if (dsItem.StockCode != null) localItem.StockCode = dsItem.StockCode;
             if (dsItem.Strength != null) localItem.Strength = dsItem.Strength;
-            if (dsItem.DosageFormID.HasValue) localItem.DosageFormID = dsItem.DosageFormID.Value;
+
+            
+            if (dsItem.DosageFormID.HasValue)
+            {
+                BLL.DosageForm dosageForm = new DosageForm();
+                if (dosageForm.LoadByMappingID(dsItem.DosageFormID.Value) != -1)
+                    localItem.DosageFormID = dosageForm.ID; //dsItem.DosageFormID.Value;
+            }
 
             BLL.Unit unit = new Unit();
             if (unit.LoadByMappingID(dsItem.UnitID.Value) != -1) localItem.UnitID = unit.ID; //We put the ID of the mapped unit
 
-            if (dsItem.VEN.HasValue) localItem.VEN = dsItem.VEN.Value;
-            if (dsItem.ABC.HasValue) localItem.ABC = dsItem.ABC.Value;
-            localItem.IsDiscontinued = dsItem.IsDeleted.Value;
+            if (dsItem.VEN.HasValue && dsItem.VEN.Value != 0) localItem.VEN = dsItem.VEN.Value;
+            if (dsItem.ABC.HasValue && dsItem.ABC.Value != 0) localItem.ABC = dsItem.ABC.Value;
+            if (dsItem.IsDeleted.HasValue) localItem.IsDiscontinued = dsItem.IsDeleted.Value;
             if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value; //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
             if (dsItem.EDL.HasValue) localItem.EDL = dsItem.EDL.Value;
             if (dsItem.Pediatric.HasValue) localItem.Pediatric = dsItem.Pediatric.Value;
@@ -1009,7 +1137,7 @@ namespace PharmInventory.HelperClasses
             if (dsItem.NeedExpiryBatch.HasValue) localItem.NeedExpiryBatch = dsItem.NeedExpiryBatch.Value;
             if (dsItem.StockCodeDACA != null) localItem.StockCodeDACA = dsItem.StockCodeDACA;
             if (dsItem.NearExpiryTrigger.HasValue) localItem.NearExpiryTrigger = dsItem.NearExpiryTrigger.Value;
-            if (dsItem.StorageTypeID.HasValue) localItem.StorageTypeID = dsItem.StorageTypeID.Value;
+            //if (dsItem.StorageTypeID.HasValue) localItem.StorageTypeID = dsItem.StorageTypeID.Value;
             if (localItem.IsColumnNull("IsInHospitalList")) localItem.IsInHospitalList = false;
             localItem.Code = dsItem.ID.Value.ToString(); //Mapping done here.
             localItem.Save();
@@ -1118,7 +1246,6 @@ namespace PharmInventory.HelperClasses
 
                 if (v.IINID.HasValue)
                     bv.IINID = product.ID; //v.IINID.Value;
-
                 if (v.NeedExpiryBatch.HasValue)
                 {
                     bv.NeedExpiryBatch = v.NeedExpiryBatch.Value;

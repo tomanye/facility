@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fe4f4c65-504e-41cd-b0c9-7d1e1292e440" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ea145341-cf5e-4fd7-8fe8-fee9d20030f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -14,7 +14,7 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
@@ -23,8 +23,8 @@
     <MetadataSource Address="http://pds.hcmisonline.org/PDSService/Service1.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="94fa3b55-5945-4510-9024-a20e01dc9d67" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?wsdl" />
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="45a8d13f-6c96-421d-aa65-4f342bee7105" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="9e63fe19-33eb-4fcb-802b-3e0d5b69eff3" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?wsdl" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="5cd9781f-0689-46f9-abaf-3ba85c04bc93" SourceId="1" SourceUrl="http://pds.hcmisonline.org/PDSService/Service1.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
