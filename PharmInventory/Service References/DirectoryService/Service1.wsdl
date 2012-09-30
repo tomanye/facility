@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ds.pfsa.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ds.pfsa.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ds.pfsa.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s1="http://ds.pfsa.org//Models" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ds.pfsa.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://ds.pfsa.org/">
+      <s:import namespace="http://ds.pfsa.org//Models" />
       <s:element name="GetLastVersion">
         <s:complexType>
           <s:sequence>
@@ -399,20 +400,20 @@
           <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="TypeID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="PCode" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfItem" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfItems" />
           <s:element minOccurs="0" maxOccurs="1" name="DetailLookup" type="tns:DetailLookup" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="ArrayOfItem">
+      <s:complexType name="ArrayOfItems">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Items" nillable="true" type="tns:Items" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="Item">
+      <s:complexType name="Items">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="StockCode" type="s:string" />
@@ -431,106 +432,14 @@
           <s:element minOccurs="1" maxOccurs="1" name="NearExpiryTrigger" nillable="true" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="StorageTypeID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IsStackStored" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="PCode" nillable="true" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="SerialNo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="WithAccessories" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="NeedBatch" nillable="true" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="NeedExpiryBatch" nillable="true" type="s:boolean" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemAccessories_s" type="tns:ArrayOfItemAccessories_" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemManufacturers" type="tns:ArrayOfItemManufacturer" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemManufacturers1" type="tns:ArrayOfItemManufacturer" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemPrograms" type="tns:ArrayOfItemProgram" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemsReports" type="tns:ArrayOfItemsReport" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemSubCategories" type="tns:ArrayOfItemSubCategory" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemUnits" type="tns:ArrayOfItemUnit" />
-          <s:element minOccurs="0" maxOccurs="1" name="StoreItems" type="tns:ArrayOfStoreItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup1" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup2" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup3" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="Product" type="tns:Product" />
-          <s:element minOccurs="0" maxOccurs="1" name="StorageType" type="tns:StorageType" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemAccessories_">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemAccessories_" nillable="true" type="tns:ItemAccessories_" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemAccessories_">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Accessories_Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Qty" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemManufacturer">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemManufacturer" nillable="true" type="tns:ItemManufacturer" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemManufacturer">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ManufacturerID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PackageLevel" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="QuantityPerLevel" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsssuingDefault" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="RecevingDefault" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="BoxWidth" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="BoxHeight" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="BoxLength" type="s:double" />
-          <s:element minOccurs="0" maxOccurs="1" name="BrandName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="StackHeight" nillable="true" type="s:double" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item1" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="Manufacturer" type="tns:Manufacturer" />
-          <s:element minOccurs="0" maxOccurs="1" name="Manufacturer1" type="tns:Manufacturer" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Manufacturer">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CountryOfOrigin" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="PFSAManufCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemManufacturers" type="tns:ArrayOfItemManufacturer" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemManufacturers1" type="tns:ArrayOfItemManufacturer" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemProgram">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemProgram" nillable="true" type="tns:ItemProgram" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemProgram">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ProgramID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="DetailLookup">
@@ -540,156 +449,9 @@
           <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IsTypeOf" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookups" type="tns:ArrayOfDetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemPrograms" type="tns:ArrayOfItemProgram" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items1" type="tns:ArrayOfItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items2" type="tns:ArrayOfItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items3" type="tns:ArrayOfItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemsReports" type="tns:ArrayOfItemsReport" />
-          <s:element minOccurs="0" maxOccurs="1" name="Products" type="tns:ArrayOfProduct" />
-          <s:element minOccurs="0" maxOccurs="1" name="StoreItems" type="tns:ArrayOfStoreItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup1" type="tns:DetailLookup" />
-          <s:element minOccurs="0" maxOccurs="1" name="MasterLookup" type="tns:MasterLookup" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfDetailLookup">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DetailLookup" nillable="true" type="tns:DetailLookup" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemsReport">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemsReport" nillable="true" type="tns:ItemsReport" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemsReport">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ReportID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup" type="tns:DetailLookup" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfStoreItem">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="StoreItem" nillable="true" type="tns:StoreItem" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="StoreItem">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="StoreID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UsedInThisStore" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookup" type="tns:DetailLookup" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="MasterLookup">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="DetailLookups" type="tns:ArrayOfDetailLookup" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemSubCategory">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemSubCategory" nillable="true" type="tns:ItemSubCategory" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemSubCategory">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="SubCategoryID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemId" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="Category" type="tns:Category" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Category">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="CategoryCode" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Level" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="PointsTo" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="Created_Time" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Created_By" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Updated_By" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Categories" type="tns:ArrayOfCategory" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemSubCategories" type="tns:ArrayOfItemSubCategory" />
-          <s:element minOccurs="0" maxOccurs="1" name="Category1" type="tns:Category" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfCategory">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfItemUnit">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemUnit" nillable="true" type="tns:ItemUnit" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ItemUnit">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="UnitID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDefault" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Item" />
-          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="tns:Unit" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Unit">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="QtyPerUnit" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="ItemUnits" type="tns:ArrayOfItemUnit" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="StorageType">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="StorageTypeName" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsSubTypeOf" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Prefix" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfItem" />
-          <s:element minOccurs="0" maxOccurs="1" name="StorageTypes" type="tns:ArrayOfStorageType" />
-          <s:element minOccurs="0" maxOccurs="1" name="StorageType1" type="tns:StorageType" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfStorageType">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="StorageType" nillable="true" type="tns:StorageType" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetManufacturer">
@@ -712,6 +474,20 @@
       <s:complexType name="ArrayOfManufacturer">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="Manufacturer" nillable="true" type="tns:Manufacturer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Manufacturer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryOfOrigin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PFSAManufCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetSuppliers">
@@ -747,8 +523,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="CompanyInfo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="IsActive" nillable="true" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
@@ -769,16 +545,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfItems">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Items" nillable="true" type="tns:Items" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Items">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:Item" />
-        </s:complexContent>
-      </s:complexType>
       <s:element name="GetSupplyItems">
         <s:complexType>
           <s:sequence>
@@ -809,10 +575,24 @@
       <s:element name="GetItemAccessoriesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetItemAccessoriesResult" type="tns:ArrayOfItemAccessories_" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemAccessoriesResult" type="tns:ArrayOfItemAccessories" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfItemAccessories">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemAccessories" nillable="true" type="tns:ItemAccessories" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemAccessories">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Accessories_Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Qty" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetDrugCategory">
         <s:complexType>
           <s:sequence>
@@ -836,14 +616,14 @@
         </s:sequence>
       </s:complexType>
       <s:complexType name="DrugCategory">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:Category">
-            <s:sequence>
-              <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
-              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
       </s:complexType>
       <s:element name="GetDrugSubCategory">
         <s:complexType>
@@ -977,23 +757,6 @@
           <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetItemsInReportType">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="lastVersion" nillable="true" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="lastDateTime" nillable="true" type="s:dateTime" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetItemsInReportTypeResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetItemsInReportTypeResult" type="tns:ArrayOfItemsReport" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="GetItemPrograms">
         <s:complexType>
           <s:sequence>
@@ -1011,6 +774,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfItemProgram">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemProgram" nillable="true" type="tns:ItemProgram" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemProgram">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProgramID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetItemUnits">
         <s:complexType>
           <s:sequence>
@@ -1028,6 +805,11 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfItemUnit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemUnit" nillable="true" type="s1:ItemUnit" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetStoreItem">
         <s:complexType>
           <s:sequence>
@@ -1045,6 +827,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfStoreItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StoreItem" nillable="true" type="tns:StoreItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StoreItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StoreID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UsedInThisStore" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetItemUnitsWithUnitDetail">
         <s:complexType>
           <s:sequence>
@@ -1068,15 +865,19 @@
         </s:sequence>
       </s:complexType>
       <s:complexType name="ItemUnitWithUnitDetail">
-        <s:complexContent mixed="false">
-          <s:extension base="tns:ItemUnit">
-            <s:sequence>
-              <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
-              <s:element minOccurs="1" maxOccurs="1" name="QtyPerUnit" type="s:int" />
-              <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
-            </s:sequence>
-          </s:extension>
-        </s:complexContent>
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDefault" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item" type="tns:Items" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="tns:Units" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtyPerUnit" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+        </s:sequence>
       </s:complexType>
       <s:element name="GetItemManufacturers">
         <s:complexType>
@@ -1095,6 +896,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfItemManufacturer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ItemManufacturer" nillable="true" type="tns:ItemManufacturer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemManufacturer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManufacturerID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuantityPerLevel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PackageLevel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetItemActivities">
         <s:complexType>
           <s:sequence>
@@ -1134,6 +951,16 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="Unit" nillable="true" type="tns:Unit" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="Unit">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtyPerUnit" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetStorageTypes">
         <s:complexType>
           <s:sequence>
@@ -1151,6 +978,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfStorageType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StorageType" nillable="true" type="tns:StorageType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StorageType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="StorageTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prefix" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ds.pfsa.org//Models">
+      <s:complexType name="ItemUnit">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UnitID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDefault" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtyPerUnit" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetLastVersionSoapIn">
@@ -1290,12 +1145,6 @@
   </wsdl:message>
   <wsdl:message name="GetItemSupplyCategoriesSoapOut">
     <wsdl:part name="parameters" element="tns:GetItemSupplyCategoriesResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetItemsInReportTypeSoapIn">
-    <wsdl:part name="parameters" element="tns:GetItemsInReportType" />
-  </wsdl:message>
-  <wsdl:message name="GetItemsInReportTypeSoapOut">
-    <wsdl:part name="parameters" element="tns:GetItemsInReportTypeResponse" />
   </wsdl:message>
   <wsdl:message name="GetItemProgramsSoapIn">
     <wsdl:part name="parameters" element="tns:GetItemPrograms" />
@@ -1437,10 +1286,6 @@
     <wsdl:operation name="GetItemSupplyCategories">
       <wsdl:input message="tns:GetItemSupplyCategoriesSoapIn" />
       <wsdl:output message="tns:GetItemSupplyCategoriesSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetItemsInReportType">
-      <wsdl:input message="tns:GetItemsInReportTypeSoapIn" />
-      <wsdl:output message="tns:GetItemsInReportTypeSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetItemPrograms">
       <wsdl:input message="tns:GetItemProgramsSoapIn" />
@@ -1677,15 +1522,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetItemSupplyCategories">
       <soap:operation soapAction="http://ds.pfsa.org/GetItemSupplyCategories" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetItemsInReportType">
-      <soap:operation soapAction="http://ds.pfsa.org/GetItemsInReportType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1968,15 +1804,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetItemSupplyCategories">
       <soap12:operation soapAction="http://ds.pfsa.org/GetItemSupplyCategories" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetItemsInReportType">
-      <soap12:operation soapAction="http://ds.pfsa.org/GetItemsInReportType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -28,13 +28,13 @@
           <serializedValue>StrongWildcard</serializedValue>
         </property>
         <property path="/maxBufferSize" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>65536</serializedValue>
+          <serializedValue>65536000</serializedValue>
         </property>
         <property path="/maxBufferPoolSize" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>524288</serializedValue>
+          <serializedValue>65536000</serializedValue>
         </property>
         <property path="/maxReceivedMessageSize" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>65536</serializedValue>
+          <serializedValue>65536000</serializedValue>
         </property>
         <property path="/messageEncoding" isComplexType="false" isExplicitlyDefined="true" clrType="System.ServiceModel.WSMessageEncoding, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>Text</serializedValue>
@@ -52,13 +52,13 @@
           <serializedValue>8192</serializedValue>
         </property>
         <property path="/readerQuotas/maxArrayLength" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>16384</serializedValue>
+          <serializedValue>16384000</serializedValue>
         </property>
         <property path="/readerQuotas/maxBytesPerRead" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>4096</serializedValue>
+          <serializedValue>409600</serializedValue>
         </property>
         <property path="/readerQuotas/maxNameTableCharCount" isComplexType="false" isExplicitlyDefined="true" clrType="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>16384</serializedValue>
+          <serializedValue>1638400</serializedValue>
         </property>
         <property path="/security" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.BasicHttpSecurityElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.BasicHttpSecurityElement</serializedValue>

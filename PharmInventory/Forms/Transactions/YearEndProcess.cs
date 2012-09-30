@@ -511,21 +511,7 @@ namespace PharmInventory.Forms.Transactions
                 //ActivityId for export is 4
                 logger.SaveAction(1, 4, "Transaction\\YearEndProcess.cs", "Export on Inventory took place");
             }
-            //for (int i = 0; i < grdYearEnd.Rows.Count; i++)
-            //{
-            //    string[] str = { yearEndGrid.Rows[i].Cells[1].Value.ToString(), yearEndGrid.Rows[i].Cells[2].Value.ToString(), yearEndGrid.Rows[i].Cells[3].Value.ToString(), yearEndGrid.Rows[i].Cells[4].Value.ToString(), yearEndGrid.Rows[i].Cells[5].Value.ToString(), yearEndGrid.Rows[i].Cells[6].Value.ToString(), yearEndGrid.Rows[i].Cells[7].Value.ToString() };
-            //    ListViewItem lstItem = new ListViewItem(str);
-            //    //listView1.Items.Add(lstItem);
-            //}
-            //dtDate.Value = DateTime.Now;
-            //DateTime dtCurent = new DateTime();
-            //dtDate.CustomFormat = "MM/dd/yyyy";
-            //dtCurent = ConvertDate.DateConverter(dtDate.Text);
-
-            //int year = dtCurent.Year;
-            //string[] header = { "Ending Balance for " + cboStores.Text + " of year " + year.ToString() };
-
-            //MainWindow.ExportToExcel(listView1, header);
+         
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

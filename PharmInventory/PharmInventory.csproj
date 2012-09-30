@@ -21,10 +21,14 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <PublishUrl>C:\Users\Deliver Henok\Dropbox\Public\Published\</PublishUrl>
@@ -208,10 +212,6 @@
     </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>Common DLLs\EthiopianDate.dll</HintPath>
-    </Reference>
-    <Reference Include="HCMIS.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\HCMIS.Libraries\Logging\bin\Debug\HCMIS.Logging.dll</HintPath>
     </Reference>
     <Reference Include="MyGeneration.dOOdads">
       <HintPath>Common DLLs\MyGeneration.dOOdads.dll</HintPath>
@@ -860,6 +860,9 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ABC.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ArrayOfItemUnit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.CommodityType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -875,7 +878,7 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.DrugSubCategory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemAccessories_.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemAccessories.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemManufacturer.datasource">
@@ -887,13 +890,7 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Items.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemsReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemSupplyCategory.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemUnit.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemUnitWithUnitDetail.datasource">
@@ -945,7 +942,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\Service1.wsdl" />
-    <None Include="Service References\DirectoryService\Service11.wsdl" />
     <None Include="Service References\HCMISRegistrations\PharmInventory.HCMISRegistrations.RegisteredUsers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -956,6 +952,10 @@
     <None Include="Service References\RRFService\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\libraries\Logging\HCMIS.Logging.csproj">
+      <Project>{8DB7D300-436F-4089-849B-717A39E64199}</Project>
+      <Name>HCMIS.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{4D833455-E466-4E4F-AD03-352C114711E1}</Project>
       <Name>BLL</Name>
@@ -1145,14 +1145,13 @@
     <Content Include="Scripts\13_EnableEthiopianDate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\DirectoryService\Service11.disco" />
-    <None Include="Service References\DirectoryService\Service1.disco" />
     <None Include="Service References\DirectoryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\DirectoryService\configuration.svcinfo" />
     <None Include="Service References\DirectoryService\configuration91.svcinfo" />
+    <None Include="Service References\DirectoryService\Service1.disco" />
     <None Include="Resources\Excel.gif" />
     <Content Include="Scripts\01_HCMIS Queries.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

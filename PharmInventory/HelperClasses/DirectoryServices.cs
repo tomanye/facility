@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -24,6 +25,9 @@ namespace PharmInventory.HelperClasses
         public static void RefreshFromDirectoryServices()
         {
             DirectoryService.Service1SoapClient soapClient = new Service1SoapClient();
+            BasicHttpBinding binding = (BasicHttpBinding) soapClient.Endpoint.Binding;
+            binding.MaxReceivedMessageSize = binding.ReaderQuotas.MaxArrayLength = binding.ReaderQuotas.MaxStringContentLength = 630000000;
+            
             int notFound = 0;
             int exactNameNotFound = 0;
             int different = 0;
@@ -993,7 +997,7 @@ namespace PharmInventory.HelperClasses
 
             if (dsItem.VEN.HasValue) localItem.VEN = dsItem.VEN.Value;
             if (dsItem.ABC.HasValue) localItem.ABC = dsItem.ABC.Value;
-            localItem.IsDiscontinued = dsItem.IsDeleted;
+            localItem.IsDiscontinued = dsItem.IsDeleted.Value;
             if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value; //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
             if (dsItem.EDL.HasValue) localItem.EDL = dsItem.EDL.Value;
             if (dsItem.Pediatric.HasValue) localItem.Pediatric = dsItem.Pediatric.Value;
