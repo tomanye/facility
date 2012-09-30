@@ -25,7 +25,7 @@ FROM
 					  dbo.ProductsCategory ON dbo.Items.ID = dbo.ProductsCategory.ItemId INNER JOIN
 					  dbo.SubCategory ON dbo.ProductsCategory.SubCategoryID = dbo.SubCategory.ID AND dbo.Product.TypeID = 1
 
-Union 
+Union  
 SELECT DISTINCT 
 					  dbo.Items.ID, ISNULL(dbo.Product.IIN, '') + ' - ' + ISNULL(dbo.Items.Strength, '') AS FullItemName, 
 					  dbo.Product.IIN AS ItemName, dbo.Product.ATC, dbo.Items.Strength, dbo.Items.ABC AS ABCID, null AS ABC, null AS VEN, 
