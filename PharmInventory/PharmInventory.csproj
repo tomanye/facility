@@ -1076,9 +1076,6 @@
     <None Include="Resources\icon-48-plugin.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\11_vwGetAllItems.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Service References\DirectoryService\Service1.disco" />
     <None Include="Service References\DirectoryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
