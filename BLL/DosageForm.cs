@@ -31,6 +31,27 @@ namespace BLL
             this.Query.Load();
             return this.DataTable;
         }
-            
-	}
+
+        public int LoadByMappingID(int mappingID)
+        {
+            this.FlushData();
+            string query = string.Format("select * from DosageForm where Description like '{0}'", mappingID);
+            //this.Where.Description.Value = mappingID.ToString();
+            //this.Query.Load();
+            this.LoadFromRawSql(query);
+            if (this.RowCount > 0)
+            {
+                return this.ID;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+	    public bool IsMapped
+	    {
+            get { return !this.IsColumnNull("Description"); }
+	    }
+    }
 }
