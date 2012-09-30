@@ -15,6 +15,1699 @@ namespace PharmInventory.DirectoryService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ABC", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ABC : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="VEN", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class VEN : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CommodityType", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class CommodityType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DosageForm", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class DosageForm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FormField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Form {
+            get {
+                return this.FormField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FormField, value) != true)) {
+                    this.FormField = value;
+                    this.RaisePropertyChanged("Form");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StoreType", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class StoreType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string TypeName {
+            get {
+                return this.TypeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeNameField, value) != true)) {
+                    this.TypeNameField = value;
+                    this.RaisePropertyChanged("TypeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Stores", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class Stores : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> StoreTypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StoreNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> StoreTypeID {
+            get {
+                return this.StoreTypeIDField;
+            }
+            set {
+                if ((this.StoreTypeIDField.Equals(value) != true)) {
+                    this.StoreTypeIDField = value;
+                    this.RaisePropertyChanged("StoreTypeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string StoreName {
+            get {
+                return this.StoreNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StoreNameField, value) != true)) {
+                    this.StoreNameField = value;
+                    this.RaisePropertyChanged("StoreName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubAccount", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class SubAccount : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> AccountIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> AccountID {
+            get {
+                return this.AccountIDField;
+            }
+            set {
+                if ((this.AccountIDField.Equals(value) != true)) {
+                    this.AccountIDField = value;
+                    this.RaisePropertyChanged("AccountID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SubSubAccount", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class SubSubAccount : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> SubAccountIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> SubAccountID {
+            get {
+                return this.SubAccountIDField;
+            }
+            set {
+                if ((this.SubAccountIDField.Equals(value) != true)) {
+                    this.SubAccountIDField = value;
+                    this.RaisePropertyChanged("SubAccountID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Units", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class Units : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Program", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class Program : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private System.Nullable<int> ParentIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProgramCodeField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string ProgramCode {
+            get {
+                return this.ProgramCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProgramCodeField, value) != true)) {
+                    this.ProgramCodeField = value;
+                    this.RaisePropertyChanged("ProgramCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportTypes", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ReportTypes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        private System.Nullable<int> TypeIDField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        private int PCodeField;
+        
+        private int LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<PharmInventory.DirectoryService.Items> ItemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PharmInventory.DirectoryService.DetailLookup DetailLookupField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> TypeID {
+            get {
+                return this.TypeIDField;
+            }
+            set {
+                if ((this.TypeIDField.Equals(value) != true)) {
+                    this.TypeIDField = value;
+                    this.RaisePropertyChanged("TypeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int PCode {
+            get {
+                return this.PCodeField;
+            }
+            set {
+                if ((this.PCodeField.Equals(value) != true)) {
+                    this.PCodeField = value;
+                    this.RaisePropertyChanged("PCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public int LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> Items {
+            get {
+                return this.ItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
+                    this.ItemsField = value;
+                    this.RaisePropertyChanged("Items");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public PharmInventory.DirectoryService.DetailLookup DetailLookup {
+            get {
+                return this.DetailLookupField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailLookupField, value) != true)) {
+                    this.DetailLookupField = value;
+                    this.RaisePropertyChanged("DetailLookup");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DetailLookup", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class DetailLookup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int MasterIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        private int IDField;
+        
+        private System.Nullable<int> IsTypeOfField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int MasterID {
+            get {
+                return this.MasterIDField;
+            }
+            set {
+                if ((this.MasterIDField.Equals(value) != true)) {
+                    this.MasterIDField = value;
+                    this.RaisePropertyChanged("MasterID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<int> IsTypeOf {
+            get {
+                return this.IsTypeOfField;
+            }
+            set {
+                if ((this.IsTypeOfField.Equals(value) != true)) {
+                    this.IsTypeOfField = value;
+                    this.RaisePropertyChanged("IsTypeOf");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Items", Namespace="http://ds.pfsa.org/")]
     [System.SerializableAttribute()]
     public partial class Items : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -46,7 +1739,7 @@ namespace PharmInventory.DirectoryService {
         
         private System.Nullable<int> IINIDField;
         
-        private System.Nullable<bool> NeedExpiryBatchField;
+        private System.Nullable<bool> NeedExpiryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CodeField;
@@ -63,6 +1756,19 @@ namespace PharmInventory.DirectoryService {
         private System.Nullable<bool> IsDeletedField;
         
         private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        private System.Nullable<int> PCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SerialNoField;
+        
+        private bool WithAccessoriesField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<bool> NeedBatchField;
+        
+        private System.Nullable<bool> NeedExpiryBatchField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -218,14 +1924,14 @@ namespace PharmInventory.DirectoryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
-        public System.Nullable<bool> NeedExpiryBatch {
+        public System.Nullable<bool> NeedExpiry {
             get {
-                return this.NeedExpiryBatchField;
+                return this.NeedExpiryField;
             }
             set {
-                if ((this.NeedExpiryBatchField.Equals(value) != true)) {
-                    this.NeedExpiryBatchField = value;
-                    this.RaisePropertyChanged("NeedExpiryBatch");
+                if ((this.NeedExpiryField.Equals(value) != true)) {
+                    this.NeedExpiryField = value;
+                    this.RaisePropertyChanged("NeedExpiry");
                 }
             }
         }
@@ -321,1012 +2027,80 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CommodityType", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class CommodityType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=19)]
+        public System.Nullable<int> PCode {
             get {
-                return this.extensionDataField;
+                return this.PCodeField;
             }
             set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
+                if ((this.PCodeField.Equals(value) != true)) {
+                    this.PCodeField = value;
+                    this.RaisePropertyChanged("PCode");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=20)]
+        public string SerialNo {
             get {
-                return this.NameField;
+                return this.SerialNoField;
             }
             set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.SerialNoField, value) != true)) {
+                    this.SerialNoField = value;
+                    this.RaisePropertyChanged("SerialNo");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=21)]
+        public bool WithAccessories {
             get {
-                return this.DescriptionField;
+                return this.WithAccessoriesField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
+                if ((this.WithAccessoriesField.Equals(value) != true)) {
+                    this.WithAccessoriesField = value;
+                    this.RaisePropertyChanged("WithAccessories");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=22)]
+        public System.Nullable<int> LegacyID {
             get {
-                return this.IsDeletedField;
+                return this.LegacyIDField;
             }
             set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=23)]
+        public System.Nullable<bool> NeedBatch {
             get {
-                return this.UpdateTimeField;
+                return this.NeedBatchField;
             }
             set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
+                if ((this.NeedBatchField.Equals(value) != true)) {
+                    this.NeedBatchField = value;
+                    this.RaisePropertyChanged("NeedBatch");
                 }
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        private System.Nullable<int> TypeIDField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=24)]
+        public System.Nullable<bool> NeedExpiryBatch {
             get {
-                return this.extensionDataField;
+                return this.NeedExpiryBatchField;
             }
             set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> TypeID {
-            get {
-                return this.TypeIDField;
-            }
-            set {
-                if ((this.TypeIDField.Equals(value) != true)) {
-                    this.TypeIDField = value;
-                    this.RaisePropertyChanged("TypeID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DosageForm", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class DosageForm : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FormField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Form {
-            get {
-                return this.FormField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FormField, value) != true)) {
-                    this.FormField = value;
-                    this.RaisePropertyChanged("Form");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Unit", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DrugCategory", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class DrugCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string CategoryName {
-            get {
-                return this.CategoryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
-                    this.CategoryNameField = value;
-                    this.RaisePropertyChanged("CategoryName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string CategoryCode {
-            get {
-                return this.CategoryCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryCodeField, value) != true)) {
-                    this.CategoryCodeField = value;
-                    this.RaisePropertyChanged("CategoryCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DrugSubCategory", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class DrugSubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubCategoryNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SubCategoryCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<int> ParentIDField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public System.Nullable<int> CategoryId {
-            get {
-                return this.CategoryIdField;
-            }
-            set {
-                if ((this.CategoryIdField.Equals(value) != true)) {
-                    this.CategoryIdField = value;
-                    this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string SubCategoryName {
-            get {
-                return this.SubCategoryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubCategoryNameField, value) != true)) {
-                    this.SubCategoryNameField = value;
-                    this.RaisePropertyChanged("SubCategoryName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string SubCategoryCode {
-            get {
-                return this.SubCategoryCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubCategoryCodeField, value) != true)) {
-                    this.SubCategoryCodeField = value;
-                    this.RaisePropertyChanged("SubCategoryCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<int> ParentID {
-            get {
-                return this.ParentIDField;
-            }
-            set {
-                if ((this.ParentIDField.Equals(value) != true)) {
-                    this.ParentIDField = value;
-                    this.RaisePropertyChanged("ParentID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DrugItemSubCategory", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class DrugItemSubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> SubCategoryIDField;
-        
-        private System.Nullable<int> ItemIdField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> SubCategoryID {
-            get {
-                return this.SubCategoryIDField;
-            }
-            set {
-                if ((this.SubCategoryIDField.Equals(value) != true)) {
-                    this.SubCategoryIDField = value;
-                    this.RaisePropertyChanged("SubCategoryID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> ItemId {
-            get {
-                return this.ItemIdField;
-            }
-            set {
-                if ((this.ItemIdField.Equals(value) != true)) {
-                    this.ItemIdField = value;
-                    this.RaisePropertyChanged("ItemId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SupplyCategory", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class SupplyCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        private System.Nullable<int> ParentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ParentId {
-            get {
-                return this.ParentIdField;
-            }
-            set {
-                if ((this.ParentIdField.Equals(value) != true)) {
-                    this.ParentIdField = value;
-                    this.RaisePropertyChanged("ParentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
-                    this.CodeField = value;
-                    this.RaisePropertyChanged("Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ItemSupplyCategory", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class ItemSupplyCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> ItemIDField;
-        
-        private System.Nullable<int> CategoryIDField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ItemID {
-            get {
-                return this.ItemIDField;
-            }
-            set {
-                if ((this.ItemIDField.Equals(value) != true)) {
-                    this.ItemIDField = value;
-                    this.RaisePropertyChanged("ItemID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> CategoryID {
-            get {
-                return this.CategoryIDField;
-            }
-            set {
-                if ((this.CategoryIDField.Equals(value) != true)) {
-                    this.CategoryIDField = value;
-                    this.RaisePropertyChanged("CategoryID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
+                if ((this.NeedExpiryBatchField.Equals(value) != true)) {
+                    this.NeedExpiryBatchField = value;
+                    this.RaisePropertyChanged("NeedExpiryBatch");
                 }
             }
         }
@@ -1350,8 +2124,6 @@ namespace PharmInventory.DirectoryService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private System.Nullable<int> IDField;
-        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
@@ -1371,6 +2143,13 @@ namespace PharmInventory.DirectoryService {
         
         private System.Nullable<System.DateTime> UpdateTimeField;
         
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1378,19 +2157,6 @@ namespace PharmInventory.DirectoryService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
             }
         }
         
@@ -1407,7 +2173,7 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string CountryOfOrigin {
             get {
                 return this.CountryOfOriginField;
@@ -1420,7 +2186,7 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string PFSAManufCode {
             get {
                 return this.PFSAManufCodeField;
@@ -1433,7 +2199,7 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
         public string Phone {
             get {
                 return this.PhoneField;
@@ -1446,7 +2212,7 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public string Address {
             get {
                 return this.AddressField;
@@ -1455,143 +2221,6 @@ namespace PharmInventory.DirectoryService {
                 if ((object.ReferenceEquals(this.AddressField, value) != true)) {
                     this.AddressField = value;
                     this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Program", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Program : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<int> ParentIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ProgramCodeField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<int> ParentID {
-            get {
-                return this.ParentIDField;
-            }
-            set {
-                if ((this.ParentIDField.Equals(value) != true)) {
-                    this.ParentIDField = value;
-                    this.RaisePropertyChanged("ParentID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string ProgramCode {
-            get {
-                return this.ProgramCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ProgramCodeField, value) != true)) {
-                    this.ProgramCodeField = value;
-                    this.RaisePropertyChanged("ProgramCode");
                 }
             }
         }
@@ -1618,6 +2247,45 @@ namespace PharmInventory.DirectoryService {
                 if ((this.UpdateTimeField.Equals(value) != true)) {
                     this.UpdateTimeField = value;
                     this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public string Website {
+            get {
+                return this.WebsiteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteField, value) != true)) {
+                    this.WebsiteField = value;
+                    this.RaisePropertyChanged("Website");
                 }
             }
         }
@@ -1669,6 +2337,8 @@ namespace PharmInventory.DirectoryService {
         private System.Nullable<bool> IsDeletedField;
         
         private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        private System.Nullable<int> LegacyIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1823,108 +2493,15 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Region", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Region : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RegionNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RegionCodeField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        public System.Nullable<int> LegacyID {
             get {
-                return this.extensionDataField;
+                return this.LegacyIDField;
             }
             set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string RegionName {
-            get {
-                return this.RegionNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
-                    this.RegionNameField = value;
-                    this.RaisePropertyChanged("RegionName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string RegionCode {
-            get {
-                return this.RegionCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RegionCodeField, value) != true)) {
-                    this.RegionCodeField = value;
-                    this.RaisePropertyChanged("RegionCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
                 }
             }
         }
@@ -1941,26 +2518,23 @@ namespace PharmInventory.DirectoryService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Woreda", Namespace="http://ds.pfsa.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemAccessories", Namespace="http://ds.pfsa.org/")]
     [System.SerializableAttribute()]
-    public partial class Woreda : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ItemAccessories : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private System.Nullable<int> IDField;
+        private int IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WoredaNameField;
+        private string Accessories_NameField;
         
-        private System.Nullable<int> ZoneIDField;
+        private System.Nullable<int> QtyField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WoredaCodeField;
+        private bool IsDeletedField;
         
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
+        private System.DateTime UpdateTimeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1973,7 +2547,7 @@ namespace PharmInventory.DirectoryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
+        public int ID {
             get {
                 return this.IDField;
             }
@@ -1985,181 +2559,47 @@ namespace PharmInventory.DirectoryService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string WoredaName {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Accessories_Name {
             get {
-                return this.WoredaNameField;
+                return this.Accessories_NameField;
             }
             set {
-                if ((object.ReferenceEquals(this.WoredaNameField, value) != true)) {
-                    this.WoredaNameField = value;
-                    this.RaisePropertyChanged("WoredaName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ZoneID {
-            get {
-                return this.ZoneIDField;
-            }
-            set {
-                if ((this.ZoneIDField.Equals(value) != true)) {
-                    this.ZoneIDField = value;
-                    this.RaisePropertyChanged("ZoneID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string WoredaCode {
-            get {
-                return this.WoredaCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WoredaCodeField, value) != true)) {
-                    this.WoredaCodeField = value;
-                    this.RaisePropertyChanged("WoredaCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Zone", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Zone : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ZoneNameField;
-        
-        private System.Nullable<int> RegionIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ZoneCodeField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string ZoneName {
-            get {
-                return this.ZoneNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ZoneNameField, value) != true)) {
-                    this.ZoneNameField = value;
-                    this.RaisePropertyChanged("ZoneName");
+                if ((object.ReferenceEquals(this.Accessories_NameField, value) != true)) {
+                    this.Accessories_NameField = value;
+                    this.RaisePropertyChanged("Accessories_Name");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> RegionId {
+        public System.Nullable<int> Qty {
             get {
-                return this.RegionIdField;
+                return this.QtyField;
             }
             set {
-                if ((this.RegionIdField.Equals(value) != true)) {
-                    this.RegionIdField = value;
-                    this.RaisePropertyChanged("RegionId");
+                if ((this.QtyField.Equals(value) != true)) {
+                    this.QtyField = value;
+                    this.RaisePropertyChanged("Qty");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string ZoneCode {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
             get {
-                return this.ZoneCodeField;
+                return this.IsDeletedField;
             }
             set {
-                if ((object.ReferenceEquals(this.ZoneCodeField, value) != true)) {
-                    this.ZoneCodeField = value;
-                    this.RaisePropertyChanged("ZoneCode");
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<System.DateTime> UpdateTime {
+        public System.DateTime UpdateTime {
             get {
                 return this.UpdateTimeField;
             }
@@ -2183,9 +2623,9 @@ namespace PharmInventory.DirectoryService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Facility", Namespace="http://ds.pfsa.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DrugCategory", Namespace="http://ds.pfsa.org/")]
     [System.SerializableAttribute()]
-    public partial class Facility : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DrugCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -2193,287 +2633,17 @@ namespace PharmInventory.DirectoryService {
         private System.Nullable<int> IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private string CategoryNameField;
         
-        private System.Nullable<int> TypeField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneField;
-        
-        private System.Nullable<int> WoredaField;
-        
-        private System.Nullable<int> RouteField;
-        
-        private System.Nullable<int> RouteSequenceField;
-        
-        private System.Nullable<int> PrimaryHubIDField;
-        
-        private System.Nullable<int> SecondaryHubIDField;
-        
-        private System.Nullable<int> ReportPeriodField;
-        
         private System.Nullable<bool> IsDeletedField;
         
         private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((this.TypeField.Equals(value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Phone {
-            get {
-                return this.PhoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneField, value) != true)) {
-                    this.PhoneField = value;
-                    this.RaisePropertyChanged("Phone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.Nullable<int> Woreda {
-            get {
-                return this.WoredaField;
-            }
-            set {
-                if ((this.WoredaField.Equals(value) != true)) {
-                    this.WoredaField = value;
-                    this.RaisePropertyChanged("Woreda");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public System.Nullable<int> Route {
-            get {
-                return this.RouteField;
-            }
-            set {
-                if ((this.RouteField.Equals(value) != true)) {
-                    this.RouteField = value;
-                    this.RaisePropertyChanged("Route");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public System.Nullable<int> RouteSequence {
-            get {
-                return this.RouteSequenceField;
-            }
-            set {
-                if ((this.RouteSequenceField.Equals(value) != true)) {
-                    this.RouteSequenceField = value;
-                    this.RaisePropertyChanged("RouteSequence");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
-        public System.Nullable<int> PrimaryHubID {
-            get {
-                return this.PrimaryHubIDField;
-            }
-            set {
-                if ((this.PrimaryHubIDField.Equals(value) != true)) {
-                    this.PrimaryHubIDField = value;
-                    this.RaisePropertyChanged("PrimaryHubID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
-        public System.Nullable<int> SecondaryHubID {
-            get {
-                return this.SecondaryHubIDField;
-            }
-            set {
-                if ((this.SecondaryHubIDField.Equals(value) != true)) {
-                    this.SecondaryHubIDField = value;
-                    this.RaisePropertyChanged("SecondaryHubID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
-        public System.Nullable<int> ReportPeriod {
-            get {
-                return this.ReportPeriodField;
-            }
-            set {
-                if ((this.ReportPeriodField.Equals(value) != true)) {
-                    this.ReportPeriodField = value;
-                    this.RaisePropertyChanged("ReportPeriod");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Hub", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class Hub : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HubNameField;
-        
-        private System.Nullable<int> WoredaField;
-        
-        private System.Nullable<int> ZoneField;
-        
-        private System.Nullable<int> RegionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelephoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HospitalContactField;
-        
-        private System.Nullable<int> LeadTimeField;
-        
-        private System.Nullable<int> MinField;
-        
-        private System.Nullable<int> MaxField;
-        
-        private System.Nullable<int> SafteyStockField;
-        
-        private System.Nullable<int> AMCRangeField;
-        
-        private System.Nullable<int> ReviewPeriodField;
-        
-        private System.Nullable<double> EOPField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsEvenField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LogoField;
-        
-        private System.Nullable<double> DUMinField;
-        
-        private System.Nullable<double> DUMaxField;
-        
-        private System.Nullable<int> DUAMCRangeField;
-        
-        private System.Nullable<System.DateTime> LastBackUpField;
-        
-        private System.Nullable<int> FacilityIDField;
-        
-        private System.Nullable<long> LastUploadField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HCMISAppVersionField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -2499,1039 +2669,27 @@ namespace PharmInventory.DirectoryService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string HubName {
+        public string CategoryName {
             get {
-                return this.HubNameField;
+                return this.CategoryNameField;
             }
             set {
-                if ((object.ReferenceEquals(this.HubNameField, value) != true)) {
-                    this.HubNameField = value;
-                    this.RaisePropertyChanged("HubName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> Woreda {
-            get {
-                return this.WoredaField;
-            }
-            set {
-                if ((this.WoredaField.Equals(value) != true)) {
-                    this.WoredaField = value;
-                    this.RaisePropertyChanged("Woreda");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<int> Zone {
-            get {
-                return this.ZoneField;
-            }
-            set {
-                if ((this.ZoneField.Equals(value) != true)) {
-                    this.ZoneField = value;
-                    this.RaisePropertyChanged("Zone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<int> Region {
-            get {
-                return this.RegionField;
-            }
-            set {
-                if ((this.RegionField.Equals(value) != true)) {
-                    this.RegionField = value;
-                    this.RaisePropertyChanged("Region");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string Telephone {
-            get {
-                return this.TelephoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
-                    this.TelephoneField = value;
-                    this.RaisePropertyChanged("Telephone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public string HospitalContact {
-            get {
-                return this.HospitalContactField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HospitalContactField, value) != true)) {
-                    this.HospitalContactField = value;
-                    this.RaisePropertyChanged("HospitalContact");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
-        public System.Nullable<int> LeadTime {
-            get {
-                return this.LeadTimeField;
-            }
-            set {
-                if ((this.LeadTimeField.Equals(value) != true)) {
-                    this.LeadTimeField = value;
-                    this.RaisePropertyChanged("LeadTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
-        public System.Nullable<int> Min {
-            get {
-                return this.MinField;
-            }
-            set {
-                if ((this.MinField.Equals(value) != true)) {
-                    this.MinField = value;
-                    this.RaisePropertyChanged("Min");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
-        public System.Nullable<int> Max {
-            get {
-                return this.MaxField;
-            }
-            set {
-                if ((this.MaxField.Equals(value) != true)) {
-                    this.MaxField = value;
-                    this.RaisePropertyChanged("Max");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
-        public System.Nullable<int> SafteyStock {
-            get {
-                return this.SafteyStockField;
-            }
-            set {
-                if ((this.SafteyStockField.Equals(value) != true)) {
-                    this.SafteyStockField = value;
-                    this.RaisePropertyChanged("SafteyStock");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
-        public System.Nullable<int> AMCRange {
-            get {
-                return this.AMCRangeField;
-            }
-            set {
-                if ((this.AMCRangeField.Equals(value) != true)) {
-                    this.AMCRangeField = value;
-                    this.RaisePropertyChanged("AMCRange");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
-        public System.Nullable<int> ReviewPeriod {
-            get {
-                return this.ReviewPeriodField;
-            }
-            set {
-                if ((this.ReviewPeriodField.Equals(value) != true)) {
-                    this.ReviewPeriodField = value;
-                    this.RaisePropertyChanged("ReviewPeriod");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=13)]
-        public System.Nullable<double> EOP {
-            get {
-                return this.EOPField;
-            }
-            set {
-                if ((this.EOPField.Equals(value) != true)) {
-                    this.EOPField = value;
-                    this.RaisePropertyChanged("EOP");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=14)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=15)]
-        public System.Nullable<bool> IsEven {
-            get {
-                return this.IsEvenField;
-            }
-            set {
-                if ((this.IsEvenField.Equals(value) != true)) {
-                    this.IsEvenField = value;
-                    this.RaisePropertyChanged("IsEven");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=16)]
-        public string Logo {
-            get {
-                return this.LogoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LogoField, value) != true)) {
-                    this.LogoField = value;
-                    this.RaisePropertyChanged("Logo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=17)]
-        public System.Nullable<double> DUMin {
-            get {
-                return this.DUMinField;
-            }
-            set {
-                if ((this.DUMinField.Equals(value) != true)) {
-                    this.DUMinField = value;
-                    this.RaisePropertyChanged("DUMin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=18)]
-        public System.Nullable<double> DUMax {
-            get {
-                return this.DUMaxField;
-            }
-            set {
-                if ((this.DUMaxField.Equals(value) != true)) {
-                    this.DUMaxField = value;
-                    this.RaisePropertyChanged("DUMax");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=19)]
-        public System.Nullable<int> DUAMCRange {
-            get {
-                return this.DUAMCRangeField;
-            }
-            set {
-                if ((this.DUAMCRangeField.Equals(value) != true)) {
-                    this.DUAMCRangeField = value;
-                    this.RaisePropertyChanged("DUAMCRange");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=20)]
-        public System.Nullable<System.DateTime> LastBackUp {
-            get {
-                return this.LastBackUpField;
-            }
-            set {
-                if ((this.LastBackUpField.Equals(value) != true)) {
-                    this.LastBackUpField = value;
-                    this.RaisePropertyChanged("LastBackUp");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=21)]
-        public System.Nullable<int> FacilityID {
-            get {
-                return this.FacilityIDField;
-            }
-            set {
-                if ((this.FacilityIDField.Equals(value) != true)) {
-                    this.FacilityIDField = value;
-                    this.RaisePropertyChanged("FacilityID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=22)]
-        public System.Nullable<long> LastUpload {
-            get {
-                return this.LastUploadField;
-            }
-            set {
-                if ((this.LastUploadField.Equals(value) != true)) {
-                    this.LastUploadField = value;
-                    this.RaisePropertyChanged("LastUpload");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=23)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=24)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=25)]
-        public string HCMISAppVersion {
-            get {
-                return this.HCMISAppVersionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HCMISAppVersionField, value) != true)) {
-                    this.HCMISAppVersionField = value;
-                    this.RaisePropertyChanged("HCMISAppVersion");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacilityDetail", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class FacilityDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PharmInventory.DirectoryService.Facility FacilityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityReports> ReportTypesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public PharmInventory.DirectoryService.Facility Facility {
-            get {
-                return this.FacilityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityField, value) != true)) {
-                    this.FacilityField = value;
-                    this.RaisePropertyChanged("Facility");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityReports> ReportTypes {
-            get {
-                return this.ReportTypesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReportTypesField, value) != true)) {
-                    this.ReportTypesField = value;
-                    this.RaisePropertyChanged("ReportTypes");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacilityReports", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class FacilityReports : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> ReportIDField;
-        
-        private System.Nullable<int> FacilityIDField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ReportID {
-            get {
-                return this.ReportIDField;
-            }
-            set {
-                if ((this.ReportIDField.Equals(value) != true)) {
-                    this.ReportIDField = value;
-                    this.RaisePropertyChanged("ReportID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> FacilityID {
-            get {
-                return this.FacilityIDField;
-            }
-            set {
-                if ((this.FacilityIDField.Equals(value) != true)) {
-                    this.FacilityIDField = value;
-                    this.RaisePropertyChanged("FacilityID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacilityReportingPeriod", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class FacilityReportingPeriod : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReportTypes", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class ReportTypes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
+                    this.CategoryNameField = value;
+                    this.RaisePropertyChanged("CategoryName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
+        public string CategoryCode {
             get {
-                return this.DescriptionField;
+                return this.CategoryCodeField;
             }
             set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReportItems", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class ReportItems : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> ReportIDField;
-        
-        private System.Nullable<int> ItemIDField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ReportID {
-            get {
-                return this.ReportIDField;
-            }
-            set {
-                if ((this.ReportIDField.Equals(value) != true)) {
-                    this.ReportIDField = value;
-                    this.RaisePropertyChanged("ReportID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<int> ItemID {
-            get {
-                return this.ItemIDField;
-            }
-            set {
-                if ((this.ItemIDField.Equals(value) != true)) {
-                    this.ItemIDField = value;
-                    this.RaisePropertyChanged("ItemID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FacilityType", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class FacilityType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MasterLookup", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class MasterLookup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
-        public System.Nullable<bool> IsDeleted {
-            get {
-                return this.IsDeletedField;
-            }
-            set {
-                if ((this.IsDeletedField.Equals(value) != true)) {
-                    this.IsDeletedField = value;
-                    this.RaisePropertyChanged("IsDeleted");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
-        public System.Nullable<System.DateTime> UpdateTime {
-            get {
-                return this.UpdateTimeField;
-            }
-            set {
-                if ((this.UpdateTimeField.Equals(value) != true)) {
-                    this.UpdateTimeField = value;
-                    this.RaisePropertyChanged("UpdateTime");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DetailLookup", Namespace="http://ds.pfsa.org/")]
-    [System.SerializableAttribute()]
-    public partial class DetailLookup : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.Nullable<int> IDField;
-        
-        private System.Nullable<int> MasterIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        private System.Nullable<bool> IsDeletedField;
-        
-        private System.Nullable<System.DateTime> UpdateTimeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> ID {
-            get {
-                return this.IDField;
-            }
-            set {
-                if ((this.IDField.Equals(value) != true)) {
-                    this.IDField = value;
-                    this.RaisePropertyChanged("ID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public System.Nullable<int> MasterID {
-            get {
-                return this.MasterIDField;
-            }
-            set {
-                if ((this.MasterIDField.Equals(value) != true)) {
-                    this.MasterIDField = value;
-                    this.RaisePropertyChanged("MasterID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
+                if ((object.ReferenceEquals(this.CategoryCodeField, value) != true)) {
+                    this.CategoryCodeField = value;
+                    this.RaisePropertyChanged("CategoryCode");
                 }
             }
         }
@@ -3585,37 +2743,1560 @@ namespace PharmInventory.DirectoryService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DrugSubCategory", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class DrugSubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubCategoryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubCategoryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private System.Nullable<int> ParentIDField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string SubCategoryName {
+            get {
+                return this.SubCategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubCategoryNameField, value) != true)) {
+                    this.SubCategoryNameField = value;
+                    this.RaisePropertyChanged("SubCategoryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string SubCategoryCode {
+            get {
+                return this.SubCategoryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubCategoryCodeField, value) != true)) {
+                    this.SubCategoryCodeField = value;
+                    this.RaisePropertyChanged("SubCategoryCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<int> ParentID {
+            get {
+                return this.ParentIDField;
+            }
+            set {
+                if ((this.ParentIDField.Equals(value) != true)) {
+                    this.ParentIDField = value;
+                    this.RaisePropertyChanged("ParentID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SupplyCategory", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class SupplyCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        private System.Nullable<int> ParentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> ParentId {
+            get {
+                return this.ParentIdField;
+            }
+            set {
+                if ((this.ParentIdField.Equals(value) != true)) {
+                    this.ParentIdField = value;
+                    this.RaisePropertyChanged("ParentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DrugItemSubCategory", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class DrugItemSubCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> SubCategoryIDField;
+        
+        private System.Nullable<int> ItemIdField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> SubCategoryID {
+            get {
+                return this.SubCategoryIDField;
+            }
+            set {
+                if ((this.SubCategoryIDField.Equals(value) != true)) {
+                    this.SubCategoryIDField = value;
+                    this.RaisePropertyChanged("SubCategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemSupplyCategory", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ItemSupplyCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> CategoryIDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
+                    this.CategoryIDField = value;
+                    this.RaisePropertyChanged("CategoryID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemProgram", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ItemProgram : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private int ProgramIDField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ProgramID {
+            get {
+                return this.ProgramIDField;
+            }
+            set {
+                if ((this.ProgramIDField.Equals(value) != true)) {
+                    this.ProgramIDField = value;
+                    this.RaisePropertyChanged("ProgramID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfItemUnit", Namespace="http://ds.pfsa.org/", ItemName="ItemUnit")]
+    [System.SerializableAttribute()]
+    public class ArrayOfItemUnit : System.Collections.Generic.List<PharmInventory.DirectoryService.ItemUnit> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemUnit", Namespace="http://ds.pfsa.org//Models")]
+    [System.SerializableAttribute()]
+    public partial class ItemUnit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.Nullable<int> IDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private System.Nullable<int> UnitIDField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        private System.Nullable<int> IsDefaultField;
+        
+        private int QtyPerUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> UnitID {
+            get {
+                return this.UnitIDField;
+            }
+            set {
+                if ((this.UnitIDField.Equals(value) != true)) {
+                    this.UnitIDField = value;
+                    this.RaisePropertyChanged("UnitID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> IsDefault {
+            get {
+                return this.IsDefaultField;
+            }
+            set {
+                if ((this.IsDefaultField.Equals(value) != true)) {
+                    this.IsDefaultField = value;
+                    this.RaisePropertyChanged("IsDefault");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public int QtyPerUnit {
+            get {
+                return this.QtyPerUnitField;
+            }
+            set {
+                if ((this.QtyPerUnitField.Equals(value) != true)) {
+                    this.QtyPerUnitField = value;
+                    this.RaisePropertyChanged("QtyPerUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StoreItem", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class StoreItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private System.Nullable<int> StoreIDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private System.Nullable<bool> UsedInThisStoreField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> StoreID {
+            get {
+                return this.StoreIDField;
+            }
+            set {
+                if ((this.StoreIDField.Equals(value) != true)) {
+                    this.StoreIDField = value;
+                    this.RaisePropertyChanged("StoreID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<bool> UsedInThisStore {
+            get {
+                return this.UsedInThisStoreField;
+            }
+            set {
+                if ((this.UsedInThisStoreField.Equals(value) != true)) {
+                    this.UsedInThisStoreField = value;
+                    this.RaisePropertyChanged("UsedInThisStore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemUnitWithUnitDetail", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ItemUnitWithUnitDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private System.Nullable<int> UnitIDField;
+        
+        private System.Nullable<bool> IsDeletedField;
+        
+        private System.Nullable<System.DateTime> UpdateTimeField;
+        
+        private System.Nullable<int> IsDefaultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PharmInventory.DirectoryService.Items ItemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PharmInventory.DirectoryService.Units UnitField;
+        
+        private System.Nullable<int> LegacyIDField;
+        
+        private int QtyPerUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> UnitID {
+            get {
+                return this.UnitIDField;
+            }
+            set {
+                if ((this.UnitIDField.Equals(value) != true)) {
+                    this.UnitIDField = value;
+                    this.RaisePropertyChanged("UnitID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<bool> IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<System.DateTime> UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.Nullable<int> IsDefault {
+            get {
+                return this.IsDefaultField;
+            }
+            set {
+                if ((this.IsDefaultField.Equals(value) != true)) {
+                    this.IsDefaultField = value;
+                    this.RaisePropertyChanged("IsDefault");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public PharmInventory.DirectoryService.Items Item {
+            get {
+                return this.ItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
+                    this.ItemField = value;
+                    this.RaisePropertyChanged("Item");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public PharmInventory.DirectoryService.Units Unit {
+            get {
+                return this.UnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
+                    this.UnitField = value;
+                    this.RaisePropertyChanged("Unit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public System.Nullable<int> LegacyID {
+            get {
+                return this.LegacyIDField;
+            }
+            set {
+                if ((this.LegacyIDField.Equals(value) != true)) {
+                    this.LegacyIDField = value;
+                    this.RaisePropertyChanged("LegacyID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public int QtyPerUnit {
+            get {
+                return this.QtyPerUnitField;
+            }
+            set {
+                if ((this.QtyPerUnitField.Equals(value) != true)) {
+                    this.QtyPerUnitField = value;
+                    this.RaisePropertyChanged("QtyPerUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=10)]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemManufacturer", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class ItemManufacturer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        private System.Nullable<int> ManufacturerIDField;
+        
+        private System.Nullable<int> ItemIDField;
+        
+        private System.Nullable<int> QuantityPerLevelField;
+        
+        private System.Nullable<int> PackageLevelField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public System.Nullable<int> ManufacturerID {
+            get {
+                return this.ManufacturerIDField;
+            }
+            set {
+                if ((this.ManufacturerIDField.Equals(value) != true)) {
+                    this.ManufacturerIDField = value;
+                    this.RaisePropertyChanged("ManufacturerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public System.Nullable<int> ItemID {
+            get {
+                return this.ItemIDField;
+            }
+            set {
+                if ((this.ItemIDField.Equals(value) != true)) {
+                    this.ItemIDField = value;
+                    this.RaisePropertyChanged("ItemID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.Nullable<int> QuantityPerLevel {
+            get {
+                return this.QuantityPerLevelField;
+            }
+            set {
+                if ((this.QuantityPerLevelField.Equals(value) != true)) {
+                    this.QuantityPerLevelField = value;
+                    this.RaisePropertyChanged("QuantityPerLevel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.Nullable<int> PackageLevel {
+            get {
+                return this.PackageLevelField;
+            }
+            set {
+                if ((this.PackageLevelField.Equals(value) != true)) {
+                    this.PackageLevelField = value;
+                    this.RaisePropertyChanged("PackageLevel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Unit", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TextField;
+        
+        private int QtyPerUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int QtyPerUnit {
+            get {
+                return this.QtyPerUnitField;
+            }
+            set {
+                if ((this.QtyPerUnitField.Equals(value) != true)) {
+                    this.QtyPerUnitField = value;
+                    this.RaisePropertyChanged("QtyPerUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StorageType", Namespace="http://ds.pfsa.org/")]
+    [System.SerializableAttribute()]
+    public partial class StorageType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StorageTypeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrefixField;
+        
+        private bool IsDeletedField;
+        
+        private System.DateTime UpdateTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string StorageTypeName {
+            get {
+                return this.StorageTypeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StorageTypeNameField, value) != true)) {
+                    this.StorageTypeNameField = value;
+                    this.RaisePropertyChanged("StorageTypeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Prefix {
+            get {
+                return this.PrefixField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrefixField, value) != true)) {
+                    this.PrefixField = value;
+                    this.RaisePropertyChanged("Prefix");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool IsDeleted {
+            get {
+                return this.IsDeletedField;
+            }
+            set {
+                if ((this.IsDeletedField.Equals(value) != true)) {
+                    this.IsDeletedField = value;
+                    this.RaisePropertyChanged("IsDeleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public System.DateTime UpdateTime {
+            get {
+                return this.UpdateTimeField;
+            }
+            set {
+                if ((this.UpdateTimeField.Equals(value) != true)) {
+                    this.UpdateTimeField = value;
+                    this.RaisePropertyChanged("UpdateTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ds.pfsa.org/", ConfigurationName="DirectoryService.ServiceSoap")]
-    public interface ServiceSoap {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://ds.pfsa.org/", ConfigurationName="DirectoryService.Service1Soap")]
+    public interface Service1Soap {
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetLastVersion", ReplyAction="*")]
         PharmInventory.DirectoryService.GetLastVersionResponse GetLastVersion(PharmInventory.DirectoryService.GetLastVersionRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDrugItems", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetDrugItemsResponse GetDrugItems(PharmInventory.DirectoryService.GetDrugItemsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetABCs", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetABCsResponse GetABCs(PharmInventory.DirectoryService.GetABCsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetVENs", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetVENsResponse GetVENs(PharmInventory.DirectoryService.GetVENsRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetCommodityTypes", ReplyAction="*")]
         PharmInventory.DirectoryService.GetCommodityTypesResponse GetCommodityTypes(PharmInventory.DirectoryService.GetCommodityTypesRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSupplyItems", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetSupplyItemsResponse GetSupplyItems(PharmInventory.DirectoryService.GetSupplyItemsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDosageForms", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetDosageFormsResponse GetDosageForms(PharmInventory.DirectoryService.GetDosageFormsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetModes", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetModesResponse GetModes(PharmInventory.DirectoryService.GetModesRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetAccounts", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetAccountsResponse GetAccounts(PharmInventory.DirectoryService.GetAccountsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSubAccounts", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetSubAccountsResponse GetSubAccounts(PharmInventory.DirectoryService.GetSubAccountsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSubSubAccounts", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetSubSubAccountsResponse GetSubSubAccounts(PharmInventory.DirectoryService.GetSubSubAccountsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetUnits", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetUnitsResponse GetUnits(PharmInventory.DirectoryService.GetUnitsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetPrograms", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetProgramsResponse GetPrograms(PharmInventory.DirectoryService.GetProgramsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetReportTypes", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetReportTypesResponse GetReportTypes(PharmInventory.DirectoryService.GetReportTypesRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetProducts", ReplyAction="*")]
         PharmInventory.DirectoryService.GetProductsResponse GetProducts(PharmInventory.DirectoryService.GetProductsRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDosageForms", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetDosageFormsResponse GetDosageForms(PharmInventory.DirectoryService.GetDosageFormsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetManufacturer", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetManufacturerResponse GetManufacturer(PharmInventory.DirectoryService.GetManufacturerRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetUnits", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetUnitsResponse GetUnits(PharmInventory.DirectoryService.GetUnitsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSuppliers", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetSuppliersResponse GetSuppliers(PharmInventory.DirectoryService.GetSuppliersRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDrugItems", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetDrugItemsResponse GetDrugItems(PharmInventory.DirectoryService.GetDrugItemsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSupplyItems", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetSupplyItemsResponse GetSupplyItems(PharmInventory.DirectoryService.GetSupplyItemsRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemAccessories", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemAccessoriesResponse GetItemAccessories(PharmInventory.DirectoryService.GetItemAccessoriesRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDrugCategory", ReplyAction="*")]
@@ -3626,96 +4307,48 @@ namespace PharmInventory.DirectoryService {
         PharmInventory.DirectoryService.GetDrugSubCategoryResponse GetDrugSubCategory(PharmInventory.DirectoryService.GetDrugSubCategoryRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDrugItemSubCategory", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse GetDrugItemSubCategory(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSupplyCategories", ReplyAction="*")]
         PharmInventory.DirectoryService.GetSupplyCategoriesResponse GetSupplyCategories(PharmInventory.DirectoryService.GetSupplyCategoriesRequest request);
+        
+        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDrugItemSubCategory", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse GetDrugItemSubCategory(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemSupplyCategories", ReplyAction="*")]
         PharmInventory.DirectoryService.GetItemSupplyCategoriesResponse GetItemSupplyCategories(PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetManufacturer", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetManufacturerResponse GetManufacturer(PharmInventory.DirectoryService.GetManufacturerRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemPrograms", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemProgramsResponse GetItemPrograms(PharmInventory.DirectoryService.GetItemProgramsRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetPrograms", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetProgramsResponse GetPrograms(PharmInventory.DirectoryService.GetProgramsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemUnits", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemUnitsResponse GetItemUnits(PharmInventory.DirectoryService.GetItemUnitsRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetSuppliers", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetSuppliersResponse GetSuppliers(PharmInventory.DirectoryService.GetSuppliersRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetStoreItem", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetStoreItemResponse GetStoreItem(PharmInventory.DirectoryService.GetStoreItemRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetRegions", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetRegionsResponse GetRegions(PharmInventory.DirectoryService.GetRegionsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemUnitsWithUnitDetail", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailResponse GetItemUnitsWithUnitDetail(PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetWoredas", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetWoredasResponse GetWoredas(PharmInventory.DirectoryService.GetWoredasRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemManufacturers", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemManufacturersResponse GetItemManufacturers(PharmInventory.DirectoryService.GetItemManufacturersRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetZones", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetZonesResponse GetZones(PharmInventory.DirectoryService.GetZonesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemActivities", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetItemActivitiesResponse GetItemActivities(PharmInventory.DirectoryService.GetItemActivitiesRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetFacilities", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetFacilitiesResponse GetFacilities(PharmInventory.DirectoryService.GetFacilitiesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetUnitsOfIssue", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetUnitsOfIssueResponse GetUnitsOfIssue(PharmInventory.DirectoryService.GetUnitsOfIssueRequest request);
         
         // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetFacilityForHubs", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetFacilityForHubsResponse GetFacilityForHubs(PharmInventory.DirectoryService.GetFacilityForHubsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetHubs", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetHubsResponse GetHubs(PharmInventory.DirectoryService.GetHubsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetFacilityDetail", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetFacilityDetailResponse GetFacilityDetail(PharmInventory.DirectoryService.GetFacilityDetailRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetFacilityReportingPeriods", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetFacilityReportingPeriodsResponse GetFacilityReportingPeriods(PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetReportTypes", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetReportTypesResponse GetReportTypes(PharmInventory.DirectoryService.GetReportTypesRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetReportItems", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetReportItemsResponse GetReportItems(PharmInventory.DirectoryService.GetReportItemsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetItemsInReportType", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetItemsInReportTypeResponse GetItemsInReportType(PharmInventory.DirectoryService.GetItemsInReportTypeRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetFacilityTypes", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetFacilityTypesResponse GetFacilityTypes(PharmInventory.DirectoryService.GetFacilityTypesRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetMasterLookups", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetMasterLookupsResponse GetMasterLookups(PharmInventory.DirectoryService.GetMasterLookupsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDetailLookups", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetDetailLookupsResponse GetDetailLookups(PharmInventory.DirectoryService.GetDetailLookupsRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetDetailsOfMasterID", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetDetailsOfMasterIDResponse GetDetailsOfMasterID(PharmInventory.DirectoryService.GetDetailsOfMasterIDRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetHubVersionString", ReplyAction="*")]
-        PharmInventory.DirectoryService.GetHubVersionStringResponse GetHubVersionString(PharmInventory.DirectoryService.GetHubVersionStringRequest request);
-        
-        // CODEGEN: Generating message contract since element name userName from namespace http://ds.pfsa.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/SetHubVersionString", ReplyAction="*")]
-        PharmInventory.DirectoryService.SetHubVersionStringResponse SetHubVersionString(PharmInventory.DirectoryService.SetHubVersionStringRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://ds.pfsa.org/GetStorageTypes", ReplyAction="*")]
+        PharmInventory.DirectoryService.GetStorageTypesResponse GetStorageTypes(PharmInventory.DirectoryService.GetStorageTypesRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3794,15 +4427,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDrugItemsRequest {
+    public partial class GetABCsRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItems", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDrugItemsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetABCs", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetABCsRequestBody Body;
         
-        public GetDrugItemsRequest() {
+        public GetABCsRequest() {
         }
         
-        public GetDrugItemsRequest(PharmInventory.DirectoryService.GetDrugItemsRequestBody Body) {
+        public GetABCsRequest(PharmInventory.DirectoryService.GetABCsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -3811,7 +4444,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDrugItemsRequestBody {
+    public partial class GetABCsRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -3825,10 +4458,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetDrugItemsRequestBody() {
+        public GetABCsRequestBody() {
         }
         
-        public GetDrugItemsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetABCsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -3840,15 +4473,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDrugItemsResponse {
+    public partial class GetABCsResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDrugItemsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetABCsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetABCsResponseBody Body;
         
-        public GetDrugItemsResponse() {
+        public GetABCsResponse() {
         }
         
-        public GetDrugItemsResponse(PharmInventory.DirectoryService.GetDrugItemsResponseBody Body) {
+        public GetABCsResponse(PharmInventory.DirectoryService.GetABCsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -3857,16 +4490,96 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDrugItemsResponseBody {
+    public partial class GetABCsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItemsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ABC> GetABCsResult;
         
-        public GetDrugItemsResponseBody() {
+        public GetABCsResponseBody() {
         }
         
-        public GetDrugItemsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItemsResult) {
-            this.GetDrugItemsResult = GetDrugItemsResult;
+        public GetABCsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ABC> GetABCsResult) {
+            this.GetABCsResult = GetABCsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetVENsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetVENs", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetVENsRequestBody Body;
+        
+        public GetVENsRequest() {
+        }
+        
+        public GetVENsRequest(PharmInventory.DirectoryService.GetVENsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetVENsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetVENsRequestBody() {
+        }
+        
+        public GetVENsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetVENsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetVENsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetVENsResponseBody Body;
+        
+        public GetVENsResponse() {
+        }
+        
+        public GetVENsResponse(PharmInventory.DirectoryService.GetVENsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetVENsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.VEN> GetVENsResult;
+        
+        public GetVENsResponseBody() {
+        }
+        
+        public GetVENsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.VEN> GetVENsResult) {
+            this.GetVENsResult = GetVENsResult;
         }
     }
     
@@ -3954,15 +4667,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetSupplyItemsRequest {
+    public partial class GetDosageFormsRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSupplyItems", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetSupplyItemsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDosageForms", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDosageFormsRequestBody Body;
         
-        public GetSupplyItemsRequest() {
+        public GetDosageFormsRequest() {
         }
         
-        public GetSupplyItemsRequest(PharmInventory.DirectoryService.GetSupplyItemsRequestBody Body) {
+        public GetDosageFormsRequest(PharmInventory.DirectoryService.GetDosageFormsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -3971,7 +4684,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetSupplyItemsRequestBody {
+    public partial class GetDosageFormsRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -3985,10 +4698,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetSupplyItemsRequestBody() {
+        public GetDosageFormsRequestBody() {
         }
         
-        public GetSupplyItemsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetDosageFormsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4000,15 +4713,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetSupplyItemsResponse {
+    public partial class GetDosageFormsResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSupplyItemsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetSupplyItemsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDosageFormsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDosageFormsResponseBody Body;
         
-        public GetSupplyItemsResponse() {
+        public GetDosageFormsResponse() {
         }
         
-        public GetSupplyItemsResponse(PharmInventory.DirectoryService.GetSupplyItemsResponseBody Body) {
+        public GetDosageFormsResponse(PharmInventory.DirectoryService.GetDosageFormsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4017,16 +4730,576 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetSupplyItemsResponseBody {
+    public partial class GetDosageFormsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItemsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.DosageForm> GetDosageFormsResult;
         
-        public GetSupplyItemsResponseBody() {
+        public GetDosageFormsResponseBody() {
         }
         
-        public GetSupplyItemsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItemsResult) {
-            this.GetSupplyItemsResult = GetSupplyItemsResult;
+        public GetDosageFormsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DosageForm> GetDosageFormsResult) {
+            this.GetDosageFormsResult = GetDosageFormsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetModesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetModes", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetModesRequestBody Body;
+        
+        public GetModesRequest() {
+        }
+        
+        public GetModesRequest(PharmInventory.DirectoryService.GetModesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetModesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetModesRequestBody() {
+        }
+        
+        public GetModesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetModesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetModesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetModesResponseBody Body;
+        
+        public GetModesResponse() {
+        }
+        
+        public GetModesResponse(PharmInventory.DirectoryService.GetModesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetModesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreType> GetModesResult;
+        
+        public GetModesResponseBody() {
+        }
+        
+        public GetModesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.StoreType> GetModesResult) {
+            this.GetModesResult = GetModesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAccountsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAccounts", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetAccountsRequestBody Body;
+        
+        public GetAccountsRequest() {
+        }
+        
+        public GetAccountsRequest(PharmInventory.DirectoryService.GetAccountsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetAccountsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetAccountsRequestBody() {
+        }
+        
+        public GetAccountsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAccountsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAccountsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetAccountsResponseBody Body;
+        
+        public GetAccountsResponse() {
+        }
+        
+        public GetAccountsResponse(PharmInventory.DirectoryService.GetAccountsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetAccountsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Stores> GetAccountsResult;
+        
+        public GetAccountsResponseBody() {
+        }
+        
+        public GetAccountsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Stores> GetAccountsResult) {
+            this.GetAccountsResult = GetAccountsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSubAccountsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSubAccounts", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSubAccountsRequestBody Body;
+        
+        public GetSubAccountsRequest() {
+        }
+        
+        public GetSubAccountsRequest(PharmInventory.DirectoryService.GetSubAccountsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSubAccountsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetSubAccountsRequestBody() {
+        }
+        
+        public GetSubAccountsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSubAccountsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSubAccountsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSubAccountsResponseBody Body;
+        
+        public GetSubAccountsResponse() {
+        }
+        
+        public GetSubAccountsResponse(PharmInventory.DirectoryService.GetSubAccountsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSubAccountsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.SubAccount> GetSubAccountsResult;
+        
+        public GetSubAccountsResponseBody() {
+        }
+        
+        public GetSubAccountsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.SubAccount> GetSubAccountsResult) {
+            this.GetSubAccountsResult = GetSubAccountsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSubSubAccountsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSubSubAccounts", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSubSubAccountsRequestBody Body;
+        
+        public GetSubSubAccountsRequest() {
+        }
+        
+        public GetSubSubAccountsRequest(PharmInventory.DirectoryService.GetSubSubAccountsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSubSubAccountsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetSubSubAccountsRequestBody() {
+        }
+        
+        public GetSubSubAccountsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSubSubAccountsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSubSubAccountsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSubSubAccountsResponseBody Body;
+        
+        public GetSubSubAccountsResponse() {
+        }
+        
+        public GetSubSubAccountsResponse(PharmInventory.DirectoryService.GetSubSubAccountsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSubSubAccountsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.SubSubAccount> GetSubSubAccountsResult;
+        
+        public GetSubSubAccountsResponseBody() {
+        }
+        
+        public GetSubSubAccountsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.SubSubAccount> GetSubSubAccountsResult) {
+            this.GetSubSubAccountsResult = GetSubSubAccountsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUnitsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnits", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetUnitsRequestBody Body;
+        
+        public GetUnitsRequest() {
+        }
+        
+        public GetUnitsRequest(PharmInventory.DirectoryService.GetUnitsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetUnitsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetUnitsRequestBody() {
+        }
+        
+        public GetUnitsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetUnitsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnitsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetUnitsResponseBody Body;
+        
+        public GetUnitsResponse() {
+        }
+        
+        public GetUnitsResponse(PharmInventory.DirectoryService.GetUnitsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetUnitsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Units> GetUnitsResult;
+        
+        public GetUnitsResponseBody() {
+        }
+        
+        public GetUnitsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Units> GetUnitsResult) {
+            this.GetUnitsResult = GetUnitsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetProgramsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPrograms", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetProgramsRequestBody Body;
+        
+        public GetProgramsRequest() {
+        }
+        
+        public GetProgramsRequest(PharmInventory.DirectoryService.GetProgramsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetProgramsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetProgramsRequestBody() {
+        }
+        
+        public GetProgramsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetProgramsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetProgramsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetProgramsResponseBody Body;
+        
+        public GetProgramsResponse() {
+        }
+        
+        public GetProgramsResponse(PharmInventory.DirectoryService.GetProgramsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetProgramsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Program> GetProgramsResult;
+        
+        public GetProgramsResponseBody() {
+        }
+        
+        public GetProgramsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Program> GetProgramsResult) {
+            this.GetProgramsResult = GetProgramsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetReportTypesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportTypes", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetReportTypesRequestBody Body;
+        
+        public GetReportTypesRequest() {
+        }
+        
+        public GetReportTypesRequest(PharmInventory.DirectoryService.GetReportTypesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetReportTypesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetReportTypesRequestBody() {
+        }
+        
+        public GetReportTypesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetReportTypesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportTypesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetReportTypesResponseBody Body;
+        
+        public GetReportTypesResponse() {
+        }
+        
+        public GetReportTypesResponse(PharmInventory.DirectoryService.GetReportTypesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetReportTypesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportTypes> GetReportTypesResult;
+        
+        public GetReportTypesResponseBody() {
+        }
+        
+        public GetReportTypesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ReportTypes> GetReportTypesResult) {
+            this.GetReportTypesResult = GetReportTypesResult;
         }
     }
     
@@ -4114,15 +5387,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDosageFormsRequest {
+    public partial class GetManufacturerRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDosageForms", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDosageFormsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetManufacturer", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetManufacturerRequestBody Body;
         
-        public GetDosageFormsRequest() {
+        public GetManufacturerRequest() {
         }
         
-        public GetDosageFormsRequest(PharmInventory.DirectoryService.GetDosageFormsRequestBody Body) {
+        public GetManufacturerRequest(PharmInventory.DirectoryService.GetManufacturerRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4131,7 +5404,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDosageFormsRequestBody {
+    public partial class GetManufacturerRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4145,10 +5418,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetDosageFormsRequestBody() {
+        public GetManufacturerRequestBody() {
         }
         
-        public GetDosageFormsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetManufacturerRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4160,15 +5433,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDosageFormsResponse {
+    public partial class GetManufacturerResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDosageFormsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDosageFormsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetManufacturerResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetManufacturerResponseBody Body;
         
-        public GetDosageFormsResponse() {
+        public GetManufacturerResponse() {
         }
         
-        public GetDosageFormsResponse(PharmInventory.DirectoryService.GetDosageFormsResponseBody Body) {
+        public GetManufacturerResponse(PharmInventory.DirectoryService.GetManufacturerResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4177,16 +5450,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDosageFormsResponseBody {
+    public partial class GetManufacturerResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DosageForm> GetDosageFormsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturerResult;
         
-        public GetDosageFormsResponseBody() {
+        public GetManufacturerResponseBody() {
         }
         
-        public GetDosageFormsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DosageForm> GetDosageFormsResult) {
-            this.GetDosageFormsResult = GetDosageFormsResult;
+        public GetManufacturerResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturerResult) {
+            this.GetManufacturerResult = GetManufacturerResult;
         }
     }
     
@@ -4194,15 +5467,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetUnitsRequest {
+    public partial class GetSuppliersRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnits", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetUnitsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSuppliers", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSuppliersRequestBody Body;
         
-        public GetUnitsRequest() {
+        public GetSuppliersRequest() {
         }
         
-        public GetUnitsRequest(PharmInventory.DirectoryService.GetUnitsRequestBody Body) {
+        public GetSuppliersRequest(PharmInventory.DirectoryService.GetSuppliersRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4211,7 +5484,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetUnitsRequestBody {
+    public partial class GetSuppliersRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4225,10 +5498,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetUnitsRequestBody() {
+        public GetSuppliersRequestBody() {
         }
         
-        public GetUnitsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetSuppliersRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4240,15 +5513,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetUnitsResponse {
+    public partial class GetSuppliersResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnitsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetUnitsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSuppliersResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSuppliersResponseBody Body;
         
-        public GetUnitsResponse() {
+        public GetSuppliersResponse() {
         }
         
-        public GetUnitsResponse(PharmInventory.DirectoryService.GetUnitsResponseBody Body) {
+        public GetSuppliersResponse(PharmInventory.DirectoryService.GetSuppliersResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4257,16 +5530,256 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetUnitsResponseBody {
+    public partial class GetSuppliersResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnitsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliersResult;
         
-        public GetUnitsResponseBody() {
+        public GetSuppliersResponseBody() {
         }
         
-        public GetUnitsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnitsResult) {
-            this.GetUnitsResult = GetUnitsResult;
+        public GetSuppliersResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliersResult) {
+            this.GetSuppliersResult = GetSuppliersResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDrugItemsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItems", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDrugItemsRequestBody Body;
+        
+        public GetDrugItemsRequest() {
+        }
+        
+        public GetDrugItemsRequest(PharmInventory.DirectoryService.GetDrugItemsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetDrugItemsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetDrugItemsRequestBody() {
+        }
+        
+        public GetDrugItemsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDrugItemsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDrugItemsResponseBody Body;
+        
+        public GetDrugItemsResponse() {
+        }
+        
+        public GetDrugItemsResponse(PharmInventory.DirectoryService.GetDrugItemsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetDrugItemsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItemsResult;
+        
+        public GetDrugItemsResponseBody() {
+        }
+        
+        public GetDrugItemsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItemsResult) {
+            this.GetDrugItemsResult = GetDrugItemsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSupplyItemsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSupplyItems", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSupplyItemsRequestBody Body;
+        
+        public GetSupplyItemsRequest() {
+        }
+        
+        public GetSupplyItemsRequest(PharmInventory.DirectoryService.GetSupplyItemsRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSupplyItemsRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetSupplyItemsRequestBody() {
+        }
+        
+        public GetSupplyItemsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSupplyItemsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSupplyItemsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetSupplyItemsResponseBody Body;
+        
+        public GetSupplyItemsResponse() {
+        }
+        
+        public GetSupplyItemsResponse(PharmInventory.DirectoryService.GetSupplyItemsResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetSupplyItemsResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItemsResult;
+        
+        public GetSupplyItemsResponseBody() {
+        }
+        
+        public GetSupplyItemsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItemsResult) {
+            this.GetSupplyItemsResult = GetSupplyItemsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetItemAccessoriesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemAccessories", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemAccessoriesRequestBody Body;
+        
+        public GetItemAccessoriesRequest() {
+        }
+        
+        public GetItemAccessoriesRequest(PharmInventory.DirectoryService.GetItemAccessoriesRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetItemAccessoriesRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetItemAccessoriesRequestBody() {
+        }
+        
+        public GetItemAccessoriesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetItemAccessoriesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemAccessoriesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemAccessoriesResponseBody Body;
+        
+        public GetItemAccessoriesResponse() {
+        }
+        
+        public GetItemAccessoriesResponse(PharmInventory.DirectoryService.GetItemAccessoriesResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetItemAccessoriesResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemAccessories> GetItemAccessoriesResult;
+        
+        public GetItemAccessoriesResponseBody() {
+        }
+        
+        public GetItemAccessoriesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ItemAccessories> GetItemAccessoriesResult) {
+            this.GetItemAccessoriesResult = GetItemAccessoriesResult;
         }
     }
     
@@ -4434,86 +5947,6 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDrugItemSubCategoryRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemSubCategory", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody Body;
-        
-        public GetDrugItemSubCategoryRequest() {
-        }
-        
-        public GetDrugItemSubCategoryRequest(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDrugItemSubCategoryRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetDrugItemSubCategoryRequestBody() {
-        }
-        
-        public GetDrugItemSubCategoryRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDrugItemSubCategoryResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemSubCategoryResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDrugItemSubCategoryResponseBody Body;
-        
-        public GetDrugItemSubCategoryResponse() {
-        }
-        
-        public GetDrugItemSubCategoryResponse(PharmInventory.DirectoryService.GetDrugItemSubCategoryResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDrugItemSubCategoryResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategoryResult;
-        
-        public GetDrugItemSubCategoryResponseBody() {
-        }
-        
-        public GetDrugItemSubCategoryResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategoryResult) {
-            this.GetDrugItemSubCategoryResult = GetDrugItemSubCategoryResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetSupplyCategoriesRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSupplyCategories", Namespace="http://ds.pfsa.org/", Order=0)]
@@ -4587,6 +6020,86 @@ namespace PharmInventory.DirectoryService {
         
         public GetSupplyCategoriesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.SupplyCategory> GetSupplyCategoriesResult) {
             this.GetSupplyCategoriesResult = GetSupplyCategoriesResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDrugItemSubCategoryRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemSubCategory", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody Body;
+        
+        public GetDrugItemSubCategoryRequest() {
+        }
+        
+        public GetDrugItemSubCategoryRequest(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetDrugItemSubCategoryRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string userName;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public System.Nullable<int> lastVersion;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public System.Nullable<System.DateTime> lastDateTime;
+        
+        public GetDrugItemSubCategoryRequestBody() {
+        }
+        
+        public GetDrugItemSubCategoryRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            this.userName = userName;
+            this.password = password;
+            this.lastVersion = lastVersion;
+            this.lastDateTime = lastDateTime;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetDrugItemSubCategoryResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDrugItemSubCategoryResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetDrugItemSubCategoryResponseBody Body;
+        
+        public GetDrugItemSubCategoryResponse() {
+        }
+        
+        public GetDrugItemSubCategoryResponse(PharmInventory.DirectoryService.GetDrugItemSubCategoryResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
+    public partial class GetDrugItemSubCategoryResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategoryResult;
+        
+        public GetDrugItemSubCategoryResponseBody() {
+        }
+        
+        public GetDrugItemSubCategoryResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategoryResult) {
+            this.GetDrugItemSubCategoryResult = GetDrugItemSubCategoryResult;
         }
     }
     
@@ -4674,15 +6187,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetManufacturerRequest {
+    public partial class GetItemProgramsRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetManufacturer", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetManufacturerRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemPrograms", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemProgramsRequestBody Body;
         
-        public GetManufacturerRequest() {
+        public GetItemProgramsRequest() {
         }
         
-        public GetManufacturerRequest(PharmInventory.DirectoryService.GetManufacturerRequestBody Body) {
+        public GetItemProgramsRequest(PharmInventory.DirectoryService.GetItemProgramsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4691,7 +6204,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetManufacturerRequestBody {
+    public partial class GetItemProgramsRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4705,10 +6218,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetManufacturerRequestBody() {
+        public GetItemProgramsRequestBody() {
         }
         
-        public GetManufacturerRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetItemProgramsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4720,15 +6233,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetManufacturerResponse {
+    public partial class GetItemProgramsResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetManufacturerResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetManufacturerResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemProgramsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemProgramsResponseBody Body;
         
-        public GetManufacturerResponse() {
+        public GetItemProgramsResponse() {
         }
         
-        public GetManufacturerResponse(PharmInventory.DirectoryService.GetManufacturerResponseBody Body) {
+        public GetItemProgramsResponse(PharmInventory.DirectoryService.GetItemProgramsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4737,16 +6250,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetManufacturerResponseBody {
+    public partial class GetItemProgramsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturerResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemProgram> GetItemProgramsResult;
         
-        public GetManufacturerResponseBody() {
+        public GetItemProgramsResponseBody() {
         }
         
-        public GetManufacturerResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturerResult) {
-            this.GetManufacturerResult = GetManufacturerResult;
+        public GetItemProgramsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ItemProgram> GetItemProgramsResult) {
+            this.GetItemProgramsResult = GetItemProgramsResult;
         }
     }
     
@@ -4754,15 +6267,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetProgramsRequest {
+    public partial class GetItemUnitsRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPrograms", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetProgramsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemUnits", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemUnitsRequestBody Body;
         
-        public GetProgramsRequest() {
+        public GetItemUnitsRequest() {
         }
         
-        public GetProgramsRequest(PharmInventory.DirectoryService.GetProgramsRequestBody Body) {
+        public GetItemUnitsRequest(PharmInventory.DirectoryService.GetItemUnitsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4771,7 +6284,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetProgramsRequestBody {
+    public partial class GetItemUnitsRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4785,10 +6298,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetProgramsRequestBody() {
+        public GetItemUnitsRequestBody() {
         }
         
-        public GetProgramsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetItemUnitsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4800,15 +6313,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetProgramsResponse {
+    public partial class GetItemUnitsResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetProgramsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetProgramsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemUnitsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemUnitsResponseBody Body;
         
-        public GetProgramsResponse() {
+        public GetItemUnitsResponse() {
         }
         
-        public GetProgramsResponse(PharmInventory.DirectoryService.GetProgramsResponseBody Body) {
+        public GetItemUnitsResponse(PharmInventory.DirectoryService.GetItemUnitsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4817,16 +6330,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetProgramsResponseBody {
+    public partial class GetItemUnitsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Program> GetProgramsResult;
+        public PharmInventory.DirectoryService.ArrayOfItemUnit GetItemUnitsResult;
         
-        public GetProgramsResponseBody() {
+        public GetItemUnitsResponseBody() {
         }
         
-        public GetProgramsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Program> GetProgramsResult) {
-            this.GetProgramsResult = GetProgramsResult;
+        public GetItemUnitsResponseBody(PharmInventory.DirectoryService.ArrayOfItemUnit GetItemUnitsResult) {
+            this.GetItemUnitsResult = GetItemUnitsResult;
         }
     }
     
@@ -4834,15 +6347,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetSuppliersRequest {
+    public partial class GetStoreItemRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSuppliers", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetSuppliersRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetStoreItem", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetStoreItemRequestBody Body;
         
-        public GetSuppliersRequest() {
+        public GetStoreItemRequest() {
         }
         
-        public GetSuppliersRequest(PharmInventory.DirectoryService.GetSuppliersRequestBody Body) {
+        public GetStoreItemRequest(PharmInventory.DirectoryService.GetStoreItemRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4851,7 +6364,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetSuppliersRequestBody {
+    public partial class GetStoreItemRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4865,10 +6378,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetSuppliersRequestBody() {
+        public GetStoreItemRequestBody() {
         }
         
-        public GetSuppliersRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetStoreItemRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4880,15 +6393,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetSuppliersResponse {
+    public partial class GetStoreItemResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSuppliersResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetSuppliersResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetStoreItemResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetStoreItemResponseBody Body;
         
-        public GetSuppliersResponse() {
+        public GetStoreItemResponse() {
         }
         
-        public GetSuppliersResponse(PharmInventory.DirectoryService.GetSuppliersResponseBody Body) {
+        public GetStoreItemResponse(PharmInventory.DirectoryService.GetStoreItemResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4897,16 +6410,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetSuppliersResponseBody {
+    public partial class GetStoreItemResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliersResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetStoreItemResult;
         
-        public GetSuppliersResponseBody() {
+        public GetStoreItemResponseBody() {
         }
         
-        public GetSuppliersResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliersResult) {
-            this.GetSuppliersResult = GetSuppliersResult;
+        public GetStoreItemResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetStoreItemResult) {
+            this.GetStoreItemResult = GetStoreItemResult;
         }
     }
     
@@ -4914,15 +6427,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetRegionsRequest {
+    public partial class GetItemUnitsWithUnitDetailRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetRegions", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetRegionsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemUnitsWithUnitDetail", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequestBody Body;
         
-        public GetRegionsRequest() {
+        public GetItemUnitsWithUnitDetailRequest() {
         }
         
-        public GetRegionsRequest(PharmInventory.DirectoryService.GetRegionsRequestBody Body) {
+        public GetItemUnitsWithUnitDetailRequest(PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -4931,7 +6444,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetRegionsRequestBody {
+    public partial class GetItemUnitsWithUnitDetailRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -4945,10 +6458,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetRegionsRequestBody() {
+        public GetItemUnitsWithUnitDetailRequestBody() {
         }
         
-        public GetRegionsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetItemUnitsWithUnitDetailRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -4960,15 +6473,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetRegionsResponse {
+    public partial class GetItemUnitsWithUnitDetailResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetRegionsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetRegionsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemUnitsWithUnitDetailResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailResponseBody Body;
         
-        public GetRegionsResponse() {
+        public GetItemUnitsWithUnitDetailResponse() {
         }
         
-        public GetRegionsResponse(PharmInventory.DirectoryService.GetRegionsResponseBody Body) {
+        public GetItemUnitsWithUnitDetailResponse(PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -4977,16 +6490,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetRegionsResponseBody {
+    public partial class GetItemUnitsWithUnitDetailResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Region> GetRegionsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemUnitWithUnitDetail> GetItemUnitsWithUnitDetailResult;
         
-        public GetRegionsResponseBody() {
+        public GetItemUnitsWithUnitDetailResponseBody() {
         }
         
-        public GetRegionsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Region> GetRegionsResult) {
-            this.GetRegionsResult = GetRegionsResult;
+        public GetItemUnitsWithUnitDetailResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ItemUnitWithUnitDetail> GetItemUnitsWithUnitDetailResult) {
+            this.GetItemUnitsWithUnitDetailResult = GetItemUnitsWithUnitDetailResult;
         }
     }
     
@@ -4994,15 +6507,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetWoredasRequest {
+    public partial class GetItemManufacturersRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetWoredas", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetWoredasRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemManufacturers", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemManufacturersRequestBody Body;
         
-        public GetWoredasRequest() {
+        public GetItemManufacturersRequest() {
         }
         
-        public GetWoredasRequest(PharmInventory.DirectoryService.GetWoredasRequestBody Body) {
+        public GetItemManufacturersRequest(PharmInventory.DirectoryService.GetItemManufacturersRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -5011,7 +6524,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetWoredasRequestBody {
+    public partial class GetItemManufacturersRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -5025,10 +6538,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetWoredasRequestBody() {
+        public GetItemManufacturersRequestBody() {
         }
         
-        public GetWoredasRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetItemManufacturersRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -5040,15 +6553,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetWoredasResponse {
+    public partial class GetItemManufacturersResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetWoredasResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetWoredasResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemManufacturersResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemManufacturersResponseBody Body;
         
-        public GetWoredasResponse() {
+        public GetItemManufacturersResponse() {
         }
         
-        public GetWoredasResponse(PharmInventory.DirectoryService.GetWoredasResponseBody Body) {
+        public GetItemManufacturersResponse(PharmInventory.DirectoryService.GetItemManufacturersResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -5057,16 +6570,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetWoredasResponseBody {
+    public partial class GetItemManufacturersResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Woreda> GetWoredasResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemManufacturer> GetItemManufacturersResult;
         
-        public GetWoredasResponseBody() {
+        public GetItemManufacturersResponseBody() {
         }
         
-        public GetWoredasResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Woreda> GetWoredasResult) {
-            this.GetWoredasResult = GetWoredasResult;
+        public GetItemManufacturersResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ItemManufacturer> GetItemManufacturersResult) {
+            this.GetItemManufacturersResult = GetItemManufacturersResult;
         }
     }
     
@@ -5074,15 +6587,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetZonesRequest {
+    public partial class GetItemActivitiesRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetZones", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetZonesRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemActivities", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemActivitiesRequestBody Body;
         
-        public GetZonesRequest() {
+        public GetItemActivitiesRequest() {
         }
         
-        public GetZonesRequest(PharmInventory.DirectoryService.GetZonesRequestBody Body) {
+        public GetItemActivitiesRequest(PharmInventory.DirectoryService.GetItemActivitiesRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -5091,7 +6604,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetZonesRequestBody {
+    public partial class GetItemActivitiesRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -5105,10 +6618,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetZonesRequestBody() {
+        public GetItemActivitiesRequestBody() {
         }
         
-        public GetZonesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetItemActivitiesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -5120,15 +6633,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetZonesResponse {
+    public partial class GetItemActivitiesResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetZonesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetZonesResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemActivitiesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetItemActivitiesResponseBody Body;
         
-        public GetZonesResponse() {
+        public GetItemActivitiesResponse() {
         }
         
-        public GetZonesResponse(PharmInventory.DirectoryService.GetZonesResponseBody Body) {
+        public GetItemActivitiesResponse(PharmInventory.DirectoryService.GetItemActivitiesResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -5137,16 +6650,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetZonesResponseBody {
+    public partial class GetItemActivitiesResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Zone> GetZonesResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetItemActivitiesResult;
         
-        public GetZonesResponseBody() {
+        public GetItemActivitiesResponseBody() {
         }
         
-        public GetZonesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Zone> GetZonesResult) {
-            this.GetZonesResult = GetZonesResult;
+        public GetItemActivitiesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetItemActivitiesResult) {
+            this.GetItemActivitiesResult = GetItemActivitiesResult;
         }
     }
     
@@ -5154,15 +6667,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilitiesRequest {
+    public partial class GetUnitsOfIssueRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilities", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilitiesRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnitsOfIssue", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetUnitsOfIssueRequestBody Body;
         
-        public GetFacilitiesRequest() {
+        public GetUnitsOfIssueRequest() {
         }
         
-        public GetFacilitiesRequest(PharmInventory.DirectoryService.GetFacilitiesRequestBody Body) {
+        public GetUnitsOfIssueRequest(PharmInventory.DirectoryService.GetUnitsOfIssueRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -5171,7 +6684,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilitiesRequestBody {
+    public partial class GetUnitsOfIssueRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -5185,10 +6698,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetFacilitiesRequestBody() {
+        public GetUnitsOfIssueRequestBody() {
         }
         
-        public GetFacilitiesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetUnitsOfIssueRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -5200,15 +6713,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilitiesResponse {
+    public partial class GetUnitsOfIssueResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilitiesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilitiesResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnitsOfIssueResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetUnitsOfIssueResponseBody Body;
         
-        public GetFacilitiesResponse() {
+        public GetUnitsOfIssueResponse() {
         }
         
-        public GetFacilitiesResponse(PharmInventory.DirectoryService.GetFacilitiesResponseBody Body) {
+        public GetUnitsOfIssueResponse(PharmInventory.DirectoryService.GetUnitsOfIssueResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -5217,16 +6730,16 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilitiesResponseBody {
+    public partial class GetUnitsOfIssueResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilitiesResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnitsOfIssueResult;
         
-        public GetFacilitiesResponseBody() {
+        public GetUnitsOfIssueResponseBody() {
         }
         
-        public GetFacilitiesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilitiesResult) {
-            this.GetFacilitiesResult = GetFacilitiesResult;
+        public GetUnitsOfIssueResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnitsOfIssueResult) {
+            this.GetUnitsOfIssueResult = GetUnitsOfIssueResult;
         }
     }
     
@@ -5234,15 +6747,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityForHubsRequest {
+    public partial class GetStorageTypesRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityForHubs", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityForHubsRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetStorageTypes", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetStorageTypesRequestBody Body;
         
-        public GetFacilityForHubsRequest() {
+        public GetStorageTypesRequest() {
         }
         
-        public GetFacilityForHubsRequest(PharmInventory.DirectoryService.GetFacilityForHubsRequestBody Body) {
+        public GetStorageTypesRequest(PharmInventory.DirectoryService.GetStorageTypesRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -5251,251 +6764,7 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityForHubsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int hubID;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetFacilityForHubsRequestBody() {
-        }
-        
-        public GetFacilityForHubsRequestBody(string userName, string password, int hubID, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.hubID = hubID;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityForHubsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityForHubsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityForHubsResponseBody Body;
-        
-        public GetFacilityForHubsResponse() {
-        }
-        
-        public GetFacilityForHubsResponse(PharmInventory.DirectoryService.GetFacilityForHubsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityForHubsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilityForHubsResult;
-        
-        public GetFacilityForHubsResponseBody() {
-        }
-        
-        public GetFacilityForHubsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilityForHubsResult) {
-            this.GetFacilityForHubsResult = GetFacilityForHubsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetHubsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetHubs", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetHubsRequestBody Body;
-        
-        public GetHubsRequest() {
-        }
-        
-        public GetHubsRequest(PharmInventory.DirectoryService.GetHubsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetHubsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int hubID;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetHubsRequestBody() {
-        }
-        
-        public GetHubsRequestBody(string userName, string password, int hubID, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.hubID = hubID;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetHubsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetHubsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetHubsResponseBody Body;
-        
-        public GetHubsResponse() {
-        }
-        
-        public GetHubsResponse(PharmInventory.DirectoryService.GetHubsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetHubsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Hub> GetHubsResult;
-        
-        public GetHubsResponseBody() {
-        }
-        
-        public GetHubsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.Hub> GetHubsResult) {
-            this.GetHubsResult = GetHubsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityDetailRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityDetail", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityDetailRequestBody Body;
-        
-        public GetFacilityDetailRequest() {
-        }
-        
-        public GetFacilityDetailRequest(PharmInventory.DirectoryService.GetFacilityDetailRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityDetailRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int facilityID;
-        
-        public GetFacilityDetailRequestBody() {
-        }
-        
-        public GetFacilityDetailRequestBody(string userName, string password, int facilityID) {
-            this.userName = userName;
-            this.password = password;
-            this.facilityID = facilityID;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityDetailResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityDetailResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityDetailResponseBody Body;
-        
-        public GetFacilityDetailResponse() {
-        }
-        
-        public GetFacilityDetailResponse(PharmInventory.DirectoryService.GetFacilityDetailResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityDetailResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public PharmInventory.DirectoryService.FacilityDetail GetFacilityDetailResult;
-        
-        public GetFacilityDetailResponseBody() {
-        }
-        
-        public GetFacilityDetailResponseBody(PharmInventory.DirectoryService.FacilityDetail GetFacilityDetailResult) {
-            this.GetFacilityDetailResult = GetFacilityDetailResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityReportingPeriodsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityReportingPeriods", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequestBody Body;
-        
-        public GetFacilityReportingPeriodsRequest() {
-        }
-        
-        public GetFacilityReportingPeriodsRequest(PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityReportingPeriodsRequestBody {
+    public partial class GetStorageTypesRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string userName;
@@ -5509,10 +6778,10 @@ namespace PharmInventory.DirectoryService {
         [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
         public System.Nullable<System.DateTime> lastDateTime;
         
-        public GetFacilityReportingPeriodsRequestBody() {
+        public GetStorageTypesRequestBody() {
         }
         
-        public GetFacilityReportingPeriodsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public GetStorageTypesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             this.userName = userName;
             this.password = password;
             this.lastVersion = lastVersion;
@@ -5524,15 +6793,15 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityReportingPeriodsResponse {
+    public partial class GetStorageTypesResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityReportingPeriodsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityReportingPeriodsResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetStorageTypesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
+        public PharmInventory.DirectoryService.GetStorageTypesResponseBody Body;
         
-        public GetFacilityReportingPeriodsResponse() {
+        public GetStorageTypesResponse() {
         }
         
-        public GetFacilityReportingPeriodsResponse(PharmInventory.DirectoryService.GetFacilityReportingPeriodsResponseBody Body) {
+        public GetStorageTypesResponse(PharmInventory.DirectoryService.GetStorageTypesResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -5541,749 +6810,48 @@ namespace PharmInventory.DirectoryService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityReportingPeriodsResponseBody {
+    public partial class GetStorageTypesResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityReportingPeriod> GetFacilityReportingPeriodsResult;
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StorageType> GetStorageTypesResult;
         
-        public GetFacilityReportingPeriodsResponseBody() {
+        public GetStorageTypesResponseBody() {
         }
         
-        public GetFacilityReportingPeriodsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityReportingPeriod> GetFacilityReportingPeriodsResult) {
-            this.GetFacilityReportingPeriodsResult = GetFacilityReportingPeriodsResult;
+        public GetStorageTypesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.StorageType> GetStorageTypesResult) {
+            this.GetStorageTypesResult = GetStorageTypesResult;
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface Service1SoapChannel : PharmInventory.DirectoryService.Service1Soap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetReportTypesRequest {
+    public partial class Service1SoapClient : System.ServiceModel.ClientBase<PharmInventory.DirectoryService.Service1Soap>, PharmInventory.DirectoryService.Service1Soap {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportTypes", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetReportTypesRequestBody Body;
-        
-        public GetReportTypesRequest() {
-        }
-        
-        public GetReportTypesRequest(PharmInventory.DirectoryService.GetReportTypesRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetReportTypesRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetReportTypesRequestBody() {
-        }
-        
-        public GetReportTypesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetReportTypesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportTypesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetReportTypesResponseBody Body;
-        
-        public GetReportTypesResponse() {
-        }
-        
-        public GetReportTypesResponse(PharmInventory.DirectoryService.GetReportTypesResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetReportTypesResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportTypes> GetReportTypesResult;
-        
-        public GetReportTypesResponseBody() {
-        }
-        
-        public GetReportTypesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ReportTypes> GetReportTypesResult) {
-            this.GetReportTypesResult = GetReportTypesResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetReportItemsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportItems", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetReportItemsRequestBody Body;
-        
-        public GetReportItemsRequest() {
-        }
-        
-        public GetReportItemsRequest(PharmInventory.DirectoryService.GetReportItemsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetReportItemsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetReportItemsRequestBody() {
-        }
-        
-        public GetReportItemsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetReportItemsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReportItemsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetReportItemsResponseBody Body;
-        
-        public GetReportItemsResponse() {
-        }
-        
-        public GetReportItemsResponse(PharmInventory.DirectoryService.GetReportItemsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetReportItemsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetReportItemsResult;
-        
-        public GetReportItemsResponseBody() {
-        }
-        
-        public GetReportItemsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetReportItemsResult) {
-            this.GetReportItemsResult = GetReportItemsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetItemsInReportTypeRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemsInReportType", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetItemsInReportTypeRequestBody Body;
-        
-        public GetItemsInReportTypeRequest() {
-        }
-        
-        public GetItemsInReportTypeRequest(PharmInventory.DirectoryService.GetItemsInReportTypeRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetItemsInReportTypeRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int reportType;
-        
-        public GetItemsInReportTypeRequestBody() {
-        }
-        
-        public GetItemsInReportTypeRequestBody(string userName, string password, int reportType) {
-            this.userName = userName;
-            this.password = password;
-            this.reportType = reportType;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetItemsInReportTypeResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetItemsInReportTypeResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetItemsInReportTypeResponseBody Body;
-        
-        public GetItemsInReportTypeResponse() {
-        }
-        
-        public GetItemsInReportTypeResponse(PharmInventory.DirectoryService.GetItemsInReportTypeResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetItemsInReportTypeResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetItemsInReportTypeResult;
-        
-        public GetItemsInReportTypeResponseBody() {
-        }
-        
-        public GetItemsInReportTypeResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetItemsInReportTypeResult) {
-            this.GetItemsInReportTypeResult = GetItemsInReportTypeResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityTypesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityTypes", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityTypesRequestBody Body;
-        
-        public GetFacilityTypesRequest() {
-        }
-        
-        public GetFacilityTypesRequest(PharmInventory.DirectoryService.GetFacilityTypesRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityTypesRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetFacilityTypesRequestBody() {
-        }
-        
-        public GetFacilityTypesRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetFacilityTypesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetFacilityTypesResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetFacilityTypesResponseBody Body;
-        
-        public GetFacilityTypesResponse() {
-        }
-        
-        public GetFacilityTypesResponse(PharmInventory.DirectoryService.GetFacilityTypesResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetFacilityTypesResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityType> GetFacilityTypesResult;
-        
-        public GetFacilityTypesResponseBody() {
-        }
-        
-        public GetFacilityTypesResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityType> GetFacilityTypesResult) {
-            this.GetFacilityTypesResult = GetFacilityTypesResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetMasterLookupsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetMasterLookups", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetMasterLookupsRequestBody Body;
-        
-        public GetMasterLookupsRequest() {
-        }
-        
-        public GetMasterLookupsRequest(PharmInventory.DirectoryService.GetMasterLookupsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetMasterLookupsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetMasterLookupsRequestBody() {
-        }
-        
-        public GetMasterLookupsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetMasterLookupsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetMasterLookupsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetMasterLookupsResponseBody Body;
-        
-        public GetMasterLookupsResponse() {
-        }
-        
-        public GetMasterLookupsResponse(PharmInventory.DirectoryService.GetMasterLookupsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetMasterLookupsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.MasterLookup> GetMasterLookupsResult;
-        
-        public GetMasterLookupsResponseBody() {
-        }
-        
-        public GetMasterLookupsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.MasterLookup> GetMasterLookupsResult) {
-            this.GetMasterLookupsResult = GetMasterLookupsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDetailLookupsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDetailLookups", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDetailLookupsRequestBody Body;
-        
-        public GetDetailLookupsRequest() {
-        }
-        
-        public GetDetailLookupsRequest(PharmInventory.DirectoryService.GetDetailLookupsRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDetailLookupsRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public System.Nullable<int> lastVersion;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
-        public System.Nullable<System.DateTime> lastDateTime;
-        
-        public GetDetailLookupsRequestBody() {
-        }
-        
-        public GetDetailLookupsRequestBody(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            this.userName = userName;
-            this.password = password;
-            this.lastVersion = lastVersion;
-            this.lastDateTime = lastDateTime;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDetailLookupsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDetailLookupsResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDetailLookupsResponseBody Body;
-        
-        public GetDetailLookupsResponse() {
-        }
-        
-        public GetDetailLookupsResponse(PharmInventory.DirectoryService.GetDetailLookupsResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDetailLookupsResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailLookupsResult;
-        
-        public GetDetailLookupsResponseBody() {
-        }
-        
-        public GetDetailLookupsResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailLookupsResult) {
-            this.GetDetailLookupsResult = GetDetailLookupsResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDetailsOfMasterIDRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDetailsOfMasterID", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDetailsOfMasterIDRequestBody Body;
-        
-        public GetDetailsOfMasterIDRequest() {
-        }
-        
-        public GetDetailsOfMasterIDRequest(PharmInventory.DirectoryService.GetDetailsOfMasterIDRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDetailsOfMasterIDRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int masterID;
-        
-        public GetDetailsOfMasterIDRequestBody() {
-        }
-        
-        public GetDetailsOfMasterIDRequestBody(string userName, string password, int masterID) {
-            this.userName = userName;
-            this.password = password;
-            this.masterID = masterID;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetDetailsOfMasterIDResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetDetailsOfMasterIDResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetDetailsOfMasterIDResponseBody Body;
-        
-        public GetDetailsOfMasterIDResponse() {
-        }
-        
-        public GetDetailsOfMasterIDResponse(PharmInventory.DirectoryService.GetDetailsOfMasterIDResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetDetailsOfMasterIDResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailsOfMasterIDResult;
-        
-        public GetDetailsOfMasterIDResponseBody() {
-        }
-        
-        public GetDetailsOfMasterIDResponseBody(System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailsOfMasterIDResult) {
-            this.GetDetailsOfMasterIDResult = GetDetailsOfMasterIDResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetHubVersionStringRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetHubVersionString", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetHubVersionStringRequestBody Body;
-        
-        public GetHubVersionStringRequest() {
-        }
-        
-        public GetHubVersionStringRequest(PharmInventory.DirectoryService.GetHubVersionStringRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetHubVersionStringRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int hubID;
-        
-        public GetHubVersionStringRequestBody() {
-        }
-        
-        public GetHubVersionStringRequestBody(string userName, string password, int hubID) {
-            this.userName = userName;
-            this.password = password;
-            this.hubID = hubID;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class GetHubVersionStringResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetHubVersionStringResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.GetHubVersionStringResponseBody Body;
-        
-        public GetHubVersionStringResponse() {
-        }
-        
-        public GetHubVersionStringResponse(PharmInventory.DirectoryService.GetHubVersionStringResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class GetHubVersionStringResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string GetHubVersionStringResult;
-        
-        public GetHubVersionStringResponseBody() {
-        }
-        
-        public GetHubVersionStringResponseBody(string GetHubVersionStringResult) {
-            this.GetHubVersionStringResult = GetHubVersionStringResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class SetHubVersionStringRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetHubVersionString", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.SetHubVersionStringRequestBody Body;
-        
-        public SetHubVersionStringRequest() {
-        }
-        
-        public SetHubVersionStringRequest(PharmInventory.DirectoryService.SetHubVersionStringRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://ds.pfsa.org/")]
-    public partial class SetHubVersionStringRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string userName;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public int hubID;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string versionString;
-        
-        public SetHubVersionStringRequestBody() {
-        }
-        
-        public SetHubVersionStringRequestBody(string userName, string password, int hubID, string versionString) {
-            this.userName = userName;
-            this.password = password;
-            this.hubID = hubID;
-            this.versionString = versionString;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class SetHubVersionStringResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="SetHubVersionStringResponse", Namespace="http://ds.pfsa.org/", Order=0)]
-        public PharmInventory.DirectoryService.SetHubVersionStringResponseBody Body;
-        
-        public SetHubVersionStringResponse() {
-        }
-        
-        public SetHubVersionStringResponse(PharmInventory.DirectoryService.SetHubVersionStringResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class SetHubVersionStringResponseBody {
-        
-        public SetHubVersionStringResponseBody() {
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ServiceSoapChannel : PharmInventory.DirectoryService.ServiceSoap, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceSoapClient : System.ServiceModel.ClientBase<PharmInventory.DirectoryService.ServiceSoap>, PharmInventory.DirectoryService.ServiceSoap {
-        
-        public ServiceSoapClient() {
+        public Service1SoapClient() {
         }
         
-        public ServiceSoapClient(string endpointConfigurationName) : 
+        public Service1SoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public Service1SoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1SoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public Service1SoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetLastVersionResponse PharmInventory.DirectoryService.ServiceSoap.GetLastVersion(PharmInventory.DirectoryService.GetLastVersionRequest request) {
+        PharmInventory.DirectoryService.GetLastVersionResponse PharmInventory.DirectoryService.Service1Soap.GetLastVersion(PharmInventory.DirectoryService.GetLastVersionRequest request) {
             return base.Channel.GetLastVersion(request);
         }
         
@@ -6292,28 +6860,44 @@ namespace PharmInventory.DirectoryService {
             inValue.Body = new PharmInventory.DirectoryService.GetLastVersionRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
-            PharmInventory.DirectoryService.GetLastVersionResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetLastVersion(inValue);
+            PharmInventory.DirectoryService.GetLastVersionResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetLastVersion(inValue);
             return retVal.Body.GetLastVersionResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDrugItemsResponse PharmInventory.DirectoryService.ServiceSoap.GetDrugItems(PharmInventory.DirectoryService.GetDrugItemsRequest request) {
-            return base.Channel.GetDrugItems(request);
+        PharmInventory.DirectoryService.GetABCsResponse PharmInventory.DirectoryService.Service1Soap.GetABCs(PharmInventory.DirectoryService.GetABCsRequest request) {
+            return base.Channel.GetABCs(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItems(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetDrugItemsRequest inValue = new PharmInventory.DirectoryService.GetDrugItemsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDrugItemsRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ABC> GetABCs(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetABCsRequest inValue = new PharmInventory.DirectoryService.GetABCsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetABCsRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDrugItemsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDrugItems(inValue);
-            return retVal.Body.GetDrugItemsResult;
+            PharmInventory.DirectoryService.GetABCsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetABCs(inValue);
+            return retVal.Body.GetABCsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetCommodityTypesResponse PharmInventory.DirectoryService.ServiceSoap.GetCommodityTypes(PharmInventory.DirectoryService.GetCommodityTypesRequest request) {
+        PharmInventory.DirectoryService.GetVENsResponse PharmInventory.DirectoryService.Service1Soap.GetVENs(PharmInventory.DirectoryService.GetVENsRequest request) {
+            return base.Channel.GetVENs(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.VEN> GetVENs(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetVENsRequest inValue = new PharmInventory.DirectoryService.GetVENsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetVENsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetVENsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetVENs(inValue);
+            return retVal.Body.GetVENsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetCommodityTypesResponse PharmInventory.DirectoryService.Service1Soap.GetCommodityTypes(PharmInventory.DirectoryService.GetCommodityTypesRequest request) {
             return base.Channel.GetCommodityTypes(request);
         }
         
@@ -6324,44 +6908,12 @@ namespace PharmInventory.DirectoryService {
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetCommodityTypesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetCommodityTypes(inValue);
+            PharmInventory.DirectoryService.GetCommodityTypesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetCommodityTypes(inValue);
             return retVal.Body.GetCommodityTypesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetSupplyItemsResponse PharmInventory.DirectoryService.ServiceSoap.GetSupplyItems(PharmInventory.DirectoryService.GetSupplyItemsRequest request) {
-            return base.Channel.GetSupplyItems(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItems(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetSupplyItemsRequest inValue = new PharmInventory.DirectoryService.GetSupplyItemsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetSupplyItemsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetSupplyItemsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetSupplyItems(inValue);
-            return retVal.Body.GetSupplyItemsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetProductsResponse PharmInventory.DirectoryService.ServiceSoap.GetProducts(PharmInventory.DirectoryService.GetProductsRequest request) {
-            return base.Channel.GetProducts(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Product> GetProducts(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetProductsRequest inValue = new PharmInventory.DirectoryService.GetProductsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetProductsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetProductsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetProducts(inValue);
-            return retVal.Body.GetProductsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDosageFormsResponse PharmInventory.DirectoryService.ServiceSoap.GetDosageForms(PharmInventory.DirectoryService.GetDosageFormsRequest request) {
+        PharmInventory.DirectoryService.GetDosageFormsResponse PharmInventory.DirectoryService.Service1Soap.GetDosageForms(PharmInventory.DirectoryService.GetDosageFormsRequest request) {
             return base.Channel.GetDosageForms(request);
         }
         
@@ -6372,124 +6924,92 @@ namespace PharmInventory.DirectoryService {
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDosageFormsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDosageForms(inValue);
+            PharmInventory.DirectoryService.GetDosageFormsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetDosageForms(inValue);
             return retVal.Body.GetDosageFormsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetUnitsResponse PharmInventory.DirectoryService.ServiceSoap.GetUnits(PharmInventory.DirectoryService.GetUnitsRequest request) {
+        PharmInventory.DirectoryService.GetModesResponse PharmInventory.DirectoryService.Service1Soap.GetModes(PharmInventory.DirectoryService.GetModesRequest request) {
+            return base.Channel.GetModes(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreType> GetModes(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetModesRequest inValue = new PharmInventory.DirectoryService.GetModesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetModesRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetModesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetModes(inValue);
+            return retVal.Body.GetModesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetAccountsResponse PharmInventory.DirectoryService.Service1Soap.GetAccounts(PharmInventory.DirectoryService.GetAccountsRequest request) {
+            return base.Channel.GetAccounts(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Stores> GetAccounts(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetAccountsRequest inValue = new PharmInventory.DirectoryService.GetAccountsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetAccountsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetAccountsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetAccounts(inValue);
+            return retVal.Body.GetAccountsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetSubAccountsResponse PharmInventory.DirectoryService.Service1Soap.GetSubAccounts(PharmInventory.DirectoryService.GetSubAccountsRequest request) {
+            return base.Channel.GetSubAccounts(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.SubAccount> GetSubAccounts(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetSubAccountsRequest inValue = new PharmInventory.DirectoryService.GetSubAccountsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetSubAccountsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetSubAccountsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetSubAccounts(inValue);
+            return retVal.Body.GetSubAccountsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetSubSubAccountsResponse PharmInventory.DirectoryService.Service1Soap.GetSubSubAccounts(PharmInventory.DirectoryService.GetSubSubAccountsRequest request) {
+            return base.Channel.GetSubSubAccounts(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.SubSubAccount> GetSubSubAccounts(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetSubSubAccountsRequest inValue = new PharmInventory.DirectoryService.GetSubSubAccountsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetSubSubAccountsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetSubSubAccountsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetSubSubAccounts(inValue);
+            return retVal.Body.GetSubSubAccountsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetUnitsResponse PharmInventory.DirectoryService.Service1Soap.GetUnits(PharmInventory.DirectoryService.GetUnitsRequest request) {
             return base.Channel.GetUnits(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnits(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Units> GetUnits(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
             PharmInventory.DirectoryService.GetUnitsRequest inValue = new PharmInventory.DirectoryService.GetUnitsRequest();
             inValue.Body = new PharmInventory.DirectoryService.GetUnitsRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetUnitsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetUnits(inValue);
+            PharmInventory.DirectoryService.GetUnitsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetUnits(inValue);
             return retVal.Body.GetUnitsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDrugCategoryResponse PharmInventory.DirectoryService.ServiceSoap.GetDrugCategory(PharmInventory.DirectoryService.GetDrugCategoryRequest request) {
-            return base.Channel.GetDrugCategory(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugCategory> GetDrugCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetDrugCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugCategoryRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDrugCategoryRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDrugCategoryResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDrugCategory(inValue);
-            return retVal.Body.GetDrugCategoryResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDrugSubCategoryResponse PharmInventory.DirectoryService.ServiceSoap.GetDrugSubCategory(PharmInventory.DirectoryService.GetDrugSubCategoryRequest request) {
-            return base.Channel.GetDrugSubCategory(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugSubCategory> GetDrugSubCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetDrugSubCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugSubCategoryRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDrugSubCategoryRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDrugSubCategoryResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDrugSubCategory(inValue);
-            return retVal.Body.GetDrugSubCategoryResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse PharmInventory.DirectoryService.ServiceSoap.GetDrugItemSubCategory(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest request) {
-            return base.Channel.GetDrugItemSubCategory(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDrugItemSubCategory(inValue);
-            return retVal.Body.GetDrugItemSubCategoryResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetSupplyCategoriesResponse PharmInventory.DirectoryService.ServiceSoap.GetSupplyCategories(PharmInventory.DirectoryService.GetSupplyCategoriesRequest request) {
-            return base.Channel.GetSupplyCategories(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.SupplyCategory> GetSupplyCategories(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetSupplyCategoriesRequest inValue = new PharmInventory.DirectoryService.GetSupplyCategoriesRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetSupplyCategoriesRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetSupplyCategoriesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetSupplyCategories(inValue);
-            return retVal.Body.GetSupplyCategoriesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetItemSupplyCategoriesResponse PharmInventory.DirectoryService.ServiceSoap.GetItemSupplyCategories(PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest request) {
-            return base.Channel.GetItemSupplyCategories(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemSupplyCategory> GetItemSupplyCategories(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest inValue = new PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetItemSupplyCategoriesRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetItemSupplyCategoriesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetItemSupplyCategories(inValue);
-            return retVal.Body.GetItemSupplyCategoriesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetManufacturerResponse PharmInventory.DirectoryService.ServiceSoap.GetManufacturer(PharmInventory.DirectoryService.GetManufacturerRequest request) {
-            return base.Channel.GetManufacturer(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturer(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetManufacturerRequest inValue = new PharmInventory.DirectoryService.GetManufacturerRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetManufacturerRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetManufacturerResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetManufacturer(inValue);
-            return retVal.Body.GetManufacturerResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetProgramsResponse PharmInventory.DirectoryService.ServiceSoap.GetPrograms(PharmInventory.DirectoryService.GetProgramsRequest request) {
+        PharmInventory.DirectoryService.GetProgramsResponse PharmInventory.DirectoryService.Service1Soap.GetPrograms(PharmInventory.DirectoryService.GetProgramsRequest request) {
             return base.Channel.GetPrograms(request);
         }
         
@@ -6500,157 +7020,12 @@ namespace PharmInventory.DirectoryService {
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetProgramsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetPrograms(inValue);
+            PharmInventory.DirectoryService.GetProgramsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetPrograms(inValue);
             return retVal.Body.GetProgramsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetSuppliersResponse PharmInventory.DirectoryService.ServiceSoap.GetSuppliers(PharmInventory.DirectoryService.GetSuppliersRequest request) {
-            return base.Channel.GetSuppliers(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliers(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetSuppliersRequest inValue = new PharmInventory.DirectoryService.GetSuppliersRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetSuppliersRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetSuppliersResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetSuppliers(inValue);
-            return retVal.Body.GetSuppliersResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetRegionsResponse PharmInventory.DirectoryService.ServiceSoap.GetRegions(PharmInventory.DirectoryService.GetRegionsRequest request) {
-            return base.Channel.GetRegions(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Region> GetRegions(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetRegionsRequest inValue = new PharmInventory.DirectoryService.GetRegionsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetRegionsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetRegionsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetRegions(inValue);
-            return retVal.Body.GetRegionsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetWoredasResponse PharmInventory.DirectoryService.ServiceSoap.GetWoredas(PharmInventory.DirectoryService.GetWoredasRequest request) {
-            return base.Channel.GetWoredas(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Woreda> GetWoredas(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetWoredasRequest inValue = new PharmInventory.DirectoryService.GetWoredasRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetWoredasRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetWoredasResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetWoredas(inValue);
-            return retVal.Body.GetWoredasResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetZonesResponse PharmInventory.DirectoryService.ServiceSoap.GetZones(PharmInventory.DirectoryService.GetZonesRequest request) {
-            return base.Channel.GetZones(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Zone> GetZones(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetZonesRequest inValue = new PharmInventory.DirectoryService.GetZonesRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetZonesRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetZonesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetZones(inValue);
-            return retVal.Body.GetZonesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetFacilitiesResponse PharmInventory.DirectoryService.ServiceSoap.GetFacilities(PharmInventory.DirectoryService.GetFacilitiesRequest request) {
-            return base.Channel.GetFacilities(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilities(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetFacilitiesRequest inValue = new PharmInventory.DirectoryService.GetFacilitiesRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetFacilitiesRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetFacilitiesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetFacilities(inValue);
-            return retVal.Body.GetFacilitiesResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetFacilityForHubsResponse PharmInventory.DirectoryService.ServiceSoap.GetFacilityForHubs(PharmInventory.DirectoryService.GetFacilityForHubsRequest request) {
-            return base.Channel.GetFacilityForHubs(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Facility> GetFacilityForHubs(string userName, string password, int hubID, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetFacilityForHubsRequest inValue = new PharmInventory.DirectoryService.GetFacilityForHubsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetFacilityForHubsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.hubID = hubID;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetFacilityForHubsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetFacilityForHubs(inValue);
-            return retVal.Body.GetFacilityForHubsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetHubsResponse PharmInventory.DirectoryService.ServiceSoap.GetHubs(PharmInventory.DirectoryService.GetHubsRequest request) {
-            return base.Channel.GetHubs(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.Hub> GetHubs(string userName, string password, int hubID, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetHubsRequest inValue = new PharmInventory.DirectoryService.GetHubsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetHubsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.hubID = hubID;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetHubsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetHubs(inValue);
-            return retVal.Body.GetHubsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetFacilityDetailResponse PharmInventory.DirectoryService.ServiceSoap.GetFacilityDetail(PharmInventory.DirectoryService.GetFacilityDetailRequest request) {
-            return base.Channel.GetFacilityDetail(request);
-        }
-        
-        public PharmInventory.DirectoryService.FacilityDetail GetFacilityDetail(string userName, string password, int facilityID) {
-            PharmInventory.DirectoryService.GetFacilityDetailRequest inValue = new PharmInventory.DirectoryService.GetFacilityDetailRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetFacilityDetailRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.facilityID = facilityID;
-            PharmInventory.DirectoryService.GetFacilityDetailResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetFacilityDetail(inValue);
-            return retVal.Body.GetFacilityDetailResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetFacilityReportingPeriodsResponse PharmInventory.DirectoryService.ServiceSoap.GetFacilityReportingPeriods(PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequest request) {
-            return base.Channel.GetFacilityReportingPeriods(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityReportingPeriod> GetFacilityReportingPeriods(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequest inValue = new PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetFacilityReportingPeriodsRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.lastVersion = lastVersion;
-            inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetFacilityReportingPeriodsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetFacilityReportingPeriods(inValue);
-            return retVal.Body.GetFacilityReportingPeriodsResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetReportTypesResponse PharmInventory.DirectoryService.ServiceSoap.GetReportTypes(PharmInventory.DirectoryService.GetReportTypesRequest request) {
+        PharmInventory.DirectoryService.GetReportTypesResponse PharmInventory.DirectoryService.Service1Soap.GetReportTypes(PharmInventory.DirectoryService.GetReportTypesRequest request) {
             return base.Channel.GetReportTypes(request);
         }
         
@@ -6661,132 +7036,312 @@ namespace PharmInventory.DirectoryService {
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetReportTypesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetReportTypes(inValue);
+            PharmInventory.DirectoryService.GetReportTypesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetReportTypes(inValue);
             return retVal.Body.GetReportTypesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetReportItemsResponse PharmInventory.DirectoryService.ServiceSoap.GetReportItems(PharmInventory.DirectoryService.GetReportItemsRequest request) {
-            return base.Channel.GetReportItems(request);
+        PharmInventory.DirectoryService.GetProductsResponse PharmInventory.DirectoryService.Service1Soap.GetProducts(PharmInventory.DirectoryService.GetProductsRequest request) {
+            return base.Channel.GetProducts(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetReportItems(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetReportItemsRequest inValue = new PharmInventory.DirectoryService.GetReportItemsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetReportItemsRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Product> GetProducts(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetProductsRequest inValue = new PharmInventory.DirectoryService.GetProductsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetProductsRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetReportItemsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetReportItems(inValue);
-            return retVal.Body.GetReportItemsResult;
+            PharmInventory.DirectoryService.GetProductsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetProducts(inValue);
+            return retVal.Body.GetProductsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetItemsInReportTypeResponse PharmInventory.DirectoryService.ServiceSoap.GetItemsInReportType(PharmInventory.DirectoryService.GetItemsInReportTypeRequest request) {
-            return base.Channel.GetItemsInReportType(request);
+        PharmInventory.DirectoryService.GetManufacturerResponse PharmInventory.DirectoryService.Service1Soap.GetManufacturer(PharmInventory.DirectoryService.GetManufacturerRequest request) {
+            return base.Channel.GetManufacturer(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.ReportItems> GetItemsInReportType(string userName, string password, int reportType) {
-            PharmInventory.DirectoryService.GetItemsInReportTypeRequest inValue = new PharmInventory.DirectoryService.GetItemsInReportTypeRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetItemsInReportTypeRequestBody();
-            inValue.Body.userName = userName;
-            inValue.Body.password = password;
-            inValue.Body.reportType = reportType;
-            PharmInventory.DirectoryService.GetItemsInReportTypeResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetItemsInReportType(inValue);
-            return retVal.Body.GetItemsInReportTypeResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetFacilityTypesResponse PharmInventory.DirectoryService.ServiceSoap.GetFacilityTypes(PharmInventory.DirectoryService.GetFacilityTypesRequest request) {
-            return base.Channel.GetFacilityTypes(request);
-        }
-        
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.FacilityType> GetFacilityTypes(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetFacilityTypesRequest inValue = new PharmInventory.DirectoryService.GetFacilityTypesRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetFacilityTypesRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Manufacturer> GetManufacturer(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetManufacturerRequest inValue = new PharmInventory.DirectoryService.GetManufacturerRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetManufacturerRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetFacilityTypesResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetFacilityTypes(inValue);
-            return retVal.Body.GetFacilityTypesResult;
+            PharmInventory.DirectoryService.GetManufacturerResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetManufacturer(inValue);
+            return retVal.Body.GetManufacturerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetMasterLookupsResponse PharmInventory.DirectoryService.ServiceSoap.GetMasterLookups(PharmInventory.DirectoryService.GetMasterLookupsRequest request) {
-            return base.Channel.GetMasterLookups(request);
+        PharmInventory.DirectoryService.GetSuppliersResponse PharmInventory.DirectoryService.Service1Soap.GetSuppliers(PharmInventory.DirectoryService.GetSuppliersRequest request) {
+            return base.Channel.GetSuppliers(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.MasterLookup> GetMasterLookups(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetMasterLookupsRequest inValue = new PharmInventory.DirectoryService.GetMasterLookupsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetMasterLookupsRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Supplier> GetSuppliers(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetSuppliersRequest inValue = new PharmInventory.DirectoryService.GetSuppliersRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetSuppliersRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetMasterLookupsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetMasterLookups(inValue);
-            return retVal.Body.GetMasterLookupsResult;
+            PharmInventory.DirectoryService.GetSuppliersResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetSuppliers(inValue);
+            return retVal.Body.GetSuppliersResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDetailLookupsResponse PharmInventory.DirectoryService.ServiceSoap.GetDetailLookups(PharmInventory.DirectoryService.GetDetailLookupsRequest request) {
-            return base.Channel.GetDetailLookups(request);
+        PharmInventory.DirectoryService.GetDrugItemsResponse PharmInventory.DirectoryService.Service1Soap.GetDrugItems(PharmInventory.DirectoryService.GetDrugItemsRequest request) {
+            return base.Channel.GetDrugItems(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailLookups(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
-            PharmInventory.DirectoryService.GetDetailLookupsRequest inValue = new PharmInventory.DirectoryService.GetDetailLookupsRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDetailLookupsRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetDrugItems(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetDrugItemsRequest inValue = new PharmInventory.DirectoryService.GetDrugItemsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetDrugItemsRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
             inValue.Body.lastVersion = lastVersion;
             inValue.Body.lastDateTime = lastDateTime;
-            PharmInventory.DirectoryService.GetDetailLookupsResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDetailLookups(inValue);
-            return retVal.Body.GetDetailLookupsResult;
+            PharmInventory.DirectoryService.GetDrugItemsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetDrugItems(inValue);
+            return retVal.Body.GetDrugItemsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetDetailsOfMasterIDResponse PharmInventory.DirectoryService.ServiceSoap.GetDetailsOfMasterID(PharmInventory.DirectoryService.GetDetailsOfMasterIDRequest request) {
-            return base.Channel.GetDetailsOfMasterID(request);
+        PharmInventory.DirectoryService.GetSupplyItemsResponse PharmInventory.DirectoryService.Service1Soap.GetSupplyItems(PharmInventory.DirectoryService.GetSupplyItemsRequest request) {
+            return base.Channel.GetSupplyItems(request);
         }
         
-        public System.Collections.Generic.List<PharmInventory.DirectoryService.DetailLookup> GetDetailsOfMasterID(string userName, string password, int masterID) {
-            PharmInventory.DirectoryService.GetDetailsOfMasterIDRequest inValue = new PharmInventory.DirectoryService.GetDetailsOfMasterIDRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetDetailsOfMasterIDRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Items> GetSupplyItems(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetSupplyItemsRequest inValue = new PharmInventory.DirectoryService.GetSupplyItemsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetSupplyItemsRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
-            inValue.Body.masterID = masterID;
-            PharmInventory.DirectoryService.GetDetailsOfMasterIDResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetDetailsOfMasterID(inValue);
-            return retVal.Body.GetDetailsOfMasterIDResult;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetSupplyItemsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetSupplyItems(inValue);
+            return retVal.Body.GetSupplyItemsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.GetHubVersionStringResponse PharmInventory.DirectoryService.ServiceSoap.GetHubVersionString(PharmInventory.DirectoryService.GetHubVersionStringRequest request) {
-            return base.Channel.GetHubVersionString(request);
+        PharmInventory.DirectoryService.GetItemAccessoriesResponse PharmInventory.DirectoryService.Service1Soap.GetItemAccessories(PharmInventory.DirectoryService.GetItemAccessoriesRequest request) {
+            return base.Channel.GetItemAccessories(request);
         }
         
-        public string GetHubVersionString(string userName, string password, int hubID) {
-            PharmInventory.DirectoryService.GetHubVersionStringRequest inValue = new PharmInventory.DirectoryService.GetHubVersionStringRequest();
-            inValue.Body = new PharmInventory.DirectoryService.GetHubVersionStringRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemAccessories> GetItemAccessories(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemAccessoriesRequest inValue = new PharmInventory.DirectoryService.GetItemAccessoriesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemAccessoriesRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
-            inValue.Body.hubID = hubID;
-            PharmInventory.DirectoryService.GetHubVersionStringResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).GetHubVersionString(inValue);
-            return retVal.Body.GetHubVersionStringResult;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemAccessoriesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemAccessories(inValue);
+            return retVal.Body.GetItemAccessoriesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        PharmInventory.DirectoryService.SetHubVersionStringResponse PharmInventory.DirectoryService.ServiceSoap.SetHubVersionString(PharmInventory.DirectoryService.SetHubVersionStringRequest request) {
-            return base.Channel.SetHubVersionString(request);
+        PharmInventory.DirectoryService.GetDrugCategoryResponse PharmInventory.DirectoryService.Service1Soap.GetDrugCategory(PharmInventory.DirectoryService.GetDrugCategoryRequest request) {
+            return base.Channel.GetDrugCategory(request);
         }
         
-        public void SetHubVersionString(string userName, string password, int hubID, string versionString) {
-            PharmInventory.DirectoryService.SetHubVersionStringRequest inValue = new PharmInventory.DirectoryService.SetHubVersionStringRequest();
-            inValue.Body = new PharmInventory.DirectoryService.SetHubVersionStringRequestBody();
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugCategory> GetDrugCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetDrugCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugCategoryRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetDrugCategoryRequestBody();
             inValue.Body.userName = userName;
             inValue.Body.password = password;
-            inValue.Body.hubID = hubID;
-            inValue.Body.versionString = versionString;
-            PharmInventory.DirectoryService.SetHubVersionStringResponse retVal = ((PharmInventory.DirectoryService.ServiceSoap)(this)).SetHubVersionString(inValue);
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetDrugCategoryResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetDrugCategory(inValue);
+            return retVal.Body.GetDrugCategoryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetDrugSubCategoryResponse PharmInventory.DirectoryService.Service1Soap.GetDrugSubCategory(PharmInventory.DirectoryService.GetDrugSubCategoryRequest request) {
+            return base.Channel.GetDrugSubCategory(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugSubCategory> GetDrugSubCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetDrugSubCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugSubCategoryRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetDrugSubCategoryRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetDrugSubCategoryResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetDrugSubCategory(inValue);
+            return retVal.Body.GetDrugSubCategoryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetSupplyCategoriesResponse PharmInventory.DirectoryService.Service1Soap.GetSupplyCategories(PharmInventory.DirectoryService.GetSupplyCategoriesRequest request) {
+            return base.Channel.GetSupplyCategories(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.SupplyCategory> GetSupplyCategories(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetSupplyCategoriesRequest inValue = new PharmInventory.DirectoryService.GetSupplyCategoriesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetSupplyCategoriesRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetSupplyCategoriesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetSupplyCategories(inValue);
+            return retVal.Body.GetSupplyCategoriesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse PharmInventory.DirectoryService.Service1Soap.GetDrugItemSubCategory(PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest request) {
+            return base.Channel.GetDrugItemSubCategory(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.DrugItemSubCategory> GetDrugItemSubCategory(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest inValue = new PharmInventory.DirectoryService.GetDrugItemSubCategoryRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetDrugItemSubCategoryRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetDrugItemSubCategoryResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetDrugItemSubCategory(inValue);
+            return retVal.Body.GetDrugItemSubCategoryResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemSupplyCategoriesResponse PharmInventory.DirectoryService.Service1Soap.GetItemSupplyCategories(PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest request) {
+            return base.Channel.GetItemSupplyCategories(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemSupplyCategory> GetItemSupplyCategories(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest inValue = new PharmInventory.DirectoryService.GetItemSupplyCategoriesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemSupplyCategoriesRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemSupplyCategoriesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemSupplyCategories(inValue);
+            return retVal.Body.GetItemSupplyCategoriesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemProgramsResponse PharmInventory.DirectoryService.Service1Soap.GetItemPrograms(PharmInventory.DirectoryService.GetItemProgramsRequest request) {
+            return base.Channel.GetItemPrograms(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemProgram> GetItemPrograms(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemProgramsRequest inValue = new PharmInventory.DirectoryService.GetItemProgramsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemProgramsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemProgramsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemPrograms(inValue);
+            return retVal.Body.GetItemProgramsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemUnitsResponse PharmInventory.DirectoryService.Service1Soap.GetItemUnits(PharmInventory.DirectoryService.GetItemUnitsRequest request) {
+            return base.Channel.GetItemUnits(request);
+        }
+        
+        public PharmInventory.DirectoryService.ArrayOfItemUnit GetItemUnits(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemUnitsRequest inValue = new PharmInventory.DirectoryService.GetItemUnitsRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemUnitsRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemUnitsResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemUnits(inValue);
+            return retVal.Body.GetItemUnitsResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetStoreItemResponse PharmInventory.DirectoryService.Service1Soap.GetStoreItem(PharmInventory.DirectoryService.GetStoreItemRequest request) {
+            return base.Channel.GetStoreItem(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetStoreItem(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetStoreItemRequest inValue = new PharmInventory.DirectoryService.GetStoreItemRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetStoreItemRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetStoreItemResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetStoreItem(inValue);
+            return retVal.Body.GetStoreItemResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailResponse PharmInventory.DirectoryService.Service1Soap.GetItemUnitsWithUnitDetail(PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequest request) {
+            return base.Channel.GetItemUnitsWithUnitDetail(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemUnitWithUnitDetail> GetItemUnitsWithUnitDetail(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequest inValue = new PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemUnitsWithUnitDetailResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemUnitsWithUnitDetail(inValue);
+            return retVal.Body.GetItemUnitsWithUnitDetailResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemManufacturersResponse PharmInventory.DirectoryService.Service1Soap.GetItemManufacturers(PharmInventory.DirectoryService.GetItemManufacturersRequest request) {
+            return base.Channel.GetItemManufacturers(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.ItemManufacturer> GetItemManufacturers(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemManufacturersRequest inValue = new PharmInventory.DirectoryService.GetItemManufacturersRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemManufacturersRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemManufacturersResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemManufacturers(inValue);
+            return retVal.Body.GetItemManufacturersResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetItemActivitiesResponse PharmInventory.DirectoryService.Service1Soap.GetItemActivities(PharmInventory.DirectoryService.GetItemActivitiesRequest request) {
+            return base.Channel.GetItemActivities(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StoreItem> GetItemActivities(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetItemActivitiesRequest inValue = new PharmInventory.DirectoryService.GetItemActivitiesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetItemActivitiesRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetItemActivitiesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetItemActivities(inValue);
+            return retVal.Body.GetItemActivitiesResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetUnitsOfIssueResponse PharmInventory.DirectoryService.Service1Soap.GetUnitsOfIssue(PharmInventory.DirectoryService.GetUnitsOfIssueRequest request) {
+            return base.Channel.GetUnitsOfIssue(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.Unit> GetUnitsOfIssue(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetUnitsOfIssueRequest inValue = new PharmInventory.DirectoryService.GetUnitsOfIssueRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetUnitsOfIssueRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetUnitsOfIssueResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetUnitsOfIssue(inValue);
+            return retVal.Body.GetUnitsOfIssueResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        PharmInventory.DirectoryService.GetStorageTypesResponse PharmInventory.DirectoryService.Service1Soap.GetStorageTypes(PharmInventory.DirectoryService.GetStorageTypesRequest request) {
+            return base.Channel.GetStorageTypes(request);
+        }
+        
+        public System.Collections.Generic.List<PharmInventory.DirectoryService.StorageType> GetStorageTypes(string userName, string password, System.Nullable<int> lastVersion, System.Nullable<System.DateTime> lastDateTime) {
+            PharmInventory.DirectoryService.GetStorageTypesRequest inValue = new PharmInventory.DirectoryService.GetStorageTypesRequest();
+            inValue.Body = new PharmInventory.DirectoryService.GetStorageTypesRequestBody();
+            inValue.Body.userName = userName;
+            inValue.Body.password = password;
+            inValue.Body.lastVersion = lastVersion;
+            inValue.Body.lastDateTime = lastDateTime;
+            PharmInventory.DirectoryService.GetStorageTypesResponse retVal = ((PharmInventory.DirectoryService.Service1Soap)(this)).GetStorageTypes(inValue);
+            return retVal.Body.GetStorageTypesResult;
         }
     }
 }

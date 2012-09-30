@@ -802,10 +802,13 @@
     <None Include="Reports\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.CommodityType.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ABC.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.DetailLookup.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ArrayOfItemUnit.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.CommodityType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.DosageForm.datasource">
@@ -820,19 +823,13 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.DrugSubCategory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Facility.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemAccessories.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.FacilityDetail.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemManufacturer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.FacilityReportingPeriod.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.FacilityType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Hub.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemProgram.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Items.datasource">
@@ -841,10 +838,10 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemSupplyCategory.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Manufacturer.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemUnitWithUnitDetail.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.MasterLookup.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Manufacturer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Product.datasource">
@@ -853,13 +850,25 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Program.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Region.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ReportItems.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ReportTypes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.StorageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.StoreItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Stores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.StoreType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.SubAccount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.SubSubAccount.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Supplier.datasource">
@@ -871,13 +880,13 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Unit.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Woreda.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Units.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Zone.datasource">
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.VEN.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\DirectoryService\service.wsdl" />
+    <None Include="Service References\DirectoryService\Service1.wsdl" />
     <None Include="Service References\HCMISRegistrations\PharmInventory.HCMISRegistrations.RegisteredUsers.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -1070,6 +1079,7 @@
     <Content Include="Scripts\11_vwGetAllItems.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\DirectoryService\Service1.disco" />
     <None Include="Service References\DirectoryService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
