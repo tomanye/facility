@@ -524,7 +524,7 @@ namespace PharmInventory.HelperClasses
 
                 if (localItemSupplyCategory.RowCount > 0)
                 {
-                    Console.Write(localItemSupplyCategory.ItemID + "," + localItemSupplyCategory.CategoryID);
+                    //Console.Write(localItemSupplyCategory.ItemID + "," + localItemSupplyCategory.CategoryID);
 
                     if (dsItemSupplyCategory.CategoryID.HasValue)
                         localItemSupplyCategory.CategoryID = dsItemSupplyCategory.CategoryID.Value;

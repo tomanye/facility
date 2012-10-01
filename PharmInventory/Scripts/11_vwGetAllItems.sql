@@ -23,7 +23,7 @@ FROM
 					  dbo.Unit ON dbo.Items.UnitID = dbo.Unit.ID INNER JOIN
 					  dbo.[Type] ON dbo.Product.TypeID = dbo.Type.ID left JOIN
 					  dbo.ProductsCategory ON dbo.Items.ID = dbo.ProductsCategory.ItemId INNER JOIN
-					  dbo.SubCategory ON dbo.ProductsCategory.SubCategoryID = dbo.SubCategory.ID AND dbo.Product.TypeID = 1
+					  dbo.SubCategory ON dbo.ProductsCategory.SubCategoryID = dbo.SubCategory.ID AND (dbo.Product.TypeID = 1 or dbo.Product.TypeID = 7)
 
 Union  
 SELECT DISTINCT 
@@ -41,6 +41,6 @@ FROM
 					  dbo.Type ON dbo.Product.TypeID = dbo.Type.ID inner JOIN
 					  dbo.ItemSupplyCategory ON dbo.Items.ID = dbo.ItemSupplyCategory.ItemID inner JOIN
 					 dbo.SupplyCategory on dbo.ItemSupplyCategory.CategoryID = dbo.SupplyCategory.ID 
-					 and dbo.Product.TypeID <> 1
+					 and (dbo.Product.TypeID <> 1 and dbo.Product.TypeID <> 7)
 
 GO
