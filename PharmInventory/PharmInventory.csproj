@@ -11,10 +11,10 @@
     <RootNamespace>PharmInventory</RootNamespace>
     <AssemblyName>HCMIS</AssemblyName>
     <StartupObject>PharmInventory.Program</StartupObject>
-    <ManifestCertificateThumbprint>8041BD79A19031A31EB40FC28FC96A6ACAF2C06E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>12F722CD5401FCF005991B13D41002CAA51D6B53</ManifestCertificateThumbprint>
     <ManifestKeyFile>PharmInventory_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -48,7 +48,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>136</ApplicationRevision>
+    <ApplicationRevision>140</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -124,7 +124,6 @@
       <HintPath>Common DLLs\CalendarLib.dll</HintPath>
     </Reference>
     <Reference Include="ConnectionStringManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\ConnectionStringManager.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
@@ -796,6 +795,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\licenses.licx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1121,7 +1121,7 @@
     <None Include="Resources\icon-48-plugin.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConnectionStringManager.dll" />
+    <None Include="ConnectionStringManager.dll" />
     <Content Include="Scripts\11_vwGetAllItems.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
