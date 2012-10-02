@@ -2,10 +2,11 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using BLL;
+using DevExpress.XtraEditors;
 
 namespace PharmInventory.Forms.Modals
 {
-    public partial class ItemPolicy : Form
+    public partial class ItemPolicy : XtraForm
     {
         
         public ItemPolicy()
@@ -207,10 +208,17 @@ namespace PharmInventory.Forms.Modals
                 duItem.AddNew();
                 duItem.DUID = dus.ID;
                 duItem.ItemID = _itemId;
-                duItem.Save();
+                try
+                {
+                    duItem.Save();
+                }
+                catch
+                {
+                    
+                }
             }
 
-            MessageBox.Show("Item Detail is Saved Successfully!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show("Item Detail is Saved Successfully!", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
         
@@ -238,6 +246,11 @@ namespace PharmInventory.Forms.Modals
                 check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dv["ID"]));
                 lstPrograms.Items.Add(dv["Name"], check);
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

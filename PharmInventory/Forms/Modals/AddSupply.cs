@@ -135,7 +135,7 @@ namespace PharmInventory.Forms.Modals
                 }
             }
             
-            MessageBox.Show("Supply is Saved Successfully!","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            XtraMessageBox.Show("Supply is Saved Successfully!","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
             this.Close();
             
         }

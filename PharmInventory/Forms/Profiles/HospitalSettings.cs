@@ -96,7 +96,7 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void btnSupplierSave_Click(object sender, EventArgs e)
         {
-            if (txtCompanyName.Text != "")
+            if (txtCompanyName.Text != "" && cboCompanyInfo.SelectedItem != null)
             {
                 Supplier sup = new Supplier();
                 if (_supplierId != 0)
@@ -115,11 +115,15 @@ namespace PharmInventory.Forms.Profiles
                 sup.LoadAll();
                 PopulateSupplier(sup);
                 ResetSupplier();
+                XtraMessageBox.Show("Supplier Record Updated.", "Confirmation", MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
             }
             else
             {
                 txtCompanyName.BackColor = Color.FromArgb(251, 214, 214);
             }
+
+           
         }
 
         /// <summary>
@@ -230,6 +234,8 @@ namespace PharmInventory.Forms.Profiles
             {
                 txtStore.BackColor = Color.FromArgb(251, 214, 214);
             }
+            XtraMessageBox.Show("Store Record Updated.", "Confirmation", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         private void xpButton7_Click(object sender, EventArgs e)
@@ -356,11 +362,13 @@ namespace PharmInventory.Forms.Profiles
             else
                 slf.AddNew();
             slf.ShelfCode = txtShelf.Text;
-            slf.ShelfStorageType = int.Parse(cboType.SelectedItem.ToString());
+            //slf.ShelfStorageType = int.Parse(cboType.SelectedItem.ToString());
             slf.Save();
             DataTable dtSlf = slf.GetShelves();
             PopulateShelves(dtSlf.DefaultView);
             ResetLocations();
+            XtraMessageBox.Show("Bin Location Record Updated.", "Confirmation", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -576,6 +584,8 @@ namespace PharmInventory.Forms.Profiles
             recUnit.LoadAll();
             PopulateReceivingUnit(recUnit);
             ResetIssuesLocation();
+            XtraMessageBox.Show("Issue Location Record Updated.", "Confirmation", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         /// <summary>

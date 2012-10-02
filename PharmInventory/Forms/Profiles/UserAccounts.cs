@@ -86,7 +86,7 @@ namespace PharmInventory.Forms.Profiles
                 PopulateUser();
             }
             else
-                MessageBox.Show("Password doesnt match!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                XtraMessageBox.Show("Password doesnt match!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
         /// <summary>

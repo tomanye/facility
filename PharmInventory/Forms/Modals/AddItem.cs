@@ -177,7 +177,7 @@ namespace PharmInventory.Forms.Modals
                     itm.Save();
                 }
             }
-            MessageBox.Show( "Item is Saved Successfully!" , "Confirmation" , MessageBoxButtons.OK, MessageBoxIcon.Information);
+            XtraMessageBox.Show( "Item is Saved Successfully!" , "Confirmation" , MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
             

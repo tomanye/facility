@@ -59,11 +59,11 @@ namespace PharmInventory.Forms.Tools
         private void btnGetServerInstances_Click(object sender, EventArgs e)
         {
             String connectionString = String.Format("Data Source={0}; Initial Catalog = {1}; Integrated Security=true", ".", lstDatabases.SelectedValue.ToString());
-            MessageBox.Show(connectionString);
+            XtraMessageBox.Show(connectionString);
             if (cboServers.EditValue != null)
             {
                 string serverName = cboServers.EditValue.ToString();
-                MessageBox.Show(serverName);
+                XtraMessageBox.Show(serverName);
             }
 
             DialogResult=XtraMessageBox.Show("Save to registry?","Registry",MessageBoxButtons.YesNo,MessageBoxIcon.Question);

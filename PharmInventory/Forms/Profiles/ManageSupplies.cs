@@ -183,7 +183,7 @@ namespace PharmInventory.Forms.Profiles
                 int itemId = Convert.ToInt32(drv["ID"]);
                 if (!itm.HasTransactions(itemId))
                 {
-                    if (MessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         proCat.GetCategoryByItem(itemId);
                         foreach (DataRowView drcat in proCat.DefaultView)
@@ -196,12 +196,12 @@ namespace PharmInventory.Forms.Profiles
                         itm.LoadByPrimaryKey(itemId);
                         itm.MarkAsDeleted();
                         itm.Save();
-                        MessageBox.Show("Item Deleted!","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        XtraMessageBox.Show("Item Deleted!","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Unable to Delete, This Item has been Received or Issued.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    XtraMessageBox.Show("Unable to Delete, This Item has been Received or Issued.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
         }

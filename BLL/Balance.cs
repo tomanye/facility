@@ -909,7 +909,7 @@ namespace BLL
             this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             
             // Set the balance  
-            int balance = 0;
+            int balance = (int)GetBeginningBalance(year,itemID,storeID);
             while (!EOF)
             {
                 balance += Convert.ToInt32(GetColumn("Balance"));
@@ -1206,5 +1206,16 @@ namespace BLL
 
             //this.Exe
         }
-	}
+
+        public long GetBeginningBalance(int year, int item, int storeID)
+        {
+            YearEnd yearEnd = new YearEnd();
+            yearEnd.LoadByItemIDStoreAndYear(item, storeID, year- 1,false);
+            if (yearEnd.RowCount > 0)
+            {
+                return yearEnd.PhysicalInventory;
+            }
+            return 0;
+        }
+    }
 }

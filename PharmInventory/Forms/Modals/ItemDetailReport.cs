@@ -792,7 +792,7 @@ namespace PharmInventory.Forms.Modals
             string balanceAm = "";
 
 
-            txtBBalance.Text = bBalance.ToString();
+            
             string ddDate = "";
             string batNo = "";
             foreach (DataRow dvRec in dtRec.Rows)
@@ -1074,6 +1074,7 @@ namespace PharmInventory.Forms.Modals
         {
             //Get the bin card.
             Balance balance = new Balance();
+            txtBBalance.Text = balance.GetBeginningBalance(Convert.ToInt32(cboFiscalYear.EditValue),_itemId,_storeId).ToString();
             gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId, Convert.ToInt32(cboFiscalYear.EditValue));
         }
 

@@ -165,5 +165,13 @@ namespace PharmInventory.Forms.Profiles
         {
             gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
+
+        private void gridItemChoiceView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
     }
 }

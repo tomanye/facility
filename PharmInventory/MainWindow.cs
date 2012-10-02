@@ -71,7 +71,7 @@ namespace PharmInventory
         /// <param name="filename"></param>
         public static void OpenInExcel(string filename)
         {
-            System.Diagnostics.Process.Start(filename, "winword");
+            System.Diagnostics.Process.Start(filename, "excel");
         }
 
         public static void OpenInPdf(string filename)

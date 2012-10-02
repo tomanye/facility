@@ -309,7 +309,7 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                    
-                    MessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else

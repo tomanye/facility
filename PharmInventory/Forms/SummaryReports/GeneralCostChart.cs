@@ -124,7 +124,7 @@ DateTime dtCurrent = new DateTime();
 
         private void lblHeader_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Width:{0}, Height:{1}",this.Width,this.Height));
+            XtraMessageBox.Show(string.Format("Width:{0}, Height:{1}",this.Width,this.Height));
         }
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)

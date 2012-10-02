@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using DevExpress.XtraEditors;
 using Microsoft.Win32;
 using BLL;
 using System.Windows.Forms;
@@ -132,11 +133,11 @@ namespace PharmInventory.HelperClasses
                 info.LoadAll();
                 info.LastBackUp = DateTime.Now;
                 info.Save();
-                MessageBox.Show("Backup completed to " + path + "!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Backup completed to " + path + "!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
             {
-                MessageBox.Show("Backup has failed! Please Try Again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Backup has failed! Please Try Again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -184,12 +185,12 @@ namespace PharmInventory.HelperClasses
                     info.LoadAll();
                     info.LastBackUp = DateTime.Now;
                     info.Save();
-                   // MessageBox.Show("Backup completed to " + path + "!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   // XtraMessageBox.Show("Backup completed to " + path + "!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 catch(Exception ex)
                 {
-                    //MessageBox.Show("Auto Backup has failed! Backup the database manually.", "Backup the database manually", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //XtraMessageBox.Show("Auto Backup has failed! Backup the database manually.", "Backup the database manually", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
         }

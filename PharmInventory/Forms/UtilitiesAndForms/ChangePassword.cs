@@ -47,13 +47,13 @@ namespace PharmInventory
                     }
                     else
                     {
-                        MessageBox.Show("Old Password is not correct!", "Invaild Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show("Old Password is not correct!", "Invaild Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Password doesnt match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Password doesnt match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

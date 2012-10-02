@@ -62,11 +62,11 @@ namespace PharmInventory.Forms.UtilitiesAndForms
                     com.CommandText = " USE MASTER RESTORE DATABASE [" + dbName + "] FROM  DISK = N'" + path + "' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 10";
                     com.Connection = conn;
                     com.ExecuteNonQuery();
-                    MessageBox.Show("Restore completed!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Restore completed!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch
                 {
-                    MessageBox.Show("Restore has failed! Make sure that the file exists and  Try Again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Restore has failed! Make sure that the file exists and  Try Again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
         private void btnImportUpdate_Click(object sender, EventArgs e)
         {
             bool success = true;
-            if (DialogResult.Yes == MessageBox.Show("Are you sure you want to import this file? Please make sure you have backup of the database before running this update.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            if (DialogResult.Yes == XtraMessageBox.Show("Are you sure you want to import this file? Please make sure you have backup of the database before running this update.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 OpenFileDialog od = new OpenFileDialog();
                 if (DialogResult.OK == od.ShowDialog())
@@ -129,8 +129,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
                         string str = sr.ReadLine();
                         if (str == "GO" || (sr.EndOfStream && str != ""))
                         {
+                           
                             success = abc.LoadQuery(query);
-                            //MessageBox.Show(query);
+                            //XtraMessageBox.Show(query);
                             str = "";
                             query = "";
                             continue;

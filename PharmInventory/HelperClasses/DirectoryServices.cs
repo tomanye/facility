@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using DevExpress.XtraEditors;
 using PharmInventory.DirectoryService;
 using DosageForm = BLL.DosageForm;
 using Items = BLL.Items;
@@ -143,16 +144,19 @@ namespace PharmInventory.HelperClasses
                 {
                     if (dsCommodityType.Name != localCommodityType.Name)
                     {
+                        localCommodityType.ID = dsCommodityType.ID.Value;
                         localCommodityType.Name = dsCommodityType.Name;
                         localCommodityType.Save();
                     }
                 }
                 else
                 {
+                    localCommodityType.FlushData();
                     localCommodityType.AddNew();
                     localCommodityType.ID = dsCommodityType.ID.Value;
                     localCommodityType.Name = dsCommodityType.Name;
                     localCommodityType.Save();
+                    XtraMessageBox.Show("Added " + dsCommodityType.Name);
                 }
             }
         }
@@ -194,7 +198,7 @@ namespace PharmInventory.HelperClasses
                     different = HandleDifferentDrugItemSubCategories(dsDrugItemSubCategory, localDrugItemSubCategory, different);
                 }
             }
-            //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static int HandleDifferentDrugItemSubCategories(DrugItemSubCategory dsDrugItemSubCategory, ProductsCategory localDrugItemSubCategory, int different)
@@ -316,7 +320,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Items\nSimilar Items: " + similar + "\nDifferent Items: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Items\nSimilar Items: " + similar + "\nDifferent Items: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshProducts(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -371,7 +375,7 @@ namespace PharmInventory.HelperClasses
 
 
             }
-            //MessageBox.Show("Products\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Products\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshPrograms(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -433,7 +437,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Programs\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Programs\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshDrugSubCategory(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -501,7 +505,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Drug Sub Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Drug Sub Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshItemSupplyCategory(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -559,7 +563,7 @@ namespace PharmInventory.HelperClasses
                     localItemSupplyCategory.Save();
                 }
             }
-            //MessageBox.Show("Drug Sub Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Drug Sub Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void HandleDifferentItemSupplyCategory(ref int different, ref int exactNameNotFound, ref int notFound, BLL.ItemSupplyCategory localItemSupplyCategory, DirectoryService.ItemSupplyCategory dsItemSupplyCategory, BLL.Items item)
@@ -660,7 +664,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshSupplyCategory(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -734,7 +738,7 @@ namespace PharmInventory.HelperClasses
                     */
                 }
             }
-            //MessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
 
@@ -794,7 +798,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Dosage Forms\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Dosage Forms\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
             
         }
 
@@ -880,7 +884,7 @@ namespace PharmInventory.HelperClasses
                     }
                 }
             }
-            //MessageBox.Show("Suppliers\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Suppliers\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static void RefreshUnits(Service1SoapClient soapClient, int? lastVersionNumber)
@@ -919,7 +923,7 @@ namespace PharmInventory.HelperClasses
                     different = HandleDifferentUnits(dsUnit, localUnit, different, exactNameNotFound, notFound);
                 }
             }
-            //MessageBox.Show("Units\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
+            //XtraMessageBox.Show("Units\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
         private static int HandleDifferentUnits(DirectoryService.Units dsUnit, Unit localUnit, int different, int exactNameNotFound, int notFound)
@@ -1138,7 +1142,11 @@ namespace PharmInventory.HelperClasses
             if (dsItem.StockCodeDACA != null) localItem.StockCodeDACA = dsItem.StockCodeDACA;
             if (dsItem.NearExpiryTrigger.HasValue) localItem.NearExpiryTrigger = dsItem.NearExpiryTrigger.Value;
             //if (dsItem.StorageTypeID.HasValue) localItem.StorageTypeID = dsItem.StorageTypeID.Value;
-            if (localItem.IsColumnNull("IsInHospitalList")) localItem.IsInHospitalList = false;
+            if (localItem.IsColumnNull("IsInHospitalList")) 
+                localItem.IsInHospitalList = false; 
+            else 
+                localItem.IsInHospitalList = localItem.IsInHospitalList;
+
             localItem.Code = dsItem.ID.Value.ToString(); //Mapping done here.
             localItem.Save();
         }

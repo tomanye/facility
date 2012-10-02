@@ -5,6 +5,7 @@ using System.Text;
 using System.Deployment.Application;
 using System.Windows.Forms;
 using System.ComponentModel;
+using DevExpress.XtraEditors;
 
 namespace PharmInventory.HelperClasses
 {
@@ -30,14 +31,14 @@ namespace PharmInventory.HelperClasses
         {
             if (!ApplicationDeployment.IsNetworkDeployed)
             {
-                MessageBox.Show("The application is not network deployed and can't be updated online.",
+                XtraMessageBox.Show("The application is not network deployed and can't be updated online.",
                                     "Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             if (RestartRequired)
             {
-                MessageBox.Show("The application needs to be restarted!", "Restart", MessageBoxButtons.OK,
+                XtraMessageBox.Show("The application needs to be restarted!", "Restart", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                 return;
             }
@@ -55,20 +56,20 @@ namespace PharmInventory.HelperClasses
 
             if (e.Error != null)
             {
-                MessageBox.Show("An Error occurred:\n" + e.Error.Message, "Error", MessageBoxButtons.OK,
+                XtraMessageBox.Show("An Error occurred:\n" + e.Error.Message, "Error", MessageBoxButtons.OK,
                                     MessageBoxIcon.Error);
                 return;
             }
 
             if (!e.UpdateAvailable)
             {
-                MessageBox.Show("No updates found!", "AppDeployment", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("No updates found!", "AppDeployment", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             if (e.Cancelled)
             {
-                MessageBox.Show("Update was cancelled!", "Update Cancelled", MessageBoxButtons.OK,
+                XtraMessageBox.Show("Update was cancelled!", "Update Cancelled", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
                 return;
             }
@@ -77,13 +78,13 @@ namespace PharmInventory.HelperClasses
             {
                 if (e.IsUpdateRequired)
                 {
-                    MessageBox.Show("There is a mandatory update available. Click OK to start installation", "Update Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("There is a mandatory update available. Click OK to start installation", "Update Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateRunning = true;
                     AppDeployment.UpdateAsync();
                     OnUpdating();
                 }
 
-                if (MessageBox.Show("Update found! Would you like to download and install the update now?", "Update Found", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Update found! Would you like to download and install the update now?", "Update Found", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     UpdateRunning = true;
                     AppDeployment.UpdateAsync();
@@ -103,17 +104,17 @@ namespace PharmInventory.HelperClasses
 
             if (e.Cancelled)
             {
-                MessageBox.Show("Update cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Update cancelled!", "Cancelled", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             if (e.Error != null)
             {
-                MessageBox.Show("Couldn't Install application! Reason: \n" + e.Error.Message);
+                XtraMessageBox.Show("Couldn't Install application! Reason: \n" + e.Error.Message);
             }
 
             //If it reaches here, a restart is required for the update to be applied.
             RestartRequired = true;
-            if (MessageBox.Show("Update Completed! Update will not take effect until you restart AppDeployment.  Restart AppDeployment now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Update Completed! Update will not take effect until you restart AppDeployment.  Restart AppDeployment now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Restart();
             }

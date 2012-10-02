@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using BLL;
+using DevExpress.XtraEditors;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -80,7 +81,7 @@ namespace PharmInventory.Forms.Modals
             string valid = ValidateFields();
             if (valid == "true")
             {
-                if (MessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     IssueDoc iss = new IssueDoc();
                     ReceiveDoc rec = new ReceiveDoc();
@@ -113,13 +114,13 @@ namespace PharmInventory.Forms.Modals
                         rec.Out = false;
                     rec.Save();
 
-                    MessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
 
  
@@ -165,7 +166,7 @@ namespace PharmInventory.Forms.Modals
                 }
                 catch
                 {
-                    MessageBox.Show("Pack & Qty Per Pack should be a Number!");
+                    XtraMessageBox.Show("Pack & Qty Per Pack should be a Number!");
                 }
             }
         }

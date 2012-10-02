@@ -109,7 +109,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    MessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    XtraMessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
             else if (tabPage == 1)
@@ -236,7 +236,7 @@ namespace PharmInventory
             string valid = ValidateFields();
             if (valid == "true")
             {
-                if (MessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Disposal dis = new Disposal();
                     Balance bal = new Balance();
@@ -270,7 +270,7 @@ namespace PharmInventory
                             }
                             else
                             {
-                                MessageBox.Show("You can't loss more quantity than what you have in the store!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                XtraMessageBox.Show("You can't loss more quantity than what you have in the store!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                 ResetFields();
                                 return;
                             }
@@ -316,13 +316,13 @@ namespace PharmInventory
 
                         dtAdjustDate.Value = xx;
                     }
-                    MessageBox.Show("Transaction successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Transaction successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetFields();
                 }
             }
             else
             {
-                MessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -368,7 +368,7 @@ namespace PharmInventory
                 else
                 {
                     tabControl1.SelectedTabPageIndex = 0;
-                    MessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    XtraMessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return false;
                 }
             }

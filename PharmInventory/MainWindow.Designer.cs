@@ -602,7 +602,7 @@ namespace PharmInventory
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.Location = new System.Drawing.Point(199, 126);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(894, 447);
+            this.mainPanel.Size = new System.Drawing.Size(894, 468);
             this.mainPanel.TabIndex = 16;
             // 
             // panelControl2
@@ -992,7 +992,6 @@ namespace PharmInventory
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.ttlBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = true;
             this.Name = "MainWindow";
             this.Text = "Ethiopian Health Commodity Management Information System (EHCMIS)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

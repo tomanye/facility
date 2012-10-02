@@ -160,6 +160,8 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             // btnRefreshDirectoryService
             // 
+            this.btnRefreshDirectoryService.Appearance.Font = new System.Drawing.Font("Verdana", 9.25F);
+            this.btnRefreshDirectoryService.Appearance.Options.UseFont = true;
             this.btnRefreshDirectoryService.Location = new System.Drawing.Point(193, 256);
             this.btnRefreshDirectoryService.Name = "btnRefreshDirectoryService";
             this.btnRefreshDirectoryService.Size = new System.Drawing.Size(321, 46);

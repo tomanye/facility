@@ -150,7 +150,7 @@ namespace PharmInventory.Forms.Profiles
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (
-                MessageBox.Show("Are You sure you want to apply these Settings?", "Confirmation",
+                XtraMessageBox.Show("Are You sure you want to apply these Settings?", "Confirmation",
                                 MessageBoxButtons.YesNo) != DialogResult.Yes) 
                 return;
 

@@ -126,7 +126,7 @@ namespace PharmInventory
 
         public static void UpdateDatabase()
         {
-            PharmInventory.HelperClasses.DatabaseHelpers.RunScriptsOnDatabase();
+           // PharmInventory.HelperClasses.DatabaseHelpers.RunScriptsOnDatabase();
         }
 
         public static void UpdateApplication()

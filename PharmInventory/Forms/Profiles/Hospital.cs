@@ -101,7 +101,7 @@ namespace PharmInventory.Forms.Profiles
             if (_hospitalId == 0)
                 return;
 
-            if (MessageBox.Show("Are You sure, You want to save the changes to Hospital General Info.?", "Confirmation",
+            if (XtraMessageBox.Show("Are You sure, You want to save the changes to Hospital General Info.?", "Confirmation",
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
 
