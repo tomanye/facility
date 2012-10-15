@@ -43,6 +43,8 @@ namespace PharmInventory.Forms.Transactions
         {
             EthiopianDate.EthiopianDate ethDate = new EthiopianDate.EthiopianDate();
 
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
             //if ((ethDate.Month == 10 && ethDate.Day == 30) || ethDate.Month == 11)
             //{
             //    btnSave.Enabled = true;
@@ -373,7 +375,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null)
+            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
             {
                 LoadInventoryItems();
                 //btnSave.Enabled = true;
@@ -389,7 +391,7 @@ namespace PharmInventory.Forms.Transactions
 
             int year = dtCurent.Year;
             Items itm = new Items();
-            DataTable dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue)) : itm.GetAllItems(1));
+            DataTable dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue)));
             PopulateItemList(dtItm, year);
             dtDate.CustomFormat = "MMMM dd, yyyy";
         }

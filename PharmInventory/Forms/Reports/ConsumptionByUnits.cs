@@ -47,6 +47,9 @@ namespace PharmInventory.Forms.Reports
             //CALENDAR:
             PopulateCatTree(_selectedType);
 
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
+
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;

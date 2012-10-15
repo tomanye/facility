@@ -50,8 +50,8 @@ namespace PharmInventory.Forms.Reports
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
-            lkCategories.ItemIndex = 0;
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
 
             string[] arr = new string[] {"All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked"};
             cboStatus.Properties.DataSource = arr;
@@ -128,10 +128,10 @@ namespace PharmInventory.Forms.Reports
 
             // different criteria for different options like suply and drug
             int programID = ((cboSubProgram.EditValue != null) ? Convert.ToInt32(cboSubProgram.EditValue) : 0);
-
+            int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
             if (!bw.IsBusy)
             {
-                bw.RunWorkerAsync(new int[] { storeId, month, year, programID });
+                bw.RunWorkerAsync(new int[] { storeId, month, year, programID,commodityType });
             }
         }
 
@@ -425,14 +425,14 @@ namespace PharmInventory.Forms.Reports
 
             int[] arr = (int [])e.Argument;
 
-            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3];
+            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3], commodityTypeID=arr[4];
 
             //if (year == EthiopianDate.EthiopianDate.Now.Year + 1)
             //{
             //    month = 1; //When we're sending the month as 1 if the year has been incremented (Fiscal year = year + 1 if month > 10)
             //}
 
-            DataTable dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID,_dtCur, bw);
+            DataTable dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID,commodityTypeID,_dtCur, bw);
             e.Result = dtBal;
         }
 
@@ -495,7 +495,7 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
             //gridItemChoiceView.ActiveFilterString = string.Format("ItemID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
     }

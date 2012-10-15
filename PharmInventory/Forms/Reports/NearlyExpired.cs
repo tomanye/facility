@@ -30,6 +30,9 @@ namespace PharmInventory.Forms.Reports
         private void ManageItems_Load(object sender, EventArgs e)
         {
             PopulateCatTree(_selectedType);
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            // Select the very first commodity type.
+            lkCommodityTypes.ItemIndex = 0;
             DateTime xx = dtDate.Value;
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
@@ -113,7 +116,9 @@ namespace PharmInventory.Forms.Reports
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
             int yr = (dtCurrent.Month < 11) ? dtCurrent.Year - 1 : dtCurrent.Year;
             DateTime dt1 = new DateTime(yr, 11, 1);
-            DataTable dtItem = ((_selectedType == "Drug") ? itm.GetNearlyExpiredItemsByBatch(storeId,dtCurrent) : itm.GetNearlyExpiredSupplyByBatch(storeId));
+            int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
+            DataTable dtItem = itm.GetNearlyExpiredItemsByBatch(storeId,commodityType,dtCurrent) ;
+           
             PopulateItemList(dtItem);
             PopulateCatTree(_selectedType);
         }
@@ -177,12 +182,13 @@ namespace PharmInventory.Forms.Reports
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null)
+            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
             {
                 Items itm = new Items();
                 int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
+                int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
 
-                DataTable dtItem = ((_selectedType == "Drug") ? itm.GetNearlyExpiredItemsByBatch(storeId, _dtCurrent) : itm.GetNearlyExpiredSupplyByBatch(storeId));
+                DataTable dtItem = itm.GetNearlyExpiredItemsByBatch(storeId,commodityType, _dtCurrent);
                 PopulateItemList(dtItem);
             }
         }

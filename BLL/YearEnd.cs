@@ -132,7 +132,7 @@ namespace BLL
                 while (!stores.EOF)
                 {
                     Items itm = new Items();
-                    itm.ExcludeNeverReceivedItems(stores.ID);
+                    itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
 
                     if (!this.DoesBalanceExist(ethDate.Year, stores.ID, !ignoreAutomatic) && itm.RowCount > 0)
                     {
@@ -164,7 +164,7 @@ namespace BLL
                     if (!DoesBalanceExist(ethDate.Year, stores.ID, true)) //If Inventory information hasn't already been filled for this store
                     {
                         Items itm = new Items();
-                        itm.ExcludeNeverReceivedItems(stores.ID);
+                        itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
                         while (!itm.EOF) //For each time
                         {
                             YearEnd yearEnd = new YearEnd();

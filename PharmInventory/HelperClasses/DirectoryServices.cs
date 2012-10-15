@@ -619,7 +619,7 @@ namespace PharmInventory.HelperClasses
                 if (localDrugCategory.RowCount > 0)
                 {
                     Console.Write(localDrugCategory.CategoryName);
-                    if (dsDrugCategory.CategoryName.Replace(" ", "") == localDrugCategory.CategoryName.Replace(" ", ""))
+                    if (dsDrugCategory.CategoryName != null && dsDrugCategory.CategoryName.Replace(" ", "") == localDrugCategory.CategoryName.Replace(" ", ""))
                     {
                         similar++;
                     }

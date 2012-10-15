@@ -126,7 +126,7 @@ namespace PharmInventory.Forms.Transactions
             if (_tabPage == 0)
             {
 
-                if (_dtSelectedTable.Rows.Count > 0)
+                if  (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
                 {
                     PopulateGridList();
                 }

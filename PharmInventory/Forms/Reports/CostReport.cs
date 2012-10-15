@@ -190,17 +190,6 @@ namespace PharmInventory.Forms.Reports
             e.Result = dtBal;
         }
 
-        /// <summary>
-        /// Populates Item list based on the supplied table
-        /// </summary>
-        /// <param name="dtTable"></param>
-        //private void PopulateItemList(DataTable dtTable)
-        //{
-        //    //TODO: Check this to make sure we are getting the required results.
-        //    gridItemsList.DataSource = dtTable;
-        //    if (ckExclude.Checked)
-        //        gridItemListView.ActiveFilterString = "[Received] != '0'";
-        //}
 
         /// <summary>
         /// Updates the form based on the selection on the treeCategory (Does filtering)
@@ -346,29 +335,7 @@ namespace PharmInventory.Forms.Reports
             gridItemListView.ActiveFilterString = "[FullItemName] like '" + txtItemName.Text + "%'";
         }
 
-        private void PopulateByProgram()
-        {
-            //if (cboSubProgram.SelectedValue != null && cboStores.SelectedValue != null)
-            //{
-            //    Items itm = new Items();
-            //    DataTable dtItem;
-            //    if (Convert.ToInt32(cboSubProgram.SelectedValue) > 0)
-            //    {
-            //        if (rdDrug.EditValue!=null)
-            //            dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItemsByProgram(Convert.ToInt32(cboSubProgram.SelectedValue), Convert.ToInt32(cboStores.SelectedValue)) : itm.GetItemsByProgram(Convert.ToInt32(cboSubProgram.SelectedValue)));
-            //        else
-            //            dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSuppliesByProgram(Convert.ToInt32(cboSubProgram.SelectedValue), Convert.ToInt32(cboStores.SelectedValue)) : itm.GetSupplyByProgram(Convert.ToInt32(cboSubProgram.SelectedValue)));
-            //    }
-            //    else
-            //    {
-            //        if (rdDrug.EditValue!=null)
-            //            dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllItems(1));
-            //        else
-            //            dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllSupply());
-            //    }
-            //   // PopulateItemList(dtItem);
-            //}
-        }
+       
 
         /// <summary>
         /// Populates the items based on the chosen program
@@ -383,14 +350,6 @@ namespace PharmInventory.Forms.Reports
         private void gridItemsList_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void cboYear_EditValueChanged(object sender, EventArgs e)
-        {
-            if (cboStores.SelectedValue != null )//&& cboYear.SelectedValue != null)
-            {
-                PopulateItemList();
-            }
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)

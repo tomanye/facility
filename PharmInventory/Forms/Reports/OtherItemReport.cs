@@ -32,6 +32,9 @@ namespace PharmInventory.Forms.Reports
 
             PopulateCatTree(SelectedType);
 
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
+
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
@@ -42,6 +45,7 @@ namespace PharmInventory.Forms.Reports
             "Near EOP",
             "Normal",
             "Over Stocked"};
+
             cboStatus.Properties.DataSource = arr;
 
             DataTable dtMonths = new DataTable();
@@ -107,10 +111,10 @@ namespace PharmInventory.Forms.Reports
 
                     // different criteri for different options like suply and drug
                     int programID = ((cboSubProgram.EditValue != null) ? Convert.ToInt32(cboSubProgram.EditValue) : 0);
-
+                    int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
                     if (!bw.IsBusy)
                     {
-                        bw.RunWorkerAsync(new int[] { storeId, month, year, programID });
+                        bw.RunWorkerAsync(new int[] { storeId, month, year, programID,commodityType });
                     }
                 }
             }
@@ -257,24 +261,7 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            gridItemsChoice.ShowPrintPreview();
-        }
-
-        private void toolStripButton5_Click(object sender, EventArgs e)
-        {
-            string FileName = MainWindow.GetNewFileName("xls");
-            gridItemsChoice.ExportToXls(FileName);
-            MainWindow.OpenInExcel(FileName);
-        }
-
-        private void toolStripButton6_Click(object sender, EventArgs e)
-        {
-            string FileName = MainWindow.GetNewFileName("pdf");
-            gridItemsChoice.ExportToPdf(FileName);
-            MainWindow.OpenInPdf(FileName);
-        }
+       
 
         private void gridItemsChoice_DoubleClick(object sender, EventArgs e)
         {
@@ -309,9 +296,9 @@ namespace PharmInventory.Forms.Reports
 
             int[] arr = (int [])e.Argument;
 
-            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3];
+            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3],commodityTypeID = arr[4];
 
-            dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID,dtCur, bw);
+            dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID,commodityTypeID,dtCur, bw);
             e.Result = dtBal;
         }
 
@@ -328,10 +315,6 @@ namespace PharmInventory.Forms.Reports
           
         }
 
-        private void cboStores_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnExport_Click(object sender, EventArgs e)
         {

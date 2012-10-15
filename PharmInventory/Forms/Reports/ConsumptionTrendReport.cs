@@ -47,6 +47,9 @@ namespace PharmInventory.Forms.Reports
             //CALENDAR:
             PopulateCatTree(_selectedType);
 
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
+
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
@@ -116,10 +119,10 @@ namespace PharmInventory.Forms.Reports
 
             // different criteria for different options like suply and drug
            // int programID = ((cboSubProgram.EditValue != null) ? Convert.ToInt32(cboSubProgram.EditValue) : 0);
-
+            int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
             if (!bw.IsBusy)
             {
-                bw.RunWorkerAsync(new int[] { storeId, year, 0 });
+                bw.RunWorkerAsync(new int[] { storeId, year, 0 , commodityType });
             }
         }
 
@@ -186,17 +189,6 @@ namespace PharmInventory.Forms.Reports
             //PopulateItemList(dtItem);
         }
 
-        /// <summary>
-        /// Updates the forms based on the chosen month
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cboMonth_SelectedValueChanged(object sender, EventArgs e)
-        {
-            // 
-            //cboStores.ItemIndex = 0;
-            //PopulateGrid();
-        }
         
         /// <summary>
         /// Update the form based on the store selected.
@@ -210,33 +202,6 @@ namespace PharmInventory.Forms.Reports
                 PopulateGrid();
             }
         }
-
-        /// <summary>
-        /// Updates the grid based on the chosen status
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void cboStatus_SelectedValueChanged(object sender, EventArgs e)
-        //{
-        //    if (cboIssuedTo.EditValue == null) 
-        //        return;
-
-        //    if (cboIssuedTo.EditValue.ToString() != "All")
-        //    {
-        //        if (cboIssuedTo.EditValue.ToString() == "Stock Out")
-        //        {
-        //            gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
-        //        }
-        //        else
-        //        {
-        //            gridItemChoiceView.ActiveFilterString = "[Status] Like '" + cboIssuedTo.EditValue.ToString() + "'";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        gridItemChoiceView.ActiveFilterString = "[SOH] != '0' or [AMC] != '0' or [EverReceived] != '0'";
-        //    }
-        //}
 
         /// <summary>
         /// Updates the form based on the year that is chosen
@@ -267,15 +232,6 @@ namespace PharmInventory.Forms.Reports
             gridItemChoiceView.ActiveFilterString = ckExclude.Checked ? "[EverReceived] != '0'" : "";
         }
 
-        /// <summary>
-        /// Filters the grid based on the ckExclude value (Exclude never issued items)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ckExcNeverIssued_CheckedChanged_1(object sender, EventArgs e)
-        {
-           // gridItemChoiceView.ActiveFilterString = ckExcNeverIssued.Checked ? "[EverReceived] != '0' AND [Issued] != 0" : "[EverReceived] != '0'";
-        }
 
         /// <summary>
         /// Filter the grid based on the txtItemName value
@@ -287,15 +243,7 @@ namespace PharmInventory.Forms.Reports
             gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%'";  
         }
 
-        /// <summary>
-        /// When the sub program changes, the grid gets updated accordingly
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void cboSubProgram_SelectedValueChanged(object sender, EventArgs e)
-        {
-            //PopulateGrid();
-        }
+   
         
         private void cboIssuedTo_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -368,7 +316,7 @@ namespace PharmInventory.Forms.Reports
 
             int[] arr = (int [])e.Argument;
 
-            int storeId = arr[0], year= arr[1], programID=arr[2];
+            int storeId = arr[0], year= arr[1], programID=arr[2],commodityTypeID= arr[3];
 
             //if (year == EthiopianDate.EthiopianDate.Now.Year + 1)
             //{

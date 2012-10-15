@@ -30,7 +30,7 @@ namespace QuickUpdator
             
             int storeId = 1;// (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
 
-            DataTable dtItm = itms.ExcludeNeverReceivedItems(storeId);
+            DataTable dtItm = itms.ExcludeNeverReceivedItems(storeId, Convert.ToInt32(lkCommodityTypes.EditValue));
             string[] str = { "Item Name", "Batch No.", "Remark" };
             foreach (string co in str)
             {
@@ -207,6 +207,10 @@ namespace QuickUpdator
         /// <param name="e"></param>
         private void UpdatorForm_Load(object sender, EventArgs e)
         {
+
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
+            
             if (MyGeneration.dOOdads.BusinessEntity.RegistryConnectionString == "")
             {
                 Program.ConnectionManager.ShowDialog();

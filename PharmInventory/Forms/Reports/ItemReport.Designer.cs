@@ -39,7 +39,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.lkCategories = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkCommodityTypes = new DevExpress.XtraEditors.LookUpEdit();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.legend1 = new PharmInventory.UserControls.Legend();
@@ -103,7 +103,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkCategories.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboIssuedTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSubProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStatus.Properties)).BeginInit();
@@ -182,7 +182,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.lkCategories);
+            this.layoutControl1.Controls.Add(this.lkCommodityTypes);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.btnExport);
             this.layoutControl1.Controls.Add(this.legend1);
@@ -208,21 +208,21 @@ namespace PharmInventory.Forms.Reports
             this.layoutControl1.TabIndex = 34;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // lkCategories
+            // lkCommodityTypes
             // 
-            this.lkCategories.Location = new System.Drawing.Point(736, 12);
-            this.lkCategories.Name = "lkCategories";
-            this.lkCategories.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkCommodityTypes.Location = new System.Drawing.Point(736, 12);
+            this.lkCommodityTypes.Name = "lkCommodityTypes";
+            this.lkCommodityTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkCategories.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lkCommodityTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lkCategories.Properties.DisplayMember = "Name";
-            this.lkCategories.Properties.NullText = "";
-            this.lkCategories.Properties.ValueMember = "ID";
-            this.lkCategories.Size = new System.Drawing.Size(155, 20);
-            this.lkCategories.StyleController = this.layoutControl1;
-            this.lkCategories.TabIndex = 35;
-            this.lkCategories.EditValueChanged += new System.EventHandler(this.lkCategories_EditValueChanged);
+            this.lkCommodityTypes.Properties.DisplayMember = "Name";
+            this.lkCommodityTypes.Properties.NullText = "";
+            this.lkCommodityTypes.Properties.ValueMember = "ID";
+            this.lkCommodityTypes.Size = new System.Drawing.Size(155, 20);
+            this.lkCommodityTypes.StyleController = this.layoutControl1;
+            this.lkCommodityTypes.TabIndex = 35;
+            this.lkCommodityTypes.EditValueChanged += new System.EventHandler(this.lkCategories_EditValueChanged);
             // 
             // btnPrint
             // 
@@ -1023,7 +1023,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // layoutControlItem16
             // 
-            this.layoutControlItem16.Control = this.lkCategories;
+            this.layoutControlItem16.Control = this.lkCommodityTypes;
             this.layoutControlItem16.CustomizationFormText = "Category";
             this.layoutControlItem16.Location = new System.Drawing.Point(676, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
@@ -1104,7 +1104,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lkCategories.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboIssuedTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSubProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStatus.Properties)).EndInit();
@@ -1207,7 +1207,7 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraPrinting.PrintableComponentLink pcl;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraEditors.LookUpEdit lkCategories;
+        private DevExpress.XtraEditors.LookUpEdit lkCommodityTypes;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;

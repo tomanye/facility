@@ -254,7 +254,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // lkCategories
             // 
-            this.lkCategories.Location = new System.Drawing.Point(113, 31);
+            this.lkCategories.Location = new System.Drawing.Point(112, 31);
             this.lkCategories.Name = "lkCategories";
             this.lkCategories.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -263,7 +263,7 @@ namespace PharmInventory.Forms.Transactions
             this.lkCategories.Properties.DisplayMember = "Name";
             this.lkCategories.Properties.NullText = "";
             this.lkCategories.Properties.ValueMember = "ID";
-            this.lkCategories.Size = new System.Drawing.Size(208, 20);
+            this.lkCategories.Size = new System.Drawing.Size(209, 20);
             this.lkCategories.StyleController = this.layoutControl1;
             this.lkCategories.TabIndex = 29;
             this.lkCategories.EditValueChanged += new System.EventHandler(this.lkCategories_EditValueChanged);
@@ -331,9 +331,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(469, 31);
+            this.txtItemName.Location = new System.Drawing.Point(468, 31);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(422, 20);
+            this.txtItemName.Size = new System.Drawing.Size(423, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 0;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
@@ -704,7 +704,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // cboProgram
             // 
-            this.cboProgram.Location = new System.Drawing.Point(421, 12);
+            this.cboProgram.Location = new System.Drawing.Point(420, 12);
             this.cboProgram.Name = "cboProgram";
             this.cboProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -713,13 +713,13 @@ namespace PharmInventory.Forms.Transactions
             this.cboProgram.Properties.DisplayMember = "Name";
             this.cboProgram.Properties.NullText = "";
             this.cboProgram.Properties.ValueMember = "ID";
-            this.cboProgram.Size = new System.Drawing.Size(210, 20);
+            this.cboProgram.Size = new System.Drawing.Size(211, 20);
             this.cboProgram.StyleController = this.layoutControl2;
             this.cboProgram.TabIndex = 15;
             // 
             // cboSupplier
             // 
-            this.cboSupplier.Location = new System.Drawing.Point(86, 36);
+            this.cboSupplier.Location = new System.Drawing.Point(85, 36);
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -728,7 +728,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboSupplier.Properties.DisplayMember = "CompanyName";
             this.cboSupplier.Properties.NullText = "";
             this.cboSupplier.Properties.ValueMember = "ID";
-            this.cboSupplier.Size = new System.Drawing.Size(257, 20);
+            this.cboSupplier.Size = new System.Drawing.Size(258, 20);
             this.cboSupplier.StyleController = this.layoutControl2;
             this.cboSupplier.TabIndex = 14;
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -738,9 +738,9 @@ namespace PharmInventory.Forms.Transactions
             // txtRemark
             // 
             this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRemark.Location = new System.Drawing.Point(86, 467);
+            this.txtRemark.Location = new System.Drawing.Point(85, 467);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(572, 20);
+            this.txtRemark.Size = new System.Drawing.Size(573, 20);
             this.txtRemark.StyleController = this.layoutControl2;
             this.txtRemark.TabIndex = 4;
             // 
@@ -751,10 +751,10 @@ namespace PharmInventory.Forms.Transactions
             this.dtRecDate.CalendarForeColor = System.Drawing.Color.Black;
             this.dtRecDate.DayOfWeekCharacters = 2;
             this.dtRecDate.ForeColor = System.Drawing.Color.Black;
-            this.dtRecDate.Location = new System.Drawing.Point(804, 36);
+            this.dtRecDate.Location = new System.Drawing.Point(803, 36);
             this.dtRecDate.Name = "dtRecDate";
             this.dtRecDate.PopUpFontSize = 9.75F;
-            this.dtRecDate.Size = new System.Drawing.Size(233, 20);
+            this.dtRecDate.Size = new System.Drawing.Size(234, 20);
             this.dtRecDate.TabIndex = 10;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
             this.dtRecDate.Value = new System.DateTime(2010, 10, 13, 0, 0, 0, 0);
@@ -762,10 +762,10 @@ namespace PharmInventory.Forms.Transactions
             // txtReceivedBy
             // 
             this.txtReceivedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtReceivedBy.Location = new System.Drawing.Point(86, 443);
+            this.txtReceivedBy.Location = new System.Drawing.Point(85, 443);
             this.txtReceivedBy.Name = "txtReceivedBy";
             this.txtReceivedBy.Properties.ReadOnly = true;
-            this.txtReceivedBy.Size = new System.Drawing.Size(572, 20);
+            this.txtReceivedBy.Size = new System.Drawing.Size(573, 20);
             this.txtReceivedBy.StyleController = this.layoutControl2;
             this.txtReceivedBy.TabIndex = 4;
             // 
@@ -1231,7 +1231,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // cboStores
             // 
-            this.cboStores.Location = new System.Drawing.Point(86, 12);
+            this.cboStores.Location = new System.Drawing.Point(85, 12);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1240,7 +1240,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboStores.Properties.DisplayMember = "StoreName";
             this.cboStores.Properties.NullText = "";
             this.cboStores.Properties.ValueMember = "ID";
-            this.cboStores.Size = new System.Drawing.Size(257, 20);
+            this.cboStores.Size = new System.Drawing.Size(258, 20);
             this.cboStores.StyleController = this.layoutControl2;
             this.cboStores.TabIndex = 13;
             conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
@@ -1250,9 +1250,9 @@ namespace PharmInventory.Forms.Transactions
             // txtRefNo
             // 
             this.txtRefNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRefNo.Location = new System.Drawing.Point(804, 12);
+            this.txtRefNo.Location = new System.Drawing.Point(803, 12);
             this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(233, 20);
+            this.txtRefNo.Size = new System.Drawing.Size(234, 20);
             this.txtRefNo.StyleController = this.layoutControl2;
             this.txtRefNo.TabIndex = 0;
             conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;

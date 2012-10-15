@@ -238,7 +238,7 @@ namespace PharmInventory.Forms.Reports
                 else
                 {
                     if (rdDrug.EditValue!=null)
-                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllItems(1));
+                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.SelectedValue),Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1));
                     else
                         dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllSupply());
                 }

@@ -771,60 +771,11 @@ namespace BLL
         }
 
 
-        public DataTable BalanceOfAllItems(int storeId, int year, int month,string selectedType,int programID, DateTime dtCurrent, BackgroundWorker bw)
+        public DataTable BalanceOfAllItems(int storeId, int year, int month,string selectedType,int programID,int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
         {
             DataTable dtBal = new DataTable();
             GeneralInfo pipline = new GeneralInfo();
-            //Items itm = new Items();
-            //Balance bal = new Balance();
-            //IssueDoc iss = new IssueDoc();
-            //ReceiveDoc rec = new ReceiveDoc();
-            //string[] str = { "No", "FullItemName", "SOH", "AMC", "MOS", "Min", "Max", "Issued", "Status", "Reorder Amount", "CategoryId", "SubCategoryID","Received","ID" };
-            //foreach (string s in str)
-            //{
-            //    dtBal.Columns.Add(s);
-            //}
-            //pipline.LoadAll();
-            //int min = pipline.Min;
-            //int max = pipline.Max;
-            //double eop = pipline.EOP;
-            //int count = 1;
-            //DataTable dtItem = new DataTable();
-            //if(programID == 0)
-            //    dtItem = ((selectedType == "Drug") ? itm.GetAllItems(1) : itm.GetAllSupply());
-            //else
-            //    dtItem = ((selectedType == "Drug") ? itm.GetItemsByProgram(programID): itm.GetSupplyByProgram(programID));
-
-            //foreach (DataRow dr in dtItem.Rows)
-            //{
-            //    string itemName = dr["FullItemName"].ToString();
-            //    int yer = (month < 11) ? year : year - 1;
-            //    Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, yer);
-            //    Int64 MinCon = AMC * min;
-            //    Int64 maxCon = AMC * max;
-            //    double eopCon = AMC * (eop + 0.25);
-            //    double beloweopCon = AMC * (eop - 0.25);
-            //    Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, yer);
-            //    decimal MOS = (AMC != 0) ? (Convert.ToDecimal(SOH) / Convert.ToDecimal(AMC)) : 0;
-            //    MOS = Decimal.Round(MOS, 1);
-
-            //    if (SOH < 0)
-            //    {
-
-            //    }
-
-            //    Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
-            //    string status = (SOH <= eopCon && SOH > beloweopCon) ? "Near EOP" : ((SOH > 0 && SOH <= beloweopCon) ? "Below EOP" : ((SOH > maxCon && maxCon != 0) ? "Excess Stock" : ((SOH <= 0) ? "Stock Out" : "Normal")));//((SOH > beloweopCon && SOH <= MinCon) ? "Below Min" : ((SOH > maxCon && maxCon != 0) ? "Excess Stock" : ((SOH <= 0) ? "Stock Out" : "Normal"));
-            //    //Int64 issuedQuant = iss.GetIssuedQuantityByMonth(Convert.ToInt32(dr["ID"]), storeId, month,yer);
-            //    Int64 issuedQuant = iss.GetIssuedQuantity(Convert.ToInt32(dr["ID"]), storeId, yer);
-            //    Int64 receivedQty = rec.GetReceivedQuantity(Convert.ToInt32(dr["ID"]), storeId, yer);
-            //    int received = ReceiveDoc.ItemReceived(Convert.ToInt32(dr["ID"]), storeId);
-            //    object[] obj = { count.ToString(), itemName, ((SOH != 0) ? SOH.ToString("#,###") : "0"), ((AMC != 0) ? AMC.ToString("#,###") : "0"), MOS.ToString(), ((MinCon != 0) ? MinCon.ToString("#,###") : "0"), ((maxCon != 0) ? maxCon.ToString("#,###") : "0"), ((issuedQuant != 0) ? issuedQuant.ToString("#,###") : "0"), status, ((reorder != 0) ? reorder.ToString("#,###") : "0"), Convert.ToInt32(dr["CategoryId"]), Convert.ToInt32(dr["SubCategoryID"]),received, Convert.ToInt32(dr["ID"]) };
-            //    dtBal.Rows.Add(obj);
-            //    count++;
-            //    bw.ReportProgress(Convert.ToInt32((Convert.ToDouble(count) / dtItem.Rows.Count) * 100));
-            //}
-
+            
             // Dont Iterate
             DataTable dtbl=new DataTable();
             if (programID == 0) //We don't filter by program ID.
@@ -833,7 +784,7 @@ namespace BLL
             }
             else //We filter by program ID.
             {
-                dtbl = GetSOHByPrograms(storeId, programID, month, year);
+                dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
             }            
             
             dtbl.Columns.Add("MOS",typeof(float));
@@ -854,10 +805,7 @@ namespace BLL
                 // 
                 int reorder =  Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
-                
-
-                //int dos = ((dr["LastIssueDate"] != DBNull.Value)? dtCurrent.Subtract(Convert.ToDateTime(dr["LastIssueDate"])).Days :0);
-                //dr["DaysStockedOut"] = dos;
+               
             }
             return dtbl;
         }
@@ -920,7 +868,7 @@ namespace BLL
             return this.DataTable;
         }
                 
-        public DataTable GetSOHByPrograms(int storeId,int programID, int month, int year)
+        public DataTable GetSOHByPrograms(int storeId,int commodityTypeID,int programID, int month, int year)
         {
             //GeneralInfo pipline = new GeneralInfo();
             //pipline.LoadAll();
@@ -938,6 +886,8 @@ namespace BLL
 
             ////this.LoadFromSqlNoExec("SOH", ld);
             this.LoadFromSql("SOHByPrograms", ld, CommandType.StoredProcedure);
+            //TODO: filter out by commodity type here.
+
             return this.DataTable;
         }
 

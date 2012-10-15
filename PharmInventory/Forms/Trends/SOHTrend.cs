@@ -18,6 +18,8 @@ namespace PharmInventory.Forms.Trends
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
+            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCommodityTypes.ItemIndex = 0;
 
             PopulateCatTree();
             Stores stor = new Stores();
@@ -72,7 +74,7 @@ namespace PharmInventory.Forms.Trends
         private void PopulateCatTree()
         {
             ProductTree.Nodes.Clear();
-            if (rdDrug.Checked)
+            if (Convert.ToInt32(lkCommodityTypes.EditValue) == BLL.Type.Constants.Pharmacuticals)
             {
                 Category cat = new Category();
                 SubCategory subCat = new SubCategory();
@@ -247,14 +249,9 @@ namespace PharmInventory.Forms.Trends
                 Items itm = new Items();
                 int storeId = Convert.ToInt32(cboStores.SelectedValue);
                 DataTable dtItem = new DataTable();
-                if (rdDrug.Checked)
-                {
-                    dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId) : itm.GetAllItems(1));
-                }
-                else
-                {
-                    dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(storeId) : itm.GetAllSupply());
-                }
+                
+                    dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId,Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1));
+              
                 PopulateItemList(dtItem);
                 lblState.Text = "All Items";
             }
@@ -309,14 +306,9 @@ namespace PharmInventory.Forms.Trends
                 Items itm = new Items();
                 int storeId = Convert.ToInt32(cboStores.SelectedValue);
                 DataTable dtItem = new DataTable();
-                if(rdDrug.Checked) 
-                {
-                    dtItem = ((ckExclude.Checked)? itm.ExcludeNeverReceivedItems(storeId) : itm.GetAllItems(1));
-                }
-                else
-                {
-                    dtItem= ((ckExclude.Checked)? itm.ExcludeNeverReceivedSupply(storeId): itm.GetAllSupply());
-                }
+               
+                    dtItem = ((ckExclude.Checked)? itm.ExcludeNeverReceivedItems(storeId,Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(Convert.ToInt32(lkCommodityTypes.EditValue)));
+              
                 PopulateItemList(dtItem);
                 lblState.Text = "All Items";
             }
@@ -358,14 +350,10 @@ namespace PharmInventory.Forms.Trends
                 Items itm = new Items();
                 int storeId = Convert.ToInt32(cboStores.SelectedValue);
                 DataTable dtItem = new DataTable();
-                if (rdDrug.Checked)
-                {
-                    dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId) : itm.GetAllItems(1));
-                }
-                else
-                {
-                    dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(storeId) : itm.GetAllSupply());
-                }
+               
+                dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId,Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1));
+               
+               
                 PopulateItemList(dtItem);
                 PopulateCatTree();
                 lblState.Text = "All Items";
@@ -386,23 +374,13 @@ namespace PharmInventory.Forms.Trends
                 DataTable dtItm = new DataTable();
                 if (txtItemName.Text != "")
                 {
-                    if (rdDrug.Checked)
-                    {
-
-                        dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItemsByKeyword(storeId, txtItemName.Text) : itm.GetItemByKeywordInList(txtItemName.Text));
-                    }
-                    else
-                        dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupplyByKeyword(storeId, txtItemName.Text) : itm.GetSupplyByKeywordInList(txtItemName.Text));
+                      dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItemsByKeyword(storeId, txtItemName.Text) : itm.GetItemByKeywordInList(txtItemName.Text));
+                   
                 }
                 else
                 {
-                    if (rdDrug.Checked)
-                    {
-
-                        dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId) : itm.GetAllItems(1));
-                    }
-                    else
-                        dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(storeId) : itm.GetAllSupply());
+                        dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(storeId, Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1));
+                  
                 }
                 PopulateItemList(dtItm);
 
@@ -422,17 +400,12 @@ namespace PharmInventory.Forms.Trends
                 DataTable dtItem = new DataTable();
                 if (Convert.ToInt32(cboSubProgram.SelectedValue) > 0)
                 {
-                    if (rdDrug.Checked)
                         dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItemsByProgram(Convert.ToInt32(cboSubProgram.SelectedValue), Convert.ToInt32(cboStores.SelectedValue)) : itm.GetItemsByProgram(Convert.ToInt32(cboSubProgram.SelectedValue)));
-                    else
-                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSuppliesByProgram(Convert.ToInt32(cboSubProgram.SelectedValue), Convert.ToInt32(cboStores.SelectedValue)) : itm.GetSupplyByProgram(Convert.ToInt32(cboSubProgram.SelectedValue)));
+                  
                 }
                 else
                 {
-                    if (rdDrug.Checked)
-                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllItems(1));
-                    else
-                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedSupply(Convert.ToInt32(cboStores.SelectedValue)) : itm.GetAllSupply());
+                        dtItem = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.SelectedValue), Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1));
                 }
                 PopulateItemList(dtItem);
             }

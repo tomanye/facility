@@ -9,6 +9,13 @@ namespace BLL
 {
 	public class Type : _Type
 	{
+
+        public class Constants
+        {
+            public const int Pharmacuticals = 7;
+
+        }
+
 		public Type()
 		{
 		

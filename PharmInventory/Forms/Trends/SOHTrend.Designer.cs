@@ -32,10 +32,9 @@ namespace PharmInventory.Forms.Trends
             this.lblState = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboIssuedTo = new System.Windows.Forms.ComboBox();
             this.cboSubProgram = new System.Windows.Forms.ComboBox();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
-            this.rdDrug = new System.Windows.Forms.RadioButton();
-            this.rdSupply = new System.Windows.Forms.RadioButton();
             this.ckExclude = new DevExpress.XtraEditors.CheckEdit();
             this.xpButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -44,20 +43,20 @@ namespace PharmInventory.Forms.Trends
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lstItem = new PrintableListView.PrintableListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.Item = new System.Windows.Forms.ColumnHeader();
-            this.Jly = new System.Windows.Forms.ColumnHeader();
-            this.Aug = new System.Windows.Forms.ColumnHeader();
-            this.Sep = new System.Windows.Forms.ColumnHeader();
-            this.Oct = new System.Windows.Forms.ColumnHeader();
-            this.Nov = new System.Windows.Forms.ColumnHeader();
-            this.Dec = new System.Windows.Forms.ColumnHeader();
-            this.Jan = new System.Windows.Forms.ColumnHeader();
-            this.Feb = new System.Windows.Forms.ColumnHeader();
-            this.Mar = new System.Windows.Forms.ColumnHeader();
-            this.Apr = new System.Windows.Forms.ColumnHeader();
-            this.may = new System.Windows.Forms.ColumnHeader();
-            this.Jun = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Item = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Jly = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Aug = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Oct = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nov = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Dec = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Jan = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Feb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Apr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.may = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Jun = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,14 +71,17 @@ namespace PharmInventory.Forms.Trends
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboIssuedTo = new System.Windows.Forms.ComboBox();
+            this.lkCommodityTypes = new DevExpress.XtraEditors.LookUpEdit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductTree
             // 
-            this.ProductTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProductTree.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ProductTree.BackColor = System.Drawing.Color.PowderBlue;
             this.ProductTree.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProductTree.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -112,13 +114,12 @@ namespace PharmInventory.Forms.Trends
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lkCommodityTypes);
             this.groupBox1.Controls.Add(this.cboIssuedTo);
             this.groupBox1.Controls.Add(this.cboSubProgram);
             this.groupBox1.Controls.Add(this.txtItemName);
-            this.groupBox1.Controls.Add(this.rdDrug);
-            this.groupBox1.Controls.Add(this.rdSupply);
             this.groupBox1.Controls.Add(this.ckExclude);
             this.groupBox1.Controls.Add(this.xpButton2);
             this.groupBox1.Controls.Add(this.xpButton1);
@@ -132,6 +133,18 @@ namespace PharmInventory.Forms.Trends
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cboIssuedTo
+            // 
+            this.cboIssuedTo.DisplayMember = "Name";
+            this.cboIssuedTo.FormattingEnabled = true;
+            this.cboIssuedTo.Location = new System.Drawing.Point(548, 46);
+            this.cboIssuedTo.Name = "cboIssuedTo";
+            this.cboIssuedTo.Size = new System.Drawing.Size(157, 21);
+            this.cboIssuedTo.TabIndex = 48;
+            this.cboIssuedTo.Text = "Select Issue Location";
+            this.cboIssuedTo.ValueMember = "ID";
+            this.cboIssuedTo.SelectedValueChanged += new System.EventHandler(this.cboIssuedTo_SelectedValueChanged);
             // 
             // cboSubProgram
             // 
@@ -149,68 +162,38 @@ namespace PharmInventory.Forms.Trends
             // 
             this.txtItemName.Location = new System.Drawing.Point(388, 18);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(157, 21);
+            this.txtItemName.Size = new System.Drawing.Size(157, 20);
             this.txtItemName.TabIndex = 46;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
-            // rdDrug
-            // 
-            this.rdDrug.AutoSize = true;
-            this.rdDrug.Checked = true;
-            this.rdDrug.Location = new System.Drawing.Point(286, 24);
-            this.rdDrug.Name = "rdDrug";
-            this.rdDrug.Size = new System.Drawing.Size(59, 17);
-            this.rdDrug.TabIndex = 44;
-            this.rdDrug.TabStop = true;
-            this.rdDrug.Text = "Drugs";
-            
-            this.rdDrug.CheckedChanged += new System.EventHandler(this.rdDrug_CheckedChanged);
-            // 
-            // rdSupply
-            // 
-            this.rdSupply.AutoSize = true;
-            this.rdSupply.Location = new System.Drawing.Point(286, 47);
-            this.rdSupply.Name = "rdSupply";
-            this.rdSupply.Size = new System.Drawing.Size(73, 17);
-            this.rdSupply.TabIndex = 45;
-            this.rdSupply.Text = "Supplies";
-            
-            // 
             // ckExclude
             // 
-            this.ckExclude.AutoSize = true;
-            this.ckExclude.Checked = true;
-            this.ckExclude.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckExclude.EditValue = true;
             this.ckExclude.Location = new System.Drawing.Point(23, 52);
             this.ckExclude.Name = "ckExclude";
-            this.ckExclude.Size = new System.Drawing.Size(201, 17);
+            this.ckExclude.Properties.Caption = "Exclude Never Received Items";
+            this.ckExclude.Size = new System.Drawing.Size(201, 19);
             this.ckExclude.TabIndex = 34;
-            this.ckExclude.Text = "Exclude Never Received Items";
-            
             this.ckExclude.CheckedChanged += new System.EventHandler(this.ckExclude_CheckedChanged);
             // 
             // xpButton2
             // 
-            
             this.xpButton2.Image = global::PharmInventory.Properties.Resources.MS_Excel;
             this.xpButton2.Location = new System.Drawing.Point(711, 18);
             this.xpButton2.Name = "xpButton2";
             this.xpButton2.Size = new System.Drawing.Size(75, 23);
             this.xpButton2.TabIndex = 17;
             this.xpButton2.Text = "Export";
-            
             this.xpButton2.Click += new System.EventHandler(this.xpButton2_Click);
             // 
             // xpButton1
             // 
-            
             this.xpButton1.Image = global::PharmInventory.Properties.Resources.printer;
             this.xpButton1.Location = new System.Drawing.Point(711, 43);
             this.xpButton1.Name = "xpButton1";
             this.xpButton1.Size = new System.Drawing.Size(75, 23);
             this.xpButton1.TabIndex = 16;
             this.xpButton1.Text = "Print";
-            
             this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // cboYear
@@ -262,9 +245,9 @@ namespace PharmInventory.Forms.Trends
             // 
             // lstItem
             // 
-            this.lstItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstItem.BackColor = System.Drawing.Color.White;
             this.lstItem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstItem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -295,8 +278,8 @@ namespace PharmInventory.Forms.Trends
             this.lstItem.Title = "";
             this.lstItem.UseCompatibleStateImageBehavior = false;
             this.lstItem.View = System.Windows.Forms.View.Details;
-            this.lstItem.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstItem_MouseDoubleClick);
             this.lstItem.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstItem_ColumnClick);
+            this.lstItem.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstItem_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -452,17 +435,19 @@ namespace PharmInventory.Forms.Trends
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             // 
-            // cboIssuedTo
+            // lkCommodityTypes
             // 
-            this.cboIssuedTo.DisplayMember = "Name";
-            this.cboIssuedTo.FormattingEnabled = true;
-            this.cboIssuedTo.Location = new System.Drawing.Point(548, 46);
-            this.cboIssuedTo.Name = "cboIssuedTo";
-            this.cboIssuedTo.Size = new System.Drawing.Size(157, 21);
-            this.cboIssuedTo.TabIndex = 48;
-            this.cboIssuedTo.Text = "Select Issue Location";
-            this.cboIssuedTo.ValueMember = "ID";
-            this.cboIssuedTo.SelectedValueChanged += new System.EventHandler(this.cboIssuedTo_SelectedValueChanged);
+            this.lkCommodityTypes.Location = new System.Drawing.Point(263, 19);
+            this.lkCommodityTypes.Name = "lkCommodityTypes";
+            this.lkCommodityTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkCommodityTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lkCommodityTypes.Properties.DisplayMember = "Name";
+            this.lkCommodityTypes.Properties.NullText = "";
+            this.lkCommodityTypes.Properties.ValueMember = "ID";
+            this.lkCommodityTypes.Size = new System.Drawing.Size(119, 20);
+            this.lkCommodityTypes.TabIndex = 51;
             // 
             // SOHTrend
             // 
@@ -482,7 +467,9 @@ namespace PharmInventory.Forms.Trends
             this.Text = "Stock Report";
             this.Load += new System.EventHandler(this.ManageItems_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,10 +517,9 @@ namespace PharmInventory.Forms.Trends
         private System.Windows.Forms.ColumnHeader may;
         private System.Windows.Forms.ColumnHeader Jun;
         private DevExpress.XtraEditors.CheckEdit ckExclude;
-        private System.Windows.Forms.RadioButton rdDrug;
-        private System.Windows.Forms.RadioButton rdSupply;
         private System.Windows.Forms.ComboBox cboSubProgram;
         private DevExpress.XtraEditors.TextEdit txtItemName;
         private System.Windows.Forms.ComboBox cboIssuedTo;
+        private DevExpress.XtraEditors.LookUpEdit lkCommodityTypes;
     }
 }

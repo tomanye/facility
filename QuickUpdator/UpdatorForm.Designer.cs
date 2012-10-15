@@ -31,6 +31,9 @@ namespace QuickUpdator
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridView grdViewItemBatches;
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.removeNegatives = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -47,10 +50,10 @@ namespace QuickUpdator
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.ddnItem = new DevExpress.XtraEditors.LookUpEdit();
             this.ddnStore = new DevExpress.XtraEditors.LookUpEdit();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lkCommodityTypes = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             grdViewItemBatches = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(grdViewItemBatches)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -60,12 +63,49 @@ namespace QuickUpdator
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddnItem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddnStore.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(grdViewItemBatches)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // grdViewItemBatches
+            // 
+            grdViewItemBatches.AllowUserToAddRows = false;
+            grdViewItemBatches.AllowUserToDeleteRows = false;
+            grdViewItemBatches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdViewItemBatches.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column2,
+            this.Column3,
+            this.ItemID});
+            grdViewItemBatches.Location = new System.Drawing.Point(7, 66);
+            grdViewItemBatches.Name = "grdViewItemBatches";
+            grdViewItemBatches.ReadOnly = true;
+            grdViewItemBatches.Size = new System.Drawing.Size(529, 212);
+            grdViewItemBatches.TabIndex = 8;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BatchNo";
+            this.Column2.HeaderText = "Batch No.";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "QuantityLeft";
+            this.Column3.HeaderText = "Quantity Left";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // ItemID
+            // 
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "Item ID";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
+            this.ItemID.Visible = false;
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(11, 44);
+            this.simpleButton1.Location = new System.Drawing.Point(3, 69);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(175, 23);
             this.simpleButton1.TabIndex = 0;
@@ -75,7 +115,7 @@ namespace QuickUpdator
             // 
             // removeNegatives
             // 
-            this.removeNegatives.Location = new System.Drawing.Point(11, 14);
+            this.removeNegatives.Location = new System.Drawing.Point(3, 39);
             this.removeNegatives.Name = "removeNegatives";
             this.removeNegatives.Size = new System.Drawing.Size(174, 24);
             this.removeNegatives.TabIndex = 1;
@@ -100,23 +140,25 @@ namespace QuickUpdator
             this.xtraTabPage1.Controls.Add(this.simpleButton1);
             this.xtraTabPage1.Controls.Add(this.removeNegatives);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(545, 285);
+            this.xtraTabPage1.Size = new System.Drawing.Size(545, 284);
             this.xtraTabPage1.Text = "Negative Removal";
             // 
             // xtraTabPage2
             // 
+            this.xtraTabPage2.Controls.Add(this.lkCommodityTypes);
             this.xtraTabPage2.Controls.Add(this.btnReset);
+            this.xtraTabPage2.Controls.Add(this.labelControl5);
             this.xtraTabPage2.Controls.Add(this.labelControl2);
             this.xtraTabPage2.Controls.Add(this.labelControl1);
             this.xtraTabPage2.Controls.Add(this.lkItems);
             this.xtraTabPage2.Controls.Add(this.lkStores);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(545, 285);
+            this.xtraTabPage2.Size = new System.Drawing.Size(545, 284);
             this.xtraTabPage2.Text = "Item Removal";
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(280, 109);
+            this.btnReset.Location = new System.Drawing.Point(284, 137);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(112, 19);
             this.btnReset.TabIndex = 2;
@@ -125,7 +167,7 @@ namespace QuickUpdator
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(82, 75);
+            this.labelControl2.Location = new System.Drawing.Point(82, 103);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(22, 13);
             this.labelControl2.TabIndex = 1;
@@ -141,7 +183,7 @@ namespace QuickUpdator
             // 
             // lkItems
             // 
-            this.lkItems.Location = new System.Drawing.Point(191, 72);
+            this.lkItems.Location = new System.Drawing.Point(193, 100);
             this.lkItems.Name = "lkItems";
             this.lkItems.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -149,7 +191,7 @@ namespace QuickUpdator
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullItemName", "Item Name")});
             this.lkItems.Properties.DisplayMember = "FullItemName";
             this.lkItems.Properties.ValueMember = "ID";
-            this.lkItems.Size = new System.Drawing.Size(202, 20);
+            this.lkItems.Size = new System.Drawing.Size(200, 20);
             this.lkItems.TabIndex = 0;
             // 
             // lkStores
@@ -175,7 +217,7 @@ namespace QuickUpdator
             this.xtraTabPage3.Controls.Add(this.ddnItem);
             this.xtraTabPage3.Controls.Add(this.ddnStore);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(545, 285);
+            this.xtraTabPage3.Size = new System.Drawing.Size(545, 284);
             this.xtraTabPage3.Text = "Batch Removal";
             // 
             // btnEmptyBatch
@@ -230,42 +272,27 @@ namespace QuickUpdator
             this.ddnStore.TabIndex = 3;
             this.ddnStore.EditValueChanged += new System.EventHandler(this.ddnStore_EditValueChanged);
             // 
-            // grdViewItemBatches
+            // lkCommodityTypes
             // 
-            grdViewItemBatches.AllowUserToAddRows = false;
-            grdViewItemBatches.AllowUserToDeleteRows = false;
-            grdViewItemBatches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdViewItemBatches.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column2,
-            this.Column3,
-            this.ItemID});
-            grdViewItemBatches.Location = new System.Drawing.Point(7, 66);
-            grdViewItemBatches.Name = "grdViewItemBatches";
-            grdViewItemBatches.ReadOnly = true;
-            grdViewItemBatches.Size = new System.Drawing.Size(529, 212);
-            grdViewItemBatches.TabIndex = 8;
+            this.lkCommodityTypes.Location = new System.Drawing.Point(191, 69);
+            this.lkCommodityTypes.Name = "lkCommodityTypes";
+            this.lkCommodityTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkCommodityTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lkCommodityTypes.Properties.DisplayMember = "Name";
+            this.lkCommodityTypes.Properties.NullText = "";
+            this.lkCommodityTypes.Properties.ValueMember = "ID";
+            this.lkCommodityTypes.Size = new System.Drawing.Size(202, 20);
+            this.lkCommodityTypes.TabIndex = 52;
             // 
-            // Column2
+            // labelControl5
             // 
-            this.Column2.DataPropertyName = "BatchNo";
-            this.Column2.HeaderText = "Batch No.";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "QuantityLeft";
-            this.Column3.HeaderText = "Quantity Left";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // ItemID
-            // 
-            this.ItemID.DataPropertyName = "ItemID";
-            this.ItemID.HeaderText = "Item ID";
-            this.ItemID.Name = "ItemID";
-            this.ItemID.ReadOnly = true;
-            this.ItemID.Visible = false;
+            this.labelControl5.Location = new System.Drawing.Point(82, 72);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(24, 13);
+            this.labelControl5.TabIndex = 1;
+            this.labelControl5.Text = "Type";
             // 
             // UpdatorForm
             // 
@@ -279,6 +306,7 @@ namespace QuickUpdator
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Reset Utility";
             this.Load += new System.EventHandler(this.UpdatorForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(grdViewItemBatches)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -290,7 +318,7 @@ namespace QuickUpdator
             this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ddnItem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddnStore.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(grdViewItemBatches)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCommodityTypes.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -316,6 +344,8 @@ namespace QuickUpdator
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn ItemID;
+        private DevExpress.XtraEditors.LookUpEdit lkCommodityTypes;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
     }
 }
 

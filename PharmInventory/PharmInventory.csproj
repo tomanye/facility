@@ -44,11 +44,11 @@
     <UpdateUrl>http://fe.hcmis.org/labs/</UpdateUrl>
     <ProductName>HCMIS Facility Edition</ProductName>
     <PublisherName>USAID DELIVER PROJECT</PublisherName>
-    <MinimumRequiredVersion>2.5.0.145</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.5.0.150</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>146</ApplicationRevision>
+    <ApplicationRevision>151</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

@@ -162,14 +162,21 @@ namespace BLL
         public DataTable GetAllItems(int inList)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND Name = 'Drug' ORDER BY ItemName", inList));
+            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} ORDER BY ItemName", inList));
             return this.DataTable;
         }
 
-        public DataTable GetAllItems(int inList, int storeId)
+        public DataTable GetAllItems(int inList,int commodityTypeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc Where StoreID = {1}) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND Name = 'Drug' ORDER BY ItemName", inList, storeId));
+            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND TypeID = {1} ORDER BY ItemName", inList, commodityTypeID));
+            return this.DataTable;
+        }
+
+        public DataTable GetAllItems(int inList, int storeId, int commodityTypeID)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc Where StoreID = {1}) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND TypeID = {2} ORDER BY ItemName", inList, storeId,commodityTypeID));
             return this.DataTable;
         }
         /**
@@ -590,10 +597,10 @@ namespace BLL
             return qunatity;
         }
 
-        public DataTable GetExpiredItemsByBatch(int storeId)
+        public DataTable GetExpiredItemsByBatch(int storeId, int commodityType)
         {
             this.FlushData();
-            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.Name = 'Drug') AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId);
+            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId,commodityType);
 
             this.LoadFromRawSql(query);
             return this.DataTable;
@@ -639,12 +646,7 @@ namespace BLL
             return obj;
         }
 
-        public DataTable GetExpiredSupplysByBatch(int storeId)
-        {
-            this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch WHERE ( Name = 'Supply') AND (ExpDate <= GETDATE()) AND (Out = 0) AND StoreId = {0} ORDER BY Price DESC", storeId));
-            return this.DataTable;
-        }
+        
 
         public DataTable GetExpiredItemsByID(int storeId, int itemId)
         {
@@ -788,10 +790,10 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetNearlyExpiredItemsByBatch(int storeId, DateTime dtCurrent)
+        public DataTable GetNearlyExpiredItemsByBatch(int storeId, int commodityType , DateTime dtCurrent)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch ib WHERE ib.Name = 'Drug' AND ib.StoreId = {0} AND (ib.ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (ib.Out = 0) ORDER BY Price Desc", storeId));
+            this.LoadFromRawSql(string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch ib WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND (ib.ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
             this.DataTable.Columns.Add("MOS");
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {
@@ -846,40 +848,21 @@ namespace BLL
         {
             this.FlushData();
             if (storeId != 0)
-                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Drug' AND ItemName LIKE '{1}%' AND StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", storeId, keyword));
+                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE TypeID = {2} AND ItemName LIKE '{1}%' AND StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", storeId, keyword,Type.Constants.Pharmacuticals));
             else
-                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Drug' AND ItemName LIKE '{0}%' AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", keyword));
+                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE TypeID = {1} AND ItemName LIKE '{0}%' AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", keyword, Type.Constants.Pharmacuticals));
             return this.DataTable;
         }
 
-        public DataTable GetNearlyExpiredSupplyByBatch(int storeId)
+    
+
+       
+
+
+        public DataTable GetNearlyExpiredItemsByBatchByCatId(int storeId,int commodityType, int categoryId)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Supply' AND StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", storeId));
-            return this.DataTable;
-        }
-
-        public DataTable GetNearlyExpiredSupplyByBatchByKeyword(int storeId, string keyword)
-        {
-            this.FlushData();
-            if (storeId != 0)
-                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Supply' AND ItemName LIKE '{1}%' AND StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", storeId, keyword));
-            else
-                this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Supply' AND ItemName LIKE '{0}%' AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", keyword));
-            return this.DataTable;
-        }
-
-        //public DataTable GetNearlyExpiredSupplyByBatch(int storeId)
-        //{
-        //    this.FlushData();
-        //    this.LoadFromRawSql(string.Format("SELECT *,(Cost * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch WHERE Name = 'Supply' AND StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0) ORDER BY Price Desc", storeId));
-        //    return this.DataTable;
-        //}
-
-        public DataTable GetNearlyExpiredItemsByBatchByCatId(int storeId, int categoryId)
-        {
-            this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE StoreId = {0} AND Name = 'Drug' AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0)AND ID IN (Select ItemID from ProductsCategory Where SubCategoryID IN (Select ID from SubCategory where CategoryID = {1})) ORDER BY ID", storeId, categoryId));
+            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE StoreId = {0} AND TypeID = {2} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (Out = 0)AND ID IN (Select ItemID from ProductsCategory Where SubCategoryID IN (Select ID from SubCategory where CategoryID = {1})) ORDER BY ID", storeId, categoryId,commodityType));
             return this.DataTable;
         }
 
@@ -922,16 +905,30 @@ namespace BLL
             return this.DataTable.Rows.Count;
         }
 
-        public DataTable ExcludeNeverReceivedItems(int storeId)
+        public DataTable ExcludeNeverReceivedItems(int storeId, int commodityTypeID)
         {
             this.FlushData();
             if (storeId == 0)
             {
-                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1) AND Name = 'Drug' ORDER BY ItemName"));
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1) AND TypeID = {0} ORDER BY ItemName",commodityTypeID));
             }
             else
             {
-                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND Name = 'Drug' ORDER BY ItemName", storeId));
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName", storeId,commodityTypeID));
+            }
+            return this.DataTable;
+        }
+
+        public DataTable ExcludeNeverReceivedItemsNoCategory(int storeId)
+        {
+            this.FlushData();
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1)  ORDER BY ItemName"));
+            }
+            else
+            {
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)  ORDER BY ItemName", storeId));
             }
             return this.DataTable;
         }
@@ -950,10 +947,10 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetReceivedNotIssuedItems(int storeId)
+        public DataTable GetReceivedNotIssuedItems(int storeId, int commodityTypeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND (ID IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0}))) ORDER BY ItemName", storeId));
+            this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND (ID IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0}))) and TypeID = {1} ORDER BY ItemName", storeId,commodityTypeID));
             return this.DataTable;
         }
 
@@ -1015,53 +1012,53 @@ namespace BLL
             return itms.DataTable;
         }
 
-        public DataTable GetStockedOutItems(int storeId, DateTime dtCurrent)
-        {
-            DataTable dtResult = new DataTable();
-            DataTable dtItem = this.GetAllItems(1, storeId);
-            GeneralInfo pipline = new GeneralInfo();
-            pipline.LoadAll();
-            int min = pipline.Min;
-            int max = pipline.Max;
-            int month = dtCurrent.Month;
-            int year = dtCurrent.Year;
-            Balance bal = new Balance();
-            IssueDoc iss = new IssueDoc();
-            string[] col = { "ID", "FullItemName", "MaxCon", "MinCon", "AMC", "noDays", "CategoryId", "SubCategoryID", "BeenReceived" };
+        //public DataTable GetStockedOutItems(int storeId, DateTime dtCurrent)
+        //{
+        //    DataTable dtResult = new DataTable();
+        //    DataTable dtItem = this.GetAllItems(1, storeId);
+        //    GeneralInfo pipline = new GeneralInfo();
+        //    pipline.LoadAll();
+        //    int min = pipline.Min;
+        //    int max = pipline.Max;
+        //    int month = dtCurrent.Month;
+        //    int year = dtCurrent.Year;
+        //    Balance bal = new Balance();
+        //    IssueDoc iss = new IssueDoc();
+        //    string[] col = { "ID", "FullItemName", "MaxCon", "MinCon", "AMC", "noDays", "CategoryId", "SubCategoryID", "BeenReceived" };
 
-            dtResult.Columns.Add("ID");
-            dtResult.Columns.Add("FullItemName");
-            dtResult.Columns.Add("MaxCon", typeof(int));
-            dtResult.Columns.Add("MinCon", typeof(int));
-            dtResult.Columns.Add("AMC", typeof(int));
-            dtResult.Columns.Add("noDays");
-            dtResult.Columns.Add("CategoryId", typeof(int));
-            dtResult.Columns.Add("SubCategoryId", typeof(int));
-            dtResult.Columns.Add("BeenReceived");
+        //    dtResult.Columns.Add("ID");
+        //    dtResult.Columns.Add("FullItemName");
+        //    dtResult.Columns.Add("MaxCon", typeof(int));
+        //    dtResult.Columns.Add("MinCon", typeof(int));
+        //    dtResult.Columns.Add("AMC", typeof(int));
+        //    dtResult.Columns.Add("noDays");
+        //    dtResult.Columns.Add("CategoryId", typeof(int));
+        //    dtResult.Columns.Add("SubCategoryId", typeof(int));
+        //    dtResult.Columns.Add("BeenReceived");
 
-            foreach (DataRow dr in dtItem.Rows)
-            {
-                string itemName = dr["FullItemName"].ToString();
-                int yer = (month < 11) ? year : year - 1;
-                Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, year);
-                Int64 MinCon = AMC * min;
-                Int64 maxCon = AMC * max;
+        //    foreach (DataRow dr in dtItem.Rows)
+        //    {
+        //        string itemName = dr["FullItemName"].ToString();
+        //        int yer = (month < 11) ? year : year - 1;
+        //        Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, year);
+        //        Int64 MinCon = AMC * min;
+        //        Int64 maxCon = AMC * max;
 
-                Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year); ;
-                Int64 maxMOS = SOH - maxCon;
-                if (SOH == 0)
-                {
-                    DateTime DayStockOut = iss.GetLastIssuedDateByItem(storeId, Convert.ToInt32(dr["ID"]));
-                    TimeSpan tt = new TimeSpan();
-                    string noDays = "";
-                    tt = new TimeSpan(dtCurrent.Ticks - DayStockOut.Ticks);
-                    noDays = ((tt.TotalDays <= 90) ? tt.TotalDays.ToString() : ((tt.TotalDays < 30000) ? "More than 3 Month" : "Never Received"));//(tt.TotalDays < 30000) ? : ((ckExclude.Checked) ? "Loss/Expired" : "Never Received");
-                    object[] obj = { dr["ID"], itemName, maxCon, MinCon, AMC, noDays, dr["CategoryId"], dr["SubCategoryID"], dr["BeenReceived"] };
-                    dtResult.Rows.Add(obj);
-                }
-            }
-            return dtResult;
-        }
+        //        Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year); ;
+        //        Int64 maxMOS = SOH - maxCon;
+        //        if (SOH == 0)
+        //        {
+        //            DateTime DayStockOut = iss.GetLastIssuedDateByItem(storeId, Convert.ToInt32(dr["ID"]));
+        //            TimeSpan tt = new TimeSpan();
+        //            string noDays = "";
+        //            tt = new TimeSpan(dtCurrent.Ticks - DayStockOut.Ticks);
+        //            noDays = ((tt.TotalDays <= 90) ? tt.TotalDays.ToString() : ((tt.TotalDays < 30000) ? "More than 3 Month" : "Never Received"));//(tt.TotalDays < 30000) ? : ((ckExclude.Checked) ? "Loss/Expired" : "Never Received");
+        //            object[] obj = { dr["ID"], itemName, maxCon, MinCon, AMC, noDays, dr["CategoryId"], dr["SubCategoryID"], dr["BeenReceived"] };
+        //            dtResult.Rows.Add(obj);
+        //        }
+        //    }
+        //    return dtResult;
+        //}
 
         /// <summary>
         /// 
