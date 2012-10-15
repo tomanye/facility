@@ -906,7 +906,7 @@ namespace BLL
             ld.Add("@ItemID", itemID);
             ld.Add("@Year", year);
             
-            this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
+            //this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             
             // Set the balance  
             int balance = 0;
