@@ -77,7 +77,7 @@ namespace PharmInventory.HelperClasses
         {
             RegistryKey key = Registry.CurrentUser.OpenSubKey(RegKey);
             string authString = "";
-            if (key != null)
+            if (key != null )
             {
                 try
                 {
