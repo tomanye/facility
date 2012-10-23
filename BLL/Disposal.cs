@@ -24,7 +24,12 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-
+        public DataTable GetDisposalByBatchAndID(int recId)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("select * from Disposal where  RecID = {0}", recId));
+            return this.DataTable;
+        }
         public DataTable GetAllTransaction(int storeId)
         {
             this.FlushData();

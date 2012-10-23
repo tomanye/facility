@@ -45,6 +45,7 @@ namespace PharmInventory
             Application.SetCompatibleTextRenderingDefault(false);
 
             ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
+            StockoutIndexBuilder.Settings.ConnectionString = Registry.GetValue("HKEY_CURRENT_USER\\Software\\JSI\\HCMIS\\Configuration", "ConnectionString", null).ToString();
 
             if (ApplicationDeployment.IsNetworkDeployed)
             {

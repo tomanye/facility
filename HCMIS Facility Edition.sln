@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmInventory", "PharmInventory\PharmInventory.csproj", "{80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionStringManager", "ConnectionStringManager\ConnectionStringManager.csproj", "{69805B41-7B24-48D7-9A7A-F6018F4A6087}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -162,6 +164,38 @@ Global
 		{80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
 		{80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9}.SingleImage|x86.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|Itanium.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.CD_ROM|x86.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|Itanium.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|x86.ActiveCfg = Debug|x86
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Debug|x86.Build.0 = Debug|x86
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|Itanium.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.DVD-5|x86.ActiveCfg = Debug|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|Itanium.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|x86.ActiveCfg = Release|x86
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.Release|x86.Build.0 = Release|x86
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|Itanium.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
+		{69805B41-7B24-48D7-9A7A-F6018F4A6087}.SingleImage|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

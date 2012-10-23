@@ -29,7 +29,12 @@ namespace BLL
             this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0"));
             return this.DataTable;
         }
-
+        public DataTable GetAllPrograms()
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM Programs"));
+            return this.DataTable;
+        }
         public DataTable GetProgramByName(string programName)
         {
             this.FlushData();

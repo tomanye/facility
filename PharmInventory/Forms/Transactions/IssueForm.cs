@@ -261,7 +261,8 @@ namespace PharmInventory.Forms.Transactions
                 ReceivingUnits DUs = new ReceivingUnits();
 
                 DataTable dtIssueConf = new DataTable();
-                string[] strr = {"No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price", "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack", "DUSOH", "DUAMC", "Near Expiry", "DURecomended" };
+                string[] strr = {"No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price", "ItemId", "RecId", 
+                                    "Unit Price", "No of Pack", "Qty per pack", "DUSOH", "DUAMC", "Near Expiry", "DURecomended" ,"SOH Left" };
                 foreach (string col in strr)
                 {
                     dtIssueConf.Columns.Add(col);
@@ -289,6 +290,7 @@ namespace PharmInventory.Forms.Transactions
                 {
                     Int64 expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(cboStores.EditValue));
                     Int64 sohQty=0;
+                
                     try
                     {
                         sohQty = bal.GetSOH(Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(cboStores.EditValue), dtIss.Month, dtIss.Year) - expAmount;
@@ -315,15 +317,17 @@ namespace PharmInventory.Forms.Transactions
                         {
                             int j = 0;
                             Int64 quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]);
+                            double sohleft = sohQty - quantity;
                             while (quantity > 0)
                             {
                                 string batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
-                                Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
+                                //double quantityleft = (Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"]) - quantity);
+                               Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
                                 double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);
                                 double packPrice = unitPrice * qtyPerPack; //Convert.ToDouble(dtIssueGrid.Rows[i]["Qty Per Pack"]);
                                 double reqPackQty = Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"]);
-                                double totPrice = unitPrice * qu;
+                                double totPrice = unitPrice * quantity;
                                 bool nearExp = false;
                                 DateTime dtx = new DateTime();
                                 if (itm.NeedExpiryBatch)
@@ -333,11 +337,17 @@ namespace PharmInventory.Forms.Transactions
                                         nearExp = true;
                                 }
                                 int rowNo = j + 1;
-                                object[] obj = {rowNo, dtIssueGrid.Rows[i]["Stock Code"], dtIssueGrid.Rows[i]["Item Name"], qu, batch, dtx.ToString("MMM dd,yyyy"), packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.#0"), dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"], dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"] };
+                                object[] obj = {rowNo, dtIssueGrid.Rows[i]["Stock Code"], dtIssueGrid.Rows[i]["Item Name"], qu, batch, dtx.ToString("MMM dd,yyyy"), 
+                                                   packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"),
+                                                   Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), 
+                                                   unitPrice.ToString("#,##0.#0"), dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], 
+                                                   dtIssueGrid.Rows[i]["DU Remaining SOH"], dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), 
+                                                   dtIssueGrid.Rows[i]["Recommended Qty"],sohleft};
                                 dtIssueConf.Rows.Add(obj);
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
                                 j++;
                             }
+                         
                         }
                         else
                         {                            

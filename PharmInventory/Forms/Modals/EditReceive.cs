@@ -27,7 +27,7 @@ namespace PharmInventory.Forms.Modals
         {
             InitializeComponent();
             _tranId = tId;
-            
+                        
             if (allowOnlyPartialEdit)
             {
                 cboStores.Enabled = false;

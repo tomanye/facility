@@ -413,9 +413,10 @@ namespace BLL
 
 		public DataTable GetIssueByBatchAndId(int itemId, string batchNo, int recId)
 		{
+            
 			this.FlushData();
 			this.LoadFromRawSql(String.Format("select * from IssueDoc where ItemID = {0} And BatchNo = '{1}' And RecievDocID = {2}", itemId, batchNo,recId));
-			return this.DataTable;
+            return this.DataTable;
 		}
 
 		public bool MergeStore(int storeone, int storetwo)

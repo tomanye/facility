@@ -440,6 +440,16 @@
 
 
         </member>
+        <member name="P:DevExpress.XtraLayout.SplitterItem.FixedStyle">
+            <summary>
+                <para>Gets or sets whether and which layout item/group is fixed.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraLayout.SplitterItemFixedStyles"/> value that specifies whether and which layout item/group is fixed.
+</value>
+
+
+        </member>
         <member name="M:DevExpress.XtraLayout.SplitterItem.GetDefaultText">
             <summary>
                 <para>Returns the splitter item's name.
@@ -731,7 +741,8 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
         </member>
         <member name="F:DevExpress.XtraLayout.TextAlignModeGroup.AlignLocal">
             <summary>
-                <para>Controls displayed within the current group are automatically aligned independently from other groups.
+                <para>Controls displayed within the current group are equally aligned independent of other groups.
+
 
 </para>
             </summary>
@@ -740,7 +751,9 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
         </member>
         <member name="F:DevExpress.XtraLayout.TextAlignModeGroup.AlignWithChildren">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Controls displayed within the current and nested groups are equally aligned independent of other groups.
+
+</para>
             </summary>
 
 
@@ -795,7 +808,8 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
         </member>
         <member name="F:DevExpress.XtraLayout.TextAlignMode.AlignInGroupsRecursive">
             <summary>
-                <para> [To be supplied] </para>
+                <para>For internal use.
+</para>
             </summary>
 
 
@@ -2092,309 +2106,6 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
 
 
         </member>
-        <member name="T:DevExpress.XtraLayout.LayoutControlItem">
-
-            <summary>
-                <para>Represents a layout item that can display an external control.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor(DevExpress.XtraLayout.LayoutControlGroup)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class with the specified parent group.
-</para>
-            </summary>
-            <param name="parent">
-		A <see cref="T:DevExpress.XtraLayout.LayoutControlGroup"/> object representing the layout group which owns the created item.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor(DevExpress.XtraLayout.LayoutControl,System.Windows.Forms.Control)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class.
-</para>
-            </summary>
-            <param name="layoutControl">
-		A <see cref="T:DevExpress.XtraLayout.LayoutControl"/> object which owns the created layout item. This value is assigned to the <see cref="P:DevExpress.XtraLayout.BaseLayoutItem.Owner"/> property.
-
-            </param>
-            <param name="control">
-		A <see cref="T:System.Windows.Forms.Control"/> descendant which is owned by the created layout item. This value is assigned to the <see cref="P:DevExpress.XtraLayout.LayoutControlItem.Control"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowAutoAlignment">
-            <summary>
-                <para>Gets or sets whether the auto-alignment feature is enabled for the item.
-</para>
-            </summary>
-            <value>A Boolean value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowHotTrack">
-            <summary>
-                <para>Gets or sets whether the layout item's borders are highlighted when the mouse cursor hovers over it.
-</para>
-            </summary>
-            <value><b>true</b> if the layout item can be hot-tracked; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowHtmlStringInCaption">
-            <summary>
-                <para>Gets or sets whether HTML formatting is allowed in the text that is associated with the layout item.
-</para>
-            </summary>
-            <value><b>true</b> if HTML formatting is allowed; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ContentVisible">
-            <summary>
-                <para>Gets or sets whether the layout item's contents are visible.
-</para>
-            </summary>
-            <value><b>true</b> if the layout item's contents are visible; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Control">
-            <summary>
-                <para>Gets or sets the control which is owned by the layout item.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Windows.Forms.Control"/> descendant which is owned by the layout item.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlAlignment">
-            <summary>
-                <para>Gets or sets the alignment of the LayoutControlItem's control within the layout item.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.ContentAlignment"/> value that specifies the control's alignment within the layout item.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlMaxSize">
-            <summary>
-                <para>Gets or sets the client area's maximum size. 
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the client area's maximum width and height.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlMinSize">
-            <summary>
-                <para>Gets or sets the control's minimum size. 
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the control's minimum width and height.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlName">
-            <summary>
-                <para>This property is for internal use only. It is used in serialization. Do not change it.
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> value that specifies the name of the control which is owned by the current layout item.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraLayout.LayoutControlItem.EndInit">
-            <summary>
-                <para>Finishes the component's initialization. 
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Expanded">
-            <summary>
-                <para>Not supported. 
-</para>
-            </summary>
-            <value>Always True.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.FillControlToClientArea">
-            <summary>
-                <para>Gets or sets whether the control occupies the layout item's maximum allowed client area.
-</para>
-            </summary>
-            <value><b>true</b> if the control occupies the layout item's maximum allowed client area; otheriwse, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Image">
-            <summary>
-                <para>Gets or sets the image displayed in the item's label.
-</para>
-            </summary>
-            <value>An <see cref="T:System.Drawing.Image"/> object which represents the item's image.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageAlignment">
-            <summary>
-                <para>Gets or sets the alignment of the image within the label.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.ContentAlignment"/> enumeration value that specifies the alignment of the image within the label.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageIndex">
-            <summary>
-                <para>Gets or sets the index of the image assigned to the item.
-</para>
-            </summary>
-            <value>An integer which specifies the index of the item's image in a collection of images.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Images">
-            <summary>
-                <para>Gets an image collection whose images can be displayed within the current item.
-</para>
-            </summary>
-            <value>An object that represents the image source.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageToTextDistance">
-            <summary>
-                <para>Gets or sets the distance between the item's label and image.
-</para>
-            </summary>
-            <value>An integer value that specifies the distance  between the item's label and image, in pixels.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ItemImages">
-            <summary>
-                <para>Returns the collection of images that can be displayed within the current item.
-</para>
-            </summary>
-            <value>An ImageCollection object that contains images.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.MaxSize">
-            <summary>
-                <para>Gets or sets the layout item's maximum size.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the item's maximum width and height.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.MinSize">
-            <summary>
-                <para>Gets or sets the item's minimum size.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the item's minimum width and height.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Owner">
-            <summary>
-                <para>Gets or set the LayoutControl that owns the current layout item.
-</para>
-            </summary>
-            <value>A LayoutControl control.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.SizeConstraintsType">
-            <summary>
-                <para>Gets or sets the size constraints type.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraLayout.SizeConstraintsType"/> enumeration value which specifies the manner in which the current layout item can be resized.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TextAlignMode">
-            <summary>
-                <para>Gets or sets the alignment settings of the item's control.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraLayout.TextAlignModeItem"/> value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TrimClientAreaToControl">
-            <summary>
-                <para>Gets or sets whether the client region's height is trimmed to match the control's height.
-</para>
-            </summary>
-            <value><b>true</b> if the client region's height is trimmed to match the control's height; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TypeName">
-            <summary>
-                <para>Gets the name of the item's type.
-</para>
-            </summary>
-            <value>The "LayoutControlItem" string.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ViewInfo">
-            <summary>
-                <para>Gets the object which contains information used to render the layout item.
-
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraLayout.ViewInfo.LayoutControlItemViewInfo"/> object.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraLayout.Utils.MoveType">
 
             <summary>
@@ -3625,6 +3336,309 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
 
 
         </member>
+        <member name="T:DevExpress.XtraLayout.LayoutControlItem">
+
+            <summary>
+                <para>Represents a layout item that can display an external control.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor(DevExpress.XtraLayout.LayoutControlGroup)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class with the specified parent group.
+</para>
+            </summary>
+            <param name="parent">
+		A <see cref="T:DevExpress.XtraLayout.LayoutControlGroup"/> object representing the layout group which owns the created item.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraLayout.LayoutControlItem.#ctor(DevExpress.XtraLayout.LayoutControl,System.Windows.Forms.Control)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraLayout.LayoutControlItem"/> class.
+</para>
+            </summary>
+            <param name="layoutControl">
+		A <see cref="T:DevExpress.XtraLayout.LayoutControl"/> object which owns the created layout item. This value is assigned to the <see cref="P:DevExpress.XtraLayout.BaseLayoutItem.Owner"/> property.
+
+            </param>
+            <param name="control">
+		A <see cref="T:System.Windows.Forms.Control"/> descendant which is owned by the created layout item. This value is assigned to the <see cref="P:DevExpress.XtraLayout.LayoutControlItem.Control"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowAutoAlignment">
+            <summary>
+                <para>Gets or sets whether the auto-alignment feature is enabled for the item.
+</para>
+            </summary>
+            <value>A Boolean value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowHotTrack">
+            <summary>
+                <para>Gets or sets whether the layout item's borders are highlighted when the mouse cursor hovers over it.
+</para>
+            </summary>
+            <value><b>true</b> if the layout item can be hot-tracked; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.AllowHtmlStringInCaption">
+            <summary>
+                <para>Gets or sets whether HTML formatting is allowed in the text that is associated with the layout item.
+</para>
+            </summary>
+            <value><b>true</b> if HTML formatting is allowed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ContentVisible">
+            <summary>
+                <para>Gets or sets whether the layout item's contents are visible.
+</para>
+            </summary>
+            <value><b>true</b> if the layout item's contents are visible; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Control">
+            <summary>
+                <para>Gets or sets the control which is owned by the layout item.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Windows.Forms.Control"/> descendant which is owned by the layout item.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlAlignment">
+            <summary>
+                <para>Gets or sets the alignment of the LayoutControlItem's control within the layout item.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.ContentAlignment"/> value that specifies the control's alignment within the layout item.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlMaxSize">
+            <summary>
+                <para>Gets or sets the client area's maximum size. 
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the client area's maximum width and height.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlMinSize">
+            <summary>
+                <para>Gets or sets the control's minimum size. 
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the control's minimum width and height.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ControlName">
+            <summary>
+                <para>This property is for internal use only. It is used in serialization. Do not change it.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value that specifies the name of the control which is owned by the current layout item.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraLayout.LayoutControlItem.EndInit">
+            <summary>
+                <para>Finishes the component's initialization. 
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Expanded">
+            <summary>
+                <para>Not supported. 
+</para>
+            </summary>
+            <value>Always True.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.FillControlToClientArea">
+            <summary>
+                <para>Gets or sets whether the control occupies the layout item's maximum allowed client area.
+</para>
+            </summary>
+            <value><b>true</b> if the control occupies the layout item's maximum allowed client area; otheriwse, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Image">
+            <summary>
+                <para>Gets or sets the image displayed in the item's label.
+</para>
+            </summary>
+            <value>An <see cref="T:System.Drawing.Image"/> object which represents the item's image.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageAlignment">
+            <summary>
+                <para>Gets or sets the alignment of the image within the label.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.ContentAlignment"/> enumeration value that specifies the alignment of the image within the label.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageIndex">
+            <summary>
+                <para>Gets or sets the index of the image assigned to the item.
+</para>
+            </summary>
+            <value>An integer which specifies the index of the item's image in a collection of images.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Images">
+            <summary>
+                <para>Gets an image collection whose images can be displayed within the current item.
+</para>
+            </summary>
+            <value>An object that represents the image source.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ImageToTextDistance">
+            <summary>
+                <para>Gets or sets the distance between the item's label and image.
+</para>
+            </summary>
+            <value>An integer value that specifies the distance  between the item's label and image, in pixels.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ItemImages">
+            <summary>
+                <para>Returns the collection of images that can be displayed within the current item.
+</para>
+            </summary>
+            <value>An ImageCollection object that contains images.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.MaxSize">
+            <summary>
+                <para>Gets or sets the layout item's maximum size.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the item's maximum width and height.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.MinSize">
+            <summary>
+                <para>Gets or sets the item's minimum size.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Size"/> structure that defines the item's minimum width and height.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.Owner">
+            <summary>
+                <para>Gets or set the LayoutControl that owns the current layout item.
+</para>
+            </summary>
+            <value>A LayoutControl control.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.SizeConstraintsType">
+            <summary>
+                <para>Gets or sets the size constraints type.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraLayout.SizeConstraintsType"/> enumeration value which specifies the manner in which the current layout item can be resized.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TextAlignMode">
+            <summary>
+                <para>Gets or sets the alignment settings of the item's control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraLayout.TextAlignModeItem"/> value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TrimClientAreaToControl">
+            <summary>
+                <para>Gets or sets whether the client region's height is trimmed to match the control's height.
+</para>
+            </summary>
+            <value><b>true</b> if the client region's height is trimmed to match the control's height; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.TypeName">
+            <summary>
+                <para>Gets the name of the item's type.
+</para>
+            </summary>
+            <value>The "LayoutControlItem" string.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraLayout.LayoutControlItem.ViewInfo">
+            <summary>
+                <para>Gets the object which contains information used to render the layout item.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraLayout.ViewInfo.LayoutControlItemViewInfo"/> object.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraLayout.TabbedGroup">
 
             <summary>
@@ -4459,9 +4473,11 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
         </member>
         <member name="M:DevExpress.XtraLayout.LayoutGroup.ClearSelection">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Clears selected items specified by the <see cref="P:DevExpress.XtraLayout.LayoutGroup.SelectedItems"/> property.
+</para>
             </summary>
-            <returns> [To be supplied] </returns>
+            <returns><b>true</b> if the selection was modified; otherwise, <b>false</b>.
+</returns>
 
 
         </member>
@@ -7329,6 +7345,37 @@ For the root group, its parent is the LayoutControl itself (the LayoutControl's 
             </summary>
             <value>@nbsp;
 </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraLayout.SplitterItemFixedStyles">
+
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraLayout.SplitterItemFixedStyles.LeftTop">
+            <summary>
+                <para>The left or top item is fixed (depending on the SplitterItem's orientation).
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraLayout.SplitterItemFixedStyles.None">
+            <summary>
+                <para>No item is fixed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraLayout.SplitterItemFixedStyles.RightBottom">
+            <summary>
+                <para>The right or bottom item is fixed (depending on the SplitterItem's orientation).
+</para>
+            </summary>
 
 
         </member>

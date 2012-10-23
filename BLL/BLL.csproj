@@ -93,11 +93,18 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LookupSettings\HCMIS.lookupitems\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
     </Reference>
     <Reference Include="MyGeneration.dOOdads">
       <HintPath>..\PharmInventory\Common DLLs\MyGeneration.dOOdads.dll</HintPath>
+    </Reference>
+    <Reference Include="StockoutIndexBuilder">
+      <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

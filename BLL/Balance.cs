@@ -819,6 +819,7 @@ namespace BLL
             ld.Add("@storeid", storeId);
             ld.Add("@month", month);
             ld.Add("@year", year);
+            
             ld.Add("@days", DateTime.DaysInMonth(year, month));
             
             ////this.LoadFromSqlNoExec("SOH", ld);
@@ -854,7 +855,7 @@ namespace BLL
             ld.Add("@ItemID", itemID);
             ld.Add("@Year", year);
             
-            this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
+            //this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             
             // Set the balance  
             int balance = (int)GetBeginningBalance(year,itemID,storeID);
@@ -867,25 +868,26 @@ namespace BLL
 
             return this.DataTable;
         }
-                
-        public DataTable GetSOHByPrograms(int storeId,int commodityTypeID,int programID, int month, int year)
+
+        public DataTable GetSOHByPrograms(int storeId, int commodityTypeID, int programID, int month, int year)
         {
+            //GetSOHByPrograms(int storeId,int commodityTypeID,int programID, int month, int year)
             //GeneralInfo pipline = new GeneralInfo();
+               var days= DateTime.DaysInMonth(year, month);
             //pipline.LoadAll();
-            //// string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
+           // string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@progID", programID);
             ld.Add("@month", month);
             ld.Add("@year", year);
-            ld.Add("@days", DateTime.DaysInMonth(year, month));
+            ld.Add("@days", days);
             //ld.Add("@amcrange", pipline.AMCRange);
             //ld.Add("@min", pipline.Min);
             //ld.Add("@max", pipline.Max);
             //ld.Add("@eop", pipline.EOP);
-
-            ////this.LoadFromSqlNoExec("SOH", ld);
-            this.LoadFromSql("SOHByPrograms", ld, CommandType.StoredProcedure);
+           
+           this.LoadFromSql("SOHByPrograms", ld, CommandType.StoredProcedure);
             //TODO: filter out by commodity type here.
 
             return this.DataTable;

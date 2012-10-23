@@ -37,7 +37,6 @@ namespace PharmInventory.Forms.Transactions
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition7 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,6 +54,8 @@ namespace PharmInventory.Forms.Transactions
             this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.treeCategory = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
+            this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.gridItemsChoice = new DevExpress.XtraGrid.GridControl();
             this.gridItemChoiceView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -70,15 +71,12 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
-            this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleSeparator1 = new DevExpress.XtraLayout.SimpleSeparator();
@@ -106,6 +104,10 @@ namespace PharmInventory.Forms.Transactions
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
+            this.dtIssueDate = new CalendarLib.DateTimePickerEx();
+            this.cboStoreConf = new DevExpress.XtraEditors.LookUpEdit();
+            this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.issueGrid = new DevExpress.XtraGrid.GridControl();
             this.issueGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -129,10 +131,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.txtRemark = new DevExpress.XtraEditors.MemoEdit();
-            this.dtIssueDate = new CalendarLib.DateTimePickerEx();
-            this.cboStoreConf = new DevExpress.XtraEditors.LookUpEdit();
-            this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -174,6 +172,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.editManufacturer = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -234,18 +233,17 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).BeginInit();
@@ -260,14 +258,14 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -363,7 +361,7 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1055, 551);
+            this.tabPage1.Size = new System.Drawing.Size(1055, 552);
             this.tabPage1.Text = "Step One - Selection";
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
@@ -376,22 +374,22 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl1.Controls.Add(this.radioGroup1);
             this.layoutControl1.Controls.Add(this.xpButton1);
             this.layoutControl1.Controls.Add(this.treeCategory);
-            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Controls.Add(this.cboStores);
             this.layoutControl1.Controls.Add(this.txtItemName);
+            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8});
             this.layoutControl1.Location = new System.Drawing.Point(3, 3);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1049, 545);
+            this.layoutControl1.Size = new System.Drawing.Size(1049, 546);
             this.layoutControl1.TabIndex = 39;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // lkCategories
             // 
-            this.lkCategories.Location = new System.Drawing.Point(144, 37);
+            this.lkCategories.Location = new System.Drawing.Point(138, 31);
             this.lkCategories.Name = "lkCategories";
             this.lkCategories.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -400,25 +398,25 @@ namespace PharmInventory.Forms.Transactions
             this.lkCategories.Properties.DisplayMember = "Name";
             this.lkCategories.Properties.NullText = "";
             this.lkCategories.Properties.ValueMember = "ID";
-            this.lkCategories.Size = new System.Drawing.Size(232, 20);
+            this.lkCategories.Size = new System.Drawing.Size(234, 20);
             this.lkCategories.StyleController = this.layoutControl1;
             this.lkCategories.TabIndex = 30;
             this.lkCategories.EditValueChanged += new System.EventHandler(this.lkCategories_EditValueChanged);
             // 
             // legend1
             // 
-            this.legend1.Location = new System.Drawing.Point(649, 37);
+            this.legend1.Location = new System.Drawing.Point(647, 31);
             this.legend1.Name = "legend1";
             this.legend1.Padding = new System.Windows.Forms.Padding(2);
-            this.legend1.Size = new System.Drawing.Size(388, 68);
+            this.legend1.Size = new System.Drawing.Size(390, 69);
             this.legend1.TabIndex = 39;
             // 
             // ckStockOut
             // 
-            this.ckStockOut.Location = new System.Drawing.Point(46, 85);
+            this.ckStockOut.Location = new System.Drawing.Point(40, 79);
             this.ckStockOut.Name = "ckStockOut";
             this.ckStockOut.Properties.Caption = "Show Stocked Out";
-            this.ckStockOut.Size = new System.Drawing.Size(330, 19);
+            this.ckStockOut.Size = new System.Drawing.Size(332, 19);
             this.ckStockOut.StyleController = this.layoutControl1;
             this.ckStockOut.TabIndex = 10;
             this.ckStockOut.CheckedChanged += new System.EventHandler(this.ckStockOut_CheckedChanged);
@@ -454,7 +452,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.xpButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.xpButton1.Image = global::PharmInventory.Properties.Resources.pencil_go;
-            this.xpButton1.Location = new System.Drawing.Point(963, 511);
+            this.xpButton1.Location = new System.Drawing.Point(963, 104);
             this.xpButton1.Name = "xpButton1";
             this.xpButton1.Size = new System.Drawing.Size(74, 22);
             this.xpButton1.StyleController = this.layoutControl1;
@@ -476,7 +474,6 @@ namespace PharmInventory.Forms.Transactions
             this.treeListColumn1});
             this.treeCategory.Location = new System.Drawing.Point(7, 43);
             this.treeCategory.Name = "treeCategory";
-            this.treeCategory.OptionsPrint.UsePrintStyles = true;
             this.treeCategory.OptionsView.ShowIndicator = false;
             this.treeCategory.ParentFieldName = "Parent";
             this.treeCategory.Size = new System.Drawing.Size(225, 474);
@@ -494,17 +491,45 @@ namespace PharmInventory.Forms.Transactions
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
             // 
+            // cboStores
+            // 
+            this.cboStores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboStores.Location = new System.Drawing.Point(476, 31);
+            this.cboStores.Name = "cboStores";
+            this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboStores.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 79, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.cboStores.Properties.DisplayMember = "StoreName";
+            this.cboStores.Properties.NullText = "";
+            this.cboStores.Properties.ValueMember = "ID";
+            this.cboStores.Properties.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
+            this.cboStores.Size = new System.Drawing.Size(167, 20);
+            this.cboStores.StyleController = this.layoutControl1;
+            this.cboStores.TabIndex = 11;
+            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
+            // 
+            // txtItemName
+            // 
+            this.txtItemName.Location = new System.Drawing.Point(138, 55);
+            this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Size = new System.Drawing.Size(234, 20);
+            this.txtItemName.StyleController = this.layoutControl1;
+            this.txtItemName.TabIndex = 2;
+            this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
+            // 
             // gridItemsChoice
             // 
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridItemsChoice.Location = new System.Drawing.Point(46, 109);
+            this.gridItemsChoice.Location = new System.Drawing.Point(40, 104);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
             this.gridItemsChoice.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit3});
-            this.gridItemsChoice.Size = new System.Drawing.Size(991, 398);
+            this.gridItemsChoice.Size = new System.Drawing.Size(997, 404);
             this.gridItemsChoice.TabIndex = 36;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridItemChoiceView});
@@ -558,23 +583,17 @@ namespace PharmInventory.Forms.Transactions
             styleFormatCondition5.Value1 = "Normal";
             styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Red;
             styleFormatCondition6.Appearance.Options.UseBackColor = true;
+            styleFormatCondition6.ApplyToRow = true;
             styleFormatCondition6.Column = this.gridColumn15;
-            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.NotEqual;
-            styleFormatCondition6.Value1 = 0;
-            styleFormatCondition7.Appearance.BackColor = System.Drawing.Color.Red;
-            styleFormatCondition7.Appearance.Options.UseBackColor = true;
-            styleFormatCondition7.ApplyToRow = true;
-            styleFormatCondition7.Column = this.gridColumn15;
-            styleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition7.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
+            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition6.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
             styleFormatCondition1,
             styleFormatCondition2,
             styleFormatCondition3,
             styleFormatCondition4,
             styleFormatCondition5,
-            styleFormatCondition6,
-            styleFormatCondition7});
+            styleFormatCondition6});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -737,34 +756,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn26.FieldName = "TypeID";
             this.gridColumn26.Name = "gridColumn26";
             // 
-            // cboStores
-            // 
-            this.cboStores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboStores.Location = new System.Drawing.Point(479, 37);
-            this.cboStores.Name = "cboStores";
-            this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboStores.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 79, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            this.cboStores.Properties.DisplayMember = "StoreName";
-            this.cboStores.Properties.NullText = "";
-            this.cboStores.Properties.ValueMember = "ID";
-            this.cboStores.Properties.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
-            this.cboStores.Size = new System.Drawing.Size(166, 20);
-            this.cboStores.StyleController = this.layoutControl1;
-            this.cboStores.TabIndex = 11;
-            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
-            // 
-            // txtItemName
-            // 
-            this.txtItemName.Location = new System.Drawing.Point(144, 61);
-            this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(232, 20);
-            this.txtItemName.StyleController = this.layoutControl1;
-            this.txtItemName.TabIndex = 2;
-            this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
-            // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.progressBarControl1;
@@ -788,7 +779,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1049, 545);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1049, 546);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -802,7 +793,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem5});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(34, 535);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(28, 536);
             this.layoutControlGroup2.Text = "Category";
             this.layoutControlGroup2.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlGroup2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
@@ -838,7 +829,6 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlGroup3.CustomizationFormText = "Items";
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
             this.layoutControlItem7,
             this.layoutControlItem9,
             this.simpleSeparator1,
@@ -849,23 +839,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem6,
             this.layoutControlItem3,
             this.layoutControlItem4});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(34, 0);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(28, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1005, 535);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1011, 536);
             this.layoutControlGroup3.Text = "Items";
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.gridItemsChoice;
-            this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(995, 402);
-            this.layoutControlItem2.Text = "layoutControlItem2";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextToControlDistance = 0;
-            this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem7
             // 
@@ -873,7 +851,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(334, 23);
+            this.layoutControlItem7.Size = new System.Drawing.Size(336, 23);
             this.layoutControlItem7.Text = "layoutControlItem7";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextToControlDistance = 0;
@@ -883,9 +861,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem9.Control = this.xpButton1;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
-            this.layoutControlItem9.Location = new System.Drawing.Point(917, 474);
+            this.layoutControlItem9.Location = new System.Drawing.Point(923, 73);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(78, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(78, 434);
             this.layoutControlItem9.Text = "layoutControlItem9";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextToControlDistance = 0;
@@ -897,25 +875,25 @@ namespace PharmInventory.Forms.Transactions
             this.simpleSeparator1.CustomizationFormText = "simpleSeparator1";
             this.simpleSeparator1.Location = new System.Drawing.Point(0, 71);
             this.simpleSeparator1.Name = "simpleSeparator1";
-            this.simpleSeparator1.Size = new System.Drawing.Size(334, 1);
+            this.simpleSeparator1.Size = new System.Drawing.Size(336, 2);
             this.simpleSeparator1.Text = "simpleSeparator1";
             // 
             // simpleSeparator2
             // 
             this.simpleSeparator2.AllowHotTrack = false;
             this.simpleSeparator2.CustomizationFormText = "simpleSeparator2";
-            this.simpleSeparator2.Location = new System.Drawing.Point(334, 0);
+            this.simpleSeparator2.Location = new System.Drawing.Point(336, 0);
             this.simpleSeparator2.Name = "simpleSeparator2";
-            this.simpleSeparator2.Size = new System.Drawing.Size(1, 72);
+            this.simpleSeparator2.Size = new System.Drawing.Size(2, 73);
             this.simpleSeparator2.Text = "simpleSeparator2";
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.CustomizationFormText = "emptySpaceItem3";
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 474);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 73);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(917, 26);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(923, 434);
             this.emptySpaceItem3.Text = "emptySpaceItem3";
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -923,9 +901,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem28.Control = this.legend1;
             this.layoutControlItem28.CustomizationFormText = "layoutControlItem28";
-            this.layoutControlItem28.Location = new System.Drawing.Point(603, 0);
+            this.layoutControlItem28.Location = new System.Drawing.Point(607, 0);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(392, 72);
+            this.layoutControlItem28.Size = new System.Drawing.Size(394, 73);
             this.layoutControlItem28.Text = "layoutControlItem28";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem28.TextToControlDistance = 0;
@@ -935,9 +913,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(335, 24);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(338, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(268, 48);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(269, 49);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -947,7 +925,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem6.CustomizationFormText = "Category";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(334, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(336, 24);
             this.layoutControlItem6.Text = "Category";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(94, 13);
             // 
@@ -957,7 +935,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem3.CustomizationFormText = "Filter By Item Name";
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(334, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(336, 24);
             this.layoutControlItem3.Text = "Filter By Item Name";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(94, 13);
             // 
@@ -965,9 +943,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem4.Control = this.cboStores;
             this.layoutControlItem4.CustomizationFormText = "Store";
-            this.layoutControlItem4.Location = new System.Drawing.Point(335, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(338, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(268, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(269, 24);
             this.layoutControlItem4.Text = "Store";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(94, 13);
             // 
@@ -1141,16 +1119,16 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1055, 551);
+            this.tabPage2.Size = new System.Drawing.Size(1055, 552);
             this.tabPage2.Text = "Step Two - Populate";
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.issueGrid);
             this.layoutControl2.Controls.Add(this.txtRemark);
             this.layoutControl2.Controls.Add(this.dtIssueDate);
             this.layoutControl2.Controls.Add(this.cboStoreConf);
             this.layoutControl2.Controls.Add(this.txtRefNo);
+            this.layoutControl2.Controls.Add(this.issueGrid);
             this.layoutControl2.Controls.Add(this.txtIssuedBy);
             this.layoutControl2.Controls.Add(this.cboReceivingUnits);
             this.layoutControl2.Controls.Add(this.btnSave);
@@ -1162,6 +1140,57 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl2.Size = new System.Drawing.Size(1049, 546);
             this.layoutControl2.TabIndex = 18;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtRemark.Location = new System.Drawing.Point(63, 483);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(403, 56);
+            this.txtRemark.StyleController = this.layoutControl2;
+            this.txtRemark.TabIndex = 4;
+            // 
+            // dtIssueDate
+            // 
+            this.dtIssueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtIssueDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtIssueDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtIssueDate.DayOfWeekCharacters = 2;
+            this.dtIssueDate.ForeColor = System.Drawing.Color.Black;
+            this.dtIssueDate.Location = new System.Drawing.Point(769, 31);
+            this.dtIssueDate.Name = "dtIssueDate";
+            this.dtIssueDate.PopUpFontSize = 9.75F;
+            this.dtIssueDate.Size = new System.Drawing.Size(273, 20);
+            this.dtIssueDate.TabIndex = 11;
+            this.dtIssueDate.Value = new System.DateTime(2011, 10, 5, 0, 0, 0, 0);
+            // 
+            // cboStoreConf
+            // 
+            this.cboStoreConf.Enabled = false;
+            this.cboStoreConf.Location = new System.Drawing.Point(63, 31);
+            this.cboStoreConf.Name = "cboStoreConf";
+            this.cboStoreConf.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
+            this.cboStoreConf.Properties.Appearance.Options.UseBackColor = true;
+            this.cboStoreConf.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Name")});
+            this.cboStoreConf.Properties.DisplayMember = "StoreName";
+            this.cboStoreConf.Properties.NullText = "";
+            this.cboStoreConf.Properties.ValueMember = "ID";
+            this.cboStoreConf.Size = new System.Drawing.Size(283, 20);
+            this.cboStoreConf.StyleController = this.layoutControl2;
+            this.cboStoreConf.TabIndex = 14;
+            // 
+            // txtRefNo
+            // 
+            this.txtRefNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRefNo.Location = new System.Drawing.Point(769, 7);
+            this.txtRefNo.Name = "txtRefNo";
+            this.txtRefNo.Size = new System.Drawing.Size(273, 20);
+            this.txtRefNo.StyleController = this.layoutControl2;
+            this.txtRefNo.TabIndex = 4;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "*";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule1);
             // 
             // issueGrid
             // 
@@ -1230,7 +1259,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand3.Columns.Add(this.gridColumn4);
             this.gridBand3.Columns.Add(this.gridColumn5);
             this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 258;
+            this.gridBand3.Width = 320;
             // 
             // gridColumn2
             // 
@@ -1244,6 +1273,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
+            this.gridColumn2.Width = 116;
             // 
             // gridColumn3
             // 
@@ -1259,7 +1289,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.ToolTip = "Stock Code";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.Width = 55;
+            this.gridColumn3.Width = 83;
             // 
             // gridColumn4
             // 
@@ -1274,7 +1304,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn4.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.Width = 152;
+            this.gridColumn4.Width = 144;
             // 
             // gridColumn5
             // 
@@ -1289,7 +1319,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn5.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.Width = 51;
+            this.gridColumn5.Width = 93;
             // 
             // gridBand2
             // 
@@ -1302,7 +1332,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand2.Columns.Add(this.gridColumn17);
             this.gridBand2.Columns.Add(this.gridColumn18);
             this.gridBand2.Name = "gridBand2";
-            this.gridBand2.Width = 557;
+            this.gridBand2.Width = 501;
             // 
             // gridColumn6
             // 
@@ -1322,7 +1352,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.ToolTip = "Store Stock On Hand";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.Width = 55;
+            this.gridColumn6.Width = 54;
             // 
             // bandedGridColumn12
             // 
@@ -1332,7 +1362,7 @@ namespace PharmInventory.Forms.Transactions
             this.bandedGridColumn12.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn12.ToolTip = "Usable Stock";
             this.bandedGridColumn12.Visible = true;
-            this.bandedGridColumn12.Width = 58;
+            this.bandedGridColumn12.Width = 67;
             // 
             // gridColumn9
             // 
@@ -1353,7 +1383,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.ToolTip = "Most Recent Issue Quantity";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.Width = 64;
+            this.gridColumn9.Width = 60;
             // 
             // repositoryItemTextEdit1
             // 
@@ -1380,7 +1410,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn23.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn23.ToolTip = "Most Recent Dispensing Unit Stock On Hand";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.Width = 55;
+            this.gridColumn23.Width = 73;
             // 
             // gridColumn16
             // 
@@ -1393,7 +1423,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn16.OptionsFilter.AllowFilter = false;
             this.gridColumn16.ToolTip = "Dispensing Unit Remaining Stock On Hand";
             this.gridColumn16.Visible = true;
-            this.gridColumn16.Width = 94;
+            this.gridColumn16.Width = 68;
             // 
             // gridColumn17
             // 
@@ -1414,7 +1444,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn17.OptionsFilter.AllowFilter = false;
             this.gridColumn17.UnboundExpression = "Dispensing Unit Average Monthly Consumption";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.Width = 81;
+            this.gridColumn17.Width = 70;
             // 
             // gridColumn18
             // 
@@ -1434,7 +1464,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.Width = 150;
+            this.gridColumn18.Width = 109;
             // 
             // gridBand4
             // 
@@ -1444,7 +1474,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand4.Columns.Add(this.gridColumn21);
             this.gridBand4.Columns.Add(this.gridColumnRemove);
             this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 202;
+            this.gridBand4.Width = 196;
             // 
             // gridColumn19
             // 
@@ -1462,7 +1492,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn19.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn19.OptionsFilter.AllowFilter = false;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.Width = 37;
+            this.gridColumn19.Width = 47;
             // 
             // gridColumn20
             // 
@@ -1478,7 +1508,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn20.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn20.OptionsFilter.AllowFilter = false;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.Width = 56;
+            this.gridColumn20.Width = 49;
             // 
             // gridColumn21
             // 
@@ -1498,7 +1528,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn21.OptionsFilter.AllowFilter = false;
             this.gridColumn21.Visible = true;
-            this.gridColumn21.Width = 87;
+            this.gridColumn21.Width = 52;
             // 
             // gridColumnRemove
             // 
@@ -1508,7 +1538,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumnRemove.Name = "gridColumnRemove";
             this.gridColumnRemove.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumnRemove.Visible = true;
-            this.gridColumnRemove.Width = 22;
+            this.gridColumnRemove.Width = 48;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -1524,57 +1554,6 @@ namespace PharmInventory.Forms.Transactions
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.NullStyle = DevExpress.XtraEditors.Controls.StyleIndeterminate.Unchecked;
             this.repositoryItemCheckEdit1.ValueGrayed = false;
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRemark.Location = new System.Drawing.Point(63, 483);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(403, 56);
-            this.txtRemark.StyleController = this.layoutControl2;
-            this.txtRemark.TabIndex = 4;
-            // 
-            // dtIssueDate
-            // 
-            this.dtIssueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtIssueDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtIssueDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtIssueDate.DayOfWeekCharacters = 2;
-            this.dtIssueDate.ForeColor = System.Drawing.Color.Black;
-            this.dtIssueDate.Location = new System.Drawing.Point(769, 31);
-            this.dtIssueDate.Name = "dtIssueDate";
-            this.dtIssueDate.PopUpFontSize = 9.75F;
-            this.dtIssueDate.Size = new System.Drawing.Size(273, 20);
-            this.dtIssueDate.TabIndex = 11;
-            this.dtIssueDate.Value = new System.DateTime(2011, 10, 5, 0, 0, 0, 0);
-            // 
-            // cboStoreConf
-            // 
-            this.cboStoreConf.Enabled = false;
-            this.cboStoreConf.Location = new System.Drawing.Point(63, 31);
-            this.cboStoreConf.Name = "cboStoreConf";
-            this.cboStoreConf.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
-            this.cboStoreConf.Properties.Appearance.Options.UseBackColor = true;
-            this.cboStoreConf.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Name")});
-            this.cboStoreConf.Properties.DisplayMember = "StoreName";
-            this.cboStoreConf.Properties.NullText = "";
-            this.cboStoreConf.Properties.ValueMember = "ID";
-            this.cboStoreConf.Size = new System.Drawing.Size(283, 20);
-            this.cboStoreConf.StyleController = this.layoutControl2;
-            this.cboStoreConf.TabIndex = 14;
-            // 
-            // txtRefNo
-            // 
-            this.txtRefNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRefNo.Location = new System.Drawing.Point(769, 7);
-            this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(273, 20);
-            this.txtRefNo.StyleController = this.layoutControl2;
-            this.txtRefNo.TabIndex = 4;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "*";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule1);
             // 
             // txtIssuedBy
             // 
@@ -1820,7 +1799,7 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.xpButton3);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1055, 551);
+            this.tabPage3.Size = new System.Drawing.Size(1055, 552);
             this.tabPage3.Text = "Step Three - Pick List";
             // 
             // layoutControl3
@@ -1837,7 +1816,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup5;
-            this.layoutControl3.Size = new System.Drawing.Size(1055, 551);
+            this.layoutControl3.Size = new System.Drawing.Size(1055, 552);
             this.layoutControl3.TabIndex = 20;
             this.layoutControl3.Text = "layoutControl3";
             // 
@@ -1856,7 +1835,7 @@ namespace PharmInventory.Forms.Transactions
             this.repositoryItemSpinEdit1,
             this.EditRecivingBoxLevels,
             this.repositoryItemSpinEdit2});
-            this.gridConfirmation.Size = new System.Drawing.Size(1031, 431);
+            this.gridConfirmation.Size = new System.Drawing.Size(1031, 432);
             this.gridConfirmation.TabIndex = 19;
             this.gridConfirmation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
@@ -1881,7 +1860,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn51,
             this.gridColumn52,
             this.gridColumn53,
-            this.gridColumn22});
+            this.gridColumn22,
+            this.gridColumn27});
             this.gridView1.GridControl = this.gridConfirmation;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowFilter = false;
@@ -1896,9 +1876,13 @@ namespace PharmInventory.Forms.Transactions
             this.gdRowNo.Caption = "No.";
             this.gdRowNo.FieldName = "No";
             this.gdRowNo.Name = "gdRowNo";
+            this.gdRowNo.OptionsColumn.AllowEdit = false;
+            this.gdRowNo.OptionsColumn.AllowFocus = false;
+            this.gdRowNo.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gdRowNo.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gdRowNo.Visible = true;
             this.gdRowNo.VisibleIndex = 0;
-            this.gdRowNo.Width = 33;
+            this.gdRowNo.Width = 62;
             // 
             // gridColumn39
             // 
@@ -1910,10 +1894,10 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn39.OptionsColumn.AllowEdit = false;
             this.gridColumn39.OptionsColumn.AllowFocus = false;
             this.gridColumn39.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn39.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn39.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 1;
-            this.gridColumn39.Width = 86;
+            this.gridColumn39.Width = 78;
             // 
             // gridColumn40
             // 
@@ -1925,11 +1909,11 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn40.OptionsColumn.AllowEdit = false;
             this.gridColumn40.OptionsColumn.AllowFocus = false;
             this.gridColumn40.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn40.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn40.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn40.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 2;
-            this.gridColumn40.Width = 190;
+            this.gridColumn40.Width = 174;
             // 
             // gridColumn44
             // 
@@ -1943,7 +1927,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn44.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 3;
-            this.gridColumn44.Width = 97;
+            this.gridColumn44.Width = 89;
             // 
             // gridColumn45
             // 
@@ -1956,7 +1940,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn45.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn45.Visible = true;
             this.gridColumn45.VisibleIndex = 4;
-            this.gridColumn45.Width = 97;
+            this.gridColumn45.Width = 89;
             // 
             // gridColumn46
             // 
@@ -1969,7 +1953,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn46.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 5;
-            this.gridColumn46.Width = 137;
+            this.gridColumn46.Width = 124;
             // 
             // gridColumn48
             // 
@@ -1983,7 +1967,7 @@ namespace PharmInventory.Forms.Transactions
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom, "Unit Price", "Total Price:")});
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 6;
-            this.gridColumn48.Width = 88;
+            this.gridColumn48.Width = 79;
             // 
             // gridColumn42
             // 
@@ -1998,7 +1982,7 @@ namespace PharmInventory.Forms.Transactions
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total Price", "{0: #,##0.#0}")});
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 7;
-            this.gridColumn42.Width = 88;
+            this.gridColumn42.Width = 79;
             // 
             // gridColumn41
             // 
@@ -2009,7 +1993,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn41.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 9;
-            this.gridColumn41.Width = 109;
+            this.gridColumn41.Width = 77;
             // 
             // gridColumn43
             // 
@@ -2070,13 +2054,25 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn53.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn53.Visible = true;
             this.gridColumn53.VisibleIndex = 8;
-            this.gridColumn53.Width = 88;
+            this.gridColumn53.Width = 79;
             // 
             // gridColumn22
             // 
             this.gridColumn22.Caption = "DURecomended";
             this.gridColumn22.FieldName = "DURecomended";
             this.gridColumn22.Name = "gridColumn22";
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.Caption = "SOH Balance";
+            this.gridColumn27.FieldName = "SOH Left";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.OptionsColumn.AllowEdit = false;
+            this.gridColumn27.OptionsColumn.AllowFocus = false;
+            this.gridColumn27.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn27.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 10;
             // 
             // ExpireDateEditor
             // 
@@ -2338,7 +2334,7 @@ namespace PharmInventory.Forms.Transactions
             // txtConIssuedBy
             // 
             this.txtConIssuedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtConIssuedBy.Location = new System.Drawing.Point(106, 495);
+            this.txtConIssuedBy.Location = new System.Drawing.Point(106, 496);
             this.txtConIssuedBy.Name = "txtConIssuedBy";
             this.txtConIssuedBy.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
             this.txtConIssuedBy.Properties.Appearance.Options.UseBackColor = true;
@@ -2351,7 +2347,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirm.Image = global::PharmInventory.Properties.Resources.icon_accept;
-            this.btnConfirm.Location = new System.Drawing.Point(865, 495);
+            this.btnConfirm.Location = new System.Drawing.Point(865, 496);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(178, 22);
             this.btnConfirm.StyleController = this.layoutControl3;
@@ -2362,7 +2358,7 @@ namespace PharmInventory.Forms.Transactions
             // txtConRemark
             // 
             this.txtConRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtConRemark.Location = new System.Drawing.Point(106, 519);
+            this.txtConRemark.Location = new System.Drawing.Point(106, 520);
             this.txtConRemark.Name = "txtConRemark";
             this.txtConRemark.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
             this.txtConRemark.Properties.Appearance.Options.UseBackColor = true;
@@ -2391,7 +2387,7 @@ namespace PharmInventory.Forms.Transactions
             this.emptySpaceItem9});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "Root";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(1055, 551);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(1055, 552);
             this.layoutControlGroup5.Text = "Root";
             this.layoutControlGroup5.TextVisible = false;
             // 
@@ -2401,7 +2397,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem19.CustomizationFormText = "layoutControlItem19";
             this.layoutControlItem19.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(1035, 435);
+            this.layoutControlItem19.Size = new System.Drawing.Size(1035, 436);
             this.layoutControlItem19.Text = "layoutControlItem19";
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextToControlDistance = 0;
@@ -2431,7 +2427,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem22.Control = this.txtConIssuedBy;
             this.layoutControlItem22.CustomizationFormText = "Issued By";
-            this.layoutControlItem22.Location = new System.Drawing.Point(0, 483);
+            this.layoutControlItem22.Location = new System.Drawing.Point(0, 484);
             this.layoutControlItem22.Name = "layoutControlItem22";
             this.layoutControlItem22.Size = new System.Drawing.Size(468, 24);
             this.layoutControlItem22.Text = "Issued By";
@@ -2441,7 +2437,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem23.Control = this.txtConRemark;
             this.layoutControlItem23.CustomizationFormText = "Remarks";
-            this.layoutControlItem23.Location = new System.Drawing.Point(0, 507);
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 508);
             this.layoutControlItem23.Name = "layoutControlItem23";
             this.layoutControlItem23.Size = new System.Drawing.Size(468, 24);
             this.layoutControlItem23.Text = "Remarks";
@@ -2471,7 +2467,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem26.Control = this.btnConfirm;
             this.layoutControlItem26.CustomizationFormText = "layoutControlItem26";
-            this.layoutControlItem26.Location = new System.Drawing.Point(853, 483);
+            this.layoutControlItem26.Location = new System.Drawing.Point(853, 484);
             this.layoutControlItem26.Name = "layoutControlItem26";
             this.layoutControlItem26.Size = new System.Drawing.Size(182, 26);
             this.layoutControlItem26.Text = "layoutControlItem26";
@@ -2483,9 +2479,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.emptySpaceItem7.AllowHotTrack = false;
             this.emptySpaceItem7.CustomizationFormText = "emptySpaceItem7";
-            this.emptySpaceItem7.Location = new System.Drawing.Point(469, 509);
+            this.emptySpaceItem7.Location = new System.Drawing.Point(470, 510);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(566, 22);
+            this.emptySpaceItem7.Size = new System.Drawing.Size(565, 22);
             this.emptySpaceItem7.Text = "emptySpaceItem7";
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -2493,9 +2489,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.emptySpaceItem8.AllowHotTrack = false;
             this.emptySpaceItem8.CustomizationFormText = "emptySpaceItem8";
-            this.emptySpaceItem8.Location = new System.Drawing.Point(469, 483);
+            this.emptySpaceItem8.Location = new System.Drawing.Point(470, 484);
             this.emptySpaceItem8.Name = "emptySpaceItem8";
-            this.emptySpaceItem8.Size = new System.Drawing.Size(384, 26);
+            this.emptySpaceItem8.Size = new System.Drawing.Size(383, 26);
             this.emptySpaceItem8.Text = "emptySpaceItem8";
             this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -2503,9 +2499,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.simpleSeparator3.AllowHotTrack = false;
             this.simpleSeparator3.CustomizationFormText = "simpleSeparator3";
-            this.simpleSeparator3.Location = new System.Drawing.Point(468, 483);
+            this.simpleSeparator3.Location = new System.Drawing.Point(468, 484);
             this.simpleSeparator3.Name = "simpleSeparator3";
-            this.simpleSeparator3.Size = new System.Drawing.Size(1, 48);
+            this.simpleSeparator3.Size = new System.Drawing.Size(2, 48);
             this.simpleSeparator3.Text = "simpleSeparator3";
             // 
             // emptySpaceItem9
@@ -2583,6 +2579,7 @@ namespace PharmInventory.Forms.Transactions
             this.printableComponentLink2.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink2.ImageCollection.ImageStream")));
             this.printableComponentLink2.Margins = new System.Drawing.Printing.Margins(5, 5, 100, 100);
             this.printableComponentLink2.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
+            this.printableComponentLink2.Owner = null;
             this.printableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.printableComponentLink2.PrintingSystem = this.printingSystem1;
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
@@ -2610,18 +2607,17 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleSeparator1)).EndInit();
@@ -2638,14 +2634,14 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
@@ -2814,7 +2810,6 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
@@ -2897,16 +2892,17 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn12;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraGrid.Columns.GridColumn gdRowNo;
         private LookUpEdit lkCategories;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
 
     }
 }

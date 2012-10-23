@@ -143,26 +143,30 @@ namespace PharmInventory.Forms.ActivityLogs
 
             int tranId = Convert.ToInt32(dr["ID"]);
             ReceiveDoc rec = new ReceiveDoc();
+            IssueDoc iss = new IssueDoc();
+            Disposal dis =new Disposal();
+
             rec.LoadByPrimaryKey(tranId);
             _dtDate.Value = DateTime.Now;
             _dtDate.CustomFormat = "MM/dd/yyyy";
-            IssueDoc iss = new IssueDoc();
-            iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
-            DateTime dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
+         
+            
+             iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
+             if (iss.RowCount == 0)
+             {
+                 if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != tranId))
+                 {
+                     EditReceive edRec = new EditReceive(tranId, true);
+                     MainWindow.ShowForms(edRec);
+                 }
+                 
+             }
+             else
+             {
+                 XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                 return;
+             }
 
-            if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
-            {
-                //XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                EditReceive edRec = new EditReceive(tranId, true);
-                MainWindow.ShowForms(edRec);
-            }
-            else
-            {
-                EditReceive edRec = new EditReceive(tranId, false);
-                MainWindow.ShowForms(edRec);
-                //DataTable dtRec = rec.GetAllTransaction(Convert.ToInt32(cboStores.SelectedValue));
-                //PopulateTransactions(dtRec);
-            }
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -184,8 +188,12 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
+                
                 if (XtraMessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    //ReceiveDocDeleted recd = new ReceiveDocDeleted();
+                    //rec.AddNew();
+                    //rec.Save();
                     rec.MarkAsDeleted();
                     rec.Save();
               

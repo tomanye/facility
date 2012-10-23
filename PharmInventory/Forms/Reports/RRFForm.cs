@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using BLL;
+using System.Linq;
 using DevExpress.XtraEditors;
 using CommCtrl;
 using DevExpress.XtraLayout.Utils;
@@ -20,6 +21,7 @@ namespace PharmInventory.Forms.Reports
         private int _toYear;
         private int _fromMonth;
         private int _toMonth;
+        private int _programID;
         private DataTable tblRRF;
 
         public RRFForm()
@@ -47,10 +49,14 @@ namespace PharmInventory.Forms.Reports
             WindowVisibility(false);
             EnableDisableStatusCheck();
             Programs prog = new Programs();
-            DataTable dtProg = prog.GetSubPrograms();
-            object[] objProg = { 0, "All Programs", "", 0, "" };
-            dtProg.Rows.Add(objProg);
-            cboProgram.Properties.DataSource = dtProg;
+            prog.GetAllPrograms();
+            cboProgram.Properties.DataSource = prog.DefaultView;
+           
+
+            //DataTable dtProg = prog.GetSubPrograms();
+            //object[] objProg = { 0, "All Programs", "", 0, "" };
+            //dtProg.Rows.Add(objProg);
+            //cboProgram.Properties.DataSource = dtProg;
         }
 
         private void PopulateCurrentMonthRRF(EthiopianDate.EthiopianDate ethiopianDate)
@@ -129,7 +135,7 @@ namespace PharmInventory.Forms.Reports
             Woreda wor = new Woreda();
 
             _storeID = Convert.ToInt32(cboStores.EditValue);
-            Items itm = new Items();
+             Items itm = new Items();
             
             _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
             _toMonth = int.Parse(cboToMonth.EditValue.ToString());
@@ -152,7 +158,7 @@ namespace PharmInventory.Forms.Reports
                 Zone zon = new Zone();
                 Woreda wor = new Woreda();
 
-                _storeID = Convert.ToInt32(cboStores.EditValue);
+               _programID = Convert.ToInt32(cboProgram.EditValue);
                 Items itm = new Items();
 
                 _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
@@ -160,7 +166,7 @@ namespace PharmInventory.Forms.Reports
                 _toYear = int.Parse(cboToYear.EditValue.ToString());
                 _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-                tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+                tblRRF = itm.GetRRFReportByProgram(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 gridItemsChoice.DataSource = tblRRF;
 
                 ChooseGridView();

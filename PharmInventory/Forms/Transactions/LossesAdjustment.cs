@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using System.Linq;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
@@ -39,37 +40,18 @@ namespace PharmInventory
         /// <param name="e"></param>
         private void LossesAdjustment_Load(object sender, EventArgs e)
         {
-            //PopulateCatTree("Drug");
-            Stores stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
-            lkCategories.ItemIndex = 0;
-            cboStores.ItemIndex = 0;
+                Stores stor = new Stores();
+                stor.GetActiveStores();
+               
+                cboStores.Properties.DataSource = stor.DefaultView;
+                lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+                lkCategories.ItemIndex = 0;
+
+                cboStores.ItemIndex = 0;
+                if (ckExpired.Checked)
+                    gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
         }
 
-        /// <summary>
-        /// Populate the tree with Drugs or supplies
-        /// </summary>
-        /// <param name="Type">"Drug" or "Supplies"</param>
-        //private void PopulateCatTree(String Type)
-        //{
-        //    if (Type == "Drug")
-        //    {
-        //        Category cat = new Category();
-        //        treeCategory.DataSource = cat.GetCategoryTree();
-        //    }
-        //    else
-        //    {
-        //        SupplyCategory subCat = new SupplyCategory();
-        //        treeCategory.DataSource = subCat.GetAllSupplyCategories();
-        //    }
-        //}
-
-        /// <summary>
-        /// Populates the grid with the list of items
-        /// </summary>
-        /// <param name="dtItem">The table to populate the list with</param>
         public void PopulateItemList(DataTable dtItem)
         {
             if (dtSelectedTable == null)
@@ -80,9 +62,11 @@ namespace PharmInventory
             try
             {
                 dtItem.Columns.Add("IsSelected", typeof(bool));
+                dtItem.Columns.Add("Unit", typeof(int));
             }
             catch { }
             gridItemsChoice.DataSource = dtItem;
+           
             string today = DateTime.Now.ToString("M/dd/yyyy");
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
@@ -97,6 +81,8 @@ namespace PharmInventory
                 gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%' AND [ExpiryDate] < '" + DateTime.Now.ToShortDateString() + "'";
             else
                 gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%'";
+                gridItemChoiceView.RefreshData();
+                 
         }
 
         private void xpButton1_Click(object sender, EventArgs e)
@@ -232,7 +218,6 @@ namespace PharmInventory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-         
             string valid = ValidateFields();
             if (valid == "true")
             {
@@ -406,13 +391,19 @@ namespace PharmInventory
 
         private void ckExpired_CheckedChanged(object sender, EventArgs e)
         {
-
-            if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
-            else
+            if(!ckExpired.Checked)
+            {
                 gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.RefreshData();
-        }
+                gridItemChoiceView.RefreshData();
+            }
+            if (ckExpired.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
+
+            }
+            
+       }
+        
 
 
         //private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
@@ -543,6 +534,8 @@ namespace PharmInventory
             
 
         }
+
+        
         
 
     }

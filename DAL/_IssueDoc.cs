@@ -663,17 +663,19 @@ namespace DAL
 			}
 		}
 
-		public virtual int RecievDocID
-	    {
-			get
-	        {
-				return base.Getint(ColumnNames.RecievDocID);
-			}
-			set
-	        {
-				base.Setint(ColumnNames.RecievDocID, value);
-			}
-		}
+        public virtual int RecievDocID
+        {
+            get
+            {
+
+                return base.Getint(ColumnNames.RecievDocID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.RecievDocID, value);
+            }
+        }
+        
 
 		public virtual DateTime EurDate
 	    {
