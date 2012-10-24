@@ -29,11 +29,6 @@ namespace PharmInventory.Forms.Reports
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void RRFForm_Load(object sender, EventArgs e)
         {
             PopulateTheMonthCombos(cboFromMonth);
@@ -70,6 +65,7 @@ namespace PharmInventory.Forms.Reports
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth,startingYear);
             cboStores.ItemIndex = 0;
+            cboProgram.ItemIndex = 0;
         }
 
         private void PopulateRRFs()
@@ -150,14 +146,12 @@ namespace PharmInventory.Forms.Reports
 
         private void PopulateListByProgram()
         {
-            //if (cboFromMonth.EditValue != null && cboToMonth.EditValue != null && cboFromYear.EditValue != null && cboToYear.EditValue != null)
-            //{
                 GeneralInfo info = new GeneralInfo();
                 info.LoadAll();
-                BLL.Region reg = new BLL.Region();
+                Region reg = new BLL.Region();
                 Zone zon = new Zone();
                 Woreda wor = new Woreda();
-
+                _storeID = Convert.ToInt32(cboStores.EditValue);
                _programID = Convert.ToInt32(cboProgram.EditValue);
                 Items itm = new Items();
 
@@ -166,7 +160,7 @@ namespace PharmInventory.Forms.Reports
                 _toYear = int.Parse(cboToYear.EditValue.ToString());
                 _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-                tblRRF = itm.GetRRFReportByProgram(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+                tblRRF = itm.GetRRFReportByProgram(_storeID,_programID,_fromMonth,_toYear);
                 gridItemsChoice.DataSource = tblRRF;
 
                 ChooseGridView();
@@ -196,10 +190,8 @@ namespace PharmInventory.Forms.Reports
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null)
-            {
-                PopulateList();
-            }
+            if (cboStores.EditValue == null) return;
+            PopulateList();
         }
 
         private void dt_ValueChanged(object sender, EventArgs e)
@@ -578,10 +570,8 @@ namespace PharmInventory.Forms.Reports
 
         private void cboProgram_EditValueChanged(object sender, EventArgs e)
         {
-            if(cboProgram.EditValue != null)
-            {
-                PopulateListByProgram();
-            }
+            if (cboProgram.EditValue == null) return;
+            PopulateListByProgram();
         }
     }
 }

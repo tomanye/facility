@@ -191,12 +191,37 @@ namespace PharmInventory.Forms.ActivityLogs
                 
                 if (XtraMessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //ReceiveDocDeleted recd = new ReceiveDocDeleted();
-                    //rec.AddNew();
-                    //rec.Save();
+                       var recd = new ReceiveDocDeleted();
+                        recd.AddNew();
+                        recd.ID = rec.ID;
+                        recd.BatchNo = rec.BatchNo;
+                        recd.ItemID = rec.ItemID;
+                        recd.SupplierID = rec.SupplierID;
+                        recd.Quantity = rec.Quantity;
+                        recd.Date = rec.Date;
+                        recd.ExpDate = rec.ExpDate;
+                        recd.Out = rec.Out;
+                        recd.ReceivedStatus = rec.ReceivedStatus;
+                        recd.ReceivedBy = rec.ReceivedBy;
+                        recd.Remark = rec.Remark;
+                        recd.StoreID = rec.StoreID;
+                        recd.LocalBatchNo = rec.LocalBatchNo;
+                        recd.RefNo = rec.RefNo;
+                        recd.Cost = rec.Cost;
+                        recd.IsApproved = rec.IsApproved;
+                        recd.ManufacturerId = rec.ManufacturerId;
+                        recd.QuantityLeft = rec.QuantityLeft;
+                        recd.NoOfPack = rec.NoOfPack;
+                        recd.QtyPerPack = rec.QtyPerPack;
+                        recd.BoxLevel = rec.BoxLevel;
+                        recd.EurDate = rec.EurDate;
+                        recd.SubProgramID = rec.SubProgramID;
+                        recd.Save();
+
+
                     rec.MarkAsDeleted();
                     rec.Save();
-              
+
                     _dtDate.Value = DateTime.Now;
                     _dtDate.CustomFormat = "MM/dd/yyyy";
                     dtCurrent = ConvertDate.DateConverter(_dtDate.Text);

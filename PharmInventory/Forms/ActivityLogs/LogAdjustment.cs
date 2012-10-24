@@ -248,6 +248,24 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
 
                 // proceed deletion and make the necessary changes on the database tables.
+                DisposalDelete ddel = new DisposalDelete();
+                ddel.AddNew();
+                ddel.ID = disposal.ID;
+                ddel.ItemID = disposal.ItemID;
+                ddel.StoreId = disposal.StoreId;
+                ddel.ReasonId = disposal.ReasonId;
+                ddel.Quantity = disposal.Quantity;
+                ddel.Date = disposal.Date;
+                ddel.ApprovedBy = disposal.ApprovedBy;
+                ddel.Losses = disposal.Losses;
+                ddel.BatchNo = disposal.BatchNo;
+                ddel.Remark = disposal.Remark;
+                ddel.Cost = disposal.Cost;
+                ddel.RefNo = disposal.RefNo;
+                ddel.EurDate = disposal.EurDate;
+                ddel.RecID = disposal.RecID;
+                ddel.Save();
+
                 receiveDoc.Save();
                 disposal.MarkAsDeleted();
                 disposal.Save();

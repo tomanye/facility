@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="_DisposalDelete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_ABC.cs" />
     <Compile Include="_Balance.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="_INN.cs" />
     <Compile Include="_InternalTransfer.cs" />
     <Compile Include="_IssueDoc.cs" />
+    <Compile Include="_IssueDocDeleted.cs" />
     <Compile Include="_ItemManufacturer.cs" />
     <Compile Include="_ItemPrefferedLocation.cs" />
     <Compile Include="_Items.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="_Programs.cs" />
     <Compile Include="_RackStatus.cs" />
     <Compile Include="_ReceiveDoc.cs" />
+    <Compile Include="_ReceiveDocDeleted.cs" />
     <Compile Include="_ReceivePallet.cs" />
     <Compile Include="_ReceivePallete.cs" />
     <Compile Include="_ReceivingStatus.cs" />

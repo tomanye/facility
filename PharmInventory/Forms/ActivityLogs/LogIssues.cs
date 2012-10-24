@@ -152,6 +152,30 @@ namespace PharmInventory.Forms.ActivityLogs
                     if (rec.QuantityLeft > 0)
                         rec.Out = false;
                     rec.Save();
+                    IssueDocDeleted isdelete = new IssueDocDeleted();
+                  
+                    isdelete.AddNew();
+                    isdelete.ID = iss.ID;
+                    isdelete.ItemID = iss.ItemID;
+                    isdelete.StoreId = iss.StoreId;
+                    isdelete.ReceivingUnitID = iss.ReceivingUnitID;
+                    isdelete.LocalBatchNo = iss.LocalBatchNo;
+                    isdelete.Quantity = iss.Quantity;
+                    isdelete.Date = iss.Date;
+                    isdelete.IsTransfer = iss.IsTransfer;
+                    isdelete.IssuedBy = iss.IssuedBy;
+                    isdelete.Remark = iss.Remark;
+                    isdelete.RefNo = iss.RefNo;
+                    isdelete.BatchNo = iss.BatchNo;
+                    isdelete.IsApproved = iss.IsApproved;
+                    isdelete.Cost = iss.Cost;
+                    isdelete.NoOfPack = iss.NoOfPack;
+                    isdelete.QtyPerPack = iss.QtyPerPack;
+                    isdelete.DUSOH = iss.DUSOH;
+                    isdelete.EurDate = iss.EurDate;
+                    isdelete.RecievDocID = iss.RecievDocID;
+                    isdelete.RecomendedQty = iss.RecomendedQty;
+                    isdelete.Save();
 
                     iss.MarkAsDeleted();
                     iss.Save();

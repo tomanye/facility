@@ -101,7 +101,7 @@
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
     </Reference>
     <Reference Include="MyGeneration.dOOdads">
-      <HintPath>..\PharmInventory\Common DLLs\MyGeneration.dOOdads.dll</HintPath>
+      <HintPath>..\DAL\bin\Debug\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
     <Reference Include="StockoutIndexBuilder">
       <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
@@ -115,12 +115,15 @@
     <Compile Include="ABC.cs" />
     <Compile Include="Balance.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="DisposalDelete.cs" />
     <Compile Include="DUsItemList.cs" />
+    <Compile Include="IssueDocDeleted.cs" />
     <Compile Include="Pallete.cs" />
     <Compile Include="PhysicalStore.cs" />
     <Compile Include="PickFace.cs" />
     <Compile Include="PickListDetail.cs" />
     <Compile Include="Products.cs" />
+    <Compile Include="ReceiveDocDeleted.cs" />
     <Compile Include="ReceivePallete.cs" />
     <Compile Include="RRF.cs" />
     <Compile Include="RRFDetail.cs" />

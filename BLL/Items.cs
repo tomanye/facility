@@ -1203,6 +1203,7 @@ namespace BLL
             value.Columns.Add("Quantity", typeof(int));
             value.Columns.Add("DaysOutOfStock", typeof(int));
             value.Columns.Add("MaxStockQty", typeof(int));
+            value.Columns.Add("ProgramID",typeof(int));
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1220,6 +1221,7 @@ namespace BLL
                 drv["Quantity"] = v.Quantity;
                 drv["DaysOutOfStock"] = v.DaysOutOfStock;
                 drv["MaxStockQty"] = v.MaxStockQty;
+                
             }
 
             return value;
@@ -1385,16 +1387,17 @@ namespace BLL
             return value;
         }
 
-        public DataTable GetRRFReportByProgram(int storeId, int fromYear, int fromMonth, int toYear, int toMonth)
+        public DataTable GetRRFReportByProgram(int storeId, int programid, int month, int year)
         {
             Balance balance = new Balance();
-            fromMonth--;//Because SOH returns stock until the end of the month.
-            DataTable dtbl = balance.GetSOH(storeId, fromMonth, fromYear);
-            DataTable dtbl2 = balance.GetSOH(storeId, toMonth, toYear);
+            month--;//Because SOH returns stock until the end of the month.
+            DataTable dtbl = balance.GetSOHByPrograms(storeId, programid, month, year);
+            DataTable dtbl2 = balance.GetSOHByPrograms(storeId, programid, month, year);
+            
 
             //CALENDAR:Needs to be fixed.
-            DateTime dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
-            DateTime dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
+            DateTime dt1 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+            DateTime dt2 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
 
             string query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);

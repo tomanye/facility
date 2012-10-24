@@ -784,7 +784,8 @@ namespace BLL
             }
             else //We filter by program ID.
             {
-                dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
+              //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
+                dtbl = GetSOHByPrograms(storeId,programID, month, year);
             }            
             
             dtbl.Columns.Add("MOS",typeof(float));
@@ -812,9 +813,6 @@ namespace BLL
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
-            //GeneralInfo pipline = new GeneralInfo();
-            //pipline.LoadAll();
-            //// string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@month", month);
@@ -869,25 +867,16 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetSOHByPrograms(int storeId, int commodityTypeID, int programID, int month, int year)
+        public DataTable GetSOHByPrograms(int storeId, int programid, int month, int year)
         {
-            //GetSOHByPrograms(int storeId,int commodityTypeID,int programID, int month, int year)
-            //GeneralInfo pipline = new GeneralInfo();
-               var days= DateTime.DaysInMonth(year, month);
-            //pipline.LoadAll();
-           // string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
-            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            var days= DateTime.DaysInMonth(year, month);
+            var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
-            ld.Add("@progID", programID);
+            ld.Add("@programid", programid);
             ld.Add("@month", month);
             ld.Add("@year", year);
             ld.Add("@days", days);
-            //ld.Add("@amcrange", pipline.AMCRange);
-            //ld.Add("@min", pipline.Min);
-            //ld.Add("@max", pipline.Max);
-            //ld.Add("@eop", pipline.EOP);
-           
-           this.LoadFromSql("SOHByPrograms", ld, CommandType.StoredProcedure);
+            this.LoadFromSql("SOHByProgram", ld, CommandType.StoredProcedure);
             //TODO: filter out by commodity type here.
 
             return this.DataTable;
