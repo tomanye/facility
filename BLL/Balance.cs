@@ -6,6 +6,7 @@ using System.Linq;
 using DAL;
 using System.Data;
 using System.ComponentModel;
+using StockoutIndexBuilder;
 
 namespace BLL
 {
@@ -105,10 +106,8 @@ namespace BLL
 
             DateTime dt1 = new DateTime(yr,month,DateTime.DaysInMonth(yr,month));
             DateTime dt2 = dt1.AddMonths(-range);
-            range = iss.GetAvailableNoOfMonths(itemId, storeId, dt2, dt1);
-            
+            range = iss.GetAvailableNoOfMonths(itemId, storeId, dt2, dt1);     
             cons = iss.GetIssuedQuantityByDateRange(itemId, storeId, dt2, dt1);
-
             Int64 AMC = cons / range;
             return AMC;
         }
@@ -271,46 +270,6 @@ namespace BLL
                                where m["Status"].ToString() == "Normal"
                                select m).AsDataView().Count;
             return items;
-            //Items itm = new Items();
-            //DataTable dtItem = itm.GetAllItems(1);
-            //GeneralInfo pipline = new GeneralInfo();
-            //pipline.LoadAll();
-            //int min = pipline.Min;
-            //int max = pipline.Max;
-            //double eop = pipline.EOP;
-            //int count = 0;
-            //Balance bal = new Balance();
-            //if (storeId == 0)
-            //{
-            //    foreach (DataRow dr in dtItem.Rows)
-            //    {
-            //        Int64 AMC = bal.CalculateAMCAll(Convert.ToInt32(dr["ID"]), month, year);
-            //        Int64 MinCon = AMC * min;
-            //        Int64 maxCon = AMC * max;
-            //        double eopCon = AMC * (eop + 0.25);
-            //        Int64 SOH = bal.GetSOHAll(Convert.ToInt32(dr["ID"]), month, year);
-            //        decimal MOS = (AMC != 0) ? (SOH / AMC) : 0;
-            //        Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
-            //        if (SOH > eopCon && (SOH < maxCon || maxCon == 0))
-            //            count++;
-            //    }
-            //}
-            //else
-            //{
-            //    foreach (DataRow dr in dtItem.Rows)
-            //    {
-            //        Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, year);
-            //        Int64 MinCon = AMC * min;
-            //        Int64 maxCon = AMC * max;
-            //        double eopCon = AMC * (eop + 0.25);
-            //        Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
-            //        decimal MOS = (AMC != 0) ? (SOH / AMC) : 0;
-            //        Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
-            //        if (SOH > eopCon && (SOH < maxCon || maxCon == 0))
-            //            count++;
-            //    }
-            //}
-            //return count;
         }
 
         public int CountBelowMin(int storeId, int month, int year)
@@ -1137,12 +1096,22 @@ namespace BLL
             //ld.Add("@eop", pipline.EOP);
 
             //this.LoadFromSqlNoExec("SOH", ld);
+
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
 
            // Add the necessary fields
             this.DataTable.Columns.Add("IsSelected", typeof(bool));
-            
+            this.DataTable.Columns.Add("NewAMC", typeof (double));
 
+            foreach (DataRow row in this.DataTable.Rows)
+            {
+                row.BeginEdit();
+                row["NewAMC"] = Builder.CalculateAverageConsumption((int)row["ID"], storeId,
+                                                                                         dtCurrent.Subtract(
+                                                                                             TimeSpan.FromDays(180)),
+                                                                                         dtCurrent,
+                                                                                         CalculationOptions.Monthly);
+            }
             return this.DataTable;
 
             //this.Exe

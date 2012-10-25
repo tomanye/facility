@@ -120,6 +120,10 @@ namespace PharmInventory
                     frm = new IssueForm();
                     AddTab("Issue Form", frm);
                     break;
+                case "stockoutindexer":
+                    frm = new StockOutIndicesBuilder();
+                    AddTab("Stockout Indices Builder",frm);
+                    break;
                 case "Facility Settings":
                     frm = new Hospital();
                     AddTab("Facility Settings", frm);

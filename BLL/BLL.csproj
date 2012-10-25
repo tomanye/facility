@@ -95,7 +95,7 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\LookupSettings\HCMIS.lookupitems\bin\Debug\EntityFramework.dll</HintPath>
+      <HintPath>C:\Users\Tedy\Desktop\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
@@ -103,7 +103,8 @@
     <Reference Include="MyGeneration.dOOdads">
       <HintPath>..\DAL\bin\Debug\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
-    <Reference Include="StockoutIndexBuilder">
+    <Reference Include="StockoutIndexBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -199,6 +200,9 @@
       <Project>{2B12B6DD-2142-492F-A990-78F5EB3F840A}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

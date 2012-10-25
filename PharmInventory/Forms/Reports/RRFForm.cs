@@ -515,9 +515,12 @@ namespace PharmInventory.Forms.Reports
 
         private void btnNewRRF_Click(object sender, EventArgs e)
         {
-            EthiopianDate.EthiopianDate ethiopianDate = new EthiopianDate.EthiopianDate();
+            ProgressCheckingVisibility(true);
+            var ethiopianDate = new EthiopianDate.EthiopianDate();
             PopulateCurrentMonthRRF(ethiopianDate);
             WindowVisibility(true);
+          
+            
         }
 
         private void grdRRF_Click(object sender, EventArgs e)

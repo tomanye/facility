@@ -258,5 +258,7 @@ namespace PharmInventory
             PharmInventory.Forms.Tools.DatabaseCleaning dbCleaning = new Forms.Tools.DatabaseCleaning();
             dbCleaning.ShowDialog();
         }
+
+       
     }
 }

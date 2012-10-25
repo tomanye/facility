@@ -86,6 +86,7 @@ namespace PharmInventory
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiLossAdjustment = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiInventory = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnStockoutIndexer = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiStockStatusReport = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiOverStocked = new DevExpress.XtraNavBar.NavBarItem();
@@ -662,7 +663,8 @@ namespace PharmInventory
             this.LossReport,
             this.CostReport,
             this.ConsumptionTrend,
-            this.ConsumptionByUnit});
+            this.ConsumptionByUnit,
+            this.btnStockoutIndexer});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -685,9 +687,10 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiReceive),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiIssue),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLossAdjustment),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiInventory)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiInventory),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnStockoutIndexer)});
             this.navBarGroup1.Name = "navBarGroup1";
-            this.navBarGroup1.SelectedLinkIndex = 0;
+            this.navBarGroup1.SelectedLinkIndex = 5;
             // 
             // lbiReceive
             // 
@@ -717,6 +720,14 @@ namespace PharmInventory
             this.nbiInventory.Name = "nbiInventory";
             this.nbiInventory.SmallImage = global::PharmInventory.Properties.Resources._1286968437_kthememgr;
             this.nbiInventory.Tag = "Year End Process";
+            // 
+            // btnStockoutIndexer
+            // 
+            this.btnStockoutIndexer.Caption = "Stockout Indexer";
+            this.btnStockoutIndexer.Name = "btnStockoutIndexer";
+            this.btnStockoutIndexer.SmallImage = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
+            this.btnStockoutIndexer.Tag = "stockoutindexer";
+            
             // 
             // navBarGroup2
             // 
@@ -1101,6 +1112,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem ConsumptionByUnit;
         private System.Windows.Forms.ToolStripMenuItem mnuRegistration;
         private System.Windows.Forms.ToolStripMenuItem mnuDatabaseCleaning;
+        private DevExpress.XtraNavBar.NavBarItem btnStockoutIndexer;
     }
 }
 

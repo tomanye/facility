@@ -720,7 +720,6 @@
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 8;
             this.label7.Text = "From";
-            //this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // cboStores
             // 

@@ -6,7 +6,7 @@ using System.Data;
 using DAL;
 using System.Collections;
 using System.Linq;
-
+using StockoutIndexBuilder;
 
 
 namespace BLL
@@ -811,9 +811,11 @@ namespace BLL
             double eop = pipline.EOP;
             Items itmB = new Items();
             Balance bal = new Balance();
-            Int64 AMC = bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
-            Int64 MinCon = AMC * min;
-            Int64 maxCon = AMC * max;
+            Int64 AMC = bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
+            //double AMC = StockoutIndexBuilder.Builder.CalculateAverageConsumption(itemId,dtCurrent.Subtract(TimeSpan.FromDays(180)), dtCurrent,CalculationOptions.Monthly);
+                //bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
+            double MinCon = AMC * min;
+            double maxCon = AMC * max;
             double eopCon = AMC * (eop + 0.25);
 
             //Int64 SOH = bal.GetSOH(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
@@ -832,9 +834,13 @@ namespace BLL
             double eop = pipline.EOP;
             Items itmB = new Items();
             Balance bal = new Balance();
-            Int64 AMC = bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
-            Int64 MinCon = AMC * min;
-            Int64 maxCon = AMC * max;
+           Int64 AMC= bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
+            //double AMC = StockoutIndexBuilder.Builder.CalculateAverageConsumption(itemId,
+            //                                                                     DateTime.Today.Subtract(
+            //                                                                         TimeSpan.FromDays(180)), dtCurrent, CalculationOptions.Monthly);
+                //bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
+            double MinCon = AMC * min;
+            double maxCon = AMC * max;
             double eopCon = AMC * (eop + 0.25);
 
             Int64 SOH = bal.GetSOH(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
@@ -903,6 +909,12 @@ namespace BLL
             this.FlushData();
             this.LoadFromRawSql("SELECT * FROM vwGetAllItems WHERE IsInHospitalList = 1 AND VEN = 'V' AND Name = 'Drug'");
             return this.DataTable.Rows.Count;
+        }
+        public DataTable GetAllItems()
+        {
+            this.FlushData();
+            this.LoadFromRawSql("SELECT * FROM vwGetAllItems");
+            return this.DataTable;
         }
 
         public DataTable ExcludeNeverReceivedItems(int storeId, int commodityTypeID)
@@ -1012,53 +1024,7 @@ namespace BLL
             return itms.DataTable;
         }
 
-        //public DataTable GetStockedOutItems(int storeId, DateTime dtCurrent)
-        //{
-        //    DataTable dtResult = new DataTable();
-        //    DataTable dtItem = this.GetAllItems(1, storeId);
-        //    GeneralInfo pipline = new GeneralInfo();
-        //    pipline.LoadAll();
-        //    int min = pipline.Min;
-        //    int max = pipline.Max;
-        //    int month = dtCurrent.Month;
-        //    int year = dtCurrent.Year;
-        //    Balance bal = new Balance();
-        //    IssueDoc iss = new IssueDoc();
-        //    string[] col = { "ID", "FullItemName", "MaxCon", "MinCon", "AMC", "noDays", "CategoryId", "SubCategoryID", "BeenReceived" };
-
-        //    dtResult.Columns.Add("ID");
-        //    dtResult.Columns.Add("FullItemName");
-        //    dtResult.Columns.Add("MaxCon", typeof(int));
-        //    dtResult.Columns.Add("MinCon", typeof(int));
-        //    dtResult.Columns.Add("AMC", typeof(int));
-        //    dtResult.Columns.Add("noDays");
-        //    dtResult.Columns.Add("CategoryId", typeof(int));
-        //    dtResult.Columns.Add("SubCategoryId", typeof(int));
-        //    dtResult.Columns.Add("BeenReceived");
-
-        //    foreach (DataRow dr in dtItem.Rows)
-        //    {
-        //        string itemName = dr["FullItemName"].ToString();
-        //        int yer = (month < 11) ? year : year - 1;
-        //        Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, year);
-        //        Int64 MinCon = AMC * min;
-        //        Int64 maxCon = AMC * max;
-
-        //        Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year); ;
-        //        Int64 maxMOS = SOH - maxCon;
-        //        if (SOH == 0)
-        //        {
-        //            DateTime DayStockOut = iss.GetLastIssuedDateByItem(storeId, Convert.ToInt32(dr["ID"]));
-        //            TimeSpan tt = new TimeSpan();
-        //            string noDays = "";
-        //            tt = new TimeSpan(dtCurrent.Ticks - DayStockOut.Ticks);
-        //            noDays = ((tt.TotalDays <= 90) ? tt.TotalDays.ToString() : ((tt.TotalDays < 30000) ? "More than 3 Month" : "Never Received"));//(tt.TotalDays < 30000) ? : ((ckExclude.Checked) ? "Loss/Expired" : "Never Received");
-        //            object[] obj = { dr["ID"], itemName, maxCon, MinCon, AMC, noDays, dr["CategoryId"], dr["SubCategoryID"], dr["BeenReceived"] };
-        //            dtResult.Rows.Add(obj);
-        //        }
-        //    }
-        //    return dtResult;
-        //}
+        
 
         /// <summary>
         /// 
@@ -1161,7 +1127,7 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock = z["DaysOutOfStock"] == DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                                  DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID),storeId,dt1, dt2)
                               }).ToArray();
 
             var t2 = (from n in t1
@@ -1180,7 +1146,8 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock = Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                  DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                  //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
                               }).Distinct().ToArray();
 
@@ -1323,7 +1290,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = z["DaysOutOfStock"] == DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                              DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2)
                           }).ToArray();
 
             var t2 = (from n in t1
@@ -1342,7 +1309,7 @@ namespace BLL
                               Issued = Convert.ToInt32(n.Issued) / n.QtyPerPack,
                               LossAdj = Convert.ToInt32(n.LossAdj) / n.QtyPerPack,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : (n.Max - n.SOH) / n.QtyPerPack,
-                              DaysOutOfStock = Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                              DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
                               MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)) / n.QtyPerPack)
                           }).ToArray();
 
@@ -1474,7 +1441,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = z["DaysOutOfStock"] == DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                              DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2)
                           }).ToArray();
 
             var t2 = (from n in t1
@@ -1493,7 +1460,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                              DaysOutOfStock = StockoutIndexBuilder.Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
                               MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
                           }).Distinct().ToArray();
 

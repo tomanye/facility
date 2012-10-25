@@ -51,7 +51,6 @@ namespace PharmInventory.Forms.Transactions
             this.ckStockOut = new DevExpress.XtraEditors.CheckEdit();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
-            this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.treeCategory = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -71,6 +70,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -372,11 +372,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl1.Controls.Add(this.ckStockOut);
             this.layoutControl1.Controls.Add(this.progressBarControl1);
             this.layoutControl1.Controls.Add(this.radioGroup1);
-            this.layoutControl1.Controls.Add(this.xpButton1);
             this.layoutControl1.Controls.Add(this.treeCategory);
             this.layoutControl1.Controls.Add(this.cboStores);
             this.layoutControl1.Controls.Add(this.txtItemName);
             this.layoutControl1.Controls.Add(this.gridItemsChoice);
+            this.layoutControl1.Controls.Add(this.xpButton1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8});
@@ -447,18 +447,6 @@ namespace PharmInventory.Forms.Transactions
             this.radioGroup1.StyleController = this.layoutControl1;
             this.radioGroup1.TabIndex = 19;
             this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
-            // 
-            // xpButton1
-            // 
-            this.xpButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xpButton1.Image = global::PharmInventory.Properties.Resources.pencil_go;
-            this.xpButton1.Location = new System.Drawing.Point(963, 104);
-            this.xpButton1.Name = "xpButton1";
-            this.xpButton1.Size = new System.Drawing.Size(74, 22);
-            this.xpButton1.StyleController = this.layoutControl1;
-            this.xpButton1.TabIndex = 2;
-            this.xpButton1.Text = "Pick";
-            this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // treeCategory
             // 
@@ -722,7 +710,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn14.Caption = "AMC";
             this.gridColumn14.DisplayFormat.FormatString = "#,##0";
             this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn14.FieldName = "AMC";
+            this.gridColumn14.FieldName = "NewAMC";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.OptionsColumn.ReadOnly = true;
@@ -755,6 +743,18 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn26.Caption = "TypeID";
             this.gridColumn26.FieldName = "TypeID";
             this.gridColumn26.Name = "gridColumn26";
+            // 
+            // xpButton1
+            // 
+            this.xpButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.xpButton1.Image = global::PharmInventory.Properties.Resources.pencil_go;
+            this.xpButton1.Location = new System.Drawing.Point(963, 104);
+            this.xpButton1.Name = "xpButton1";
+            this.xpButton1.Size = new System.Drawing.Size(74, 22);
+            this.xpButton1.StyleController = this.layoutControl1;
+            this.xpButton1.TabIndex = 2;
+            this.xpButton1.Text = "Pick";
+            this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // layoutControlItem8
             // 
