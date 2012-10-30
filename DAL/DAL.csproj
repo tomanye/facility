@@ -71,6 +71,9 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL">
+      <HintPath>C:\Users\Tedy\Desktop\BLL.dll</HintPath>
+    </Reference>
     <Reference Include="MyGeneration.dOOdads">
       <HintPath>..\PharmInventory\Common DLLs\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
@@ -94,7 +97,9 @@
     <Compile Include="_DUsItemList.cs" />
     <Compile Include="_Exchange.cs" />
     <Compile Include="_ExchangeType.cs" />
-    <Compile Include="_GeneralInfo.cs" />
+    <Compile Include="_GeneralInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="_HalfPalletLocation.cs" />
     <Compile Include="_INN.cs" />
     <Compile Include="_InternalTransfer.cs" />

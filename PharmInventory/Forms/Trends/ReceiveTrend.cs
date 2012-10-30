@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using StockoutIndexBuilder;
 
 namespace PharmInventory
 {
@@ -85,9 +86,9 @@ namespace PharmInventory
                 int itemId = Convert.ToInt32(dr["ID"]);
                 string itemName = dr["ItemName"].ToString() + " - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
                 DataTable dtBal = bal.GetLastBalance(Convert.ToInt32(dr["ID"]),storeId);
-                Int64 AMC = (dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "")?Convert.ToInt64(dtBal.Rows[0]["AMC"]): 0);
-                Int64 MinCon =  AMC * min;
-                Int64 maxCon = AMC * max;
+                double AMC = Builder.CalculateAverageConsumption(itemId, storeId, dtCurrent.Subtract(TimeSpan.FromDays(180)), dtCurrent, CalculationOptions.Monthly);//(dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "")?Convert.ToInt64(dtBal.Rows[0]["AMC"]): 0);
+                double MinCon =  AMC * min;
+                double maxCon = AMC * max;
                 Int64 SOH = (dtBal.Rows.Count > 0) ? Convert.ToInt64(dtBal.Rows[0]["SOH"]) : 0;
                 decimal MOS = (AMC != 0)? (Convert.ToDecimal(SOH )/ Convert.ToDecimal(AMC)) : 0;
                 MOS = Decimal.Round(MOS, 1);

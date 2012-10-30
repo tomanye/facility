@@ -70,6 +70,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn29 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -335,7 +336,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn15.OptionsColumn.AllowEdit = false;
             this.gridColumn15.OptionsColumn.ReadOnly = true;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 6;
+            this.gridColumn15.VisibleIndex = 7;
             this.gridColumn15.Width = 45;
             // 
             // tabControl1
@@ -538,7 +539,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn25,
             this.gridColumn24,
             this.gridColumn1,
-            this.gridColumn26});
+            this.gridColumn26,
+            this.gridColumn29});
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -707,7 +709,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // gridColumn14
             // 
-            this.gridColumn14.Caption = "AMC";
+            this.gridColumn14.Caption = "NewAMC";
             this.gridColumn14.DisplayFormat.FormatString = "#,##0";
             this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn14.FieldName = "NewAMC";
@@ -735,7 +737,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn24.OptionsColumn.ReadOnly = true;
             this.gridColumn24.ToolTip = "Usable Stock";
             this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 7;
+            this.gridColumn24.VisibleIndex = 8;
             this.gridColumn24.Width = 74;
             // 
             // gridColumn26
@@ -743,6 +745,14 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn26.Caption = "TypeID";
             this.gridColumn26.FieldName = "TypeID";
             this.gridColumn26.Name = "gridColumn26";
+            // 
+            // gridColumn29
+            // 
+            this.gridColumn29.Caption = "OldAMC";
+            this.gridColumn29.FieldName = "AMC";
+            this.gridColumn29.Name = "gridColumn29";
+            this.gridColumn29.Visible = true;
+            this.gridColumn29.VisibleIndex = 6;
             // 
             // xpButton1
             // 
@@ -2903,6 +2913,7 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn29;
 
     }
 }

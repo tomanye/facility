@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLL;
 using PharmInventory.Forms.Modals;
+using StockoutIndexBuilder;
 
 namespace PharmInventory
 {
@@ -171,15 +172,15 @@ namespace PharmInventory
                 string itemName = dr["ItemName"].ToString() + " - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
                 
                 int yer = (month < 11) ? year : year - 1;
-                Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, yer);
-                Int64 MinCon = AMC * min;
-                Int64 maxCon = AMC * max;
+                double AMC = Builder.CalculateAverageConsumption(Convert.ToInt32(dr["ID"]), storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);//bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, yer);
+                double MinCon = AMC * min;
+                double maxCon = AMC * max;
                 double eopCon = AMC * (eop + 0.25);
                 Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, yer);
                 decimal MOS = (AMC != 0) ? (Convert.ToDecimal(SOH) / Convert.ToDecimal(AMC)) : 0;
                 MOS = Decimal.Round(MOS, 1);
 
-                Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
+                double reorder = (maxCon > SOH) ? maxCon - SOH : 0;
                 string status = (SOH <= eopCon && SOH > 0) ? "Near EOP" : ((SOH > maxCon && maxCon != 0) ? "Excess Stock" : ((SOH <= 0) ? "Stock Out" : "Normal"));
                 //Int64 issuedQuant = iss.GetIssuedQuantityByMonth(Convert.ToInt32(dr["ID"]),storeId, month,yer);
                 Int64 issuedQuant = iss.GetIssuedQuantity(Convert.ToInt32(dr["ID"]), storeId, yer);

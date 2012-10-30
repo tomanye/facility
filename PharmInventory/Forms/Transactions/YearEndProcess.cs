@@ -51,12 +51,13 @@ namespace PharmInventory.Forms.Transactions
             //}
             //else
             //{
-            btnSave.Enabled = false;
+            btnSave.Enabled = true;
             //}
 
             Stores str = new Stores();
             str.GetActiveStores();
             cboStores.Properties.DataSource = str.DefaultView;
+            cboStores.ItemIndex = 0;
             dtDate.CustomFormat = "MMMM dd, yyyy";
           
         }
@@ -101,7 +102,7 @@ namespace PharmInventory.Forms.Transactions
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)) ? false : true);
+                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
                 month = 10;
             }
             else

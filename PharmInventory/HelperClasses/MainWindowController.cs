@@ -121,7 +121,7 @@ namespace PharmInventory
                     AddTab("Issue Form", frm);
                     break;
                 case "stockoutindexer":
-                    frm = new StockOutIndicesBuilder();
+                    frm = new PharmInventory.Forms.Transactions.StockOutIndicesBuilder();
                     AddTab("Stockout Indices Builder",frm);
                     break;
                 case "Facility Settings":

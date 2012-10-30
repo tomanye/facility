@@ -8,6 +8,7 @@ using System.Drawing.Printing;
 using System.IO;
 using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
+using StockoutIndexBuilder;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -90,7 +91,8 @@ namespace PharmInventory.Forms.Modals
             {
                 int storeId = Convert.ToInt32(drStr["ID"]);
                 Int64 soh = bal.GetSOH(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
-                Int64 amc = bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
+                double amc = Builder.CalculateAverageConsumption(_itemId, storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly); //bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year); //Builder.CalculateAverageConsumption(_itemId, storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
+                    //bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
                 Int64 issue = iss.GetIssuedQuantityByMonth(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
                 decimal mos = ((amc > 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                 mos = Decimal.Round(mos, 1);
@@ -103,7 +105,7 @@ namespace PharmInventory.Forms.Modals
             {
                 int duid = Convert.ToInt32(drDus["ID"]);
                 Int64 soh = bal.GetDUSOH(_itemId, duid, _dtCurrent.Month, _dtCurrent.Year);
-                Int64 amc = bal.CalculateDUAMC(_itemId, duid, _dtCurrent.Month, _dtCurrent.Year, 0);
+                double amc = Builder.CalculateAverageConsumption(_itemId, duid, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly);//bal.CalculateDUAMC(_itemId, duid, _dtCurrent.Month, _dtCurrent.Year, 0);
                 Int64 issue = iss.GetDUIssueByMonth(_itemId, duid, _dtCurrent.Month, _dtCurrent.Year);
                 decimal mos = ((amc > 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                 mos = Decimal.Round(mos, 1);
@@ -245,17 +247,18 @@ namespace PharmInventory.Forms.Modals
             // int yr = ()?dtCurrent.Year : dtCurrent.Year -1;
             DataTable dtItm = itm.GetItemById(_itemId);
             string dosage = lblBUnit.Text;
-            Int64 amc = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
+            double amc =Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly);//bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             Int64 soh = bal.GetSOH(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             double sohPrice = bal.GetSOHAmount(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             string sohPriStr = ((sohPrice != 0) ? sohPrice.ToString("C") + " ETB" : "0 ETB");
             // this can not be done cuz it works only for current year
             // Int64 soh = itm.GetSOHQtyAmount(itemId, storeId);
-            Int64 min = (amc * info.Min);
-            Int64 max = (amc * info.Max);
+
+            double min = (amc * info.Min); //Int64 min = (amc * info.Min);
+            double max = (amc * info.Max);  //Int64 max = (amc * info.Max);
             double eop = amc * (info.EOP + 0.25);
             double beloweop = amc * (info.EOP - 0.25);
-            Int64 reorder = max - soh;
+            double reorder = max - soh;
             double mos = (amc > 0) ? (Convert.ToDouble(soh) / Convert.ToDouble(amc)) : 0;
             object[] obj = itm.GetExpiredQtyAmountItemsByID(_itemId, _storeId);
             Int64 expAmount = Convert.ToInt64(obj[0]);
@@ -1131,7 +1134,7 @@ namespace PharmInventory.Forms.Modals
 
             int[] mon = { 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             long[] cons = new long[12];
-            long[] amc = new long[12];
+            double[] amc = new double[12];
             long[] con = new long[12];
             long[] issval = new long[12];
             DataTable dtBal = new DataTable();
@@ -1169,7 +1172,7 @@ namespace PharmInventory.Forms.Modals
                     else
                         xSOH = con[i];
                     object[] str = { co[i], xSOH };
-                    amc[i] = ((du == 0) ? bal.CalculateAMC(_itemId, _storeId, mon[i], yr) : bal.CalculateDUAMC(_itemId, du, mon[i], yr, 0));
+                    amc[i] = ((du == 0) ? Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly): bal.CalculateDUAMC(_itemId, du, mon[i], yr, 0));//bal.CalculateAMC(_itemId, _storeId, mon[i], yr) 
                     object xAmc = null;
                     if (amc[i] == 0)
                     {
@@ -1283,9 +1286,12 @@ namespace PharmInventory.Forms.Modals
             serIss.ValueDataMembers.AddRange(new string[] { "Value" });
             chartComp.Series.Add(serIss);
 
-            Int64 amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
-            Int64 min = info.Min * amcCurent;
-            Int64 max = info.Max * amcCurent;
+            //Int64 amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
+            double amcCurent = Builder.CalculateAverageConsumption(_itemId, _storeId,
+                                                                   _dtCurrent.Subtract(TimeSpan.FromDays(180)),
+                                                                   _dtCurrent, CalculationOptions.Monthly);
+            double min = info.Min * amcCurent;
+            double max = info.Max * amcCurent;
             Int64 nearEOP = Convert.ToInt64(amcCurent * (info.EOP + 0.25));
             ConstantLine target = new ConstantLine();
             ConstantLine targetEOP = new ConstantLine();
@@ -1365,7 +1371,10 @@ namespace PharmInventory.Forms.Modals
             //Int64 soh = bal.GetSOH(itemId,storeId,dtCurrent.Month,year);
             //if (bal.RowCount > 0)
             //{
-            amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _year);
+           //Int64 amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _year);
+             amcCurent = Builder.CalculateAverageConsumption(_itemId, _storeId,
+                                                                   _dtCurrent.Subtract(TimeSpan.FromDays(180)),
+                                                                   _dtCurrent, CalculationOptions.Monthly);
             min = info.Min * amcCurent;
             max = info.Max * amcCurent;
             nearEOP = Convert.ToInt64(amcCurent * (info.EOP + 0.25));
@@ -2189,7 +2198,9 @@ namespace PharmInventory.Forms.Modals
                     if (!(yr == _dtCurrent.Year && mon[i] > _dtCurrent.Month && mon[i] < 11))
                     {
                         Int64 soh = bal.GetSOH(_itemId, storeId, mon[i], yr);
-                        Int64 amc = bal.CalculateAMC(_itemId, storeId, mon[i], yr);
+                        double  amc = Builder.CalculateAverageConsumption(_itemId, _storeId,
+                                                                        _dtCurrent.Subtract(TimeSpan.FromDays(180)),_dtCurrent,
+                                                                        CalculationOptions.Monthly);
                         decimal mos = ((amc != 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                         cons[i] = Decimal.Round(mos, 1);
                     }
@@ -2228,7 +2239,7 @@ namespace PharmInventory.Forms.Modals
                 {
                     int yr = (mon[i] > 10) ? _dtCurrent.Year - 1 : _dtCurrent.Year;
                     Int64 soh = bal.GetDUSOH(_itemId, duid, mon[i], yr);
-                    Int64 amc = bal.CalculateDUAMC(_itemId, duid, mon[i], yr, 0);
+                    double amc = Builder.CalculateAverageConsumption(_itemId, duid, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly);//bal.CalculateDUAMC(_itemId, duid, mon[i], yr, 0);
                     decimal mos = ((amc != 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                     cons[i] = Decimal.Round(mos, 1);
                 }

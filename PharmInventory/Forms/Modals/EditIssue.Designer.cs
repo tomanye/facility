@@ -65,7 +65,17 @@ namespace PharmInventory.Forms.Modals
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceivedBy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQtyPack.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPack.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // cboReceivingUnit
@@ -98,14 +108,16 @@ namespace PharmInventory.Forms.Modals
             this.dtIssDate.Size = new System.Drawing.Size(184, 20);
             this.dtIssDate.TabIndex = 39;
             this.dtIssDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dtIssDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
             // 
             // txtItemName
             // 
-            this.txtItemName.BackColor = System.Drawing.SystemColors.Info;
             this.txtItemName.Location = new System.Drawing.Point(190, 19);
             this.txtItemName.Name = "txtItemName";
+            this.txtItemName.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
+            this.txtItemName.Properties.Appearance.Options.UseBackColor = true;
             this.txtItemName.Properties.ReadOnly = true;
-            this.txtItemName.Size = new System.Drawing.Size(414, 21);
+            this.txtItemName.Size = new System.Drawing.Size(414, 20);
             this.txtItemName.TabIndex = 35;
             // 
             // label10
@@ -137,11 +149,12 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtQuantity
             // 
-            this.txtQuantity.BackColor = System.Drawing.SystemColors.Info;
             this.txtQuantity.Location = new System.Drawing.Point(286, 318);
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
+            this.txtQuantity.Properties.Appearance.Options.UseBackColor = true;
             this.txtQuantity.Properties.ReadOnly = true;
-            this.txtQuantity.Size = new System.Drawing.Size(184, 21);
+            this.txtQuantity.Size = new System.Drawing.Size(184, 20);
             this.txtQuantity.TabIndex = 33;
             // 
             // label7
@@ -157,7 +170,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.txtRemark.Location = new System.Drawing.Point(286, 426);
             this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(305, 59);
+            this.txtRemark.Size = new System.Drawing.Size(305, 20);
             this.txtRemark.TabIndex = 32;
             // 
             // label13
@@ -173,7 +186,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.txtReceivedBy.Location = new System.Drawing.Point(286, 390);
             this.txtReceivedBy.Name = "txtReceivedBy";
-            this.txtReceivedBy.Size = new System.Drawing.Size(184, 21);
+            this.txtReceivedBy.Size = new System.Drawing.Size(184, 20);
             this.txtReceivedBy.TabIndex = 34;
             // 
             // label12
@@ -187,11 +200,12 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtPrice
             // 
-            this.txtPrice.BackColor = System.Drawing.SystemColors.Info;
             this.txtPrice.Location = new System.Drawing.Point(286, 354);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
+            this.txtPrice.Properties.Appearance.Options.UseBackColor = true;
             this.txtPrice.Properties.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(184, 21);
+            this.txtPrice.Size = new System.Drawing.Size(184, 20);
             this.txtPrice.TabIndex = 36;
             // 
             // label11
@@ -207,7 +221,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.txtQtyPack.Location = new System.Drawing.Point(286, 284);
             this.txtQtyPack.Name = "txtQtyPack";
-            this.txtQtyPack.Size = new System.Drawing.Size(184, 21);
+            this.txtQtyPack.Size = new System.Drawing.Size(184, 20);
             this.txtQtyPack.TabIndex = 29;
             this.txtQtyPack.TextChanged += new System.EventHandler(this.txtQtyPack_TextChanged);
             // 
@@ -224,7 +238,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.txtPack.Location = new System.Drawing.Point(286, 250);
             this.txtPack.Name = "txtPack";
-            this.txtPack.Size = new System.Drawing.Size(184, 21);
+            this.txtPack.Size = new System.Drawing.Size(184, 20);
             this.txtPack.TabIndex = 28;
             this.txtPack.TextChanged += new System.EventHandler(this.txtQtyPack_TextChanged);
             // 
@@ -239,11 +253,12 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtBatchNo
             // 
-            this.txtBatchNo.BackColor = System.Drawing.SystemColors.Info;
             this.txtBatchNo.Location = new System.Drawing.Point(286, 213);
             this.txtBatchNo.Name = "txtBatchNo";
+            this.txtBatchNo.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
+            this.txtBatchNo.Properties.Appearance.Options.UseBackColor = true;
             this.txtBatchNo.Properties.ReadOnly = true;
-            this.txtBatchNo.Size = new System.Drawing.Size(184, 21);
+            this.txtBatchNo.Size = new System.Drawing.Size(184, 20);
             this.txtBatchNo.TabIndex = 31;
             // 
             // label3
@@ -268,7 +283,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.txtRefNo.Location = new System.Drawing.Point(286, 78);
             this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(184, 21);
+            this.txtRefNo.Size = new System.Drawing.Size(184, 20);
             this.txtRefNo.TabIndex = 30;
             // 
             // label1
@@ -283,27 +298,23 @@ namespace PharmInventory.Forms.Modals
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            
             this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
             this.btnCancel.Location = new System.Drawing.Point(394, 529);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 22);
             this.btnCancel.TabIndex = 38;
             this.btnCancel.Text = "Cancel";
-            
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            
             this.btnSave.Image = global::PharmInventory.Properties.Resources.disk;
             this.btnSave.Location = new System.Drawing.Point(286, 529);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 22);
             this.btnSave.TabIndex = 37;
             this.btnSave.Text = "Update";
-            
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
@@ -321,14 +332,12 @@ namespace PharmInventory.Forms.Modals
             // xpButton1
             // 
             this.xpButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            
             this.xpButton1.Image = global::PharmInventory.Properties.Resources.icon_accept;
             this.xpButton1.Location = new System.Drawing.Point(75, 59);
             this.xpButton1.Name = "xpButton1";
             this.xpButton1.Size = new System.Drawing.Size(70, 22);
             this.xpButton1.TabIndex = 7;
             this.xpButton1.Text = "Change";
-            
             this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // linkLabel1
@@ -348,7 +357,7 @@ namespace PharmInventory.Forms.Modals
             this.txtDate.Location = new System.Drawing.Point(286, 107);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(184, 21);
+            this.txtDate.Size = new System.Drawing.Size(184, 20);
             this.txtDate.TabIndex = 42;
             // 
             // label4
@@ -456,7 +465,17 @@ namespace PharmInventory.Forms.Modals
             this.Name = "EditIssue";
             this.Text = "Edit Issue";
             this.Load += new System.EventHandler(this.EditIssue_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantity.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceivedBy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQtyPack.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPack.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

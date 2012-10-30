@@ -18,8 +18,12 @@ namespace PharmInventory.ViewModel
         {
             ItemID = item.ID;
             StockCode = item.StockCode;
+            Strength = item.Strength;
+            DosageFormID = item.DosageFormID;
         }
-        public int ItemID { get; set; }        
+        public int ItemID { get; set; }
+        public string Strength { get; set; }
+        public int DosageFormID { get; set; }
         public string StockCode { get; set; }
         public bool Indexed 
         {

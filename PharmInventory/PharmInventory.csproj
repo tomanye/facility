@@ -120,8 +120,16 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
+    </Reference>
     <Reference Include="CalendarLib">
       <HintPath>Common DLLs\CalendarLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Tedy\Desktop\DAL.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.7.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -206,6 +214,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>C:\Users\Tedy\Desktop\New folder\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>Common DLLs\EthiopianDate.dll</HintPath>
     </Reference>
@@ -218,7 +229,8 @@
     <Reference Include="PrintableListView">
       <HintPath>Common DLLs\PrintableListView.dll</HintPath>
     </Reference>
-    <Reference Include="StockoutIndexBuilder">
+    <Reference Include="StockoutIndexBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -809,6 +821,7 @@
     </None>
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\StockoutIndexBuilder.Models.Store.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -954,17 +967,9 @@
     <None Include="Service References\RRFService\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{4D833455-E466-4E4F-AD03-352C114711E1}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConnectionStringManager\ConnectionStringManager.csproj">
       <Project>{69805B41-7B24-48D7-9A7A-F6018F4A6087}</Project>
       <Name>ConnectionStringManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{2B12B6DD-2142-492F-A990-78F5EB3F840A}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

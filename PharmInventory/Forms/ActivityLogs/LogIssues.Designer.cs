@@ -232,7 +232,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Location = new System.Drawing.Point(10, 35);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
-            this.lstTree.OptionsPrint.UsePrintStyles = true;
             this.lstTree.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.lstTree.OptionsView.ShowIndicator = false;
             this.lstTree.Size = new System.Drawing.Size(240, 537);

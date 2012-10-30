@@ -17,6 +17,7 @@ namespace PharmInventory.Forms.Reports
     public partial class RRFForm : XtraForm
     {
         private int _storeID;
+        private int _requestedquantity;
         private int _fromYear;
         private int _toYear;
         private int _fromMonth;
@@ -146,24 +147,24 @@ namespace PharmInventory.Forms.Reports
 
         private void PopulateListByProgram()
         {
-                GeneralInfo info = new GeneralInfo();
-                info.LoadAll();
-                Region reg = new BLL.Region();
-                Zone zon = new Zone();
-                Woreda wor = new Woreda();
-                _storeID = Convert.ToInt32(cboStores.EditValue);
-               _programID = Convert.ToInt32(cboProgram.EditValue);
-                Items itm = new Items();
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            Region reg = new BLL.Region();
+            Zone zon = new Zone();
+            Woreda wor = new Woreda();
+            _storeID = Convert.ToInt32(cboStores.EditValue);
+            _programID = Convert.ToInt32(cboProgram.EditValue);
+            Items itm = new Items();
 
-                _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
-                _toMonth = int.Parse(cboToMonth.EditValue.ToString());
-                _toYear = int.Parse(cboToYear.EditValue.ToString());
-                _fromYear = int.Parse(cboFromYear.EditValue.ToString());
+            _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
+            _toMonth = int.Parse(cboToMonth.EditValue.ToString());
+            _toYear = int.Parse(cboToYear.EditValue.ToString());
+            _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-                tblRRF = itm.GetRRFReportByProgram(_storeID,_programID,_fromMonth,_toYear);
-                gridItemsChoice.DataSource = tblRRF;
+            tblRRF = itm.GetRRFReportByProgram(_storeID,_programID,_fromMonth,_toYear);
+            gridItemsChoice.DataSource = tblRRF;
 
-                ChooseGridView();
+            ChooseGridView();
             //}
         }
 
@@ -257,22 +258,21 @@ namespace PharmInventory.Forms.Reports
             RRF rrf = new RRF();
             if(rrf.RRFExists(_storeID,_fromYear, _fromMonth, _toYear, _toMonth))
             {
-                if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return -1;
             }
             int rrfID = rrf.AddNewRRF(_storeID,_fromYear, _fromMonth, _toYear, _toMonth, true);
-
             BLL.Items itm = new BLL.Items();
-            DataTable dtbl = itm.GetRRFReportInPacks(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);//DataTable dtbl = gridItemChoiceView.DataSource;
-
-            foreach (DataRow dr in dtbl.Rows)
+            DataTable dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
+            foreach (DataRow dr in dtbl1.Rows)
             {
                 int itemID = Convert.ToInt32(dr["ID"]);
+                int requestedqty = Convert.ToInt32(dr["Quantity"]);
                 int storeID = int.Parse(cboStores.EditValue.ToString());
-                int requestedQty = Convert.ToInt32(dr["Quantity"]);
-                
-                RRFDetail rrfDetail = new RRFDetail();
-                rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedQty);
+                 RRFDetail rrfDetail = new RRFDetail();
+                rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
+
             }
             return rrf.ID;
         }
@@ -576,5 +576,7 @@ namespace PharmInventory.Forms.Reports
             if (cboProgram.EditValue == null) return;
             PopulateListByProgram();
         }
+
+       
     }
 }

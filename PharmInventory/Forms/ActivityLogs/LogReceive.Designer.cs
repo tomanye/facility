@@ -43,9 +43,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lblRecDate = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.gridReceives = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnEditRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -87,7 +87,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.cboSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -154,17 +154,17 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colRefNo,
             this.treeListColumn2});
-            this.lstTree.Location = new System.Drawing.Point(8, 33);
+            this.lstTree.ContextMenuStrip = this.contextMenuStrip2;
+            this.lstTree.Location = new System.Drawing.Point(8, 27);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
-            this.lstTree.OptionsPrint.UsePrintStyles = true;
             this.lstTree.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.lstTree.OptionsView.ShowIndicator = false;
             this.lstTree.PreviewFieldName = "RefNo";
             this.lstTree.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
             this.lstTree.RootValue = null;
-            this.lstTree.Size = new System.Drawing.Size(268, 543);
+            this.lstTree.Size = new System.Drawing.Size(268, 549);
             this.lstTree.TabIndex = 29;
             this.lstTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.lstTree_FocusedNodeChanged);
             // 
@@ -196,7 +196,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // cboSupplier
             // 
-            this.cboSupplier.Location = new System.Drawing.Point(383, 57);
+            this.cboSupplier.Location = new System.Drawing.Point(383, 51);
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -218,7 +218,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.dtTo.CalendarForeColor = System.Drawing.Color.Black;
             this.dtTo.DayOfWeekCharacters = 2;
             this.dtTo.ForeColor = System.Drawing.Color.Black;
-            this.dtTo.Location = new System.Drawing.Point(1111, 57);
+            this.dtTo.Location = new System.Drawing.Point(1111, 51);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(132, 20);
             this.dtTo.TabIndex = 12;
@@ -231,7 +231,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.dtFrom.CalendarForeColor = System.Drawing.Color.Black;
             this.dtFrom.DayOfWeekCharacters = 2;
             this.dtFrom.ForeColor = System.Drawing.Color.Black;
-            this.dtFrom.Location = new System.Drawing.Point(1111, 33);
+            this.dtFrom.Location = new System.Drawing.Point(1111, 27);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(132, 20);
             this.dtFrom.TabIndex = 12;
@@ -240,7 +240,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // lblRecDate
             // 
             this.lblRecDate.Font = new System.Drawing.Font("Nyala", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecDate.Location = new System.Drawing.Point(773, 57);
+            this.lblRecDate.Location = new System.Drawing.Point(773, 51);
             this.lblRecDate.Name = "lblRecDate";
             this.lblRecDate.Size = new System.Drawing.Size(182, 20);
             this.lblRecDate.TabIndex = 11;
@@ -249,7 +249,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // cboStores
             // 
-            this.cboStores.Location = new System.Drawing.Point(383, 33);
+            this.cboStores.Location = new System.Drawing.Point(383, 27);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -266,41 +266,41 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // gridReceives
             // 
-            this.gridReceives.ContextMenuStrip = this.contextMenuStrip1;
-            this.gridReceives.Location = new System.Drawing.Point(288, 81);
+            this.gridReceives.ContextMenuStrip = this.contextMenuStrip2;
+            this.gridReceives.Location = new System.Drawing.Point(288, 75);
             this.gridReceives.MainView = this.gridView1;
             this.gridReceives.Name = "gridReceives";
             this.gridReceives.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lkEditSupplier});
-            this.gridReceives.Size = new System.Drawing.Size(955, 469);
+            this.gridReceives.Size = new System.Drawing.Size(955, 475);
             this.gridReceives.TabIndex = 27;
             this.gridReceives.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
-            // contextMenuStrip1
+            // contextMenuStrip2
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(107, 48);
-            this.contextMenuStrip1.Text = "conTran";
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnEditRefrenceNo,
+            this.btnDeleteRefrenceNo});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(107, 48);
+            this.contextMenuStrip2.Text = "conTran";
             // 
-            // toolStripMenuItem1
+            // btnEditRefrenceNo
             // 
-            this.toolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem1.Image")));
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
-            this.toolStripMenuItem1.Text = "edit";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.btnEditRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditRefrenceNo.Image")));
+            this.btnEditRefrenceNo.Name = "btnEditRefrenceNo";
+            this.btnEditRefrenceNo.Size = new System.Drawing.Size(106, 22);
+            this.btnEditRefrenceNo.Text = "edit";
+            this.btnEditRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // toolStripMenuItem2
+            // btnDeleteRefrenceNo
             // 
-            this.toolStripMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItem2.Image")));
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(106, 22);
-            this.toolStripMenuItem2.Text = "delete";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.btnDeleteRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRefrenceNo.Image")));
+            this.btnDeleteRefrenceNo.Name = "btnDeleteRefrenceNo";
+            this.btnDeleteRefrenceNo.Size = new System.Drawing.Size(106, 22);
+            this.btnDeleteRefrenceNo.Text = "delete";
+            this.btnDeleteRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // gridView1
             // 
@@ -511,7 +511,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(272, 547);
+            this.layoutControlItem1.Size = new System.Drawing.Size(272, 553);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextToControlDistance = 0;
@@ -545,7 +545,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 521);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 527);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(460, 26);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
@@ -555,7 +555,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(460, 521);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(460, 527);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(300, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
@@ -567,7 +567,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem14.CustomizationFormText = "layoutControlItem14";
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(959, 473);
+            this.layoutControlItem14.Size = new System.Drawing.Size(959, 479);
             this.layoutControlItem14.Text = "layoutControlItem14";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextToControlDistance = 0;
@@ -669,7 +669,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem2.Control = this.btnExport;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(859, 521);
+            this.layoutControlItem2.Location = new System.Drawing.Point(859, 527);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(100, 26);
             this.layoutControlItem2.Text = "layoutControlItem2";
@@ -681,7 +681,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem4.Control = this.btnPrint;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(760, 521);
+            this.layoutControlItem4.Location = new System.Drawing.Point(760, 527);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(99, 26);
             this.layoutControlItem4.Text = "layoutControlItem4";
@@ -707,7 +707,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.cboSupplier.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -736,9 +736,9 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private CalendarLib.DateTimePickerEx dtTo;
         private CalendarLib.DateTimePickerEx dtFrom;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem btnEditRefrenceNo;
+        private System.Windows.Forms.ToolStripMenuItem btnDeleteRefrenceNo;
         private System.Windows.Forms.Label lblRecDate;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;

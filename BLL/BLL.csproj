@@ -93,9 +93,11 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Tedy\Desktop\EntityFramework.dll</HintPath>
+    <Reference Include="DAL">
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>C:\Users\Tedy\Desktop\New folder\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
@@ -114,11 +116,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABC.cs" />
-    <Compile Include="Balance.cs" />
+    <Compile Include="Balance.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Category.cs" />
     <Compile Include="DisposalDelete.cs" />
     <Compile Include="DUsItemList.cs" />
+    <Compile Include="GeneralInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="IssueDocDeleted.cs" />
+    <Compile Include="Items.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pallete.cs" />
     <Compile Include="PhysicalStore.cs" />
     <Compile Include="PickFace.cs" />
@@ -134,13 +144,10 @@
     <Compile Include="DosageForm.cs" />
     <Compile Include="Exchange.cs" />
     <Compile Include="ExchangeType.cs" />
-    <Compile Include="GeneralInfo.cs" />
-    <Compile Include="HalfPalletLocation.cs" />
     <Compile Include="INN.cs" />
     <Compile Include="IssueDoc.cs" />
     <Compile Include="ItemManufacturer.cs" />
     <Compile Include="ItemPrefferedLocation.cs" />
-    <Compile Include="Items.cs" />
     <Compile Include="ItemShelf.cs" />
     <Compile Include="ItemSupplier.cs" />
     <Compile Include="ItemSupplyCategory.cs" />
@@ -194,12 +201,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{2B12B6DD-2142-492F-A990-78F5EB3F840A}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

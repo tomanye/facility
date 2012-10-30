@@ -256,6 +256,7 @@ namespace PharmInventory.Forms.Modals
             this.dtRecDate.Size = new System.Drawing.Size(184, 20);
             this.dtRecDate.TabIndex = 11;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dtRecDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
             // 
             // cboSupplier
             // 

@@ -130,7 +130,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.cboStores.DisplayMember = "StoreName";
             this.cboStores.FormattingEnabled = true;
-            this.cboStores.Location = new System.Drawing.Point(378, 33);
+            this.cboStores.Location = new System.Drawing.Point(378, 39);
             this.cboStores.Name = "cboStores";
             this.cboStores.Size = new System.Drawing.Size(221, 21);
             this.cboStores.TabIndex = 0;
@@ -180,10 +180,10 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // grdRefYear
             // 
-            this.grdRefYear.Location = new System.Drawing.Point(5, 24);
+            this.grdRefYear.Location = new System.Drawing.Point(5, 30);
             this.grdRefYear.MainView = this.gridView2;
             this.grdRefYear.Name = "grdRefYear";
-            this.grdRefYear.Size = new System.Drawing.Size(252, 721);
+            this.grdRefYear.Size = new System.Drawing.Size(252, 715);
             this.grdRefYear.TabIndex = 36;
             this.grdRefYear.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -211,10 +211,10 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // gridInventory
             // 
-            this.gridInventory.Location = new System.Drawing.Point(276, 58);
+            this.gridInventory.Location = new System.Drawing.Point(276, 64);
             this.gridInventory.MainView = this.gridView1;
             this.gridInventory.Name = "gridInventory";
-            this.gridInventory.Size = new System.Drawing.Size(811, 652);
+            this.gridInventory.Size = new System.Drawing.Size(811, 646);
             this.gridInventory.TabIndex = 35;
             this.gridInventory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -325,7 +325,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // lblAdjDate
             // 
             this.lblAdjDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdjDate.Location = new System.Drawing.Point(1027, 33);
+            this.lblAdjDate.Location = new System.Drawing.Point(1027, 39);
             this.lblAdjDate.Name = "lblAdjDate";
             this.lblAdjDate.Size = new System.Drawing.Size(60, 21);
             this.lblAdjDate.TabIndex = 30;
@@ -379,7 +379,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 681);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 675);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(641, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
@@ -391,7 +391,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 25);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(815, 656);
+            this.layoutControlItem1.Size = new System.Drawing.Size(815, 650);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextToControlDistance = 0;
@@ -443,7 +443,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem5.Control = this.btnExport;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(733, 681);
+            this.layoutControlItem5.Location = new System.Drawing.Point(733, 675);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(82, 26);
             this.layoutControlItem5.Text = "layoutControlItem5";
@@ -455,7 +455,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem6.Control = this.btnPrint;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(641, 681);
+            this.layoutControlItem6.Location = new System.Drawing.Point(641, 675);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(92, 26);
             this.layoutControlItem6.Text = "layoutControlItem6";
@@ -480,7 +480,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(256, 725);
+            this.layoutControlItem2.Size = new System.Drawing.Size(256, 719);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -500,6 +500,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(20, 20, 100, 100);
             this.printableComponentLink1.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
