@@ -56,8 +56,7 @@ namespace PharmInventory.ViewModels
             return viewModel;
          }
 
-        private static void AddorUpdateAmc(int itemId, int storeId, int amcRange, DateTime endDate, AmcReportRepository amcrepo,
-                                           AMCViewModel viewModel, AmcReport allItemIds, DateTime startDate)
+        private static void AddorUpdateAmc(int itemId, int storeId, int amcRange, DateTime endDate, AmcReportRepository amcrepo, AMCViewModel viewModel, AmcReport allItemIds, DateTime startDate)
         {
             if (allItemIds == null)
             {

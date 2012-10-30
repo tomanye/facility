@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -120,9 +121,9 @@
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lcCheckingProgress = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1274,7 +1275,7 @@
             // 
             this.lblRRFStatus.Location = new System.Drawing.Point(24, 696);
             this.lblRRFStatus.Name = "lblRRFStatus";
-            this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
+            this.lblRRFStatus.Size = new System.Drawing.Size(0, 13);
             this.lblRRFStatus.StyleController = this.layoutControl1;
             this.lblRRFStatus.TabIndex = 40;
             // 
@@ -1309,7 +1310,7 @@
             this.cboFromYear.StyleController = this.layoutControl1;
             this.cboFromYear.TabIndex = 43;
             this.cboFromYear.SelectedIndexChanged += new System.EventHandler(this.cboFromYear_SelectedIndexChanged);
-            // 
+                        // 
             // btnAutoPushToPFSA
             // 
             this.btnAutoPushToPFSA.Location = new System.Drawing.Point(870, 696);
@@ -1330,7 +1331,7 @@
             this.cboFromMonth.StyleController = this.layoutControl1;
             this.cboFromMonth.TabIndex = 42;
             this.cboFromMonth.SelectedIndexChanged += new System.EventHandler(this.cboFromMonth_SelectedIndexChanged);
-            // 
+                     // 
             // cboProgram
             // 
             this.cboProgram.Location = new System.Drawing.Point(79, 578);

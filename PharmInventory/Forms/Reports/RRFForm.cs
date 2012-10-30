@@ -55,36 +55,6 @@ namespace PharmInventory.Forms.Reports
             //cboProgram.Properties.DataSource = dtProg;
         }
 
-        private void PopulateCurrentMonthRRF(EthiopianDate.EthiopianDate ethiopianDate)
-        {
-            int currentMonth = ethiopianDate.Month;
-            int currentYear = ethiopianDate.Year;
-
-            int startingMonth=0;
-            if (currentMonth > 2)
-            {
-                startingMonth = currentMonth - 2;
-            }
-            else
-            {
-                startingMonth = 12 - currentMonth - 1;
-            }
-
-            int startingYear = 0;
-            if (currentMonth <= 2)
-            {
-                startingYear = currentYear - 1;
-            }
-            else
-            {
-                startingYear = currentYear;
-            }
-           // cboFromMonth.EditValue = startingMonth;
-            //cboFromYear.EditValue = startingYear;
-            //SetEndingMonthAndYear(startingMonth, startingYear);
-            //cboStores.ItemIndex = 0;
-        }
-
         private void PopulateRRFs()
         {
             RRF rrf = new RRF();
@@ -152,7 +122,7 @@ namespace PharmInventory.Forms.Reports
             tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             gridItemsChoice.DataSource = tblRRF;
             
-           // ChooseGridView();
+            ChooseGridView();
         }
 
         private void PopulateListByProgram()
@@ -470,18 +440,20 @@ namespace PharmInventory.Forms.Reports
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
             PopulateList();
         }
-        
+
         private void grdRRF_DoubleClick(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
+            DataRow dr = grdViewRRFList.GetFocusedDataRow();
+            if (dr == null)
+                return;
+            int rrfID = Convert.ToInt32(dr["ID"]);
             ShowRRFDetailWindow(rrfID);
             WindowVisibility(true);
-            Cursor = Cursors.Default;
         }
 
         private void ShowRRFDetailWindow(int rrfID)
         {
+            Cursor = Cursors.WaitCursor;
             RRF rrf = new RRF();
             rrf.LoadByPrimaryKey(rrfID);
             cboFromMonth.EditValue = rrf.FromMonth;
@@ -502,6 +474,7 @@ namespace PharmInventory.Forms.Reports
             }
             else
                 btnAutoPushToPFSA.Enabled = true;
+            Cursor = Cursors.Default;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -595,6 +568,12 @@ namespace PharmInventory.Forms.Reports
             PopulateListByProgram();
         }
 
+        private void grdViewRRFList_DoubleClick(object sender, EventArgs e)
+        {
+            int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
+            ShowRRFDetailWindow(rrfID);
+            WindowVisibility(true);
+        }
 
     }
 }
