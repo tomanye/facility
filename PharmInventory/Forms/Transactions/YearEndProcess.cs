@@ -51,6 +51,7 @@ namespace PharmInventory.Forms.Transactions
             //}
             //else
             //{
+           // btnSave.Enabled = false;
             btnSave.Enabled = true;
             //}
 
@@ -99,6 +100,7 @@ namespace PharmInventory.Forms.Transactions
 
             ReceiveDoc recDoc = new ReceiveDoc();
             int month = dtCurent.Month;
+            //btnSave.Enabled = true;
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
