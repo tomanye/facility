@@ -1,8 +1,10 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 
@@ -171,7 +173,22 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            printableComponentLink1.ShowPreviewDialog();
+            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateDocument();
+            printableComponentLink1.ShowPreview();
+            //printableComponentLink1.ShowPreviewDialog();
+        }
+
+        private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            string[] header = { info.HospitalName + " Balance Report Items", "Date: " + dtDate.Text, " Store: " + cboStores.Text };
+            printableComponentLink1.PageHeaderFooter = header;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
         }
 
         /// <summary>
@@ -255,5 +272,7 @@ namespace PharmInventory.Forms.Reports
         {
             PopulateByProgram();
         }
+
+      
     }
 }

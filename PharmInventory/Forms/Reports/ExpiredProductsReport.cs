@@ -1,8 +1,10 @@
 using System;
 using System.Data;
+using System.Drawing;
 using BLL;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 using System.Windows.Forms;
@@ -108,7 +110,9 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void xpButton1_Click(object sender, EventArgs e)
         {
-            gridItemsList.ShowPrintPreview();
+            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateDocument();
+            printableComponentLink1.ShowPreview();
         }
 
         /// <summary>
@@ -222,6 +226,18 @@ namespace PharmInventory.Forms.Reports
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
+        }
+
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            string[] header = { info.HospitalName + " Stock Balance Report", "Date:" + dtDate.Text, "Store: " + cboStores.Text };
+            printableComponentLink1.PageHeaderFooter = header;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 35, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 50, 200, 100), BorderSide.None);
         }
 
     }
