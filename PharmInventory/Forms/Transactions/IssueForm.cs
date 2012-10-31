@@ -698,7 +698,7 @@ namespace PharmInventory.Forms.Transactions
         {
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
 
-            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
+            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
 
             if (b)
             {

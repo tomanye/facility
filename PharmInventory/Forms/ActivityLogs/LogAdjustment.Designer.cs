@@ -50,8 +50,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblAdjDate = new System.Windows.Forms.Label();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -71,7 +73,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboReasons.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -269,8 +270,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn7,
+            this.gridColumn10,
             this.gridColumn8,
+            this.gridColumn7,
             this.gridColumn9});
             this.gridView1.GridControl = this.gridAdjustments;
             this.gridView1.Name = "gridView1";
@@ -342,13 +344,14 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn6.VisibleIndex = 4;
             this.gridColumn6.Width = 85;
             // 
-            // gridColumn7
+            // gridColumn10
             // 
-            this.gridColumn7.Caption = "Reason";
-            this.gridColumn7.FieldName = "Reason";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn10.Caption = "Expiry Date";
+            this.gridColumn10.FieldName = "Date";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 5;
+            this.gridColumn10.Width = 100;
             // 
             // gridColumn8
             // 
@@ -356,8 +359,25 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn8.FieldName = "ApprovedBy";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 87;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 100;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Reason";
+            this.gridColumn7.FieldName = "Reason";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Remark";
+            this.gridColumn9.FieldName = "Remark";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.Width = 290;
             // 
             // lblAdjDate
             // 
@@ -583,15 +603,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem11.TextToControlDistance = 0;
             this.layoutControlItem11.TextVisible = false;
             // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Remark";
-            this.gridColumn9.FieldName = "Remark";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 7;
-            this.gridColumn9.Width = 290;
-            // 
             // LogAdjustment
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -677,5 +688,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }

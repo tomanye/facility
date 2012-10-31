@@ -647,6 +647,8 @@ namespace PharmInventory.HelperClasses
                         notFound++;
 
                         localDrugCategory.AddNew();
+                        localDrugCategory.ID = dsDrugCategory.ID.Value;
+                        if (dsDrugCategory.CategoryName != null)
                         localDrugCategory.CategoryName = dsDrugCategory.CategoryName;
                         if (dsDrugCategory.CategoryCode != null)
                             localDrugCategory.CategoryCode = dsDrugCategory.CategoryCode;
