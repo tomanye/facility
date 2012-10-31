@@ -153,7 +153,6 @@ namespace PharmInventory.Forms.ActivityLogs
                         rec.Out = false;
                     rec.Save();
                     IssueDocDeleted isdelete = new IssueDocDeleted();
-                  
                     isdelete.AddNew();
                     isdelete.ID = iss.ID;
                     isdelete.ItemID = iss.ItemID;

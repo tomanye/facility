@@ -38,6 +38,7 @@ namespace PharmInventory.Forms.Transactions
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition7 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueForm));
@@ -1245,6 +1246,13 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn20,
             this.gridColumn21,
             this.gridColumnRemove});
+            styleFormatCondition7.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition7.Appearance.Options.UseBackColor = true;
+            styleFormatCondition7.Column = this.gridColumn21;
+            styleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.GreaterOrEqual;
+            styleFormatCondition7.Expression = "[Requested Qty] > [Store SOH]";
+            this.issueGridView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition7});
             this.issueGridView.GridControl = this.issueGrid;
             this.issueGridView.Name = "issueGridView";
             this.issueGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;

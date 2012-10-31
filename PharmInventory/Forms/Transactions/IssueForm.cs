@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -458,7 +459,8 @@ namespace PharmInventory.Forms.Transactions
 
                     if(Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"])>Convert.ToInt64(dtIssueGrid.Rows[i]["Dispatchable"]))
                     {
-                        valid = "Requested quantity cannot be greater than the usable stock!";
+                        dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Requested quantity for this item cannot be greater than the usable stock!");
+                        valid = String.Format("Requested quantity for item cannot be greater than the usable stock!");
                     }
                 }
 

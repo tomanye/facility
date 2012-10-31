@@ -16,7 +16,7 @@ namespace PharmInventory.Forms.ActivityLogs
     /// </summary>
     public partial class LogReceive : XtraForm
     {
-        
+        private DataTable dtRec = null;
         public LogReceive()
         {
             InitializeComponent();
@@ -188,35 +188,38 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
-                
-                if (XtraMessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                if (
+                    XtraMessageBox.Show(
+                        "Are You Sure, You want to delete this Transaction? You will not be able to restore this data.",
+                        "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                       var recd = new ReceiveDocDeleted();
-                        recd.AddNew();
-                        recd.ID = rec.ID;
-                        recd.BatchNo = rec.BatchNo;
-                        recd.ItemID = rec.ItemID;
-                        recd.SupplierID = rec.SupplierID;
-                        recd.Quantity = rec.Quantity;
-                        recd.Date = rec.Date;
-                        recd.ExpDate = rec.ExpDate;
-                        recd.Out = rec.Out;
-                        recd.ReceivedStatus = rec.ReceivedStatus;
-                        recd.ReceivedBy = rec.ReceivedBy;
-                        recd.Remark = rec.Remark;
-                        recd.StoreID = rec.StoreID;
-                        recd.LocalBatchNo = rec.LocalBatchNo;
-                        recd.RefNo = rec.RefNo;
-                        recd.Cost = rec.Cost;
-                        recd.IsApproved = rec.IsApproved;
-                        recd.ManufacturerId = rec.ManufacturerId;
-                        recd.QuantityLeft = rec.QuantityLeft;
-                        recd.NoOfPack = rec.NoOfPack;
-                        recd.QtyPerPack = rec.QtyPerPack;
-                        recd.BoxLevel = rec.BoxLevel;
-                        recd.EurDate = rec.EurDate;
-                        recd.SubProgramID = rec.SubProgramID;
-                        recd.Save();
+                    var recd = new ReceiveDocDeleted();
+                    recd.AddNew();
+                    recd.ID = rec.ID;
+                    recd.BatchNo = rec.BatchNo;
+                    recd.ItemID = rec.ItemID;
+                    recd.SupplierID = rec.SupplierID;
+                    recd.Quantity = rec.Quantity;
+                    recd.Date = rec.Date;
+                    recd.ExpDate = rec.ExpDate;
+                    recd.Out = rec.Out;
+                    //recd.ReceivedStatus = rec.ReceivedStatus;
+                    //recd.ReceivedBy = rec.ReceivedBy;
+                    // recd.Remark = rec.Remark;
+                    recd.StoreID = rec.StoreID;
+                    recd.LocalBatchNo = rec.LocalBatchNo;
+                    recd.RefNo = rec.RefNo;
+                    recd.Cost = rec.Cost;
+                    recd.IsApproved = rec.IsApproved;
+                    //recd.ManufacturerId = rec.ManufacturerId;
+                    recd.QuantityLeft = rec.QuantityLeft;
+                    recd.NoOfPack = rec.NoOfPack;
+                    recd.QtyPerPack = rec.QtyPerPack;
+                    // recd.BoxLevel = rec.BoxLevel;
+                    recd.EurDate = rec.EurDate;
+                    // recd.SubProgramID = rec.SubProgramID;
+                    recd.Save();
 
 
                     rec.MarkAsDeleted();
@@ -281,8 +284,6 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            //CALENDAR:
-
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           CustomFormat = "MM/dd/yyyy",
@@ -310,7 +311,8 @@ namespace PharmInventory.Forms.ActivityLogs
                 dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
                 lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
-            gridReceives.DataSource = dtRec;
+
+           gridReceives.DataSource = dtRec;
         }
      
 
@@ -343,6 +345,72 @@ namespace PharmInventory.Forms.ActivityLogs
                 EditReceive edRec = new EditReceive(tranId, false);
                 MainWindow.ShowForms(edRec);
             }
+        }
+
+        private void btnDeleteWithRfNo_Click(object sender, EventArgs e)
+        {
+            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            {
+                CustomFormat = "MM/dd/yyyy",
+                Value = DateTime.Now
+            };
+            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+
+            if (dr == null) return;
+
+            ReceiveDoc rec = new ReceiveDoc();
+            DataTable dtRec;
+            if (dr["ParentID"] == DBNull.Value)
+            {
+                int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
+                DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
+                string dateString = dr["RefNo"].ToString();
+                lblRecDate.Text = dateString;
+            }
+            else
+            {
+                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+            }
+            foreach (DataRow recieve in dtRec.Rows)
+            {
+                var recd = new ReceiveDocDeleted();
+                recd.AddNew();
+                recd.ID = (int) recieve["ID"];
+                recd.BatchNo = (string) recieve["BatchNo"];
+                recd.ItemID = (int) recieve["ItemID"];
+                recd.SupplierID = (int)recieve["SupplierID"];
+                recd.Quantity = Convert.ToInt64(recieve["Quantity"]);
+                recd.Date = (DateTime)recieve["Date"];
+                recd.ExpDate = (DateTime) recieve["ExpDate"];
+                recd.Out = (bool) recieve["Out"];
+               // recd.ReceivedStatus = (int) recieve["ReceivedStatus"];
+               // recd.ReceivedBy = (string) recieve["ReceivedBy"];
+                //recd.Remark = (string)recieve["Remark"];
+                recd.StoreID = (int)recieve["StoreID"];
+                recd.LocalBatchNo = (string) recieve["LocalBatchNo"];
+                recd.RefNo = (string) recieve["RefNo"];
+                recd.Cost = (double) recieve["Cost"];
+                recd.IsApproved = (bool) recieve["IsApproved"];
+               // recd.ManufacturerId = (int) recieve["ManufacturerId"];
+                recd.QuantityLeft = (long) recieve["QuantityLeft"];
+                recd.NoOfPack = (int) recieve["NoOfPack"];
+                recd.QtyPerPack = (int) recieve["QtyPerPack"];
+               // recd.BoxLevel = (int) recieve["BoxLevel"];
+                recd.EurDate = (DateTime) recieve["EurDate"];
+               // recd.SubProgramID = (int) recieve["SubProgramID"];
+                recd.Save();
+
+
+
+
+                
+            }
+           
         }
     }
 }

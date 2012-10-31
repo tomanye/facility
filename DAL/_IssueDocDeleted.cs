@@ -2192,7 +2192,6 @@ namespace DAL
 
         protected override IDbCommand GetInsertCommand()
         {
-
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[" + this.SchemaStoredProcedure + "proc_IssueDocDeletedInsert]";
@@ -2205,6 +2204,7 @@ namespace DAL
 
             return cmd;
         }
+
         private IDbCommand CreateParameters(SqlCommand cmd)
         {
             SqlParameter p;

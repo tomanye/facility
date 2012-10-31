@@ -36,6 +36,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
             this.colRefNo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnEditRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.cboSupplier = new DevExpress.XtraEditors.LookUpEdit();
             this.dtTo = new CalendarLib.DateTimePickerEx();
@@ -43,9 +46,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lblRecDate = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.gridReceives = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnEditRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeleteRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,14 +80,18 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnEditWithRf = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnDeleteWithRfNo = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTree)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).BeginInit();
-            this.contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -108,10 +112,14 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnDeleteWithRfNo);
+            this.layoutControl1.Controls.Add(this.btnEditWithRf);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.btnExport);
             this.layoutControl1.Controls.Add(this.lstTree);
@@ -131,9 +139,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1048, 554);
+            this.btnPrint.Location = new System.Drawing.Point(1087, 554);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(95, 22);
+            this.btnPrint.Size = new System.Drawing.Size(76, 22);
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 31;
             this.btnPrint.Text = "&Print";
@@ -141,9 +149,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(1147, 554);
+            this.btnExport.Location = new System.Drawing.Point(1167, 554);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(96, 22);
+            this.btnExport.Size = new System.Drawing.Size(76, 22);
             this.btnExport.StyleController = this.layoutControl1;
             this.btnExport.TabIndex = 30;
             this.btnExport.Text = "E&xport";
@@ -154,7 +162,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colRefNo,
             this.treeListColumn2});
-            this.lstTree.ContextMenuStrip = this.contextMenuStrip2;
+            this.lstTree.ContextMenuStrip = this.contextMenuStrip1;
             this.lstTree.Location = new System.Drawing.Point(8, 27);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
@@ -181,7 +189,33 @@ namespace PharmInventory.Forms.ActivityLogs
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.ContextMenuStrip = this.contextMenuStrip1;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnEditRefrenceNo,
+            this.btnDeleteRefrenceNo});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(107, 48);
+            this.contextMenuStrip1.Text = "conTran";
+            // 
+            // btnEditRefrenceNo
+            // 
+            this.btnEditRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditRefrenceNo.Image")));
+            this.btnEditRefrenceNo.Name = "btnEditRefrenceNo";
+            this.btnEditRefrenceNo.Size = new System.Drawing.Size(106, 22);
+            this.btnEditRefrenceNo.Text = "edit";
+            this.btnEditRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // btnDeleteRefrenceNo
+            // 
+            this.btnDeleteRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRefrenceNo.Image")));
+            this.btnDeleteRefrenceNo.Name = "btnDeleteRefrenceNo";
+            this.btnDeleteRefrenceNo.Size = new System.Drawing.Size(106, 22);
+            this.btnDeleteRefrenceNo.Text = "delete";
+            this.btnDeleteRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // treeListColumn2
             // 
@@ -266,7 +300,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // gridReceives
             // 
-            this.gridReceives.ContextMenuStrip = this.contextMenuStrip2;
+            this.gridReceives.ContextMenuStrip = this.contextMenuStrip1;
             this.gridReceives.Location = new System.Drawing.Point(288, 75);
             this.gridReceives.MainView = this.gridView1;
             this.gridReceives.Name = "gridReceives";
@@ -276,31 +310,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridReceives.TabIndex = 27;
             this.gridReceives.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnEditRefrenceNo,
-            this.btnDeleteRefrenceNo});
-            this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(107, 48);
-            this.contextMenuStrip2.Text = "conTran";
-            // 
-            // btnEditRefrenceNo
-            // 
-            this.btnEditRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditRefrenceNo.Image")));
-            this.btnEditRefrenceNo.Name = "btnEditRefrenceNo";
-            this.btnEditRefrenceNo.Size = new System.Drawing.Size(106, 22);
-            this.btnEditRefrenceNo.Text = "edit";
-            this.btnEditRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // btnDeleteRefrenceNo
-            // 
-            this.btnDeleteRefrenceNo.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteRefrenceNo.Image")));
-            this.btnDeleteRefrenceNo.Name = "btnDeleteRefrenceNo";
-            this.btnDeleteRefrenceNo.Size = new System.Drawing.Size(106, 22);
-            this.btnDeleteRefrenceNo.Text = "delete";
-            this.btnDeleteRefrenceNo.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // gridView1
             // 
@@ -534,7 +543,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem4,
             this.emptySpaceItem6,
             this.layoutControlItem2,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup2.Location = new System.Drawing.Point(280, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
@@ -557,7 +568,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(460, 527);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(300, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(187, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -669,9 +680,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem2.Control = this.btnExport;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(859, 527);
+            this.layoutControlItem2.Location = new System.Drawing.Point(879, 527);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(100, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -681,13 +692,62 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem4.Control = this.btnPrint;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(760, 527);
+            this.layoutControlItem4.Location = new System.Drawing.Point(799, 527);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(99, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(80, 26);
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
+            // 
+            // btnEditWithRf
+            // 
+            this.btnEditWithRf.Location = new System.Drawing.Point(1005, 554);
+            this.btnEditWithRf.Name = "btnEditWithRf";
+            this.btnEditWithRf.Size = new System.Drawing.Size(78, 22);
+            this.btnEditWithRf.StyleController = this.layoutControl1;
+            this.btnEditWithRf.TabIndex = 32;
+            this.btnEditWithRf.Text = "EditWithRf";
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.btnEditWithRf;
+            this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
+            this.layoutControlItem7.Location = new System.Drawing.Point(717, 527);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(82, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(82, 26);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(82, 26);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.Text = "layoutControlItem7";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextToControlDistance = 0;
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // btnDeleteWithRfNo
+            // 
+            this.btnDeleteWithRfNo.Location = new System.Drawing.Point(935, 554);
+            this.btnDeleteWithRfNo.Name = "btnDeleteWithRfNo";
+            this.btnDeleteWithRfNo.Size = new System.Drawing.Size(66, 22);
+            this.btnDeleteWithRfNo.StyleController = this.layoutControl1;
+            this.btnDeleteWithRfNo.TabIndex = 33;
+            this.btnDeleteWithRfNo.Text = "DeleteRfNo";
+            this.btnDeleteWithRfNo.Click += new System.EventHandler(this.btnDeleteWithRfNo_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnDeleteWithRfNo;
+            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
+            this.layoutControlItem8.Location = new System.Drawing.Point(647, 527);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(70, 26);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(70, 26);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(70, 26);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem8.Text = "layoutControlItem8";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextToControlDistance = 0;
+            this.layoutControlItem8.TextVisible = false;
             // 
             // LogReceive
             // 
@@ -704,10 +764,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstTree)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cboSupplier.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).EndInit();
-            this.contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -728,6 +788,8 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -736,7 +798,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private CalendarLib.DateTimePickerEx dtTo;
         private CalendarLib.DateTimePickerEx dtFrom;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem btnEditRefrenceNo;
         private System.Windows.Forms.ToolStripMenuItem btnDeleteRefrenceNo;
         private System.Windows.Forms.Label lblRecDate;
@@ -784,5 +846,9 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraEditors.SimpleButton btnDeleteWithRfNo;
+        private DevExpress.XtraEditors.SimpleButton btnEditWithRf;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }
