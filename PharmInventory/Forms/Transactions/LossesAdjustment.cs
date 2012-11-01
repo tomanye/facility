@@ -52,6 +52,37 @@ namespace PharmInventory
                     gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
         }
 
+
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            XtraMessageBox.Show("edit form");
+            DataRow dr = gridItemChoiceView.GetFocusedDataRow();
+            if (dr == null) return;
+            int tranId = Convert.ToInt32(dr["ItemID"]);
+            Disposal dis = new Disposal();
+
+            dis.LoadByPrimaryKey(tranId);
+
+
+
+            if (dis.RowCount == 0)
+            {
+                if ((dis.RowCount > 0))
+                {
+                    EditLossAndAdjustment edRec = new EditLossAndAdjustment();
+                    MainWindow.ShowForms(edRec);
+                }
+
+            }
+            else
+            {
+                XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+        }
+
         public void PopulateItemList(DataTable dtItem)
         {
             if (dtSelectedTable == null)
@@ -533,6 +564,24 @@ namespace PharmInventory
            // gridItemChoiceView.ActiveFilterString = string.Format("ItemID={0}", Convert.ToInt32(lkCategories.EditValue));
             
 
+        }
+
+        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+           using (Form form = new Form())
+        {
+            form.ContextMenuStrip = new ContextMenuStrip();
+            ToolStripItem addMenuItem = form.ContextMenuStrip.Items.Add("edit");
+            ToolStripItem deleteMenuItem = form.ContextMenuStrip.Items.Add("delet");
+              if (e.ClickedItem == addMenuItem)
+              {
+                  MessageBox.Show("edit Menu Item Clicked.");
+              }
+              if (e.ClickedItem == deleteMenuItem)
+              {
+                  MessageBox.Show("delete Menu Item Clicked.");
+              }
+          };
         }
 
         

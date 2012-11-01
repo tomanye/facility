@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using StockoutIndexBuilder.Models;
 
-namespace IndexBuilder.ViewModels
+namespace PharmInventory.ViewModels
 {
     public class ItemViewModel
     {
@@ -24,7 +24,7 @@ namespace IndexBuilder.ViewModels
         }
         public int ItemID { get; set; }        
         public string StockCode { get; set; }
-        public int DosageFormID { get; set; }
+        public int? DosageFormID { get; set; }
         public string Strength { get; set; }
         public bool Indexed 
         {

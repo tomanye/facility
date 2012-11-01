@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using PharmInventory.ViewModels;
 using StockoutIndexBuilder.Models;
 
-namespace IndexBuilder.ViewModels
+namespace PharmInventory.ViewModels
 {
     public class ItemViewModelCollection : ICollection<ItemViewModel>
     {

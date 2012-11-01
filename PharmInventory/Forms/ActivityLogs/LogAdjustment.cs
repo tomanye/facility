@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
+using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.ActivityLogs
@@ -210,13 +211,13 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             DataRow dataRow = gridView1.GetFocusedDataRow();
             if (dataRow == null) return;
-            
+
             //get the primary key of the row
             int ID = Convert.ToInt32(dataRow["ID"]);
 
             Disposal disposal = new Disposal();
             ReceiveDoc receiveDoc = new ReceiveDoc();
-            
+
             //Retrieve the adjustment with the value of the primary key(id)
             disposal.LoadByPrimaryKey(ID);
 
@@ -224,10 +225,10 @@ namespace PharmInventory.Forms.ActivityLogs
             int itemId = disposal.ItemID;
             int storeID = disposal.StoreId;
             int recieveID = disposal.RecID;
-            
+
             receiveDoc.LoadByPrimaryKey(recieveID);
-            
-            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //check for losss
                 if (disposal.Losses) //it was loss
@@ -269,7 +270,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 receiveDoc.Save();
                 disposal.MarkAsDeleted();
                 disposal.Save();
-                
+
                 //Repopulate the grid
                 DataTable dtRec;
                 dtFrom.CustomFormat = "MM/dd/yyyy";
@@ -280,6 +281,32 @@ namespace PharmInventory.Forms.ActivityLogs
                 gridAdjustments.DataSource = dtRec;
             }
         }
+
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {  
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var edtloss = new EditLossAndAdjustment((string)dr["RefNo"]);
+            edtloss.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+               var dis = new Disposal();
+               DataTable dtbl =  dis.GetTransactionByRefNo((string) dr["RefNo"]);
+                foreach (DataRow dataRow in dtbl.Rows)
+                {
+                    dataRow.Delete();
+                }
+                dis.MarkAsDeleted();
+                dis.Save();
+            }
+        }
+
+        
        
     }
 }

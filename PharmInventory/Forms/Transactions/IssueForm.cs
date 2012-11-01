@@ -324,11 +324,10 @@ namespace PharmInventory.Forms.Transactions
                                 if (_dtRec != null)
                                 {
                                     string batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
-                                    //double quantityleft = (Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"]) - quantity);
                                     Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
                                     double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
                                     double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);
-                                    double packPrice = unitPrice * qtyPerPack; //Convert.ToDouble(dtIssueGrid.Rows[i]["Qty Per Pack"]);
+                                    double packPrice = unitPrice * qtyPerPack;
                                     double reqPackQty = Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"]);
                                     double totPrice = unitPrice * quantity;
                                     bool nearExp = false;
@@ -699,7 +698,6 @@ namespace PharmInventory.Forms.Transactions
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
 
             bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
-
             if (b)
             {
                 try
@@ -733,11 +731,12 @@ namespace PharmInventory.Forms.Transactions
 
         private void gridItemChoiceView_RowClick_1(object sender, RowClickEventArgs e)
         {
-
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
             dr["IsSelected"] = !b;
             OnItemCheckedChanged(new object(), new EventArgs());
+            //txtItemName.Text = (string)dr["FullItemName"];
+           
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -893,7 +892,11 @@ namespace PharmInventory.Forms.Transactions
         }
         private void toolTipController1_BeforeShow(object sender, DevExpress.Utils.ToolTipControllerShowEventArgs e)
         {
-            //
-        } 
+            // DataTable dtbl1 = ((DataView)gridItemsChoice.DataSource).Table;
+        }
+
+      
+
+       
     }
 }

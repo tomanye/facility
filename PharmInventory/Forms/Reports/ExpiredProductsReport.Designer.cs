@@ -163,6 +163,7 @@ namespace PharmInventory.Forms.Reports
             this.lkCommodityTypes.Size = new System.Drawing.Size(335, 20);
             this.lkCommodityTypes.StyleController = this.layoutControl1;
             this.lkCommodityTypes.TabIndex = 51;
+            this.lkCommodityTypes.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // cmbYear
             // 
@@ -408,12 +409,14 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn3.OptionsColumn.AllowMove = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 5;
             this.gridColumn3.Width = 113;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Quantity";
-            this.gridColumn4.DisplayFormat.FormatString = "#,###";
+            this.gridColumn4.DisplayFormat.FormatString = "#,###0.#";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "QuantityDetail";
             this.gridColumn4.Name = "gridColumn4";
@@ -436,7 +439,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Amount in Birr";
-            this.gridColumn6.DisplayFormat.FormatString = "##,###.##";
+            this.gridColumn6.DisplayFormat.FormatString = "#,###0.#";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
@@ -456,7 +459,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.FieldName = "Reason";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 154;
             // 
             // repositoryItemCheckEdit1

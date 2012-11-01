@@ -15,7 +15,7 @@ namespace StockoutIndexBuilder.Models
         public int ID { get; set; }
         public string StockCode { get; set; }
         public string Strength  { get; set; }
-        public int DosageFormID { get; set; }
+        public int? DosageFormID { get; set; }
         public virtual ICollection<Stockout> Stockouts { get; set; }
       
     }

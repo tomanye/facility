@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using BLL;
 using System.Linq;
 using DevExpress.XtraEditors;
-using PharmInventory.ViewModel;
+using PharmInventory.ViewModels;
 using StockoutIndexBuilder.DAL;
 
 namespace PharmInventory.Forms.Transactions
@@ -80,21 +80,8 @@ namespace PharmInventory.Forms.Transactions
             progressIndex.Value = 0;
         }
 
-        //private void StockOutIndicesBuilder_Load(object sender, EventArgs e)
-        //{
-        //    Items items = new Items();
-        //    DataTable dtItem = items.GetAllItems();
-        //    PopulateItemList(dtItem);
-        //}
 
-        private void PopulateItemList(DataTable dtItem)
-        {
-            gridControl1.DataSource = dtItem;
-        }
+       
 
-        private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-           // stockoutindexergridView.ActiveFilterString = string.Format("StoreID={0}", Convert.ToInt32(lookUpEdit1.EditValue));
-        }
     }
 }

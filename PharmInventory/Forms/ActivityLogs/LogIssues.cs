@@ -289,5 +289,29 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridIssues.DataSource = dtRec;
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var iss = new EditIssueDocRefrenceNo((string)dr["RefNo"]);
+            iss.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
+                                   MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var dis = new IssueDoc();
+                DataTable dtbl = dis.GetTransactionByRefNo((string)dr["RefNo"]);
+                foreach (DataRow dataRow in dtbl.Rows)
+                {
+                    dataRow.Delete();
+                }
+                dis.MarkAsDeleted();
+                dis.Save();
+            }
+        }
     }
 }

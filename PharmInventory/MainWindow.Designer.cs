@@ -686,7 +686,7 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
             this.navBarGroup5.Name = "navBarGroup5";
-            this.navBarGroup5.SelectedLinkIndex = 1;
+            this.navBarGroup5.SelectedLinkIndex = 2;
             // 
             // navBarItem4
             // 

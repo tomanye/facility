@@ -21,6 +21,12 @@ namespace BLL
 			return this.DataTable;
 		}
 
+        public DataTable GetTransactionByRefNo(string refNo)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM IssueDoc where RefNo = '{0}'", refNo));
+            return this.DataTable;
+        }
 		public Int64 GetIssuedQuantity(int itemId, int storeId,int year)
 		{ 
 			//There should be a date range for the last month or some thing

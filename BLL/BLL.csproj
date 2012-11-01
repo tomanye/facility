@@ -108,7 +108,7 @@
     </Reference>
     <Reference Include="StockoutIndexBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
+      <HintPath>..\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

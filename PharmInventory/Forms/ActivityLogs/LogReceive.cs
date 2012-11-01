@@ -145,21 +145,20 @@ namespace PharmInventory.Forms.ActivityLogs
             ReceiveDoc rec = new ReceiveDoc();
             IssueDoc iss = new IssueDoc();
             Disposal dis =new Disposal();
-
             rec.LoadByPrimaryKey(tranId);
+            iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
             _dtDate.Value = DateTime.Now;
             _dtDate.CustomFormat = "MM/dd/yyyy";
          
             
-             iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
+            
              if (iss.RowCount == 0)
              {
-                 if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != tranId))
+                 if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != rec.ID))
                  {
                      EditReceive edRec = new EditReceive(tranId, true);
                      MainWindow.ShowForms(edRec);
                  }
-                 
              }
              else
              {
@@ -404,13 +403,32 @@ namespace PharmInventory.Forms.ActivityLogs
                 recd.EurDate = (DateTime) recieve["EurDate"];
                // recd.SubProgramID = (int) recieve["SubProgramID"];
                 recd.Save();
-
-
-
-
-                
             }
            
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var edtloss = new EditRecieveRefrenceNo((string) dr["RefNo"]);
+            edtloss.ShowDialog();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
+                                   MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var dis = new ReceiveDoc();
+                DataTable dtbl = dis.GetTransactionByRefNo((string)dr["RefNo"]);
+                foreach (DataRow dataRow in dtbl.Rows)
+                {
+                    dataRow.Delete();
+                }
+                dis.MarkAsDeleted();
+                dis.Save();
+            }
         }
     }
 }

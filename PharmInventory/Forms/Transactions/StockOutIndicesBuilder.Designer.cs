@@ -101,7 +101,6 @@
             this.lookUpEdit1.Size = new System.Drawing.Size(143, 20);
             this.lookUpEdit1.StyleController = this.layoutControl1;
             this.lookUpEdit1.TabIndex = 8;
-            this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
             // 
             // storebindingSource
             // 
@@ -150,7 +149,7 @@
             // 
             // itemsBindingSource
             // 
-            this.itemsBindingSource.DataSource = typeof(PharmInventory.ViewModel.ItemViewModel);
+            this.itemsBindingSource.DataSource = typeof(PharmInventory.ViewModels.ItemViewModel);
             // 
             // stockoutindexergridView
             // 

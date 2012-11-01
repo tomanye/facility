@@ -1127,7 +1127,7 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock = z["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2)
+                                  DaysOutOfStock = z["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2) //DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
 
             var t2 = (from n in t1
@@ -1146,7 +1146,7 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                  DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), // Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock)//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
                               }).Distinct().ToArray();
@@ -1290,7 +1290,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = z["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2)
+                              DaysOutOfStock = z["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2) //z["DaysOutOfStock"] == DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                           }).ToArray();
 
             var t2 = (from n in t1
@@ -1309,7 +1309,7 @@ namespace BLL
                               Issued = Convert.ToInt32(n.Issued) / n.QtyPerPack,
                               LossAdj = Convert.ToInt32(n.LossAdj) / n.QtyPerPack,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : (n.Max - n.SOH) / n.QtyPerPack,
-                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock)//TODO: This is a quick fix.  We need to take stock status from the last three months.
                               MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)) / n.QtyPerPack)
                           }).ToArray();
 
@@ -1460,7 +1460,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2), //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2),//Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock) //TODO: This is a quick fix.  We need to take stock status from the last three months.
                               MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
                           }).Distinct().ToArray();
 

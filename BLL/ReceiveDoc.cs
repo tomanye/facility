@@ -53,7 +53,12 @@ namespace BLL
             return this.DataTable;
         }
 
-
+        public DataTable GetTransactionByRefNo(string refNo)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM ReceiveDoc where RefNo = '{0}'", refNo));
+            return this.DataTable;
+        }
         /// <summary>
         /// Loads all the items that were received with some quantity.
         /// This is used for the Year End Process to see how much of the given batch number still exists in the warehouse.

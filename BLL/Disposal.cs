@@ -246,7 +246,13 @@ namespace BLL
             return quant;
         }
 
-        public double GetLossesAmount(int itemId, int storeId,int year)
+        public DataTable GetTransactionByRefNo(string refNo)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM Disposal where RefNo = '{0}'", refNo));
+            return this.DataTable;
+        }
+	    public double GetLossesAmount(int itemId, int storeId,int year)
         {
             //There should be a date range for the last month or some thing
             this.FlushData();
