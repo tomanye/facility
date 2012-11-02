@@ -265,6 +265,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // editToolStripMenuItem1
             // 
+            this.editToolStripMenuItem1.Image = global::PharmInventory.Properties.Resources.paper_content_pencil_48;
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem1.Text = "edit";
@@ -272,6 +273,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // deleteToolStripMenuItem1
             // 
+            this.deleteToolStripMenuItem1.Image = global::PharmInventory.Properties.Resources.cross;
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem1.Text = "delete";

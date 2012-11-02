@@ -62,15 +62,16 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(358, 96);
+            this.layoutControl1.Size = new System.Drawing.Size(319, 97);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(186, 60);
+            this.btnUpdate.Image = global::PharmInventory.Properties.Resources.disk;
+            this.btnUpdate.Location = new System.Drawing.Point(147, 60);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(78, 24);
+            this.btnUpdate.Size = new System.Drawing.Size(78, 25);
             this.btnUpdate.StyleController = this.layoutControl1;
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "Update";
@@ -85,7 +86,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEdit3.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit3.Size = new System.Drawing.Size(270, 20);
+            this.dateEdit3.Size = new System.Drawing.Size(231, 20);
             this.dateEdit3.StyleController = this.layoutControl1;
             this.dateEdit3.TabIndex = 5;
             // 
@@ -93,15 +94,16 @@
             // 
             this.refnotextEdit.Location = new System.Drawing.Point(76, 12);
             this.refnotextEdit.Name = "refnotextEdit";
-            this.refnotextEdit.Size = new System.Drawing.Size(270, 20);
+            this.refnotextEdit.Size = new System.Drawing.Size(231, 20);
             this.refnotextEdit.StyleController = this.layoutControl1;
             this.refnotextEdit.TabIndex = 4;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(268, 60);
+            this.btnClose.Image = global::PharmInventory.Properties.Resources.cross;
+            this.btnClose.Location = new System.Drawing.Point(229, 60);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(78, 24);
+            this.btnClose.Size = new System.Drawing.Size(78, 25);
             this.btnClose.StyleController = this.layoutControl1;
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
@@ -120,7 +122,7 @@
             this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(358, 96);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(319, 97);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -130,7 +132,7 @@
             this.layoutControlItem1.CustomizationFormText = "Refrence No";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(338, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(299, 24);
             this.layoutControlItem1.Text = "Refrence No";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -140,7 +142,7 @@
             this.layoutControlItem2.CustomizationFormText = "Date";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(338, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(299, 24);
             this.layoutControlItem2.Text = "Date";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -148,10 +150,10 @@
             // 
             this.layoutControlItem3.Control = this.btnUpdate;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(174, 48);
+            this.layoutControlItem3.Location = new System.Drawing.Point(135, 48);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(82, 28);
+            this.layoutControlItem3.Size = new System.Drawing.Size(82, 29);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.Text = "layoutControlItem3";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -162,10 +164,10 @@
             // 
             this.layoutControlItem4.Control = this.btnClose;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(256, 48);
+            this.layoutControlItem4.Location = new System.Drawing.Point(217, 48);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(82, 28);
+            this.layoutControlItem4.Size = new System.Drawing.Size(82, 29);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -186,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 96);
+            this.ClientSize = new System.Drawing.Size(319, 97);
             this.Controls.Add(this.layoutControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

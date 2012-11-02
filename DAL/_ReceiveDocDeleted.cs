@@ -318,29 +318,29 @@ namespace DAL
                 {
                     ht = new Hashtable();
 
-                    ht[ID] = PropertyNames.ID;
-                    ht[BatchNo] = PropertyNames.BatchNo;
-                    ht[ItemID] = PropertyNames.ItemID;
-                    ht[SupplierID] = PropertyNames.SupplierID;
-                    ht[Quantity] = PropertyNames.Quantity;
-                    ht[Date] = PropertyNames.Date;
-                    ht[ExpDate] = PropertyNames.ExpDate;
-                    ht[Out] = PropertyNames.Out;
-                    ht[ReceivedStatus] = PropertyNames.ReceivedStatus;
-                    ht[ReceivedBy] = PropertyNames.ReceivedBy;
-                    ht[Remark] = PropertyNames.Remark;
-                    ht[StoreID] = PropertyNames.StoreID;
-                    ht[LocalBatchNo] = PropertyNames.LocalBatchNo;
-                    ht[RefNo] = PropertyNames.RefNo;
-                    ht[Cost] = PropertyNames.Cost;
-                    ht[IsApproved] = PropertyNames.IsApproved;
-                    ht[ManufacturerId] = PropertyNames.ManufacturerId;
-                    ht[QuantityLeft] = PropertyNames.QuantityLeft;
-                    ht[NoOfPack] = PropertyNames.NoOfPack;
-                    ht[QtyPerPack] = PropertyNames.QtyPerPack;
-                    ht[EurDate] = PropertyNames.EurDate;
-                    ht[BoxLevel] = PropertyNames.BoxLevel;
-                    ht[SubProgramID] = PropertyNames.SubProgramID;
+                    ht[ID] = _ReceiveDocDeleted.PropertyNames.ID;
+                    ht[BatchNo] = _ReceiveDocDeleted.PropertyNames.BatchNo;
+                    ht[ItemID] = _ReceiveDocDeleted.PropertyNames.ItemID;
+                    ht[SupplierID] = _ReceiveDocDeleted.PropertyNames.SupplierID;
+                    ht[Quantity] = _ReceiveDocDeleted.PropertyNames.Quantity;
+                    ht[Date] = _ReceiveDocDeleted.PropertyNames.Date;
+                    ht[ExpDate] = _ReceiveDocDeleted.PropertyNames.ExpDate;
+                    ht[Out] = _ReceiveDocDeleted.PropertyNames.Out;
+                    ht[ReceivedStatus] = _ReceiveDocDeleted.PropertyNames.ReceivedStatus;
+                    ht[ReceivedBy] = _ReceiveDocDeleted.PropertyNames.ReceivedBy;
+                    ht[Remark] = _ReceiveDocDeleted.PropertyNames.Remark;
+                    ht[StoreID] = _ReceiveDocDeleted.PropertyNames.StoreID;
+                    ht[LocalBatchNo] = _ReceiveDocDeleted.PropertyNames.LocalBatchNo;
+                    ht[RefNo] = _ReceiveDocDeleted.PropertyNames.RefNo;
+                    ht[Cost] = _ReceiveDocDeleted.PropertyNames.Cost;
+                    ht[IsApproved] = _ReceiveDocDeleted.PropertyNames.IsApproved;
+                    ht[ManufacturerId] = _ReceiveDocDeleted.PropertyNames.ManufacturerId;
+                    ht[QuantityLeft] = _ReceiveDocDeleted.PropertyNames.QuantityLeft;
+                    ht[NoOfPack] = _ReceiveDocDeleted.PropertyNames.NoOfPack;
+                    ht[QtyPerPack] = _ReceiveDocDeleted.PropertyNames.QtyPerPack;
+                    ht[EurDate] = _ReceiveDocDeleted.PropertyNames.EurDate;
+                    ht[BoxLevel] = _ReceiveDocDeleted.PropertyNames.BoxLevel;
+                    ht[SubProgramID] = _ReceiveDocDeleted.PropertyNames.SubProgramID;
 
                 }
                 return (string)ht[columnName];
@@ -383,29 +383,29 @@ namespace DAL
                 {
                     ht = new Hashtable();
 
-                    ht[ID] = ColumnNames.ID;
-                    ht[BatchNo] = ColumnNames.BatchNo;
-                    ht[ItemID] = ColumnNames.ItemID;
-                    ht[SupplierID] = ColumnNames.SupplierID;
-                    ht[Quantity] = ColumnNames.Quantity;
-                    ht[Date] = ColumnNames.Date;
-                    ht[ExpDate] = ColumnNames.ExpDate;
-                    ht[Out] = ColumnNames.Out;
-                    ht[ReceivedStatus] = ColumnNames.ReceivedStatus;
-                    ht[ReceivedBy] = ColumnNames.ReceivedBy;
-                    ht[Remark] = ColumnNames.Remark;
-                    ht[StoreID] = ColumnNames.StoreID;
-                    ht[LocalBatchNo] = ColumnNames.LocalBatchNo;
-                    ht[RefNo] = ColumnNames.RefNo;
-                    ht[Cost] = ColumnNames.Cost;
-                    ht[IsApproved] = ColumnNames.IsApproved;
-                    ht[ManufacturerId] = ColumnNames.ManufacturerId;
-                    ht[QuantityLeft] = ColumnNames.QuantityLeft;
-                    ht[NoOfPack] = ColumnNames.NoOfPack;
-                    ht[QtyPerPack] = ColumnNames.QtyPerPack;
-                    ht[EurDate] = ColumnNames.EurDate;
-                    ht[BoxLevel] = ColumnNames.BoxLevel;
-                    ht[SubProgramID] = ColumnNames.SubProgramID;
+                    ht[ID] = _ReceiveDocDeleted.ColumnNames.ID;
+                    ht[BatchNo] = _ReceiveDocDeleted.ColumnNames.BatchNo;
+                    ht[ItemID] = _ReceiveDocDeleted.ColumnNames.ItemID;
+                    ht[SupplierID] = _ReceiveDocDeleted.ColumnNames.SupplierID;
+                    ht[Quantity] = _ReceiveDocDeleted.ColumnNames.Quantity;
+                    ht[Date] = _ReceiveDocDeleted.ColumnNames.Date;
+                    ht[ExpDate] = _ReceiveDocDeleted.ColumnNames.ExpDate;
+                    ht[Out] = _ReceiveDocDeleted.ColumnNames.Out;
+                    ht[ReceivedStatus] = _ReceiveDocDeleted.ColumnNames.ReceivedStatus;
+                    ht[ReceivedBy] = _ReceiveDocDeleted.ColumnNames.ReceivedBy;
+                    ht[Remark] = _ReceiveDocDeleted.ColumnNames.Remark;
+                    ht[StoreID] = _ReceiveDocDeleted.ColumnNames.StoreID;
+                    ht[LocalBatchNo] = _ReceiveDocDeleted.ColumnNames.LocalBatchNo;
+                    ht[RefNo] = _ReceiveDocDeleted.ColumnNames.RefNo;
+                    ht[Cost] = _ReceiveDocDeleted.ColumnNames.Cost;
+                    ht[IsApproved] = _ReceiveDocDeleted.ColumnNames.IsApproved;
+                    ht[ManufacturerId] = _ReceiveDocDeleted.ColumnNames.ManufacturerId;
+                    ht[QuantityLeft] = _ReceiveDocDeleted.ColumnNames.QuantityLeft;
+                    ht[NoOfPack] = _ReceiveDocDeleted.ColumnNames.NoOfPack;
+                    ht[QtyPerPack] = _ReceiveDocDeleted.ColumnNames.QtyPerPack;
+                    ht[EurDate] = _ReceiveDocDeleted.ColumnNames.EurDate;
+                    ht[BoxLevel] = _ReceiveDocDeleted.ColumnNames.BoxLevel;
+                    ht[SubProgramID] = _ReceiveDocDeleted.ColumnNames.SubProgramID;
                 }
                 return (string)ht[propertyName];
             }
@@ -2316,8 +2316,7 @@ namespace DAL
             return cmd;
         }
 
-       
-        private IDbCommand CreateParameters(SqlCommand cmd)
+       private IDbCommand CreateParameters(SqlCommand cmd)
         {
             SqlParameter p;
 

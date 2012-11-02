@@ -6,11 +6,11 @@ using DAL;
 
 namespace BLL
 {
-    public class ReceiveDocDeleted : _ReceiveDocDeleted
+   public class ReceiveDocDeleted:_ReceiveDocDeleted
     {
-        public ReceiveDocDeleted()
-        {
-
-        }  
+       public ReceiveDocDeleted()
+       {
+           
+       }
     }
 }

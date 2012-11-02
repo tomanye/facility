@@ -152,30 +152,7 @@ namespace PharmInventory.Forms.ActivityLogs
                     if (rec.QuantityLeft > 0)
                         rec.Out = false;
                     rec.Save();
-                    IssueDocDeleted isdelete = new IssueDocDeleted();
-                    isdelete.AddNew();
-                    isdelete.ID = iss.ID;
-                    isdelete.ItemID = iss.ItemID;
-                    isdelete.StoreId = iss.StoreId;
-                    isdelete.ReceivingUnitID = iss.ReceivingUnitID;
-                    isdelete.LocalBatchNo = iss.LocalBatchNo;
-                    isdelete.Quantity = iss.Quantity;
-                    isdelete.Date = iss.Date;
-                    isdelete.IsTransfer = iss.IsTransfer;
-                    isdelete.IssuedBy = iss.IssuedBy;
-                    isdelete.Remark = iss.Remark;
-                    isdelete.RefNo = iss.RefNo;
-                    isdelete.BatchNo = iss.BatchNo;
-                    isdelete.IsApproved = iss.IsApproved;
-                    isdelete.Cost = iss.Cost;
-                    isdelete.NoOfPack = iss.NoOfPack;
-                    isdelete.QtyPerPack = iss.QtyPerPack;
-                    isdelete.DUSOH = iss.DUSOH;
-                    isdelete.EurDate = iss.EurDate;
-                    isdelete.RecievDocID = iss.RecievDocID;
-                    isdelete.RecomendedQty = iss.RecomendedQty;
-                    isdelete.Save();
-
+                    AddIssueLodDelete(iss);
                     iss.MarkAsDeleted();
                     iss.Save();
 
@@ -183,6 +160,33 @@ namespace PharmInventory.Forms.ActivityLogs
                     gridIssues.DataSource = dtRec;
                 }
             }
+        }
+
+        private static void AddIssueLodDelete(IssueDoc iss)
+        {
+            IssueDocDeleted isdelete = new IssueDocDeleted();
+            isdelete.AddNew();
+            isdelete.ID = iss.ID;
+            isdelete.ItemID = iss.ItemID;
+            isdelete.StoreId = iss.StoreId;
+            isdelete.ReceivingUnitID = iss.ReceivingUnitID;
+            isdelete.LocalBatchNo = iss.LocalBatchNo;
+            isdelete.Quantity = iss.Quantity;
+            isdelete.Date = iss.Date;
+            isdelete.IsTransfer = iss.IsTransfer;
+            isdelete.IssuedBy = iss.IssuedBy;
+            isdelete.Remark = iss.Remark;
+            isdelete.RefNo = iss.RefNo;
+            isdelete.BatchNo = iss.BatchNo;
+            isdelete.IsApproved = iss.IsApproved;
+            isdelete.Cost = iss.Cost;
+            isdelete.NoOfPack = iss.NoOfPack;
+            isdelete.QtyPerPack = iss.QtyPerPack;
+            isdelete.DUSOH = iss.DUSOH;
+            isdelete.EurDate = iss.EurDate;
+            isdelete.RecievDocID = iss.RecievDocID;
+            isdelete.RecomendedQty = iss.RecomendedQty;
+            isdelete.Save();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -293,6 +297,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (dr == null) return;
             var iss = new EditIssueDocRefrenceNo((string)dr["RefNo"]);
             iss.ShowDialog();
         }
@@ -300,6 +305,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if(dr==null)return;
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
                                    MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -307,11 +313,40 @@ namespace PharmInventory.Forms.ActivityLogs
                 DataTable dtbl = dis.GetTransactionByRefNo((string)dr["RefNo"]);
                 foreach (DataRow dataRow in dtbl.Rows)
                 {
+                    AddIssueDocDeleted(dataRow);
                     dataRow.Delete();
                 }
                 dis.MarkAsDeleted();
                 dis.Save();
+                XtraMessageBox.Show("Items successfully deleted.");
             }
+        }
+
+        private static void AddIssueDocDeleted(DataRow dataRow)
+        {
+            var isdelete = new IssueDocDeleted();
+            isdelete.AddNew();
+            isdelete.ID = (int) dataRow["ID"];
+            isdelete.ItemID = (int) dataRow["ItemID"];
+            isdelete.StoreId = (int) dataRow["StoreId"];
+            isdelete.ReceivingUnitID = (int) dataRow["ReceivingUnitID"];
+            //isdelete.LocalBatchNo = (string) dataRow["LocalBatchNo"];
+            isdelete.Quantity = (long) dataRow["Quantity"];
+            isdelete.Date = (DateTime) dataRow["Date"];
+            isdelete.IsTransfer = (bool) dataRow["IsTransfer"];
+            isdelete.IssuedBy = (string) dataRow["IssuedBy"];
+            //isdelete.Remark = (string) dataRow["Remark"];
+            isdelete.RefNo = (string) dataRow["RefNo"];
+            isdelete.BatchNo = (string) dataRow["BatchNo"];
+            isdelete.IsApproved = (bool) dataRow["IsApproved"];
+            isdelete.Cost = (double) dataRow["Cost"];
+            isdelete.NoOfPack = (int) dataRow["NoOfPack"];
+            isdelete.QtyPerPack = (int) dataRow["QtyPerPack"];
+            isdelete.DUSOH = (long) dataRow["DUSOH"];
+            isdelete.EurDate = (DateTime) dataRow["EurDate"];
+            isdelete.RecievDocID = (int) dataRow["RecievDocID"];
+            isdelete.RecomendedQty = (long) dataRow["RecomendedQty"];
+            isdelete.Save();
         }
     }
 }

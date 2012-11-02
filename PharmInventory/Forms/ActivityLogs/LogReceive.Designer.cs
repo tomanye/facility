@@ -31,8 +31,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogReceive));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnDeleteWithRfNo = new DevExpress.XtraEditors.SimpleButton();
-            this.btnEditWithRf = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
@@ -85,8 +83,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstTree)).BeginInit();
@@ -116,14 +112,10 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.btnDeleteWithRfNo);
-            this.layoutControl1.Controls.Add(this.btnEditWithRf);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.btnExport);
             this.layoutControl1.Controls.Add(this.lstTree);
@@ -141,30 +133,11 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControl1.TabIndex = 27;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // btnDeleteWithRfNo
-            // 
-            this.btnDeleteWithRfNo.Location = new System.Drawing.Point(935, 554);
-            this.btnDeleteWithRfNo.Name = "btnDeleteWithRfNo";
-            this.btnDeleteWithRfNo.Size = new System.Drawing.Size(66, 22);
-            this.btnDeleteWithRfNo.StyleController = this.layoutControl1;
-            this.btnDeleteWithRfNo.TabIndex = 33;
-            this.btnDeleteWithRfNo.Text = "DeleteRfNo";
-            this.btnDeleteWithRfNo.Click += new System.EventHandler(this.btnDeleteWithRfNo_Click);
-            // 
-            // btnEditWithRf
-            // 
-            this.btnEditWithRf.Location = new System.Drawing.Point(1005, 554);
-            this.btnEditWithRf.Name = "btnEditWithRf";
-            this.btnEditWithRf.Size = new System.Drawing.Size(78, 22);
-            this.btnEditWithRf.StyleController = this.layoutControl1;
-            this.btnEditWithRf.TabIndex = 32;
-            this.btnEditWithRf.Text = "EditWithRf";
-            // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1087, 554);
+            this.btnPrint.Location = new System.Drawing.Point(1059, 554);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(76, 22);
+            this.btnPrint.Size = new System.Drawing.Size(98, 22);
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 31;
             this.btnPrint.Text = "&Print";
@@ -172,9 +145,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(1167, 554);
+            this.btnExport.Location = new System.Drawing.Point(1161, 554);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(76, 22);
+            this.btnExport.Size = new System.Drawing.Size(82, 22);
             this.btnExport.StyleController = this.layoutControl1;
             this.btnExport.TabIndex = 30;
             this.btnExport.Text = "E&xport";
@@ -261,6 +234,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.paper_content_pencil_48;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "edit";
@@ -268,6 +242,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.cross;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "delete";
@@ -588,9 +563,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem4,
             this.emptySpaceItem6,
             this.layoutControlItem2,
-            this.layoutControlItem4,
-            this.layoutControlItem7,
-            this.layoutControlItem8});
+            this.layoutControlItem4});
             this.layoutControlGroup2.Location = new System.Drawing.Point(280, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(1, 1, 1, 1);
@@ -613,7 +586,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(460, 527);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(187, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(311, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -725,9 +698,12 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem2.Control = this.btnExport;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(879, 527);
+            this.layoutControlItem2.Location = new System.Drawing.Point(873, 527);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(86, 26);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(86, 26);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(80, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(86, 26);
+            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -737,43 +713,16 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem4.Control = this.btnPrint;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(799, 527);
+            this.layoutControlItem4.Location = new System.Drawing.Point(771, 527);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(102, 26);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(102, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(80, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(102, 26);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.btnEditWithRf;
-            this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
-            this.layoutControlItem7.Location = new System.Drawing.Point(717, 527);
-            this.layoutControlItem7.MaxSize = new System.Drawing.Size(82, 26);
-            this.layoutControlItem7.MinSize = new System.Drawing.Size(82, 26);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(82, 26);
-            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem7.Text = "layoutControlItem7";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextToControlDistance = 0;
-            this.layoutControlItem7.TextVisible = false;
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.btnDeleteWithRfNo;
-            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem8.Location = new System.Drawing.Point(647, 527);
-            this.layoutControlItem8.MaxSize = new System.Drawing.Size(70, 26);
-            this.layoutControlItem8.MinSize = new System.Drawing.Size(70, 26);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(70, 26);
-            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem8.Text = "layoutControlItem8";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextToControlDistance = 0;
-            this.layoutControlItem8.TextVisible = false;
             // 
             // LogReceive
             // 
@@ -815,8 +764,6 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -873,10 +820,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraEditors.SimpleButton btnDeleteWithRfNo;
-        private DevExpress.XtraEditors.SimpleButton btnEditWithRf;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;

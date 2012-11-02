@@ -249,23 +249,8 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
 
                 // proceed deletion and make the necessary changes on the database tables.
-                DisposalDelete ddel = new DisposalDelete();
-                ddel.AddNew();
-                ddel.ID = disposal.ID;
-                ddel.ItemID = disposal.ItemID;
-                ddel.StoreId = disposal.StoreId;
-                ddel.ReasonId = disposal.ReasonId;
-                ddel.Quantity = disposal.Quantity;
-                ddel.Date = disposal.Date;
-                ddel.ApprovedBy = disposal.ApprovedBy;
-                ddel.Losses = disposal.Losses;
-                ddel.BatchNo = disposal.BatchNo;
-                ddel.Remark = disposal.Remark;
-                ddel.Cost = disposal.Cost;
-                ddel.RefNo = disposal.RefNo;
-                ddel.EurDate = disposal.EurDate;
-                ddel.RecID = disposal.RecID;
-                ddel.Save();
+                DisposalDelete ddel;
+                AddDeletedDisposal(disposal, out ddel);
 
                 receiveDoc.Save();
                 disposal.MarkAsDeleted();
@@ -282,9 +267,31 @@ namespace PharmInventory.Forms.ActivityLogs
             }
         }
 
+        private static void AddDeletedDisposal(Disposal disposal, out DisposalDelete ddel)
+        {
+            ddel = new DisposalDelete();
+            ddel.AddNew();
+            ddel.ID = disposal.ID;
+            ddel.ItemID = disposal.ItemID;
+            ddel.StoreId = disposal.StoreId;
+            ddel.ReasonId = disposal.ReasonId;
+            ddel.Quantity = disposal.Quantity;
+            ddel.Date = disposal.Date;
+            ddel.ApprovedBy = disposal.ApprovedBy;
+            ddel.Losses = disposal.Losses;
+            ddel.BatchNo = disposal.BatchNo;
+            ddel.Remark = disposal.Remark;
+            ddel.Cost = disposal.Cost;
+            ddel.RefNo = disposal.RefNo;
+            ddel.EurDate = disposal.EurDate;
+            ddel.RecID = disposal.RecID;
+            ddel.Save();
+        }
+
         private void editToolStripMenuItem1_Click(object sender, EventArgs e)
         {  
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (dr == null) return;
             var edtloss = new EditLossAndAdjustment((string)dr["RefNo"]);
             edtloss.ShowDialog();
         }
@@ -292,6 +299,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private void deleteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (dr == null) return;
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -299,14 +307,34 @@ namespace PharmInventory.Forms.ActivityLogs
                DataTable dtbl =  dis.GetTransactionByRefNo((string) dr["RefNo"]);
                 foreach (DataRow dataRow in dtbl.Rows)
                 {
+                    AddlossDeleted(dataRow);
                     dataRow.Delete();
                 }
                 dis.MarkAsDeleted();
                 dis.Save();
+                XtraMessageBox.Show("Item successfully deleted.");
             }
         }
 
-        
-       
+        private static void AddlossDeleted(DataRow dataRow)
+        {
+            var dispdelete = new DisposalDelete();
+            dispdelete.AddNew();
+            dispdelete.ID = (int) dataRow["ID"];
+            dispdelete.ItemID = (int) dataRow["ItemID"];
+            dispdelete.StoreId = (int) dataRow["StoreID"];
+            dispdelete.ReasonId = (int) dataRow["ReasonID"];
+            dispdelete.Quantity = (long) dataRow["Quantity"];
+            dispdelete.Date = (DateTime) dataRow["Date"];
+            dispdelete.ApprovedBy = (string) dataRow["ApprovedBy"];
+            dispdelete.Losses = (bool) dataRow["Losses"];
+            dispdelete.BatchNo = (string) dataRow["BatchNo"];
+            dispdelete.Remark = (string) dataRow["Remark"];
+            dispdelete.Cost = (double) dataRow["Cost"];
+            dispdelete.RefNo = (string) dataRow["RefNo"];
+            dispdelete.EurDate = (DateTime) dataRow["EurDate"];
+            dispdelete.RecID = (int) dataRow["RecID"];
+            dispdelete.Save();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using BLL;
@@ -17,12 +18,14 @@ namespace PharmInventory.Forms.ActivityLogs
     public partial class LogReceive : XtraForm
     {
         private DataTable dtRec = null;
+
         public LogReceive()
         {
             InitializeComponent();
         }
 
-        readonly CalendarLib.DateTimePickerEx _dtDate = new CalendarLib.DateTimePickerEx();
+        private readonly CalendarLib.DateTimePickerEx _dtDate = new CalendarLib.DateTimePickerEx();
+
         private void ManageItems_Load(object sender, EventArgs e)
         {
             Supplier sup = new Supplier();
@@ -45,40 +48,41 @@ namespace PharmInventory.Forms.ActivityLogs
 
             try
             {
-                 //CALENDAR:
+                //CALENDAR:
 
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-                                                      {
-                                                          CustomFormat = "MM/dd/yyyy",
-                                                          Value = DateTime.Now
-                                                      };
-            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+                CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+                                                          {
+                                                              CustomFormat = "MM/dd/yyyy",
+                                                              Value = DateTime.Now
+                                                          };
+                DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+                DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
 
-            if (dr == null) return;
-            
-            ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec;
-            if (dr["ParentID"] == DBNull.Value)
-            {
-                int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
-                DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
-                DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
-                dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
-                string dateString = dr["RefNo"].ToString();
-                lblRecDate.Text = dateString;
-            }
-            else
-            {
-                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
-                lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
-            }
-            gridReceives.DataSource = dtRec;
+                if (dr == null) return;
+
+                ReceiveDoc rec = new ReceiveDoc();
+                DataTable dtRec;
+                if (dr["ParentID"] == DBNull.Value)
+                {
+                    int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
+                    DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                    DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                    dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
+                    string dateString = dr["RefNo"].ToString();
+                    lblRecDate.Text = dateString;
+                }
+                else
+                {
+                    dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
+                                                      dr["Date"].ToString());
+                    lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+                }
+                gridReceives.DataSource = dtRec;
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -116,7 +120,8 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             if (cboSupplier.EditValue == null) return;
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetTransactionBySupplierId(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(cboSupplier.EditValue));
+            DataTable dtRec = rec.GetTransactionBySupplierId(Convert.ToInt32(cboStores.EditValue),
+                                                             Convert.ToInt32(cboSupplier.EditValue));
             gridReceives.DataSource = dtRec;
         }
 
@@ -129,7 +134,9 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
             DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
 
-            DataTable dtRec = dteFrom < dteTo ? rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dteFrom, dteTo) : rec.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
+            DataTable dtRec = dteFrom < dteTo
+                                  ? rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dteFrom, dteTo)
+                                  : rec.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
             gridReceives.DataSource = dtRec;
             dtFrom.CustomFormat = "MMMM dd, yyyy";
             dtTo.CustomFormat = "MMMM dd, yyyy";
@@ -144,27 +151,28 @@ namespace PharmInventory.Forms.ActivityLogs
             int tranId = Convert.ToInt32(dr["ID"]);
             ReceiveDoc rec = new ReceiveDoc();
             IssueDoc iss = new IssueDoc();
-            Disposal dis =new Disposal();
+            Disposal dis = new Disposal();
             rec.LoadByPrimaryKey(tranId);
             iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
             _dtDate.Value = DateTime.Now;
             _dtDate.CustomFormat = "MM/dd/yyyy";
-         
-            
-            
-             if (iss.RowCount == 0)
-             {
-                 if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != rec.ID))
-                 {
-                     EditReceive edRec = new EditReceive(tranId, true);
-                     MainWindow.ShowForms(edRec);
-                 }
-             }
-             else
-             {
-                 XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                 return;
-             }
+
+
+
+            if (iss.RowCount == 0)
+            {
+                if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != rec.ID))
+                {
+                    EditReceive edRec = new EditReceive(tranId, true);
+                    MainWindow.ShowForms(edRec);
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.",
+                                    "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
 
         }
 
@@ -183,7 +191,8 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
             if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
             {
-                XtraMessageBox.Show("Unable to Delete, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                XtraMessageBox.Show("Unable to Delete, This Transaction has been processed. Try Loss and Adjustment.",
+                                    "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             else
             {
@@ -193,34 +202,7 @@ namespace PharmInventory.Forms.ActivityLogs
                         "Are You Sure, You want to delete this Transaction? You will not be able to restore this data.",
                         "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    var recd = new ReceiveDocDeleted();
-                    recd.AddNew();
-                    recd.ID = rec.ID;
-                    recd.BatchNo = rec.BatchNo;
-                    recd.ItemID = rec.ItemID;
-                    recd.SupplierID = rec.SupplierID;
-                    recd.Quantity = rec.Quantity;
-                    recd.Date = rec.Date;
-                    recd.ExpDate = rec.ExpDate;
-                    recd.Out = rec.Out;
-                    //recd.ReceivedStatus = rec.ReceivedStatus;
-                    //recd.ReceivedBy = rec.ReceivedBy;
-                    // recd.Remark = rec.Remark;
-                    recd.StoreID = rec.StoreID;
-                    recd.LocalBatchNo = rec.LocalBatchNo;
-                    recd.RefNo = rec.RefNo;
-                    recd.Cost = rec.Cost;
-                    recd.IsApproved = rec.IsApproved;
-                    //recd.ManufacturerId = rec.ManufacturerId;
-                    recd.QuantityLeft = rec.QuantityLeft;
-                    recd.NoOfPack = rec.NoOfPack;
-                    recd.QtyPerPack = rec.QtyPerPack;
-                    // recd.BoxLevel = rec.BoxLevel;
-                    recd.EurDate = rec.EurDate;
-                    // recd.SubProgramID = rec.SubProgramID;
-                    recd.Save();
-
-
+                    //AddDeletedRecieveDoc(rec);
                     rec.MarkAsDeleted();
                     rec.Save();
 
@@ -236,12 +218,42 @@ namespace PharmInventory.Forms.ActivityLogs
             }
         }
 
+        //private static void AddDeletedRecieveDoc(ReceiveDoc rec)
+        //{
+        //    var recd = new ReceiveDocDeleted();
+        //    recd.AddNew();
+        //    recd.ID = rec.ID;
+        //    recd.BatchNo = rec.BatchNo;
+        //    recd.ItemID = rec.ItemID;
+        //    recd.SupplierID = rec.SupplierID;
+        //    recd.Quantity = rec.Quantity;
+        //    recd.Date = rec.Date;
+        //    recd.ExpDate = rec.ExpDate;
+        //    recd.Out = rec.Out;
+        //    //recd.ReceivedStatus = rec.ReceivedStatus;
+        //    //recd.ReceivedBy = rec.ReceivedBy;
+        //    // recd.Remark = rec.Remark;
+        //    recd.StoreID = rec.StoreID;
+        //    recd.LocalBatchNo = rec.LocalBatchNo;
+        //    recd.RefNo = rec.RefNo;
+        //    recd.Cost = rec.Cost;
+        //    recd.IsApproved = rec.IsApproved;
+        //    //recd.ManufacturerId = rec.ManufacturerId;
+        //    recd.QuantityLeft = rec.QuantityLeft;
+        //    recd.NoOfPack = rec.NoOfPack;
+        //    recd.QtyPerPack = rec.QtyPerPack;
+        //    // recd.BoxLevel = rec.BoxLevel;
+        //    recd.EurDate = rec.EurDate;
+        //    // recd.SubProgramID = rec.SubProgramID;
+        //    recd.Save();
+        //}
+
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {
             string fileName = MainWindow.GetNewFileName("xls");
             gridReceives.ExportToXls(fileName);
             MainWindow.OpenInExcel(fileName);
-          
+
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -256,7 +268,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             pcl.CreateDocument();
             ps.PreviewFormEx.ShowDialog();
-          
+
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
@@ -269,11 +281,12 @@ namespace PharmInventory.Forms.ActivityLogs
                                                           CustomFormat = "MM/dd/yyyy"
                                                       };
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-           // original header
-           // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+            // original header
+            // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
             // header with reference number
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            string header = info.HospitalName + " Receive Activity Log \n" + dtCurrent.ToString("MM dd,yyyy") + "   RefNo " + refNumber;
+            string header = info.HospitalName + " Receive Activity Log \n" + dtCurrent.ToString("MM dd,yyyy") +
+                            "   RefNo " + refNumber;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 40),
                                                  DevExpress.XtraPrinting.BorderSide.None);
@@ -290,10 +303,10 @@ namespace PharmInventory.Forms.ActivityLogs
                                                       };
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
 
             if (dr == null) return;
-            
+
             ReceiveDoc rec = new ReceiveDoc();
             DataTable dtRec;
             if (dr["ParentID"] == DBNull.Value)
@@ -307,15 +320,16 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
-                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
+                                                  dr["Date"].ToString());
                 lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
 
-           gridReceives.DataSource = dtRec;
+            gridReceives.DataSource = dtRec;
         }
-     
 
-        
+
+
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
@@ -349,13 +363,13 @@ namespace PharmInventory.Forms.ActivityLogs
         private void btnDeleteWithRfNo_Click(object sender, EventArgs e)
         {
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-            {
-                CustomFormat = "MM/dd/yyyy",
-                Value = DateTime.Now
-            };
+                                                      {
+                                                          CustomFormat = "MM/dd/yyyy",
+                                                          Value = DateTime.Now
+                                                      };
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
 
             if (dr == null) return;
 
@@ -372,63 +386,101 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
-                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
+                                                  dr["Date"].ToString());
                 lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
             foreach (DataRow recieve in dtRec.Rows)
             {
-                var recd = new ReceiveDocDeleted();
-                recd.AddNew();
-                recd.ID = (int) recieve["ID"];
-                recd.BatchNo = (string) recieve["BatchNo"];
-                recd.ItemID = (int) recieve["ItemID"];
-                recd.SupplierID = (int)recieve["SupplierID"];
-                recd.Quantity = Convert.ToInt64(recieve["Quantity"]);
-                recd.Date = (DateTime)recieve["Date"];
-                recd.ExpDate = (DateTime) recieve["ExpDate"];
-                recd.Out = (bool) recieve["Out"];
-               // recd.ReceivedStatus = (int) recieve["ReceivedStatus"];
-               // recd.ReceivedBy = (string) recieve["ReceivedBy"];
-                //recd.Remark = (string)recieve["Remark"];
-                recd.StoreID = (int)recieve["StoreID"];
-                recd.LocalBatchNo = (string) recieve["LocalBatchNo"];
-                recd.RefNo = (string) recieve["RefNo"];
-                recd.Cost = (double) recieve["Cost"];
-                recd.IsApproved = (bool) recieve["IsApproved"];
-               // recd.ManufacturerId = (int) recieve["ManufacturerId"];
-                recd.QuantityLeft = (long) recieve["QuantityLeft"];
-                recd.NoOfPack = (int) recieve["NoOfPack"];
-                recd.QtyPerPack = (int) recieve["QtyPerPack"];
-               // recd.BoxLevel = (int) recieve["BoxLevel"];
-                recd.EurDate = (DateTime) recieve["EurDate"];
-               // recd.SubProgramID = (int) recieve["SubProgramID"];
-                recd.Save();
+               AddDeletedRecieveDocs(recieve);
             }
-           
+
+        }
+
+        private static void AddDeletedRecieveDocs(DataRow recieve)
+        {
+            var recd = new ReceiveDocDeleted();
+            recd.AddNew();
+            recd.ID = (int)recieve["ID"];
+            recd.BatchNo = (string)recieve["BatchNo"];
+            recd.ItemID = (int)recieve["ItemID"];
+            recd.SupplierID = (int)recieve["SupplierID"];
+            recd.Quantity = Convert.ToInt64(recieve["Quantity"]);
+            recd.Date = (DateTime)recieve["Date"];
+            recd.ExpDate = (DateTime)recieve["ExpDate"];
+            recd.Out = (bool)recieve["Out"];
+            // recd.ReceivedStatus = (int) recieve["ReceivedStatus"];
+            // recd.ReceivedBy = (string) recieve["ReceivedBy"];
+            //recd.Remark = (string)recieve["Remark"];
+            recd.StoreID = (int)recieve["StoreID"];
+            recd.LocalBatchNo = (string)recieve["LocalBatchNo"];
+            recd.RefNo = (string)recieve["RefNo"];
+            recd.Cost = (double)recieve["Cost"];
+            recd.IsApproved = (bool)recieve["IsApproved"];
+            // recd.ManufacturerId = (int) recieve["ManufacturerId"];
+            recd.QuantityLeft = (long)recieve["QuantityLeft"];
+            recd.NoOfPack = (int)recieve["NoOfPack"];
+            recd.QtyPerPack = (int)recieve["QtyPerPack"];
+            // recd.BoxLevel = (int) recieve["BoxLevel"];
+            recd.EurDate = (DateTime)recieve["EurDate"];
+            // recd.SubProgramID = (int) recieve["SubProgramID"];
+            recd.Save();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (dr == null) return;
             var edtloss = new EditRecieveRefrenceNo((string) dr["RefNo"]);
             edtloss.ShowDialog();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
-            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
-                                   MessageBoxIcon.Question) == DialogResult.Yes)
+            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            if (dr == null) return;
+            var rec = new ReceiveDoc();
+            if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                var dis = new ReceiveDoc();
-                DataTable dtbl = dis.GetTransactionByRefNo((string)dr["RefNo"]);
+                DataTable dtbl = rec.GetTransactionByRefNo((string) dr["RefNo"]);
                 foreach (DataRow dataRow in dtbl.Rows)
                 {
+                    AddReceiveDocDeleted(dataRow);
                     dataRow.Delete();
                 }
-                dis.MarkAsDeleted();
-                dis.Save();
+                rec.MarkAsDeleted();
+                rec.Save();
+
+                XtraMessageBox.Show("Items successfully deleted.");
             }
+            else
+            {
+                XtraMessageBox.Show("Unable to delete, Transaction with refrence number has been processed");
+            }
+        }
+
+        private static void AddReceiveDocDeleted(DataRow dataRow)
+        {
+            var recd = new ReceiveDocDeleted();
+            recd.AddNew();
+            recd.ID = (int)dataRow["ID"];
+            recd.BatchNo = (string)dataRow["BatchNo"];
+            recd.ItemID = (int)dataRow["ItemID"];
+            recd.SupplierID = (int)dataRow["SupplierID"];
+            recd.Quantity = (long)dataRow["Quantity"];
+            recd.Date = (DateTime)dataRow["Date"];
+            recd.ExpDate = (DateTime)dataRow["ExpDate"];
+            recd.Out = (bool)dataRow["Out"];
+            recd.StoreID = (int)dataRow["StoreID"];
+            recd.LocalBatchNo = (string)dataRow["LocalBatchNo"];
+            recd.RefNo = (string)dataRow["RefNo"];
+            recd.Cost = (double)dataRow["Cost"];
+            recd.IsApproved = (bool)dataRow["IsApproved"];
+            recd.QuantityLeft = (long)dataRow["QuantityLeft"];
+            recd.NoOfPack = (int)dataRow["NoOfPack"];
+            recd.QtyPerPack = (int)dataRow["QtyPerPack"];
+            recd.EurDate = (DateTime)dataRow["EurDate"];
+            recd.Save();
         }
     }
 }
