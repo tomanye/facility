@@ -583,7 +583,6 @@ namespace PharmInventory.Forms.Reports
             if (e.Column.FieldName == "gridColumn40")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
-        
 
     }
 }
