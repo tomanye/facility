@@ -1505,7 +1505,7 @@ namespace BLL
                 drv["Received"] = v.Received;
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
-                drv["DaysOutOfStock"] = v.DaysOutOfStock;
+                drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, dt1, dt2);
                 drv["MaxStockQty"] = v.MaxStockQty;
             }
 

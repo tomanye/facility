@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -529,6 +530,13 @@
             this.gridColumn9,
             this.gridColumn40});
             this.gridItemChoiceView.FixedLineWidth = 1;
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Column = this.gridColumn40;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
+            styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
+            this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition1});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -547,7 +555,7 @@
             this.gridItemChoiceView.OptionsView.EnableAppearanceOddRow = true;
             this.gridItemChoiceView.OptionsView.RowAutoHeight = true;
             this.gridItemChoiceView.OptionsView.ShowGroupPanel = false;
-            this.gridItemChoiceView.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridItemChoiceView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridItemChoiceView_CustomColumnDisplayText);
             // 
             // gridColumn10
             // 
@@ -566,7 +574,6 @@
             this.colItemName.FieldName = "FullItemName";
             this.colItemName.Name = "colItemName";
             this.colItemName.OptionsColumn.AllowEdit = false;
-            this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
             this.colItemName.Width = 308;
@@ -702,7 +709,7 @@
             this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 10;
+            this.gridColumn8.VisibleIndex = 11;
             this.gridColumn8.Width = 50;
             // 
             // gridColumn9
@@ -718,10 +725,10 @@
             this.gridColumn40.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn40.FieldName = "gridColumn40";
             this.gridColumn40.Name = "gridColumn40";
-            this.gridColumn40.UnboundExpression = "[Max] - [SOH]";
-            this.gridColumn40.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.gridColumn40.UnboundExpression = "[gridColumn7]-[SOH]";
+            this.gridColumn40.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 11;
+            this.gridColumn40.VisibleIndex = 10;
             this.gridColumn40.Width = 71;
             // 
             // repositoryItemCheckEdit1
@@ -1275,13 +1282,12 @@
             // 
             this.lblRRFStatus.Location = new System.Drawing.Point(24, 696);
             this.lblRRFStatus.Name = "lblRRFStatus";
-            this.lblRRFStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
             this.lblRRFStatus.StyleController = this.layoutControl1;
             this.lblRRFStatus.TabIndex = 40;
             // 
             // chkCalculateInPacks
             // 
-            this.chkCalculateInPacks.Enabled = false;
             this.chkCalculateInPacks.Location = new System.Drawing.Point(329, 554);
             this.chkCalculateInPacks.Name = "chkCalculateInPacks";
             this.chkCalculateInPacks.Size = new System.Drawing.Size(419, 20);
@@ -1310,7 +1316,7 @@
             this.cboFromYear.StyleController = this.layoutControl1;
             this.cboFromYear.TabIndex = 43;
             this.cboFromYear.SelectedIndexChanged += new System.EventHandler(this.cboFromYear_SelectedIndexChanged);
-                        // 
+            // 
             // btnAutoPushToPFSA
             // 
             this.btnAutoPushToPFSA.Location = new System.Drawing.Point(870, 696);
@@ -1331,7 +1337,7 @@
             this.cboFromMonth.StyleController = this.layoutControl1;
             this.cboFromMonth.TabIndex = 42;
             this.cboFromMonth.SelectedIndexChanged += new System.EventHandler(this.cboFromMonth_SelectedIndexChanged);
-                     // 
+            // 
             // cboProgram
             // 
             this.cboProgram.Location = new System.Drawing.Point(79, 578);

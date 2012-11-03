@@ -844,7 +844,7 @@ namespace BLL
 
         public DataTable GetSOHByPrograms(int storeId, int programid, int month, int year)
         {
-            var days= DateTime.DaysInMonth(year, month);
+            var days = DateTime.DaysInMonth(year, month);
             var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@progID", programid);
@@ -855,6 +855,7 @@ namespace BLL
             //TODO: filter out by commodity type here.
 
             return this.DataTable;
+
         }
 
         public DataTable GetSOHToDate(int storeId, DateTime dt)

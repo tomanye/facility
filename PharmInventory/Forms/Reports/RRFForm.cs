@@ -6,6 +6,7 @@ using BLL;
 using System.Linq;
 using DevExpress.XtraEditors;
 using CommCtrl;
+using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraLayout.Utils;
 using PharmInventory.Reports;
 using PharmInventory.RRFService;
@@ -509,6 +510,7 @@ namespace PharmInventory.Forms.Reports
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth, startingYear);
             cboStores.ItemIndex = 0;
+           // cboProgram.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
 
@@ -574,6 +576,14 @@ namespace PharmInventory.Forms.Reports
             ShowRRFDetailWindow(rrfID);
             WindowVisibility(true);
         }
+
+
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "gridColumn40")
+                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+        }
+        
 
     }
 }

@@ -14,7 +14,7 @@
     <ManifestCertificateThumbprint>12F722CD5401FCF005991B13D41002CAA51D6B53</ManifestCertificateThumbprint>
     <ManifestKeyFile>PharmInventory_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -31,11 +31,11 @@
     </SccProvider>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
-    <PublishUrl>C:\Projects\Published\HCMIS\FE\</PublishUrl>
+    <PublishUrl>C:\Users\Tedy\Desktop\FE\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
@@ -48,7 +48,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>151</ApplicationRevision>
+    <ApplicationRevision>155</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -123,91 +123,96 @@
     <Reference Include="CalendarLib">
       <HintPath>Common DLLs\CalendarLib.dll</HintPath>
     </Reference>
-    <Reference Include="ConnectionStringManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>.\ConnectionStringManager.dll</HintPath>
+    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Tedy\Desktop\DAL.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.BonusSkins.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Charts.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Charts.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.PivotGrid.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Printing.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Reports.v12.1.Designer, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Reports.v12.1.Designer, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraBars.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v12.1.UI, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v12.1.UI, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraEditors.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraGrid.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraLayout.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraNavBar.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraPivotGrid.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraPivotGrid.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraPrinting.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Office.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v12.1.Core, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.RichEdit.v12.1.Core, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v12.1.Extensions, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v12.1.Extensions, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraRichEdit.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraRichEdit.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraTreeList.v12.1, Version=12.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>Common DLLs\EthiopianDate.dll</HintPath>
@@ -260,27 +265,31 @@
     <Compile Include="Forms\Modals\Aboutus.Designer.cs">
       <DependentUpon>Aboutus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\AddItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Modals\AddItem.cs" />
     <Compile Include="Forms\Modals\AddItem.Designer.cs">
       <DependentUpon>AddItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\AddSupply.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Modals\AddSupply.cs" />
     <Compile Include="Forms\Modals\AddSupply.designer.cs">
       <DependentUpon>AddSupply.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\ManageSupplies.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\Modals\EditIssueDocRefrenceNo.cs" />
+    <Compile Include="Forms\Modals\EditIssueDocRefrenceNo.Designer.cs">
+      <DependentUpon>EditIssueDocRefrenceNo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Modals\EditLossAndAdjustment.cs" />
+    <Compile Include="Forms\Modals\EditLossAndAdjustment.Designer.cs">
+      <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Modals\EditRecieveRefrenceNo.cs" />
+    <Compile Include="Forms\Modals\EditRecieveRefrenceNo.Designer.cs">
+      <DependentUpon>EditRecieveRefrenceNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Profiles\ManageSupplies.cs" />
     <Compile Include="Forms\Profiles\ManageSupplies.Designer.cs">
       <DependentUpon>ManageSupplies.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\ManageItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\ManageItems.cs" />
     <Compile Include="Forms\Profiles\ManageItems.Designer.cs">
       <DependentUpon>ManageItems.cs</DependentUpon>
     </Compile>
@@ -290,15 +299,11 @@
     <Compile Include="Forms\Reports\BalanceReport.Designer.cs">
       <DependentUpon>BalanceReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ConsumptionByUnits.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\ConsumptionByUnits.cs" />
     <Compile Include="Forms\Reports\ConsumptionByUnits.Designer.cs">
       <DependentUpon>ConsumptionByUnits.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ConsumptionTrendReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\ConsumptionTrendReport.cs" />
     <Compile Include="Forms\Reports\ConsumptionTrendReport.Designer.cs">
       <DependentUpon>ConsumptionTrendReport.cs</DependentUpon>
     </Compile>
@@ -308,45 +313,39 @@
     <Compile Include="Forms\Reports\CostReport.Designer.cs">
       <DependentUpon>CostReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ExpiredProducts.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\ExpiredProducts.cs" />
     <Compile Include="Forms\Reports\ExpiredProducts.Designer.cs">
       <DependentUpon>ExpiredProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ExpiredProductsReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\ExpiredProductsReport.cs" />
     <Compile Include="Forms\Reports\ExpiredProductsReport.Designer.cs">
       <DependentUpon>ExpiredProductsReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\ItemReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\ItemReport.cs" />
     <Compile Include="Forms\Reports\ItemReport.Designer.cs">
       <DependentUpon>ItemReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\NearlyExpired.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\NearlyExpired.cs" />
     <Compile Include="Forms\Reports\NearlyExpired.Designer.cs">
       <DependentUpon>NearlyExpired.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\OtherItemReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\OtherItemReport.cs" />
     <Compile Include="Forms\Reports\OtherItemReport.Designer.cs">
       <DependentUpon>OtherItemReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\RRFForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Reports\RRFForm.cs" />
     <Compile Include="Forms\Reports\RRFForm.Designer.cs">
       <DependentUpon>RRFForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Tools\AutoBackup.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Forms\Transactions\AMCView.cs" />
+    <Compile Include="Forms\Transactions\AMCView.Designer.cs">
+      <DependentUpon>AMCView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transactions\StockOutIndicesBuilder.cs" />
+    <Compile Include="Forms\Transactions\StockOutIndicesBuilder.Designer.cs">
+      <DependentUpon>StockOutIndicesBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Tools\AutoBackup.cs" />
     <Compile Include="Forms\Tools\AutoBackup.designer.cs">
       <DependentUpon>AutoBackup.cs</DependentUpon>
     </Compile>
@@ -372,9 +371,7 @@
       <DependentUpon>Registrations.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\Cell.cs" />
-    <Compile Include="Forms\UtilitiesAndForms\ChangePassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\UtilitiesAndForms\ChangePassword.cs" />
     <Compile Include="Forms\UtilitiesAndForms\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
@@ -386,30 +383,31 @@
     </Compile>
     <Compile Include="HelperClasses\ConvertDate.cs" />
     <Compile Include="HelperClasses\DirectoryServices.cs" />
-    <Compile Include="Forms\ActivityLogs\LogPickList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogPickList.cs" />
     <Compile Include="Forms\ActivityLogs\LogPickList.Designer.cs">
       <DependentUpon>LogPickList.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\DatabaseHelpers.cs" />
     <Compile Include="HelperClasses\EthCal.cs" />
-    <Compile Include="Forms\Transactions\LossesAdjustment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Transactions\LossesAdjustment.cs" />
     <Compile Include="Forms\Transactions\LossesAdjustment.Designer.cs">
       <DependentUpon>LossesAdjustment.cs</DependentUpon>
     </Compile>
-    <Compile Include="HelperClasses\MainWindowController.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="HelperClasses\MainWindowController.cs" />
     <Compile Include="HelperClasses\RegistrationHelper.cs" />
+    <Compile Include="HelperClasses\SchemaHelpers.cs" />
     <Compile Include="HelperClasses\UpdateManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="Scripts\27_SOHUpdated.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\17_DisposalDelete.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Service References\DirectoryService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -431,15 +429,11 @@
     <Compile Include="UserControls\Legend.designer.cs">
       <DependentUpon>Legend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ActivityLogs\LogInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogInventory.cs" />
     <Compile Include="Forms\ActivityLogs\LogInventory.Designer.cs">
       <DependentUpon>LogInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SummaryReports\GeneralCostChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SummaryReports\GeneralCostChart.cs" />
     <Compile Include="Forms\SummaryReports\GeneralCostChart.designer.cs">
       <DependentUpon>GeneralCostChart.cs</DependentUpon>
     </Compile>
@@ -459,9 +453,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RRFReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Reports\RRFReport.cs" />
     <Compile Include="Reports\RRFReport.Designer.cs">
       <DependentUpon>RRFReport.cs</DependentUpon>
     </Compile>
@@ -477,9 +469,7 @@
     <Compile Include="Forms\Modals\EditReceive.Designer.cs">
       <DependentUpon>EditReceive.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SummaryReports\GeneralChart.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SummaryReports\GeneralChart.cs" />
     <Compile Include="Forms\SummaryReports\GeneralChart.Designer.cs">
       <DependentUpon>GeneralChart.cs</DependentUpon>
     </Compile>
@@ -491,9 +481,7 @@
     <Compile Include="Forms\Modals\ItemDetailReport.designer.cs">
       <DependentUpon>ItemDetailReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SummaryReports\GeneralReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\SummaryReports\GeneralReport.cs" />
     <Compile Include="Forms\SummaryReports\GeneralReport.Designer.cs">
       <DependentUpon>GeneralReport.cs</DependentUpon>
     </Compile>
@@ -504,21 +492,15 @@
     <Compile Include="Forms\Trends\SOHTrend.Designer.cs">
       <DependentUpon>SOHTrend.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ActivityLogs\LogAdjustment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogAdjustment.cs" />
     <Compile Include="Forms\ActivityLogs\LogAdjustment.Designer.cs">
       <DependentUpon>LogAdjustment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ActivityLogs\LogIssues.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogIssues.cs" />
     <Compile Include="Forms\ActivityLogs\LogIssues.Designer.cs">
       <DependentUpon>LogIssues.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ActivityLogs\LogReceive.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogReceive.cs" />
     <Compile Include="Forms\ActivityLogs\LogReceive.Designer.cs">
       <DependentUpon>LogReceive.cs</DependentUpon>
     </Compile>
@@ -534,62 +516,47 @@
     <Compile Include="Forms\Legacy\IssuesByDep.Designer.cs">
       <DependentUpon>IssuesByDep.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\ItemPolicy.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Modals\ItemPolicy.cs" />
     <Compile Include="Forms\Modals\ItemPolicy.Designer.cs">
       <DependentUpon>ItemPolicy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\CustomDrugList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\CustomDrugList.cs" />
     <Compile Include="Forms\Profiles\CustomDrugList.Designer.cs">
       <DependentUpon>CustomDrugList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\DatabaseActions.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\UtilitiesAndForms\DatabaseActions.cs" />
     <Compile Include="Forms\UtilitiesAndForms\DatabaseActions.Designer.cs">
       <DependentUpon>DatabaseActions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Transactions\IssueForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Transactions\IssueForm.cs" />
     <Compile Include="Forms\Transactions\IssueForm.Designer.cs">
       <DependentUpon>IssueForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\Hospital.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\Hospital.cs" />
     <Compile Include="Forms\Profiles\Hospital.Designer.cs">
       <DependentUpon>Hospital.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\HospitalSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\HospitalSettings.cs" />
     <Compile Include="Forms\Profiles\HospitalSettings.Designer.cs">
       <DependentUpon>HospitalSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Modals\LoginForm.cs" />
     <Compile Include="Forms\Modals\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="MainWindow.cs" />
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\Pipeline.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\Pipeline.cs" />
     <Compile Include="Forms\Profiles\Pipeline.Designer.cs">
       <DependentUpon>Pipeline.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AMCViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModelCollection.cs" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,6 +571,15 @@
     <EmbeddedResource Include="Forms\Modals\AddSupply.resx">
       <DependentUpon>AddSupply.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Modals\EditIssueDocRefrenceNo.resx">
+      <DependentUpon>EditIssueDocRefrenceNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Modals\EditLossAndAdjustment.resx">
+      <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Modals\EditRecieveRefrenceNo.resx">
+      <DependentUpon>EditRecieveRefrenceNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profiles\ManageSupplies.resx">
       <DependentUpon>ManageSupplies.cs</DependentUpon>
@@ -641,6 +617,12 @@
     <EmbeddedResource Include="Forms\Reports\RRFForm.resx">
       <DependentUpon>RRFForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\AMCView.resx">
+      <DependentUpon>AMCView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\StockOutIndicesBuilder.resx">
+      <DependentUpon>StockOutIndicesBuilder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tools\AutoBackup.resx">
       <DependentUpon>AutoBackup.cs</DependentUpon>
     </EmbeddedResource>
@@ -670,6 +652,7 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
       <DependentUpon>Registrations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UserControls\Legend.resx">
       <DependentUpon>Legend.cs</DependentUpon>
     </EmbeddedResource>
@@ -796,7 +779,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="PharmInventory_TemporaryKey.pfx" />
-    <None Include="Properties\licenses.licx" />
+    <None Include="Properties\DataSources\IndexBuilder.ViewModels.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\PharmInventory.ViewModels.AMCViewModel.datasource" />
+    <None Include="Properties\DataSources\PharmInventory.ViewModels.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\StockoutIndexBuilder.Models.AmcReport.datasource" />
+    <None Include="Properties\DataSources\StockoutIndexBuilder.Models.Store.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -806,15 +794,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Forms\Transactions\ReceiveingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Transactions\ReceiveingForm.cs" />
     <Compile Include="Forms\Transactions\ReceiveingForm.Designer.cs">
       <DependentUpon>ReceiveingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\SystemSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\SystemSetting.cs" />
     <Compile Include="Forms\Profiles\SystemSetting.Designer.cs">
       <DependentUpon>SystemSetting.cs</DependentUpon>
     </Compile>
@@ -824,15 +808,11 @@
     <Compile Include="Forms\Tools\ConnectionStringGenerator.Designer.cs">
       <DependentUpon>ConnectionStringGenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Profiles\UserAccounts.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Profiles\UserAccounts.cs" />
     <Compile Include="Forms\Profiles\UserAccounts.Designer.cs">
       <DependentUpon>UserAccounts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Transactions\YearEndProcess.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Forms\Transactions\YearEndProcess.cs" />
     <Compile Include="Forms\Transactions\YearEndProcess.Designer.cs">
       <DependentUpon>YearEndProcess.cs</DependentUpon>
     </Compile>
@@ -946,9 +926,13 @@
       <Project>{4D833455-E466-4E4F-AD03-352C114711E1}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{2B12B6DD-2142-492F-A990-78F5EB3F840A}</Project>
-      <Name>DAL</Name>
+    <ProjectReference Include="..\ConnectionStringManager\ConnectionStringManager.csproj">
+      <Project>{69805B41-7B24-48D7-9A7A-F6018F4A6087}</Project>
+      <Name>ConnectionStringManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockoutIndexBuilder.cs\StockoutIndexBuilder.csproj">
+      <Project>{9AA5EB03-5F0A-4C22-A474-EF289057B3C5}</Project>
+      <Name>StockoutIndexBuilder</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -1121,7 +1105,40 @@
     <None Include="Resources\icon-48-plugin.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\16_AmcReport.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\15_ItemsTableOptionalUnit2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\18_DisposalDeleteInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\19_DisposalDeleteLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\20_DisposalDeleteLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\21_IssueDocDeletedInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\22_IssueDocDeletedLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\23_IssueDocDeletedLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\24_ReceiveDocDeleted.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\25_ReceiveDocDeletedInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\26_ReceiveDocDeletedLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\28_Stockout.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="ConnectionStringManager.dll" />
