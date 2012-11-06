@@ -14,13 +14,17 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var repository = new StockoutRepository();
+
             foreach (var storeId in db.Stores.Select(s => s.ID))
             {
                 var stockouts = GetStockOutHistory(itemID, storeId);
-                if(stockouts.Count>0)
+                if (stockouts.Count > 0)
                     repository.AddRange(stockouts);
+
+                //if (stockouts.Count == 0)
+                //    repository.Add(stockouts);
             }
-            
+
 
         }
 
@@ -31,6 +35,7 @@ namespace StockoutIndexBuilder
             var stockouts = GetStockOutHistory(itemID, storeId);
             if (stockouts.Count > 0)
                 repository.AddRange(stockouts);
+                
         }
 
         public static List<Stockout> GetStockOutHistory(int itemID,int storeID)
@@ -78,6 +83,7 @@ namespace StockoutIndexBuilder
             var stockOuts = new List<Stockout>();
             long? balance = 0;
             var stockOut = new Stockout() { ItemID = itemID, StoreID = storeID};
+            var lastTransaction = allTransactions.LastOrDefault();
             for (int i = 0; i < allTransactions.Length; i++)
             {                
                 switch (allTransactions[i].TransactionType)
@@ -111,6 +117,10 @@ namespace StockoutIndexBuilder
                         break;
                 }
             }
+            //if(lastTransaction != null && (lastTransaction.TransactionType != TransactionType.Receipt && stockOut.StartDate != null))
+            //{
+            //    stockOuts.Add(stockOut);
+            //}
             return stockOuts;
         }
 

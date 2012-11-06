@@ -8,9 +8,9 @@ namespace StockoutIndexBuilder.DAL
 {
     public class vwGetAllItemsRepository
     {
-        StockoutEntities Context = new StockoutEntities();
+        static StockoutEntities Context = new StockoutEntities();
 
-        public List<vwGetAllItems> AllItems()
+        public static List<vwGetAllItems> AllItems()
         {
             return Context.VwGetAllItemses.ToList();
         }

@@ -14,6 +14,7 @@ namespace PharmInventory.Forms.Transactions
     {
         private readonly StockoutRepository _repository = new StockoutRepository();
         private readonly  StoreRepository _storerepository =new StoreRepository();
+        private readonly  ReceiveDocRepository receiveDocRepository =new ReceiveDocRepository();
         List<ItemViewModel> _dataSource = new List<ItemViewModel>();
         public StockOutIndicesBuilder()
         {
@@ -24,7 +25,8 @@ namespace PharmInventory.Forms.Transactions
 
         void LoadAllItems()
         {
-            var allItems = _repository.AllItems().Where(m => m.ID < 1000);
+            var allItems = _repository.AllItems();
+            //var allItems = receiveDocRepository.RecievedItems().Select(m => m.Item).Distinct().ToList();
             itemsBindingSource.DataSource = ItemViewModelCollection.Create(allItems);
             var allstores = _storerepository.AllStores();
             storebindingSource.DataSource = allstores;
@@ -37,11 +39,11 @@ namespace PharmInventory.Forms.Transactions
             double percentage = 0;
             foreach (var item in _dataSource)
             {
-                if (lookUpEdit1.EditValue != null)
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId, (int)lookUpEdit1.EditValue);
+                if (lkStore.EditValue != null)
+                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId, (int)lkStore.EditValue);
                 else
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel) item).ItemId);
-               
+                   StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel) item).ItemId);
+           
                 item.Indexed = true;
                 itemsBindingSource.DataSource = _dataSource;
                 var newValue = 100.0 / _dataSource.Count;

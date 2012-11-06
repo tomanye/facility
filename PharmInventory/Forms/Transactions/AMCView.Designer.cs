@@ -40,6 +40,7 @@
             this.colDaysOutOfStock = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAmcWithDos = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAmcWithoutDos = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -105,7 +106,8 @@
             this.colIssueInAmcRange,
             this.colDaysOutOfStock,
             this.colAmcWithDos,
-            this.colAmcWithoutDos});
+            this.colAmcWithoutDos,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupedColumns = true;
@@ -117,48 +119,55 @@
             this.colFullItemName.Name = "colFullItemName";
             this.colFullItemName.OptionsColumn.ReadOnly = true;
             this.colFullItemName.Visible = true;
-            this.colFullItemName.VisibleIndex = 0;
-            this.colFullItemName.Width = 92;
+            this.colFullItemName.VisibleIndex = 1;
+            this.colFullItemName.Width = 105;
             // 
             // colAmcRange
             // 
             this.colAmcRange.FieldName = "AmcRange";
             this.colAmcRange.Name = "colAmcRange";
             this.colAmcRange.Visible = true;
-            this.colAmcRange.VisibleIndex = 1;
-            this.colAmcRange.Width = 72;
+            this.colAmcRange.VisibleIndex = 2;
+            this.colAmcRange.Width = 82;
             // 
             // colIssueInAmcRange
             // 
             this.colIssueInAmcRange.FieldName = "IssueInAmcRange";
             this.colIssueInAmcRange.Name = "colIssueInAmcRange";
             this.colIssueInAmcRange.Visible = true;
-            this.colIssueInAmcRange.VisibleIndex = 2;
-            this.colIssueInAmcRange.Width = 72;
+            this.colIssueInAmcRange.VisibleIndex = 3;
+            this.colIssueInAmcRange.Width = 103;
             // 
             // colDaysOutOfStock
             // 
             this.colDaysOutOfStock.FieldName = "DaysOutOfStock";
             this.colDaysOutOfStock.Name = "colDaysOutOfStock";
             this.colDaysOutOfStock.Visible = true;
-            this.colDaysOutOfStock.VisibleIndex = 3;
-            this.colDaysOutOfStock.Width = 72;
+            this.colDaysOutOfStock.VisibleIndex = 4;
             // 
             // colAmcWithDos
             // 
             this.colAmcWithDos.FieldName = "AmcWithDos";
             this.colAmcWithDos.Name = "colAmcWithDos";
             this.colAmcWithDos.Visible = true;
-            this.colAmcWithDos.VisibleIndex = 4;
-            this.colAmcWithDos.Width = 72;
+            this.colAmcWithDos.VisibleIndex = 5;
             // 
             // colAmcWithoutDos
             // 
             this.colAmcWithoutDos.FieldName = "AmcWithoutDos";
             this.colAmcWithoutDos.Name = "colAmcWithoutDos";
             this.colAmcWithoutDos.Visible = true;
-            this.colAmcWithoutDos.VisibleIndex = 5;
-            this.colAmcWithoutDos.Width = 82;
+            this.colAmcWithoutDos.VisibleIndex = 6;
+            this.colAmcWithoutDos.Width = 89;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "ItemID";
+            this.gridColumn1.FieldName = "ItemID";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 85;
             // 
             // lookUpEdit1
             // 
@@ -297,6 +306,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
       
 
     }

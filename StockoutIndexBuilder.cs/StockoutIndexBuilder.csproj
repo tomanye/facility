@@ -36,30 +36,29 @@
     </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="StockoutIndexBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Tedy\Desktop\StockoutIndexBuilder.dll</HintPath>
+      <HintPath>..\..\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\bin\Debug\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\AmcReportRepository.cs" />
     <Compile Include="DAL\GeneralInfoRepository.cs" />
     <Compile Include="DAL\ItemsRepository.cs" />
+    <Compile Include="DAL\ReceiveDocRepository.cs" />
     <Compile Include="DAL\StockoutEntities.cs" />
     <Compile Include="DAL\StockoutRepository.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="DAL\StoreRepository.cs" />
     <Compile Include="DAL\vwGetAllItemsRepository.cs" />
+    <Compile Include="Models\AMCReport.cs" />
     <Compile Include="Models\Disposal.cs" />
     <Compile Include="Models\GeneralInfo.cs" />
     <Compile Include="Models\IssueDoc.cs" />

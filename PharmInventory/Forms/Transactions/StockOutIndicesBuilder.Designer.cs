@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkStore = new DevExpress.XtraEditors.LookUpEdit();
             this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnBuildIndexer = new DevExpress.XtraEditors.SimpleButton();
@@ -39,6 +39,9 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockoutindexergridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colFullItemName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -49,12 +52,9 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.backgroundIndexer = new System.ComponentModel.BackgroundWorker();
-            this.colFullItemName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkStore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
@@ -74,7 +74,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.lookUpEdit1);
+            this.layoutControl1.Controls.Add(this.lkStore);
             this.layoutControl1.Controls.Add(this.btnClose);
             this.layoutControl1.Controls.Add(this.btnBuildIndexer);
             this.layoutControl1.Controls.Add(this.progressIndex);
@@ -87,21 +87,21 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // lookUpEdit1
+            // lkStore
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(47, 12);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkStore.Location = new System.Drawing.Point(47, 12);
+            this.lkStore.Name = "lkStore";
+            this.lkStore.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lkStore.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            this.lookUpEdit1.Properties.DataSource = this.storebindingSource;
-            this.lookUpEdit1.Properties.DisplayMember = "StoreName";
-            this.lookUpEdit1.Properties.NullText = "All Stores";
-            this.lookUpEdit1.Properties.ValueMember = "ID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(143, 20);
-            this.lookUpEdit1.StyleController = this.layoutControl1;
-            this.lookUpEdit1.TabIndex = 8;
+            this.lkStore.Properties.DataSource = this.storebindingSource;
+            this.lkStore.Properties.DisplayMember = "StoreName";
+            this.lkStore.Properties.NullText = "All Stores";
+            this.lkStore.Properties.ValueMember = "ID";
+            this.lkStore.Size = new System.Drawing.Size(143, 20);
+            this.lkStore.StyleController = this.layoutControl1;
+            this.lkStore.TabIndex = 8;
             // 
             // storebindingSource
             // 
@@ -172,6 +172,33 @@
             this.stockoutindexergridView.Name = "stockoutindexergridView";
             this.stockoutindexergridView.OptionsView.ShowGroupedColumns = true;
             this.stockoutindexergridView.OptionsView.ShowGroupPanel = false;
+            // 
+            // colFullItemName
+            // 
+            this.colFullItemName.FieldName = "FullItemName";
+            this.colFullItemName.Name = "colFullItemName";
+            this.colFullItemName.OptionsColumn.ReadOnly = true;
+            this.colFullItemName.Visible = true;
+            this.colFullItemName.VisibleIndex = 1;
+            this.colFullItemName.Width = 578;
+            // 
+            // colItemId
+            // 
+            this.colItemId.FieldName = "ItemId";
+            this.colItemId.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.colItemId.Name = "colItemId";
+            this.colItemId.Visible = true;
+            this.colItemId.VisibleIndex = 0;
+            this.colItemId.Width = 62;
+            // 
+            // colIndexed
+            // 
+            this.colIndexed.FieldName = "Indexed";
+            this.colIndexed.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
+            this.colIndexed.Name = "colIndexed";
+            this.colIndexed.Visible = true;
+            this.colIndexed.VisibleIndex = 2;
+            this.colIndexed.Width = 97;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -260,7 +287,7 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.lookUpEdit1;
+            this.layoutControlItem5.Control = this.lkStore;
             this.layoutControlItem5.CustomizationFormText = "Stores";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(182, 24);
@@ -288,28 +315,6 @@
             this.backgroundIndexer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundIndexer_ProgressChanged);
             this.backgroundIndexer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundIndexer_RunWorkerCompleted);
             // 
-            // colFullItemName
-            // 
-            this.colFullItemName.FieldName = "FullItemName";
-            this.colFullItemName.Name = "colFullItemName";
-            this.colFullItemName.OptionsColumn.ReadOnly = true;
-            this.colFullItemName.Visible = true;
-            this.colFullItemName.VisibleIndex = 1;
-            // 
-            // colItemId
-            // 
-            this.colItemId.FieldName = "ItemId";
-            this.colItemId.Name = "colItemId";
-            this.colItemId.Visible = true;
-            this.colItemId.VisibleIndex = 0;
-            // 
-            // colIndexed
-            // 
-            this.colIndexed.FieldName = "Indexed";
-            this.colIndexed.Name = "colIndexed";
-            this.colIndexed.Visible = true;
-            this.colIndexed.VisibleIndex = 2;
-            // 
             // StockOutIndicesBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,7 +325,7 @@
             this.Text = "Stockout Indices Builder";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
@@ -358,7 +363,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private System.Windows.Forms.BindingSource storebindingSource;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lkStore;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;

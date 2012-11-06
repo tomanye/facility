@@ -21,7 +21,7 @@ namespace PharmInventory.ViewModels
         }
         public string FullItemName
         {
-            get { return String.Format("{0}{1}{2}",StockCode, Strength, DosageFormId); }
+            get { return String.Format("{0}{1}",StockCode, Strength); }
         }
 
         public int? IINID { get; set; }
