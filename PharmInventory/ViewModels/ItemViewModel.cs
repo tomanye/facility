@@ -9,23 +9,27 @@ namespace PharmInventory.ViewModels
     public class ItemViewModel
     {
         private bool _indexed = false;
-        public ItemViewModel()
-        {
-
-        }
-
+        
         public ItemViewModel(Item item)
         {
-            ItemID = item.ID;
+            ItemId = item.ID;
             StockCode = item.StockCode;
-            DosageFormID = item.DosageFormID;
+            DosageFormId = item.DosageFormId;
             Strength = item.Strength;
+            IINID = item.IINID;
 
         }
-        public int ItemID { get; set; }        
+        public string FullItemName
+        {
+            get { return String.Format("{0}{1}{2}",StockCode, Strength, DosageFormId); }
+        }
+
+        public int? IINID { get; set; }
+        public int ItemId { get; set; }        
         public string StockCode { get; set; }
-        public int? DosageFormID { get; set; }
+        public int? DosageFormId { get; set; }
         public string Strength { get; set; }
+        
         public bool Indexed 
         {
             get { return _indexed; }

@@ -20,5 +20,8 @@ namespace StockoutIndexBuilder.DAL
         public DbSet<Disposal> Disposals { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Store> Stores { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<GeneralInfo> GenralInfos { get; set; }
+        public DbSet<vwGetAllItems>VwGetAllItemses { get; set; }
     }
 }

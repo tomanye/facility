@@ -38,9 +38,9 @@ namespace PharmInventory.Forms.Transactions
             foreach (var item in _dataSource)
             {
                 if (lookUpEdit1.EditValue != null)
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemID, (int)lookUpEdit1.EditValue);
+                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId, (int)lookUpEdit1.EditValue);
                 else
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel) item).ItemID);
+                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel) item).ItemId);
                
                 item.Indexed = true;
                 itemsBindingSource.DataSource = _dataSource;

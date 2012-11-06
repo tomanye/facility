@@ -120,8 +120,12 @@ namespace PharmInventory
                     frm = new IssueForm();
                     AddTab("Issue Form", frm);
                     break;
+                case "AMCs":
+                    frm = new AMCView();
+                    AddTab("AMC Report", frm);
+                    break;
                 case "stockoutindexer":
-                    frm = new PharmInventory.Forms.Transactions.StockOutIndicesBuilder();
+                    frm = new StockOutIndicesBuilder();
                     AddTab("Stockout Indices Builder",frm);
                     break;
                 case "Facility Settings":

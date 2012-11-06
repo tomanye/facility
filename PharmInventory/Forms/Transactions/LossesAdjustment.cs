@@ -56,10 +56,9 @@ namespace PharmInventory
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            XtraMessageBox.Show("edit form");
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             if (dr == null) return;
-            int tranId = Convert.ToInt32(dr["ItemID"]);
+            int tranId = Convert.ToInt32(dr["ID"]);
             Disposal dis = new Disposal();
 
             dis.LoadByPrimaryKey(tranId);

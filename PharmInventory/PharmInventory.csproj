@@ -366,6 +366,12 @@
     <Compile Include="Forms\Reports\RRFForm.Designer.cs">
       <DependentUpon>RRFForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transactions\AMCView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\AMCView.Designer.cs">
+      <DependentUpon>AMCView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Transactions\StockOutIndicesBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,6 +624,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AMCViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModelCollection.cs" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
@@ -679,6 +686,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\RRFForm.resx">
       <DependentUpon>RRFForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\AMCView.resx">
+      <DependentUpon>AMCView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\StockOutIndicesBuilder.resx">
       <DependentUpon>StockOutIndicesBuilder.cs</DependentUpon>
@@ -841,6 +851,7 @@
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\IndexBuilder.ViewModels.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\PharmInventory.ViewModels.AMCViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModels.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\StockoutIndexBuilder.Models.Store.datasource" />
     <None Include="Properties\Settings.settings">
@@ -1313,62 +1324,62 @@
   <ItemGroup>
     <PublishFile Include="DevExpress.BonusSkins.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Data.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.OfficeSkins.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.PivotGrid.v12.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraPivotGrid.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraReports.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

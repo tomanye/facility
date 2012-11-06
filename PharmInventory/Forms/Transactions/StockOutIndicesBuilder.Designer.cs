@@ -35,14 +35,10 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnBuildIndexer = new DevExpress.XtraEditors.SimpleButton();
             this.progressIndex = new System.Windows.Forms.ProgressBar();
+            this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockoutindexergridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colItemID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStockCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -53,10 +49,15 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.backgroundIndexer = new System.ComponentModel.BackgroundWorker();
+            this.colFullItemName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
+            this.gridSplitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockoutindexergridView)).BeginInit();
@@ -77,7 +78,7 @@
             this.layoutControl1.Controls.Add(this.btnClose);
             this.layoutControl1.Controls.Add(this.btnBuildIndexer);
             this.layoutControl1.Controls.Add(this.progressIndex);
-            this.layoutControl1.Controls.Add(this.gridControl1);
+            this.layoutControl1.Controls.Add(this.gridSplitContainer1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -133,10 +134,20 @@
             this.progressIndex.Size = new System.Drawing.Size(518, 22);
             this.progressIndex.TabIndex = 5;
             // 
+            // gridSplitContainer1
+            // 
+            this.gridSplitContainer1.Grid = this.gridControl1;
+            this.gridSplitContainer1.Location = new System.Drawing.Point(12, 36);
+            this.gridSplitContainer1.Name = "gridSplitContainer1";
+            this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(682, 306);
+            this.gridSplitContainer1.TabIndex = 9;
+            // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.itemsBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 36);
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.stockoutindexergridView;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -154,64 +165,13 @@
             // stockoutindexergridView
             // 
             this.stockoutindexergridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colItemID,
-            this.colStockCode,
-            this.colIndexed,
-            this.gridColumn1,
-            this.gridColumn2});
+            this.colFullItemName,
+            this.colItemId,
+            this.colIndexed});
             this.stockoutindexergridView.GridControl = this.gridControl1;
             this.stockoutindexergridView.Name = "stockoutindexergridView";
             this.stockoutindexergridView.OptionsView.ShowGroupedColumns = true;
             this.stockoutindexergridView.OptionsView.ShowGroupPanel = false;
-            this.stockoutindexergridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn2, DevExpress.Data.ColumnSortOrder.Ascending)});
-            // 
-            // colItemID
-            // 
-            this.colItemID.FieldName = "ItemID";
-            this.colItemID.Name = "colItemID";
-            this.colItemID.OptionsColumn.AllowEdit = false;
-            this.colItemID.Visible = true;
-            this.colItemID.VisibleIndex = 0;
-            this.colItemID.Width = 62;
-            // 
-            // colStockCode
-            // 
-            this.colStockCode.FieldName = "StockCode";
-            this.colStockCode.Name = "colStockCode";
-            this.colStockCode.OptionsColumn.AllowEdit = false;
-            this.colStockCode.Visible = true;
-            this.colStockCode.VisibleIndex = 1;
-            this.colStockCode.Width = 346;
-            // 
-            // colIndexed
-            // 
-            this.colIndexed.FieldName = "Indexed";
-            this.colIndexed.Name = "colIndexed";
-            this.colIndexed.OptionsColumn.AllowEdit = false;
-            this.colIndexed.OptionsFilter.AllowAutoFilter = false;
-            this.colIndexed.OptionsFilter.AllowFilter = false;
-            this.colIndexed.Visible = true;
-            this.colIndexed.VisibleIndex = 4;
-            this.colIndexed.Width = 68;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Strength";
-            this.gridColumn1.FieldName = "Strength";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 80;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "DosageFormID";
-            this.gridColumn2.FieldName = "DosageFormID";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 108;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -246,7 +206,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.gridControl1;
+            this.layoutControlItem1.Control = this.gridSplitContainer1;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
@@ -328,6 +288,28 @@
             this.backgroundIndexer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundIndexer_ProgressChanged);
             this.backgroundIndexer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundIndexer_RunWorkerCompleted);
             // 
+            // colFullItemName
+            // 
+            this.colFullItemName.FieldName = "FullItemName";
+            this.colFullItemName.Name = "colFullItemName";
+            this.colFullItemName.OptionsColumn.ReadOnly = true;
+            this.colFullItemName.Visible = true;
+            this.colFullItemName.VisibleIndex = 1;
+            // 
+            // colItemId
+            // 
+            this.colItemId.FieldName = "ItemId";
+            this.colItemId.Name = "colItemId";
+            this.colItemId.Visible = true;
+            this.colItemId.VisibleIndex = 0;
+            // 
+            // colIndexed
+            // 
+            this.colIndexed.FieldName = "Indexed";
+            this.colIndexed.Name = "colIndexed";
+            this.colIndexed.Visible = true;
+            this.colIndexed.VisibleIndex = 2;
+            // 
             // StockOutIndicesBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +322,8 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
+            this.gridSplitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockoutindexergridView)).EndInit();
@@ -364,9 +348,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView stockoutindexergridView;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private System.Windows.Forms.BindingSource itemsBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colItemID;
-        private DevExpress.XtraGrid.Columns.GridColumn colStockCode;
-        private DevExpress.XtraGrid.Columns.GridColumn colIndexed;
         private System.ComponentModel.BackgroundWorker backgroundIndexer;
         private DevExpress.XtraEditors.SimpleButton btnClose;
         private DevExpress.XtraEditors.SimpleButton btnBuildIndexer;
@@ -380,7 +361,9 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
+        private DevExpress.XtraGrid.Columns.GridColumn colFullItemName;
+        private DevExpress.XtraGrid.Columns.GridColumn colItemId;
+        private DevExpress.XtraGrid.Columns.GridColumn colIndexed;
     }
 }

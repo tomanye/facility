@@ -197,7 +197,7 @@ namespace StockoutIndexBuilder
             return 0;
         }
 
-        static long CalculateTotalConsumption(int itemId,int storeId, DateTime startDate, DateTime endDate)
+        public static long CalculateTotalConsumption(int itemId,int storeId, DateTime startDate, DateTime endDate)
         {
             var db = new StockoutEntities();
             var stockoutDays = CalculateStockoutDays(itemId,storeId, startDate, endDate);

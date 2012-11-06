@@ -14,6 +14,7 @@ namespace StockoutIndexBuilder.Models
         public int ID { get; set; }
         public int ItemID { get; set; }
         public long? Quantity { get; set; }
+        [Column("EurDate")]
         public DateTime? Date { get; set; }
         public int StoreID { get; set; }
     }
