@@ -305,6 +305,11 @@ namespace PharmInventory.Forms.Transactions
                     {
                         Items itm = new Items();
                         itm.LoadByPrimaryKey(Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]));
+                        if (itm.IsColumnNull("NeedExpiryBatch"))
+                        {
+                            itm.NeedExpiryBatch = true;
+                            itm.Save();
+                        }
                         _dtRec = itm.NeedExpiryBatch ? rec.GetBatchToIssue(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss) : rec.GetSupplyToIssueWithOutBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIssueDate.Value);
 
                         // Extream measures:

@@ -5005,46 +5005,6 @@ In VS2005, the same as the <b>Horizontal</b> option.
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.Controls.SpinEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraEditors.Repository.RepositoryItemTextEdit.Spin"/> event
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.SpinEventArgs.#ctor(System.Boolean)">
-            <summary>
-                <para>Initializes a new instance of the SpinEventArgs class with the specified settings.
-</para>
-            </summary>
-            <param name="isSpinUp">
-		A Boolean value that indicates whether the Up Arrow key or Up Spin button has been pressed, or the mouse wheel has been rotated up. This value is used to initialize the <see cref="P:DevExpress.XtraEditors.Controls.SpinEventArgs.IsSpinUp"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Controls.SpinEventArgs.Handled">
-            <summary>
-                <para>Gets or sets whether the event has been handled, and no default processing is required.
-</para>
-            </summary>
-            <value>A Boolean value that specifies that the event has been handled, and no default processing is required.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Controls.SpinEventArgs.IsSpinUp">
-            <summary>
-                <para>A Boolean value that specifies whether the Up Arrow key or Up Spin button (in a <see cref="T:DevExpress.XtraEditors.SpinEdit"/> control) has been pressed, or the mouse wheel has been rotated up.
-</para>
-            </summary>
-            <value><b>true</b> if the Up Arrow key or Up Spin button (in a <see cref="T:DevExpress.XtraEditors.SpinEdit"/> control) has been pressed, or the mouse wheel has been rotated up; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraTab.TabPageEventHandler">
 
             <summary>
@@ -5137,6 +5097,46 @@ In VS2005, the same as the <b>Horizontal</b> option.
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraEditors.BaseEdit"/> descendant that represents the currently processed editor.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraEditors.Controls.SpinEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraEditors.Repository.RepositoryItemTextEdit.Spin"/> event
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.SpinEventArgs.#ctor(System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the SpinEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="isSpinUp">
+		A Boolean value that indicates whether the Up Arrow key or Up Spin button has been pressed, or the mouse wheel has been rotated up. This value is used to initialize the <see cref="P:DevExpress.XtraEditors.Controls.SpinEventArgs.IsSpinUp"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.SpinEventArgs.Handled">
+            <summary>
+                <para>Gets or sets whether the event has been handled, and no default processing is required.
+</para>
+            </summary>
+            <value>A Boolean value that specifies that the event has been handled, and no default processing is required.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.SpinEventArgs.IsSpinUp">
+            <summary>
+                <para>A Boolean value that specifies whether the Up Arrow key or Up Spin button (in a <see cref="T:DevExpress.XtraEditors.SpinEdit"/> control) has been pressed, or the mouse wheel has been rotated up.
+</para>
+            </summary>
+            <value><b>true</b> if the Up Arrow key or Up Spin button (in a <see cref="T:DevExpress.XtraEditors.SpinEdit"/> control) has been pressed, or the mouse wheel has been rotated up; otherwise, <b>false</b>.
 </value>
 
 
@@ -5660,116 +5660,6 @@ In VS2005, the same as the <b>Horizontal</b> option.
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.BarCodeControl">
-
-            <summary>
-                <para>Allows you to display various barcodes.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.BarCodeControl.#ctor">
-            <summary>
-                <para>Initializes a new instance of the BarCodeControl class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.AutoModule">
-            <summary>
-                <para>Gets or sets a value that specifies whether the <see cref="P:DevExpress.XtraEditors.BarCodeControl.Module"/> property value should be calculated automatically based upon the barcode's size.
-
-</para>
-            </summary>
-            <value><b>true</b> if the barcode's module is calculated automatically; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.HorizontalAlignment">
-            <summary>
-                <para>Gets or sets the barcode's horizontal alignment.
-</para>
-            </summary>
-            <value>A HorzAlignment value that specifies the barcode's horizontal alignment.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.HorizontalTextAlignment">
-            <summary>
-                <para>Gets or sets the text's horizontal alignment.
-
-</para>
-            </summary>
-            <value>A VertAlignment value that specifies the text's horizontal alignment.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.Module">
-            <summary>
-                <para>Gets or sets the width of the narrowest bar or space, in pixels.
-</para>
-            </summary>
-            <value>The width of the narrowest bar or space, in pixels.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.Orientation">
-            <summary>
-                <para>Gets or sets the barcode's orientation.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.BarCodeOrientation"/> value that specifies the barcode's orientation.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.ShowText">
-            <summary>
-                <para>Gets or sets whether the control's <b>Text</b> is visible.
-</para>
-            </summary>
-            <value><b>true</b> if the text is displayed; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.Symbology">
-            <summary>
-                <para>Gets or sets the symbology (code type) for the barcode and the text.
-
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase"/> class descendant that defines the symbology for the current BarCodeControl control.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.VerticalAlignment">
-            <summary>
-                <para>Gets or sets the barcode's vertical alignment.
-</para>
-            </summary>
-            <value>A VertAlignment value that specifies the barcode's vertical alignment.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.BarCodeControl.VerticalTextAlignment">
-            <summary>
-                <para>Gets or sets the text's vertical alignment.
-
-</para>
-            </summary>
-            <value>A VertAlignment value that specifies the text's vertical alignment.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraEditors.Repository.ExportMode">
 
             <summary>
@@ -5802,84 +5692,58 @@ In VS2005, the same as the <b>Horizontal</b> option.
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.NumericRangeControlClient">
+        <member name="T:DevExpress.XtraSplashScreen.SplashScreen">
 
             <summary>
-                <para>Supports numeric range selection for the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
+                <para>A form, designed to be opened at startup of your main form. Splash Screens are managed by the <see cref="T:DevExpress.XtraSplashScreen.SplashScreenManager"/> component.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraEditors.NumericRangeControlClient.#ctor">
+        <member name="M:DevExpress.XtraSplashScreen.SplashScreen.#ctor">
             <summary>
-                <para>Initializes a new instance of the NumericRangeControlClient class.
+                <para>Initializes a new instance of the SplashScreen class.
 </para>
             </summary>
 
 
         </member>
-        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.Maximum">
+        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.AllowControlsInImageMode">
             <summary>
-                <para>Gets or sets the end bound of the total range.
+                <para>Gets or sets whether custom controls can be added to the SplashScreen when <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>.
 </para>
             </summary>
-            <value>An object that is the end bound of the total range.
+            <value><b>true</b> if custom controls can be added to the SplashScreen when <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>; otherwise, <b>false</b>.
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.Minimum">
+        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.AutoFitImage">
             <summary>
-                <para>Gets or sets the start bound of the total range.
+                <para>Get or sets if the SplashScreen is resized to fit its <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage"/> when displayed in Image mode.
 </para>
             </summary>
-            <value>An object that is the start bound of the total range.
+            <value><b>true</b> if the SplashScreen is resized to fit its <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage"/> when displayed in Image mode; otherwise, <b>false</b>.
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.RulerDelta">
+        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode">
             <summary>
-                <para>Gets or sets the ruler increment. This property also specifies the minimum increment for range selection.
+                <para>Gets or sets the SplashScreen's display mode.
 </para>
             </summary>
-            <value>An object that is the ruler increment.
+            <value>A <see cref="T:DevExpress.XtraSplashScreen.ShowMode"/> value that specifies the SplashScreen's display mode.
 </value>
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.RangeControlClientBase">
-
+        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage">
             <summary>
-                <para>The base class for objects that can be embedded into the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
+                <para>Gets or sets an image to be displayed in the form's background when the <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> property is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>.
 </para>
             </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.RangeControlClientBase.#ctor">
-            <summary>
-                <para>Initializes a new instance of the RangeControlClientBase class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.RangeControlClientBase.LabelFormatString">
-            <summary>
-                <para>Gets or sets the string used to format ruler values.
-</para>
-            </summary>
-            <value>A string used to format ruler values.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.RangeControlClientBase.RangeControl">
-            <summary>
-                <para>Gets or sets the parent for the current RangeControlClientBase object.
-</para>
-            </summary>
-            <value>The parent <see cref="T:DevExpress.XtraEditors.RangeControl"/> object.
+            <value>An Image to be displayed in the <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/> display mode.
 </value>
 
 
@@ -7743,6 +7607,54 @@ For a <see cref="T:DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView"/> in
 
 
         </member>
+        <member name="T:DevExpress.XtraBars.Docking.TabsPosition">
+
+            <summary>
+                <para>Lists values specifying the position of the tabs in a tab container.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Bottom">
+            <summary>
+                <para>The tabs are located across the bottom of the tab container.
+
+<para></para>
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Left">
+            <summary>
+                <para>The tabs are located along the left side of the tab container.
+
+<para></para>
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Right">
+            <summary>
+                <para>The tabs are located along the right side of the tab container.
+
+<para></para>
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Top">
+            <summary>
+                <para>The tabs are located across the top of the tab container.
+
+<para></para>
+</para>
+            </summary>
+
+
+        </member>
         <member name="T:DevExpress.XtraEditors.Filtering.ShowValueEditorEventArgs">
 
             <summary>
@@ -7903,51 +7815,85 @@ For a <see cref="T:DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView"/> in
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Docking.TabsPosition">
+        <member name="T:DevExpress.XtraEditors.NumericRangeControlClient">
 
             <summary>
-                <para>Lists values specifying the position of the tabs in a tab container.
+                <para>Supports numeric range selection for the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
 </para>
             </summary>
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Bottom">
+        <member name="M:DevExpress.XtraEditors.NumericRangeControlClient.#ctor">
             <summary>
-                <para>The tabs are located across the bottom of the tab container.
-
-<para></para>
+                <para>Initializes a new instance of the NumericRangeControlClient class.
 </para>
             </summary>
 
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Left">
+        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.Maximum">
             <summary>
-                <para>The tabs are located along the left side of the tab container.
+                <para>Gets or sets the end bound of the total range.
+</para>
+            </summary>
+            <value>An object that is the end bound of the total range.
+</value>
 
-<para></para>
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.Minimum">
+            <summary>
+                <para>Gets or sets the start bound of the total range.
+</para>
+            </summary>
+            <value>An object that is the start bound of the total range.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.NumericRangeControlClient.RulerDelta">
+            <summary>
+                <para>Gets or sets the ruler increment. This property also specifies the minimum increment for range selection.
+</para>
+            </summary>
+            <value>An object that is the ruler increment.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraEditors.RangeControlClientBase">
+
+            <summary>
+                <para>The base class for objects that can be embedded into the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.RangeControlClientBase.#ctor">
+            <summary>
+                <para>Initializes a new instance of the RangeControlClientBase class.
 </para>
             </summary>
 
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Right">
+        <member name="P:DevExpress.XtraEditors.RangeControlClientBase.LabelFormatString">
             <summary>
-                <para>The tabs are located along the right side of the tab container.
-
-<para></para>
+                <para>Gets or sets the string used to format ruler values.
 </para>
             </summary>
+            <value>A string used to format ruler values.
+</value>
 
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.TabsPosition.Top">
+        <member name="P:DevExpress.XtraEditors.RangeControlClientBase.RangeControl">
             <summary>
-                <para>The tabs are located across the top of the tab container.
-
-<para></para>
+                <para>Gets or sets the parent for the current RangeControlClientBase object.
 </para>
             </summary>
+            <value>The parent <see cref="T:DevExpress.XtraEditors.RangeControl"/> object.
+</value>
 
 
         </member>
@@ -8052,62 +7998,6 @@ Allows you to select a form that should be subsequently activated.
                 <para>Displays an image specified by the <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage"/> property.
 </para>
             </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraSplashScreen.SplashScreen">
-
-            <summary>
-                <para>A form, designed to be opened at startup of your main form. Splash Screens are managed by the <see cref="T:DevExpress.XtraSplashScreen.SplashScreenManager"/> component.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashScreen.#ctor">
-            <summary>
-                <para>Initializes a new instance of the SplashScreen class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.AllowControlsInImageMode">
-            <summary>
-                <para>Gets or sets whether custom controls can be added to the SplashScreen when <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>.
-</para>
-            </summary>
-            <value><b>true</b> if custom controls can be added to the SplashScreen when <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.AutoFitImage">
-            <summary>
-                <para>Get or sets if the SplashScreen is resized to fit its <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage"/> when displayed in Image mode.
-</para>
-            </summary>
-            <value><b>true</b> if the SplashScreen is resized to fit its <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage"/> when displayed in Image mode; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode">
-            <summary>
-                <para>Gets or sets the SplashScreen's display mode.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraSplashScreen.ShowMode"/> value that specifies the SplashScreen's display mode.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashScreen.SplashImage">
-            <summary>
-                <para>Gets or sets an image to be displayed in the form's background when the <see cref="P:DevExpress.XtraSplashScreen.SplashScreen.ShowMode"/> property is set to <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/>.
-</para>
-            </summary>
-            <value>An Image to be displayed in the <see cref="F:DevExpress.XtraSplashScreen.ShowMode.Image"/> display mode.
-</value>
 
 
         </member>
@@ -8903,16 +8793,6 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
 
 
         </member>
-        <member name="P:DevExpress.XtraEditors.ColorDialogOptions.FormIcon">
-            <summary>
-                <para>Gets or sets the icon applied to the "Select Color" dialog.
-</para>
-            </summary>
-            <value>An Icon object displayed in the "Select Color" dialog.
-</value>
-
-
-        </member>
         <member name="P:DevExpress.XtraEditors.ColorDialogOptions.ShowArrows">
             <summary>
                 <para>Gets or sets whether the "Select Color" dialog contains titled arrows along the sides of color boxes.
@@ -9010,16 +8890,6 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
             </summary>
             <value>A <see cref="T:DevExpress.XtraEditors.ColorDialogOptions"/> object that contains settings affecting the appearance of the "Select Color" dialog.
 
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Repository.RepositoryItemColorPickEdit.EditorTypeName">
-            <summary>
-                <para>Gets the editor's class name. 
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> object identifying the class name of the current editor.
 </value>
 
 
@@ -9123,49 +8993,6 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         <member name="E:DevExpress.XtraEditors.ColorPickEditBase.TooltipShowing">
             <summary>
                 <para>Allows you to customize tooltips displayed when hovering over colors in the Custom and Web-Safe palettes.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraTab.TabMiddleClickFiringMode">
-
-            <summary>
-                <para>Contains values that specify if and when a control's <b>TabMiddleClick</b> event fires.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.Default">
-            <summary>
-                <para>The default behavior. For the <see cref="T:DevExpress.XtraTab.XtraTabControl"/>, this option is equivalent to None.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.MouseDown">
-            <summary>
-                <para>A TabMiddleClick event fires on pressing the middle mouse button over a tab (before the button is released).
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.MouseUp">
-            <summary>
-                <para>A TabMiddleClick event fires on clicking the middle mouse button over a tab (after the button is released).
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.None">
-            <summary>
-                <para>A TabMiddleClick event does not fire.
 </para>
             </summary>
 
@@ -9513,6 +9340,213 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
 
 
         </member>
+        <member name="T:DevExpress.XtraSplashScreen.SplashFormProperties">
+
+            <summary>
+                <para>Contains appearance settings for splash forms.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Boolean,System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the SplashFormProperties class and allows you to enable and disable fade-in and fade-out effects.
+</para>
+            </summary>
+            <param name="parentForm">
+		A parent form for a splash form.
+
+            </param>
+            <param name="useFadeIn">
+		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
+
+            </param>
+            <param name="useFadeOut">
+		<b>false</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Drawing.Image,System.Boolean,System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the SplashFormProperties class with the specified settings. This member supports the internal infrastructure, and is not intended to be used directly from your code.
+</para>
+            </summary>
+            <param name="parentForm">
+		A parent form for a splash form to be displayed.
+
+            </param>
+            <param name="image">
+		A Image object.
+
+            </param>
+            <param name="useFadeIn">
+		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
+
+            </param>
+            <param name="useFadeOut">
+		<b>false</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor">
+            <summary>
+                <para>Initializes a new instance of the SplashFormProperties class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Drawing.Image,System.Boolean,System.Boolean,DevExpress.XtraSplashScreen.ICustomImagePainter)">
+            <summary>
+                <para>Initializes a new instance of the SplashFormProperties class with the specified settings. This member supports the internal infrastructure, and is not intended to be used directly from your code.
+</para>
+            </summary>
+            <param name="parentForm">
+		A parent form for a splash form to be displayed.
+
+            </param>
+            <param name="image">
+		An Image object. This object is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.Image"/> property.
+
+            </param>
+            <param name="useFadeIn">
+		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
+
+            </param>
+            <param name="useFadeOut">
+		<b>true</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
+
+
+            </param>
+            <param name="painter">
+		An object that implements a custom drawing procedure. This object is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.CustomImagePainter"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.Clone">
+            <summary>
+                <para>Creates and returns a copy of the current SplashFormProperties object.
+</para>
+            </summary>
+            <returns>A copy of the current SplashFormProperties object.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.CustomImagePainter">
+            <summary>
+                <para>Gets or sets an object that implements a custom drawing procedure.
+</para>
+            </summary>
+            <value>An ICustomImagePainter that implements a custom drawing procedure.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.Image">
+            <summary>
+                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
+</para>
+            </summary>
+            <value>An Image object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.ParentForm">
+            <summary>
+                <para>Gets or sets the parent form for a splash form to be displayed. This member supports the internal infrastructure, and is not intended to be used directly from your code.
+</para>
+            </summary>
+            <value>The parent form for a splash form to be displayed.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.ParentHandle">
+            <summary>
+                <para>Gets the handle of the parent window.
+</para>
+            </summary>
+            <value>An IntPtr structure that identifies the handle of the parent window.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect">
+            <summary>
+                <para>Gets or sets whether to use a fade-in effect when a splash form is being opened.
+</para>
+            </summary>
+            <value><b>true</b> to use a fade-in effect when a splash form is being opened; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect">
+            <summary>
+                <para>Gets or sets whether to use a fade-out effect when a splash form is being closed.
+</para>
+            </summary>
+            <value><b>true</b> to use a fade-out effect when a splash form is being closed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Alerter.AlertFormShowingEffect">
+
+            <summary>
+                <para>Enumerates alert window animation effects.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.FadeIn">
+            <summary>
+                <para>An alert window is displayed using a fade-in effect.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.MoveHorizontal">
+            <summary>
+                <para>An alert window appears by sliding horizontally onto the screen from out of the screen.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.MoveVertical">
+            <summary>
+                <para>An alert window appears by sliding vertically onto the screen from out of the screen.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideHorizontal">
+            <summary>
+                <para>An alert window appears onscreen by enlarging its width gradually, from the zero value to the normal width.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical">
+            <summary>
+                <para>An alert window appears onscreen by enlarging its height gradually from the zero value to the normal height.
+</para>
+            </summary>
+
+
+        </member>
         <member name="T:DevExpress.XtraWaitForm.ProgressPanel">
 
             <summary>
@@ -9667,8 +9701,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         <member name="T:DevExpress.XtraEditors.IRangeControlClient">
 
             <summary>
-                <para>The interface that a Range Control Client must implement to be embedded in the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
-
+                <para>The interface that a Range Control Client must implement to be embedded to the <see cref="T:DevExpress.XtraEditors.RangeControl"/>.
 </para>
             </summary>
 
@@ -9795,8 +9828,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="M:DevExpress.XtraEditors.IRangeControlClient.IsValidType(System.Type)">
             <summary>
-                <para>This method indicates whether the specified type of ruler values is supported.
-
+                <para>This method should indicate whether the specified type of ruler values is supported.
 </para>
             </summary>
             <param name="type">
@@ -9868,8 +9900,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="P:DevExpress.XtraEditors.IRangeControlClient.RangeBoxBottomIndent">
             <summary>
-                <para>This property returns the bottom indent of the selection area within the viewport.
-
+                <para>This property should return the bottom indent of the selection area within the viewport.
 </para>
             </summary>
             <value>The bottom indent of the selection area within the viewport.
@@ -9879,8 +9910,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="P:DevExpress.XtraEditors.IRangeControlClient.RangeBoxTopIndent">
             <summary>
-                <para>This property returns the top indent of the selection area within the viewport.
-
+                <para>This property should return the top indent of the selection area within the viewport.
 </para>
             </summary>
             <value>The top indent of the selection area within the viewport.
@@ -9898,8 +9928,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="P:DevExpress.XtraEditors.IRangeControlClient.RulerDelta">
             <summary>
-                <para>This property returns the distance between the ruler's adjacent tickmarks.
-
+                <para>This property should return the distance between the ruler's adjacent tickmarks.
 </para>
             </summary>
             <value>An object that identifies the distance between the ruler's adjacent tickmarks.
@@ -9909,8 +9938,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="M:DevExpress.XtraEditors.IRangeControlClient.RulerToString(System.Int32)">
             <summary>
-                <para>Returns the text representation of ruler values
-
+                <para>Returns text representation of ruler values
 </para>
             </summary>
             <param name="ruleIndex">
@@ -9924,8 +9952,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="M:DevExpress.XtraEditors.IRangeControlClient.SupportOrientation(System.Windows.Forms.Orientation)">
             <summary>
-                <para>This method returns a value indicating whether the Client supports the horizontal and/or vertical orientations.
-
+                <para>This method should return a value indicating whether the Client supports the horizontal and/or vertical orientations.
 </para>
             </summary>
             <param name="orientation">
@@ -9951,8 +9978,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="M:DevExpress.XtraEditors.IRangeControlClient.UpdatePressedInfo(DevExpress.XtraEditors.RangeControlHitInfo)">
             <summary>
-                <para>This method is fired when you press the mouse button within the viewport (without releasing the mouse button).
-
+                <para>This method is fired when you press with the mouse within the viewport (without releasing the mouse button).
 </para>
             </summary>
             <param name="hitInfo">
@@ -10001,26 +10027,6 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
                 <para>Initializes a new instance of the RangeControl class.
 </para>
             </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.RangeControl.AllowAnimation">
-            <summary>
-                <para>Gets or sets whether ranges are selected using an animation effect.
-</para>
-            </summary>
-            <value><b>true</b> if ranges are selected using an animation effect; <b>false</b> if animation is disabled.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.RangeControl.CenterRangeInViewPort(System.Boolean)">
-            <summary>
-                <para> [To be supplied] </para>
-            </summary>
-            <param name="animated">
-		 [To be supplied] 
-            </param>
 
 
         </member>
@@ -10104,7 +10110,7 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         </member>
         <member name="P:DevExpress.XtraEditors.RangeControl.VisibleRangeScaleFactor">
             <summary>
-                <para>Gets or sets the current scale (zoom) factor.
+                <para>Gets or sets the current scale(zoom) factor.
 </para>
             </summary>
             <value>A double value, greater than or equal to 1, that specifies the current scale factor.
@@ -10151,6 +10157,46 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
         <member name="F:DevExpress.XtraSplashScreen.SplashFormStartPosition.Manual">
             <summary>
                 <para>The start position of a splash form is specified by the <see cref="P:DevExpress.XtraSplashScreen.SplashScreenManager.SplashFormLocation"/> property.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Alerter.AlertFormLocation">
+
+            <summary>
+                <para>Contains values that specify the position on screen at which alert windows are displayed.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.BottomLeft">
+            <summary>
+                <para>An alert window appears at the bottom left corner of the screen.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.BottomRight">
+            <summary>
+                <para>An alert window appears at the bottom right corner of the screen.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.TopLeft">
+            <summary>
+                <para>An alert window appears at the top left corner of the screen.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight">
+            <summary>
+                <para>An alert window appears at the top right corner of the screen.
 </para>
             </summary>
 
@@ -10735,207 +10781,6 @@ Allows you to disable fade-in and fade-out effects for the image and draw custom
 
 
         </member>
-        <member name="T:DevExpress.Utils.Menu.DXEditMenuItem">
-
-            <summary>
-                <para>A menu item that allows you to embed an editor in a <see cref="T:DevExpress.Utils.Menu.DXPopupMenu"/>.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.EventHandler,System.Drawing.Image,System.Drawing.Image,System.Int32,System.Int32)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-            <param name="edit">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
-
-            </param>
-            <param name="editValueChanged">
-		An event handler that will be invoked when the editor's value is changed. This value is assigned to the <see cref="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged"/> event.
-
-            </param>
-            <param name="image">
-		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
-
-            </param>
-            <param name="disabled">
-		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
-
-            </param>
-            <param name="width">
-		An integer value that is the editor's width. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Width"/> property.
-
-            </param>
-            <param name="height">
-		An integer value that is the editor's height. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Height"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.Drawing.Image)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-            <param name="edit">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
-
-            </param>
-            <param name="image">
-		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.EventHandler,System.Drawing.Image,System.Drawing.Image)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-            <param name="edit">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
-
-            </param>
-            <param name="editValueChanged">
-		An event handler that will be invoked when the editor's value is changed. This value is assigned to the <see cref="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged"/> event.
-
-            </param>
-            <param name="image">
-		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
-
-            </param>
-            <param name="disabled">
-		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor">
-            <summary>
-                <para>Initializes a new DXEditMenuItem instance with the default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-            <param name="edit">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.Drawing.Image,System.Drawing.Image)">
-            <summary>
-                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
-</para>
-            </summary>
-            <param name="caption">
-		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
-
-            </param>
-            <param name="edit">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
-
-            </param>
-            <param name="image">
-		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
-
-            </param>
-            <param name="disabled">
-		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit">
-            <summary>
-                <para>Gets or sets the object that determines the editor's type and contains its properties.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties.
-
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.EditValue">
-            <summary>
-                <para>Specifies the editor's value.
-</para>
-            </summary>
-            <value>An object that is the editor's value.
-</value>
-
-
-        </member>
-        <member name="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged">
-            <summary>
-                <para>Occurs after the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.EditValue"/> property's value has been changed.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Height">
-            <summary>
-                <para>Gets or sets the editor's height.
-</para>
-            </summary>
-            <value>An integer value that is the editor's height.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Width">
-            <summary>
-                <para>Gets or sets the editor's width.
-</para>
-            </summary>
-            <value>An integer value that is the editor's widhth.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraEditors.Controls.BestFitMode">
 
             <summary>
@@ -11005,13 +10850,6 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
 
 
         </member>
-        <member name="F:DevExpress.XtraWaitForm.ShowFormOnTopMode.ObsoleteAboveParent">
-            <summary>
-                <para> [To be supplied] </para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.XtraPivotGrid.FilterPopupToolbarButtons">
 
             <summary>
@@ -11022,8 +10860,7 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
         </member>
         <member name="F:DevExpress.XtraPivotGrid.FilterPopupToolbarButtons.All">
             <summary>
-                <para>All toolbar buttons.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -11085,165 +10922,6 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
 <para>Note that this option is not available for Group Filters.</para>
 </para>
             </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraSplashScreen.SplashFormProperties">
-
-            <summary>
-                <para>Contains appearance settings for splash forms.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Boolean,System.Boolean)">
-            <summary>
-                <para>Initializes a new instance of the SplashFormProperties class and allows you to enable and disable fade-in and fade-out effects.
-</para>
-            </summary>
-            <param name="parentForm">
-		A parent form for a splash form.
-
-            </param>
-            <param name="useFadeIn">
-		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
-
-            </param>
-            <param name="useFadeOut">
-		<b>false</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Drawing.Image,System.Boolean,System.Boolean)">
-            <summary>
-                <para>Initializes a new instance of the SplashFormProperties class with the specified settings. This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <param name="parentForm">
-		A parent form for a splash form to be displayed.
-
-            </param>
-            <param name="image">
-		A Image object.
-
-            </param>
-            <param name="useFadeIn">
-		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
-
-            </param>
-            <param name="useFadeOut">
-		<b>false</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor">
-            <summary>
-                <para>Initializes a new instance of the SplashFormProperties class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.#ctor(System.Windows.Forms.Form,System.Drawing.Image,System.Boolean,System.Boolean,DevExpress.XtraSplashScreen.ICustomImagePainter)">
-            <summary>
-                <para>Initializes a new instance of the SplashFormProperties class with the specified settings. This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <param name="parentForm">
-		A parent form for a splash form to be displayed.
-
-            </param>
-            <param name="image">
-		An Image object. This object is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.Image"/> property.
-
-            </param>
-            <param name="useFadeIn">
-		<b>true</b> to use a fade-in effect when a splash form is displayed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect"/> property.
-
-            </param>
-            <param name="useFadeOut">
-		<b>true</b> to use a fade-out effect when a splash form is closed; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect"/> property.
-
-
-            </param>
-            <param name="painter">
-		An object that implements a custom drawing procedure. This object is assigned to the <see cref="P:DevExpress.XtraSplashScreen.SplashFormProperties.CustomImagePainter"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraSplashScreen.SplashFormProperties.Clone">
-            <summary>
-                <para>Creates and returns a copy of the current SplashFormProperties object.
-</para>
-            </summary>
-            <returns>A copy of the current SplashFormProperties object.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.CustomImagePainter">
-            <summary>
-                <para>Gets or sets an object that implements a custom drawing procedure.
-</para>
-            </summary>
-            <value>An ICustomImagePainter that implements a custom drawing procedure.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.Image">
-            <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <value>An Image object.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.ParentForm">
-            <summary>
-                <para>Gets or sets the parent form for a splash form to be displayed. This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <value>The parent form for a splash form to be displayed.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.ParentHandle">
-            <summary>
-                <para>Gets the handle of the parent window.
-</para>
-            </summary>
-            <value>An IntPtr structure that identifies the handle of the parent window.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeInEffect">
-            <summary>
-                <para>Gets or sets whether to use a fade-in effect when a splash form is being opened.
-</para>
-            </summary>
-            <value><b>true</b> to use a fade-in effect when a splash form is being opened; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraSplashScreen.SplashFormProperties.UseFadeOutEffect">
-            <summary>
-                <para>Gets or sets whether to use a fade-out effect when a splash form is being closed.
-</para>
-            </summary>
-            <value><b>true</b> to use a fade-out effect when a splash form is being closed; otherwise, <b>false</b>.
-</value>
 
 
         </member>
@@ -11481,46 +11159,6 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
             </summary>
             <value>An <a href="#" onclick="dxHelpRedirect('T:System.Drawing.Image')">Image</a> object that follows the <see cref="P:DevExpress.XtraEditors.Controls.ImageSlider.CurrentImage"/> within the specified ImageSlider object.
 </value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraBars.Alerter.AlertFormLocation">
-
-            <summary>
-                <para>Contains values that specify the position on screen at which alert windows are displayed.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.BottomLeft">
-            <summary>
-                <para>An alert window appears at the bottom left corner of the screen.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.BottomRight">
-            <summary>
-                <para>An alert window appears at the bottom right corner of the screen.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.TopLeft">
-            <summary>
-                <para>An alert window appears at the top left corner of the screen.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormLocation.TopRight">
-            <summary>
-                <para>An alert window appears at the top right corner of the screen.
-</para>
-            </summary>
 
 
         </member>
@@ -11985,54 +11623,6 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Alerter.AlertFormShowingEffect">
-
-            <summary>
-                <para>Enumerates alert window animation effects.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.FadeIn">
-            <summary>
-                <para>An alert window is displayed using a fade-in effect.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.MoveHorizontal">
-            <summary>
-                <para>An alert window appears by sliding horizontally onto the screen from out of the screen.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.MoveVertical">
-            <summary>
-                <para>An alert window appears by sliding vertically onto the screen from out of the screen.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideHorizontal">
-            <summary>
-                <para>An alert window appears onscreen by enlarging its width gradually, from the zero value to the normal width.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Alerter.AlertFormShowingEffect.SlideVertical">
-            <summary>
-                <para>An alert window appears onscreen by enlarging its height gradually from the zero value to the normal height.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.XtraEditors.RadioGroup">
 
             <summary>
@@ -12450,6 +12040,207 @@ Currently, <b>Default</b> is equivalent to <b>AboveParent</b>.
 </para>
             </summary>
             <value>A DateEditCalendarViewType value that specifies the current View of data in the dropdown window.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.Utils.Menu.DXEditMenuItem">
+
+            <summary>
+                <para>A menu item that allows you to embed an editor in a <see cref="T:DevExpress.Utils.Menu.DXPopupMenu"/>.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.EventHandler,System.Drawing.Image,System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+            <param name="edit">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
+
+            </param>
+            <param name="editValueChanged">
+		An event handler that will be invoked when the editor's value is changed. This value is assigned to the <see cref="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged"/> event.
+
+            </param>
+            <param name="image">
+		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
+
+            </param>
+            <param name="disabled">
+		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
+
+            </param>
+            <param name="width">
+		An integer value that is the editor's width. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Width"/> property.
+
+            </param>
+            <param name="height">
+		An integer value that is the editor's height. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Height"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.Drawing.Image)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+            <param name="edit">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
+
+            </param>
+            <param name="image">
+		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.EventHandler,System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+            <param name="edit">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
+
+            </param>
+            <param name="editValueChanged">
+		An event handler that will be invoked when the editor's value is changed. This value is assigned to the <see cref="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged"/> event.
+
+            </param>
+            <param name="image">
+		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
+
+            </param>
+            <param name="disabled">
+		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor">
+            <summary>
+                <para>Initializes a new DXEditMenuItem instance with the default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+            <param name="edit">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXEditMenuItem.#ctor(System.String,DevExpress.XtraEditors.Repository.RepositoryItem,System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+                <para>Initializes a new DXEditMenuItem class instance with the specified settings.
+</para>
+            </summary>
+            <param name="caption">
+		A string value that specifies the item's caption. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Caption"/> property.
+
+            </param>
+            <param name="edit">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit"/> property.
+
+            </param>
+            <param name="image">
+		An item's image. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.Image"/> property.
+
+            </param>
+            <param name="disabled">
+		An item's image to be displayed when the item is disabled. This parameter initializes the <see cref="P:DevExpress.Utils.Menu.DXMenuItem.ImageDisabled"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Edit">
+            <summary>
+                <para>Gets or sets the object that determines the editor's type and contains its properties.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItem"/> descendant that determines the editor's type and contains its properties.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.EditValue">
+            <summary>
+                <para>Specifies the editor's value.
+</para>
+            </summary>
+            <value>An object that is the editor's value.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.Utils.Menu.DXEditMenuItem.EditValueChanged">
+            <summary>
+                <para>Occurs after the <see cref="P:DevExpress.Utils.Menu.DXEditMenuItem.EditValue"/> property's value has been changed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Height">
+            <summary>
+                <para>Gets or sets the editor's height.
+</para>
+            </summary>
+            <value>An integer value that is the editor's height.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.Utils.Menu.DXEditMenuItem.Width">
+            <summary>
+                <para>Gets or sets the editor's width.
+</para>
+            </summary>
+            <value>An integer value that is the editor's widhth.
 </value>
 
 
@@ -13255,6 +13046,251 @@ In standalone editors, because of the .NET binding mechanism, the <b>Ignore</b> 
 
 
         </member>
+        <member name="T:DevExpress.XtraTab.TabMiddleClickFiringMode">
+
+            <summary>
+                <para>Contains values that specify if and when a control's <b>TabMiddleClick</b> event fires.
+
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.Default">
+            <summary>
+                <para>The default behavior. For the <see cref="T:DevExpress.XtraTab.XtraTabControl"/>, this option is equivalent to None.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.MouseDown">
+            <summary>
+                <para>A TabMiddleClick event fires on pressing the middle mouse button over a tab (before the button is released).
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.MouseUp">
+            <summary>
+                <para>A TabMiddleClick event fires on clicking the middle mouse button over a tab (after the button is released).
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraTab.TabMiddleClickFiringMode.None">
+            <summary>
+                <para>A TabMiddleClick event does not fire.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem">
+
+            <summary>
+                <para>Represents a single item in the collection.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object)">
+            <summary>
+                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor">
+            <summary>
+                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Boolean)">
+            <summary>
+                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> and <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> properties.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="isChecked">
+		<b>true</b> if the item is checked; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Windows.Forms.CheckState)">
+            <summary>
+                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> and <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> properties.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="checkState">
+		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Windows.Forms.CheckState,System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> class with custom settings.
+</para>
+            </summary>
+            <param name="value">
+		An object which represents the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="checkState">
+		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member specifying the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
+
+            </param>
+            <param name="enabled">
+		<b>true</b> if the item is enabled; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String,System.Windows.Forms.CheckState,System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the CheckedListBoxItem class with the specified settings.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="description">
+		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
+
+            </param>
+            <param name="checkState">
+		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
+
+            </param>
+            <param name="enabled">
+		<b>true</b> to enable the the item; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String)">
+            <summary>
+                <para>Initializes a new instance of the CheckedListBoxItem class with the specified value and description.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="description">
+		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String,System.Windows.Forms.CheckState)">
+            <summary>
+                <para>Initializes a new instance of the CheckedListBoxItem class with the specified value, description and check state.
+</para>
+            </summary>
+            <param name="value">
+		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
+
+            </param>
+            <param name="description">
+		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
+
+            </param>
+            <param name="checkState">
+		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState">
+            <summary>
+                <para>Gets or sets the item's state.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member specifying the item's state.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description">
+            <summary>
+                <para>Gets or sets the item's display text.
+</para>
+            </summary>
+            <value>A string that specifies the item's display text.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled">
+            <summary>
+                <para>Gets or set whether an end-user can change the item's state. 
+</para>
+            </summary>
+            <value><b>true</b> if the item is enabled and an end-user can change its state; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.GetCheckState(System.Nullable`1)">
+            <summary>
+                <para>Converts a value of the Nullable Boolean type to the <b>System.Windows.Forms.CheckState</b> type.
+</para>
+            </summary>
+            <param name="isChecked">
+		A Nullable Boolean value to be converted.
+
+            </param>
+            <returns>A value converted to the  <b>System.Windows.Forms.CheckState</b> type.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.InvertCheckState">
+            <summary>
+                <para>Inverts the item's check state.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.ToString">
+            <summary>
+                <para>Returns the text representation of the current item.
+</para>
+            </summary>
+            <returns>A string that specifies the text representation of the current CheckedListBoxItem object.
+</returns>
+
+
+        </member>
         <member name="T:DevExpress.XtraEditors.Container.ComponentEditorContainer">
 
             <summary>
@@ -13514,30 +13550,47 @@ In standalone editors, because of the .NET binding mechanism, the <b>Ignore</b> 
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.Controls.ListBoxItem">
+        <member name="T:DevExpress.XtraEditors.MRUEdit">
 
             <summary>
-                <para>Represents a single item in the collection.
+                <para>Represents a text editor which displays a list of the most recently used items (MRU) within its dropdown window.
+
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraEditors.Controls.ListBoxItem.ToString">
+        <member name="M:DevExpress.XtraEditors.MRUEdit.#ctor">
             <summary>
-                <para>Returns an item's equivalent string representation.
+                <para>Initializes a new <see cref="T:DevExpress.XtraEditors.MRUEdit"/> class instance with default settings. 
 </para>
             </summary>
-            <returns>A <see cref="T:System.String"/> value representing the current item.
-</returns>
 
 
         </member>
-        <member name="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value">
+        <member name="E:DevExpress.XtraEditors.MRUEdit.AddingMRUItem">
             <summary>
-                <para>Gets or sets the item's value.
+                <para>Occurs before a new item is added to the MRU editor.
 </para>
             </summary>
-            <value>An object representing the item's value.
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.MRUEdit.EditorTypeName">
+            <summary>
+                <para>Gets the class name of the current editor.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> object identifying the class name of the current editor.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.MRUEdit.Properties">
+            <summary>
+                <para>Gets an object containing settings specific to the MRU editor.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemMRUEdit"/> object instance containing settings for the MRU editor.
 </value>
 
 
@@ -14475,208 +14528,6 @@ In standalone editors, because of the .NET binding mechanism, the <b>Ignore</b> 
             </param>
             <value>A <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object whose value matches the specified object.
 </value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem">
-
-            <summary>
-                <para>Represents a single item in the collection.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object)">
-            <summary>
-                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor">
-            <summary>
-                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Boolean)">
-            <summary>
-                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> and <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> properties.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="isChecked">
-		<b>true</b> if the item is checked; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Windows.Forms.CheckState)">
-            <summary>
-                <para>Creates a new <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> object and instantiates the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> and <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> properties.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="checkState">
-		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.Windows.Forms.CheckState,System.Boolean)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraEditors.Controls.CheckedListBoxItem"/> class with custom settings.
-</para>
-            </summary>
-            <param name="value">
-		An object which represents the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="checkState">
-		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member specifying the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
-
-            </param>
-            <param name="enabled">
-		<b>true</b> if the item is enabled; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String,System.Windows.Forms.CheckState,System.Boolean)">
-            <summary>
-                <para>Initializes a new instance of the CheckedListBoxItem class with the specified settings.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="description">
-		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
-
-            </param>
-            <param name="checkState">
-		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
-
-            </param>
-            <param name="enabled">
-		<b>true</b> to enable the the item; otherwise, <b>false</b>. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String)">
-            <summary>
-                <para>Initializes a new instance of the CheckedListBoxItem class with the specified value and description.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="description">
-		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.#ctor(System.Object,System.String,System.Windows.Forms.CheckState)">
-            <summary>
-                <para>Initializes a new instance of the CheckedListBoxItem class with the specified value, description and check state.
-</para>
-            </summary>
-            <param name="value">
-		An object representing the item's value. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value"/> property.
-
-            </param>
-            <param name="description">
-		A string representing the item's display text. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description"/> property.
-
-            </param>
-            <param name="checkState">
-		A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member representing the item's state. This value is assigned to the <see cref="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.CheckState">
-            <summary>
-                <para>Gets or sets the item's state.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Windows.Forms.CheckState"/> enumeration member specifying the item's state.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Description">
-            <summary>
-                <para>Gets or sets the item's display text.
-</para>
-            </summary>
-            <value>A string that specifies the item's display text.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.Controls.CheckedListBoxItem.Enabled">
-            <summary>
-                <para>Gets or set whether an end-user can change the item's state. 
-</para>
-            </summary>
-            <value><b>true</b> if the item is enabled and an end-user can change its state; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.GetCheckState(System.Nullable`1)">
-            <summary>
-                <para>Converts a value of the Nullable Boolean type to the <b>System.Windows.Forms.CheckState</b> type.
-</para>
-            </summary>
-            <param name="isChecked">
-		A Nullable Boolean value to be converted.
-
-            </param>
-            <returns>A value converted to the  <b>System.Windows.Forms.CheckState</b> type.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.InvertCheckState">
-            <summary>
-                <para>Inverts the item's check state.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.Controls.CheckedListBoxItem.ToString">
-            <summary>
-                <para>Returns the text representation of the current item.
-</para>
-            </summary>
-            <returns>A string that specifies the text representation of the current CheckedListBoxItem object.
-</returns>
 
 
         </member>
@@ -15947,51 +15798,6 @@ In standalone editors, because of the .NET binding mechanism, the <b>Ignore</b> 
 
 
         </member>
-        <member name="T:DevExpress.XtraEditors.MRUEdit">
-
-            <summary>
-                <para>Represents a text editor which displays a list of the most recently used items (MRU) within its dropdown window.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.MRUEdit.#ctor">
-            <summary>
-                <para>Initializes a new <see cref="T:DevExpress.XtraEditors.MRUEdit"/> class instance with default settings. 
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraEditors.MRUEdit.AddingMRUItem">
-            <summary>
-                <para>Occurs before a new item is added to the MRU editor.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.MRUEdit.EditorTypeName">
-            <summary>
-                <para>Gets the class name of the current editor.
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> object identifying the class name of the current editor.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.MRUEdit.Properties">
-            <summary>
-                <para>Gets an object containing settings specific to the MRU editor.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemMRUEdit"/> object instance containing settings for the MRU editor.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraEditors.HyperLinkEdit">
 
             <summary>
@@ -16526,6 +16332,34 @@ The text is displayed on the left of the buttons, if the <b>RightToLeft</b> prop
 
 
         </member>
+        <member name="T:DevExpress.XtraEditors.Controls.ListBoxItem">
+
+            <summary>
+                <para>Represents a single item in the collection.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.Controls.ListBoxItem.ToString">
+            <summary>
+                <para>Returns an item's equivalent string representation.
+</para>
+            </summary>
+            <returns>A <see cref="T:System.String"/> value representing the current item.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.Controls.ListBoxItem.Value">
+            <summary>
+                <para>Gets or sets the item's value.
+</para>
+            </summary>
+            <value>An object representing the item's value.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraEditors.Controls.SearchMode">
 
             <summary>
@@ -16996,8 +16830,7 @@ The following screenshots show color editors when the <see cref="P:DevExpress.Xt
 </para>
             </summary>
             <param name="index">
-		An integer value representing the zero-based index of the item to be changed. If it is negative or exceeds the last available index, the method will have no effect.
-
+		An integer value representing the zero-based index of the item to be changed. If negative or exceeds the last available index, the method will have no effect.
 
             </param>
             <param name="value">
@@ -19261,7 +19094,7 @@ The following screenshots show color editors when the <see cref="P:DevExpress.Xt
             <summary>
                 <para>The caption of the Apply button displayed within the filter drop-down window within a PivotGrid control.
 <para>
-Return value: Apply
+<b>Return Value:</b> Apply
 </para>
 </para>
             </summary>
@@ -19271,7 +19104,7 @@ Return value: Apply
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonBack">
             <summary>
                 <para><para>Represents the caption of the button used to delete the last digit of the displayed number in the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: Back
+<b>Return Value:</b> Back
 </para>
             </summary>
 
@@ -19280,7 +19113,7 @@ Return value: Back
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonC">
             <summary>
                 <para><para>Represents the caption of the button used to clear the current calculation in the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: C
+<b>Return Value:</b> C
 </para>
             </summary>
 
@@ -19289,7 +19122,7 @@ Return value: C
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonCE">
             <summary>
                 <para><para>Represents the caption of the button used to clear the displayed number in the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: CE
+<b>Return Value:</b> CE
 </para>
             </summary>
 
@@ -19298,7 +19131,7 @@ Return value: CE
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonMC">
             <summary>
                 <para><para>Represents the caption of the button used to clear any number stored in memory of the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: MC
+<b>Return Value:</b> MC
 </para>
             </summary>
 
@@ -19307,7 +19140,7 @@ Return value: MC
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonMR">
             <summary>
                 <para><para>Represents the caption of the button used to recall the number stored in memory of the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: MR
+<b>Return Value:</b> MR
 </para>
             </summary>
 
@@ -19316,7 +19149,7 @@ Return value: MR
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonMS">
             <summary>
                 <para><para>Represents the caption of the button used to store the display number in memory of the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: MS
+<b>Return Value:</b> MS
 </para>
             </summary>
 
@@ -19325,7 +19158,7 @@ Return value: MS
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonMx">
             <summary>
                 <para><para>Represents the caption of the button used to add the displayed number to any number already in memory in the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: M+
+<b>Return Value:</b> M+
 </para>
             </summary>
 
@@ -19334,7 +19167,7 @@ Return value: M+
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcButtonSqrt">
             <summary>
                 <para><para>Represents the caption of the button used to calculate the square root of the displayed number in the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor.</para>
-Return value: sqrt
+<b>Return Value:</b> sqrt
 </para>
             </summary>
 
@@ -19343,7 +19176,7 @@ Return value: sqrt
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CalcError">
             <summary>
                 <para><para>The string displayed in the edit box of the <see cref="T:DevExpress.XtraEditors.CalcEdit"/> editor if an expression cannot be evaluated (division by zero, for instance).</para>
-Return value: Calculation Error
+<b>Return Value:</b> Calculation Error
 </para>
             </summary>
 
@@ -19355,7 +19188,7 @@ Return value: Calculation Error
 The caption of the button to discard changes and close the dropdown window of a <see cref="T:DevExpress.XtraEditors.ImageEdit"/> and <see cref="T:DevExpress.XtraEditors.MemoExEdit"/> editors.
 </para>
 <para>
-Return value: Cancel
+<b>Return Value:</b> Cancel
 </para>
 </para>
             </summary>
@@ -19365,7 +19198,7 @@ Return value: Cancel
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CaptionError">
             <summary>
                 <para><para>The default caption for the error message box.</para>
-<para>Return value: Error</para>
+<para><b>Return Value</b>: Error</para>
 </para>
             </summary>
 
@@ -19374,7 +19207,7 @@ Return value: Cancel
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CheckChecked">
             <summary>
                 <para><para>Specifies the string corresponding to the checked state of the check edit. This string is displayed, for instance, in the filter dropdown of the <b>XtraGrid</b> (or other) control.</para>
-Return value: Checked
+<b>Return Value:</b> Checked
 </para>
             </summary>
 
@@ -19383,7 +19216,7 @@ Return value: Checked
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CheckIndeterminate">
             <summary>
                 <para><para>Specifies the string corresponding to the indeterminate state of the check edit. This string is displayed, for instance, in the filter dropdown of the <b>XtraGrid</b> (or other) control.</para>
-Return value: Indeterminate
+<b>Return Value:</b> Indeterminate
 </para>
             </summary>
 
@@ -19392,7 +19225,7 @@ Return value: Indeterminate
         <member name="F:DevExpress.XtraEditors.Controls.StringId.CheckUnchecked">
             <summary>
                 <para><para>Specifies the string corresponding to the unchecked state of the check edit. This string is displayed, for instance, in the filter dropdown of the <b>XtraGrid</b> (or other) control.</para>
-Return value: Unchecked
+<b>Return Value:</b> Unchecked
 </para>
             </summary>
 
@@ -19402,7 +19235,7 @@ Return value: Unchecked
             <summary>
                 <para><para>The caption of the Automatic button in the <see cref="T:DevExpress.XtraEditors.ColorPickEdit"/> control.
 </para>
-Return value: Automatic
+<b>Return Value:</b> Automatic
 </para>
             </summary>
 
@@ -19411,7 +19244,7 @@ Return value: Automatic
         <member name="F:DevExpress.XtraEditors.Controls.StringId.ColorTabCustom">
             <summary>
                 <para><para>Specifies the caption of the <see cref="T:DevExpress.XtraEditors.ColorEdit"/> editor's tab page displaying predefined custom colors.</para>
-Return value: Custom
+<b>Return Value:</b> Custom
 </para>
             </summary>
 
@@ -19420,7 +19253,7 @@ Return value: Custom
         <member name="F:DevExpress.XtraEditors.Controls.StringId.ColorTabSystem">
             <summary>
                 <para><para>Specifies the caption of the <see cref="T:DevExpress.XtraEditors.ColorEdit"/> editor's tab page displaying predefined system colors.</para>
-Return value: System
+<b>Return Value:</b> System
 </para>
             </summary>
 
@@ -19429,7 +19262,7 @@ Return value: System
         <member name="F:DevExpress.XtraEditors.Controls.StringId.ColorTabWeb">
             <summary>
                 <para><para>Specifies the caption of the <see cref="T:DevExpress.XtraEditors.ColorEdit"/> editor's tab page displaying predefined web colors.</para>
-Return value: Web
+<b>Return Value:</b> Web
 </para>
             </summary>
 
@@ -19453,7 +19286,7 @@ The string which is identified by this enumeration value is used to initiliaze a
 Specifies the text string displayed in the <see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editors when no image is loaded.
 </para>
 <para>
-Return value: Data empty
+<b>Return Value:</b> Data empty
 </para>
 </para>
             </summary>
@@ -19466,7 +19299,7 @@ Return value: Data empty
 The caption of the <b>Clear</b> button used to set the <see cref="T:DevExpress.XtraEditors.DateEdit"/> editor's edit value to the <see cref="P:DevExpress.XtraEditors.Repository.RepositoryItemDateEdit.NullDate"/> property value (<b>null</b>-date).
 </para>
 <para>
-Return value: Clear
+<b>Return Value:</b> Clear
 </para>
 </para>
             </summary>
@@ -19479,7 +19312,7 @@ Return value: Clear
 The caption of the <b>Today</b> button used to assign the current day to the edit value of the <see cref="T:DevExpress.XtraEditors.DateEdit"/> editor.
 </para>
 <para>
-Return value: Today
+<b>Return Value:</b> Today
 </para>
 </para>
             </summary>
@@ -19569,7 +19402,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseAnyOf">
             <summary>
                 <para><para>Represents the caption of the <b>AnyOf</b> filter clause.</para>
-<para>Return value: Is any of</para>
+<para><b>Return value</b>: Is any of</para>
 </para>
             </summary>
 
@@ -19578,7 +19411,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseBeginsWith">
             <summary>
                 <para><para>Represents the caption of the <b>BeginsWith</b> filter clause.</para>
-<para>Return value: Begins with</para>
+<para><b>Return value</b>: Begins with</para>
 </para>
             </summary>
 
@@ -19587,7 +19420,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseBetween">
             <summary>
                 <para><para>Represents the caption of the <b>Between</b> filter clause.</para>
-<para>Return value: Is between</para>
+<para><b>Return value</b>: Is between</para>
 </para>
             </summary>
 
@@ -19596,7 +19429,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseBetweenAnd">
             <summary>
                 <para><para>Represents the caption of the <b>BetweenAnd</b> filter clause.</para>
-<para>Return value: and</para>
+<para><b>Return value</b>: and</para>
 </para>
             </summary>
 
@@ -19605,7 +19438,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseContains">
             <summary>
                 <para><para>Represents the caption of the <b>Contains</b> filter clause.</para>
-<para>Return value: Contains</para>
+<para><b>Return value</b>: Contains</para>
 </para>
             </summary>
 
@@ -19614,7 +19447,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseDoesNotContain">
             <summary>
                 <para><para>Represents the caption of the <b>DoesNotContain</b> filter clause.</para>
-<para>Return value: Does not contain</para>
+<para><b>Return value</b>: Does not contain</para>
 </para>
             </summary>
 
@@ -19623,7 +19456,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseDoesNotEqual">
             <summary>
                 <para><para>Represents the caption of the <b>DoesNotEqual</b> filter clause.</para>
-<para>Return value: Does not equal</para>
+<para><b>Return value</b>: Does not equal</para>
 </para>
             </summary>
 
@@ -19632,7 +19465,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseEndsWith">
             <summary>
                 <para><para>Represents the caption of the <b>EndsWith</b> filter clause.</para>
-<para>Return value: Ends with</para>
+<para><b>Return value</b>: Ends with</para>
 </para>
             </summary>
 
@@ -19641,7 +19474,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseEquals">
             <summary>
                 <para><para>Represents the caption of the <b>Equals</b> filter clause.</para>
-<para>Return value: Equals</para>
+<para><b>Return value</b>: Equals</para>
 </para>
             </summary>
 
@@ -19650,7 +19483,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseGreater">
             <summary>
                 <para><para>Represents the caption of the <b>Greater</b> filter clause.</para>
-<para>Return value: Is greater than</para>
+<para><b>Return value</b>: Is greater than</para>
 </para>
             </summary>
 
@@ -19659,7 +19492,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseGreaterOrEqual">
             <summary>
                 <para><para>Represents the caption of the <b>GreaterOrEqual</b> filter clause.</para>
-<para>Return value: Is greater than or equal to</para>
+<para><b>Return value</b>: Is greater than or equal to</para>
 </para>
             </summary>
 
@@ -19668,7 +19501,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseIsNotNull">
             <summary>
                 <para><para>Represents the caption of the <b>IsNotNull</b> filter clause.</para>
-<para>Return value: Is not blank</para>
+<para><b>Return value</b>: Is not blank</para>
 </para>
             </summary>
 
@@ -19685,7 +19518,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseIsNull">
             <summary>
                 <para><para>Represents the caption of the <b>IsNull</b> filter clause.</para>
-<para>Return value: Is blank</para>
+<para><b>Return value</b>: Is blank</para>
 </para>
             </summary>
 
@@ -19702,7 +19535,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseLess">
             <summary>
                 <para><para>Represents the caption of the <b>Less</b> filter clause.</para>
-<para>Return value: Is less than</para>
+<para><b>Return value</b>: Is less than</para>
 </para>
             </summary>
 
@@ -19711,7 +19544,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseLessOrEqual">
             <summary>
                 <para><para>Represents the caption of the <b>LessOrEqual</b> filter clause.</para>
-<para>Return value: Is less than or equal to</para>
+<para><b>Return value</b>: Is less than or equal to</para>
 </para>
             </summary>
 
@@ -19720,7 +19553,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseLike">
             <summary>
                 <para><para>Represents the caption of the <b>Like</b> filter clause.</para>
-<para>Return value: Is like</para>
+<para><b>Return value</b>: Is like</para>
 </para>
             </summary>
 
@@ -19729,7 +19562,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseNoneOf">
             <summary>
                 <para><para>Represents the caption of the <b>NoneOf</b> filter clause.</para>
-<para>Return value: Is none of</para>
+<para><b>Return value</b>: Is none of</para>
 </para>
             </summary>
 
@@ -19738,7 +19571,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseNotBetween">
             <summary>
                 <para><para>Represents the caption of the <b>NotBetween</b> filter clause.</para>
-<para>Return value: Is not between</para>
+<para><b>Return value</b>: Is not between</para>
 </para>
             </summary>
 
@@ -19747,7 +19580,7 @@ Return value: Today
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterClauseNotLike">
             <summary>
                 <para><para>Represents the caption of the <b>NotLike</b> filter clause.</para>
-<para>Return value: Is not like</para>
+<para><b>Return value</b>: Is not like</para>
 </para>
             </summary>
 
@@ -19757,7 +19590,7 @@ Return value: Today
             <summary>
                 <para>Specifies an error message that may occur when parsing an expression
 <para>
-Return value: The specified expression contains invalid symbols (line {0}, character {1}).
+<b>Return value</b>: The specified expression contains invalid symbols (line {0}, character {1}).
 </para>
 
 </para>
@@ -19769,7 +19602,7 @@ Return value: The specified expression contains invalid symbols (line {0}, chara
             <summary>
                 <para>Specifies an error message that may occur when parsing an expression
 <para>
-Return value: The specified expression is invalid..
+<b>Return value</b>: The specified expression is invalid..
 </para>
 </para>
             </summary>
@@ -19780,7 +19613,7 @@ Return value: The specified expression is invalid..
             <summary>
                 <para>Specifies the textual representation of the <b>Between</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Between
+<b>Return value</b>: Between
 </para>
 </para>
             </summary>
@@ -19791,7 +19624,7 @@ Return value: Between
             <summary>
                 <para>Specifies the textual representation of the binary bitwise <b>AND</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @amp;
+<b>Return value</b>: @amp;
 </para>
 </para>
             </summary>
@@ -19802,7 +19635,7 @@ Return value: @amp;
             <summary>
                 <para>Specifies the textual representation of the binary bitwise <b>OR</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: |
+<b>Return value</b>: |
 </para>
 </para>
             </summary>
@@ -19813,7 +19646,7 @@ Return value: |
             <summary>
                 <para>Specifies the textual representation of the binary bitwise <b>XOR</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: ^
+<b>Return value</b>: ^
 </para>
 </para>
             </summary>
@@ -19824,7 +19657,7 @@ Return value: ^
             <summary>
                 <para>Specifies the textual representation of the binary <b>Divide</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: /
+<b>Return value</b>: /
 </para>
 </para>
             </summary>
@@ -19835,7 +19668,7 @@ Return value: /
             <summary>
                 <para>Specifies the textual representation of the binary <b>Equal to</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: =
+<b>Return value</b>: =
 </para>
 </para>
             </summary>
@@ -19846,7 +19679,7 @@ Return value: =
             <summary>
                 <para>Specifies the textual representation of the binary <b>Greater than</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @gt;
+<b>Return value</b>: @gt;
 </para>
 </para>
             </summary>
@@ -19857,7 +19690,7 @@ Return value: @gt;
             <summary>
                 <para>Specifies the textual representation of the binary <b>Greater than or equal to</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @gt;=
+<b>Return value</b>: @gt;=
 </para>
 </para>
             </summary>
@@ -19868,7 +19701,7 @@ Return value: @gt;=
             <summary>
                 <para>Specifies the textual representation of the binary <b>Less than</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @lt;
+<b>Return value</b>: @lt;
 </para>
 </para>
             </summary>
@@ -19879,7 +19712,7 @@ Return value: @lt;
             <summary>
                 <para>Specifies the textual representation of the binary <b>Less than or equal to</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @lt;=
+<b>Return value</b>: @lt;=
 </para>
 </para>
             </summary>
@@ -19890,7 +19723,7 @@ Return value: @lt;=
             <summary>
                 <para>Specifies the textual representation of the binary <b>Like</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Like
+<b>Return value</b>: Like
 </para>
 </para>
             </summary>
@@ -19901,7 +19734,7 @@ Return value: Like
             <summary>
                 <para>Specifies the textual representation of the binary <b>Minus</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: -
+<b>Return value</b>: -
 </para>
 </para>
             </summary>
@@ -19912,7 +19745,7 @@ Return value: -
             <summary>
                 <para>Specifies the textual representation of the binary <b>Modulo</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: %
+<b>Return value</b>: %
 </para>
 </para>
             </summary>
@@ -19923,7 +19756,7 @@ Return value: %
             <summary>
                 <para>Specifies the textual representation of the binary <b>Multiply</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: *
+<b>Return value</b>: *
 </para>
 </para>
             </summary>
@@ -19934,7 +19767,7 @@ Return value: *
             <summary>
                 <para>Specifies the textual representation of the binary <b>Not Equal</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: @lt;@gt;
+<b>Return value</b>: @lt;@gt;
 </para>
 </para>
             </summary>
@@ -19945,7 +19778,7 @@ Return value: @lt;@gt;
             <summary>
                 <para>Specifies the textual representation of the binary<b>Plus</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: +
+<b>Return value</b>: +
 </para>
 </para>
             </summary>
@@ -20140,7 +19973,7 @@ Return value: +
             <summary>
                 <para>Specifies a string which represents the <see cref="F:DevExpress.Data.Filtering.FunctionOperatorType.Custom"/> function type in filter display text.
 <para>
-Return value: Custom
+<b>Return value</b>: Custom
 </para>
 
 
@@ -20337,7 +20170,7 @@ Return value: Custom
             <summary>
                 <para>Specifies the textual representation of the <b>Iif</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Iif
+<b>Return value</b>: Iif
 </para>
 </para>
             </summary>
@@ -20356,7 +20189,7 @@ Return value: Iif
             <summary>
                 <para>Specifies the textual representation of the <b>Is Null</b> function, which takes one or two arguments, used when constructing a display string of filter criteria.
 <para>
-Return value: IsNull
+<b>Return value</b>: IsNull
 </para>
 </para>
             </summary>
@@ -20375,7 +20208,7 @@ Return value: IsNull
             <summary>
                 <para>Specifies the textual representation of the IsBeyondThisYear function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: BeyondThisYear
+<b>Return value</b>: BeyondThisYear
 </para>
 </para>
             </summary>
@@ -20386,7 +20219,7 @@ Return value: BeyondThisYear
             <summary>
                 <para>Specifies the textual representation of the IsEarlierThisMonth function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: EarlierThisMonth
+<b>Return value</b>: EarlierThisMonth
 </para>
 </para>
             </summary>
@@ -20397,7 +20230,7 @@ Return value: EarlierThisMonth
             <summary>
                 <para>Specifies the textual representation of the IsEarlierThisWeek function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: EarlierThisWeek
+<b>Return value</b>: EarlierThisWeek
 </para>
 </para>
             </summary>
@@ -20408,7 +20241,7 @@ Return value: EarlierThisWeek
             <summary>
                 <para>Specifies the textual representation of the IsEarlierThisYear function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: EarlierThisYear
+<b>Return value</b>: EarlierThisYear
 </para>
 </para>
             </summary>
@@ -20419,7 +20252,7 @@ Return value: EarlierThisYear
             <summary>
                 <para>Specifies the textual representation of the IsLastWeek function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: LastWeek
+<b>Return value</b>: LastWeek
 </para>
 </para>
             </summary>
@@ -20430,7 +20263,7 @@ Return value: LastWeek
             <summary>
                 <para>Specifies the textual representation of the IsLaterThisMonth function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: LaterThisMonth
+<b>Return value</b>: LaterThisMonth
 </para>
 </para>
             </summary>
@@ -20441,7 +20274,7 @@ Return value: LaterThisMonth
             <summary>
                 <para>Specifies the textual representation of the IsLaterThisWeek function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: LaterThisWeek
+<b>Return value</b>: LaterThisWeek
 </para>
 </para>
             </summary>
@@ -20452,7 +20285,7 @@ Return value: LaterThisWeek
             <summary>
                 <para>Specifies the textual representation of the IsLaterThisYear function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: LaterThisYear
+<b>Return value</b>: LaterThisYear
 </para>
 </para>
             </summary>
@@ -20463,7 +20296,7 @@ Return value: LaterThisYear
             <summary>
                 <para>Specifies the textual representation of the IsNextWeek function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: NextWeek
+<b>Return value</b>: NextWeek
 </para>
 </para>
             </summary>
@@ -20474,7 +20307,7 @@ Return value: NextWeek
             <summary>
                 <para>Specifies the textual representation of the IsPriorThisYear function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: PriorThisYear
+<b>Return value</b>: PriorThisYear
 </para>
 </para>
             </summary>
@@ -20485,7 +20318,7 @@ Return value: PriorThisYear
             <summary>
                 <para>Specifies the textual representation of the IsToday function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: Today
+<b>Return value</b>: Today
 </para>
 </para>
             </summary>
@@ -20496,7 +20329,7 @@ Return value: Today
             <summary>
                 <para>Specifies the textual representation of the IsTomorrow function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: Tomorrow
+<b>Return value</b>: Tomorrow
 </para>
 </para>
             </summary>
@@ -20507,7 +20340,7 @@ Return value: Tomorrow
             <summary>
                 <para>Specifies the textual representation of the IsYesterday function, which takes one argument, used when constructing a display string of filter criteria. 
 <para>
-Return value: Yesterday
+<b>Return value</b>: Yesterday
 </para>
 </para>
             </summary>
@@ -20517,7 +20350,7 @@ Return value: Yesterday
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterCriteriaToStringFunctionIsThisMonth">
             <summary>
                 <para><para>
-Return value: Is This Month
+<b>Return value</b>: Is This Month
 </para>
 </para>
             </summary>
@@ -20527,7 +20360,7 @@ Return value: Is This Month
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterCriteriaToStringFunctionIsThisWeek">
             <summary>
                 <para><para>
-Return value: Is This Week
+<b>Return value</b>: Is This Week
 </para>
 </para>
             </summary>
@@ -20537,7 +20370,7 @@ Return value: Is This Week
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterCriteriaToStringFunctionIsThisYear">
             <summary>
                 <para><para>
-Return value: Is This Year
+<b>Return value</b>: Is This Year
 </para>
 </para>
             </summary>
@@ -20548,7 +20381,7 @@ Return value: Is This Year
             <summary>
                 <para>Specifies the textual representation of the <b>Len</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Len
+<b>Return value</b>: Len
 </para>
 </para>
             </summary>
@@ -20559,7 +20392,7 @@ Return value: Len
             <summary>
                 <para>Specifies the textual representation of the DayAfterTomorrow function, used when constructing a display string of filter criteria. 
 <para>
-Return value: DayAfterTomorrow
+<b>Return value</b>: DayAfterTomorrow
 </para>
 </para>
             </summary>
@@ -20570,7 +20403,7 @@ Return value: DayAfterTomorrow
             <summary>
                 <para>Specifies the textual representation of the LastWeek function, used when constructing a display string of filter criteria. 
 <para>
-Return value: LastWeek
+<b>Return value</b>: LastWeek
 </para>
 </para>
             </summary>
@@ -20581,7 +20414,7 @@ Return value: LastWeek
             <summary>
                 <para>Specifies the textual representation of the NextMonth function, used when constructing a display string of filter criteria. 
 <para>
-Return value: NextMonth
+<b>Return value</b>: NextMonth
 </para>
 </para>
             </summary>
@@ -20592,7 +20425,7 @@ Return value: NextMonth
             <summary>
                 <para>Specifies the textual representation of the NextWeek function, used when constructing a display string of filter criteria. 
 <para>
-Return value: NextWeek
+<b>Return value</b>: NextWeek
 </para>
 </para>
             </summary>
@@ -20603,7 +20436,7 @@ Return value: NextWeek
             <summary>
                 <para>Specifies the textual representation of the NextYear function, used when constructing a display string of filter criteria. 
 <para>
-Return value: NextYear
+<b>Return value</b>: NextYear
 </para>
 </para>
             </summary>
@@ -20614,7 +20447,7 @@ Return value: NextYear
             <summary>
                 <para>Specifies the textual representation of the Now function, used when constructing a display string of filter criteria. 
 <para>
-Return value: Now
+<b>Return value</b>: Now
 </para>
 </para>
             </summary>
@@ -20625,7 +20458,7 @@ Return value: Now
             <summary>
                 <para>Specifies the textual representation of the ThisMonth function, used when constructing a display string of filter criteria. 
 <para>
-Return value: ThisMonth
+<b>Return value</b>: ThisMonth
 </para>
 </para>
             </summary>
@@ -20636,7 +20469,7 @@ Return value: ThisMonth
             <summary>
                 <para>Specifies the textual representation of the ThisWeek function, used when constructing a display string of filter criteria. 
 <para>
-Return value: ThisWeek
+<b>Return value</b>: ThisWeek
 </para>
 </para>
             </summary>
@@ -20647,7 +20480,7 @@ Return value: ThisWeek
             <summary>
                 <para>Specifies the textual representation of the ThisYear function, used when constructing a display string of filter criteria. 
 <para>
-Return value: ThisYear
+<b>Return value</b>: ThisYear
 </para>
 </para>
             </summary>
@@ -20658,7 +20491,7 @@ Return value: ThisYear
             <summary>
                 <para>Specifies the textual representation of the Today function, used when constructing a display string of filter criteria. 
 <para>
-Return value: Today
+<b>Return value</b>: Today
 </para>
 </para>
             </summary>
@@ -20669,7 +20502,7 @@ Return value: Today
             <summary>
                 <para>Specifies the textual representation of the Tomorrow function, used when constructing a display string of filter criteria. 
 <para>
-Return value: Tomorrow
+<b>Return value</b>: Tomorrow
 </para>
 </para>
             </summary>
@@ -20680,7 +20513,7 @@ Return value: Tomorrow
             <summary>
                 <para>Specifies the textual representation of the TwoWeeksAway function, used when constructing a display string of filter criteria. 
 <para>
-Return value: TwoWeeksAway
+<b>Return value</b>: TwoWeeksAway
 </para>
 </para>
             </summary>
@@ -20691,7 +20524,7 @@ Return value: TwoWeeksAway
             <summary>
                 <para>Specifies the textual representation of the Yesterday function, used when constructing a display string of filter criteria. 
 <para>
-Return value: Yesterday
+<b>Return value</b>: Yesterday
 </para>
 </para>
             </summary>
@@ -20718,7 +20551,7 @@ Return value: Yesterday
             <summary>
                 <para>Specifies the textual representation of the <b>Lower</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Lower
+<b>Return value</b>: Lower
 </para>
 </para>
             </summary>
@@ -20745,7 +20578,7 @@ Return value: Lower
             <summary>
                 <para>Specifies the string which represents the <see cref="F:DevExpress.Data.Filtering.FunctionOperatorType.None"/> function type in filter display text.
 <para>
-Return value: None
+<b>Return value</b>: None
 </para>
 </para>
             </summary>
@@ -20868,7 +20701,7 @@ Return value: None
             <summary>
                 <para>Specifies the textual representation of the <b>Substring</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Substring
+<b>Return value</b>: Substring
 </para>
 </para>
             </summary>
@@ -20951,7 +20784,7 @@ Return value: Substring
             <summary>
                 <para>Specifies the textual representation of the <b>Trim</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Trim
+<b>Return value</b>: Trim
 </para>
 </para>
             </summary>
@@ -20962,7 +20795,7 @@ Return value: Trim
             <summary>
                 <para>Specifies the textual representation of the <b>Upper</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: Upper
+<b>Return value</b>: Upper
 </para>
 </para>
             </summary>
@@ -20981,7 +20814,7 @@ Return value: Upper
             <summary>
                 <para>Specifies the textual representation of the Boolean <b>And</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: And
+<b>Return value</b>: And
 </para>
 </para>
             </summary>
@@ -20992,7 +20825,7 @@ Return value: And
             <summary>
                 <para>Specifies the textual representation of the Boolean <b>Or</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Or
+<b>Return value</b>: Or
 </para>
 </para>
             </summary>
@@ -21003,7 +20836,7 @@ Return value: Or
             <summary>
                 <para>Specifies the textual representation of the <b>In</b> function used when constructing a display string of filter criteria.
 <para>
-Return value: In
+<b>Return value</b>: In
 </para>
 </para>
             </summary>
@@ -21014,7 +20847,7 @@ Return value: In
             <summary>
                 <para>Specifies the textual representation of the <b>Is not null</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Is Not Null
+<b>Return value</b>: Is Not Null
 </para>
 </para>
             </summary>
@@ -21025,7 +20858,7 @@ Return value: Is Not Null
             <summary>
                 <para>Specifies the textual representation of the <b>Not like</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Not Like
+<b>Return value</b>: Not Like
 </para>
 </para>
             </summary>
@@ -21036,7 +20869,7 @@ Return value: Not Like
             <summary>
                 <para>Specifies the textual representation of the unary bitwise <b>Not</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: ~
+<b>Return value</b>: ~
 </para>
 </para>
             </summary>
@@ -21047,7 +20880,7 @@ Return value: ~
             <summary>
                 <para>Specifies the textual representation of the unary <b>Is null</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Is Null
+<b>Return value</b>: Is Null
 </para>
 </para>
             </summary>
@@ -21058,7 +20891,7 @@ Return value: Is Null
             <summary>
                 <para>Specifies the textual representation of the unary <b>Minus</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: -
+<b>Return value</b>: -
 </para>
 </para>
             </summary>
@@ -21069,7 +20902,7 @@ Return value: -
             <summary>
                 <para>Specifies the textual representation of the unary <b>Not</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: Not
+<b>Return value</b>: Not
 </para>
 </para>
             </summary>
@@ -21080,7 +20913,7 @@ Return value: Not
             <summary>
                 <para>Specifies the textual representation of the unary <b>Plus</b> operator used when constructing a display string of filter criteria.
 <para>
-Return value: +
+<b>Return value</b>: +
 </para>
 </para>
             </summary>
@@ -21091,7 +20924,7 @@ Return value: +
             <summary>
                 <para>Specifies the textual representations of date-time functions shown in filter popup windows.
 <para>
-Return value: "Show all|Filter by a specific date:|Beyond|||Next week|Today|This week|This month|Earlier|{0:yyyy}, {0:MMMM}"
+<b>Return value</b>: "Show all|Filter by a specific date:|Beyond|||Next week|Today|This week|This month|Earlier|{0:yyyy}, {0:MMMM}"
 </para>
 </para>
             </summary>
@@ -21102,7 +20935,7 @@ Return value: "Show all|Filter by a specific date:|Beyond|||Next week|Today|This
             <summary>
                 <para>Specifies the caption of a submenu that contains date-time constants used to filter data 
 <para>
-Return value: DateTime constants
+<b>Return value</b>: DateTime constants
 </para>
 </para>
             </summary>
@@ -21113,7 +20946,7 @@ Return value: DateTime constants
             <summary>
                 <para>Specifies the caption of a submenu that contains date-time operators used to filter data 
 <para>
-Return value: DateTime operators
+<b>Return value</b>: DateTime operators
 </para>
 </para>
             </summary>
@@ -21138,7 +20971,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterEmptyEnter">
             <summary>
-                <para><para>Return value: enter a value</para>
+                <para><para><b>Return Value</b>: enter a value</para>
 </para>
             </summary>
 
@@ -21146,7 +20979,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterEmptyParameter">
             <summary>
-                <para><para>Return value: @lt;enter a parameter@gt;
+                <para><para><b>Return Value</b>: @lt;enter a parameter@gt;
 </para>
 </para>
             </summary>
@@ -21155,7 +20988,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterEmptyValue">
             <summary>
-                <para><para>Return value: empty</para>
+                <para><para><b>Return Value</b>: empty</para>
 </para>
             </summary>
 
@@ -21171,7 +21004,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterGroupAnd">
             <summary>
-                <para><para>Return value: And</para>
+                <para><para><b>Return Value</b>: And</para>
 </para>
             </summary>
 
@@ -21179,7 +21012,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterGroupNotAnd">
             <summary>
-                <para><para>Return value: Not And</para>
+                <para><para><b>Return Value</b>: Not And</para>
 </para>
             </summary>
 
@@ -21187,7 +21020,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterGroupNotOr">
             <summary>
-                <para><para>Return value: Not Or</para>
+                <para><para><b>Return Value</b>: Not Or</para>
 </para>
             </summary>
 
@@ -21195,7 +21028,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterGroupOr">
             <summary>
-                <para><para>Return value: Or</para>
+                <para><para><b>Return Value</b>: Or</para>
 </para>
             </summary>
 
@@ -21203,7 +21036,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterMenuAddNewParameter">
             <summary>
-                <para><para>Return value: @lt;Add a new parameter ...@gt;
+                <para><para><b>Return Value</b>: @lt;Add a new parameter ...@gt;
 </para>
 </para>
             </summary>
@@ -21212,7 +21045,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterMenuClearAll">
             <summary>
-                <para><para>Return value: Clear All</para>
+                <para><para><b>Return Value</b>: Clear All</para>
 </para>
             </summary>
 
@@ -21220,7 +21053,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterMenuConditionAdd">
             <summary>
-                <para><para>Return value: Add Condition</para>
+                <para><para><b>Return Value</b>: Add Condition</para>
 </para>
             </summary>
 
@@ -21228,7 +21061,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterMenuGroupAdd">
             <summary>
-                <para><para>Return value: Add Group</para>
+                <para><para><b>Return Value</b>: Add Group</para>
 </para>
             </summary>
 
@@ -21236,7 +21069,7 @@ Return value: DateTime operators
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterMenuRowRemove">
             <summary>
-                <para><para>Return value: Remove Row</para>
+                <para><para><b>Return Value</b>: Remove Row</para>
 </para>
             </summary>
 
@@ -21246,7 +21079,7 @@ Return value: DateTime operators
             <summary>
                 <para>Specifies the textual representations of date-time functions shown in filter popup windows.
 <para>
-Return value: 
+<b>Return value</b>: 
 "Show all|Show Empty|Filter by a specific date:|Beyond this year|Later this year|Later this month|Next week|Later this week|Tomorrow|Today|Yesterday|Earlier this week|Last week|Earlier this month|Earlier this year|Prior to this year"
 </para>
 </para>
@@ -21256,8 +21089,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarIncrementalSearch">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Incremental Search</b> filter popup toolbar button.
-<para>Return value: Incremental Search</para>
+                <para>
+<b>Return Value:</b> Incremental Search
 </para>
             </summary>
 
@@ -21265,8 +21098,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarInvertFilter">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Invert Filter</b> filter popup toolbar button.
-<para>Return value: Invert Filter</para>
+                <para>
+<b>Return Value:</b> Invert Filter
 </para>
             </summary>
 
@@ -21274,8 +21107,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarMultiSelection">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Multi-Selection</b> filter popup toolbar button.
-<para>Return value: Multi-Selection</para>
+                <para>
+<b>Return Value:</b> Multi-Selection
 </para>
             </summary>
 
@@ -21283,8 +21116,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarRadioMode">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Radio Mode</b> filter popup toolbar button.
-<para>Return value: Radio Mode</para>
+                <para>
+<b>Return Value:</b> Radio Mode
 </para>
             </summary>
 
@@ -21292,8 +21125,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarShowNewValues">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Show New Field Values</b> filter popup toolbar button.
-<para>Return value: Show New Field Values</para>
+                <para>
+<b>Return Value:</b> Show New Field Values
 </para>
             </summary>
 
@@ -21301,8 +21134,8 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterPopupToolbarShowOnlyAvailableItems">
             <summary>
-                <para>The text displayed within a tooltip invoked when hovering over the <b>Show Only Available Items</b> filter popup toolbar button.
-<para>Return value: Show Only Available Items</para>
+                <para>
+<b>Return Value:</b> Show Only Available Items
 </para>
             </summary>
 
@@ -21310,7 +21143,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterShowAll">
             <summary>
-                <para><para>Return value: (Show All)</para>
+                <para><para><b>Return Value</b>: (Show All)</para>
 </para>
             </summary>
 
@@ -21318,7 +21151,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipElementAdd">
             <summary>
-                <para><para>Return value: Adds a new item to the list.</para>
+                <para><para><b>Return Value</b>: Adds a new item to the list.</para>
 </para>
             </summary>
 
@@ -21326,7 +21159,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipKeysAdd">
             <summary>
-                <para><para>Return value: (Use the Insert or Add button on the keyboard)</para>
+                <para><para><b>Return Value</b>: (Use the Insert or Add button on the keyboard)</para>
 </para>
             </summary>
 
@@ -21334,7 +21167,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipKeysRemove">
             <summary>
-                <para><para>Return value: (Use the Delete or Subtract button on the keyboard)</para>
+                <para><para><b>Return Value</b>: (Use the Delete or Subtract button on the keyboard)</para>
 </para>
             </summary>
 
@@ -21342,7 +21175,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipNodeAction">
             <summary>
-                <para><para>Return value: Actions.</para>
+                <para><para><b>Return Value</b>: Actions.</para>
 </para>
             </summary>
 
@@ -21350,7 +21183,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipNodeAdd">
             <summary>
-                <para><para>Return value: Adds a new condition to this group.</para>
+                <para><para><b>Return Value</b>: Adds a new condition to this group.</para>
 </para>
             </summary>
 
@@ -21358,7 +21191,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipNodeRemove">
             <summary>
-                <para><para>Return value: Removes this condition.</para>
+                <para><para><b>Return Value</b>: Removes this condition.</para>
 </para>
             </summary>
 
@@ -21366,7 +21199,7 @@ Return value:
         </member>
         <member name="F:DevExpress.XtraEditors.Controls.StringId.FilterToolTipValueType">
             <summary>
-                <para><para>Return value: Compare to a value / other field's value.</para>
+                <para><para><b>Return Value</b>: Compare to a value / other field's value.</para>
 
 </para>
             </summary>
@@ -21376,7 +21209,7 @@ Return value:
         <member name="F:DevExpress.XtraEditors.Controls.StringId.ImagePopupEmpty">
             <summary>
                 <para><para>Specifies the text string displayed within the <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor's edit region when no image is loaded if the <see cref="P:DevExpress.XtraEditors.Repository.RepositoryItemBlobBaseEdit.ShowIcon"/> property is set to <b>false</b> (the identification icon is not displayed).</para>
-<para>Return value: (Empty)</para>
+<para><b>Return Value</b>: (Empty)</para>
 </para>
             </summary>
 
@@ -21385,7 +21218,7 @@ Return value:
         <member name="F:DevExpress.XtraEditors.Controls.StringId.ImagePopupPicture">
             <summary>
                 <para><para>Specifies the text string displayed within the <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor's edit region when the image is loaded if the <see cref="P:DevExpress.XtraEditors.Repository.RepositoryItemBlobBaseEdit.ShowIcon"/> property is set to <b>false</b> (the identification icon is not displayed).</para>
-<para>Return value: (Picture)</para>
+<para><b>Return Value</b>: (Picture)</para>
 </para>
             </summary>
 
@@ -21394,7 +21227,7 @@ Return value:
         <member name="F:DevExpress.XtraEditors.Controls.StringId.InvalidValueText">
             <summary>
                 <para><para>Represents the default error description displayed in a message box/tooltip if the editor's validation has failed.</para>
-<para>Return value: Invalid Value</para>
+<para><b>Return Value</b>: Invalid Value</para>
 </para>
             </summary>
 
@@ -21406,7 +21239,7 @@ Return value:
 Represents the initial value of the <see cref="P:DevExpress.XtraEditors.Controls.LookUpColumnInfo.FieldName"/> property when the <see cref="T:DevExpress.XtraEditors.Controls.LookUpColumnInfo"/> object is created without parameters.
 </para>
 
-Return value: Name
+<b>Return Value</b>: Name
 </para>
             </summary>
 
@@ -21432,7 +21265,7 @@ Return value: Name
             <summary>
                 <para><para>Specifies the exception message raised when the editor's entered value specified by the mask is incomplete.</para>
 <para>
-Return value: The entered value is incomplete.  Do you want to correct it?\r\n\r\nYes - return to the editor and correct the value.\r\nNo - leave the value as is.\r\nCancel - reset to the previous value.\r\n
+<b>Return Value:</b> The entered value is incomplete.  Do you want to correct it?\r\n\r\nYes - return to the editor and correct the value.\r\nNo - leave the value as is.\r\nCancel - reset to the previous value.\r\n
 </para>
 </para>
             </summary>
@@ -21442,7 +21275,7 @@ Return value: The entered value is incomplete.  Do you want to correct it?\r\n\r
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorAppendButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to insert a new blank record after the last one in the data source.</para>
-Return value: Append
+<b>Return Value:</b> Append
 </para>
             </summary>
 
@@ -21451,7 +21284,7 @@ Return value: Append
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorCancelEditButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to cancel edits to the current record.</para>
-Return value: Cancel Edit
+<b>Return Value:</b> Cancel Edit
 </para>
             </summary>
 
@@ -21468,7 +21301,7 @@ Return value: Cancel Edit
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorEndEditButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to post edited record value to the associated data source.</para>
-Return value: End Edit
+<b>Return Value:</b> End Edit
 </para>
             </summary>
 
@@ -21477,7 +21310,7 @@ Return value: End Edit
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorFirstButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to set the current record to the first record in the dataset.</para>
-Return value: First
+<b>Return Value:</b> First
 </para>
             </summary>
 
@@ -21486,7 +21319,7 @@ Return value: First
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorLastButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to set the current record to the last record in the data source.</para>
-Return value: Last
+<b>Return Value:</b> Last
 </para>
             </summary>
 
@@ -21495,7 +21328,7 @@ Return value: Last
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorNextButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to set the current record to the next record in the data source.</para>
-Return value: Last
+<b>Return Value:</b> Last
 </para>
             </summary>
 
@@ -21504,7 +21337,7 @@ Return value: Last
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorNextPageButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to change the current record position in the data source by the <see cref="P:DevExpress.XtraEditors.DataNavigatorButtons.PageRecordCount"/> property value upwards.</para>
-Return value: Next Page
+<b>Return Value:</b> Next Page
 </para>
             </summary>
 
@@ -21513,7 +21346,7 @@ Return value: Next Page
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorPreviousButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to the current record to the previous one in the data source.</para>
-Return value: Previous
+<b>Return Value:</b> Previous
 </para>
             </summary>
 
@@ -21522,7 +21355,7 @@ Return value: Previous
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorPreviousPageButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to change the current record position in the data source by the <see cref="P:DevExpress.XtraEditors.DataNavigatorButtons.PageRecordCount"/> property value backwards.</para>
-Return value: Previous Page
+<b>Return Value:</b> Previous Page
 </para>
             </summary>
 
@@ -21531,7 +21364,7 @@ Return value: Previous Page
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorRemoveButtonHint">
             <summary>
                 <para><para>Specifies the default hint of the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s button used to delete the current record.</para>
-Return value: Delete
+<b>Return Value:</b> Delete
 </para>
             </summary>
 
@@ -21540,7 +21373,7 @@ Return value: Delete
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NavigatorTextStringFormat">
             <summary>
                 <para><para>Specifies the format of the text string which can be displayed in the <see cref="T:DevExpress.XtraEditors.DataNavigator"/> to display the current record and the total number of records in the associated data source.</para>
-Return value: Record {0} of {1}
+<b>Return Value:</b> Record {0} of {1}
 </para>
             </summary>
 
@@ -21549,7 +21382,7 @@ Return value: Record {0} of {1}
         <member name="F:DevExpress.XtraEditors.Controls.StringId.None">
             <summary>
                 <para><para>Specifies the default hint for the <see cref="T:DevExpress.XtraEditors.DataNavigator"/>'s custom button.</para>
-<para>Return value: "" (empty string)</para>
+<para><b>Return Value</b>: "" (empty string)</para>
 </para>
             </summary>
 
@@ -21558,7 +21391,7 @@ Return value: Record {0} of {1}
         <member name="F:DevExpress.XtraEditors.Controls.StringId.NotValidArrayLength">
             <summary>
                 <para><para>Reserved for future use.</para>
-Return value: Not valid array length.
+<b>Return Value</b>: Not valid array length.
 </para>
             </summary>
 
@@ -21567,7 +21400,7 @@ Return value: Not valid array length.
         <member name="F:DevExpress.XtraEditors.Controls.StringId.OK">
             <summary>
                 <para><para>The caption of the Ok button displayed within the dropdown window of a <see cref="T:DevExpress.XtraEditors.ImageEdit"/> and <see cref="T:DevExpress.XtraEditors.MemoExEdit"/> editors.</para>
-Return value: Ok
+<b>Return Value:</b> Ok
 </para>
             </summary>
 
@@ -21577,7 +21410,7 @@ Return value: Ok
             <summary>
                 <para>An error displayed when an image cannot be copied to the clipboard by the <see cref="T:DevExpress.XtraEditors.PictureEdit"/> control.
 <para>
-Return value: Could not copy image
+<b>Return Value:</b> Could not copy image
 </para>
 </para>
             </summary>
@@ -21590,7 +21423,7 @@ Return value: Could not copy image
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> are customized to display images). The string represents the caption of the menu item to copy the contents of an editor.
 </para>
 <para>
-Return value: Copy
+<b>Return Value:</b> Copy
 </para>
 </para>
             </summary>
@@ -21603,7 +21436,7 @@ Return value: Copy
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> are customized to display images). The string represents the caption of the menu item to copy and delete the contents of an editor.
 </para>
 <para>
-Return value: Cut
+<b>Return Value:</b> Cut
 </para>
 </para>
             </summary>
@@ -21616,7 +21449,7 @@ Return value: Cut
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> customized to display images).The string represents the caption of the menu item to delete the contents of an editor.
 </para>
 <para>
-Return value: Delete
+<b>Return Value:</b> Delete
 </para>
 </para>
             </summary>
@@ -21645,7 +21478,7 @@ Return value: Delete
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> are customized to display images).The string represents the caption of the menu item to load an image from an external file.
 </para>
 <para>
-Return value: Load
+<b>Return Value:</b> Load
 </para>
 </para>
             </summary>
@@ -21658,7 +21491,7 @@ Return value: Load
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> are customized to display images).The string represents the caption of the menu item to replace the contents of an editor with an image from the clipboard.
 </para>
 <para>
-Return value: Paste
+<b>Return Value:</b> Paste
 </para>
 </para>
             </summary>
@@ -21671,7 +21504,7 @@ Return value: Paste
 Applied to image editors (<see cref="T:DevExpress.XtraEditors.PictureEdit"/> and <see cref="T:DevExpress.XtraEditors.ImageEdit"/> are customized to display images). The string represents the caption of the menu item to save an editor's image to an external file.
 </para>
 <para>
-Return value: Save
+<b>Return Value:</b> Save
 </para>
 </para>
             </summary>
@@ -21724,7 +21557,7 @@ Return value: Save
 Specifies the error message displayed when specifying an invalid image for a <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editors.
 </para>
 <para>
-Return value: Wrong picture format
+<b>Return Value:</b> Wrong picture format
 </para>
 </para>
             </summary>
@@ -21737,7 +21570,7 @@ Return value: Wrong picture format
 The caption of the error message displayed when specifying an invalid image for a <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/>. This string is followed by detail information on the error.
 </para>
 <para>
-Return value: Open error
+<b>Return Value:</b> Open error
 </para>
 </para>
             </summary>
@@ -21750,7 +21583,7 @@ Return value: Open error
 Specifies the file masks (filters) for the Open dialog used to load an image from an external file to a <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor.
 </para>
 <para>
-Return value: Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Icon Files (*.ico)|*.ico|All Picture Files |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|All Files |*.*
+<b>Return Value:</b> Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg;*.jpeg)|*.jpg;*.jpeg|Icon Files (*.ico)|*.ico|All Picture Files |*.bmp;*.gif;*.jpg;*.jpeg;*.ico;*.png;*.tif|All Files |*.*
 </para>
 </para>
             </summary>
@@ -21763,7 +21596,7 @@ Return value: Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.g
 The title of the Open File dialog used to load the image into the <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor..
 </para>
 <para>
-Return value: Open
+<b>Return Value:</b> Open
 </para>
 </para>
             </summary>
@@ -21776,7 +21609,7 @@ Return value: Open
 Specifies the file masks (filters) for the Save As dialog used to save the image displayed in a <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor to an external file.
 </para>
 <para>
-Return value: Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg)|*.jpg
+<b>Return Value:</b> Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.gif|JPEG File Interchange Format (*.jpg)|*.jpg
 </para>
 </para>
             </summary>
@@ -21789,7 +21622,7 @@ Return value: Bitmap Files (*.bmp)|*.bmp|Graphics Interchange Format (*.gif)|*.g
 The title of the Save File dialog used to save the image displayed in the <see cref="T:DevExpress.XtraEditors.PictureEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageEdit"/> editor to an external file.
 </para>
 <para>
-Return value: Save As
+<b>Return Value:</b> Save As
 </para>
 </para>
             </summary>
@@ -21800,7 +21633,7 @@ Return value: Save As
             <summary>
                 <para>The caption of print preview windows.
 <para>
-Return value: Preview:
+<b>Return Value:</b> Preview:
 </para>
 </para>
             </summary>
@@ -21891,7 +21724,7 @@ Return value: Preview:
             <summary>
                 <para>Specifies the default hint for the tab control's <b>Close</b> button.
 
-<para>Return value: Close</para>
+<para><b>Return Value</b>: Close</para>
 </para>
             </summary>
 
@@ -21901,7 +21734,7 @@ Return value: Preview:
             <summary>
                 <para>Specifies the default hint for the tab control's <b>Next</b> button which is used to scroll forwards through the tab pages.
 
-<para>Return value: Next</para>
+<para><b>Return Value</b>: Next</para>
 </para>
             </summary>
 
@@ -21911,7 +21744,7 @@ Return value: Preview:
             <summary>
                 <para>Specifies the default hint for the tab control's <b>Previous</b> button which is used to scroll backwards through the tab pages.
 
-<para>Return value: Previous</para>
+<para><b>Return Value</b>: Previous</para>
 </para>
             </summary>
 
@@ -21929,7 +21762,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to copy the selected contents of an editor.</para> 
 
-<para>Return value: Copy </para>
+<para><b>Return Value</b>: Copy </para>
 </para>
             </summary>
 
@@ -21939,7 +21772,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to cut the selected contents of an editor.</para> 
 
-<para>Return value: Cut </para>
+<para><b>Return Value</b>: Cut </para>
 </para>
             </summary>
 
@@ -21949,7 +21782,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to delete the selected contents of an editor.</para> 
 
-<para>Return value: Delete </para>
+<para><b>Return Value</b>: Delete </para>
 </para>
             </summary>
 
@@ -21959,7 +21792,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to replace the contents of an editor with the text held in the clipboard.</para> 
 
-<para>Return value: Paste</para>
+<para><b>Return Value</b>: Paste</para>
 </para>
             </summary>
 
@@ -21969,7 +21802,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to select the editor's content.</para> 
 
-<para>Return value: Select All</para>
+<para><b>Return Value</b>: Select All</para>
 </para>
             </summary>
 
@@ -21979,7 +21812,7 @@ Return value: Preview:
             <summary>
                 <para><para>Represents the caption of the menu item used to undo the last edit operation in the text box.</para> 
 
-<para>Return value: Undo</para>
+<para><b>Return Value</b>: Undo</para>
 </para>
             </summary>
 
@@ -21989,7 +21822,7 @@ Return value: Preview:
             <summary>
                 <para>The error message displayed when trying to assign a translucent background color to a control that doesn't support transparency.
 <para>
-Return value: This control does not support transparent background colors
+<b>Return Value:</b> This control does not support transparent background colors
 </para>
 </para>
             </summary>
@@ -21999,7 +21832,7 @@ Return value: This control does not support transparent background colors
         <member name="F:DevExpress.XtraEditors.Controls.StringId.UnknownPictureFormat">
             <summary>
                 <para><para>
-Return value: Unknown picture format
+<b>Return Value:</b> Unknown picture format
 </para>
 </para>
             </summary>
@@ -22009,7 +21842,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxAbortButtonText">
             <summary>
                 <para>Represents the caption of the <b>Abort</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Abort</para>
+<para><b>Return Value</b>: Abort</para>
 </para>
             </summary>
 
@@ -22018,7 +21851,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxCancelButtonText">
             <summary>
                 <para>Represents the caption of the <b>Cancel</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Cancel</para>
+<para><b>Return Value</b>: Cancel</para>
 </para>
             </summary>
 
@@ -22027,7 +21860,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxIgnoreButtonText">
             <summary>
                 <para>Represents the caption of the <b>Ignore</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Ignore</para>
+<para><b>Return Value</b>: Ignore</para>
 </para>
             </summary>
 
@@ -22036,7 +21869,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxNoButtonText">
             <summary>
                 <para>Represents the caption of the <b>No</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: No</para>
+<para><b>Return Value</b>: No</para>
 </para>
             </summary>
 
@@ -22045,7 +21878,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxOkButtonText">
             <summary>
                 <para>Represents the caption of the <b>Ok</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Ok</para>
+<para><b>Return Value</b>: Ok</para>
 </para>
             </summary>
 
@@ -22054,7 +21887,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxRetryButtonText">
             <summary>
                 <para>Represents the caption of the <b>Retry</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Retry</para>
+<para><b>Return Value</b>: Retry</para>
 </para>
             </summary>
 
@@ -22063,7 +21896,7 @@ Return value: Unknown picture format
         <member name="F:DevExpress.XtraEditors.Controls.StringId.XtraMessageBoxYesButtonText">
             <summary>
                 <para>Represents the caption of the <b>Yes</b> button in the <b>XtraMessageBox</b>.
-<para>Return value: Yes</para>
+<para><b>Return Value</b>: Yes</para>
 </para>
             </summary>
 
@@ -32975,7 +32808,7 @@ The Solid style is not supported in specific paint schemes.
         </member>
         <member name="P:DevExpress.XtraEditors.Controls.EditorButton.Caption">
             <summary>
-                <para>Gets or sets the caption text of the editor button.
+                <para>Gets or sets editor button caption text.
 </para>
             </summary>
             <value>A string specifying button caption text.
