@@ -83,7 +83,7 @@ namespace PharmInventory
             {
                 try
                 {
-                               string script = scriptFile.OpenText().ReadToEnd();
+                string script = scriptFile.OpenText().ReadToEnd();
                 SqlConnection conn = new SqlConnection(sqlConnectionString);
 
                 Server server = new Server(new ServerConnection(conn));
