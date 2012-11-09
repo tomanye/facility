@@ -185,10 +185,10 @@ namespace PharmInventory
                     frm = new LogInventory();
                     AddTab("Inventory Log", frm);
                     break;
-                //case "Stock Status":
-                //    frm = new ItemReport();
-                //    AddTab("Stock Status", frm);
-                //    break;
+                case "Stock Status":
+                    frm = new ItemReport();
+                    AddTab("Stock Status", frm);
+                    break;
                 case "Over Stocked":
                     frm = new OtherItemReport("Over Stocked");
                     AddTab("Over Stock Items", frm);
@@ -257,10 +257,10 @@ namespace PharmInventory
                     frm = new DatabaseActions();
                     AddTab("Database Actions", frm);
                     break;
-                //case "PDA":
-                //    frm = new ItemReport();
-                //    AddTab("Stock Status", frm);
-                //    break;
+                case "PDA":
+                    frm = new ItemReport();
+                    AddTab("Stock Status", frm);
+                    break;
                 case "Consumables List":
                     frm = new ManageSupplies();
                     AddTab("Supplies List", frm);
