@@ -805,15 +805,12 @@
         </member>
         <member name="M:DevExpress.Data.Linq.LinqInstantFeedbackSource.ExtractOriginalRow(System.Object)">
             <summary>
-                <para>This method is intended for internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="uiThreadRow">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -3315,11 +3312,9 @@ The <see cref="E:DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider.GetError
         </member>
         <member name="F:DevExpress.Xpo.DB.ModificationStatement.Parameters">
             <summary>
-                <para>Gets the collection of <see cref="T:DevExpress.Data.Filtering.OperandValue"/> objects.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -3575,52 +3570,6 @@ The <see cref="E:DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider.GetError
 </para>
             </summary>
             <returns> [To be supplied] </returns>
-
-
-        </member>
-        <member name="T:DevExpress.Xpo.DB.DBPrimaryKey">
-
-            <summary>
-                <para>Represents the primary key for a table.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor(System.Collections.ICollection)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with the specified columns that function as primary keys for a table.
-</para>
-            </summary>
-            <param name="columns">
-		A collection of strings that identify columns that function as primary keys for a table. This value is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Columns"/> property.
-
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor(System.String,System.Collections.ICollection)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with the specified name and columns that function as primary keys for a table.
-</para>
-            </summary>
-            <param name="name">
-		A <see cref="T:System.String"/> value that is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Name"/> property.
-
-            </param>
-            <param name="columns">
-		A collection of strings that identify columns that function as primary keys for a table. This value is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Columns"/> property.
-
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with default settings.
-</para>
-            </summary>
 
 
         </member>
@@ -4579,6 +4528,52 @@ The <see cref="E:DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider.GetError
 </para>
             </summary>
             <returns> [To be supplied] </returns>
+
+
+        </member>
+        <member name="T:DevExpress.Xpo.DB.DBPrimaryKey">
+
+            <summary>
+                <para>Represents the primary key for a table.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor(System.Collections.ICollection)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with the specified columns that function as primary keys for a table.
+</para>
+            </summary>
+            <param name="columns">
+		A collection of strings that identify columns that function as primary keys for a table. This value is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Columns"/> property.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor(System.String,System.Collections.ICollection)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with the specified name and columns that function as primary keys for a table.
+</para>
+            </summary>
+            <param name="name">
+		A <see cref="T:System.String"/> value that is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Name"/> property.
+
+            </param>
+            <param name="columns">
+		A collection of strings that identify columns that function as primary keys for a table. This value is assigned to the <see cref="F:DevExpress.Xpo.DB.DBTableMultiColumnGadget.Columns"/> property.
+
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.Xpo.DB.DBPrimaryKey.#ctor">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.Xpo.DB.DBPrimaryKey"/> class with default settings.
+</para>
+            </summary>
 
 
         </member>
@@ -6198,15 +6193,12 @@ The <see cref="E:DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider.GetError
         </member>
         <member name="M:DevExpress.Data.Filtering.FunctionOperator.GuessIsLogicalCustomFunction(DevExpress.Data.Filtering.FunctionOperator)">
             <summary>
-                <para>This method is intended for internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="theOperator">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -6331,19 +6323,15 @@ The operands are specified by the <see cref="P:DevExpress.Data.Filtering.Functio
         </member>
         <member name="M:DevExpress.Data.Filtering.CriteriaOperator.CriterionEquals(DevExpress.Data.Filtering.CriteriaOperator,DevExpress.Data.Filtering.CriteriaOperator)">
             <summary>
-                <para>This method is intended for internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="left">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
             <param name="right">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -8010,15 +7998,12 @@ The operands are specified by the <see cref="P:DevExpress.Data.Filtering.Functio
         </member>
         <member name="M:DevExpress.Data.Filtering.AggregateOperand.Single(DevExpress.Data.Filtering.CriteriaOperator)">
             <summary>
-                <para>For internal use only.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="aggregatedExpression">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -9916,8 +9901,7 @@ To create the addition operator using the <see cref="M:DevExpress.Data.Filtering
         </member>
         <member name="F:DevExpress.Data.Filtering.Aggregate.Single">
             <summary>
-                <para>Returns a single object from the collection. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -10605,11 +10589,9 @@ To create the addition operator using the <see cref="M:DevExpress.Data.Filtering
         </member>
         <member name="M:DevExpress.Utils.DXCollectionBase`1.ToArray">
             <summary>
-                <para>Copies the DXCollectionBase@lt;T@gt; elements to a new array.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>An array containing the <b>DXCollectionBase@lt;T@gt;</b> elements.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -11064,6 +11046,50 @@ To create the addition operator using the <see cref="M:DevExpress.Data.Filtering
 
 
         </member>
+        <member name="T:DevExpress.Data.Browsing.Design.TypeSpecificsService">
+
+            <summary>
+                <para>For internal use.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.#ctor">
+            <summary>
+                <para>Initializes a new instance of the TypeSpecificsService class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.GetPropertyTypeSpecifics(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+                <para>For internal use.
+</para>
+            </summary>
+            <param name="property">
+		@nbsp;
+
+            </param>
+            <returns>@nbsp;
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.GetTypeSpecifics(System.Type)">
+            <summary>
+                <para>For internal use.
+</para>
+            </summary>
+            <param name="type">
+		@nbsp;
+
+            </param>
+            <returns>@nbsp;
+</returns>
+
+
+        </member>
         <member name="T:DevExpress.XtraPrinting.DataNodes.GroupUnion">
 
             <summary>
@@ -11092,6 +11118,62 @@ To create the addition operator using the <see cref="M:DevExpress.Data.Filtering
         <member name="F:DevExpress.XtraPrinting.DataNodes.GroupUnion.WithFirstDetail">
             <summary>
                 <para>A group is split across several pages "as is". However, if there isn't enough space on a page to print a Group Header together with the following group row, they both are moved to the next page, so that a Group Header is never printed on a page alone (with no group rows below it). 
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags">
+
+            <summary>
+                <para>Lists the values that are used to choose a summary function that should be calculated in a report created using a Silverlight Report Wizard.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Avg">
+            <summary>
+                <para>The <b>Average</b> summary function is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Count">
+            <summary>
+                <para>The <b>Count</b> summary function is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Max">
+            <summary>
+                <para>The <b>Max</b> summary function is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Min">
+            <summary>
+                <para>The <b>Min</b> summary function is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.None">
+            <summary>
+                <para>No summary function is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Sum">
+            <summary>
+                <para>The <b>Sum</b> summary function is calculated.
 </para>
             </summary>
 
@@ -12460,47 +12542,41 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         <member name="T:DevExpress.Data.Filtering.FilterCondition">
 
             <summary>
-                <para>Contains enumeration values that specify comparison operation types used to create filter conditions.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="F:DevExpress.Data.Filtering.FilterCondition.Contains">
             <summary>
-                <para>Specifies the <b>Contains</b> comparison operation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.Data.Filtering.FilterCondition.Default">
             <summary>
-                <para>Specifies the default comparison operation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.Data.Filtering.FilterCondition.Equals">
             <summary>
-                <para>Specifies the <b>Equals</b> comparison operation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.Data.Filtering.FilterCondition.Like">
             <summary>
-                <para>Specifies the <b>Like</b> comparison operation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.Data.Filtering.FilterCondition.StartsWith">
             <summary>
-                <para>Specifies the <b>StartsWith</b> comparison operation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -12725,62 +12801,6 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
 
 
         </member>
-        <member name="T:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags">
-
-            <summary>
-                <para>Lists the values that are used to choose a summary function that should be calculated in a report created using a Silverlight Report Wizard.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Avg">
-            <summary>
-                <para>The <b>Average</b> summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Count">
-            <summary>
-                <para>The <b>Count</b> summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Max">
-            <summary>
-                <para>The <b>Max</b> summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Min">
-            <summary>
-                <para>The <b>Min</b> summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.None">
-            <summary>
-                <para>No summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Data.XtraReports.Wizard.SummaryOptionFlags.Sum">
-            <summary>
-                <para>The <b>Sum</b> summary function is calculated.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.Data.XtraReports.Wizard.ColumnNameSummaryOptions">
 
             <summary>
@@ -12924,6 +12944,59 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
 
 
         </member>
+        <member name="T:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1">
+
+            <summary>
+                <para>The base class for the <see cref="T:DevExpress.Data.XtraReports.DataProviders.DataSourceInfo"/>, <see cref="T:DevExpress.Data.XtraReports.DataProviders.TableInfo"/> and <see cref="T:DevExpress.Data.XtraReports.DataProviders.ColumnInfo"/> objects that are stored in a Report Wizard's model.
+</para>
+            </summary>
+
+        </member>
+        <member name="P:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.DisplayName">
+            <summary>
+                <para>Specifies the datasource display name for a Silverlight Report Wizard.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.Equals(System.Object)">
+            <summary>
+                <para>Determines whether or not the specified object is equal to the current EntityInfo@lt;TName@gt; instance.
+</para>
+            </summary>
+            <param name="obj">
+		The object to compare with the current object.
+
+            </param>
+            <returns><b>true</b> if the specified object is equal to the current EntityInfo@lt;TName@gt; instance; otherwise <b>false</b>.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.GetHashCode">
+            <summary>
+                <para>Gets the hash code (a number) that corresponds to the value of the current EntityInfo@lt;TName@gt; object.
+
+</para>
+            </summary>
+            <returns>An integer value representing the hash code for the current object.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.Name">
+            <summary>
+                <para>Specifies the datasource name.
+</para>
+            </summary>
+            <value>A TName object that is the name of the entity.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraEditors.FilterControlAllowAggregateEditing">
 
             <summary>
@@ -13027,12 +13100,10 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="M:DevExpress.Xpf.Printing.ServiceKnownTypeProvider.Register(System.Collections.Generic.IEnumerable`1)">
             <summary>
-                <para>Registers a collection of custom parameter types.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="types">
-		A collection of <see cref="T:System.Type"/> objects.
-
+		 [To be supplied] 
             </param>
 
 
@@ -13042,50 +13113,6 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
                 <para>Registers a custom parameter type.
 </para>
             </summary>
-
-
-        </member>
-        <member name="T:DevExpress.Data.Browsing.Design.TypeSpecificsService">
-
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.#ctor">
-            <summary>
-                <para>Initializes a new instance of the TypeSpecificsService class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.GetPropertyTypeSpecifics(System.ComponentModel.PropertyDescriptor)">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <param name="property">
-		@nbsp;
-
-            </param>
-            <returns>@nbsp;
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.Data.Browsing.Design.TypeSpecificsService.GetTypeSpecifics(System.Type)">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <param name="type">
-		@nbsp;
-
-            </param>
-            <returns>@nbsp;
-</returns>
 
 
         </member>
@@ -13274,8 +13301,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="P:DevExpress.Data.XtraReports.Wizard.CustomLabelInformation.Height">
             <summary>
-                <para>Specifies the height of a custom label.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <value>A <see cref="T:System.Single"/> structure, specifying the custom label's height.
 </value>
@@ -13284,8 +13310,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="P:DevExpress.Data.XtraReports.Wizard.CustomLabelInformation.HorizontalPitch">
             <summary>
-                <para>Specifies the horizontal pitch of a custom label.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <value>A <see cref="T:System.Single"/> structure, specifying the custom label's horizontal pitch.
 </value>
@@ -13324,8 +13349,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="P:DevExpress.Data.XtraReports.Wizard.CustomLabelInformation.VerticalPitch">
             <summary>
-                <para>Specifies the vertical pitch of a custom label.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <value>A <see cref="T:System.Single"/> structure, specifying the custom label's vertical pitch.
 </value>
@@ -13334,63 +13358,9 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="P:DevExpress.Data.XtraReports.Wizard.CustomLabelInformation.Width">
             <summary>
-                <para>Specifies the width of a custom label.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <value>A <see cref="T:System.Single"/> structure, specifying the custom label's width.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1">
-
-            <summary>
-                <para>The base class for the <see cref="T:DevExpress.Data.XtraReports.DataProviders.DataSourceInfo"/>, <see cref="T:DevExpress.Data.XtraReports.DataProviders.TableInfo"/> and <see cref="T:DevExpress.Data.XtraReports.DataProviders.ColumnInfo"/> objects that are stored in a Report Wizard's model.
-</para>
-            </summary>
-
-        </member>
-        <member name="P:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.DisplayName">
-            <summary>
-                <para>Specifies the datasource display name for a Silverlight Report Wizard.
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.Equals(System.Object)">
-            <summary>
-                <para>Determines whether or not the specified object is equal to the current EntityInfo@lt;TName@gt; instance.
-</para>
-            </summary>
-            <param name="obj">
-		The object to compare with the current object.
-
-            </param>
-            <returns><b>true</b> if the specified object is equal to the current EntityInfo@lt;TName@gt; instance; otherwise <b>false</b>.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.GetHashCode">
-            <summary>
-                <para>Gets the hash code (a number) that corresponds to the value of the current EntityInfo@lt;TName@gt; object.
-
-</para>
-            </summary>
-            <returns>An integer value representing the hash code for the current object.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.Data.XtraReports.DataProviders.EntityInfo`1.Name">
-            <summary>
-                <para>Specifies the datasource name.
-</para>
-            </summary>
-            <value>A TName object that is the name of the entity.
 </value>
 
 
@@ -14196,12 +14166,9 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="M:DevExpress.Data.XtraReports.Wizard.ReportModel.IsGrouped">
             <summary>
-                <para>Specifies whether or not there are groups in the report.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns><b>true</b> if the report contains groups; otherwise <b>false</b>.
-
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -16710,9 +16677,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="F:DevExpress.XtraPrinting.Localization.PreviewStringId.Msg_InvPropName">
             <summary>
-                <para>"<b>Invalid property name</b>"
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -16936,9 +16901,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="F:DevExpress.XtraPrinting.Localization.PreviewStringId.PageInfo_PageTotal">
             <summary>
-                <para>"<b>[Pages #]</b>"
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -16953,9 +16916,7 @@ Note that <see cref="T:System.DateTime"/> objects which have the same date porti
         </member>
         <member name="F:DevExpress.XtraPrinting.Localization.PreviewStringId.ParameterLookUpSettingsNoLookUp">
             <summary>
-                <para>"<b>No Look-Up</b>"
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -21457,7 +21418,7 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="M:DevExpress.XtraPrinting.ChangeEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.ChangeEventArgs)">
             <summary>
-                <para>A method that will handle the <b>BeforeChange</b> and <b>AfterChange</b> events of the <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> class and the <see cref="T:DevExpress.XtraPrinting.IPrintingSystem"/> interface.
+                <para>Represents a method that will handle the <b>BeforeChange</b> and <b>AfterChange</b> events of the <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> class and the <see cref="T:DevExpress.XtraPrinting.IPrintingSystem"/> interface.
 </para>
             </summary>
             <param name="sender">
@@ -21985,11 +21946,9 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="P:DevExpress.XtraPrinting.BrickStyle.IsJustified">
             <summary>
-                <para>Specifies whether or not the brick's alignment is justified.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value><b>true</b> is the brick has a justified alignment; otherwise <b>false</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -22761,11 +22720,9 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="P:DevExpress.XtraPrinting.BrickStringFormat.WordWrap">
             <summary>
-                <para>Gets a value, specifying whether or not word-wrapping is available for the brick's text.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value><b>true</b> if the word-wrapping is enabled; otherwise <b>false</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -23040,15 +22997,12 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="M:DevExpress.Xpo.DB.DataCacheRoot.GetStorageTablesList(System.Boolean)">
             <summary>
-                <para>Returns a list of all the tables available in a cached data store.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="includeViews">
-		<b>true</b>, to include views; otherwise, <b>false</b>
-
+		 [To be supplied] 
             </param>
-            <returns>An array of the table names in the cached data store.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -23152,15 +23106,12 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="M:DevExpress.Xpo.DB.DataCacheNode.GetStorageTablesList(System.Boolean)">
             <summary>
-                <para>Returns a list of all the tables available in a cached data store.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="includeViews">
-		<b>true</b>, to include views; otherwise, <b>false</b>.
-
+		 [To be supplied] 
             </param>
-            <returns>An array of the table names in the cached data store.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -23394,15 +23345,12 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="M:DevExpress.Xpo.DB.Helpers.DataCacheBase.GetStorageTablesList(System.Boolean)">
             <summary>
-                <para>This member supports the internal infrastructure and is not intended to be used directly from your code.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="includeViews">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
-            <returns>@nbsp;
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -23858,8 +23806,7 @@ based on the specified <b>Hashtable</b> object.
         </member>
         <member name="F:DevExpress.XtraPrinting.PageInfo.Total">
             <summary>
-                <para>Indicates that the total number of pages is displayed in the PageInfoBrick.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 

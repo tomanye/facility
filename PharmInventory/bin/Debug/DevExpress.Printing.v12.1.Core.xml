@@ -1856,7 +1856,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.CodeMSIGenerator.MSICheckSum">
             <summary>
-                <para>Gets or sets the checksum type for the barcode. 
+                <para>Gets or sets a value which specifies the checksum type for the MSI barcode. 
 
 </para>
             </summary>
@@ -1940,7 +1940,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.Interleaved2of5Generator.WideNarrowRatio">
             <summary>
-                <para>Gets or sets the density of a barcode's bars.
+                <para>Gets or sets the value which specifies the density of an Interleaved 2 of 5 barcode's bars.
 
 </para>
             </summary>
@@ -2032,7 +2032,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.EAN128Generator.FNC1Substitute">
             <summary>
-                <para>Gets or sets the symbol (or set of symbols) in the barcode's text that will be replaced with the <b>FNC1</b> functional character when the barcode's bars are drawn.
+                <para>Gets or sets the symbol (or set of symbols) in the EAN 128 barcode's text which will be replaced with the <b>FNC1</b> functional character when the barcode's bars are drawn.
 
 </para>
             </summary>
@@ -2043,7 +2043,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.EAN128Generator.HumanReadableText">
             <summary>
-                <para>Gets or sets whether parentheses should be included in the barcode's text.
+                <para>Gets or sets a value indicating whether parentheses should be included in the EAN 128 barcode's text.
 
 
 </para>
@@ -2117,7 +2117,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.Industrial2of5Generator.WideNarrowRatio">
             <summary>
-                <para>Gets or sets the density of a barcode's bars.
+                <para>Gets or sets the value which specifies the density of an Industrial 2 of 5 barcode's bars.
 
 </para>
             </summary>
@@ -2234,7 +2234,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.Code128Generator.CharacterSet">
             <summary>
-                <para>Gets or sets the charset type for the barcode. 
+                <para>Gets or sets the value specifying the charset type for the Code 128 barcode. 
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.Code128Charset"/> enumeration value that specifies a charset to be used.
@@ -2318,7 +2318,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.CodabarGenerator.StartStopPair">
             <summary>
-                <para>Gets or sets the first (start) and last (stop) symbols used to code the barcode's structure. 
+                <para>Gets or sets the value specifying the first (start) and last (stop) symbols used to code the Codabar barcode's structure. 
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.CodabarStartStopPair"/> enumeration value that specifies the pair of start and stop symbols used.
@@ -2339,7 +2339,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.CodabarGenerator.WideNarrowRatio">
             <summary>
-                <para>Gets or sets the density of a barcode's bars.
+                <para>Gets or sets the value which specifies the density of a Codabar barcode's bars.
 </para>
             </summary>
             <value>A float value specifying the density of a barcode's bars.
@@ -2402,7 +2402,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.Code39Generator.WideNarrowRatio">
             <summary>
-                <para>Gets or sets the density of a barcode's bars.
+                <para>Gets or sets the value which specifies the density of a Code 39 barcode's bars.
 </para>
             </summary>
             <value>A float value specifying the density of a barcode's bars.
@@ -2420,7 +2420,7 @@
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.BarCodeGeneratorBase.CalcCheckSum">
             <summary>
-                <para>Gets or sets whether to calculate a checksum for the barcode.
+                <para>Gets or sets a value specifying whether to calculate a checksum for the barcode.
 </para>
             </summary>
             <value><b>true</b> if the barcode object needs a checksum to be calculated; otherwise, <b>false</b>.
@@ -2597,14 +2597,14 @@
         <member name="T:DevExpress.XtraPrinting.BarCode.BarCodeOrientation">
 
             <summary>
-                <para>Specifies by what angle a barcode is rotated.
+                <para>Specifies by what angle a printed barcode is rotated.
 </para>
             </summary>
 
         </member>
         <member name="F:DevExpress.XtraPrinting.BarCode.BarCodeOrientation.Normal">
             <summary>
-                <para>A barcode is displayed in its normal orientation.
+                <para>A barcode is printed in its normal orientation.
 </para>
             </summary>
 
@@ -5732,12 +5732,10 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="M:DevExpress.XtraPrinting.ProgressReflector.EnsureRangeDecrement(DevExpress.Utils.Action0)">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="action">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
 
 
@@ -6148,11 +6146,9 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="P:DevExpress.XtraPrinting.CompositeBrick.InnerBricks">
             <summary>
-                <para>Provides access to the inner bricks of CompositeBrick.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A collection of <see cref="T:DevExpress.XtraPrinting.BrickBase"/> descendants.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -7488,16 +7484,6 @@ This is supported only by the DXPrinting for WPF library.
 
 
         </member>
-        <member name="P:DevExpress.XtraPrinting.LinkBase.Owner">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.LinkBase"/> descendant.
-</value>
-
-
-        </member>
         <member name="P:DevExpress.XtraPrinting.LinkBase.PageHeaderFooter">
             <summary>
                 <para>Gets or sets the object used to fill the document's area that is occupied by the page header and page footer. 
@@ -7783,52 +7769,6 @@ This is supported only by the DXPrinting for WPF library.
 
 
         </member>
-        <member name="T:DevExpress.XtraReports.Parameters.StaticListLookUpSettings">
-
-            <summary>
-                <para>Provides the look-up editor settings for report parameters that are not bound to a datasource.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraReports.Parameters.StaticListLookUpSettings.#ctor">
-            <summary>
-                <para>Initializes a new instance of the StaticListLookUpSettings class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.Parameters.StaticListLookUpSettings.LookUpValues">
-            <summary>
-                <para>Provides access to the list of static values for the report parameter.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraReports.Parameters.LookUpValueCollection"/> object.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraReports.Parameters.LookUpSettings">
-
-            <summary>
-                <para>The base class for classes that provide the look-up editor settings for report parameters.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="P:DevExpress.XtraReports.Parameters.LookUpSettings.Parameter">
-            <summary>
-                <para>Specifies the report parameter, with which the LookUpSettings object is associated.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraReports.Parameters.Parameter"/> object.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraPrinting.ChangingPermissions">
 
             <summary>
@@ -8014,7 +7954,7 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="M:DevExpress.XtraPrinting.ExceptionEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.ExceptionEventArgs)">
             <summary>
-                <para>A method that will handle the <see cref="P:DevExpress.XtraPrinting.ExceptionEventArgs.Exception"/> event.
+                <para>Represents a method that will handle the <see cref="P:DevExpress.XtraPrinting.ExceptionEventArgs.Exception"/> event.
 
 </para>
             </summary>
@@ -8266,16 +8206,6 @@ This is supported only by the DXPrinting for WPF library.
 
         </member>
         <member name="P:DevExpress.XtraPrinting.PdfPermissionsOptions.EnableCoping">
-            <summary>
-                <para>Specifies the permissions for copying the exported PDF document.
-</para>
-            </summary>
-            <value><b>true</b> to enable document copying; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.PdfPermissionsOptions.EnableCopying">
             <summary>
                 <para>Specifies the permissions for copying the exported PDF document.
 </para>
@@ -8772,44 +8702,6 @@ This is supported only by the DXPrinting for WPF library.
             </summary>
             <value><b>true</b> if the paper kind value of the default printer settings is used; otherwise, <b>false</b>.
 
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator">
-
-            <summary>
-                <para>Generates an How to: Add Barcode of Intelligent Mail Type to Report barcode.
-
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.#ctor">
-            <summary>
-                <para>Initializes a new instance of the IntelligentMailGenerator class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.CalcCheckSum">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <value>A Boolean value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.SymbologyCode">
-            <summary>
-                <para>For internal use. Gets the barcode symbology for the current generator object. 
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.Native.BarCodeSymbology"/> enumeration value.
 </value>
 
 
@@ -9324,425 +9216,6 @@ This is supported only by the DXPrinting for WPF library.
 
 
         </member>
-        <member name="T:DevExpress.XtraReports.ServiceModel.DataContracts.XRBindingProxy">
-
-            <summary>
-                <para>For internal use. Contains an <see cref="T:DevExpress.XtraReports.UI.XRBinding"/>'s description for passing it to a Report Designer.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraReports.ServiceModel.DataContracts.XRBindingProxy.#ctor">
-            <summary>
-                <para>Initializes a new instance of the XRBindingProxy class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.XRBindingProxy.DataMember">
-            <summary>
-                <para>Specifies the report's data member.
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.XRBindingProxy.DataSource">
-            <summary>
-                <para>Specifies the report's datasource.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraReports.ServiceModel.DataContracts.DataSourceId"/> object.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraReports.ServiceModel.DataContracts.FieldInfo">
-
-            <summary>
-                <para>For internal use. Provides information about a Field List data item.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraReports.ServiceModel.DataContracts.FieldInfo.#ctor">
-            <summary>
-                <para>Initializes a new instance of the FieldInfo class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.FieldInfo.Binding">
-            <summary>
-                <para>Provides information about a Field List item's data bindings.
-</para>
-            </summary>
-            <value>An <see cref="T:DevExpress.XtraReports.ServiceModel.DataContracts.XRBindingProxy"/> object.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.FieldInfo.Specifics">
-            <summary>
-                <para>Provides additional information about a Field List item.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Data.Browsing.Design.TypeSpecifics"/> enumeration value.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.Printing.Core.FieldListNodeSpecifics">
-
-            <summary>
-                <para>Lists the values specifying the information related to a Field List node.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Array">
-            <summary>
-                <para>The Array item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Bool">
-            <summary>
-                <para>The Boolean item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcBool">
-            <summary>
-                <para>The Boolean Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcDate">
-            <summary>
-                <para>The Date-Time Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcDefault">
-            <summary>
-                <para>The Default Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcFloat">
-            <summary>
-                <para>The Float Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcInteger">
-            <summary>
-                <para>The Integer Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.CalcString">
-            <summary>
-                <para>The String Calculated Field item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ControlCheckBox">
-            <summary>
-                <para>The CheckBox Control item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ControlLabel">
-            <summary>
-                <para>The Label Control item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ControlLine">
-            <summary>
-                <para>The Line Control item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ControlPictureBox">
-            <summary>
-                <para>The PictureBox Control item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ControlShape">
-            <summary>
-                <para>The Shape Control item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Date">
-            <summary>
-                <para>The Date item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Default">
-            <summary>
-                <para>The Default item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Float">
-            <summary>
-                <para>The Float item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.Integer">
-            <summary>
-                <para>The Integer item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.List">
-            <summary>
-                <para>The List item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ListOfParameters">
-            <summary>
-                <para>The List of Parameters item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.ListSource">
-            <summary>
-                <para>The List Datasource item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.None">
-            <summary>
-                <para>The None item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Printing.Core.FieldListNodeSpecifics.String">
-            <summary>
-                <para>The String item kind.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraReports.ServiceModel.DataContracts.DocumentExportArgs">
-
-            <summary>
-                <para>Stores the arguments required to export a document (its format and export options).
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraReports.ServiceModel.DataContracts.DocumentExportArgs.#ctor">
-            <summary>
-                <para>Initializes a new instance of the DocumentExportArgs class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.DocumentExportArgs.Format">
-            <summary>
-                <para>Specifies the document's export format.
-</para>
-            </summary>
-            <value>An <see cref="T:DevExpress.XtraPrinting.ExportFormat"/> enumeration value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.DocumentExportArgs.SerializedExportOptions">
-            <summary>
-                <para>Specifies the export options of a document, serialized to a <see cref="T:System.Byte"/> array.
-</para>
-            </summary>
-            <value>An array of <see cref="T:System.Byte"/> values.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraReports.ServiceModel.DataContracts.ReportBuildArgs">
-
-            <summary>
-                <para>Stores the arguments required to create a report (its watermark and page settings, as well as parameters).
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraReports.ServiceModel.DataContracts.ReportBuildArgs.#ctor">
-            <summary>
-                <para>Initializes a new instance of the ReportBuildArgs class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.ReportBuildArgs.Parameters">
-            <summary>
-                <para>Specifies the report's parameters.
-</para>
-            </summary>
-            <value>An array of <see cref="T:DevExpress.XtraReports.ServiceModel.DataContracts.ReportParameter"/> objects.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.ReportBuildArgs.SerializedPageData">
-            <summary>
-                <para>Specifies the contents of a page, serialized to a <see cref="T:System.Byte"/> array.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Byte"/> array.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.ReportBuildArgs.SerializedWatermark">
-            <summary>
-                <para>Specifies the watermark settings of a page, serialized to a <see cref="T:System.Byte"/> array.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Byte"/> array.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraReports.ServiceModel.DataContracts.PageCompatibility">
-
-            <summary>
-                <para>Lists the values that specify the compatibility mode of a document.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraReports.ServiceModel.DataContracts.PageCompatibility.Prnx">
-            <summary>
-                <para>The document is PRNX-compatible.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraReports.ServiceModel.DataContracts.PageCompatibility.Silverlight">
-            <summary>
-                <para>The document is Silverlight-compatible.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraReports.ServiceModel.DataContracts.PageCompatibility.WPF">
-            <summary>
-                <para>The document is WPF-compatible.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity">
-
-            <summary>
-                <para>The report identifier.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity.#ctor(System.String)">
-            <summary>
-                <para>Initializes a new instance of the InstanceIdentity class with the specified value.
-</para>
-            </summary>
-            <param name="value">
-		A <see cref="T:System.String"/> value, specifying the report name.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity.#ctor">
-            <summary>
-                <para>Initializes a new instance of the InstanceIdentity class with default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity.GenerateNew">
-            <summary>
-                <para>Generates a unique report identifier.
-</para>
-            </summary>
-            <returns>An <see cref="T:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity"/> object.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.Xpf.Printing.ServiceModel.DataContracts.InstanceIdentity.Value">
-            <summary>
-                <para>Specifies the name that identifies the report instance.
-</para>
-            </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraPrinting.Export.BrickViewData">
 
             <summary>
@@ -9933,16 +9406,6 @@ This is supported only by the DXPrinting for WPF library.
             </summary>
             <value>A string, characterizing the brick's type. Always returns "Line".
 </value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.LineBrick.Clone">
-            <summary>
-                <para>Creates a new LineBrick instance, which is a copy of the current instance. 
-</para>
-            </summary>
-            <returns>A new LineBrick instance, which is a copy of the current instance. 
-</returns>
 
 
         </member>
@@ -10264,77 +9727,42 @@ This is supported only by the DXPrinting for WPF library.
         <member name="T:DevExpress.XtraReports.Parameters.LookUpValueCollection">
 
             <summary>
-                <para>A collection of <see cref="T:DevExpress.XtraReports.Parameters.LookUpValue"/> objects.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpValueCollection.#ctor">
             <summary>
-                <para>Initializes a new instance of the LookUpValueCollection class with default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraReports.Parameters.LookUpValueCollection.AddRange(System.Collections.Generic.IEnumerable`1)">
-            <summary>
-                <para>Appends an array of look-up values to the collection.
-</para>
-            </summary>
-            <param name="values">
-		An array of <see cref="T:DevExpress.XtraReports.Parameters.LookUpValue"/> objects to append to the collection.
-
-            </param>
 
 
         </member>
         <member name="T:DevExpress.XtraReports.Parameters.LookUpValue">
 
             <summary>
-                <para>A parameter's value that is shown in its look-up editor for end-users.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpValue.#ctor">
             <summary>
-                <para>Initializes a new instance of the LookUpValue class with default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraReports.Parameters.LookUpValue.#ctor(System.Object,System.String)">
-            <summary>
-                <para>Initializes a new instance of the LookUpValue class with the specified settings.
-</para>
-            </summary>
-            <param name="value">
-		A <see cref="T:System.Object"/> value.
-
-            </param>
-            <param name="description">
-		A <see cref="T:System.String"/> value.
-
-            </param>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.LookUpValue.Description">
             <summary>
-                <para>Specifies the parameter value description.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="F:DevExpress.XtraReports.Parameters.LookUpValue.DescriptionPropertyName">
             <summary>
-                <para>"<b>Description</b>"
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <returns> [To be supplied] </returns>
 
@@ -10342,42 +9770,34 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpValue.Equals(System.Object)">
             <summary>
-                <para>Determines whether or not the specified object is equal to the current LookUpValue instance.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="obj">
-		The object to compare with the current object.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if the specified object is equal to the current LookUpValue instance; otherwise <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpValue.GetHashCode">
             <summary>
-                <para>Gets the hash code (a number) that corresponds to the value of the current LookUpValue object.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>An integer value, specifying the hash code for the current object.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.LookUpValue.Value">
             <summary>
-                <para>Specifies the parameter value.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.Object"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="F:DevExpress.XtraReports.Parameters.LookUpValue.ValuePropertyName">
             <summary>
-                <para>"<b>Value</b>"
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <returns> [To be supplied] </returns>
 
@@ -10393,29 +9813,23 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpHelper.GetCorrectedLookUpDataInfo(DevExpress.XtraReports.Parameters.DynamicListLookUpSettings)">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="dynamicListLookUpSettings">
-		A <see cref="T:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings"/> object.
-
+		 [To be supplied] 
             </param>
-            <returns>A <see cref="T:DevExpress.XtraReports.Parameters.LookUpDataInfo"/> object.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpHelper.GetLookUpValues(DevExpress.XtraReports.Parameters.LookUpSettings)">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="lookUpSettings">
-		A <see cref="T:DevExpress.XtraReports.Parameters.LookUpSettings"/> object.
-
+		 [To be supplied] 
             </param>
-            <returns>A <see cref="T:DevExpress.XtraReports.Parameters.LookUpValueCollection"/> object.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -10429,106 +9843,173 @@ This is supported only by the DXPrinting for WPF library.
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.LookUpDataInfo.#ctor">
             <summary>
-                <para>Initializes a new instance of the LookUpDataInfo class with default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.LookUpDataInfo.DataSource">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.Object"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.LookUpDataInfo.DisplayMember">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.LookUpDataInfo.ValueMember">
             <summary>
-                <para>For internal use.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings">
 
             <summary>
-                <para>Provides the look-up editor settings for report parameters that are bound to a datasource.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.#ctor">
             <summary>
-                <para>Initializes a new instance of the DynamicListLookUpSettings class with default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.DataAdapter">
             <summary>
-                <para>Specifies the data adapter for the report parameter.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.Object"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.DataMember">
             <summary>
-                <para>Specifies the data member name for the report parameter.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.DataSource">
             <summary>
-                <para>Specifies the data source for the report parameter.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.Object"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.DisplayMember">
             <summary>
-                <para>Specifies the data member for the report parameter's display name.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.GetEffectiveDataSource">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <returns> [To be supplied] </returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.GetSerializableDataSource">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.DynamicListLookUpSettings.ValueMember">
             <summary>
-                <para>Specifies the data member for the report parameter's value.
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraReports.Parameters.StaticListLookUpSettings">
+
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraReports.Parameters.StaticListLookUpSettings.#ctor">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraReports.Parameters.StaticListLookUpSettings.LookUpValues">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraReports.Parameters.LookUpSettings">
+
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraReports.Parameters.LookUpSettings.Parameter">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator">
+
+            <summary>
+                <para>Generates an Intelligent Mail barcode.
+
+
 </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+
+        </member>
+        <member name="M:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.#ctor">
+            <summary>
+                <para>Initializes a new instance of the IntelligentMailGenerator class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.CalcCheckSum">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.IntelligentMailGenerator.SymbologyCode">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -11209,6 +10690,13 @@ landscape
             <summary>
                 <para>Clears the current document. 
 </para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraPrinting.PrintingSystemBase.ConnectVerticalCrossBandLines">
+            <summary>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -12155,14 +11643,6 @@ landscape
 
 
         </member>
-        <member name="E:DevExpress.XtraPrinting.PrintingSystemBase.ProcessBricks">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-
-
-        </member>
         <member name="P:DevExpress.XtraPrinting.PrintingSystemBase.ProgressReflector">
             <summary>
                 <para>Provides access to the object that reflects the current state of a document's generating or exporting. 
@@ -12531,7 +12011,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.PDF417Generator.CompactionMode">
             <summary>
-                <para>Gets or sets whether textual information or a byte array should be used as the barcode's data.
+                <para>Specifies whether textual information or a byte array should be used as the barcode's data.
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.PDF417CompactionMode"/> enumeration value.
@@ -12541,7 +12021,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.PDF417Generator.ErrorCorrectionLevel">
             <summary>
-                <para>Gets or sets the amount of redundancy built into the barcode's coding, to compensate for calculation errors. 
+                <para>Determines the amount of redundancy built into the barcode's coding, to compensate for calculation errors. 
 </para>
             </summary>
             <value>An <see cref="T:DevExpress.XtraPrinting.BarCode.ErrorCorrectionLevel"/> enumeration value, specifying the error correction level.
@@ -12572,7 +12052,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.PDF417Generator.TruncateSymbol">
             <summary>
-                <para>Gets or sets whether the special end-symbol should be appended to the barcode. 
+                <para>Gets or sets a value indicating whether the special end-symbol should be appended to the barcode. 
 </para>
             </summary>
             <value><b>true</b> if the end symbol should be appended; otherwise, <b>false</b>.
@@ -12582,81 +12062,10 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.PDF417Generator.YToXRatio">
             <summary>
-                <para>Gets or sets the height-to-width ratio of a logical unit's graphic representation. 
+                <para>Gets or sets a value specifying the height-to-width ratio of a logical unit's graphic representation. 
 </para>
             </summary>
             <value>A <see cref="T:System.Single"/> value specifying the height-to-width ratio of a logical unit's graphic representation. 
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeGenerator">
-
-            <summary>
-                <para>Generates a How to: Add Barcode of QR Code Type to Report barcode.
-
-
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.#ctor(DevExpress.XtraPrinting.BarCode.QRCodeGenerator)">
-            <summary>
-                <para>For internal use. Initializes a new instance of the QRCodeGenerator class with the specified source.
-</para>
-            </summary>
-            <param name="source">
-		A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeGenerator"/> object.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.#ctor">
-            <summary>
-                <para>For internal use. Initializes a new instance of the QRCodeGenerator class with the default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.CompactionMode">
-            <summary>
-                <para>Gets or sets whether numeric, alpha-numeric or byte information should be used as the barcode's data.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode"/> enumeration value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.ErrorCorrectionLevel">
-            <summary>
-                <para>Gets or sets the amount of redundancy built into the barcode's coding, to compensate for calculation errors. 
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeErrorCorrectionLevel"/> enumeration value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.SymbologyCode">
-            <summary>
-                <para>For internal use. Gets the barcode symbology for the current generator object. 
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.Native.BarCodeSymbology"/> enumeration value.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.Version">
-            <summary>
-                <para>Gets or sets the barcode's size.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeVersion"/> enumeration value.
 </value>
 
 
@@ -12831,6 +12240,109 @@ landscape
             </summary>
             <value>A <see cref="T:System.String"/> value.
 </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeGenerator">
+
+            <summary>
+                <para>Generates a QR Code barcode.
+
+
+
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.#ctor(DevExpress.XtraPrinting.BarCode.QRCodeGenerator)">
+            <summary>
+                <para>For internal use. Initializes a new instance of the QRCodeGenerator class with the specified source.
+</para>
+            </summary>
+            <param name="source">
+		A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeGenerator"/> object.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.#ctor">
+            <summary>
+                <para>For internal use. Initializes a new instance of the QRCodeGenerator class with the default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.CompactionMode">
+            <summary>
+                <para>Specifies whether numeric, alpha-numeric or byte information should be used as the barcode's data.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.ErrorCorrectionLevel">
+            <summary>
+                <para>Determines the amount of redundancy built into the barcode's coding, to compensate for calculation errors. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeErrorCorrectionLevel"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.SymbologyCode">
+            <summary>
+                <para>For internal use. Gets the barcode symbology for the current generator object. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.Native.BarCodeSymbology"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPrinting.BarCode.QRCodeGenerator.Version">
+            <summary>
+                <para>Specifies the barcode's size.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.BarCode.QRCodeVersion"/> enumeration value.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode">
+
+            <summary>
+                <para>Specifies the kind of data that should be coded into the QR Code.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.AlphaNumeric">
+            <summary>
+                <para>A combination of alphabetic and numeric characters is encoded. Max. <b>4,296</b> characters.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.Byte">
+            <summary>
+                <para>Binary data is encoded. Max. <b>2,953</b> bytes.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.Numeric">
+            <summary>
+                <para>Numeric data is encoded. Max. <b>7,089</b> characters.
+</para>
+            </summary>
 
 
         </member>
@@ -13421,11 +12933,9 @@ landscape
         </member>
         <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.ReportParameter.LookUpValues">
             <summary>
-                <para>Specifies the collection of values for the parameter's look-up editor.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraReports.Parameters.LookUpValueCollection"/> object.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -13576,7 +13086,7 @@ landscape
         <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeVersion">
 
             <summary>
-                <para>Lists the values used to specify the How to: Add Barcode of QR Code Type to Report barcode's size.
+                <para>Lists the values used to specify the QR Code barcode's size.
 </para>
             </summary>
 
@@ -13912,7 +13422,7 @@ landscape
         <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeErrorCorrectionLevel">
 
             <summary>
-                <para>Specifies the amount of redundancy built into the coding of the How to: Add Barcode of QR Code Type to Report to compensate for calculation errors.
+                <para>Specifies the amount of redundancy built into the coding of the QR Code to compensate for calculation errors.
 
 </para>
             </summary>
@@ -13949,38 +13459,6 @@ landscape
             <summary>
                 <para><b>25</b>% codewords can be restored.
 
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode">
-
-            <summary>
-                <para>Specifies the kind of data that should be coded into the How to: Add Barcode of QR Code Type to Report.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.AlphaNumeric">
-            <summary>
-                <para>A combination of alphabetic and numeric characters is encoded. Max. <b>4,296</b> characters.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.Byte">
-            <summary>
-                <para>Binary data is encoded. Max. <b>2,953</b> bytes.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraPrinting.BarCode.QRCodeCompactionMode.Numeric">
-            <summary>
-                <para>Numeric data is encoded. Max. <b>7,089</b> characters.
 </para>
             </summary>
 
@@ -14105,11 +13583,9 @@ landscape
         </member>
         <member name="P:DevExpress.XtraReports.ServiceModel.DataContracts.ReportParameterContainer.Parameters">
             <summary>
-                <para>Specifies the parameters available in a report.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An array of <see cref="T:DevExpress.XtraReports.Parameters.Parameter"/> objects.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -14315,18 +13791,16 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.IBarCodeData.Text">
             <summary>
-                <para>Gets the barcode's text. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:System.String"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraPrinting.BarCode.DataMatrixGenerator">
 
             <summary>
-                <para>Generates a How to: Add Barcode of Data Matrix (ECC200) Type to Report barcode. 
+                <para>Generates a Data Matrix (ECC200) barcode. 
 </para>
             </summary>
 
@@ -14353,7 +13827,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.CompactionMode">
             <summary>
-                <para>Gets or sets whether textual information or a byte array should be used as the barcode's data, as well as its encoding. 
+                <para>Specifies whether textual information or a byte array should be used as the barcode's data, as well as its encoding. 
 
 </para>
             </summary>
@@ -14364,7 +13838,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.BarCode.DataMatrixGenerator.MatrixSize">
             <summary>
-                <para>Gets or sets the barcode matrix size. 
+                <para>Specifies the barcode matrix size. 
 
 </para>
             </summary>
@@ -14424,7 +13898,7 @@ landscape
         <member name="T:DevExpress.XtraPrinting.BarCode.DataMatrixSize">
 
             <summary>
-                <para>Lists the available data matrix size options related to the How to: Add Barcode of Data Matrix (ECC200) Type to Report barcode.
+                <para>Lists the available data matrix size options related to the Data Matrix (ECC200) barcode.
 </para>
             </summary>
 
@@ -14680,7 +14154,7 @@ landscape
         <member name="T:DevExpress.XtraPrinting.BarCode.DataMatrixCompactionMode">
 
             <summary>
-                <para>Specifies the kind of data that should be coded into the How to: Add Barcode of Data Matrix (ECC200) Type to Report and How to: Add Barcode of PDF417 Type to Report barcodes. 
+                <para>Specifies the kind of data that should be coded into the Data Matrix (ECC200) and PDF417 barcodes. 
 
 </para>
             </summary>
@@ -14885,7 +14359,7 @@ landscape
         <member name="T:DevExpress.XtraReports.Parameters.Parameter">
 
             <summary>
-                <para>Provides functionality to a report parameter.
+                <para>Represents a parameter.
 </para>
             </summary>
 
@@ -14910,11 +14384,9 @@ landscape
         </member>
         <member name="P:DevExpress.XtraReports.Parameters.Parameter.LookUpSettings">
             <summary>
-                <para>Specifies the look-up editor settings of the parameter.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraReports.Parameters.LookUpSettings"/> object.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15289,7 +14761,7 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.PageEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.PageEventArgs)">
             <summary>
-                <para>A method that will handle all page events within the <b>XtraPrinting Library</b>.
+                <para>Represents a method that will handle all page events within the <b>XtraPrinting Library</b>.
 </para>
             </summary>
             <param name="sender">
@@ -15636,7 +15108,7 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.CreateAreaEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.CreateAreaEventArgs)">
             <summary>
-                <para>A method that will handle all creation events of the <see cref="T:DevExpress.XtraPrinting.Link"/> class.
+                <para>Represents a method that will handle all creation events of the <see cref="T:DevExpress.XtraPrinting.Link"/> class.
 </para>
             </summary>
             <param name="sender">
@@ -15890,7 +15362,7 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.MarginsChangeEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.MarginsChangeEventArgs)">
             <summary>
-                <para>A method that will handle the <see cref="E:DevExpress.XtraPrinting.PrintingSystemBase.BeforeMarginsChange"/> and <see cref="E:DevExpress.XtraPrinting.PrintingSystemBase.AfterMarginsChange"/> events of the <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> class.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPrinting.PrintingSystemBase.BeforeMarginsChange"/> and <see cref="E:DevExpress.XtraPrinting.PrintingSystemBase.AfterMarginsChange"/> events of the <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> class.
 </para>
             </summary>
             <param name="sender">
@@ -16597,7 +16069,7 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.TextBrick.XlsxFormatString">
             <summary>
-                <para>Gets or sets the format settings used when a document is exported to XLSX format. 
+                <para>Gets or sets the format settings used when a document is exported to XLS format. 
 </para>
             </summary>
             <value>A <see cref="T:System.String"/> value, representing the format string.
@@ -16608,7 +16080,7 @@ landscape
         <member name="T:DevExpress.XtraPrinting.PageList">
 
             <summary>
-                <para>A collection of <see cref="T:DevExpress.XtraPrinting.Page"/> objects.
+                <para>Represents a <see cref="T:DevExpress.XtraPrinting.Page"/> class instance collection.
 </para>
             </summary>
 
@@ -16662,19 +16134,16 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.PageList.Clear">
             <summary>
-                <para>Clears the collection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraPrinting.PageList.Count">
             <summary>
-                <para>Counts the number of items in the collection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An integer value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -16690,11 +16159,9 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.PageList.GetEnumerator">
             <summary>
-                <para>Obtains the collection's enumerator.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>An object implementing the <see cref="T:System.Collections.IEnumerator"/> interface.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -16769,12 +16236,10 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.PageList.RemoveAt(System.Int32)">
             <summary>
-                <para>Removes the collection's item at the specified position.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="index">
-		An integer value.
-
+		 [To be supplied] 
             </param>
 
 
@@ -17009,11 +16474,9 @@ landscape
         </member>
         <member name="P:DevExpress.XtraPrinting.Page.InnerBricks">
             <summary>
-                <para>Provides access to the inner bricks of Page.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A collection of <see cref="T:DevExpress.XtraPrinting.BrickBase"/> descendants.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -17545,11 +17008,9 @@ landscape
         </member>
         <member name="M:DevExpress.XtraPrinting.CheckBoxBrick.GetCheckValue">
             <summary>
-                <para>Returns the check box birck's state.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>A nullable Boolean value.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -18258,16 +17719,6 @@ landscape
 
 
         </member>
-        <member name="P:DevExpress.XtraPrinting.Brick.IsVisible">
-            <summary>
-                <para>Specifies the visibility of Brick.
-</para>
-            </summary>
-            <value><b>true</b> if the brick is visible; otherwise <b>false</b>.
-</value>
-
-
-        </member>
         <member name="P:DevExpress.XtraPrinting.Brick.Parent">
             <summary>
                 <para>Gets or sets the parent document band for the current brick.
@@ -18307,38 +17758,6 @@ landscape
             </summary>
             <value>A rectangle representing the current brick location and size.
 </value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.Brick.SafeGetAttachedValue(System.String,System.Object)">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <param name="propertyName">
-		A <see cref="T:System.String"/> value.
-
-            </param>
-            <param name="defaultValue">
-		A <see cref="T:System.Object"/> value.
-
-            </param>
-            <returns>A <see cref="T:System.Object"/> value.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraPrinting.Brick.SafeGetAttachedValue``1(System.String)">
-            <summary>
-                <para>For internal use.
-</para>
-            </summary>
-            <param name="propertyName">
-		A <see cref="T:System.String"/> value.
-
-            </param>
-            <returns>@nbsp;
-</returns>
 
 
         </member>

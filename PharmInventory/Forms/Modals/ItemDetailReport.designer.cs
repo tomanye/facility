@@ -1911,7 +1911,6 @@ namespace PharmInventory.Forms.Modals
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
-            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.printableComponentLink1.PrintingSystem = this.printingSystem2;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem2;
