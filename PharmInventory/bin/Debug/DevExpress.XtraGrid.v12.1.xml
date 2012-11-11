@@ -5168,6 +5168,56 @@ The default detail is identified by the <see cref="P:DevExpress.XtraGrid.Views.G
 
 
         </member>
+        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances">
+
+            <summary>
+                <para>Provides the appearance settings used to paint the elements in a Banded Grid View.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.#ctor(DevExpress.XtraGrid.Views.Base.BaseView)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandedViewPrintAppearances"/> class with the specified owning View.
+</para>
+            </summary>
+            <param name="view">
+		A <see cref="T:DevExpress.XtraGrid.Views.Base.BaseView"/> descendant representing the View that will own the created collection. 
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.BandPanel">
+            <summary>
+                <para>Gets the appearance settings used to paint band headers.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint band headers.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.BandPanelBackground">
+            <summary>
+                <para>Gets the appearance settings used to paint the band panel's background.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint the band panel's background.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.HeaderPanelBackground">
+            <summary>
+                <para>Gets the appearance settings used to paint the column header panel's background.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint the column header panel's background.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraGrid.Views.BandedGrid.OptionsBand">
 
             <summary>
@@ -6377,56 +6427,6 @@ The default detail is identified by the <see cref="P:DevExpress.XtraGrid.Views.G
 
 
         </member>
-        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances">
-
-            <summary>
-                <para>Provides the appearance settings used to paint the elements in a Banded Grid View.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.#ctor(DevExpress.XtraGrid.Views.Base.BaseView)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandedViewPrintAppearances"/> class with the specified owning View.
-</para>
-            </summary>
-            <param name="view">
-		A <see cref="T:DevExpress.XtraGrid.Views.Base.BaseView"/> descendant representing the View that will own the created collection. 
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.BandPanel">
-            <summary>
-                <para>Gets the appearance settings used to paint band headers.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint band headers.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.BandPanelBackground">
-            <summary>
-                <para>Gets the appearance settings used to paint the band panel's background.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint the band panel's background.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedViewAppearances.HeaderPanelBackground">
-            <summary>
-                <para>Gets the appearance settings used to paint the column header panel's background.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the appearance settings used to paint the column header panel's background.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraGrid.Views.Base.ColumnViewPrintAppearances">
 
             <summary>
@@ -7174,7 +7174,7 @@ The default detail is identified by the <see cref="P:DevExpress.XtraGrid.Views.G
         <member name="F:DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains">
             <summary>
                 <para><para>
-The <b>Contains</b> operator is used to create filter conditions. This operator selects records whose values in the corresponding column contain the entered string.
+The <b>Contains</b> operator selects records whose values in the corresponding column contain the entered string.
 </para>
 </para>
             </summary>
@@ -7183,7 +7183,18 @@ The <b>Contains</b> operator is used to create filter conditions. This operator 
         </member>
         <member name="F:DevExpress.XtraGrid.Columns.AutoFilterCondition.Default">
             <summary>
-                <para>The same as the <see cref="F:DevExpress.XtraGrid.Columns.AutoFilterCondition.Like"/> value.
+                <para><para>
+For columns being filtered by their display text (see <see cref="P:DevExpress.XtraGrid.Columns.GridColumn.FilterMode"/>), the <b>Default</b> option acts identically to the <b>Like</b> option.
+</para>
+
+<para>
+The <b>Default</b> option acts like the <b>Equals</b> option for the columns that have any of the following in-place editors or any of their descendants: <see cref="T:DevExpress.XtraEditors.CheckEdit"/>, <see cref="T:DevExpress.XtraEditors.DateEdit"/>, <see cref="T:DevExpress.XtraEditors.LookUpEditBase"/> or <see cref="T:DevExpress.XtraEditors.ImageComboBoxEdit"/>.
+</para>
+
+<para>
+For other columns, the <b>Default</b> option acts identically to the <b>Like</b> option. 
+</para>
+
 </para>
             </summary>
 
@@ -7191,7 +7202,7 @@ The <b>Contains</b> operator is used to create filter conditions. This operator 
         </member>
         <member name="F:DevExpress.XtraGrid.Columns.AutoFilterCondition.Equals">
             <summary>
-                <para>The <b>Equals</b> comparison operator is used to create filter conditions. This operator selects records whose values in the corresponding column match the entered value.
+                <para>The <b>Equals</b> comparison operator selects records whose values in the corresponding column match the entered value.
 
 </para>
             </summary>
@@ -7201,10 +7212,11 @@ The <b>Contains</b> operator is used to create filter conditions. This operator 
         <member name="F:DevExpress.XtraGrid.Columns.AutoFilterCondition.Like">
             <summary>
                 <para><para>
-The <b>Like</b> comparison operator is used to create filter conditions. This operator selects records whose values in the corresponding column start with the entered string.
+The <b>Like</b> comparison operator selects records whose values in the corresponding column start with the entered string.
 </para>
 
-<b>Note</b>: for the columns that use <see cref="T:DevExpress.XtraEditors.CheckEdit"/>, <see cref="T:DevExpress.XtraEditors.LookUpEdit"/> or <see cref="T:DevExpress.XtraEditors.ImageComboBoxEdit"/> in-place editors the <b>Equals</b> operator is always used.
+For the columns that use <see cref="T:DevExpress.XtraEditors.CheckEdit"/>, <see cref="T:DevExpress.XtraEditors.DateEdit"/>, <see cref="T:DevExpress.XtraEditors.LookUpEditBase"/> or <see cref="T:DevExpress.XtraEditors.ImageComboBoxEdit"/> in-place editors, the <b>Equals</b> operator is always used, unless these columns are filtered by display text (see <see cref="P:DevExpress.XtraGrid.Columns.GridColumn.FilterMode"/>).
+
 </para>
             </summary>
 
@@ -8546,7 +8558,7 @@ The <b>Like</b> comparison operator is used to create filter conditions. This op
         </member>
         <member name="P:DevExpress.XtraGrid.Columns.OptionsColumnFilter.ImmediateUpdateAutoFilter">
             <summary>
-                <para>Gets or sets whether the column's filter condition is updated as soon as an end-user modifies the contents of the auto filter row's cell.
+                <para>Gets or sets whether the column's filter condition is updated as soon as an end-user modifies the contents of the Auto Filter Row's cell.
 
 </para>
             </summary>
@@ -9160,17 +9172,21 @@ It specifies whether selecting a date or date range via the embedded calendar fi
         </member>
         <member name="P:DevExpress.XtraGrid.Views.Base.PrintInitializeEventArgs.Link">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a <see cref="T:DevExpress.XtraPrintingLinks.PrintableComponentLinkBase"/> object that provides functionality to print the Grid Control.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <see cref="T:DevExpress.XtraPrintingLinks.PrintableComponentLinkBase"/> object.
+</value>
 
 
         </member>
         <member name="P:DevExpress.XtraGrid.Views.Base.PrintInitializeEventArgs.PrintingSystem">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a <see cref="T:DevExpress.XtraPrinting.IPrintingSystem"/> object that contains information on the print document.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>An object implementing the <see cref="T:DevExpress.XtraPrinting.IPrintingSystem"/> interface.
+</value>
 
 
         </member>
@@ -9212,185 +9228,231 @@ It specifies whether selecting a date or date range via the embedded calendar fi
 
 
         </member>
-        <member name="T:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs">
+        <member name="T:DevExpress.XtraGrid.GridSplitContainer">
 
             <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.BeforePrintRow"/> event.
+                <para>Allows a Grid Control to be split horizontally or vertically.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.#ctor(DevExpress.XtraPrinting.IPrintingSystem,System.Drawing.Graphics,DevExpress.XtraPrinting.IBrickGraphics,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:DevExpress.XtraGrid.GridSplitContainer.#ctor">
             <summary>
-                <para>Initializes a new instance of the PrintRowEventArgs class with the specified settings.
+                <para>Initializes a new instance of the GridSplitContainer class.
 </para>
             </summary>
-            <param name="ips">
-		The PrintingSystem object that provides methods to create bricks in the printout/export output.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS"/> property.
-
-            </param>
-            <param name="g">
-		A Graphics object that represents the grid control's drawing surface.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics"/> property.
-
-            </param>
-            <param name="graph">
-		A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics"/> property.
-
-            </param>
-            <param name="rowHandle">
-		The handle of the row that has just been printed.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle"/> property.
-
-            </param>
-            <param name="level">
-		The group level of the row that has been printed.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level"/> property.
-
-            </param>
-            <param name="x">
-		The X coordinate, in pixels, where the next row will be drawn in the printout/export output. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X"/> property.
-
-            </param>
-            <param name="y">
-		The Y coordinate, in pixels, where the next row will be drawn in the printout/export output. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y"/> property.
-
-            </param>
 
 
         </member>
-        <member name="M:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.#ctor(DevExpress.XtraPrinting.IPrintingSystem,System.Drawing.Graphics,DevExpress.XtraPrinting.IBrickGraphics,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.BorderStyle">
             <summary>
-                <para>Initializes a new instance of the PrintRowEventArgs class with the specified settings.
+                <para>This property is not supported by the GridSplitContainer class.
 </para>
             </summary>
-            <param name="ips">
-		The PrintingSystem object that provides methods to create bricks in the printout/export output.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS"/> property.
-
-            </param>
-            <param name="g">
-		A Graphics object that represents the grid control's drawing surface.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics"/> property.
-
-            </param>
-            <param name="graph">
-		A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics"/> property.
-
-            </param>
-            <param name="rowHandle">
-		The handle of the row that has just been printed.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle"/> property.
-
-            </param>
-            <param name="level">
-		The group level of the row that has been printed.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level"/> property.
-
-            </param>
-            <param name="x">
-		The X coordinate, in pixels, where the next row will be drawn in the printout/export output. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X"/> property.
-
-            </param>
-            <param name="y">
-		The Y coordinate, in pixels, where the next row will be drawn in the printout/export output. 
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y"/> property.
-
-            </param>
-            <param name="hasRowFooter">
-		Specifies whether the row contains a footer.
-This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.HasFooter"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics">
-            <summary>
-                <para>Gets a <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object.
+            <value>@nbsp;
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Collapsed">
             <summary>
-                <para>Gets a Graphics object that represents the grid control's drawing surface
+                <para>This property is not supported by the GridSplitContainer class.
 </para>
             </summary>
-            <value>A Graphics object.
+            <value>@nbsp;
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.HasFooter">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.CollapsePanel">
             <summary>
-                <para>Gets whether the row contains a footer.
+                <para>This property is not supported by the GridSplitContainer class.
 </para>
             </summary>
-            <value><b>true</b> if the row contains a footer; otherwise, <b>false</b>.
+            <value>@nbsp;
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.FixedPanel">
             <summary>
-                <para>Gets the group level of the printed row . 
+                <para>Gets or sets the fixed panel. 
 
 </para>
             </summary>
-            <value>An integer value that specifies the group level of the printed row . 
+            <value>A <see cref="T:DevExpress.XtraEditors.SplitFixedPanel"/> enumeration value which specifies the fixed panel.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Grid">
+            <summary>
+                <para>Gets or sets the Grid to be split. If the Split View is already active, the property specifies the grid displayed in the first view region.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraGrid.GridControl"/> displayed (or to be displayed) in the first view region.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.GridSplitContainer.HideSplitView">
+            <summary>
+                <para>Removes the splitter and the second grid control.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Horizontal">
+            <summary>
+                <para>Gets or sets whether a splitter divides the container into two horizontally or vertically arranged regions.
+</para>
+            </summary>
+            <value><b>true</b> if a splitter divides the container into two horizontally arranged regions; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.GridSplitContainer.Initialize">
+            <summary>
+                <para>Creates and initializes an internal <see cref="T:DevExpress.XtraGrid.GridControl"/>, ensuring that it is ready for further customization.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.IsSplitViewVisible">
+            <summary>
+                <para>Gets whether the Split Container is currently divided into two regions by a splitter.
+ 
+</para>
+            </summary>
+            <value><b>true</b> if the Split Container is currently divided into two regions by a splitter; otherwise, <b>false</b>.
 
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.PanelVisibility">
             <summary>
-                <para>Gets the PrintingSystem object that provides methods to create bricks in the printout/export output.
+                <para>This property is not supported by the GridSplitContainer class.
 </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> object.
+            <value>@nbsp;
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle">
+        <member name="M:DevExpress.XtraGrid.GridSplitContainer.ShowSplitView">
             <summary>
-                <para>Gets the handle of the printed row.
-
+                <para>Displays a splitter that divides the container into two regions, each displaying a Grid Control.
 </para>
             </summary>
-            <value>An integer value that represents the handle of the printed row.
 
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid">
+            <summary>
+                <para>Gets the grid control displayed in the container's second region.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraGrid.GridControl"/> displayed in the container's second region. <b>null</b> if the Split View is not active (the second region is hidden).
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildView">
             <summary>
-                <para>Gets or sets the X coordinate, in pixels, where the next row will be drawn in the printout/export output.
+                <para>Gets the main View (<see cref="P:DevExpress.XtraGrid.GridControl.MainView"/>) of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object.
 </para>
             </summary>
-            <value>An integer value that specifies the X coordinate, in pixels, where the next row will be drawn in the printout/export output.
+            <value>The main View of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object. <b>null</b> if the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object is set to <b>null</b>.
 </value>
 
 
         </member>
-        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y">
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitterPosition">
             <summary>
-                <para>Gets or sets the Y coordinate, in pixels, where the next row will be drawn in the printout/export output.
+                <para>Gets or sets the splitter's location.
 </para>
             </summary>
-            <value>An integer value that specifies the Y coordinate, in pixels, where the next row will be drawn in the printout/export output.
+            <value>An integer value specifying the splitter's current location in pixels
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewCreated">
+            <summary>
+                <para>Fires before a Split View is displayed or before its orientation is changed. 
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewHidden">
+            <summary>
+                <para>Fires after the current Split View has been destroyed or when the Split View's orientation is changed.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewShown">
+            <summary>
+                <para>Fires after a Split View has been displayed or after its orientation has been changed. 
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeExpandCollapse">
+            <summary>
+                <para>Gets or sets whether group expansion states are in sync between two grid controls being split.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if group expansion states are in sync between two grid controls being split.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeFocusedRow">
+            <summary>
+                <para>Gets or sets whether focus is automatically moved in one Grid Control, when an end-user moves focus in another grid control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if the row focus is synchronized between two grid controls.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeScrolling">
+            <summary>
+                <para>Gets or sets whether scrolling positions are in sync between two grid controls.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if scrolling positions are in sync between two grid controls.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeViews">
+            <summary>
+                <para>Gets or sets whether appearance, view, sort, group and filter settings are synchronized between two grid controls.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if corresponding settings are in sync between two grid controls.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.GridSplitContainer.View">
+            <summary>
+                <para>Gets the main View (<see cref="P:DevExpress.XtraGrid.GridControl.MainView"/>) of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object.
+</para>
+            </summary>
+            <value>The main View of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object. <b>null</b> if the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object is set to <b>null</b>.
+
 </value>
 
 
@@ -9725,6 +9787,189 @@ This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Prin
 
 
         </member>
+        <member name="T:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.BeforePrintRow"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.#ctor(DevExpress.XtraPrinting.IPrintingSystem,System.Drawing.Graphics,DevExpress.XtraPrinting.IBrickGraphics,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+                <para>Initializes a new instance of the PrintRowEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="ips">
+		The PrintingSystem object that provides methods to create bricks in the printout/export output.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS"/> property.
+
+            </param>
+            <param name="g">
+		A Graphics object that represents the grid control's drawing surface.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics"/> property.
+
+            </param>
+            <param name="graph">
+		A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics"/> property.
+
+            </param>
+            <param name="rowHandle">
+		The handle of the row that has just been printed.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle"/> property.
+
+            </param>
+            <param name="level">
+		The group level of the row that has been printed.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level"/> property.
+
+            </param>
+            <param name="x">
+		The X coordinate, in pixels, where the next row will be drawn in the printout/export output. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X"/> property.
+
+            </param>
+            <param name="y">
+		The Y coordinate, in pixels, where the next row will be drawn in the printout/export output. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.#ctor(DevExpress.XtraPrinting.IPrintingSystem,System.Drawing.Graphics,DevExpress.XtraPrinting.IBrickGraphics,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+                <para>Initializes a new instance of the PrintRowEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="ips">
+		The PrintingSystem object that provides methods to create bricks in the printout/export output.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS"/> property.
+
+            </param>
+            <param name="g">
+		A Graphics object that represents the grid control's drawing surface.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics"/> property.
+
+            </param>
+            <param name="graph">
+		A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics"/> property.
+
+            </param>
+            <param name="rowHandle">
+		The handle of the row that has just been printed.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle"/> property.
+
+            </param>
+            <param name="level">
+		The group level of the row that has been printed.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level"/> property.
+
+            </param>
+            <param name="x">
+		The X coordinate, in pixels, where the next row will be drawn in the printout/export output. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X"/> property.
+
+            </param>
+            <param name="y">
+		The Y coordinate, in pixels, where the next row will be drawn in the printout/export output. 
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y"/> property.
+
+            </param>
+            <param name="hasRowFooter">
+		Specifies whether the row contains a footer.
+This value is used to initialize the <see cref="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.HasFooter"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.BrickGraphics">
+            <summary>
+                <para>Gets a <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object that implements report drawing functions.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.BrickGraphics"/> object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Graphics">
+            <summary>
+                <para>Gets a Graphics object that represents the grid control's drawing surface
+</para>
+            </summary>
+            <value>A Graphics object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.HasFooter">
+            <summary>
+                <para>Gets whether the row contains a footer.
+</para>
+            </summary>
+            <value><b>true</b> if the row contains a footer; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Level">
+            <summary>
+                <para>Gets the group level of the printed row . 
+
+</para>
+            </summary>
+            <value>An integer value that specifies the group level of the printed row . 
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.PS">
+            <summary>
+                <para>Gets the PrintingSystem object that provides methods to create bricks in the printout/export output.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraPrinting.PrintingSystem"/> object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.RowHandle">
+            <summary>
+                <para>Gets the handle of the printed row.
+
+</para>
+            </summary>
+            <value>An integer value that represents the handle of the printed row.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.X">
+            <summary>
+                <para>Gets or sets the X coordinate, in pixels, where the next row will be drawn in the printout/export output.
+</para>
+            </summary>
+            <value>An integer value that specifies the X coordinate, in pixels, where the next row will be drawn in the printout/export output.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Printing.PrintRowEventArgs.Y">
+            <summary>
+                <para>Gets or sets the Y coordinate, in pixels, where the next row will be drawn in the printout/export output.
+</para>
+            </summary>
+            <value>An integer value that specifies the Y coordinate, in pixels, where the next row will be drawn in the printout/export output.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraGrid.Views.Grid.FilterPopupDateEventHandler">
 
             <summary>
@@ -10054,6 +10299,50 @@ If the data source is empty or if all values in the date-time column are set to 
 
 
         </member>
+        <member name="T:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ShowFilterPopupCheckedListBox"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.#ctor(DevExpress.XtraGrid.Columns.GridColumn,DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit)">
+            <summary>
+                <para>Initializes a new instance of the FilterPopupCheckedListBoxEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="column">
+		A <see cref="T:DevExpress.XtraGrid.Columns.GridColumn"/> object that refers to the current column displaying the check filter drop-down list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.Column"/> property.
+
+            </param>
+            <param name="comboBox">
+		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit"/> object that contains settings of the check filter drop-down list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.CheckedComboBox"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.CheckedComboBox">
+            <summary>
+                <para>Gets an object that contains settings of the checked filter dropdown list.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit"/> object that contains settings of the checked filter drop-down list.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.Column">
+            <summary>
+                <para>Gets the column displaying the check filter drop-down list.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraGrid.Columns.GridColumn"/> object displaying the check filter drop-down list.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraGrid.Views.Layout.LayoutViewPrintMode">
 
             <summary>
@@ -10123,303 +10412,6 @@ If the data source is empty or if all values in the date-time column are set to 
 		A <see cref="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs"/> object that contains event data.
 
             </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomCardCaptionImage"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.#ctor(System.Int32,System.Object)">
-            <summary>
-                <para>Initializes a new instance of the LayoutViewCardCaptionImageEventArgs class with the specified settings.
-</para>
-            </summary>
-            <param name="rowHandle">
-		An integer value that specifies the handle of the current card. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Card.CardCaptionImageEventArgs.RowHandle"/> property.
-
-            </param>
-            <param name="list">
-		An object that represents an image list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Card.CardCaptionImageEventArgs.ImageList"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.CaptionImageLocation">
-            <summary>
-                <para>Gets or sets the relative position of an image within a card's caption. 
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.GroupElementLocation"/> value that specifies the image's position. 
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.CaptionImageVisible">
-            <summary>
-                <para>Gets or sets whether the image in a card's caption is visible. 
-</para>
-            </summary>
-            <value><b>true</b> if the caption image is visible; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomRowCellEdit"/> event. 
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomRowCellEdit"/> event. 
-</para>
-            </summary>
-            <param name="sender">
-		The event source. Identifies the <see cref="T:DevExpress.XtraGrid.Views.Layout.LayoutView"/> that raised the event.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventArgs"/> object that contains event data.
-
-            </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.GridSplitContainer">
-
-            <summary>
-                <para>Allows a Grid Control to be split horizontally or vertically.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.GridSplitContainer.#ctor">
-            <summary>
-                <para>Initializes a new instance of the GridSplitContainer class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.BorderStyle">
-            <summary>
-                <para>This property is not supported by the GridSplitContainer class.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Collapsed">
-            <summary>
-                <para>This property is not supported by the GridSplitContainer class.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.CollapsePanel">
-            <summary>
-                <para>This property is not supported by the GridSplitContainer class.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.FixedPanel">
-            <summary>
-                <para>Gets or sets the fixed panel. 
-
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraEditors.SplitFixedPanel"/> enumeration value which specifies the fixed panel.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Grid">
-            <summary>
-                <para>Gets or sets the Grid to be split. If the Split View is already active, the property specifies the grid displayed in the first view region.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraGrid.GridControl"/> displayed (or to be displayed) in the first view region.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.GridSplitContainer.HideSplitView">
-            <summary>
-                <para>Removes the splitter and the second grid control.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.Horizontal">
-            <summary>
-                <para>Gets or sets whether a splitter divides the container into two horizontally or vertically arranged regions.
-</para>
-            </summary>
-            <value><b>true</b> if a splitter divides the container into two horizontally arranged regions; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.GridSplitContainer.Initialize">
-            <summary>
-                <para>Creates and initializes an internal <see cref="T:DevExpress.XtraGrid.GridControl"/>, ensuring that it is ready for further customization.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.IsSplitViewVisible">
-            <summary>
-                <para>Gets whether the Split Container is currently divided into two regions by a splitter.
- 
-</para>
-            </summary>
-            <value><b>true</b> if the Split Container is currently divided into two regions by a splitter; otherwise, <b>false</b>.
-
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.PanelVisibility">
-            <summary>
-                <para>This property is not supported by the GridSplitContainer class.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.GridSplitContainer.ShowSplitView">
-            <summary>
-                <para>Displays a splitter that divides the container into two regions, each displaying a Grid Control.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid">
-            <summary>
-                <para>Gets the grid control displayed in the container's second region.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraGrid.GridControl"/> displayed in the container's second region. <b>null</b> if the Split View is not active (the second region is hidden).
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildView">
-            <summary>
-                <para>Gets the main View (<see cref="P:DevExpress.XtraGrid.GridControl.MainView"/>) of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object.
-</para>
-            </summary>
-            <value>The main View of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object. <b>null</b> if the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.SplitChildGrid"/> object is set to <b>null</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SplitterPosition">
-            <summary>
-                <para>Gets or sets the splitter's location.
-</para>
-            </summary>
-            <value>An integer value specifying the splitter's current location in pixels
-</value>
-
-
-        </member>
-        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewCreated">
-            <summary>
-                <para>Fires before a Split View is displayed or before its orientation is changed. 
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewHidden">
-            <summary>
-                <para>Fires after the current Split View has been destroyed or when the Split View's orientation is changed.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraGrid.GridSplitContainer.SplitViewShown">
-            <summary>
-                <para>Fires after a Split View has been displayed or after its orientation has been changed. 
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeExpandCollapse">
-            <summary>
-                <para>Gets or sets whether group expansion states are in sync between two grid controls being split.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if group expansion states are in sync between two grid controls being split.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeFocusedRow">
-            <summary>
-                <para>Gets or sets whether focus is automatically moved in one Grid Control, when an end-user moves focus in another grid control.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if the row focus is synchronized between two grid controls.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeScrolling">
-            <summary>
-                <para>Gets or sets whether scrolling positions are in sync between two grid controls.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if scrolling positions are in sync between two grid controls.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.SynchronizeViews">
-            <summary>
-                <para>Gets or sets whether appearance, view, sort, group and filter settings are synchronized between two grid controls.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.DefaultBoolean"/> value that specifies if corresponding settings are in sync between two grid controls.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.GridSplitContainer.View">
-            <summary>
-                <para>Gets the main View (<see cref="P:DevExpress.XtraGrid.GridControl.MainView"/>) of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object.
-</para>
-            </summary>
-            <value>The main View of the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object. <b>null</b> if the <see cref="P:DevExpress.XtraGrid.GridSplitContainer.Grid"/> object is set to <b>null</b>.
-
-</value>
 
 
         </member>
@@ -10509,30 +10501,6 @@ If the data source is empty or if all values in the date-time column are set to 
             </summary>
             <value>A <see cref="T:DevExpress.XtraGrid.Views.Layout.SortFilterButtonShowMode"/> value.
 </value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ValidateRow"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ValidateRow"/> event.
-</para>
-            </summary>
-            <param name="sender">
-		The event source. Identifies the View that raised the event.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs"/> object that contain event data.
-
-            </param>
 
 
         </member>
@@ -10802,6 +10770,195 @@ If the data source is empty or if all values in the date-time column are set to 
 
 
         </member>
+        <member name="T:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode">
+
+            <summary>
+                <para>Contains values that specify when the Filter Panel is visible.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Default">
+            <summary>
+                <para>The filter panel is shown when the filtering is applied to a View. Otherwise, the filter panel is hidden.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never">
+            <summary>
+                <para>The filter panel is hidden.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways">
+            <summary>
+                <para>The filter panel is always shown at the bottom of the View.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraGrid.Views.Base.FilterControlEventHandler">
+
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event. 
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Base.FilterControlEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.FilterControlEventArgs)">
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event. 
+</para>
+            </summary>
+            <param name="sender">
+		The event source. Identifies the View that raised the event.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs"/> object that contains event data.
+
+            </param>
+
+
+        </member>
+        <member name="T:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.#ctor(DevExpress.XtraGrid.FilterEditor.FilterBuilder,DevExpress.XtraEditors.IFilterControl)">
+            <summary>
+                <para>Initializes a new instance of the FilterControlEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="form">
+		The form displaying the FilterControl.
+
+            </param>
+            <param name="ifControl">
+		The FilterControl to be displayed in in the form.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.FilterBuilder">
+            <summary>
+                <para>Gets the form that displays the Filter Control.
+</para>
+            </summary>
+            <value>A <b>FilterBuilder</b> object that represents the form displaying the Filter Control.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.FilterControl">
+            <summary>
+                <para>Gets the Filter Control that displays filter criteria.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraEditors.FilterControl"/> object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.IFilterControl">
+            <summary>
+                <para>Gets the Filter Control that displays filter criteria. 
+</para>
+            </summary>
+            <value>An IFilterControl object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.ShowFilterEditor">
+            <summary>
+                <para>Gets or sets whether the Filter Editor must be displayed.
+</para>
+            </summary>
+            <value><b>true</b> if the Filter Editor must be displayed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomCardCaptionImage"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.#ctor(System.Int32,System.Object)">
+            <summary>
+                <para>Initializes a new instance of the LayoutViewCardCaptionImageEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="rowHandle">
+		An integer value that specifies the handle of the current card. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Card.CardCaptionImageEventArgs.RowHandle"/> property.
+
+            </param>
+            <param name="list">
+		An object that represents an image list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Card.CardCaptionImageEventArgs.ImageList"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.CaptionImageLocation">
+            <summary>
+                <para>Gets or sets the relative position of an image within a card's caption. 
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.GroupElementLocation"/> value that specifies the image's position. 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCardCaptionImageEventArgs.CaptionImageVisible">
+            <summary>
+                <para>Gets or sets whether the image in a card's caption is visible. 
+</para>
+            </summary>
+            <value><b>true</b> if the caption image is visible; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler">
+
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ValidateRow"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs)">
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ValidateRow"/> event.
+</para>
+            </summary>
+            <param name="sender">
+		The event source. Identifies the View that raised the event.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs"/> object that contain event data.
+
+            </param>
+
+
+        </member>
         <member name="T:DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs">
 
             <summary>
@@ -10906,25 +11063,25 @@ If the data source is empty or if all values in the date-time column are set to 
 
 
         </member>
-        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventHandler">
+        <member name="T:DevExpress.XtraGrid.Views.Base.DragObjectOverEventHandler">
 
             <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.BandedGrid.BandedGridView.CustomDrawBandHeader"/> event. 
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.DragObjectOver"/> event.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs)">
+        <member name="M:DevExpress.XtraGrid.Views.Base.DragObjectOverEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs)">
             <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.BandedGrid.BandedGridView.CustomDrawBandHeader"/> event.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.DragObjectOver"/> event.
 </para>
             </summary>
             <param name="sender">
-		An event source identifying the View which raised the event.
+		The event source. Identifies the View that raised the event.
 
             </param>
             <param name="e">
-		A <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs"/> object providing data for the event.
+		A <see cref="T:DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs"/> object that contains event data.
 
             </param>
 
@@ -12342,27 +12499,81 @@ If the data source is empty or if all values in the date-time column are set to 
 
 
         </member>
-        <member name="T:DevExpress.XtraGrid.Views.Base.DragObjectOverEventHandler">
+        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization">
 
             <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.DragObjectOver"/> event.
+                <para>Provides customization options for Banded Grid Views.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraGrid.Views.Base.DragObjectOverEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs)">
+        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.#ctor">
             <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Grid.GridView.DragObjectOver"/> event.
+                <para>Creates a new instance of the <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization"/> class.
 </para>
             </summary>
-            <param name="sender">
-		The event source. Identifies the View that raised the event.
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowBandMoving">
+            <summary>
+                <para>Gets or sets whether bands can be moved to a new position.
+</para>
+            </summary>
+            <value><b>true</b> if bands can be moved to a new position; otherwise, <b>false</b>
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowBandResizing">
+            <summary>
+                <para>Gets or sets whether the bands can be resized.
+</para>
+            </summary>
+            <value><b>true</b> if the bands can be resized; otherwise, <b>false</b>
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowChangeBandParent">
+            <summary>
+                <para>Gets or sets a value specifying whether end-users can move bands between parents.
+</para>
+            </summary>
+            <value><b>true</b> if bands can be moved between parents; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowChangeColumnParent">
+            <summary>
+                <para>Gets or sets a value specifying whether end-users can move columns between bands.
+</para>
+            </summary>
+            <value><b>true</b> if end-users can move columns between bands; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.Assign(DevExpress.Utils.Controls.BaseOptions)">
+            <summary>
+                <para>Copies all settings from the options object passed as a parameter.
+</para>
+            </summary>
+            <param name="options">
+		A <see cref="T:DevExpress.Utils.Controls.BaseOptions"/> descendant whose settings are assigned to the current object.
 
             </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraGrid.Views.Base.DragObjectOverEventArgs"/> object that contains event data.
 
-            </param>
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.ShowBandsInCustomizationForm">
+            <summary>
+                <para>Gets or sets a value specifying whether hidden bands can be shown within the customization form.
+</para>
+            </summary>
+            <value><b>true</b> if hidden bands can be shown within the customization form; otherwise, <b>false</b>.
+</value>
 
 
         </member>
@@ -15122,6 +15333,30 @@ This option is in effect when the <see cref="P:DevExpress.XtraGrid.Views.Grid.Gr
 
 
         </member>
+        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventHandler">
+
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.BandedGrid.BandedGridView.CustomDrawBandHeader"/> event. 
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs)">
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.BandedGrid.BandedGridView.CustomDrawBandHeader"/> event.
+</para>
+            </summary>
+            <param name="sender">
+		An event source identifying the View which raised the event.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs"/> object providing data for the event.
+
+            </param>
+
+
+        </member>
         <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandHeaderCustomDrawEventArgs">
 
             <summary>
@@ -15567,84 +15802,6 @@ This option is in effect when the <see cref="P:DevExpress.XtraGrid.Views.Grid.Gr
 </para>
             </summary>
             <value><b>true</b> if hints are displayed for band headers with truncated captions; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization">
-
-            <summary>
-                <para>Provides customization options for Banded Grid Views.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.#ctor">
-            <summary>
-                <para>Creates a new instance of the <see cref="T:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization"/> class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowBandMoving">
-            <summary>
-                <para>Gets or sets whether bands can be moved to a new position.
-</para>
-            </summary>
-            <value><b>true</b> if bands can be moved to a new position; otherwise, <b>false</b>
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowBandResizing">
-            <summary>
-                <para>Gets or sets whether the bands can be resized.
-</para>
-            </summary>
-            <value><b>true</b> if the bands can be resized; otherwise, <b>false</b>
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowChangeBandParent">
-            <summary>
-                <para>Gets or sets a value specifying whether end-users can move bands between parents.
-</para>
-            </summary>
-            <value><b>true</b> if bands can be moved between parents; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.AllowChangeColumnParent">
-            <summary>
-                <para>Gets or sets a value specifying whether end-users can move columns between bands.
-</para>
-            </summary>
-            <value><b>true</b> if end-users can move columns between bands; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.Assign(DevExpress.Utils.Controls.BaseOptions)">
-            <summary>
-                <para>Copies all settings from the options object passed as a parameter.
-</para>
-            </summary>
-            <param name="options">
-		A <see cref="T:DevExpress.Utils.Controls.BaseOptions"/> descendant whose settings are assigned to the current object.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.BandedGrid.BandedGridOptionsCustomization.ShowBandsInCustomizationForm">
-            <summary>
-                <para>Gets or sets a value specifying whether hidden bands can be shown within the customization form.
-</para>
-            </summary>
-            <value><b>true</b> if hidden bands can be shown within the customization form; otherwise, <b>false</b>.
 </value>
 
 
@@ -16220,80 +16377,27 @@ This option is in effect when the <see cref="P:DevExpress.XtraGrid.Views.Grid.Gr
 
 
         </member>
-        <member name="T:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs">
+        <member name="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventHandler">
 
             <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.ShowFilterPopupCheckedListBox"/> event.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomRowCellEdit"/> event. 
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.#ctor(DevExpress.XtraGrid.Columns.GridColumn,DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit)">
+        <member name="M:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventArgs)">
             <summary>
-                <para>Initializes a new instance of the FilterPopupCheckedListBoxEventArgs class with the specified settings.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Layout.LayoutView.CustomRowCellEdit"/> event. 
 </para>
             </summary>
-            <param name="column">
-		A <see cref="T:DevExpress.XtraGrid.Columns.GridColumn"/> object that refers to the current column displaying the check filter drop-down list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.Column"/> property.
+            <param name="sender">
+		The event source. Identifies the <see cref="T:DevExpress.XtraGrid.Views.Layout.LayoutView"/> that raised the event.
 
             </param>
-            <param name="comboBox">
-		A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit"/> object that contains settings of the check filter drop-down list. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.CheckedComboBox"/> property.
+            <param name="e">
+		A <see cref="T:DevExpress.XtraGrid.Views.Layout.Events.LayoutViewCustomRowCellEditEventArgs"/> object that contains event data.
 
             </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.CheckedComboBox">
-            <summary>
-                <para>Gets an object that contains settings of the checked filter dropdown list.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit"/> object that contains settings of the checked filter drop-down list.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs.Column">
-            <summary>
-                <para>Gets the column displaying the check filter drop-down list.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraGrid.Columns.GridColumn"/> object displaying the check filter drop-down list.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode">
-
-            <summary>
-                <para>Contains values that specify when the Filter Panel is visible.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Default">
-            <summary>
-                <para>The filter panel is shown when the filtering is applied to a View. Otherwise, the filter panel is hidden.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never">
-            <summary>
-                <para>The filter panel is hidden.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways">
-            <summary>
-                <para>The filter panel is always shown at the bottom of the View.
-
-</para>
-            </summary>
 
 
         </member>
@@ -16444,94 +16548,6 @@ This option is in effect when the <see cref="P:DevExpress.XtraGrid.Views.Grid.Gr
 		A <see cref="T:DevExpress.XtraGrid.Views.Grid.FilterPopupCheckedListBoxEventArgs"/> object that contains event data.
 
             </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Base.FilterControlEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event. 
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.Base.FilterControlEventHandler.Invoke(System.Object,DevExpress.XtraGrid.Views.Base.FilterControlEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event. 
-</para>
-            </summary>
-            <param name="sender">
-		The event source. Identifies the View that raised the event.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs"/> object that contains event data.
-
-            </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraGrid.Views.Base.ColumnView.FilterEditorCreated"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.#ctor(DevExpress.XtraGrid.FilterEditor.FilterBuilder,DevExpress.XtraEditors.IFilterControl)">
-            <summary>
-                <para>Initializes a new instance of the FilterControlEventArgs class with the specified settings.
-</para>
-            </summary>
-            <param name="form">
-		The form displaying the FilterControl.
-
-            </param>
-            <param name="ifControl">
-		The FilterControl to be displayed in in the form.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.FilterBuilder">
-            <summary>
-                <para>Gets the form that displays the Filter Control.
-</para>
-            </summary>
-            <value>A <b>FilterBuilder</b> object that represents the form displaying the Filter Control.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.FilterControl">
-            <summary>
-                <para>Gets the Filter Control that displays filter criteria.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraEditors.FilterControl"/> object.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.IFilterControl">
-            <summary>
-                <para>Gets the Filter Control that displays filter criteria. 
-</para>
-            </summary>
-            <value>An IFilterControl object.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraGrid.Views.Base.FilterControlEventArgs.ShowFilterEditor">
-            <summary>
-                <para>Gets or sets whether the Filter Editor must be displayed.
-</para>
-            </summary>
-            <value><b>true</b> if the Filter Editor must be displayed; otherwise, <b>false</b>.
-</value>
 
 
         </member>
@@ -19977,23 +19993,29 @@ The <see cref="F:DevExpress.XtraGrid.GridControl.InvalidRowHandle"/> value if th
         </member>
         <member name="M:DevExpress.XtraGrid.Views.Grid.GridView.AddUnboundColumn(System.String,System.String)">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Creates an unbound column with the specified name and display caption and opens the Expression Editor to allow an end-user to specify an expression for the column.
+</para>
             </summary>
             <param name="columnName">
-		 [To be supplied] 
+		A string to be assigned to the <see cref="P:DevExpress.XtraGrid.Columns.GridColumn.Name"/> property.
+
             </param>
             <param name="caption">
-		 [To be supplied] 
+		The column's display caption. This value is assigned to the <see cref="P:DevExpress.XtraGrid.Columns.GridColumn.Caption"/> property.
+
             </param>
-            <returns> [To be supplied] </returns>
+            <returns>The created unbound column. <b>null</b> if an end-user didn't specify an expression for the column.
+</returns>
 
 
         </member>
         <member name="M:DevExpress.XtraGrid.Views.Grid.GridView.AddUnboundColumn">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Creates an unbound column with an empty display caption and opens the Expression Editor to allow an end-user to specify an expression for the column.
+</para>
             </summary>
-            <returns> [To be supplied] </returns>
+            <returns>The created unbound column. <b>null</b> if an end-user didn't specify an expression for the column.
+</returns>
 
 
         </member>
@@ -21672,7 +21694,8 @@ In Instant Feedback Mode (async server mode), an invalid "Non-loaded Value" is r
         </member>
         <member name="M:DevExpress.XtraGrid.Views.Grid.GridView.HideLoadingPanel">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Hides the Loading Panel displayed via the <see cref="M:DevExpress.XtraGrid.Views.Grid.GridView.ShowLoadingPanel"/> method.
+</para>
             </summary>
 
 
@@ -22871,7 +22894,8 @@ descendant (a <see cref="T:DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo"/
         </member>
         <member name="M:DevExpress.XtraGrid.Views.Grid.GridView.ShowLoadingPanel">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Displays the animated Loading Panel, that allows you to indicate the process of data loading.
+</para>
             </summary>
 
 
@@ -26810,10 +26834,11 @@ descendant (a <see cref="T:DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo"/
         </member>
         <member name="P:DevExpress.XtraGrid.Views.Base.ColumnView.FindPanelVisible">
             <summary>
-                <para>Find Panel
+                <para>Gets or sets whether the Find Panel is visible.
 </para>
             </summary>
-            <value> [To be supplied] </value>
+            <value><b>true</b> if the Find Panel is visible; otherwise, <b>false</b>.
+</value>
 
 
         </member>
@@ -28878,6 +28903,16 @@ The <see cref="F:DevExpress.XtraGrid.GridControl.InvalidRowHandle"/> value, if n
                 <para>Occurs when a View is double-clicked.
 </para>
             </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraGrid.Views.Base.BaseView.Editable">
+            <summary>
+                <para>Determines whether end-users can modify the View's cell values.
+</para>
+            </summary>
+            <value><b>true</b> if end-users can activate cell editors and modify their contents; otherwise, <b>false</b>.
+</value>
 
 
         </member>
@@ -31057,9 +31092,11 @@ The <see cref="F:DevExpress.XtraGrid.GridControl.InvalidRowHandle"/> value, if n
         </member>
         <member name="P:DevExpress.XtraGrid.Columns.GridColumn.IsUnboundExpressionValid">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets whether the column's <see cref="P:DevExpress.XtraGrid.Columns.GridColumn.UnboundExpression"/> specifies a valid expression.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value><b>true</b> if the column's UnboundExpression specifies a valid expression; otherwise, <b>false</b>.
+</value>
 
 
         </member>

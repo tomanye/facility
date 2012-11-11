@@ -930,9 +930,11 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.ShowSymbolFormCommand.DescriptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a command description.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>An <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
 
 
         </member>
@@ -960,17 +962,21 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.ShowSymbolFormCommand.ImageName">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets the name of the resource image for a command.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A string that is the name of an image contained in resources.
+</value>
 
 
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.ShowSymbolFormCommand.MenuCaptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a menu caption for a command.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
 
 
         </member>
@@ -998,6 +1004,27 @@
 
 
         </member>
+        <member name="T:DevExpress.XtraRichEdit.Commands.InsertSymbolCommand">
+
+            <summary>
+                <para>Inserts a character into a document. For internal use only.
+
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraRichEdit.Commands.InsertSymbolCommand.#ctor(DevExpress.XtraRichEdit.IRichEditControl)">
+            <summary>
+                <para>Initializes a new instance of the InsertSymbolCommand class with the specified owner.
+</para>
+            </summary>
+            <param name="control">
+		An object exposing the <b>DevExpress.XtraRichEdit.IRichEditControl</b> interface specifying the owner of the command (usually the RichEditControl).
+
+            </param>
+
+
+        </member>
         <member name="T:DevExpress.XtraRichEdit.Commands.FindPrevCommand">
 
             <summary>
@@ -1020,9 +1047,11 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.FindPrevCommand.DescriptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a command description.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>An <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
 
 
         </member>
@@ -1038,9 +1067,11 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.FindPrevCommand.MenuCaptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a menu caption for a command.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
 
 
         </member>
@@ -1058,7 +1089,7 @@
 </para>
             </summary>
             <param name="control">
-		An object exposing the <b>DevExpress.XtraRichEdit.IRichEditControl</b> interface specifying the owner of the command (usually the <see cref="T:DevExpress.XtraRichEdit.RichEditControl"/>).
+		An object exposing the <b>DevExpress.XtraRichEdit.IRichEditControl</b> interface specifying the owner of the command (usually the RichEditControl).
 
             </param>
 
@@ -1066,9 +1097,11 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.FindNextCommand.DescriptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a command description.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>An <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
 
 
         </member>
@@ -1084,9 +1117,32 @@
         </member>
         <member name="P:DevExpress.XtraRichEdit.Commands.FindNextCommand.MenuCaptionStringId">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets a string resource identifier of a menu caption for a command.
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <b>XtraRichEditStringId</b> enumeration value that is the resource string identifier.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraRichEdit.PreparePopupMenuEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraRichEdit.RichEditControl.PreparePopupMenu"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraRichEdit.PreparePopupMenuEventArgs.#ctor(DevExpress.XtraRichEdit.Menu.RichEditPopupMenu)">
+            <summary>
+                <para>Initializes a new instance of the PreparePopupMenuEventArgs class with the specified settings.
+
+</para>
+            </summary>
+            <param name="menu">
+		A <see cref="T:DevExpress.XtraRichEdit.Menu.RichEditPopupMenu"/> object that is the context menu to display.
+
+            </param>
 
 
         </member>
@@ -1104,6 +1160,74 @@
 
 </para>
             </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraRichEdit.VerticalScrollbarOptions">
+
+            <summary>
+                <para>Represents the class containing options for the vertical scrollbar.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraRichEdit.VerticalScrollbarOptions.#ctor">
+            <summary>
+                <para>Initializes a new instance of the VerticalScrollbarOptions class with default settings.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraRichEdit.RichEditScrollbarVisibility">
+
+            <summary>
+                <para>Specifies the visibility of a scroll bar.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Auto">
+            <summary>
+                <para>A scroll bar is automatically displayed when required.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Hidden">
+            <summary>
+                <para>A scroll bar is hidden.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible">
+            <summary>
+                <para>A scroll bar is visible.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraRichEdit.ScrollbarOptions">
+
+            <summary>
+                <para>Represents the base class for scrollbar options.
+</para>
+            </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraRichEdit.ScrollbarOptions.Visibility">
+            <summary>
+                <para>Gets or sets a value that specifies the visibility of a scroll bar.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraRichEdit.RichEditScrollbarVisibility"/> enumeration member specifying the visibility mode.
+</value>
 
 
         </member>
@@ -1225,95 +1349,6 @@
 		A <see cref="T:DevExpress.XtraRichEdit.PreparePopupMenuEventArgs"/> object that contains event data.
 
             </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraRichEdit.PreparePopupMenuEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraRichEdit.RichEditControl.PreparePopupMenu"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraRichEdit.PreparePopupMenuEventArgs.#ctor(DevExpress.XtraRichEdit.Menu.RichEditPopupMenu)">
-            <summary>
-                <para>Initializes a new instance of the PreparePopupMenuEventArgs class with the specified settings.
-
-</para>
-            </summary>
-            <param name="menu">
-		A <see cref="T:DevExpress.XtraRichEdit.Menu.RichEditPopupMenu"/> object that is the context menu to display.
-
-            </param>
-
-
-        </member>
-        <member name="T:DevExpress.XtraRichEdit.VerticalScrollbarOptions">
-
-            <summary>
-                <para>Represents the class containing options for the vertical scrollbar.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraRichEdit.VerticalScrollbarOptions.#ctor">
-            <summary>
-                <para>Initializes a new instance of the VerticalScrollbarOptions class with default settings.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraRichEdit.RichEditScrollbarVisibility">
-
-            <summary>
-                <para>Specifies the visibility of a scroll bar.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Auto">
-            <summary>
-                <para>A scroll bar is automatically displayed when required.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Hidden">
-            <summary>
-                <para>A scroll bar is hidden.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraRichEdit.RichEditScrollbarVisibility.Visible">
-            <summary>
-                <para>A scroll bar is visible.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraRichEdit.ScrollbarOptions">
-
-            <summary>
-                <para>Represents the base class for scrollbar options.
-</para>
-            </summary>
-
-        </member>
-        <member name="P:DevExpress.XtraRichEdit.ScrollbarOptions.Visibility">
-            <summary>
-                <para>Gets or sets a value that specifies the visibility of a scroll bar.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraRichEdit.RichEditScrollbarVisibility"/> enumeration member specifying the visibility mode.
-</value>
 
 
         </member>

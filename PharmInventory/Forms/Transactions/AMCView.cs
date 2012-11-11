@@ -26,6 +26,7 @@ namespace PharmInventory.Forms.Transactions
         {
             InitializeComponent();
             this.TopLevel = false;
+         
             loadamc();
 
             
@@ -35,12 +36,14 @@ namespace PharmInventory.Forms.Transactions
         {
             var allamcs = _amcReportRepository.AllAmcReport();
             var allstores = _storerepository.AllStores();
-            storebindingSource.DataSource = allstores;
+             storebindingSource.DataSource = allstores;
+            lookUpEdit1.ItemIndex = 0;
             amcbindingSource.DataSource = allamcs.Distinct().OrderBy(m=>m.FullItemName);
         }
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)
         {
+            //backgroundWorker1.RunWorkerAsync();
             var allamcs = _amcReportRepository.AllAmcReport();
             var allstores = _storerepository.AllStores();
             storebindingSource.DataSource = allstores;
@@ -60,12 +63,9 @@ namespace PharmInventory.Forms.Transactions
             _datasource = new List<AMCViewModel>();
             double percentage = 20.0;
             var receiveDocs = _repository.AllItems().Where(m => itemsrecieved.Contains(m.ID)).ToList();
-            //var enumerable = receiveDocs as List<ReceiveDoc> ?? receiveDocs.ToList();
             double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
         
-           // _amcReportRepository.DeleteAll();
-
-            foreach (var item in receiveDocs)
+           foreach (var item in receiveDocs)
             {
                 _datasource.Add(AMCViewModel.Create(item.ID, storeId, generalinfo.AMCRange, DateTime.Today));
                 percentage += increment;
@@ -100,6 +100,10 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
+            if(lookUpEdit1.EditValue==null)
+            {
+                XtraMessageBox.Show("Please select the store you want to update AMC report.");
+            }
             if (lookUpEdit1.EditValue != null)
             {
                 backgroundWorker1.RunWorkerAsync();

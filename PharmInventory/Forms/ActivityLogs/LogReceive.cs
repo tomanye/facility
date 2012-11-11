@@ -192,7 +192,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
             {
                 XtraMessageBox.Show("Unable to Delete, This Transaction has been processed. Try Loss and Adjustment.",
-                                    "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    "Unable to Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             }
             else
             {
@@ -445,7 +445,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 DataTable dtbl = rec.GetTransactionByRefNo((string) dr["RefNo"]);
                 foreach (DataRow dataRow in dtbl.Rows)
                 {
-                    AddReceiveDocDeleted(dataRow);
+                   // AddReceiveDocDeleted(dataRow);
                     dataRow.Delete();
                 }
                 rec.MarkAsDeleted();

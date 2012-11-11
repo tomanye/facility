@@ -12,7 +12,7 @@ namespace StockoutIndexBuilder.DAL
        StockoutEntities Context = new StockoutEntities();
        public List<ReceiveDoc> RecievedItems()
        {
-           return Context.ReceiveDocs.ToList();
+          return Context.ReceiveDocs.ToList();
        }
     }
 }

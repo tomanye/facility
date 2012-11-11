@@ -416,7 +416,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Quantity";
-            this.gridColumn4.DisplayFormat.FormatString = "#,###0.#";
+            this.gridColumn4.DisplayFormat.FormatString = "##0.#0";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "QuantityDetail";
             this.gridColumn4.Name = "gridColumn4";
@@ -714,6 +714,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
