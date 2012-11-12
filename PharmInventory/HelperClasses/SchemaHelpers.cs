@@ -9,14 +9,10 @@ namespace PharmInventory.HelperClasses
 {
     class SchemaHelpers
     {
-        public const string RegKey = "Software\\JSI\\HCMIS\\Configuration";
-        public const string PrevConnectionStringKey = "Software\\JSI\\HCMIS\\Configuration\\ConnectionStringManager\\History";
-
-        public static void ExecuteNonQuery(string query)
+       public static void ExecuteNonQuery(string query)
         {
-       
-            string  connStringManager = new string(Convert.ToChar(RegKey), Convert.ToInt32(PrevConnectionStringKey));
-             using (SqlConnection connection = new SqlConnection(connStringManager))
+            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(sqlConnectionString))
             {
                 SqlCommand command = new SqlCommand();
                 command.CommandText = query;

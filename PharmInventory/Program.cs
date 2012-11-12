@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-
 using PharmInventory.Forms.Modals;
 using System.Deployment.Application;
 using System.ComponentModel;
@@ -73,21 +72,17 @@ namespace PharmInventory
 
         private static void CreateDatabaseTables()
         {
-            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+             var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
 
-            var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
-
+            //Get the sql. scripts file in the directory
             FileInfo[] scripts = scriptsDirectory.GetFiles();
+            // Foreach scripts 
             foreach (var scriptFile in scripts)
             {
                 try
                 {
                 string script = scriptFile.OpenText().ReadToEnd();
-                SqlConnection conn = new SqlConnection(sqlConnectionString);
-                    SqlCommand command = new SqlCommand(script);
-                    command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
-                   
+                ExecuteNonQuery(script);
                 scriptFile.OpenText().Close();
 
                 }
@@ -96,10 +91,21 @@ namespace PharmInventory
                     continue;
                 }
             }
+        }
 
-            
+        public static void ExecuteNonQuery(string query)
+        {
+            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(sqlConnectionString))
+            {
+                SqlCommand command = new SqlCommand();
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
 
-            
         }
 
         static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)

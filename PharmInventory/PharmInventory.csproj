@@ -1221,9 +1221,6 @@
     <Content Include="Scripts\ReceiveDocDeletedLoadAll.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\SOHByProgram.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\Stockout.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
