@@ -767,7 +767,9 @@ namespace BLL
             int amc;
             foreach (DataRow dr in dtbl.Rows)
             {
-                amc = Convert.ToInt32(dr["AMC"]);
+                //previous amc calculation
+               // amc = Convert.ToInt32(dr["AMC"]);
+                amc = (int) Builder.CachedAMC((int)dr["ID"], storeId);
                 if (amc > 0)
                 {
                     dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
@@ -845,11 +847,11 @@ namespace BLL
             var days= DateTime.DaysInMonth(year, month);
             var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
-            ld.Add("@programid", programid);
+            ld.Add("@progID", programid);
             ld.Add("@month", month);
             ld.Add("@year", year);
             ld.Add("@days", days);
-            this.LoadFromSql("SOHByProgram", ld, CommandType.StoredProcedure);
+            this.LoadFromSql("SOHByPrograms", ld, CommandType.StoredProcedure);
             //TODO: filter out by commodity type here.
 
             return this.DataTable;

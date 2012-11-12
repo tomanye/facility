@@ -32,10 +32,14 @@ namespace PharmInventory.Forms.ActivityLogs
             cboReasons.Properties.DataSource = dtDis;
             cboReasons.ItemIndex = 0;
 
+            //Stores stor = new Stores();
+
+            //cboStores.Properties.DataSource = stor.GetActiveStores();
+           
             Stores stor = new Stores();
-
-            cboStores.Properties.DataSource = stor.GetActiveStores();
-
+            stor.GetActiveStores();
+            cboStores.Properties.DataSource = stor.DefaultView;
+            cboStores.ItemIndex = 0;
 
 
             try

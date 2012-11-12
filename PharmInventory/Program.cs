@@ -1,17 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Microsoft.SqlServer.Management.Common;
 using PharmInventory.Forms.Modals;
 using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Threading;
-using Microsoft.SqlServer.Server;
-using Microsoft.SqlServer.Management.Smo;
 
 
 
@@ -74,21 +72,17 @@ namespace PharmInventory
 
         private static void CreateDatabaseTables()
         {
-            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+             var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
 
-            var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
-
+            //Get the sql. scripts file in the directory
             FileInfo[] scripts = scriptsDirectory.GetFiles();
+            // Foreach scripts 
             foreach (var scriptFile in scripts)
             {
                 try
                 {
                 string script = scriptFile.OpenText().ReadToEnd();
-                SqlConnection conn = new SqlConnection(sqlConnectionString);
-
-                Server server = new Server(new ServerConnection(conn));
-
-                server.ConnectionContext.ExecuteNonQuery(script);
+                ExecuteNonQuery(script);
                 scriptFile.OpenText().Close();
 
                 }
@@ -97,10 +91,21 @@ namespace PharmInventory
                     continue;
                 }
             }
+        }
 
-            
+        public static void ExecuteNonQuery(string query)
+        {
+            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (SqlConnection connection = new SqlConnection(sqlConnectionString))
+            {
+                SqlCommand command = new SqlCommand();
+                command.CommandText = query;
+                command.CommandType = CommandType.Text;
+                command.Connection = connection;
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
 
-            
         }
 
         static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)
