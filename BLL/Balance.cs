@@ -764,15 +764,15 @@ namespace BLL
             dtbl.Columns.Add("MOS",typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
             dtbl.Columns.Add("DaysStockedOut", typeof(int));
-            int amc;
+            dtbl.Columns.Add("amc", typeof(double));
             foreach (DataRow dr in dtbl.Rows)
             {
                 //previous amc calculation
                // amc = Convert.ToInt32(dr["AMC"]);
-                amc = (int) Builder.CachedAMC((int)dr["ID"], storeId);
-                if (amc > 0)
+                dr["amc"] =  Builder.CachedAMC((int)dr["ID"], storeId);
+                if ((double)dr["amc"] > 0)
                 {
-                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
+                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / (double) dr["amc"];
                 }
                 else
                 {
@@ -828,7 +828,7 @@ namespace BLL
             ld.Add("@ItemID", itemID);
             ld.Add("@Year", year);
             
-            //this.LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
+            LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             
             // Set the balance  
             int balance = (int)GetBeginningBalance(year,itemID,storeID);

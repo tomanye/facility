@@ -2354,7 +2354,6 @@ namespace PharmInventory.Forms.Modals
 
         private void cboFiscalYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             GenerateBinCardNew();
         }
     }
