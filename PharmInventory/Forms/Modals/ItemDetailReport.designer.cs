@@ -1402,7 +1402,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -1911,6 +1911,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.printableComponentLink1.PrintingSystem = this.printingSystem2;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem2;

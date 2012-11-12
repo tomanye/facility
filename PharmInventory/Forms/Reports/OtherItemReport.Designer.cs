@@ -530,9 +530,9 @@ namespace PharmInventory.Forms.Reports
             // VEN
             // 
             this.VEN.Caption = "AMC";
-            this.VEN.DisplayFormat.FormatString = "#,##0";
+            this.VEN.DisplayFormat.FormatString = "##0.#0";
             this.VEN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.VEN.FieldName = "AMC";
+            this.VEN.FieldName = "amc";
             this.VEN.Name = "VEN";
             this.VEN.OptionsColumn.AllowEdit = false;
             this.VEN.OptionsColumn.AllowIncrementalSearch = false;
@@ -1001,7 +1001,7 @@ namespace PharmInventory.Forms.Reports
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
-
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
                 "Stock Status Reports",
