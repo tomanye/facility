@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using Microsoft.SqlServer.Management.Common;
+
 using PharmInventory.Forms.Modals;
 using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Threading;
-using Microsoft.SqlServer.Server;
-using Microsoft.SqlServer.Management.Smo;
 
 
 
@@ -85,10 +84,10 @@ namespace PharmInventory
                 {
                 string script = scriptFile.OpenText().ReadToEnd();
                 SqlConnection conn = new SqlConnection(sqlConnectionString);
-
-                Server server = new Server(new ServerConnection(conn));
-
-                server.ConnectionContext.ExecuteNonQuery(script);
+                    SqlCommand command = new SqlCommand(script);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                   
                 scriptFile.OpenText().Close();
 
                 }

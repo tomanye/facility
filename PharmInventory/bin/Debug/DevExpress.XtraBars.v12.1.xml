@@ -1880,20 +1880,15 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.ISlideGroupProperties">
 
             <summary>
-                <para>Contains properties common to all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.ISlideGroupProperties.ItemLength">
             <summary>
-                <para>Gets or sets the length of every individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within the view.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the length of every individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within the view.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -5421,11 +5416,9 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         </member>
         <member name="P:DevExpress.XtraBars.RibbonAppearances.Editor">
             <summary>
-                <para>Provides access to the settings controlling the font of the text displayed within the RibbonControl's in-place editors.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An <see cref="T:DevExpress.Utils.AppearanceObject"/> object providing corresponding settings.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -8088,16 +8081,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 
 
         </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.RibbonControl.MergeOwner">
-            <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
         <member name="M:DevExpress.XtraBars.Ribbon.RibbonControl.MergeRibbon(DevExpress.XtraBars.Ribbon.RibbonControl)">
             <summary>
                 <para>Merges the specified RibbonControl into the current RibbonControl.
@@ -8134,16 +8117,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraBars.Ribbon.RibbonMiniToolbarCollection"/> object that is the collection of <see cref="T:DevExpress.XtraBars.Ribbon.RibbonMiniToolbar"/> objects.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.RibbonControl.OptionsCustomizationForm">
-            <summary>
-                <para>Gets or sets an object containing settings related to the current RibbonControl's customization form.
-</para>
-            </summary>
-            <value>An RibbonCustomizationFormOptions object that contains settings related to the current RibbonControl's customization form.
 </value>
 
 
@@ -8258,15 +8231,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
             <summary>
                 <para>Removes the <see cref="T:DevExpress.Utils.SuperToolTip"/> object that has been assigned to the Application Button via the <see cref="P:DevExpress.XtraBars.Ribbon.RibbonControl.ApplicationButtonSuperTip"/> property.
 
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Ribbon.RibbonControl.ResetLayout">
-            <summary>
-                <para>Occurs when the current RibbonControl's control is being reset to defaults.
 
 </para>
             </summary>
@@ -8580,211 +8544,120 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.#ctor(DevExpress.XtraBars.Docking.DockControllerMenu,System.Drawing.Point)">
-            <summary>
-                <para>Initializes a new instance of the PopupMenuShowingEventArgs class with the specified settings.
-</para>
-            </summary>
-            <param name="menu">
-		A DockControllerMenu object that is the menu to be displayed. This object is used to initialize the <see cref="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Menu"/> property.
-
-            </param>
-            <param name="point">
-		A Point where the menu is about to be displayed. This value is used to initialize the <see cref="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Point"/> property.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Control">
-            <summary>
-                <para>Gets the dock control for which the <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event has been fired.
-</para>
-            </summary>
-            <value>The dock control for which the popup menu is about to be displayed.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Menu">
-            <summary>
-                <para>Gets the popup menu that is to be displayed.
-</para>
-            </summary>
-            <value>A DockControllerMenu object that is about to be displayed.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Point">
-            <summary>
-                <para>Gets the popup menu's location.
-</para>
-            </summary>
-            <value>A Point structure that is the popup menu's location.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraBars.Docking.PopupMenuShowingEventHandler">
-
-            <summary>
-                <para>A method that will handle a DockManager's <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
-
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.PopupMenuShowingEventHandler.Invoke(System.Object,DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs)">
-            <summary>
-                <para>A method that will handle a DockManager's <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
-
-</para>
-            </summary>
-            <param name="sender">
-		The event source.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraRichEdit.PopupMenuShowingEventArgs"/> class instance containing event data.
-
-            </param>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.ISlideGroupDefaultProperties">
 
             <summary>
-                <para>Contains properties for individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.ISlideGroupDefaultProperties.ActualItemLength">
             <summary>
-                <para>Gets the actual length for <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that is the actual length for <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.ISlideGroupDefaultProperties.ItemLength">
             <summary>
-                <para>Gets or sets the length of every individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the length of every individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties">
 
             <summary>
-                <para>Contains properties for individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.ActualMargin">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.ActualSwitchDocumentAnimationFrameInterval">
             <summary>
-                <para>Gets the time currently used to switch from one animation frame to another for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the time currently used to switch from one animation frame to another for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.ActualSwitchDocumentAnimationFramesCount">
             <summary>
-                <para>Gets the current number of frames that form the navigation animation for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the current number of frames that form the navigation animation for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.ActualSwitchDocumentAnimationMode">
             <summary>
-                <para>Gets the animation effect currently used by the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TransitionAnimation enumerator value that is the animation effect currently used by the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
+            <value> [To be supplied] </value>
 
-</value>
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.Margin">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.SwitchDocumentAnimationFrameInterval">
             <summary>
-                <para>Gets or sets the time required to switch from one animation frame to another when navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>'s <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>The Int32 value that specifies the time required to switch from one animation frame to another. The default is <b>10000</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.SwitchDocumentAnimationFramesCount">
             <summary>
-                <para>Gets or sets the number of frames engaged in the animation that visualizes navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the number of frames engaged in the animation that visualizes navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>. The default is <b>1000</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupDefaultProperties.SwitchDocumentAnimationMode">
             <summary>
-                <para>Gets or sets the animation mode used when navigating thorough <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s in individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/> containers.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TransitionAnimation enumerator value specifying the animation mode used when navigating thorough <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s in individual <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/> containers.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.DocumentGroup">
 
             <summary>
-                <para>The base class for all MetroUIView Content Containers.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.DocumentGroup.GetLengths">
             <summary>
-                <para>Gets an Int32 array whose every item specifies the length of a corresponding <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/> or a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns>An Int32 array that contains Document lengths within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/> or a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>.
-
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.DocumentGroup.Info">
             <summary>
-                <para>Gets the object providing general information about the current DocumentGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IDocumentGroupInfo object that contains general information about the current DocumentGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -9166,11 +9039,9 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         </member>
         <member name="P:DevExpress.XtraTabbedMdi.XtraMdiTabPage.MaxTabPageWidth">
             <summary>
-                <para>Gets or sets the maximum width of the current page's tab header.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An integer value that is the maximum width of the current page's tab header. 
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -9748,12 +9619,9 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         </member>
         <member name="P:DevExpress.XtraTabbedMdi.XtraTabbedMdiManager.MaxTabPageWidth">
             <summary>
-                <para>Gets or sets the default maximum width of tab headers for all pages.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An integer value that is the default maximum width of tab headers for all pages.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -9964,236 +9832,170 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupProperties">
 
             <summary>
-                <para>Contains properties common to all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupProperties.Margin">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <value> [To be supplied] </value>
+
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupProperties.SwitchDocumentAnimationFrameInterval">
             <summary>
-                <para>Gets or sets the time required to switch from one animation frame to another when navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>'s <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s. Affects all PageGroups within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>The Int32 value that specifies the time required to switch from one animation frame to another. The default is <b>10000</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupProperties.SwitchDocumentAnimationFramesCount">
             <summary>
-                <para>Gets or sets the number of frames engaged in the animation that visualizes navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>. Affects all PageGroups within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that specifies the number of frames engaged in the animation that visualizes navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>. The default is <b>1000</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageGroupProperties.SwitchDocumentAnimationMode">
             <summary>
-                <para>Gets or sets the animation mode used when navigating thorough <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s in <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s. Affects all PageGroups within the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TransitionAnimation enumerator value specifying the animation mode used when navigating thorough <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s in <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s. 
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile">
 
             <summary>
-                <para>Provides base Tiles' functionality.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Appearances">
             <summary>
-                <para>Provides access to appearance settings used to paint the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> in different visual states.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TileItemAppearances object that stores appearance settings used to paint the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> in different visual states.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.BackgroundImage">
             <summary>
-                <para>Gets or sets a background image for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Image object that is the background image for the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Checked">
             <summary>
-                <para>Gets or sets whether the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is checked.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value><b>true</b> if the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is checked; otherwise, <b>false</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.CheckedChanged">
             <summary>
-                <para>Occurs when the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s check state has been changed.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Click">
-            <summary>
-                <para>Occurs when an end-user clicks the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.CurrentFrame">
             <summary>
-                <para>Gets the <see cref="T:DevExpress.XtraEditors.TileItemFrame"/> currently displayed within the <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TileItemFrame object that is currently displayed within the <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Elements">
             <summary>
-                <para>Provides access to the <see cref="T:DevExpress.XtraEditors.TileItemElement"/>s collection used to build the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s content.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TileItemElementCollection that contains <see cref="T:DevExpress.XtraEditors.TileItemElement"/>s used to build the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s content.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Frames">
             <summary>
-                <para>Provides access to the <see cref="T:DevExpress.XtraEditors.TileItemFrame"/>s collection used to build the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s animation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TileItemFrameCollection that contains <see cref="T:DevExpress.XtraEditors.TileItemFrame"/>s used to build the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s animation.
-</value>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.GetID">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Group">
             <summary>
-                <para>Gets or sets a group where the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> belongs.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A String value specifying a group where the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> belongs.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.IsActive">
             <summary>
-                <para>Gets whether the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is active.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value><b>true</b> if the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is active; otherwise, <b>false</b>.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Manager">
             <summary>
-                <para>Returns a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/> to which the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> belongs.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/> to which the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> belongs.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Padding">
             <summary>
-                <para>Gets or sets the amount of space between the content of the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> and its border.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A Padding structure that specifies the amount of space between the content of the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> and its border.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Properties">
             <summary>
-                <para>Provides access to the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IBaseTileDefaultProperties object that contains settings for the current BaseTile.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.SetContent(DevExpress.XtraEditors.TileItemFrame,System.Boolean)">
             <summary>
-                <para>Forces the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> to display a specific <see cref="T:DevExpress.XtraEditors.TileItemFrame"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="frame">
-		A <see cref="T:DevExpress.XtraEditors.TileItemFrame"/> to be displayed.
-
+		 [To be supplied] 
             </param>
             <param name="animated">
-		A Boolean value indicating whether the <i>frame</i> should be displayed using the frame animation.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile.Tag">
             <summary>
-                <para>Gets or sets the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s tag.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Object that is the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s tag.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer">
-
-            <summary>
-                <para>Contains values that specify how floating documents are hosted.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.Default">
-            <summary>
-                <para>A Default value. Acts identically to the <b>SingleDocument</b> value.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.DocumentsHost">
-            <summary>
-                <para>Floating documents are hosted within a float document container capable of containing multiple documents. You can drag documents to dock them into a floating container.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.SingleDocument">
-            <summary>
-                <para>Floating documents are hosted within independent containers and cannot be docked to each other.
-</para>
-            </summary>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -10281,16 +10083,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> panel that will own the newly created DockPanelOptions object.
 
             </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.DockPanelOptions.AllowDockAsTabbedDocument">
-            <summary>
-                <para>Gets or sets whether the current <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> can be docked to a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/> as a tabbed Document.
-</para>
-            </summary>
-            <value><b>true</b> if the current <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> can be docked to a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/> as a tabbed Document; otherwise, <b>false</b>.
-</value>
 
 
         </member>
@@ -11397,6 +11189,207 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 
 
         </member>
+        <member name="T:DevExpress.XtraBars.Docking.AutoHideContainer">
+
+            <summary>
+                <para>Represents an auto hide container.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.#ctor">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraBars.Docking.AutoHideContainer"/> class.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.Contains(DevExpress.XtraBars.Docking.DockPanel)">
+            <summary>
+                <para>Indicates whether the auto hide container holds the specified dock panel.
+</para>
+            </summary>
+            <param name="panel">
+		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object to locate.
+
+            </param>
+            <returns><b>true</b> if the auto hide container holds the specified dock panel; otherwise, <b>false</b>.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Count">
+            <summary>
+                <para>Gets the number of dock panels contained within the auto hide container.
+</para>
+            </summary>
+            <value>An integer value specifying the number of dock panels contained within the auto hide container.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Dock">
+            <summary>
+                <para>Gets or sets a value specifying how the auto hide container is aligned within its parent control.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Windows.Forms.DockStyle"/> enumeration value specifying the manner in which an auto hide container is docked.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.GetHitInfo(System.Drawing.Point)">
+            <summary>
+                <para>Returns information about the container's element located at the specified point.
+</para>
+            </summary>
+            <param name="ptClient">
+		A <see cref="T:System.Drawing.Point"/> structure which specifies the test point coordinates relative to the container's top-left corner.
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraBars.Docking.HitInfo"/> object which contains information about the auto hide container's element at the test point.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.IndexOf(DevExpress.XtraBars.Docking.DockPanel)">
+            <summary>
+                <para>Returns the specified dock panel's position within the auto hide container.
+</para>
+            </summary>
+            <param name="panel">
+		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object to locate.
+
+            </param>
+            <returns>A zero-based integer representing the dock panel's position within the auto hide container. <b>-1</b> if the auto hide container doesn't contain the specified dock panel.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Item(System.Int32)">
+            <summary>
+                <para>Provides indexed access to the dock panels contained within the auto hide container.
+</para>
+            </summary>
+            <param name="index">
+		An integer value specifying the dock panel's zero-based index within the collection.
+
+            </param>
+            <value>A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object representing the dock panel located at the specified position.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Position">
+            <summary>
+                <para>Gets the position of the auto hide container within its parent control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraBars.Docking.TabsPosition"/> enumeration value specifying the position of the auto hide container within its parent control.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.ViewInfo">
+            <summary>
+                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
+</para>
+            </summary>
+            <value>@nbsp;
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Docking.HitTest">
+
+            <summary>
+                <para>Lists values which identify the elements in a dock panel.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.AutoHidePanel">
+            <summary>
+                <para>The test point belongs to the label within the auto hide container which corresponds to a dock panel with its auto hiding functionality enabled.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.Border">
+            <summary>
+                <para>The test point belongs to the dock panel's border.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.Caption">
+            <summary>
+                <para>The test point belongs to a dock panel's caption.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.Client">
+            <summary>
+                <para>The test point belongs to the dock panel's client area.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.EmbeddedButtonPanel">
+            <summary>
+                <para>The test point belongs to the header buttons panel, which contains both default and custom header buttons.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.NextTabButton">
+            <summary>
+                <para>The test point belongs to a scroll button used to traverse forwards through the tabs in a tab container.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.None">
+            <summary>
+                <para>The test point is not within a dock panel.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.PrevTabButton">
+            <summary>
+                <para>The test point belongs to a scroll button used to traverse backwards through the tabs in a tab container.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.Tab">
+            <summary>
+                <para>The test point belongs to a tab button in a tab container.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.HitTest.TabPanel">
+            <summary>
+                <para>The test point belongs to a tab panel in a tab container.
+</para>
+            </summary>
+
+
+        </member>
         <member name="T:DevExpress.XtraBars.BarCheckItem">
 
             <summary>
@@ -12224,27 +12217,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
             <param name="index">
 		An integer value.
 
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.DockPanel.DockTo(DevExpress.XtraBars.Docking.DockPanel,DevExpress.XtraBars.Docking.DockingStyle,System.Int32)">
-            <summary>
-                <para>Docks the current panel on the form (user control) to the specified panel at the specified position using the specified style.
-
-</para>
-            </summary>
-            <param name="panel">
-		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object that is the target dock panel.
-
-            </param>
-            <param name="dock">
-		A <see cref="T:DevExpress.XtraBars.Docking.DockingStyle"/> enumerator value specifying how the current panel is docked to the target panel.
-
-            </param>
-            <param name="index">
-		A zero-based integer specifying the position at which to dock the current panel.
 
             </param>
 
@@ -13798,35 +13770,30 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile">
 
             <summary>
-                <para>A Tile within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the Tile class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.#ctor">
             <summary>
-                <para>Initializes a new instance of the Tile class with the default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.#ctor(DevExpress.XtraBars.Docking2010.Views.MetroUI.IBaseTileProperties,DevExpress.XtraBars.Docking2010.Views.MetroUI.Document)">
             <summary>
-                <para>Initializes a new instance of the Tile class with custom settings and links it to the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="parentProperties">
 		An IBaseTileProperties object that contains custom settings for the newly created Tile.
@@ -13841,33 +13808,35 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.#ctor(DevExpress.XtraBars.Docking2010.Views.MetroUI.IBaseTileProperties)">
             <summary>
-                <para>Initializes a new instance of the Tile class with custom settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="parentProperties">
-		An IBaseTileProperties object that contains custom settings for the newly created Tile.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.ActivationTarget">
             <summary>
-                <para>Gets or sets a content container displayed on the current Tile activation.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IContentContainer object that will be shown on the current Tile activation.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.Document">
             <summary>
-                <para>Gets or sets a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> related to the current Tile.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> related to the current Tile.
-</value>
+            <value> [To be supplied] </value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile.GetID">
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -13933,207 +13902,6 @@ For <see cref="T:DevExpress.XtraBars.Ribbon.ApplicationMenu"/> objects, the defa
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Docking.AutoHideContainer">
-
-            <summary>
-                <para>Represents an auto hide container.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.#ctor">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraBars.Docking.AutoHideContainer"/> class.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.Contains(DevExpress.XtraBars.Docking.DockPanel)">
-            <summary>
-                <para>Indicates whether the auto hide container holds the specified dock panel.
-</para>
-            </summary>
-            <param name="panel">
-		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object to locate.
-
-            </param>
-            <returns><b>true</b> if the auto hide container holds the specified dock panel; otherwise, <b>false</b>.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Count">
-            <summary>
-                <para>Gets the number of dock panels contained within the auto hide container.
-</para>
-            </summary>
-            <value>An integer value specifying the number of dock panels contained within the auto hide container.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Dock">
-            <summary>
-                <para>Gets or sets a value specifying how the auto hide container is aligned within its parent control.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Windows.Forms.DockStyle"/> enumeration value specifying the manner in which an auto hide container is docked.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.GetHitInfo(System.Drawing.Point)">
-            <summary>
-                <para>Returns information about the container's element located at the specified point.
-</para>
-            </summary>
-            <param name="ptClient">
-		A <see cref="T:System.Drawing.Point"/> structure which specifies the test point coordinates relative to the container's top-left corner.
-
-            </param>
-            <returns>A <see cref="T:DevExpress.XtraBars.Docking.HitInfo"/> object which contains information about the auto hide container's element at the test point.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking.AutoHideContainer.IndexOf(DevExpress.XtraBars.Docking.DockPanel)">
-            <summary>
-                <para>Returns the specified dock panel's position within the auto hide container.
-</para>
-            </summary>
-            <param name="panel">
-		A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object to locate.
-
-            </param>
-            <returns>A zero-based integer representing the dock panel's position within the auto hide container. <b>-1</b> if the auto hide container doesn't contain the specified dock panel.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Item(System.Int32)">
-            <summary>
-                <para>Provides indexed access to the dock panels contained within the auto hide container.
-</para>
-            </summary>
-            <param name="index">
-		An integer value specifying the dock panel's zero-based index within the collection.
-
-            </param>
-            <value>A <see cref="T:DevExpress.XtraBars.Docking.DockPanel"/> object representing the dock panel located at the specified position.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.Position">
-            <summary>
-                <para>Gets the position of the auto hide container within its parent control.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraBars.Docking.TabsPosition"/> enumeration value specifying the position of the auto hide container within its parent control.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking.AutoHideContainer.ViewInfo">
-            <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraBars.Docking.HitTest">
-
-            <summary>
-                <para>Lists values which identify the elements in a dock panel.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.AutoHidePanel">
-            <summary>
-                <para>The test point belongs to the label within the auto hide container which corresponds to a dock panel with its auto hiding functionality enabled.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.Border">
-            <summary>
-                <para>The test point belongs to the dock panel's border.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.Caption">
-            <summary>
-                <para>The test point belongs to a dock panel's caption.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.Client">
-            <summary>
-                <para>The test point belongs to the dock panel's client area.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.EmbeddedButtonPanel">
-            <summary>
-                <para>The test point belongs to the header buttons panel, which contains both default and custom header buttons.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.NextTabButton">
-            <summary>
-                <para>The test point belongs to a scroll button used to traverse forwards through the tabs in a tab container.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.None">
-            <summary>
-                <para>The test point is not within a dock panel.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.PrevTabButton">
-            <summary>
-                <para>The test point belongs to a scroll button used to traverse backwards through the tabs in a tab container.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.Tab">
-            <summary>
-                <para>The test point belongs to a tab button in a tab container.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraBars.Docking.HitTest.TabPanel">
-            <summary>
-                <para>The test point belongs to a tab panel in a tab container.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.Docking.DockingStyle">
 
             <summary>
@@ -14190,6 +13958,38 @@ It's not possible to make a dock panel fill the form (user control).
         <member name="F:DevExpress.XtraBars.Docking.DockingStyle.Top">
             <summary>
                 <para>The dock panel's top edge is docked to the top of its containing control.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer">
+
+            <summary>
+                <para> [To be supplied] </para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.Default">
+            <summary>
+                <para>A Default value. Acts identically to the <b>SingleDocument</b> value.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.DocumentsHost">
+            <summary>
+                <para>Floating documents are hosted within a float document container capable of containing multiple documents. You can drag documents to dock them into a floating container.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.SingleDocument">
+            <summary>
+                <para>Floating documents are hosted within independent containers and cannot be docked to each other.
 </para>
             </summary>
 
@@ -14306,74 +14106,59 @@ It's not possible to make a dock panel fill the form (user control).
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController">
 
             <summary>
-                <para>An object that implements operations on a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>'s documents and Content Containers.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.Activate(DevExpress.XtraBars.Docking2010.Views.MetroUI.IContentContainer)">
             <summary>
-                <para>Activates the specific content container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An IContentContainer object to be activated.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if the target content container can be activated; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.Activate(DevExpress.XtraBars.Docking2010.Views.MetroUI.BaseTile)">
             <summary>
-                <para>Activates the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="tile">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> to be activated.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if the target <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> can be activated; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.AddTile(DevExpress.XtraBars.Docking2010.Views.MetroUI.Document)">
             <summary>
-                <para>Adds a tile for the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> to the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> related to the newly added Tile.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if a tile for the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> was successfully added to the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.Back">
             <summary>
-                <para>Navigates back from the currently viewed screen to the upper level.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns><b>true</b> if navigation to the upper level was successful; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.EnableFullScreenMode(System.Boolean)">
             <summary>
-                <para>Sets the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>'s form visual state.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="enable">
-		<b>true</b> if the form should be maximized; <b>false</b> for the normal state.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if the method was successfully performed; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -14389,7 +14174,7 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.Flip(DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup)">
             <summary>
-                <para>Flips the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/>'s layout.
+                <para>Changes the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/>'s document size in inverse relation to their original size.
 
 </para>
             </summary>
@@ -14404,11 +14189,9 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.Home">
             <summary>
-                <para>Navigates from the currently viewed screen to the top-most level.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <returns><b>true</b> if navigation to the top-most level was successfully performed; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -14429,15 +14212,12 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.IMetroUIViewController.RemoveTile(DevExpress.XtraBars.Docking2010.Views.MetroUI.Document)">
             <summary>
-                <para>Removes a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> related to the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> from the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> whose <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is to be removed.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> related to the specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> was successfully removed from the current <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -14458,8 +14238,7 @@ It's not possible to make a dock panel fill the form (user control).
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.IBaseTileProperties">
 
             <summary>
-                <para>Contains properties for <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>s within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14476,15 +14255,13 @@ It's not possible to make a dock panel fill the form (user control).
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page">
 
             <summary>
-                <para>A Metro UI View container that displays a single <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page.#ctor(DevExpress.XtraBars.Docking2010.Views.MetroUI.IPageProperties)">
             <summary>
-                <para>Initializes a new instance of the Page class with custom settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="defaultProperties">
 		An IPageProperties object that contains custom settings for the newly created Page.
@@ -14495,20 +14272,17 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the Page class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page.#ctor">
             <summary>
-                <para>Initializes a new instance of the Page class with the default settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -14523,21 +14297,10 @@ It's not possible to make a dock panel fill the form (user control).
 
 
         </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page.Properties">
-            <summary>
-                <para>Provides access to the current Page's settings.
-</para>
-            </summary>
-            <value>An IPageDefaultProperties object that stores settings for the current Page.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document">
 
             <summary>
-                <para>A Document within a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView"/>.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14563,51 +14326,42 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the Document class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document.ActionCaption">
             <summary>
-                <para>Gets or sets the caption for the navigation action related to the current Document.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A String value specifying the caption for the navigation action related to the current Document.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document.ActionImage">
             <summary>
-                <para>Gets or sets the icon for the navigation action related to the current Document.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Image object specifying the icon for the navigation action related to the current Document.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document.DocumentContainerActions">
             <summary>
-                <para>Provides access to the current Document's custom actions.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A ContentContainerActionCollection object that stores custom actions for the current Document.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer">
 
             <summary>
-                <para>A Metro UI View container that displays <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>s and unites them in multiple groups.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14621,12 +14375,10 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the TileContainer class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
@@ -14655,39 +14407,25 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.AppearanceGroupText">
             <summary>
-                <para>Provides access to appearance settings used to paint the current TileContainer groups' captions.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An AppearanceObject that contains appearance settings used to paint the current TileContainer groups' captions.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.AppearanceItem">
             <summary>
-                <para>Provides access to appearance settings used to paint the current TileContainer's Tiles in different visual states.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A TileItemAppearances object that stores appearance settings used to paint the current TileContainer's Tiles in different visual states.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.AppearanceText">
             <summary>
-                <para>Provides access to appearance settings used to paint the current TileContainer's caption.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An AppearanceObject that stores appearance settings used to paint the current TileContainer's caption.
-</value>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.CheckedChanged">
-            <summary>
-                <para>Occurs when any <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>'s checked state within the current TileContainer was changed.
-</para>
-            </summary>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -14701,21 +14439,11 @@ It's not possible to make a dock panel fill the form (user control).
 
 
         </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.Click">
-            <summary>
-                <para>Occurs when any <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> within the current TileContainer was clicked.
-</para>
-            </summary>
-
-
-        </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.Info">
             <summary>
-                <para>Gets the object providing information about the current TileContainer.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ITileContainerInfo object that contains information about the current TileContainer.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -14731,19 +14459,16 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer.Properties">
             <summary>
-                <para>Provides access to the current TileContainer's settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ITileContainerDefaultProperties object that contains settings for the current TileContainer.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup">
 
             <summary>
-                <para>A Metro UI View container that arranges multiple <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s side-by-side in a single scrollable row or column.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14769,51 +14494,42 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the SlideGroup class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup.Info">
             <summary>
-                <para>Gets the object providing information about the current SlideGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ISlideGroupInfo object that contains information about the current SlideGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup.Properties">
             <summary>
-                <para>Provides access to the current SlideGroup's settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ISlideGroupDefaultProperties object that contains the current SlideGroup's settings.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup.ScrollBarVisibility">
             <summary>
-                <para>Gets or sets whether scroll bars are visible for the current SlideGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A ScrollBarVisibility enumerator value specifying whether scroll bars are visible for the current SlideGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup">
 
             <summary>
-                <para>A Metro UI View container that displays all its Documents simultaneously, arranging them in a single row or column without a scroll bar. End-users can resize Documents at runtime by dragging split bars.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14839,32 +14555,26 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the SplitGroup class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup.Properties">
             <summary>
-                <para>Provides access to the current SplitGroup's settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ISplitGroupDefaultProperties object that contains settings for the current SplitGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup">
 
             <summary>
-                <para>A Metro UI View container that stores multiple <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s but can display only one of them at a time.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -14878,12 +14588,10 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the PageGroup class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
@@ -14902,92 +14610,73 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.Info">
             <summary>
-                <para>Gets the object providing information about the current PageGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IPageGroupInfo object that contains information about the current PageGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.IsSelected(DevExpress.XtraBars.Docking2010.Views.MetroUI.Document)">
             <summary>
-                <para>Determines whether the target <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> is selected within the current PageGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> object to be checked.
-
+		 [To be supplied] 
             </param>
-            <returns><b>true</b> if the target <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> is selected within the current PageGroup; otherwise, <b>false</b>.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.Properties">
             <summary>
-                <para>Provides access to the current PageGroup's settings.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IPageGroupDefaultProperties that contains settings for the current PageGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.SelectedDocument">
             <summary>
-                <para>Gets the currently selected <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the PageGroup. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A Document within the PageGroup that is currently selected.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.SelectedItemIndex">
             <summary>
-                <para>Gets the index of the currently selected <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within a PageGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An Int32 value that is the index of the currently selected <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within a PageGroup.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.SelectionChanged">
             <summary>
-                <para>Occurs when another <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the current PageGroup is activated.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.SetSelected(DevExpress.XtraBars.Docking2010.Views.MetroUI.Document)">
             <summary>
-                <para>Activates a specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the current PageGroup.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> to be activated.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup.SetSelected(DevExpress.XtraBars.Docking2010.Views.MetroUI.Document,System.Boolean)">
             <summary>
-                <para>Activates a specific <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> within the current PageGroup using the required animation effect.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/> to be activated.
-
+		 [To be supplied] 
             </param>
             <param name="showAnimation">
-		A Boolean value indicating whether animation effects should accompany selecting the <i>document</i>.
-
+		 [To be supplied] 
             </param>
 
 
@@ -14995,19 +14684,16 @@ It's not possible to make a dock panel fill the form (user control).
         <member name="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView">
 
             <summary>
-                <para>Presents a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s content in the Microsoft Windows 8-like style.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.#ctor(System.ComponentModel.IContainer)">
             <summary>
-                <para>Initializes a new instance of the MetroUIView class with the specified container.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="container">
-		An object that implements the <see cref="T:System.ComponentModel.IContainer"/> interface.
-
+		 [To be supplied] 
             </param>
 
 
@@ -15022,41 +14708,33 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ActiveContentContainer">
             <summary>
-                <para>Gets the content container currently displayed within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IContentContainer object that is currently displayed within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.AppearanceActionsBar">
             <summary>
-                <para>Provides access to appearance settings used to paint the current MetroUIView's navigation bars.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An AppearanceObject that contains appearance settings used to paint the current MetroUIView's navigation bars.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.AppearanceActionsBarButton">
             <summary>
-                <para>Provides access to appearance settings used to paint the current MetroUIView's navigation bar actions.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An AppearanceObject that contains appearance settings used to paint the current MetroUIView's navigation bar actions.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.AppearanceCaption">
             <summary>
-                <para>Provides access to appearance settings used to paint the current MetroUIView's caption.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An AppearanceObject that contains appearance settings used to paint the current MetroUIView's caption.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15072,11 +14750,9 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.Caption">
             <summary>
-                <para>Gets or sets the current MetroUIView's caption.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A String value that is the current MetroUIView's caption.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15090,75 +14766,51 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainerActivated">
             <summary>
-                <para>Fires when a Content Container gets activated.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainerAdded">
             <summary>
-                <para>Fires when a Content Container is being added to the <see cref="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainers"/> collection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainerDeactivated">
             <summary>
-                <para>Fires when a Content Container gets deactivated.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainerRemoved">
             <summary>
-                <para>Fires when a Content Container is being removed from the <see cref="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainers"/> collection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.ContentContainers">
             <summary>
-                <para>Provides access to the Content Containers collection used within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A ContentContainerCollection populated with Content Containers used within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.Controller">
             <summary>
-                <para>Provides access to the current MetroUIView's Controller.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IMetroUIViewController object for the current MetroUIView.
-</value>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.HierarchyChanged">
-            <summary>
-                <para>Occurs when the application's hierarchy (navigation tree) has been changed.
-</para>
-            </summary>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.NavigationBarsHidden">
             <summary>
                 <para>Fires when navigation bars are hidden.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.NavigationBarsShowing">
-            <summary>
-                <para>Occurs when Navigation Bars are to be displayed.
 </para>
             </summary>
 
@@ -15174,51 +14826,40 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.OverviewContainerProperties">
             <summary>
-                <para>Provides access to settings common for all Overview Screens within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IOverviewContainerProperties object that contains settings used for all Overview Screens within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.PageGroupProperties">
             <summary>
-                <para>Provides access to settings used for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IPageGroupProperties object that contains settings used for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.PageGroup"/>s within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.PageProperties">
             <summary>
-                <para>Provides access to properties common to all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page"/>s within the current MetroUIView.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IPageProperties object that stores settings common to all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Page"/>s within the current MetroUIView.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.QueryStartupContentContainer">
             <summary>
-                <para>Fires at the MetroUIView application start-up.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.SlideGroupProperties">
             <summary>
-                <para>Provides access to settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ISlideGroupProperties object that contains settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SlideGroup"/>s within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15234,65 +14875,45 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.SplitGroupProperties">
             <summary>
-                <para>Provides access to settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/>s within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ISplitGroupProperties object that contains settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.SplitGroup"/>s within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileAdded">
             <summary>
-                <para>Occurs when a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is added to the current MetroUIView.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileCheckedChanged">
-            <summary>
-                <para>Occurs when the checked state for any <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> within the current MetroUIView was changed.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileClick">
             <summary>
-                <para>Occurs when any <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> within the current MetroUIView is clicked.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileContainerProperties">
             <summary>
-                <para>Provides access to settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer"/>s within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An ITileContainerProperties object that contains settings common to all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.TileContainer"/>s within the current MetroUIView.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileProperties">
             <summary>
-                <para>Provides access to settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>s within the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An IBaseTileProperties object that contains settings common for all <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/>s within the current MetroUIView.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.TileRemoved">
             <summary>
-                <para>Occurs when a <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Tile"/> is removed from the current MetroUIView.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -15310,21 +14931,17 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.Type">
             <summary>
-                <para>Gets the current MetroUIView's type.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>The <see cref="F:DevExpress.XtraBars.Docking2010.Views.ViewType.MetroUI"/> value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.UseDocumentSelector">
             <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>@nbsp;
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15340,13 +14957,9 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.MetroUI.MetroUIView.UseTransitionAnimation">
             <summary>
-                <para>Gets or sets whether animation is enabled when navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A DefaultBoolean enumerator value that specifies whether animation is enabled when navigating through <see cref="T:DevExpress.XtraBars.Docking2010.Views.MetroUI.Document"/>s.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -15371,8 +14984,7 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraEditors.ColorPickEdit.#ctor">
             <summary>
-                <para>Initializes a new instance of the ColorPickEdit class.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -15500,164 +15112,6 @@ It's not possible to make a dock panel fill the form (user control).
             </summary>
             <value>An <A HREF="clsDevExpressUtilsAppearanceObjecttopic.htm">AppearanceObject</A> object containing appearance settings used to paint a tile item when it is selected.
 </value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraEditors.TileItemElementCollection">
-
-            <summary>
-                <para>Provides a collection to store <see cref="T:DevExpress.XtraEditors.TileItemElement"/>s.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.#ctor">
-            <summary>
-                <para>Initializes a new instance of the TileItemElementCollection class with the default settings.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.#ctor(DevExpress.XtraEditors.INotifyElementPropertiesChanged)">
-            <summary>
-                <para>Initializes a new instance of the TileItemElementCollection class.
-</para>
-            </summary>
-            <param name="owner">
-		An object that implements the INotifyElementPropertiesChanged interface and will own the created collection.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Add(DevExpress.XtraEditors.TileItemElement)">
-            <summary>
-                <para>Adds a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> to the current TileItemElementCollection.
-</para>
-            </summary>
-            <param name="element">
-		A TileItemElement object to be added to the current TileItemElementCollection.
-
-            </param>
-            <returns>An Int32 value that is the index of the added <see cref="T:DevExpress.XtraEditors.TileItemElement"/>. Returns <b>-1</b> if no element has been added.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Assign(DevExpress.XtraEditors.TileItemElementCollection)">
-            <summary>
-                <para>Copies the specific element collection to the current TileItemElementCollection.
-</para>
-            </summary>
-            <param name="src">
-		A TileItemElementCollection that should be copied to the current TileItemElementCollection.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate">
-            <summary>
-                <para>Locks the TileItemElementCollection, preventing change notifications (and visual updates) from being raised by the object until the <b>EndUpdate</b> or <b>CancelUpdate</b> method is called.
-
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.CancelUpdate">
-            <summary>
-                <para>Unlocks the TileItemElementCollection object after it has been locked by the <b>BeginUpdate</b> method, without causing an immediate visual update.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.EndUpdate">
-            <summary>
-                <para>Unlocks the TileItemElementCollection object after a call to the <b>BeginUpdate</b> method and causes an immediate visual update.
-
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.IndexOf(DevExpress.XtraEditors.TileItemElement)">
-            <summary>
-                <para>Gets a position of the target <see cref="T:DevExpress.XtraEditors.TileItemElement"/> within the current TileItemElementCollection.
-</para>
-            </summary>
-            <param name="element">
-		A TileItemElement whose index is to be obtained.
-
-            </param>
-            <returns>An Int32 value that is the position of the target <see cref="T:DevExpress.XtraEditors.TileItemElement"/> within the current TileItemElementCollection.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Insert(System.Int32,DevExpress.XtraEditors.TileItemElement)">
-            <summary>
-                <para>Adds a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> to the current TileItemElementCollection and places it at the predefined position.
-</para>
-            </summary>
-            <param name="index">
-		An Int32 value that is the position inside the parent TileItemElementCollection a newly added <see cref="T:DevExpress.XtraEditors.TileItemElement"/> will occupy.
-
-            </param>
-            <param name="element">
-		A TileItemElement object to be added to the current TileItemElementCollection.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.IsLockUpdate">
-            <summary>
-                <para>Gets if this TileItemElementCollection is currently locked by the <see cref="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate"/> method call. 
-</para>
-            </summary>
-            <value><b>true</b> if a tile control is currently locked by the <see cref="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate"/> method call; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.Item(System.Int32)">
-            <summary>
-                <para>Returns a child <see cref="T:DevExpress.XtraEditors.TileItemElement"/> object that occupies the target within the current TileItemElementCollection.
-</para>
-            </summary>
-            <param name="index">
-		An Int32 value that is the position of the element to be obtained within the current TileItemElementCollection.
-
-            </param>
-            <value>A TileItemElement object that occupies the target position within the current TileItemElementCollection.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.Owner">
-            <summary>
-                <para>Gets an object that implements the INotifyElementPropertiesChanged interface and owns the current TileItemElementCollection.
-</para>
-            </summary>
-            <value>An INotifyElementPropertiesChanged object that owns the current tile elements collection.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Remove(DevExpress.XtraEditors.TileItemElement)">
-            <summary>
-                <para>Deletes a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> from the current TileItemElementCollection.
-</para>
-            </summary>
-            <param name="element">
-		A TileItemElement to be removed.
-
-            </param>
 
 
         </member>
@@ -15954,46 +15408,6 @@ It's not possible to make a dock panel fill the form (user control).
 
 
         </member>
-        <member name="T:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick">
-
-            <summary>
-                <para>Lists values that specify if and when tabs will be closed on a mouse middle button click.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.Default">
-            <summary>
-                <para>The default behavior. Typically, this option is the same as the <see cref="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseDown"/> option.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.Never">
-            <summary>
-                <para>Specifies that tabs will never be closed by a mouse middle click.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseDown">
-            <summary>
-                <para>Specifies that tabs will be closed on pressing the mouse middle button over a tab (before the mouse middle button is released).
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseUp">
-            <summary>
-                <para>Specifies that tabs will be closed on releasing the mouse middle button over a tab.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.AnimationType">
 
             <summary>
@@ -16208,12 +15622,10 @@ It's not possible to make a dock panel fill the form (user control).
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.IBaseViewController.CreateBarDockingMenuItemCommands(DevExpress.XtraBars.BarDockingMenuItem)">
             <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="documentListItem">
-		@nbsp;
-
+		 [To be supplied] 
             </param>
 
 
@@ -16386,14 +15798,6 @@ It's not possible to make a dock panel fill the form (user control).
             </param>
             <returns><b>true</b> if the operation was successful; otherwise, <b>false</b>.
 </returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking2010.Views.IBaseViewController.ResetLayout">
-            <summary>
-                <para>Resets the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s layout to default.
-</para>
-            </summary>
 
 
         </member>
@@ -16685,29 +16089,61 @@ It's not possible to make a dock panel fill the form (user control).
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode">
+        <member name="T:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties">
 
             <summary>
-                <para>Provides members that specify the content of auto-hidden panels' captions.
+                <para>Contains properties common to all documents within a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/>.
 </para>
             </summary>
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode.ShowForActivePanel">
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowActivate">
             <summary>
-                <para>Indicates that only the active auto-hidden panel has both the icon and text displayed within its caption. For inactive panels, only icons are displayed within captions.
-
+                <para>Gets or sets whether the current View's documents can be activated.
 </para>
             </summary>
+            <value><b>true</b> if the current View's document can be activated; otherwise, <b>false</b>.
+</value>
 
 
         </member>
-        <member name="F:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode.ShowForAllPanels">
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowClose">
             <summary>
-                <para>Indicates that all auto-hidden panels have both the icon and text displayed within their captions.
-
+                <para>Gets or sets whether the current View's documents can be closed.
 </para>
             </summary>
+            <value><b>true</b> if the current View's document can be closed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowDock">
+            <summary>
+                <para>Gets or sets whether the current View's documents can be docked.
+</para>
+            </summary>
+            <value><b>true</b> if the current View's documents can be docked; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowFloat">
+            <summary>
+                <para>Gets or sets whether the current View's documents can be made floating.
+</para>
+            </summary>
+            <value><b>true</b> if the current View's documents can be made floating; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.UseFormIconAsDocumentImage">
+            <summary>
+                <para>Gets or sets whether underlying forms' icons are applied to the current View's documents.
+</para>
+            </summary>
+            <value><b>true</b> if underlying forms' icons are applied to the current View's documents; otherwise, <b>false</b>.
+</value>
 
 
         </member>
@@ -17062,8 +16498,7 @@ To display the Application Button in the MacOffice style, ensure that the <see c
         </member>
         <member name="F:DevExpress.XtraBars.Docking2010.Views.ViewType.MetroUI">
             <summary>
-                <para>The View's content is displayed using the Microsoft Windows 8 inspired UI.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -17416,8 +16851,7 @@ To display the Application Button in the MacOffice style, ensure that the <see c
         <member name="T:DevExpress.XtraBars.Docking2010.IButtonProperties">
 
             <summary>
-                <para>Contains properties for Custom Header Buttons.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
@@ -19830,151 +19264,6 @@ If such an item is not found in the parent form's bar/RibbonControl, the child f
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton">
-
-            <summary>
-                <para>A collection of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> items in a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/>.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.#ctor(DevExpress.XtraBars.Ribbon.BackstageViewControl)">
-            <summary>
-                <para>Initializes a new instance of the BackstageViewControlItemCollecton class with the specified control.
-</para>
-            </summary>
-            <param name="control">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> object that is the owner of the created item collection.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Add(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Adds the specified item to the current collection.
-</para>
-            </summary>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object that is the item to be added to the collection.
-
-            </param>
-            <returns>An integer value that is the position of the added item in the collection.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Contains(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Indicates whether the collection contains the specified item.
-</para>
-            </summary>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to locate in the collection.
-
-            </param>
-            <returns><b>true</b> if the collection contains the specified item; otherwise, <b>false</b>.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Control">
-            <summary>
-                <para>Gets a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current collection.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current collection.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.FirstTabIndex">
-            <summary>
-                <para>Gets the index of the first <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
-</para>
-            </summary>
-            <value>A zero-based index of the first <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.IndexOf(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Returns the specified item's position within the collection.
-</para>
-            </summary>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to locate in the collection.
-
-            </param>
-            <returns>A zero-based integer, that is the item's position within the collection. <b>-1</b>, if the collection does not contain the specified item. 
-
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Insert(System.Int32,DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Inserts the specified item into the collection at the specified location. 
-</para>
-            </summary>
-            <param name="index">
-		The zero-based index at which an item is inserted.
-
-            </param>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> to insert into the collection.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Item(System.Int32)">
-            <summary>
-                <para>Provides indexed access to collection elements.
-</para>
-            </summary>
-            <param name="index">
-		An integer value that specifies the zero-based index of the required object in the collection. If negative or exceeds the maximum available index, an exception is raised.
-
-            </param>
-            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object that is the item located at the specified position within the collection.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.LastTabIndex">
-            <summary>
-                <para>Gets the index of the last <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
-</para>
-            </summary>
-            <value>A zero-based index of the last <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Remove(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Removes the specified element from the collection.
-</para>
-            </summary>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to be removed from the collection.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.TabCount">
-            <summary>
-                <para>Gets the number of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> objects in the collection.
-</para>
-            </summary>
-            <value>The number of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> objects in the collection.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.BarItemEventFireMode">
 
             <summary>
@@ -20116,6 +19405,164 @@ If such an item is not found in the parent form's bar/RibbonControl, the child f
             </summary>
             <value>The <see cref="T:DevExpress.XtraBars.Docking2010.Views.BaseDocument"/> to be closed.
 </value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraEditors.TileItemElementCollection">
+
+            <summary>
+                <para>Provides a collection to store <see cref="T:DevExpress.XtraEditors.TileItemElement"/>s.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.#ctor">
+            <summary>
+                <para>Initializes a new instance of the TileItemElementCollection class with the default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.#ctor(DevExpress.XtraEditors.INotifyElementPropertiesChanged)">
+            <summary>
+                <para>Initializes a new instance of the TileItemElementCollection class.
+</para>
+            </summary>
+            <param name="owner">
+		An object that implements the INotifyElementPropertiesChanged interface and will own the created collection.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Add(DevExpress.XtraEditors.TileItemElement)">
+            <summary>
+                <para>Adds a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> to the current TileItemElementCollection.
+</para>
+            </summary>
+            <param name="element">
+		A TileItemElement object to be added to the current TileItemElementCollection.
+
+            </param>
+            <returns>An Int32 value that is the index of the added <see cref="T:DevExpress.XtraEditors.TileItemElement"/>. Returns <b>-1</b> if no element has been added.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Assign(DevExpress.XtraEditors.TileItemElementCollection)">
+            <summary>
+                <para>Copies the specific element collection to the current TileItemElementCollection.
+</para>
+            </summary>
+            <param name="src">
+		A TileItemElementCollection that should be copied to the current TileItemElementCollection.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate">
+            <summary>
+                <para>Locks the TileItemElementCollection, preventing change notifications (and visual updates) from being raised by the object until the <b>EndUpdate</b> or <b>CancelUpdate</b> method is called.
+
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.CancelUpdate">
+            <summary>
+                <para>Unlocks the TileItemElementCollection object after it has been locked by the <b>BeginUpdate</b> method, without causing an immediate visual update.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.EndUpdate">
+            <summary>
+                <para>Unlocks the TileItemElementCollection object after a call to the <b>BeginUpdate</b> method and causes an immediate visual update.
+
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.IndexOf(DevExpress.XtraEditors.TileItemElement)">
+            <summary>
+                <para>Gets a position of the target <see cref="T:DevExpress.XtraEditors.TileItemElement"/> within the current TileItemElementCollection.
+</para>
+            </summary>
+            <param name="element">
+		A TileItemElement whose index is to be obtained.
+
+            </param>
+            <returns>An Int32 value that is the position of the target <see cref="T:DevExpress.XtraEditors.TileItemElement"/> within the current TileItemElementCollection.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Insert(System.Int32,DevExpress.XtraEditors.TileItemElement)">
+            <summary>
+                <para>Adds a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> to the current TileItemElementCollection and places it at the predefined position.
+</para>
+            </summary>
+            <param name="index">
+		An Int32 value that is the position inside the parent TileItemElementCollection a newly added <see cref="T:DevExpress.XtraEditors.TileItemElement"/> will occupy.
+
+            </param>
+            <param name="element">
+		A TileItemElement object to be added to the current TileItemElementCollection.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.IsLockUpdate">
+            <summary>
+                <para>Gets if this TileItemElementCollection is currently locked by the <see cref="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate"/> method call. 
+</para>
+            </summary>
+            <value><b>true</b> if a tile control is currently locked by the <see cref="M:DevExpress.XtraEditors.TileItemElementCollection.BeginUpdate"/> method call; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.Item(System.Int32)">
+            <summary>
+                <para>Returns a child <see cref="T:DevExpress.XtraEditors.TileItemElement"/> object that occupies the target within the current TileItemElementCollection.
+</para>
+            </summary>
+            <param name="index">
+		An Int32 value that is the position of the element to be obtained within the current TileItemElementCollection.
+
+            </param>
+            <value>A TileItemElement object that occupies the target position within the current TileItemElementCollection.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraEditors.TileItemElementCollection.Owner">
+            <summary>
+                <para>Gets an object that implements the INotifyElementPropertiesChanged interface and owns the current TileItemElementCollection.
+</para>
+            </summary>
+            <value>An INotifyElementPropertiesChanged object that owns the current tile elements collection.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraEditors.TileItemElementCollection.Remove(DevExpress.XtraEditors.TileItemElement)">
+            <summary>
+                <para>Deletes a specific <see cref="T:DevExpress.XtraEditors.TileItemElement"/> from the current TileItemElementCollection.
+</para>
+            </summary>
+            <param name="element">
+		A TileItemElement to be removed.
+
+            </param>
 
 
         </member>
@@ -20529,12 +19976,10 @@ If such an item is not found in the parent form's bar/RibbonControl, the child f
         </member>
         <member name="M:DevExpress.XtraEditors.TileItemFrameCollection.#ctor(DevExpress.XtraEditors.ITileItem)">
             <summary>
-                <para>Initializes a new instance of the TileItemFrameCollection class with the specified owner.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="item">
-		An object that is the owner of the created collection.
-
+		 [To be supplied] 
             </param>
 
 
@@ -20613,11 +20058,9 @@ If such an item is not found in the parent form's bar/RibbonControl, the child f
         </member>
         <member name="P:DevExpress.XtraEditors.TileItemFrameCollection.Owner">
             <summary>
-                <para>Gets the collection's owner.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A ITileItem object that is the collection's owner.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -20842,15 +20285,12 @@ This property is now obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileI
         </member>
         <member name="M:DevExpress.XtraEditors.TileItemCollection.Add(DevExpress.XtraEditors.ITileItem)">
             <summary>
-                <para>Adds the specified item to the current collection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="item">
-		An ITileItem object to be added to the collection.
-
+		 [To be supplied] 
             </param>
-            <returns>A zero-based index of the item in the collection.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -21671,16 +21111,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
                 <para>Initializes a new instance of the TileControl class with the default settings.
 </para>
             </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.TileControl.AllowDisabledStateIndication">
-            <summary>
-                <para>Gets or sets whether the disabled state of the TileControl is indicated in a specific manner.
-</para>
-            </summary>
-            <value><b>true</b> if the disabled state of the TileControl is indicated in a specific manner; otherwise, <b>false</b>.
-</value>
 
 
         </member>
@@ -22580,64 +22010,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties">
-
-            <summary>
-                <para>Contains properties common to all documents within a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>.
-</para>
-            </summary>
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowActivate">
-            <summary>
-                <para>Gets or sets whether the current View's documents can be activated.
-</para>
-            </summary>
-            <value><b>true</b> if the current View's document can be activated; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowClose">
-            <summary>
-                <para>Gets or sets whether the current View's documents can be closed.
-</para>
-            </summary>
-            <value><b>true</b> if the current View's document can be closed; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowDock">
-            <summary>
-                <para>Gets or sets whether the current View's documents can be docked.
-</para>
-            </summary>
-            <value><b>true</b> if the current View's documents can be docked; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.AllowFloat">
-            <summary>
-                <para>Gets or sets whether the current View's documents can be made floating.
-</para>
-            </summary>
-            <value><b>true</b> if the current View's documents can be made floating; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.IBaseDocumentProperties.UseFormIconAsDocumentImage">
-            <summary>
-                <para>Gets or sets whether underlying forms' icons are applied to the current View's documents.
-</para>
-            </summary>
-            <value><b>true</b> if underlying forms' icons are applied to the current View's documents; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraBars.StateAppearances">
 
             <summary>
@@ -22838,6 +22210,112 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
 		A  enumerator value indicating whether the word wrap should be used.
 
             </param>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.#ctor(DevExpress.XtraBars.Docking.DockControllerMenu,System.Drawing.Point)">
+            <summary>
+                <para>Initializes a new instance of the PopupMenuShowingEventArgs class with the specified settings.
+</para>
+            </summary>
+            <param name="menu">
+		A DockControllerMenu object that is the menu to be displayed. This object is used to initialize the <see cref="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Menu"/> property.
+
+            </param>
+            <param name="point">
+		A Point where the menu is about to be displayed. This value is used to initialize the <see cref="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Point"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Control">
+            <summary>
+                <para>Gets the dock control for which the <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event has been fired.
+</para>
+            </summary>
+            <value>The dock control for which the popup menu is about to be displayed.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Menu">
+            <summary>
+                <para>Gets the popup menu that is to be displayed.
+</para>
+            </summary>
+            <value>A DockControllerMenu object that is about to be displayed.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs.Point">
+            <summary>
+                <para>Gets the popup menu's location.
+</para>
+            </summary>
+            <value>A Point structure that is the popup menu's location.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Docking.PopupMenuShowingEventHandler">
+
+            <summary>
+                <para>A method that will handle a DockManager's <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
+
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Docking.PopupMenuShowingEventHandler.Invoke(System.Object,DevExpress.XtraBars.Docking.PopupMenuShowingEventArgs)">
+            <summary>
+                <para>A method that will handle a DockManager's <see cref="E:DevExpress.XtraBars.Docking.DockManager.PopupMenuShowing"/> event.
+
+</para>
+            </summary>
+            <param name="sender">
+		The event source.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraRichEdit.PopupMenuShowingEventArgs"/> class instance containing event data.
+
+            </param>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode">
+
+            <summary>
+                <para>Provides members that specify the content of auto-hidden panels' captions.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode.ShowForActivePanel">
+            <summary>
+                <para>Indicates that only the active auto-hidden panel has both the icon and text displayed within its caption. For inactive panels, only icons are displayed within captions.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraBars.Docking.AutoHiddenPanelCaptionShowMode.ShowForAllPanels">
+            <summary>
+                <para>Indicates that all auto-hidden panels have both the icon and text displayed within their captions.
+
+</para>
+            </summary>
 
 
         </member>
@@ -23651,6 +23129,151 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
 
 
         </member>
+        <member name="T:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton">
+
+            <summary>
+                <para>A collection of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> items in a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/>.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.#ctor(DevExpress.XtraBars.Ribbon.BackstageViewControl)">
+            <summary>
+                <para>Initializes a new instance of the BackstageViewControlItemCollecton class with the specified control.
+</para>
+            </summary>
+            <param name="control">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> object that is the owner of the created item collection.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Add(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Adds the specified item to the current collection.
+</para>
+            </summary>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object that is the item to be added to the collection.
+
+            </param>
+            <returns>An integer value that is the position of the added item in the collection.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Contains(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Indicates whether the collection contains the specified item.
+</para>
+            </summary>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to locate in the collection.
+
+            </param>
+            <returns><b>true</b> if the collection contains the specified item; otherwise, <b>false</b>.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Control">
+            <summary>
+                <para>Gets a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current collection.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current collection.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.FirstTabIndex">
+            <summary>
+                <para>Gets the index of the first <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
+</para>
+            </summary>
+            <value>A zero-based index of the first <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.IndexOf(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Returns the specified item's position within the collection.
+</para>
+            </summary>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to locate in the collection.
+
+            </param>
+            <returns>A zero-based integer, that is the item's position within the collection. <b>-1</b>, if the collection does not contain the specified item. 
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Insert(System.Int32,DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Inserts the specified item into the collection at the specified location. 
+</para>
+            </summary>
+            <param name="index">
+		The zero-based index at which an item is inserted.
+
+            </param>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> to insert into the collection.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Item(System.Int32)">
+            <summary>
+                <para>Provides indexed access to collection elements.
+</para>
+            </summary>
+            <param name="index">
+		An integer value that specifies the zero-based index of the required object in the collection. If negative or exceeds the maximum available index, an exception is raised.
+
+            </param>
+            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object that is the item located at the specified position within the collection.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.LastTabIndex">
+            <summary>
+                <para>Gets the index of the last <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
+</para>
+            </summary>
+            <value>A zero-based index of the last <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> object in the collection.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.Remove(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Removes the specified element from the collection.
+</para>
+            </summary>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object to be removed from the collection.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewControlItemCollecton.TabCount">
+            <summary>
+                <para>Gets the number of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> objects in the collection.
+</para>
+            </summary>
+            <value>The number of <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewTabItem"/> objects in the collection.
+</value>
+
+
+        </member>
         <member name="T:DevExpress.XtraBars.Ribbon.BackstageViewItemEventHandler">
 
             <summary>
@@ -23762,71 +23385,67 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
 
 
         </member>
-        <member name="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase">
+        <member name="T:DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler">
 
             <summary>
-                <para>A base class for items within a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/>.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraBars.Alerter.AlertControl.ButtonClick"/> event.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.#ctor">
+        <member name="M:DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler.Invoke(System.Object,DevExpress.XtraBars.Alerter.AlertButtonClickEventArgs)">
             <summary>
-                <para>Initializes a new instance of the BackstageViewItemBase class.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraBars.Alerter.AlertControl.ButtonClick"/> event.
 </para>
             </summary>
+            <param name="sender">
+		The event source. Identifies the <see cref="T:DevExpress.XtraBars.Alerter.AlertControl"/> that raised the event.
 
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Assign(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
-            <summary>
-                <para>Copies settings from the specified object to the current object.
-</para>
-            </summary>
-            <param name="item">
-		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object whose settings are copied to the current item.
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraBars.Alerter.AlertButtonClickEventArgs"/> object containing event data.
 
             </param>
 
 
         </member>
-        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Clone">
+        <member name="T:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick">
+
             <summary>
-                <para>Creates and returns a copy of the current item.
+                <para>Lists values that specify if and when tabs will be closed on a mouse middle button click.
 </para>
             </summary>
-            <returns>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> descendant that is a copy of the current item.
-</returns>
+
+        </member>
+        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.Default">
+            <summary>
+                <para>The default behavior. Typically, this option is the same as the <see cref="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseDown"/> option.
+</para>
+            </summary>
 
 
         </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Control">
+        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.Never">
             <summary>
-                <para>Gets a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current item.
+                <para>Specifies that tabs will never be closed by a mouse middle click.
 </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current item.
-</value>
 
 
         </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Name">
+        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseDown">
             <summary>
-                <para>Gets or sets the item's name.
+                <para>Specifies that tabs will be closed on pressing the mouse middle button over a tab (before the mouse middle button is released).
 </para>
             </summary>
-            <value>A string that specifies the item's name.
-</value>
 
 
         </member>
-        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Visible">
+        <member name="F:DevExpress.XtraTabbedMdi.CloseTabOnMiddleClick.OnMouseUp">
             <summary>
-                <para>Gets or sets the item's visibility.
+                <para>Specifies that tabs will be closed on releasing the mouse middle button over a tab.
 </para>
             </summary>
-            <value><b>true</b> if the item is visible; otherwise, <b>false</b>.
-</value>
 
 
         </member>
@@ -24183,30 +23802,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
             </summary>
             <value>An object that contains custom data for the current object. 
 </value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraBars.Alerter.AlertControl.ButtonClick"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Alerter.AlertButtonClickEventHandler.Invoke(System.Object,DevExpress.XtraBars.Alerter.AlertButtonClickEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraBars.Alerter.AlertControl.ButtonClick"/> event.
-</para>
-            </summary>
-            <param name="sender">
-		The event source. Identifies the <see cref="T:DevExpress.XtraBars.Alerter.AlertControl"/> that raised the event.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraBars.Alerter.AlertButtonClickEventArgs"/> object containing event data.
-
-            </param>
 
 
         </member>
@@ -25555,7 +25150,7 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.Control">
             <summary>
-                <para>Gets the control displayed within the current document.
+                <para>Gets or sets the control displayed within the current document.
 </para>
             </summary>
             <value>The control displayed within the current document.
@@ -25565,25 +25160,17 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.ControlName">
             <summary>
-                <para>Gets or sets the name of a control that will be passed to the current Document as content.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A String value specifying the name of a control that will be passed to the current Document as content.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.ControlTypeName">
             <summary>
-                <para>Gets or sets the type of a control that will be passed to the current Document as content.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A String value specifying the type of a control that will be passed to the current Document as content.
-
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -25820,33 +25407,26 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.BaseView.AddDocument(System.String,System.String)">
             <summary>
-                <para>Adds an empty Document with specified <see cref="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.Caption"/> and <see cref="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.ControlName"/> properties to the current View.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="caption">
-		A String value that is the newly created Document's <see cref="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.Caption"/>.
-
+		 [To be supplied] 
             </param>
             <param name="controlName">
-		A String value that is the newly created Document's <see cref="P:DevExpress.XtraBars.Docking2010.Views.BaseDocument.ControlName"/> property value.
-
+		 [To be supplied] 
             </param>
-            <returns>A <see cref="T:DevExpress.XtraBars.Docking2010.Views.BaseDocument"/> object created.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="M:DevExpress.XtraBars.Docking2010.Views.BaseView.AddFloatDocument(System.Windows.Forms.Control)">
             <summary>
-                <para>Creates a new floating document that will display the specified control/form.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="control">
-		A Control descendant to be displayed within the newly created document.
-
+		 [To be supplied] 
             </param>
-            <returns>A newly created <see cref="T:DevExpress.XtraBars.Docking2010.Views.BaseDocument"/> object.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -25859,18 +25439,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
 		A Control descendant to be displayed within the newly created document.
 
             </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseView.AllowResetLayout">
-            <summary>
-                <para>Gets or sets whether the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s layout can be reset to default.
-
-</para>
-            </summary>
-            <value><b>true</b> if the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s layout can be reset to default; otherwise, <b>false</b>.
-
-</value>
 
 
         </member>
@@ -26201,26 +25769,7 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         </member>
         <member name="E:DevExpress.XtraBars.Docking2010.Views.BaseView.Layout">
             <summary>
-                <para>Occurs whenever the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s layout is being modified.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.BaseView.LayoutReset">
-            <summary>
-                <para>Fires after a <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s layout was reset.
-
-</para>
-            </summary>
-
-
-        </member>
-        <member name="E:DevExpress.XtraBars.Docking2010.Views.BaseView.LayoutResetting">
-            <summary>
-                <para>Occurs when the current BaseView's layout is to be reset.
-
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -26263,11 +25812,9 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         </member>
         <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseView.OptionsLayout">
             <summary>
-                <para>Gets the object containing properties related to the current View's layout.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An OptionsLayout object that contains properties related to the current View's layout.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -26282,26 +25829,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
         <member name="E:DevExpress.XtraBars.Docking2010.Views.BaseView.QueryControl">
             <summary>
                 <para>Fires when a document that is currently not loaded is activated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking2010.Views.BaseView.ReleaseDeferredLoadControl(DevExpress.XtraBars.Docking2010.Views.BaseDocument)">
-            <summary>
-                <para>Disposes a specific deferred load Document within the current View.
-</para>
-            </summary>
-            <param name="document">
-		A <see cref="T:DevExpress.XtraBars.Docking2010.Views.BaseDocument"/> object, loaded using the Deferred Load feature, which is to be disposed.
-
-            </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraBars.Docking2010.Views.BaseView.ReleaseDeferredLoadControls">
-            <summary>
-                <para>Disposes all deferred load Documents within the current view.
 </para>
             </summary>
 
@@ -26438,16 +25965,6 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
             </summary>
             <value><b>true</b> if a loading indicator for a deferred load should be used; otherwise, <b>false</b>.
 
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Docking2010.Views.BaseView.WindowsDialogProperties">
-            <summary>
-                <para>Gets an object containing settings related to the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s Windows dialog.
-</para>
-            </summary>
-            <value>An IWindowsDialogProperties object that contains settings related to the current <see cref="T:DevExpress.XtraBars.Docking2010.DocumentManager"/>'s Windows dialog.
 </value>
 
 
@@ -26959,8 +26476,7 @@ This property is obsolete. Use the <see cref="P:DevExpress.XtraEditors.TileItemE
             <summary>
                 <para><para>The <b>Add or Remove Buttons</b> button's caption.</para>
 
-Return value: "Add or Remove Buttons".
-
+<para>Default return value of the <b>GetLocalizedString</b> method: "Add or Remove Buttons".</para>
 </para>
             </summary>
 
@@ -26971,7 +26487,7 @@ Return value: "Add or Remove Buttons".
                 <para>Represents the name of the "All Items" category.
 
 <para>
-Return value: (All Items)
+<b>Return value</b>: (All Items)
 </para>
 </para>
             </summary>
@@ -26983,7 +26499,7 @@ Return value: (All Items)
                 <para>Represents the name of the "Unassigned Items" category.
 
 <para>
-Return value: (Unassigned Items)
+<b>Return value</b>: (Unassigned Items)
 </para>
 </para>
             </summary>
@@ -26995,7 +26511,7 @@ Return value: (Unassigned Items)
                 <para>The caption of a Cancel button.
 
 <para>
-Return value: Cancel
+<b>Return value</b>: Cancel
 </para>
 </para>
             </summary>
@@ -27006,7 +26522,7 @@ Return value: Cancel
             <summary>
                 <para>The default value for the tooltip text, which is shown for the <b>Close</b> button of a Ribbon form.
 <para>
-Return value: Close
+<b>Return value</b>: Close
 </para>
 </para>
             </summary>
@@ -27016,7 +26532,7 @@ Return value: Close
         <member name="F:DevExpress.XtraBars.Localization.BarString.CollapseRibbonSuperTipHeader">
             <summary>
                 <para><para>
-Return value: Minimize the Ribbon (Ctrl+F1)
+<b>Return value</b>: Minimize the Ribbon (Ctrl+F1)
 </para>
 </para>
             </summary>
@@ -27026,7 +26542,7 @@ Return value: Minimize the Ribbon (Ctrl+F1)
         <member name="F:DevExpress.XtraBars.Localization.BarString.CollapseRibbonSuperTipText">
             <summary>
                 <para><para>
-Return value: Only show tab names on the Ribbon
+<b>Return value</b>: Only show tab names on the Ribbon
 </para>
 </para>
             </summary>
@@ -27035,144 +26551,126 @@ Return value: Only show tab names on the Ribbon
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickBlueValidationMsg">
             <summary>
-                <para>Return value: Blue component should be in range 0..255
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickBrightnessAxisName">
             <summary>
-                <para>Return value: Brightness
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickBrightValidationMsg">
             <summary>
-                <para>Return value: Brightness component should be in range 0..100
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickColorHexValidationMsg">
             <summary>
-                <para>Return value: Invalid hexadecimal value
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickGreenValidationMsg">
             <summary>
-                <para>Return value: Green component should be in range 0..255
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickHueAxisName">
             <summary>
-                <para>Return value: Hue
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickHueValidationMsg">
             <summary>
-                <para>Return value: Hue component should be in range 0..359
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickLuminanceAxisName">
             <summary>
-                <para>Return value: Luminance
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickOpacityAxisName">
             <summary>
-                <para>Return value: Opacity
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickOpacityValidationMsg">
             <summary>
-                <para>Return value: Opacity component should be in range 0..255
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickPopupMoreColorsItemCaption">
             <summary>
-                <para>Return value: More Colors...
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickPopupRecentColorsGroupCaption">
             <summary>
-                <para>Return value: Recent Colors
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickPopupStandardColorsGroupCaption">
             <summary>
-                <para>Return value: Standard Colors
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickPopupThemeColorsGroupCaption">
             <summary>
-                <para>Return value: Theme Colors
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickRedValidationMsg">
             <summary>
-                <para>Return value: Red component should be in range 0..255
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickSaturationAxisName">
             <summary>
-                <para>Return value: Saturation
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorPickSaturationValidationMsg">
             <summary>
-                <para>Return value: Saturation component should be in range 0..100
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ColorTabWebSafeColors">
             <summary>
-                <para>Return value: Web-Safe
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -27181,7 +26679,7 @@ Return value: Only show tab names on the Ribbon
             <summary>
                 <para><para>The <b>Customize...</b> menu item's caption.</para>
 
-Return value: "Customize ... "
+<para>Default return value of the <b>GetLocalizedString</b> method: "Customize ... ".</para>
 </para>
             </summary>
 
@@ -27189,7 +26687,7 @@ Return value: "Customize ... "
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.CustomizeQuickAccessToolbar">
             <summary>
-                <para>Return value: @amp;Customize Quick Access Toolbar...
+                <para><b>Return value:</b> @amp;Customize Quick Access Toolbar...
 </para>
             </summary>
 
@@ -27197,7 +26695,7 @@ Return value: "Customize ... "
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.CustomizeRibbon">
             <summary>
-                <para>Return value: Customize the @amp;Ribbon...
+                <para><b>Return value:</b> Customize the @amp;Ribbon...
 </para>
             </summary>
 
@@ -27208,7 +26706,7 @@ Return value: "Customize ... "
                 <para>Specifies the Super Tooltip for the Ribbon Quick Access Toolbar's customization button.
 
 <para>
-Return value: Customize Quick Access Toolbar
+<b>Return value</b>: Customize Quick Access Toolbar
 </para>
 </para>
             </summary>
@@ -27220,7 +26718,7 @@ Return value: Customize Quick Access Toolbar
                 <para>Specifies the Tooltip for a Toolbar's customization button.
 
 <para>
-Return value: Customize Toolbar
+<b>Return value</b>: Customize Toolbar
 </para>
 </para>
             </summary>
@@ -27231,7 +26729,7 @@ Return value: Customize Toolbar
             <summary>
                 <para><para>The caption of the Customization Window.</para>
 
-Return value: "Customization".
+<para>Default return value of the <b>GetLocalizedString</b> method: "Customization".</para>
 
 </para>
             </summary>
@@ -27241,7 +26739,7 @@ Return value: "Customization".
         <member name="F:DevExpress.XtraBars.Localization.BarString.ExpandRibbonSuperTipHeader">
             <summary>
                 <para><para>
-Return value: Expand the Ribbon (Ctrl+F1)
+<b>Return value</b>: Expand the Ribbon (Ctrl+F1)
 </para>
 </para>
             </summary>
@@ -27251,7 +26749,7 @@ Return value: Expand the Ribbon (Ctrl+F1)
         <member name="F:DevExpress.XtraBars.Localization.BarString.ExpandRibbonSuperTipText">
             <summary>
                 <para><para>
-Return value: Show the Ribbon so that it is always expanded even after you click a command
+<b>Return value</b>: Show the Ribbon so that it is always expanded even after you click a command
 </para>
 </para>
             </summary>
@@ -27262,7 +26760,7 @@ Return value: Show the Ribbon so that it is always expanded even after you click
             <summary>
                 <para>The default value for the tooltip text, which is shown for the <b>Help</b> button of a Ribbon form.
 <para>
-Return value: Help
+<b>Return value</b>: Help
 </para>
 </para>
             </summary>
@@ -27273,7 +26771,7 @@ Return value: Help
             <summary>
                 <para>The default value for the tooltip text, which is shown for the <b>Maximize</b> button of a Ribbon form.
 <para>
-Return value: Maximize
+<b>Return value</b>: Maximize
 </para>
 
 </para>
@@ -27285,7 +26783,7 @@ Return value: Maximize
             <summary>
                 <para><para>Represents the <b>Fade</b> menu animation option in the Customization Window.</para>
 
-Return value: Fade
+<para><b>Return Value</b>: Fade</para>
 </para>
             </summary>
 
@@ -27295,7 +26793,7 @@ Return value: Fade
             <summary>
                 <para><para>Represents the <b>None</b> menu animation option in the Customization Window.</para>
 
-Return value: None
+<para><b>Return Value</b>: None</para>
 </para>
             </summary>
 
@@ -27305,7 +26803,7 @@ Return value: None
             <summary>
                 <para><para>Represents the <b>Random</b> menu animation option in the Customization Window.</para>
 
-<para>Return value: Random</para>
+<para><b>Return Value</b>: Random</para>
 </para>
             </summary>
 
@@ -27315,7 +26813,7 @@ Return value: None
             <summary>
                 <para><para>Represents the <b>Slide</b> menu animation option in the Customization Window.</para>
 
-<para>Return value: Slide</para>
+<para><b>Return Value</b>: Slide</para>
 </para>
             </summary>
 
@@ -27325,7 +26823,7 @@ Return value: None
             <summary>
                 <para><para>Represents the <b>System</b> menu animation option in the Customization Window.</para>
 
-<para>Return value: (System default)</para>
+<para><b>Return Value</b>: (System default)</para>
 </para>
             </summary>
 
@@ -27335,7 +26833,7 @@ Return value: None
             <summary>
                 <para><para>Represents the <b>Unfold</b> menu animation option in the Customization Window.</para>
 
-<para>Return value: Unfold</para>
+<para><b>Return Value</b>: Unfold</para>
 </para>
             </summary>
 
@@ -27345,7 +26843,7 @@ Return value: None
             <summary>
                 <para>The default value for the tooltip text, which is shown for the <b>Minimize</b> button of a Ribbon form.
 <para>
-Return value: Minimize
+<b>Return value</b>: Minimize
 </para>
 </para>
             </summary>
@@ -27354,7 +26852,7 @@ Return value: Minimize
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.MoreCommands">
             <summary>
-                <para>Return value: @amp;More Commands...
+                <para><b>Return value:</b> @amp;More Commands...
 </para>
             </summary>
 
@@ -27364,7 +26862,7 @@ Return value: Minimize
             <summary>
                 <para>The default value for the <see cref="P:DevExpress.XtraBars.Bar.Text"/> property of the main menu that is created automatically when a <see cref="T:DevExpress.XtraBars.BarManager"/> component is added onto the form at design time.
 <para>
-Return value: Main menu
+<b>Return value</b>: Main menu
 </para>
 </para>
             </summary>
@@ -27375,7 +26873,7 @@ Return value: Main menu
             <summary>
                 <para>The default value for the <see cref="P:DevExpress.XtraBars.Bar.Text"/> property of the status bar that is created automatically when a <see cref="T:DevExpress.XtraBars.BarManager"/> component is added onto the form at design time.
 <para>
-Return value: Status bar
+<b>Return value</b>: Status bar
 </para>
 </para>
             </summary>
@@ -27386,7 +26884,7 @@ Return value: Status bar
             <summary>
                 <para><para>The caption of the dialog asking for the name of the new toolbar.</para>
 
-Return value: "New Toolbar"
+<para>Default return value of the <b>GetLocalizedString</b> method: "New Toolbar".</para>
 </para>
             </summary>
 
@@ -27396,7 +26894,7 @@ Return value: "New Toolbar"
             <summary>
                 <para>The name of the new toolbar.
 <para>
-Return value: "Custom {0}"
+The default return value of the <b>GetLocalizedString</b> method: "Custom {0}".
 </para>
 
 </para>
@@ -27408,7 +26906,7 @@ Return value: "Custom {0}"
             <summary>
                 <para>The default value for the <see cref="P:DevExpress.XtraBars.Bar.Text"/> property of the bar that is created automatically when a <see cref="T:DevExpress.XtraBars.BarManager"/> component is added onto the form at design time.
 <para>
-Return value: Tools
+<b>Return value</b>: Tools
 </para>
 </para>
             </summary>
@@ -27420,7 +26918,7 @@ Return value: Tools
                 <para>For internal use.
 
 <para>
-Return value: ""
+<para>Default return value of the <b>GetLocalizedString</b> method: "".</para>
 </para>
 </para>
             </summary>
@@ -27431,7 +26929,7 @@ Return value: ""
             <summary>
                 <para><para>The caption of the popup menu editor invoked when customizing a <see cref="T:DevExpress.XtraBars.PopupMenu"/>.</para>
 
-Return value: Popup Menu Editor
+<para>Default return value of the <b>GetLocalizedString</b> method: "Popup Menu Editor".</para>
 </para>
             </summary>
 
@@ -27441,7 +26939,7 @@ Return value: Popup Menu Editor
             <summary>
                 <para><para>The caption of the dialog invoked when renaming the bar via the Customization Window.</para>
 
-Return value: "Rename Toolbar"
+<para>Default return value of the <b>GetLocalizedString</b> method: "Rename Toolbar".</para>
 </para>
             </summary>
 
@@ -27451,7 +26949,7 @@ Return value: "Rename Toolbar"
             <summary>
                 <para><para>The text of the confirmation message box that appears when attempting to reset a toolbar. The {0} string in this text denotes the place of the toolbar name.</para> 
 
-Return value: "Are you sure you want to reset the changes made to the '{0}' toolbar?"
+<para>Default return value of the <b>GetLocalizedString</b> method: "Are you sure you want to reset the changes made to the '{0}' toolbar?".</para>
 </para>
             </summary>
 
@@ -27461,7 +26959,7 @@ Return value: "Are you sure you want to reset the changes made to the '{0}' tool
             <summary>
                 <para><para>The caption of the confirmation message box that appears when attempting to reset a toolbar.</para> 
 
-Return value: "Customize"
+<para>Default return value of the <b>GetLocalizedString</b> method: "Customize".</para>
 </para>
             </summary>
 
@@ -27471,7 +26969,7 @@ Return value: "Customize"
             <summary>
                 <para><para>The <b>Reset Toolbar</b> menu item's caption.</para>
 
-Return value: "Reset Toolbar"
+<para>Default return value of the <b>GetLocalizedString</b> method: "Reset Toolbar".</para>
 </para>
             </summary>
 
@@ -27481,7 +26979,7 @@ Return value: "Reset Toolbar"
             <summary>
                 <para>The default value for the tooltip text, which is shown for the <b>Restore</b> button of a Ribbon form.
 <para>
-Return value: Restore Down
+<b>Return value</b>: Restore Down
 </para>
 </para>
             </summary>
@@ -27492,7 +26990,7 @@ Return value: Restore Down
             <summary>
                 <para>The value that is used to initialize the <b>Text</b> property of the category returned by the <see cref="P:DevExpress.XtraBars.Ribbon.RibbonControl.TotalPageCategory"/> property.
 <para>
-Return value: (All Pages)
+<b>Return Value</b>: "(All Pages)" 
 </para>
 </para>
             </summary>
@@ -27501,104 +26999,91 @@ Return value: (All Pages)
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationExportSettingsCommand">
             <summary>
-                <para>Return value: Export all customizations
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationImportSettingsCommand">
             <summary>
-                <para>Return value: Import customization file
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewCategoryCommand">
             <summary>
-                <para>Return value: New Category
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewCategoryDefaultAlias">
             <summary>
-                <para>Return value: New Category
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewGroupCommand">
             <summary>
-                <para>Return value: New Group
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewGroupDefaultAlias">
             <summary>
-                <para>Return value: New Group
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewPageCommand">
             <summary>
-                <para>Return value: New Tab
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationNewTabDefaultAlias">
             <summary>
-                <para>Return value: New Tab
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationOptionAllCommands">
             <summary>
-                <para>Return value: All Commands
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationOptionAllTabs">
             <summary>
-                <para>Return value: All Tabs
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationResetSelectedTabSettingsCommand">
             <summary>
-                <para>Return value: Reset only selected Ribbon tab
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationResetSettingsCommand">
             <summary>
-                <para>Return value: Reset all customizations
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.RibbonCustomizationStandardCustomItemSuffix">
             <summary>
-                <para>Return value: Custom
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -27608,7 +27093,7 @@ Return value: (All Pages)
                 <para>A caption of the menu item, displayed within a Group Filter menu, which when selected removes any filter and makes all groups visible. 
 
 <para>
-Return value: All groups
+<b>Return Value</b>: "All groups"
 </para>
 
 
@@ -27622,7 +27107,7 @@ Return value: All groups
                 <para>Represents the text within an In-Dropdown Gallery's Group Filter panel when there is no group to be displayed.
 
 <para>
-Return value: None
+<b>Return Value</b>: "None"
 </para>
 
 </para>
@@ -27634,7 +27119,7 @@ Return value: None
             <summary>
                 <para>A caption of the menu item available for a Ribbon Quick Access Toolbar, which allows the toolbar to be positioned above the RibbonControl.
 
-<para>Return value: @amp;Show Quick Access Toolbar Above the Ribbon</para>
+<para><b>Return Value</b>: @amp;Show Quick Access Toolbar Above the Ribbon</para>
 
 </para>
             </summary>
@@ -27645,7 +27130,7 @@ Return value: None
             <summary>
                 <para>A caption of the menu item, available for a bar item within a RibbonControl, which when clicked adds this bar item to a Ribbon Quick Access Toolbar.
 
-<para>Return value: @amp;Add to Quick Access Toolbar</para>
+<para><b>Return Value</b>: @amp;Add to Quick Access Toolbar</para>
 
 </para>
             </summary>
@@ -27656,7 +27141,7 @@ Return value: None
             <summary>
                 <para>A caption of the menu item, available for a Ribbon Quick Access Toolbar, which allows the toolbar to be positioned below the RibbonControl.
 
-<para>Return value: @amp;Show Quick Access Toolbar Below the Ribbon</para>
+<para><b>Return Value</b>: @amp;Show Quick Access Toolbar Below the Ribbon</para>
 
 </para>
             </summary>
@@ -27667,7 +27152,7 @@ Return value: None
             <summary>
                 <para>A caption of the menu item, available for a Quick Access Toolbar, which allows the Ribbon Control to be minimized.
 <para>
-Return value: Mi@amp;nimize the Ribbon
+<b>Return Value</b>: "Mi@amp;nimize the Ribbon"
 </para>
 
 </para>
@@ -27679,7 +27164,7 @@ Return value: Mi@amp;nimize the Ribbon
             <summary>
                 <para>A caption of the menu item, available for a bar item within a RibbonControl, which when clicked removes this bar item from a Ribbon Quick Access Toolbar.
 
-<para>Return value: @amp;Remove from Quick Access Toolbar</para>
+<para><b>Return Value</b>: @amp;Remove from Quick Access Toolbar</para>
 
 </para>
             </summary>
@@ -27690,7 +27175,7 @@ Return value: Mi@amp;nimize the Ribbon
             <summary>
                 <para>The value that is used to initialize the default page category's <b>Text</b> property. This text is displayed in the RibbonControl's designer.
 <para>
-Return value: (Unassigned Pages)
+<b>Return Value</b>: "(Unassigned Pages)" 
 </para>
 </para>
             </summary>
@@ -27701,7 +27186,7 @@ Return value: (Unassigned Pages)
             <summary>
                 <para>Specifies the label for a control displayed within the Customization Window.
 <para>
-Return value: Show ScreenTips on toolbars
+<b>Return value</b>: Show ScreenTips on toolbars
 </para>
 </para>
             </summary>
@@ -27712,7 +27197,7 @@ Return value: Show ScreenTips on toolbars
             <summary>
                 <para>Specifies the label for a control displayed within the Customization Window.
 <para>
-Return value: Show shortcut keys in ScreenTips
+<b>Return value</b>: Show shortcut keys in ScreenTips
 </para>
 </para>
             </summary>
@@ -27723,7 +27208,7 @@ Return value: Show shortcut keys in ScreenTips
             <summary>
                 <para>Specifies the captions of DevExpress skins.
 <para>
-Return value: "|DevExpress Style|Caramel|Money Twins|DevExpress Dark Style|iMaginary|Lilian|Black|Blue|Office 2010 Blue|Office 2010 Black|Office 2010 Silver|Office 2007 Blue|Office 2007 Black|Office 2007 Silver|Office 2007 Green|Office 2007 Pink|Seven|Seven Classic|Darkroom|McSkin|Sharp|Sharp Plus|Foggy|Dark Side|Xmas (Blue)|Springtime|Summer|Pumpkin|Valentine|Stardust|Coffee|Glass Oceans|High Contrast|Liquid Sky|London Liquid Sky|The Asphalt World|Blueprint|Whiteprint|VS2010|Metropolis|Metropolis Dark|"
+Returns "|DevExpress Style|Caramel|Money Twins|DevExpress Dark Style|iMaginary|Lilian|Black|Blue|Office 2010 Blue|Office 2010 Black|Office 2010 Silver|Office 2007 Blue|Office 2007 Black|Office 2007 Silver|Office 2007 Green|Office 2007 Pink|Seven|Seven Classic|Darkroom|McSkin|Sharp|Sharp Plus|Foggy|Dark Side|Xmas (Blue)|Springtime|Summer|Pumpkin|Valentine|Stardust|Coffee|Glass Oceans|High Contrast|Liquid Sky|London Liquid Sky|The Asphalt World|Blueprint|"
 </para>
 </para>
             </summary>
@@ -27734,7 +27219,7 @@ Return value: "|DevExpress Style|Caramel|Money Twins|DevExpress Dark Style|iMagi
             <summary>
                 <para>Identifies the name of a group combining bonus skins.
 <para>
-Return value: Bonus Skins
+<b>Return value:</b> Bonus Skins
 </para>
 </para>
             </summary>
@@ -27745,7 +27230,7 @@ Return value: Bonus Skins
             <summary>
                 <para>Identifies the name of a group combining custom skins.
 <para>
-Return value: Custom Skins
+<b>Return value:</b> Custom Skins
 </para>
 </para>
             </summary>
@@ -27757,7 +27242,7 @@ Return value: Custom Skins
                 <para>Identifies the name of a group combining default skins.
 
 <para>
-Return value: Standard Skins
+<b>Return value:</b> Standard Skins
 </para>
 </para>
             </summary>
@@ -27769,7 +27254,7 @@ Return value: Standard Skins
                 <para>Identifies the name of a group combining Office skins.
 
 <para>
-Return value: Office Skins
+<b>Return value:</b> Office Skins
 </para>
 </para>
             </summary>
@@ -27780,7 +27265,7 @@ Return value: Office Skins
             <summary>
                 <para>Identifies the name of a group combining thematic skins.
 <para>
-Return value: Theme Skins
+<b>Return value:</b> Theme Skins
 </para>
 </para>
             </summary>
@@ -27789,11 +27274,7 @@ Return value: Theme Skins
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ToolBarMenu">
             <summary>
-                <para>Item captions of the context menu that can be invoked by right-clicking a bar item when performing runtime customization. Item captions are delimited by the "$" character. Each new group of items is denoted by the "!" character.
-
-<para>
-Return value: @amp;Reset$@amp;Delete$!@amp;Name$!Defau@amp;lt style$@amp;Text Only (Always)$Text @amp;Only (in Menus)$Image @amp;and Text$!Begin a @amp;Group$@amp;Visible$@amp;Most recently used
-</para>
+                <para><para>Item captions of the context menu that can be invoked by right-clicking a bar item when performing runtime customization. Item captions are delimited by the "$" character. Each new group of items is denoted by the "!" character. </para>
 </para>
             </summary>
 
@@ -27801,7 +27282,7 @@ Return value: @amp;Reset$@amp;Delete$!@amp;Name$!Defau@amp;lt style$@amp;Text On
         </member>
         <member name="F:DevExpress.XtraBars.Localization.BarString.ToolbarNameCaption">
             <summary>
-                <para>Return value: Toolbar Name:
+                <para><b>Return value</b>: Toolbar Name:
 </para>
             </summary>
 
@@ -27844,6 +27325,74 @@ Return value: @amp;Reset$@amp;Delete$!@amp;Name$!Defau@amp;lt style$@amp;Text On
                 <para> Positions the item's caption text above the image.
 </para>
             </summary>
+
+
+        </member>
+        <member name="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase">
+
+            <summary>
+                <para>A base class for items within a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/>.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.#ctor">
+            <summary>
+                <para>Initializes a new instance of the BackstageViewItemBase class.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Assign(DevExpress.XtraBars.Ribbon.BackstageViewItemBase)">
+            <summary>
+                <para>Copies settings from the specified object to the current object.
+</para>
+            </summary>
+            <param name="item">
+		A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> object whose settings are copied to the current item.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Clone">
+            <summary>
+                <para>Creates and returns a copy of the current item.
+</para>
+            </summary>
+            <returns>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewItemBase"/> descendant that is a copy of the current item.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Control">
+            <summary>
+                <para>Gets a <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current item.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraBars.Ribbon.BackstageViewControl"/> that owns the current item.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Name">
+            <summary>
+                <para>Gets or sets the item's name.
+</para>
+            </summary>
+            <value>A string that specifies the item's name.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraBars.Ribbon.BackstageViewItemBase.Visible">
+            <summary>
+                <para>Gets or sets the item's visibility.
+</para>
+            </summary>
+            <value><b>true</b> if the item is visible; otherwise, <b>false</b>.
+</value>
 
 
         </member>
@@ -29883,11 +29432,9 @@ Return value: @amp;Reset$@amp;Delete$!@amp;Name$!Defau@amp;lt style$@amp;Text On
         </member>
         <member name="P:DevExpress.XtraBars.BarMdiChildrenListItem.ShowCheckMode">
             <summary>
-                <para>Gets or sets whether form icons or check marks are shown for the BarMdiChildrenListItem's items.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A BarMdiChildrenListShowCheckMode value that specifies whether form icons or check marks are shown for the BarMdiChildrenListItem's items.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -33391,11 +32938,9 @@ This property is supported for bar items used within a <see cref="T:DevExpress.X
         </member>
         <member name="P:DevExpress.XtraBars.BarEditItem.CloseOnMouseOuterClick">
             <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>@nbsp;
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -34608,14 +34153,6 @@ This property is supported for bar items used within a <see cref="T:DevExpress.X
             </summary>
             <returns>An integer value specifying the number of pixels between the content and the borders of bar links.
 </returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraBars.Bar.HideWhenMerging">
-            <summary>
-                <para> [To be supplied] </para>
-            </summary>
-            <value> [To be supplied] </value>
 
 
         </member>

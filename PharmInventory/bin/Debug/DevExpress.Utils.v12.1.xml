@@ -1094,22 +1094,6 @@
 
 
         </member>
-        <member name="M:DevExpress.Utils.SuperToolTip.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-                <para>Initializes a new instance of the SuperToolTip class with the specified settings.
-</para>
-            </summary>
-            <param name="info">
-		A SerializationInfo object.
-
-            </param>
-            <param name="context">
-		A StreamingContext object.
-
-            </param>
-
-
-        </member>
         <member name="P:DevExpress.Utils.SuperToolTip.AllowHtmlText">
             <summary>
                 <para>Gets or sets whether HTML formatting is allowed in the current SuperToolTip object.
@@ -3667,19 +3651,15 @@
         </member>
         <member name="M:DevExpress.Utils.ImageCollection.GetImageListImage(System.Object,System.String)">
             <summary>
-                <para>Returns an image from the specified ImageList or ImageCollection.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="images">
-		An ImageList or ImageCollection that stores an image to be returned.
-
+		 [To be supplied] 
             </param>
             <param name="id">
-		A string value that is the key/name of the image to be returned.
-
+		 [To be supplied] 
             </param>
-            <returns>An image with the specified key/name stored in an ImageList/ImageCollection.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -4296,16 +4276,6 @@ For the XtraPivotGrid control, this option acts as the <see cref="F:DevExpress.U
             </param>
             <returns>@nbsp;
 </returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraEditors.XtraForm.IsSuspendRedraw">
-            <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
-            </summary>
-            <value>@nbsp;
-</value>
 
 
         </member>
@@ -5319,30 +5289,6 @@ For the XtraPivotGrid control, this option acts as the <see cref="F:DevExpress.U
 
 
         </member>
-        <member name="T:DevExpress.Utils.SharedImageCollectionImageSizeMode">
-
-            <summary>
-                <para>The enumeration specifies the size of images being displayed within an object, when images are obtained from a <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.Utils.SharedImageCollectionImageSizeMode.UseCollectionImageSize">
-            <summary>
-                <para>The size of an image being displayed by an object is determined by the <b>ImageSize</b> property of the bound <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.Utils.SharedImageCollectionImageSizeMode.UseImageSize">
-            <summary>
-                <para>The size of an image being displayed by an object is determined by the size of the corresponding Image item in the bound <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.Utils.DXMouseEventArgs">
 
             <summary>
@@ -5456,11 +5402,9 @@ For the XtraPivotGrid control, this option acts as the <see cref="F:DevExpress.U
         </member>
         <member name="P:DevExpress.Utils.DXMouseEventArgs.IsHMouseWheel">
             <summary>
-                <para>This member supports the internal infrastructure, and is not intended to be used directly from your code.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>@nbsp;
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -5910,6 +5854,30 @@ For the XtraPivotGrid control, this option acts as the <see cref="F:DevExpress.U
         <member name="F:DevExpress.Utils.Trimming.Word">
             <summary>
                 <para>Specifies that text is trimmed to the nearest word.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="T:DevExpress.Utils.SharedImageCollectionImageSizeMode">
+
+            <summary>
+                <para>The enumeration specifies the size of images being displayed within an object, when images are obtained from a <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.Utils.SharedImageCollectionImageSizeMode.UseCollectionImageSize">
+            <summary>
+                <para>The size of an image being displayed by an object is determined by the <b>ImageSize</b> property of the bound <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.Utils.SharedImageCollectionImageSizeMode.UseImageSize">
+            <summary>
+                <para>The size of an image being displayed by an object is determined by the size of the corresponding Image item in the bound <see cref="T:DevExpress.Utils.SharedImageCollection"/>.
 </para>
             </summary>
 
@@ -7283,22 +7251,6 @@ Currently, the <b>Default</b> option is equivalent to the <b>BeforeText</b> opti
 
 
         </member>
-        <member name="T:DevExpress.Utils.Menu.DXButtonGroupItem">
-
-            <summary>
-                <para>A group of buttons that can be displayed within a <see cref="T:DevExpress.Utils.Menu.DXPopupMenu"/> object.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.Utils.Menu.DXButtonGroupItem.#ctor">
-            <summary>
-                <para>Initializes a new DXButtonGroupItem instance with the default settings.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.Utils.ToolTipStyle">
 
             <summary>
@@ -7418,6 +7370,22 @@ In other cases, tooltips are painted using the <see cref="F:DevExpress.Utils.Too
             </summary>
             <value>An integer value that is the number of existing SharedImageCollection instances.
 </value>
+
+
+        </member>
+        <member name="T:DevExpress.Utils.Menu.DXButtonGroupItem">
+
+            <summary>
+                <para>A group of buttons that can be displayed within a <see cref="T:DevExpress.Utils.Menu.DXPopupMenu"/> object.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.Utils.Menu.DXButtonGroupItem.#ctor">
+            <summary>
+                <para>Initializes a new DXButtonGroupItem instance with the default settings.
+</para>
+            </summary>
 
 
         </member>

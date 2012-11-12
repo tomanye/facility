@@ -39,36 +39,30 @@
         <member name="T:DevExpress.Office.Import.IImporterOptions">
 
             <summary>
-                <para>Defines options for the document being imported. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.Office.Import.IImporterOptions.SourceUri">
             <summary>
-                <para>Gets or sets the URI of the document being imported. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A string representing the document URI. 
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.Office.Export.IExporterOptions">
 
             <summary>
-                <para>Defines options for the document being exported. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.Office.Export.IExporterOptions.TargetUri">
             <summary>
-                <para>Gets or sets the URI of the document being exported. 
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A string representing the document URI. 
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -153,7 +147,7 @@
         </member>
         <member name="M:DevExpress.Office.Utils.Units.DocumentsToHundredthsOfInch(System.Int32)">
             <summary>
-                <para>Converts a measurement from documents to hundredths of an inch. Returns the converted measurement as an <b>Integer</b>.
+                <para>ACVConverts a measurement from documents to hundredths of an inch. Returns the converted measurement as an <b>Integer</b>.
 </para>
             </summary>
             <param name="val">
@@ -330,25 +324,18 @@
         </member>
         <member name="M:DevExpress.Office.Utils.Units.DocumentsToPixels(System.Drawing.Size,System.Single,System.Single)">
             <summary>
-                <para>Converts height and width from documents to pixels.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="val">
-		A <see cref="T:System.Drawing.Size"/> structure with values in documents to be converted to pixels.
-
+		 [To be supplied] 
             </param>
             <param name="dpiX">
-		 A dpi value used for conversion of the X-coordinate.
-
-
+		 [To be supplied] 
             </param>
             <param name="dpiY">
-		 A dpi value used for conversion of the Y-coordinate.
-
-
+		 [To be supplied] 
             </param>
-            <returns>A <see cref="T:System.Drawing.Size"/> structure that contains height and width in pixels.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
@@ -911,9 +898,7 @@
 
             </param>
             <param name="dpiY">
-		A dpi value used for conversion of the Y-coordinate.
-
-
+		 [To be supplied] 
             </param>
             <returns>A <see cref="T:System.Drawing.Rectangle"/> structure.
 </returns>
@@ -1129,8 +1114,7 @@
 
             </param>
             <param name="dpiY">
-		A dpi value of the <see cref="T:System.Single"/> type to be used for conversion of the Y-coordinate.
-
+		 [To be supplied] 
             </param>
             <returns>A <see cref="T:System.Drawing.Rectangle"/> structure.
 </returns>
@@ -1556,25 +1540,18 @@
         </member>
         <member name="M:DevExpress.Office.Utils.Units.TwipsToPixels(System.Drawing.Size,System.Single,System.Single)">
             <summary>
-                <para>Converts height and width from twips to pixels.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="val">
-		A <see cref="T:System.Drawing.Size"/> structure with values in twips to be converted to pixels.
-
+		 [To be supplied] 
             </param>
             <param name="dpiX">
-		 A dpi value used for conversion of the X-coordinate.
-
-
+		 [To be supplied] 
             </param>
             <param name="dpiY">
-		 A dpi value used for conversion of the Y-coordinate.
-
-
+		 [To be supplied] 
             </param>
-            <returns>A <see cref="T:System.Drawing.Size"/> structure that contains height and width in pixels.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>

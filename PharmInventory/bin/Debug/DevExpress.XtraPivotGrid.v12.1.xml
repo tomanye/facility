@@ -882,6 +882,30 @@
 
 
         </member>
+        <member name="T:DevExpress.XtraPivotGrid.PivotGroupEventHandler">
+
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.GroupFilterChanged"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraPivotGrid.PivotGroupEventHandler.Invoke(System.Object,DevExpress.XtraPivotGrid.PivotGroupEventArgs)">
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.GroupFilterChanged"/> event.
+</para>
+            </summary>
+            <param name="sender">
+		The event source.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraPivotGrid.PivotGroupEventArgs"/> object that contains event data.
+
+            </param>
+
+
+        </member>
         <member name="T:DevExpress.XtraPivotGrid.PivotGroupEventArgs">
 
             <summary>
@@ -957,30 +981,6 @@
                 <para>The PivotGridControl will be immediately redrawn after calling the <see cref="M:DevExpress.XtraPivotGrid.PivotGridControl.EndUpdate"/> method.
 </para>
             </summary>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPivotGrid.PivotGroupEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.GroupFilterChanged"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraPivotGrid.PivotGroupEventHandler.Invoke(System.Object,DevExpress.XtraPivotGrid.PivotGroupEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.GroupFilterChanged"/> event.
-</para>
-            </summary>
-            <param name="sender">
-		The event source.
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraPivotGrid.PivotGroupEventArgs"/> object that contains event data.
-
-            </param>
 
 
         </member>
@@ -1444,6 +1444,46 @@
 
 
         </member>
+        <member name="T:DevExpress.XtraPivotGrid.PivotGridHitTest">
+
+            <summary>
+                <para>Lists values that identify a PivotGridControl's elements.
+</para>
+            </summary>
+
+        </member>
+        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.Cell">
+            <summary>
+                <para>The test point belongs to a cell.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.HeadersArea">
+            <summary>
+                <para>The test point belongs to the header area.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.None">
+            <summary>
+                <para>The test point does not belong to any visual element or is outside the PivotGridControl.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.Value">
+            <summary>
+                <para>The test point belongs to a field value.
+</para>
+            </summary>
+
+
+        </member>
         <member name="T:DevExpress.XtraPivotGrid.PivotGridScrolling">
 
             <summary>
@@ -1863,46 +1903,6 @@
 
 
         </member>
-        <member name="T:DevExpress.XtraPivotGrid.PivotGridHitTest">
-
-            <summary>
-                <para>Lists values that identify a PivotGridControl's elements.
-</para>
-            </summary>
-
-        </member>
-        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.Cell">
-            <summary>
-                <para>The test point belongs to a cell.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.HeadersArea">
-            <summary>
-                <para>The test point belongs to the header area.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.None">
-            <summary>
-                <para>The test point does not belong to any visual element or is outside the PivotGridControl.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="F:DevExpress.XtraPivotGrid.PivotGridHitTest.Value">
-            <summary>
-                <para>The test point belongs to a field value.
-</para>
-            </summary>
-
-
-        </member>
         <member name="T:DevExpress.XtraPivotGrid.PivotGridCells">
 
             <summary>
@@ -2053,36 +2053,29 @@
         </member>
         <member name="M:DevExpress.XtraPivotGrid.PivotGridCells.SetSelectionByFieldValues(System.Boolean,System.Object[])">
             <summary>
-                <para>Selects cells that reside within the specified column or row.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="isColumn">
-		<b>true</b> to select cells within a column; <b>false</b> to select cells within a row.
-
+		 [To be supplied] 
             </param>
             <param name="values">
-		An array of field values that identifies the column or row that should be selected.
-
+		 [To be supplied] 
             </param>
 
 
         </member>
         <member name="M:DevExpress.XtraPivotGrid.PivotGridCells.SetSelectionByFieldValues(System.Boolean,System.Object[],DevExpress.XtraPivotGrid.PivotGridFieldBase)">
             <summary>
-                <para>Selects cells that reside within the specified column or row, identified by the specified data field.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="isColumn">
-		<b>true</b> to select cells within a column; <b>false</b> to select cells within a row.
-
+		 [To be supplied] 
             </param>
             <param name="values">
-		An array of field values that identifies the column or row that should be selected.
-
+		 [To be supplied] 
             </param>
             <param name="dataField">
-		A <see cref="T:DevExpress.XtraPivotGrid.PivotGridFieldBase"/> descendant. Specifies a data field that identifies the column or row that should be selected.
-
+		 [To be supplied] 
             </param>
 
 
@@ -2475,14 +2468,14 @@
         <member name="T:DevExpress.XtraPivotGrid.PivotGridMenuEventHandler">
 
             <summary>
-                <para>Represents a method that will handle the <b>DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu</b> event.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu"/> event.
 </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraPivotGrid.PivotGridMenuEventHandler.Invoke(System.Object,DevExpress.XtraPivotGrid.PivotGridMenuEventArgs)">
             <summary>
-                <para>Represents a method that will handle the <b>DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu</b> event.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu"/> event.
 </para>
             </summary>
             <param name="sender">
@@ -2499,7 +2492,7 @@
         <member name="T:DevExpress.XtraPivotGrid.PivotGridMenuEventArgs">
 
             <summary>
-                <para>Provides data for the <b>DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu</b> event.
+                <para>Provides data for the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.ShowMenu"/> event.
 </para>
             </summary>
 
@@ -5042,10 +5035,10 @@
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotCellBaseEventArgs.DataField">
             <summary>
-                <para>Gets the data field that identifies the column/row where the processed cell resides.
+                <para>Gets the data field which identifies the column where the processed cell resides.
 </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPivotGrid.PivotGridField"/> object that specifies the data field that identifies the column/row where the processed cell resides.
+            <value>A <see cref="T:DevExpress.XtraPivotGrid.PivotGridField"/> object which represents the data field which identifies the column where the processed cell resides.
 </value>
 
 
@@ -6791,8 +6784,7 @@
         </member>
         <member name="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomChartDataSourceRows">
             <summary>
-                <para>Allows you to customize pivot grid data before passing it to a chart control.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
 
@@ -8748,11 +8740,9 @@
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotGridControl.OLAPDataProvider">
             <summary>
-                <para>Gets or sets which data provider should be used to bind to an OLAP cube.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPivotGrid.OLAPDataProvider"/> enumeration member that specifies which data provider should be used to bind to an OLAP cube.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -9605,132 +9595,85 @@
 
 
         </member>
-        <member name="T:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs">
-
-            <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.OLAPException"/> event.
-</para>
-            </summary>
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs.Exception">
-            <summary>
-                <para>Gets an exception that has been thrown.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Exception"/> that has been thrown.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs.Handled">
-            <summary>
-                <para>Gets or sets whether the default exception handling actions should be performed.
-</para>
-            </summary>
-            <value><b>true</b> to perform the default exception handling actions; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
         <member name="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow">
 
             <summary>
-                <para>A row in the datasource passed to the chart control.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="P:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow.CellInfo">
             <summary>
-                <para>Gets information about a pivot grid cell that corresponds to the current datasource row.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPivotGrid.PivotCellBaseEventArgs"/> object that contains information about a pivot grid cell that corresponds to the current datasource row.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow.ColumnValueInfo">
             <summary>
-                <para>Gets information about the column field value that corresponds to the current datasource row.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPivotGrid.PivotFieldValueEventArgs"/> object that contains information about the column field value that corresponds to the current datasource row.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="P:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow.RowValueInfo">
             <summary>
-                <para>Gets information about the row field value that corresponds to the current datasource row.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <see cref="T:DevExpress.XtraPivotGrid.PivotFieldValueEventArgs"/> object that contains information about the row field value that corresponds to the current datasource row.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventArgs">
 
             <summary>
-                <para>Provides data for the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomChartDataSourceRows"/> event.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventArgs.CreateRow(System.Object,System.Object,System.Object)">
             <summary>
-                <para>Creates a <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> instance that specifies a chart's series point with the specified argument, series and value.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="series">
-		The point's series. This value is assigned to the <see cref="P:DevExpress.XtraPivotGrid.PivotChartDataSourceRowBase.Series"/> property of the created <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> object.
-
+		 [To be supplied] 
             </param>
             <param name="argument">
-		The point's argument. This value is assigned to the <see cref="P:DevExpress.XtraPivotGrid.PivotChartDataSourceRowBase.Argument"/> property of the created <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> object.
-
+		 [To be supplied] 
             </param>
             <param name="value">
-		The point's value. This value is assigned to the <see cref="P:DevExpress.XtraPivotGrid.PivotChartDataSourceRowBase.Value"/> property of the created <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> object.
-
+		 [To be supplied] 
             </param>
-            <returns>The created <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> instance that specifies a chart's series point.
-</returns>
+            <returns> [To be supplied] </returns>
 
 
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventArgs.Rows">
             <summary>
-                <para>Gets the collection of chart datasource rows.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A list of <see cref="T:DevExpress.XtraPivotGrid.Data.PivotChartDataSourceRow"/> objects that specify chart datasource rows.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
         <member name="T:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventHandler">
 
             <summary>
-                <para>References a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomChartDataSourceRows"/> event.
-</para>
+                <para> [To be supplied] </para>
             </summary>
 
         </member>
         <member name="M:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventHandler.Invoke(System.Object,DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventArgs)">
             <summary>
-                <para>References a method that will handle the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomChartDataSourceRows"/> event.
-</para>
+                <para> [To be supplied] </para>
             </summary>
             <param name="sender">
-		The event source.
-
+		 [To be supplied] 
             </param>
             <param name="e">
-		A <see cref="T:DevExpress.XtraPivotGrid.PivotCustomChartDataSourceRowsEventArgs"/> event that contains event data.
-
+		 [To be supplied] 
             </param>
 
 
@@ -9869,136 +9812,6 @@
 </para>
             </summary>
             <value>A set of <see cref="T:DevExpress.XtraPivotGrid.FilterPopupToolbarButtons"/> flags that identify buttons displayed in filter popup toolbars.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs">
-
-            <summary>
-                <para>Provides thread-safe access to the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomDrawFieldHeader"/> event data.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.#ctor(DevExpress.XtraPivotGrid.IThreadSafeAccessible,DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderEventArgs)">
-            <summary>
-                <para>Initializes a new instance of the PivotCustomDrawFieldHeaderThreadSafeEventArgs class.
-</para>
-            </summary>
-            <param name="threadSafeAccess">
-		An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeAccessible"/> interface. Provides access to pivot grid data.
-
-            </param>
-            <param name="ownerArgs">
-		A <see cref="T:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderEventArgs"/> object that owns the current event parameter.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Field">
-            <summary>
-                <para>Gets the field whose header is to be painted.
-</para>
-            </summary>
-            <value>An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeField"/> interface. Specifies the field whose header is to be painted.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Info">
-            <summary>
-                <para>Provides information required to paint a field header.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.Drawing.HeaderObjectInfoArgs"/> object that provides information about the painted field header.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Painter">
-            <summary>
-                <para>Gets the painter object that provides the default element painting mechanism. 
-</para>
-            </summary>
-            <value>A <b>HeaderObjectPainter</b> object.
-</value>
-
-
-        </member>
-        <member name="T:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs">
-
-            <summary>
-                <para>Provides thread-safe access to the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomDrawEmptyArea"/> event data.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.#ctor(DevExpress.XtraPivotGrid.IThreadSafeAccessible,DevExpress.XtraPivotGrid.PivotCustomDrawEventArgs)">
-            <summary>
-                <para>Initializes a new instance of the PivotCustomDrawThreadSafeEventArgs class.
-</para>
-            </summary>
-            <param name="threadSafeAccess">
-		An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeAccessible"/> interface. Provides access to pivot grid data.
-
-            </param>
-            <param name="ownerArgs">
-		A <see cref="T:DevExpress.XtraPivotGrid.PivotCustomDrawEventArgs"/> object that owns the current event parameter.
-
-            </param>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Appearance">
-            <summary>
-                <para>Gets the painted element's appearance settings.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the painted element's appearance settings.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Bounds">
-            <summary>
-                <para>Gets the bounding rectangle of the painted element.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Rectangle"/> structure that specifies the element's boundaries.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Graphics">
-            <summary>
-                <para>Gets an object used to paint an element.
-</para>
-            </summary>
-            <value>A <see cref="T:System.Drawing.Graphics"/> object used to paint an element.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.GraphicsCache">
-            <summary>
-                <para>Gets an object that specifies the storage for the most frequently used pens, fonts and brushes.
-
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.Drawing.GraphicsCache"/> object that stores the most frequently used pens, fonts and brushes.
-
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Handled">
-            <summary>
-                <para>Gets or sets whether the event has been handled.
-</para>
-            </summary>
-            <value><b>true</b> if the event has been handled and default painting is not required; otherwise, <b>false</b>.
 </value>
 
 
@@ -10322,6 +10135,65 @@
 		A <see cref="T:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs"/> object that contains event data.
 
             </param>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.OLAPException"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs.Exception">
+            <summary>
+                <para>Gets an exception that has been thrown.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Exception"/> that has been thrown.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotOlapExceptionEventArgs.Handled">
+            <summary>
+                <para>Gets or sets whether the default exception handling actions should be performed.
+</para>
+            </summary>
+            <value><b>true</b> to perform the default exception handling actions; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPivotGrid.CustomPrintEventArgs">
+
+            <summary>
+                <para>Represents the base class for classes that provide information to events that fire when exporting cells and field values.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraPivotGrid.CustomPrintEventArgs.#ctor(DevExpress.XtraPrinting.IVisualBrick)">
+            <summary>
+                <para>Initializes a new instance of the CustomPrintEventArgs object.
+</para>
+            </summary>
+            <param name="brick">
+		An IVisualBrick object that is used to initialize the <see cref="P:DevExpress.XtraPivotGrid.CustomPrintEventArgs.Brick"/> property.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.CustomPrintEventArgs.Brick">
+            <summary>
+                <para>Provides access to the brick that represents the contents and appearance of a cell, when it is printed or exported.
+
+</para>
+            </summary>
+            <value>An object implementing the <see cref="T:DevExpress.XtraPrinting.IVisualBrick"/> interface or its descendant (e.g. <see cref="T:DevExpress.XtraPrinting.ITextBrick"/>, <see cref="T:DevExpress.XtraPrinting.IImageBrick"/>, etc.).
+</value>
 
 
         </member>
@@ -10674,33 +10546,132 @@
 
 
         </member>
-        <member name="T:DevExpress.XtraPivotGrid.CustomPrintEventArgs">
+        <member name="T:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs">
 
             <summary>
-                <para>Represents the base class for classes that provide information to events that fire when exporting cells and field values.
+                <para>Provides thread-safe access to the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomDrawFieldHeader"/> event data.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraPivotGrid.CustomPrintEventArgs.#ctor(DevExpress.XtraPrinting.IVisualBrick)">
+        <member name="M:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.#ctor(DevExpress.XtraPivotGrid.IThreadSafeAccessible,DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderEventArgs)">
             <summary>
-                <para>Initializes a new instance of the CustomPrintEventArgs object.
+                <para>Initializes a new instance of the PivotCustomDrawFieldHeaderThreadSafeEventArgs class.
 </para>
             </summary>
-            <param name="brick">
-		An IVisualBrick object that is used to initialize the <see cref="P:DevExpress.XtraPivotGrid.CustomPrintEventArgs.Brick"/> property.
+            <param name="threadSafeAccess">
+		An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeAccessible"/> interface. Provides access to pivot grid data.
+
+            </param>
+            <param name="ownerArgs">
+		A <see cref="T:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderEventArgs"/> object that owns the current event parameter.
 
             </param>
 
 
         </member>
-        <member name="P:DevExpress.XtraPivotGrid.CustomPrintEventArgs.Brick">
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Field">
             <summary>
-                <para>Provides access to the brick that represents the contents and appearance of a cell, when it is printed or exported.
+                <para>Gets the field whose header is to be painted.
+</para>
+            </summary>
+            <value>An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeField"/> interface. Specifies the field whose header is to be painted.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Info">
+            <summary>
+                <para>Provides information required to paint a field header.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.Drawing.HeaderObjectInfoArgs"/> object that provides information about the painted field header.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldHeaderThreadSafeEventArgs.Painter">
+            <summary>
+                <para>Gets the painter object that provides the default element painting mechanism. 
+</para>
+            </summary>
+            <value>A <b>HeaderObjectPainter</b> object.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs">
+
+            <summary>
+                <para>Provides thread-safe access to the <see cref="E:DevExpress.XtraPivotGrid.PivotGridControl.CustomDrawEmptyArea"/> event data.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.#ctor(DevExpress.XtraPivotGrid.IThreadSafeAccessible,DevExpress.XtraPivotGrid.PivotCustomDrawEventArgs)">
+            <summary>
+                <para>Initializes a new instance of the PivotCustomDrawThreadSafeEventArgs class.
+</para>
+            </summary>
+            <param name="threadSafeAccess">
+		An object that implements the <see cref="T:DevExpress.XtraPivotGrid.IThreadSafeAccessible"/> interface. Provides access to pivot grid data.
+
+            </param>
+            <param name="ownerArgs">
+		A <see cref="T:DevExpress.XtraPivotGrid.PivotCustomDrawEventArgs"/> object that owns the current event parameter.
+
+            </param>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Appearance">
+            <summary>
+                <para>Gets the painted element's appearance settings.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object that provides the painted element's appearance settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Bounds">
+            <summary>
+                <para>Gets the bounding rectangle of the painted element.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Rectangle"/> structure that specifies the element's boundaries.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Graphics">
+            <summary>
+                <para>Gets an object used to paint an element.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Graphics"/> object used to paint an element.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.GraphicsCache">
+            <summary>
+                <para>Gets an object that specifies the storage for the most frequently used pens, fonts and brushes.
 
 </para>
             </summary>
-            <value>An object implementing the <see cref="T:DevExpress.XtraPrinting.IVisualBrick"/> interface or its descendant (e.g. <see cref="T:DevExpress.XtraPrinting.ITextBrick"/>, <see cref="T:DevExpress.XtraPrinting.IImageBrick"/>, etc.).
+            <value>A <see cref="T:DevExpress.Utils.Drawing.GraphicsCache"/> object that stores the most frequently used pens, fonts and brushes.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawThreadSafeEventArgs.Handled">
+            <summary>
+                <para>Gets or sets whether the event has been handled.
+</para>
+            </summary>
+            <value><b>true</b> if the event has been handled and default painting is not required; otherwise, <b>false</b>.
 </value>
 
 
@@ -11145,11 +11116,9 @@
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawCellBaseThreadSafeEventArgs.Value">
             <summary>
-                <para>Gets the current cell's value.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>An object that is the current cell's value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -12131,11 +12100,9 @@
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldValueThreadSafeEventArgs.Info">
             <summary>
-                <para>Gets an object which provides the information required to paint a field value.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <b>DevExpress.XtraPivotGrid.ViewInfo.PivotHeaderObjectInfoArgs</b> object which provides information about the painted field value.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
@@ -12161,11 +12128,9 @@
         </member>
         <member name="P:DevExpress.XtraPivotGrid.PivotCustomDrawFieldValueThreadSafeEventArgs.Painter">
             <summary>
-                <para>Gets the painter object that provides the default element painting mechanism.
-</para>
+                <para> [To be supplied] </para>
             </summary>
-            <value>A <b>DevExpress.XtraPivotGrid.ViewInfo.PivotHeaderObjectPainter</b> object.
-</value>
+            <value> [To be supplied] </value>
 
 
         </member>
