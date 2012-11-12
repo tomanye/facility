@@ -1084,7 +1084,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.pcl.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("pcl.ImageCollection.ImageStream")));
-            this.pcl.Owner = null;
+           
             this.pcl.PrintingSystem = this.printingSystem1;
             this.pcl.PrintingSystemBase = this.printingSystem1;
             // 
