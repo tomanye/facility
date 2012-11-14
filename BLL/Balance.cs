@@ -781,6 +781,7 @@ namespace BLL
                 // 
                 int reorder =  Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
+
                
             }
             return dtbl;
@@ -1122,7 +1123,8 @@ namespace BLL
             foreach (DataRow row in this.DataTable.Rows)
             {
                 row.BeginEdit();
-                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);//,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
+                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
+
             }
             return this.DataTable;
 

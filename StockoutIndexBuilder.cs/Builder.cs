@@ -282,18 +282,15 @@ namespace StockoutIndexBuilder
                                               StoreID = storeId,
                                               AmcRange = genaralinfo.AMCRange,
                                               IssueInAmcRange =
-                                                  CalculateTotalConsumption(row.Key, storeId, startDate,
+                                                  CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
                                                                                     DateTime.Today),
                                               DaysOutOfStock =
                                                   CalculateStockoutDays(row.Key, storeId, startDate, endDate),
                                               AmcWithDOS =
                                                   CalculateAverageConsumption(row.Key, storeId, startDate,endDate,CalculationOptions.Monthly),
-                                              AmcWithOutDOS =
-                                                  CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
-                                                                                              endDate)/
-                                                  Convert.ToDouble(genaralinfo.AMCRange),
-                                                  LastIndexedTime = DateTime.Now
-
+                                              AmcWithOutDOS = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate) / Convert.ToDouble(genaralinfo.AMCRange),
+                                              LastIndexedTime = DateTime.Now,
+                                              IssueWithDOS =Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now)
 
 
                                           };
@@ -302,7 +299,7 @@ namespace StockoutIndexBuilder
                   }
                   else
                   {
-                      allItemIds.IssueInAmcRange = CalculateTotalConsumption(row.Key, storeId, startDate,
+                      allItemIds.IssueInAmcRange = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
                                                                              DateTime.Now);
                       allItemIds.DaysOutOfStock = CalculateStockoutDays(row.Key, storeId, startDate, DateTime.Now);
                       allItemIds.AmcWithDOS = CalculateAverageConsumption(row.Key, storeId, startDate, endDate,
@@ -310,6 +307,7 @@ namespace StockoutIndexBuilder
                       allItemIds.AmcWithOutDOS =
                           CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate)/
                           Convert.ToDouble(genaralinfo.AMCRange);
+                      allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now);
                       allItemIds.LastIndexedTime = DateTime.Now;
                   }
 

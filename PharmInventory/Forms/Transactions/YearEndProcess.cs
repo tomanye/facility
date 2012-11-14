@@ -51,8 +51,7 @@ namespace PharmInventory.Forms.Transactions
             //}
             //else
             //{
-           // btnSave.Enabled = false;
-            btnSave.Enabled = true;
+                btnSave.Enabled = false;
             //}
 
             Stores str = new Stores();
@@ -83,7 +82,8 @@ namespace PharmInventory.Forms.Transactions
             {
                 dtBB.Columns.Add(co);
             }
-            str = new string[] { "ItemId", "No.", "Beginning Balance", "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID"};//, "Change Since Sene 30" };
+            str = new string[] { "ItemId", "No.", "Beginning Balance", 
+                "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID"};//, "Change Since Sene 30" };
 
             foreach (string co in str)
             {
@@ -104,7 +104,7 @@ namespace PharmInventory.Forms.Transactions
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)));
                 month = 10;
             }
             else
@@ -341,7 +341,7 @@ namespace PharmInventory.Forms.Transactions
                     Int64 phyInv = Convert.ToInt64(cRow["Physical Inventory"]);
                     string itemName = cRow["Item Name"].ToString();
                     long physicalInventoryTotal = 0;
-                    //if (endBal != phyInv)
+                    //if (endBal != phyInv)//Was commented out
                     //{
                         int k = i + 1;
 
@@ -349,27 +349,45 @@ namespace PharmInventory.Forms.Transactions
                         {
                             while (Convert.ToInt32(dtBB.Rows[k]["RecID"]) != -1)
                             {
-                                if (dtBB.Rows[k]["Physical Inventory"] != DBNull.Value)
+                                try
+                                {
+                                 if (dtBB.Rows[k]["Physical Inventory"] != DBNull.Value)
                                 {
                                     //areAllBatchesPhyInventoryNullValue = false;
-                                    long batchPhysicalInventory =
-                                        Convert.ToInt64(dtBB.Rows[k]["Physical Inventory"]);
+                                    long batchPhysicalInventory = Convert.ToInt64(dtBB.Rows[k]["Physical Inventory"]);
                                     physicalInventoryTotal += batchPhysicalInventory;
                                 }
 
                                 k++;
                                 if (k >= yearEndTable.Rows.Count)
                                     break;
+                               }   
+                                catch (Exception)
+                                {
+                                    if (dtBB.Rows[k]["Physical Inventory"] != DBNull.Value)
+                                    {
+                                        //areAllBatchesPhyInventoryNullValue = false;
+                                        long batchPhysicalInventory = Convert.ToInt64(dtBB.Rows[k]["Physical Inventory"]);
+                                        physicalInventoryTotal += batchPhysicalInventory;
+                                    }
+
+                                    k++;
+                                    if (k >= yearEndTable.Rows.Count)
+                                        break;
+                                }
                             }
+                              
                         }
                         if (phyInv != physicalInventoryTotal)
                         {
-                            XtraMessageBox.Show("Validation has failed for item: " + itemName, "Error", MessageBoxButtons.OK,
+                            XtraMessageBox.Show("Validation has failed for item: " + itemName, "Error",
+                                                MessageBoxButtons.OK,
                                                 MessageBoxIcon.Error);
                             return false;
                         }
-                    //}
-                }
+                        //}
+                    }
+                //}
             }
 
             return true;

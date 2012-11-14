@@ -66,7 +66,7 @@ namespace PharmInventory.Forms.Reports
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth,startingYear);
             cboStores.ItemIndex = 0;
-            cboProgram.ItemIndex = 0;
+            //cboProgram.ItemIndex = 0;
         }
 
         private void PopulateRRFs()

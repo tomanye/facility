@@ -1,0 +1,66 @@
+﻿<RecentFiles>
+  <RecentFiles>
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:EditRecieveRefrenceNo.cs" caret="234" fromTop="0" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:EditIssueDocRefrenceNo.cs" caret="1194" fromTop="15" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/f:Builder.cs" caret="14365" fromTop="16" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:DAL/f:AmcReportRepository.cs" caret="818" fromTop="16" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:StockOutIndicesBuilder.cs" caret="0" fromTop="0" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:EditLossAndAdjustment.cs" caret="1822" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:CostReport.cs" caret="6149" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:LossesAdjustment.cs" caret="1695" fromTop="10" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:HelperClasses/f:MainWindowController.cs" caret="11024" fromTop="18" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:Items.cs" caret="71545" fromTop="10" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Scripts/f:01_HCMIS Queries.sql" caret="0" fromTop="0" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:ViewModels/f:AMCViewModel.cs" caret="0" fromTop="0" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:ActivityLogs/f:LogIssues.cs" caret="1535" fromTop="9" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:ActivityLogs/f:LogAdjustment.cs" caret="1080" fromTop="0" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:Programs.cs" caret="480" fromTop="16" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:ReceivingUnits.cs" caret="586" fromTop="16" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Scripts/f:Stockout.sql" caret="699" fromTop="19" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:HelperClasses/f:SchemaHelpers.cs" caret="792" fromTop="22" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/f:Program.cs" caret="0" fromTop="0" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:RRFForm.cs" caret="5356" fromTop="105" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:OtherItemReport.cs" caret="3137" fromTop="18" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:IssueForm.cs" caret="257" fromTop="9" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:AMCView.cs" caret="1531" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:ItemDetailReport.cs" caret="9129" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:ItemReport.cs" caret="14794" fromTop="14" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:ReceiveDoc.cs" caret="304" fromTop="17" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/f:MainWindow.cs" caret="7402" fromTop="15" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:Balance.cs" caret="383" fromTop="18" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:YearEnd.cs" caret="3539" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:YearEndProcess.cs" caret="15974" fromTop="17" />
+  </RecentFiles>
+  <RecentEdits>
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:Stockout.cs" caret="50" fromTop="2" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:Disposal.cs" caret="50" fromTop="2" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:AMCReport.cs" caret="96" fromTop="3" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:Store.cs" caret="96" fromTop="3" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:Product.cs" caret="96" fromTop="3" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:vwGetAllItems.cs" caret="96" fromTop="3" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:GeneralInfo.cs" caret="96" fromTop="3" />
+    <File id="B49C77F8-4A73-40F1-A933-287B4BF15250/f:UpdatorForm.Designer.cs" caret="18937" fromTop="9" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:ActivityLogs/f:LogReceive.cs" caret="19981" fromTop="12" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:EditRecieveRefrenceNo.cs" caret="1703" fromTop="21" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:ViewModels/f:AMCViewModel.cs" caret="973" fromTop="7" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:AMCView.Designer.cs" caret="26886" fromTop="16" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:Models/f:ReceiveDoc.cs" caret="568" fromTop="20" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:ViewModels/f:ItemViewModel.cs" caret="1055" fromTop="27" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/d:DAL/f:ReceiveDocRepository.cs" caret="438" fromTop="14" />
+    <File id="9AA5EB03-5F0A-4C22-A474-EF289057B3C5/f:Builder.cs" caret="16929" fromTop="28" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:EditLossAndAdjustment.cs" caret="1841" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:ActivityLogs/f:LogIssues.cs" caret="9893" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:HelperClasses/f:MainWindowController.cs" caret="11024" fromTop="18" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:RRFForm.cs" caret="22974" fromTop="16" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:IssueForm.cs" caret="10350" fromTop="20" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:ActivityLogs/f:LogAdjustment.cs" caret="1080" fromTop="9" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:HelperClasses/f:SchemaHelpers.cs" caret="764" fromTop="19" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/f:Program.cs" caret="331" fromTop="12" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:OtherItemReport.cs" caret="7215" fromTop="18" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:AMCView.cs" caret="4454" fromTop="15" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Reports/f:ItemReport.cs" caret="15246" fromTop="8" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Modals/f:ItemDetailReport.cs" caret="119488" fromTop="16" />
+    <File id="4D833455-E466-4E4F-AD03-352C114711E1/f:Balance.cs" caret="37027" fromTop="16" />
+    <File id="80BE69F5-6B84-4235-B9AC-20ECC8C5B9A9/d:Forms/d:Transactions/f:YearEndProcess.cs" caret="17554" fromTop="21" />
+  </RecentEdits>
+</RecentFiles>

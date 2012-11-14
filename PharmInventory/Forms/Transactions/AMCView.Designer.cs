@@ -45,6 +45,7 @@
             this.colAmcWithOutDOS1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colLastIndexedTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -90,15 +91,15 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(456, 198, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(964, 419);
+            this.layoutControl1.Size = new System.Drawing.Size(1190, 419);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnBuild
             // 
-            this.btnBuild.Location = new System.Drawing.Point(853, 387);
+            this.btnBuild.Location = new System.Drawing.Point(1054, 387);
             this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(99, 20);
+            this.btnBuild.Size = new System.Drawing.Size(124, 20);
             this.btnBuild.TabIndex = 6;
             this.btnBuild.Text = "Build AMC";
             this.btnBuild.UseVisualStyleBackColor = true;
@@ -108,7 +109,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 387);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(815, 20);
+            this.progressBar1.Size = new System.Drawing.Size(1011, 20);
             this.progressBar1.TabIndex = 5;
             // 
             // lookUpEdit1
@@ -140,7 +141,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(940, 347);
+            this.gridControl1.Size = new System.Drawing.Size(1166, 347);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -159,7 +160,8 @@
             this.colAmcWithDOS1,
             this.colAmcWithOutDOS1,
             this.colLastIndexedTime,
-            this.gridColumn3});
+            this.gridColumn3,
+            this.gridColumn4});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupedColumns = true;
@@ -173,7 +175,7 @@
             this.colFullItemName1.OptionsColumn.AllowEdit = false;
             this.colFullItemName1.Visible = true;
             this.colFullItemName1.VisibleIndex = 1;
-            this.colFullItemName1.Width = 241;
+            this.colFullItemName1.Width = 222;
             // 
             // colAmcRange1
             // 
@@ -183,17 +185,17 @@
             this.colAmcRange1.OptionsColumn.AllowEdit = false;
             this.colAmcRange1.Visible = true;
             this.colAmcRange1.VisibleIndex = 2;
-            this.colAmcRange1.Width = 78;
+            this.colAmcRange1.Width = 72;
             // 
             // colIssueInAmcRange1
             // 
-            this.colIssueInAmcRange1.Caption = "Issue In AMC Range";
+            this.colIssueInAmcRange1.Caption = "Issue Not Considering DOS";
             this.colIssueInAmcRange1.FieldName = "IssueInAmcRange";
             this.colIssueInAmcRange1.Name = "colIssueInAmcRange1";
             this.colIssueInAmcRange1.OptionsColumn.AllowEdit = false;
             this.colIssueInAmcRange1.Visible = true;
-            this.colIssueInAmcRange1.VisibleIndex = 3;
-            this.colIssueInAmcRange1.Width = 126;
+            this.colIssueInAmcRange1.VisibleIndex = 4;
+            this.colIssueInAmcRange1.Width = 146;
             // 
             // colDaysOutOfStock1
             // 
@@ -201,32 +203,32 @@
             this.colDaysOutOfStock1.Name = "colDaysOutOfStock1";
             this.colDaysOutOfStock1.OptionsColumn.AllowEdit = false;
             this.colDaysOutOfStock1.Visible = true;
-            this.colDaysOutOfStock1.VisibleIndex = 4;
-            this.colDaysOutOfStock1.Width = 106;
+            this.colDaysOutOfStock1.VisibleIndex = 5;
+            this.colDaysOutOfStock1.Width = 95;
             // 
             // colAmcWithDOS1
             // 
-            this.colAmcWithDOS1.Caption = "AMC With DOS";
+            this.colAmcWithDOS1.Caption = "AMC Considering DOS";
             this.colAmcWithDOS1.DisplayFormat.FormatString = "##0.#0";
             this.colAmcWithDOS1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAmcWithDOS1.FieldName = "AmcWithDOS";
             this.colAmcWithDOS1.Name = "colAmcWithDOS1";
             this.colAmcWithDOS1.OptionsColumn.AllowEdit = false;
             this.colAmcWithDOS1.Visible = true;
-            this.colAmcWithDOS1.VisibleIndex = 5;
-            this.colAmcWithDOS1.Width = 87;
+            this.colAmcWithDOS1.VisibleIndex = 6;
+            this.colAmcWithDOS1.Width = 120;
             // 
             // colAmcWithOutDOS1
             // 
-            this.colAmcWithOutDOS1.Caption = "AMC Without DOS";
+            this.colAmcWithOutDOS1.Caption = "AMC Not Considering DOS";
             this.colAmcWithOutDOS1.DisplayFormat.FormatString = "##0.#0";
             this.colAmcWithOutDOS1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAmcWithOutDOS1.FieldName = "AmcWithOutDOS";
             this.colAmcWithOutDOS1.Name = "colAmcWithOutDOS1";
             this.colAmcWithOutDOS1.OptionsColumn.AllowEdit = false;
             this.colAmcWithOutDOS1.Visible = true;
-            this.colAmcWithOutDOS1.VisibleIndex = 6;
-            this.colAmcWithOutDOS1.Width = 102;
+            this.colAmcWithOutDOS1.VisibleIndex = 7;
+            this.colAmcWithOutDOS1.Width = 132;
             // 
             // colLastIndexedTime
             // 
@@ -235,8 +237,8 @@
             this.colLastIndexedTime.Name = "colLastIndexedTime";
             this.colLastIndexedTime.OptionsColumn.AllowEdit = false;
             this.colLastIndexedTime.Visible = true;
-            this.colLastIndexedTime.VisibleIndex = 7;
-            this.colLastIndexedTime.Width = 142;
+            this.colLastIndexedTime.VisibleIndex = 8;
+            this.colLastIndexedTime.Width = 132;
             // 
             // gridColumn3
             // 
@@ -245,7 +247,17 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 40;
+            this.gridColumn3.Width = 36;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Issue Considering  DOS";
+            this.gridColumn4.FieldName = "IssueWithDOS";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 134;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -273,7 +285,7 @@
             this.emptySpaceItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(964, 419);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1190, 419);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -296,7 +308,7 @@
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(944, 351);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1170, 351);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -319,7 +331,7 @@
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 375);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(24, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(819, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1015, 24);
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.Text = "layoutControlItem3";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -330,10 +342,10 @@
             // 
             this.layoutControlItem4.Control = this.btnBuild;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(841, 375);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1042, 375);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(24, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(103, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(128, 24);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -446,7 +458,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 419);
+            this.ClientSize = new System.Drawing.Size(1190, 419);
             this.Controls.Add(this.layoutControl1);
             this.Name = "AMCView";
             this.Text = "AMC Report";
@@ -504,6 +516,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
       
 
     }
