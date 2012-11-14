@@ -781,6 +781,7 @@ namespace BLL
                 // 
                 int reorder =  Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
+
                
             }
             return dtbl;
