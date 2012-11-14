@@ -37,9 +37,9 @@ namespace PharmInventory.Forms.Transactions
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueForm));
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -114,14 +114,9 @@ namespace PharmInventory.Forms.Transactions
             this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.issueGrid = new DevExpress.XtraGrid.GridControl();
             this.issueGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -129,11 +124,12 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn16 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -227,6 +223,10 @@ namespace PharmInventory.Forms.Transactions
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -271,9 +271,9 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
@@ -535,7 +535,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboStores.StyleController = this.layoutControl1;
             this.cboStores.TabIndex = 11;
             this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
-                    // 
+            // 
             // txtItemName
             // 
             this.txtItemName.Location = new System.Drawing.Point(138, 55);
@@ -1249,9 +1249,9 @@ namespace PharmInventory.Forms.Transactions
             this.txtRefNo.Size = new System.Drawing.Size(273, 20);
             this.txtRefNo.StyleController = this.layoutControl2;
             this.txtRefNo.TabIndex = 4;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "*";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule3);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "*";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule1);
             // 
             // issueGrid
             // 
@@ -1314,37 +1314,6 @@ namespace PharmInventory.Forms.Transactions
             this.issueGridView.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridItemChoiceView_RowClick_1);
             this.issueGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView1_CellValueChanged);
             // 
-            // gridBand3
-            // 
-            this.gridBand3.Columns.Add(this.bandedGridColumn13);
-            this.gridBand3.Columns.Add(this.gridColumn3);
-            this.gridBand3.Columns.Add(this.gridColumn4);
-            this.gridBand3.Columns.Add(this.gridColumn6);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 338;
-            // 
-            // bandedGridColumn13
-            // 
-            this.bandedGridColumn13.Caption = "StoreName";
-            this.bandedGridColumn13.ColumnEdit = this.repositoryItemLookUpEdit2;
-            this.bandedGridColumn13.FieldName = "StoreID";
-            this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.OptionsColumn.ReadOnly = true;
-            this.bandedGridColumn13.Visible = true;
-            this.bandedGridColumn13.Width = 69;
-            // 
-            // repositoryItemLookUpEdit2
-            // 
-            this.repositoryItemLookUpEdit2.AutoHeight = false;
-            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            this.repositoryItemLookUpEdit2.DataSource = this.storebindingSource;
-            this.repositoryItemLookUpEdit2.DisplayMember = "StoreName";
-            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
-            this.repositoryItemLookUpEdit2.ValueMember = "ID";
-            // 
             // gridColumn3
             // 
             this.gridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -1395,19 +1364,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn6.ToolTip = "Store Stock On Hand";
             this.gridColumn6.Visible = true;
             this.gridColumn6.Width = 58;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Auto Calculated Fields";
-            this.gridBand2.Columns.Add(this.gridColumn5);
-            this.gridBand2.Columns.Add(this.bandedGridColumn12);
-            this.gridBand2.Columns.Add(this.gridColumn9);
-            this.gridBand2.Columns.Add(this.gridColumn23);
-            this.gridBand2.Columns.Add(this.gridColumn16);
-            this.gridBand2.Columns.Add(this.gridColumn17);
-            this.gridBand2.Columns.Add(this.gridColumn18);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.Width = 460;
             // 
             // gridColumn5
             // 
@@ -1528,16 +1484,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.Visible = true;
             this.gridColumn18.Width = 100;
             // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "Override Section";
-            this.gridBand4.Columns.Add(this.gridColumn19);
-            this.gridBand4.Columns.Add(this.gridColumn20);
-            this.gridBand4.Columns.Add(this.gridColumn21);
-            this.gridBand4.Columns.Add(this.gridColumnRemove);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 219;
-            // 
             // gridColumn19
             // 
             this.gridColumn19.AppearanceCell.BackColor = System.Drawing.Color.SlateGray;
@@ -1590,6 +1536,18 @@ namespace PharmInventory.Forms.Transactions
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
             // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEdit2.DataSource = this.storebindingSource;
+            this.repositoryItemLookUpEdit2.DisplayMember = "StoreName";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.ValueMember = "ID";
+            // 
             // txtIssuedBy
             // 
             this.txtIssuedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1614,9 +1572,9 @@ namespace PharmInventory.Forms.Transactions
             this.cboReceivingUnits.Size = new System.Drawing.Size(283, 20);
             this.cboReceivingUnits.StyleController = this.layoutControl2;
             this.cboReceivingUnits.TabIndex = 0;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "*";
-            this.dxValidationProvider1.SetValidationRule(this.cboReceivingUnits, conditionValidationRule1);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "*";
+            this.dxValidationProvider1.SetValidationRule(this.cboReceivingUnits, conditionValidationRule2);
             this.cboReceivingUnits.EditValueChanged += new System.EventHandler(this.cboReceivingUnits_SelectedValueChanged);
             // 
             // btnSave
@@ -2599,8 +2557,8 @@ namespace PharmInventory.Forms.Transactions
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
@@ -2628,6 +2586,45 @@ namespace PharmInventory.Forms.Transactions
             this.printableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.printableComponentLink2.PrintingSystem = this.printingSystem1;
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
+            // 
+            // bandedGridColumn13
+            // 
+            this.bandedGridColumn13.Caption = "StoreName";
+            this.bandedGridColumn13.FieldName = "StoreID";
+            this.bandedGridColumn13.Name = "bandedGridColumn13";
+            this.bandedGridColumn13.Visible = true;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Columns.Add(this.bandedGridColumn13);
+            this.gridBand3.Columns.Add(this.gridColumn3);
+            this.gridBand3.Columns.Add(this.gridColumn4);
+            this.gridBand3.Columns.Add(this.gridColumn6);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.Width = 344;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Auto Calculated Fields";
+            this.gridBand2.Columns.Add(this.gridColumn5);
+            this.gridBand2.Columns.Add(this.bandedGridColumn12);
+            this.gridBand2.Columns.Add(this.gridColumn9);
+            this.gridBand2.Columns.Add(this.gridColumn23);
+            this.gridBand2.Columns.Add(this.gridColumn16);
+            this.gridBand2.Columns.Add(this.gridColumn17);
+            this.gridBand2.Columns.Add(this.gridColumn18);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.Width = 460;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Override Section";
+            this.gridBand4.Columns.Add(this.gridColumn19);
+            this.gridBand4.Columns.Add(this.gridColumn20);
+            this.gridBand4.Columns.Add(this.gridColumn21);
+            this.gridBand4.Columns.Add(this.gridColumnRemove);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.Width = 219;
             // 
             // IssueForm
             // 
@@ -2684,9 +2681,9 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.issueGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storebindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
@@ -2948,11 +2945,11 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit StoreItemLookUpEdit;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn13;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
 
     }
 }

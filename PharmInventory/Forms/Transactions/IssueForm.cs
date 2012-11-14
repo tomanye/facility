@@ -29,11 +29,11 @@ namespace PharmInventory.Forms.Transactions
     /// </summary>
     public partial class IssueForm : XtraForm
     {
-        static int StoreID;
+        private DataTable _allSelectedItemsFromAllStores;   
         public IssueForm()
         {
             InitializeComponent();
-        }
+         }
 
         #region Members
         DataTable _dtRec = new DataTable();
@@ -59,7 +59,7 @@ namespace PharmInventory.Forms.Transactions
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
-            cboStoreConf.Properties.DataSource = stor.DefaultView;
+            //cboStoreConf.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCategories.ItemIndex = 0;
 
@@ -131,9 +131,9 @@ namespace PharmInventory.Forms.Transactions
         /// <returns>True - If input is valid, False - If input is invalid</returns>
         private bool Validation()
         {
-            if (_tabPage == 0)
+             if (_tabPage == 0)
             {
-
+                
                 if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
                 {
                     PopulateGridList();
@@ -170,6 +170,7 @@ namespace PharmInventory.Forms.Transactions
         /// <summary>
         /// Populates the grid based on the selection.
         /// </summary>
+        
         private void PopulateGridList()
         {
             if (issueGrid.DataSource != null)
@@ -191,7 +192,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Unit", "Store SOH", "Dispatchable", "MR Issue Qty", 
                                    "DU Remaining SOH", "DU AMC", "Recommended Qty", "Pack Qty", "Qty Per Pack", 
-                                   "Requested Qty", "MR DU SOH" ,"StoreID"};
+                                   "Requested Qty", "MR DU SOH"};
                 foreach (string col in str)
                 {
                     _dtRecGrid.Columns.Add(col);
@@ -204,7 +205,8 @@ namespace PharmInventory.Forms.Transactions
             
             dtIssueDate.Value = DateTime.Now;
             dtIssueDate.CustomFormat = "MM/dd/yyyy";
-            DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
+            DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text); 
+            int storeID = Convert.ToInt32(cboStores.EditValue);
             if(_dtSelectedTable !=null)
             foreach (DataRow lst in _dtSelectedTable.Rows)//(ListViewItem lst in lstItem.Items)
             {
@@ -215,17 +217,20 @@ namespace PharmInventory.Forms.Transactions
 
                 foreach (DataRow dr in dtExp.Rows)
                 {
-                    expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), storeId);
+                    expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), Convert.ToInt32(cboStores.EditValue));
                     quantity = Convert.ToInt64(dr["Quantity"]) - expAmount;//+ adjQuant - issuedQuant - lostQuant 
                 }
                 Int64 soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
                 Int64 dispatchable = Convert.ToInt64(lst["Dispatchable"]);
+                
+
 
                 string itemName = lst["FullItemName"].ToString();
                 object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0,StoreID};
+                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0};
 
-                if (expAmount <= soh && quantity <=soh)
+
+                if (expAmount < soh && quantity < soh)
                 {
                     _dtRecGrid.Rows.Add(obj);
                     count++;
@@ -254,6 +259,7 @@ namespace PharmInventory.Forms.Transactions
         {
             PopulatePickList();
         }
+
 
         /// <summary>
         /// Populates the picklist based on the selected issue configuration
@@ -710,50 +716,94 @@ namespace PharmInventory.Forms.Transactions
             PopulateItemList();
         }
 
-        private void gridItemChoiceView_RowClick(object sender, RowClickEventArgs e)
-        {
-            GridView view = sender as GridView;
-            if (view != null)
-            {
-                DataRow dr = view.GetFocusedDataRow();
-                dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"])); // true;
-            }
-            OnItemCheckedChanged(new object(), new EventArgs());
-        }
+        //private void gridItemChoiceView_RowClick(object sender, RowClickEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+        //    if (view != null)
+        //    {
+        //        DataRow dr = view.GetFocusedDataRow();
+        //        dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"])); // true;
+        //    }
+        //    OnItemCheckedChanged(new object(), new EventArgs());
+        //}
 
         private void OnItemCheckedChanged(object sender, EventArgs e)
         {
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
-
+            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
             if (b)
             {
                 try
                 {
                     _dtSelectedTable.ImportRow(dr);
+                    DataRow dataRow = _allSelectedItemsFromAllStores.NewRow();
+                    string[] columns =
+                        {
+                            "ID", "StockCode", "FullItemName", "SOH", "Unit", "NewAMC", "Expired", "AMC",
+                            "Dispatchable", "IsSelected"
+                        };
+                    foreach (string col in columns)
+                    {
+                        dataRow[col] = dr[col];
+                    }
+                    dataRow["StoreID"] = (int)cboStores.EditValue;
+                    _allSelectedItemsFromAllStores.Rows.Add(dataRow);
                 }
-                catch { }
+                catch
+                {
+                }
             }
             else
             {
-                if (_dtSelectedTable.Columns != null)
-                    _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ID"] };
+                _dtSelectedTable.PrimaryKey = new DataColumn[] { _dtSelectedTable.Columns["ID"] };
+                _allSelectedItemsFromAllStores.PrimaryKey = new DataColumn[]
+                                                                {
+                                                                    _allSelectedItemsFromAllStores.Columns["ID"],
+                                                                    _allSelectedItemsFromAllStores.Columns["StoreID"]
+                                                                };
                 int id = Convert.ToInt32(dr["ID"]);
                 DataRow rw = _dtSelectedTable.Rows.Find(id);
+
+                int storeId = (int)dr["StoreID"];
+                int[] primaryKeys = new int[] { id, storeId };
+                DataRow newRow = _allSelectedItemsFromAllStores.Rows.Find(primaryKeys);
                 if (rw != null)
                 {
-                   _dtSelectedTable.Rows.Remove(rw);
+                    _dtSelectedTable.Rows.Remove(rw);
                     try
                     {
-                        DataRow[] dataRows = _dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));// dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
+                        DataRow[] dataRows = _dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));
+                        // dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
                         foreach (DataRow r in dataRows)
                         {
                             r.Delete();
                         }
                     }
-                    catch { }
+                    catch
+                    {
+                    }
+                }
+                if (newRow != null)
+                {
+                    _allSelectedItemsFromAllStores.Rows.Remove(newRow);
+                    try
+                    {
+                        DataRow[] dataRows =
+                            _allSelectedItemsFromAllStores.Select(String.Format("ID = {0} AND StoreID = {1}", dr["ID"],
+                                                                                dr["StoreID"]));
+                        // dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
+                        foreach (DataRow r in dataRows)
+                        {
+                            r.Delete();
+                        }
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
+
             //Commented out by tedy
             //DataRow dr = gridItemChoiceView.GetFocusedDataRow();
 
@@ -796,7 +846,6 @@ namespace PharmInventory.Forms.Transactions
             GridView view =sender as GridView;
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"]));
-            StoreID = Convert.ToInt32(cboStores.EditValue);
             dr.EndEdit();//added by tedy
             OnItemCheckedChanged(new object(), new EventArgs());
         }

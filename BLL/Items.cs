@@ -267,6 +267,13 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetAllItemByTypeId(int typeId)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No,*, ( ItemName + ' - ' + DosageForm + ' - ' + Strength) as DrugName FROM vwGetAllItems  where TypeID=typeId ORDER BY ItemName",typeId));
+            return this.DataTable;
+        }
+
         public DataTable GetAllSupply()
         {
             this.FlushData();

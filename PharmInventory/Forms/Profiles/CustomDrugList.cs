@@ -64,7 +64,7 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%'", txtItemName.Text);
+           gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text,(int)(lkCategories.EditValue ?? 0));
         }
 
         /// <summary>
@@ -163,7 +163,8 @@ namespace PharmInventory.Forms.Profiles
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+           gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+         
         }
 
         private void gridItemChoiceView_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)

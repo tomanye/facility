@@ -1122,7 +1122,8 @@ namespace BLL
             foreach (DataRow row in this.DataTable.Rows)
             {
                 row.BeginEdit();
-                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);//,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
+                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
+
             }
             return this.DataTable;
 

@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BLL.dll" size="248320">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BLL.dll" size="248832">
       <assemblyIdentity name="BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>TWfRD96cDYgRVWmXu+DcXcHc7hs=</dsig:DigestValue>
+        <dsig:DigestValue>8rDJJnlrvN9T/1cPxUgkUTUx2uw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>KtAvnX8n0Hz80fReQx96Dtc++Fg=</dsig:DigestValue>
+        <dsig:DigestValue>48ywowGs0AZRRr6eJoA3gULHsg0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1135,14 +1135,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1897472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1897984">
       <assemblyIdentity name="HCMIS" version="2.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>vey37c82mKKb4uWO8CrsE3NDXQ0=</dsig:DigestValue>
+        <dsig:DigestValue>9gYPc5bokYBPuVtEvSXmPsKSygU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1178,7 +1178,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>R3Xy2/p1IFEk5FYK09wCkrTGC5s=</dsig:DigestValue>
+        <dsig:DigestValue>mCYY8QGMIusbTWMgIeaClpoO8Jw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
