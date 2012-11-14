@@ -197,7 +197,6 @@ D:\Projects\JSI\FacilityEdition\PharmInventory\obj\Debug\PharmInventory.Forms.Mo
 D:\Projects\JSI\FacilityEdition\PharmInventory\obj\Debug\PharmInventory.Forms.Modals.EditIssueDocRefrenceNo.resources
 D:\Projects\JSI\FacilityEdition\PharmInventory\obj\Debug\PharmInventory.Forms.Transactions.AMCView.resources
 D:\Projects\JSI\FacilityEdition\PharmInventory\bin\Debug\EntityFramework.dll
-D:\Projects\JSI\FacilityEdition\PharmInventory\obj\Debug\HCMIS.exe.licenses
 D:\Projects\JSI\FacilityEdition\PharmInventory\bin\Debug\Scripts\AmcReport.sql
 D:\Projects\JSI\FacilityEdition\PharmInventory\bin\Debug\Scripts\Stockout.sql
 D:\Projects\JSI\FacilityEdition\PharmInventory\bin\Debug\Scripts\DisposalDelete.sql

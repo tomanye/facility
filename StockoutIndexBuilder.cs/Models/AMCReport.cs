@@ -22,6 +22,7 @@ namespace StockoutIndexBuilder.Models
         public double AmcWithDOS { get; set; }
         public double AmcWithOutDOS { get; set; }
         public DateTime? LastIndexedTime { get; set; }
+        public double? IssueWithDOS { get; set; }
 
         public virtual Item Item { get; set; }
 
