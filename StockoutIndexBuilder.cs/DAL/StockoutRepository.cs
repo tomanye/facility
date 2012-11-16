@@ -19,7 +19,6 @@ namespace StockoutIndexBuilder.DAL
 
         public void AddRange(IEnumerable<Stockout> stockouts)
         {
-            
             foreach (var stockout in stockouts)
             {
                stockout.LastIndexedTime = DateTime.Now;

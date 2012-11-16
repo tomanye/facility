@@ -59,7 +59,7 @@ namespace PharmInventory.Forms.Transactions
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
-            //cboStoreConf.Properties.DataSource = stor.DefaultView;
+            cboStoreConf.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCategories.ItemIndex = 0;
 
@@ -729,115 +729,40 @@ namespace PharmInventory.Forms.Transactions
 
         private void OnItemCheckedChanged(object sender, EventArgs e)
         {
+            //Commented out by tedy
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
+
+            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
+
             if (b)
             {
                 try
                 {
                     _dtSelectedTable.ImportRow(dr);
-                    DataRow dataRow = _allSelectedItemsFromAllStores.NewRow();
-                    string[] columns =
-                        {
-                            "ID", "StockCode", "FullItemName", "SOH", "Unit", "NewAMC", "Expired", "AMC",
-                            "Dispatchable", "IsSelected"
-                        };
-                    foreach (string col in columns)
-                    {
-                        dataRow[col] = dr[col];
-                    }
-                    dataRow["StoreID"] = (int)cboStores.EditValue;
-                    _allSelectedItemsFromAllStores.Rows.Add(dataRow);
                 }
-                catch
-                {
-                }
+                catch { }
             }
             else
             {
-                _dtSelectedTable.PrimaryKey = new DataColumn[] { _dtSelectedTable.Columns["ID"] };
-                _allSelectedItemsFromAllStores.PrimaryKey = new DataColumn[]
-                                                                {
-                                                                    _allSelectedItemsFromAllStores.Columns["ID"],
-                                                                    _allSelectedItemsFromAllStores.Columns["StoreID"]
-                                                                };
+                if (_dtSelectedTable.Columns != null)
+                    _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ID"] };
                 int id = Convert.ToInt32(dr["ID"]);
                 DataRow rw = _dtSelectedTable.Rows.Find(id);
-
-                int storeId = (int)dr["StoreID"];
-                int[] primaryKeys = new int[] { id, storeId };
-                DataRow newRow = _allSelectedItemsFromAllStores.Rows.Find(primaryKeys);
                 if (rw != null)
                 {
                     _dtSelectedTable.Rows.Remove(rw);
                     try
                     {
-                        DataRow[] dataRows = _dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));
-                        // dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
+                        DataRow[] dataRows = _dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));// dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
                         foreach (DataRow r in dataRows)
                         {
                             r.Delete();
                         }
                     }
-                    catch
-                    {
-                    }
+                    catch { }
                 }
-                if (newRow != null)
-                {
-                    _allSelectedItemsFromAllStores.Rows.Remove(newRow);
-                    try
-                    {
-                        DataRow[] dataRows =
-                            _allSelectedItemsFromAllStores.Select(String.Format("ID = {0} AND StoreID = {1}", dr["ID"],
-                                                                                dr["StoreID"]));
-                        // dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
-                        foreach (DataRow r in dataRows)
-                        {
-                            r.Delete();
-                        }
-                    }
-                    catch
-                    {
 
-                    }
-                }
             }
-
-            //Commented out by tedy
-            //DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-
-            //bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
-
-            //if (b)
-            //{
-            //    try
-            //    {
-            //        _dtSelectedTable.ImportRow(dr);
-            //    }
-            //    catch { }
-            //}
-            //else
-            //{
-            //    if (_dtSelectedTable.Columns != null)
-            //        _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ID"] };
-            //    int id = Convert.ToInt32(dr["ID"]);
-            //    DataRow rw = _dtSelectedTable.Rows.Find(id);
-            //    if (rw != null)
-            //    {
-            //        _dtSelectedTable.Rows.Remove(rw);
-            //        try
-            //        {
-            //            DataRow[] dataRows = _dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));// dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
-            //            foreach (DataRow r in dataRows)
-            //            {
-            //                r.Delete();
-            //            }
-            //        }
-            //        catch { }
-            //    }
-
-            //}
 
         }
 

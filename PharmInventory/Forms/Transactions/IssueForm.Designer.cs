@@ -114,7 +114,6 @@ namespace PharmInventory.Forms.Transactions
             this.issueGrid = new DevExpress.XtraGrid.GridControl();
             this.issueGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -1293,8 +1292,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn19,
             this.gridColumn20,
             this.gridColumn21,
-            this.gridColumnRemove,
-            this.bandedGridColumn13});
+            this.gridColumnRemove});
             this.issueGridView.GridControl = this.issueGrid;
             this.issueGridView.Name = "issueGridView";
             this.issueGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1315,19 +1313,11 @@ namespace PharmInventory.Forms.Transactions
             // 
             // gridBand3
             // 
-            this.gridBand3.Columns.Add(this.bandedGridColumn13);
             this.gridBand3.Columns.Add(this.gridColumn3);
             this.gridBand3.Columns.Add(this.gridColumn4);
             this.gridBand3.Columns.Add(this.gridColumn6);
             this.gridBand3.Name = "gridBand3";
-            this.gridBand3.Width = 344;
-            // 
-            // bandedGridColumn13
-            // 
-            this.bandedGridColumn13.Caption = "StoreName";
-            this.bandedGridColumn13.FieldName = "StoreID";
-            this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.Visible = true;
+            this.gridBand3.Width = 269;
             // 
             // gridColumn3
             // 
@@ -2946,7 +2936,6 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit StoreItemLookUpEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn13;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
 

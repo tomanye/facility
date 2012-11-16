@@ -26,18 +26,16 @@ namespace PharmInventory.Forms.Transactions
         {
             InitializeComponent();
             this.TopLevel = false;
-         
-            loadamc();
-
-            
+            //loadamc();
         }
 
         private void loadamc()
         {
+           
             var allamcs = _amcReportRepository.AllAmcReport();
             var allstores = _storerepository.AllStores();
              storebindingSource.DataSource = allstores;
-            lookUpEdit1.ItemIndex = 0;
+             lookUpEdit1.ItemIndex = 0;
             amcbindingSource.DataSource = allamcs.Distinct().OrderBy(m=>m.FullItemName);
         }
 
@@ -109,6 +107,11 @@ namespace PharmInventory.Forms.Transactions
                 backgroundWorker1.RunWorkerAsync();
             }
 
+        }
+
+        private void AMCView_Load(object sender, EventArgs e)
+        {
+            loadamc();
         }
 
        

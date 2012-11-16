@@ -1117,14 +1117,14 @@ namespace BLL
 
            // Add the necessary fields
             this.DataTable.Columns.Add("IsSelected", typeof(bool));
-            this.DataTable.Columns.Add("NewAMC", typeof (double));
+            //this.DataTable.Columns.Add("NewAMC", typeof (double));
 
-            foreach (DataRow row in this.DataTable.Rows)
-            {
-                row.BeginEdit();
-               // row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
+            //foreach (DataRow row in this.DataTable.Rows)
+            //{
+            //    row.BeginEdit();
+            //   // row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
 
-            }
+            //}
             return this.DataTable;
 
             //this.Exe

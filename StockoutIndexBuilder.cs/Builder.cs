@@ -6,6 +6,7 @@ using System.Text;
 using StockoutIndexBuilder.Models;
 using StockoutIndexBuilder.DAL;
 using System.Linq.Expressions;
+using System.Data.Entity.Infrastructure;
 
 namespace StockoutIndexBuilder
 {
@@ -22,9 +23,7 @@ namespace StockoutIndexBuilder
                 if (stockouts.Count > 0)
                     repository.AddRange(stockouts);
 
-                //if (stockouts.Count == 0)
-                //    repository.Add(stockouts);
-            }
+             }
 
 
         }
@@ -119,13 +118,13 @@ namespace StockoutIndexBuilder
                         break;
                 }
             }
-            //if (lastTransaction != null && (lastTransaction.TransactionType != TransactionType.Receipt && stockOut.StartDate != null))
-            //{
-            //    stockOuts.Add(stockOut);
-            //}
             return stockOuts;
         }
-
+        public static int GetStockOutDaysForRRF(int storeid, int ItemID ,DateTime enddate)
+        {
+            var startDate = enddate.Subtract(TimeSpan.FromDays(60));
+            return Builder.CalculateStockoutDays(ItemID, storeid, startDate, enddate);
+        }
         #region Private static helper methods
         static List<Transaction> TransactionDates(int itemID,int storeID)
         {
@@ -313,20 +312,13 @@ namespace StockoutIndexBuilder
 
                   context.SaveChanges();
 
-                  // Check if there's a stockout
-                  
-
-
-
-
-
               }
                     
                 
             }
-            catch (Exception)
+            catch (DbUpdateException ex)
             {
-                 
+
                 throw;
             }
         }

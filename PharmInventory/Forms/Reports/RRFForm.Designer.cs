@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,8 +128,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
-            this.bwRRFDetail = new System.ComponentModel.BackgroundWorker();
-            this.brRRFCurrent = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -387,10 +385,10 @@
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.grdViewInPacks;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.grdViewInPacks;
+            gridLevelNode1.RelationName = "Level1";
             this.gridItemsChoice.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridItemsChoice.Location = new System.Drawing.Point(24, 602);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -714,7 +712,9 @@
             // 
             // gridColumn40
             // 
-            this.gridColumn40.Caption = "Qty to reach Max";
+            this.gridColumn40.Caption = "Qty to Reach Max";
+            this.gridColumn40.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn40.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn40.FieldName = "gridColumn40";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.UnboundExpression = "[Max] - [SOH]";
@@ -1718,16 +1718,6 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
-            // bwRRFDetail
-            // 
-            this.bwRRFDetail.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFDetail_DoWork);
-            this.bwRRFDetail.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFDetail_RunWorkerCompleted);
-            // 
-            // brRRFCurrent
-            // 
-            this.brRRFCurrent.DoWork += new System.ComponentModel.DoWorkEventHandler(this.brRRFCurrent_DoWork);
-            this.brRRFCurrent.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.brRRFCurrent_RunWorkerCompleted);
-            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1886,7 +1876,5 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
-        private System.ComponentModel.BackgroundWorker bwRRFDetail;
-        private System.ComponentModel.BackgroundWorker brRRFCurrent;
     }
 }

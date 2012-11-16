@@ -446,6 +446,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="Scripts\SOHUpdated.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\DisposalDelete.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

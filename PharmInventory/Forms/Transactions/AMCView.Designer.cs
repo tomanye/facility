@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnBuild = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.amcbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.amcbindingSource = new System.Windows.Forms.BindingSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colFullItemName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAmcRange1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -97,9 +96,9 @@
             // 
             // btnBuild
             // 
-            this.btnBuild.Location = new System.Drawing.Point(1054, 387);
+            this.btnBuild.Location = new System.Drawing.Point(1027, 364);
             this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(124, 20);
+            this.btnBuild.Size = new System.Drawing.Size(151, 20);
             this.btnBuild.TabIndex = 6;
             this.btnBuild.Text = "Build AMC";
             this.btnBuild.UseVisualStyleBackColor = true;
@@ -107,7 +106,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 387);
+            this.progressBar1.Location = new System.Drawing.Point(12, 364);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1011, 20);
             this.progressBar1.TabIndex = 5;
@@ -141,7 +140,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1166, 347);
+            this.gridControl1.Size = new System.Drawing.Size(1166, 324);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -308,7 +307,7 @@
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1170, 351);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1170, 328);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -320,7 +319,7 @@
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(201, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(743, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(969, 24);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -328,7 +327,7 @@
             // 
             this.layoutControlItem3.Control = this.progressBar1;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 375);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 352);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(24, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(1015, 24);
@@ -342,10 +341,10 @@
             // 
             this.layoutControlItem4.Control = this.btnBuild;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(1042, 375);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1015, 352);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(24, 24);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(128, 24);
+            this.layoutControlItem4.Size = new System.Drawing.Size(155, 24);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -356,9 +355,9 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(819, 375);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 376);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(22, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(1170, 23);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -462,6 +461,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Name = "AMCView";
             this.Text = "AMC Report";
+            this.Load += new System.EventHandler(this.AMCView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
