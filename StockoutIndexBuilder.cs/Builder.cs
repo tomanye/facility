@@ -120,10 +120,10 @@ namespace StockoutIndexBuilder
             }
             return stockOuts;
         }
-        public static int GetStockOutDaysForRRF(int storeid, int ItemID ,DateTime enddate)
+        public static int GetStockOutDaysForRRF(int itemId, int storeId,DateTime endDate)
         {
-            var startDate = enddate.Subtract(TimeSpan.FromDays(60));
-            return Builder.CalculateStockoutDays(ItemID, storeid, startDate, enddate);
+            var startDate = endDate.Subtract(TimeSpan.FromDays(60));
+            return Builder.CalculateStockoutDays(itemId, storeId, startDate, endDate);
         }
         #region Private static helper methods
         static List<Transaction> TransactionDates(int itemID,int storeID)
@@ -171,6 +171,7 @@ namespace StockoutIndexBuilder
         {
             var repository = new StockoutRepository();            
             var stockoutsInRange = repository.GetAll().Where(m => m.ItemID == itemId && m.StoreID ==storeId ).Where(m => m.StartDate < endDate && (m.EndDate == null || m.EndDate > startDate)).ToList();
+            
             foreach(var stockout in stockoutsInRange)
             {
                 if(stockout.StartDate < startDate)

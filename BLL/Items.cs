@@ -1045,6 +1045,8 @@ namespace BLL
         public DataTable GetRRFReport(int storeId, int fromYear, int fromMonth, int toYear, int toMonth)
         {
             Balance balance = new Balance();
+            var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
+            var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, toMonth, toYear));
             if (fromMonth != 1)
                 fromMonth--;
             else
@@ -1054,15 +1056,8 @@ namespace BLL
             }
             DataTable dtbl = balance.GetSOH(storeId, fromMonth, fromYear);
             DataTable dtbl2 = balance.GetSOH(storeId, toMonth, toYear);
-           
-            //var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
-            //var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, toMonth, toYear));
-             
-             var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
-             var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, toMonth, toYear));
-                     
-            DateTime dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
 
+            DateTime dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
             DateTime dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
 
             string query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
@@ -1140,7 +1135,7 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock = z["DaysOutOfStock"] = Builder.GetStockOutDaysForRRF(Convert.ToInt32(ID), storeId, endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate)//DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                                  DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
 
             var t2 = (from n in t1
@@ -1159,7 +1154,7 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock = Builder.GetStockOutDaysForRRF(Convert.ToInt32(ID), storeId, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                  DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
                               }).Distinct().ToArray();
@@ -1198,9 +1193,9 @@ namespace BLL
                 drv["Received"] = v.Received;
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
-                drv["DaysOutOfStock"] = Builder.GetStockOutDaysForRRF(Convert.ToInt32(ID), storeId, endDate);
+                drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
-                
+
             }
 
             return value;

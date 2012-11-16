@@ -36,7 +36,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void backgroundIndexer_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            //_repository.DeleteAll();
+            _repository.DeleteAll();
             _dataSource = itemsBindingSource.DataSource as List<ItemViewModel>;
             double percentage = 0;
             foreach (var item in _dataSource)
