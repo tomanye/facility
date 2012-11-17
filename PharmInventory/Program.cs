@@ -1,12 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Microsoft.SqlServer.Management.Common;
 using PharmInventory.Forms.Modals;
 using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Threading;
+using Microsoft.SqlServer.Server;
+using Microsoft.SqlServer.Management.Smo;
 
 
 
@@ -53,7 +58,11 @@ namespace PharmInventory
                 HCMIS.CheckForUpdateCompleted += new CheckForUpdateCompletedEventHandler(HCMIS_CheckForUpdateCompleted);
                 HCMIS.UpdateCompleted += new System.ComponentModel.AsyncCompletedEventHandler(HCMIS_UpdateCompleted);
             }
+
+            // Create necessary database tables (if they do not exist already)
+            CreateDatabaseTables();
             
+                
             //If the user opens the application while holding down the shift key, we want to open the configuration options before the login form.
             if (Control.ModifierKeys == Keys.Shift)
             {
@@ -61,6 +70,37 @@ namespace PharmInventory
             }
 
             Application.Run(new LoginForm());
+        }
+
+        private static void CreateDatabaseTables()
+        {
+            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+
+            var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
+
+            FileInfo[] scripts = scriptsDirectory.GetFiles();
+            foreach (var scriptFile in scripts)
+            {
+                try
+                {
+                               string script = scriptFile.OpenText().ReadToEnd();
+                SqlConnection conn = new SqlConnection(sqlConnectionString);
+
+                Server server = new Server(new ServerConnection(conn));
+
+                server.ConnectionContext.ExecuteNonQuery(script);
+                scriptFile.OpenText().Close();
+
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+            }
+
+            
+
+            
         }
 
         static void LogUnhandledException(object sender, ThreadExceptionEventArgs e)

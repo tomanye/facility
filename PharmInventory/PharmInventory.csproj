@@ -217,6 +217,18 @@
     <Reference Include="EthiopianDate">
       <HintPath>Common DLLs\EthiopianDate.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
     <Reference Include="MyGeneration.dOOdads">
       <HintPath>Common DLLs\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
@@ -439,12 +451,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HelperClasses\RegistrationHelper.cs" />
+    <Compile Include="HelperClasses\SchemaHelpers.cs" />
     <Compile Include="HelperClasses\UpdateManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="Scripts\DisposalDelete.sql" />
     <Compile Include="Service References\DirectoryService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1191,8 +1205,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\DisposalDeleteInsert.sql" />
+    <Content Include="Scripts\DisposalDeleteLoadAll.sql" />
+    <Content Include="Scripts\DisposalDeleteLoadByPrimaryKey.sql" />
     <Content Include="Scripts\IssueDocDeletedInsert.sql" />
+    <Content Include="Scripts\IssueDocDeletedLoadAll.sql" />
+    <Content Include="Scripts\IssueDocDeletedLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\ReceiveDocDeleted.sql" />
     <Content Include="Scripts\ReceiveDocDeletedInsert.sql" />
+    <Content Include="Scripts\ReceiveDocDeletedLoadAll.sql" />
     <Content Include="Scripts\SOHByProgram.sql" />
     <Content Include="Scripts\Stockout.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -87,11 +87,9 @@ namespace PharmInventory.ViewModels
                 allItemIds.DaysOutOfStock = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
                 allItemIds.AmcWithDOS = Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,
                                                                             CalculationOptions.Monthly);
-            }
-            allItemIds.AmcWithOutDOS =
-                Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate)/
+                allItemIds.AmcWithOutDOS = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate) /
                 Convert.ToDouble(viewModel.AmcRange);
-            amcrepo.Update(allItemIds);
+            }
         }
     }
 }
