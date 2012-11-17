@@ -3,7 +3,8 @@ CREATE TABLE [dbo].[Stockout](
 	[StoreID] [int] NULL,
 	[ItemID] [int] NOT NULL,
 	[StartDate] [datetime] NOT NULL,
-	[EndDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NULL,
+	[LastIndexedTime] [datetime] NULL,
  CONSTRAINT [PK_dbo.Stockout] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
@@ -18,4 +19,3 @@ ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[Stockout] CHECK CONSTRAINT [FK_dbo.Stockout_dbo.Items_ItemID]
-GO

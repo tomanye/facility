@@ -62,6 +62,20 @@ namespace BLL
             this.LoadFromRawSql(String.Format("SELECT TOP(1) * FROM Balance WHERE ItemID = {0} AND StoreId= {1} ORDER BY Year DESC, Month DESC",itemId,storeId));
             return this.DataTable;
         }
+
+        public DataTable GetCurrentSOHAsOfDate(int itemId, int storeId, DateTime date)
+        {
+            
+            this.FlushData();
+            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            ld.Add("@storeid", storeId);
+            ld.Add("@month", date.Month);
+            ld.Add("@year", date.Year);
+            ld.Add("@days", DateTime.DaysInMonth(date.Year,date.Month));
+            
+            this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
                 
         /// <summary>
         /// Makes sure that every quantity in the Loss/Adjustment table is entered as positive.
@@ -1106,7 +1120,7 @@ namespace BLL
             foreach (DataRow row in this.DataTable.Rows)
             {
                 row.BeginEdit();
-                row["NewAMC"] = Builder.CalculateAverageConsumption((int)row["ID"], storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
+                row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);//,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
             }
             return this.DataTable;
 

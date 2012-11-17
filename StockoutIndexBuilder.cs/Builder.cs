@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using StockoutIndexBuilder.Models;
 using StockoutIndexBuilder.DAL;
 using System.Linq.Expressions;
@@ -32,9 +33,10 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var repository = new StockoutRepository();
-            var stockouts = GetStockOutHistory(itemID, storeId);
+            var stockouts = GetStockOutHistory(itemID, storeId).ToList();
             if (stockouts.Count > 0)
-                repository.AddRange(stockouts);
+              repository.AddRange(stockouts);
+                   
                 
         }
 
@@ -117,7 +119,7 @@ namespace StockoutIndexBuilder
                         break;
                 }
             }
-            //if(lastTransaction != null && (lastTransaction.TransactionType != TransactionType.Receipt && stockOut.StartDate != null))
+            //if (lastTransaction != null && (lastTransaction.TransactionType != TransactionType.Receipt && stockOut.StartDate != null))
             //{
             //    stockOuts.Add(stockOut);
             //}
@@ -169,16 +171,28 @@ namespace StockoutIndexBuilder
         public static int CalculateStockoutDays(int itemId,int storeId, DateTime startDate, DateTime endDate)
         {
             var repository = new StockoutRepository();            
-            var stockoutsInRange = repository.GetAll().Where(m => m.ItemID == itemId && m.StoreID ==storeId ).Where(m => m.StartDate < endDate && m.EndDate > startDate).ToList();
+            var stockoutsInRange = repository.GetAll().Where(m => m.ItemID == itemId && m.StoreID ==storeId ).Where(m => m.StartDate < endDate && (m.EndDate == null || m.EndDate > startDate)).ToList();
             foreach(var stockout in stockoutsInRange)
             {
                 if(stockout.StartDate < startDate)
                     stockout.StartDate = startDate;
-                if(stockout.EndDate > endDate)
+                if (stockout.EndDate == null)
+                    stockout.EndDate = DateTime.Now;
+                else if (stockout.EndDate > endDate)
                     stockout.EndDate = endDate;
             }
             return Enumerable.Sum(stockoutsInRange, m => m.NumberOfDays);
         }
+
+
+       public static double CachedAMC(int itemID, int storeID)
+       {
+           StockoutEntities context= new StockoutEntities();
+           var amc = ((from v in context.AmcReports
+                      where v.ItemID == itemID && v.StoreID == storeID
+                      select v).FirstOrDefault() ?? new AmcReport()).AmcWithDOS;
+           return amc;
+       }
 
        public static double CalculateAverageConsumption(int itemId,int storeId, DateTime startDate, DateTime endDate, CalculationOptions option)
         {
@@ -220,7 +234,106 @@ namespace StockoutIndexBuilder
             return totalConsumption + CalculateTotalConsumption(itemId,storeId, startDate.Subtract(TimeSpan.FromDays(stockoutDays)), startDate); ; 
         }
 
+        public static long CalculateTotalConsumptionWithoutDOS(int itemId,int storeId, DateTime startDate, DateTime endDate)
+        {
+            var db = new StockoutEntities();
+            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId).Where(issue => issue.Date >= startDate && issue.Date < endDate);
+            return Enumerable.Sum(allIssues, issue => issue.Quantity);
+        }
+
         #endregion
+
+        public static void RefreshAMCValues(int storeId, Dictionary<int,long> items)
+        {
+            var context = new StockoutEntities();
+            var genaralinfo = context.GenralInfos.First();
+            var endDate = DateTime.Now;
+            var startDate = endDate.Subtract(TimeSpan.FromDays(genaralinfo.AMCRange * 30));
+            
+            try
+            {
+              foreach (var row in items)
+              {
+                  // Check if there's a stockout
+                  if (row.Value == 0)
+                  {
+                      var stockOut = new Stockout()
+                      {
+                          ItemID = row.Key,
+                          StoreID = storeId,
+                          StartDate = DateTime.Now,
+                          EndDate = null,
+                          LastIndexedTime = DateTime.Now
+                      };
+                      context.Stockouts.Add(stockOut);
+                      context.SaveChanges();
+                  }
+                  
+
+                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID==storeId);
+
+                    
+                    // Update AMC value
+                  if(allItemIds==null)
+                  {
+                      var amcreport = new AmcReport
+                                          {
+                                              ItemID = row.Key,
+                                              StoreID = storeId,
+                                              AmcRange = genaralinfo.AMCRange,
+                                              IssueInAmcRange =
+                                                  CalculateTotalConsumption(row.Key, storeId, startDate,
+                                                                                    DateTime.Today),
+                                              DaysOutOfStock =
+                                                  CalculateStockoutDays(row.Key, storeId, startDate, endDate),
+                                              AmcWithDOS =
+                                                  CalculateAverageConsumption(row.Key, storeId, startDate,endDate,CalculationOptions.Monthly),
+                                              AmcWithOutDOS =
+                                                  CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
+                                                                                              endDate)/
+                                                  Convert.ToDouble(genaralinfo.AMCRange)
+
+
+                                          };
+                      context.AmcReports.Add(amcreport);
+                        
+                  }
+                  else
+                  {
+                      allItemIds.IssueInAmcRange = CalculateTotalConsumption(row.Key, storeId, startDate,
+                                                                             DateTime.Now);
+                      allItemIds.DaysOutOfStock = CalculateStockoutDays(row.Key, storeId, startDate, DateTime.Now);
+                      allItemIds.AmcWithDOS = CalculateAverageConsumption(row.Key, storeId, startDate, endDate,
+                                                                          CalculationOptions.Monthly);
+                      allItemIds.AmcWithOutDOS =
+                          CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate)/
+                          Convert.ToDouble(genaralinfo.AMCRange);
+                  }
+
+                  context.SaveChanges();
+
+                  // Check if there's a stockout
+                  
+
+
+
+
+
+              }
+                    
+                
+            }
+            catch (Exception)
+            {
+                 
+                throw;
+            }
+        }
+
+        private static object GetSOHAsOfDate(int itemId, int storeId, DateTime dateTime)
+        {
+            return new object(); 
+        }
     }
 
     public enum CalculationOptions

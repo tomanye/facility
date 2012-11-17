@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 using BLL;
 using System.Linq;
@@ -25,8 +26,9 @@ namespace PharmInventory.Forms.Transactions
 
         void LoadAllItems()
         {
-            var allItems = _repository.AllItems();
-            //var allItems = receiveDocRepository.RecievedItems().Select(m => m.Item).Distinct().ToList();
+            var allstockouts = _repository.GetAll().LastOrDefault();
+            if (allstockouts != null) lbllastindexedtime.Text = allstockouts.LastIndexedTime.ToString();
+            var allItems = receiveDocRepository.RecievedItems().Select(m => m.Item).Distinct().ToList();
             itemsBindingSource.DataSource = ItemViewModelCollection.Create(allItems);
             var allstores = _storerepository.AllStores();
             storebindingSource.DataSource = allstores;
@@ -34,7 +36,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void backgroundIndexer_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            _repository.DeleteAll();
+            //_repository.DeleteAll();
             _dataSource = itemsBindingSource.DataSource as List<ItemViewModel>;
             double percentage = 0;
             foreach (var item in _dataSource)
@@ -45,10 +47,12 @@ namespace PharmInventory.Forms.Transactions
                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel) item).ItemId);
            
                 item.Indexed = true;
+                
                 itemsBindingSource.DataSource = _dataSource;
                 var newValue = 100.0 / _dataSource.Count;
                 percentage += newValue;
                 backgroundIndexer.ReportProgress(Convert.ToInt32(percentage));
+               
             }
             //lblStatus.Text = String.Format("Completed index for {0} items successfully.", _dataSource.Count);            
            

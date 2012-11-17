@@ -10,7 +10,7 @@ namespace StockoutIndexBuilder.DAL
     {
         static StockoutEntities Context = new StockoutEntities();
 
-        public static List<vwGetAllItems> AllItems()
+        public List<vwGetAllItems> AllItems()
         {
             return Context.VwGetAllItemses.ToList();
         }

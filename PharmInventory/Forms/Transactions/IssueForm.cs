@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using PharmInventory.Forms.Modals;
@@ -315,7 +317,7 @@ namespace PharmInventory.Forms.Transactions
                         {
                             int j = 0;
                             Int64 quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]);
-                            while (quantity > 0)
+                            while (quantity > 0 && rec.RowCount > j)
                             {
                                 string batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
@@ -456,6 +458,8 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            Dictionary<int, long> confirmedItemsQuantity =new Dictionary<int, long>();
+            List<int> confirmedItems = new List<int>();
             string valid = ValidateFields();
             if (valid == "true")
             {
@@ -468,6 +472,7 @@ namespace PharmInventory.Forms.Transactions
                     for (int i = 0; i < dtConfirmation.Rows.Count; i++)
                     {
                         issDoc.GetDULastIssue(Convert.ToInt32(dtConfirmation.Rows[i]["ItemID"]), Convert.ToInt32(cboReceivingUnits.EditValue));
+                        confirmedItems.Add(Convert.ToInt32(dtConfirmation.Rows[i]["ItemID"]));
                         if (issDoc.RowCount > 0)
                         {
                             //issDoc.DUSOH = ((dtConfirmation.Rows[i]["DUSOH"] != null) ? Convert.ToInt64(dtConfirmation.Rows[i]["DUSOH"]) : 0);
@@ -506,7 +511,14 @@ namespace PharmInventory.Forms.Transactions
                         //updating the receiving doc
                         recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirmation.Rows[i]["RecId"]));
                         recDoc.QuantityLeft = recDoc.QuantityLeft - issDoc.Quantity;
+                        var itemId = Convert.ToInt32(dtConfirmation.Rows[i]["ItemId"]);
                         recDoc.Out = (recDoc.QuantityLeft == 0) ? true : false;
+                        if (confirmedItemsQuantity.ContainsKey(itemId))
+                            confirmedItemsQuantity[itemId] += recDoc.QuantityLeft;
+                        else
+                        {
+                            confirmedItemsQuantity.Add(itemId, recDoc.QuantityLeft);    
+                        }
                         recDoc.Save();
                         //Log Activity
                         dtIssueDate.Value = xx;
@@ -515,6 +527,12 @@ namespace PharmInventory.Forms.Transactions
                     ResetValues();
                     IssuingForm_Load(null, null);
                 }
+                // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
+                // Refresh AMC
+                var storeId = Convert.ToInt32(cboStores.EditValue);
+                
+                StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
+                
             }
             else
             {
@@ -696,7 +714,8 @@ namespace PharmInventory.Forms.Transactions
             }
             else
             {
-                _dtSelectedTable.PrimaryKey = new DataColumn[] { _dtSelectedTable.Columns["ID"] };
+                if (_dtSelectedTable.Columns != null)
+                    _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ID"] };
                 int id = Convert.ToInt32(dr["ID"]);
                 DataRow rw = _dtSelectedTable.Rows.Find(id);
                 if (rw != null)

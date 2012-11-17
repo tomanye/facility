@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lbllastindexedtime = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lkStore = new DevExpress.XtraEditors.LookUpEdit();
             this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
@@ -50,8 +52,10 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.backgroundIndexer = new System.ComponentModel.BackgroundWorker();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkStore.Properties)).BeginInit();
@@ -69,23 +73,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.lbllastindexedtime);
             this.layoutControl1.Controls.Add(this.lkStore);
             this.layoutControl1.Controls.Add(this.btnClose);
             this.layoutControl1.Controls.Add(this.btnBuildIndexer);
             this.layoutControl1.Controls.Add(this.progressIndex);
+            this.layoutControl1.Controls.Add(this.label1);
             this.layoutControl1.Controls.Add(this.gridSplitContainer1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(706, 380);
+            this.layoutControl1.Size = new System.Drawing.Size(788, 380);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // lbllastindexedtime
+            // 
+            this.lbllastindexedtime.Location = new System.Drawing.Point(668, 12);
+            this.lbllastindexedtime.Name = "lbllastindexedtime";
+            this.lbllastindexedtime.Size = new System.Drawing.Size(108, 20);
+            this.lbllastindexedtime.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(565, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Last Indexed Time:";
             // 
             // lkStore
             // 
@@ -109,7 +132,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(622, 346);
+            this.btnClose.Location = new System.Drawing.Point(704, 346);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(72, 22);
             this.btnClose.StyleController = this.layoutControl1;
@@ -119,7 +142,7 @@
             // 
             // btnBuildIndexer
             // 
-            this.btnBuildIndexer.Location = new System.Drawing.Point(534, 346);
+            this.btnBuildIndexer.Location = new System.Drawing.Point(616, 346);
             this.btnBuildIndexer.Name = "btnBuildIndexer";
             this.btnBuildIndexer.Size = new System.Drawing.Size(84, 22);
             this.btnBuildIndexer.StyleController = this.layoutControl1;
@@ -131,7 +154,7 @@
             // 
             this.progressIndex.Location = new System.Drawing.Point(12, 346);
             this.progressIndex.Name = "progressIndex";
-            this.progressIndex.Size = new System.Drawing.Size(518, 22);
+            this.progressIndex.Size = new System.Drawing.Size(600, 22);
             this.progressIndex.TabIndex = 5;
             // 
             // gridSplitContainer1
@@ -140,7 +163,7 @@
             this.gridSplitContainer1.Location = new System.Drawing.Point(12, 36);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl1);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(682, 306);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(764, 306);
             this.gridSplitContainer1.TabIndex = 9;
             // 
             // gridControl1
@@ -153,7 +176,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemLookUpEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(682, 306);
+            this.gridControl1.Size = new System.Drawing.Size(764, 306);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.stockoutindexergridView});
@@ -177,6 +200,7 @@
             // 
             this.colFullItemName.FieldName = "FullItemName";
             this.colFullItemName.Name = "colFullItemName";
+            this.colFullItemName.OptionsColumn.AllowEdit = false;
             this.colFullItemName.OptionsColumn.ReadOnly = true;
             this.colFullItemName.Visible = true;
             this.colFullItemName.VisibleIndex = 1;
@@ -187,6 +211,7 @@
             this.colItemId.FieldName = "ItemId";
             this.colItemId.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.colItemId.Name = "colItemId";
+            this.colItemId.OptionsColumn.AllowEdit = false;
             this.colItemId.Visible = true;
             this.colItemId.VisibleIndex = 0;
             this.colItemId.Width = 62;
@@ -224,10 +249,12 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.layoutControlItem5,
+            this.layoutControlItem6,
+            this.layoutControlItem7,
             this.emptySpaceItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(706, 380);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(788, 380);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -237,7 +264,7 @@
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(686, 310);
+            this.layoutControlItem1.Size = new System.Drawing.Size(768, 310);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextToControlDistance = 0;
@@ -249,7 +276,7 @@
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 334);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(522, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(604, 26);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -259,7 +286,7 @@
             // 
             this.layoutControlItem3.Control = this.btnBuildIndexer;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(522, 334);
+            this.layoutControlItem3.Location = new System.Drawing.Point(604, 334);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(88, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(88, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -274,7 +301,7 @@
             // 
             this.layoutControlItem4.Control = this.btnClose;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(610, 334);
+            this.layoutControlItem4.Location = new System.Drawing.Point(692, 334);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(76, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(76, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -298,15 +325,31 @@
             this.layoutControlItem5.Text = "Stores";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(31, 13);
             // 
-            // emptySpaceItem1
+            // layoutControlItem6
             // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(182, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(504, 24);
-            this.emptySpaceItem1.Text = "emptySpaceItem1";
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.Control = this.label1;
+            this.layoutControlItem6.ControlAlignment = System.Drawing.ContentAlignment.BottomRight;
+            this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
+            this.layoutControlItem6.Location = new System.Drawing.Point(553, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(103, 24);
+            this.layoutControlItem6.Text = "layoutControlItem6";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextToControlDistance = 0;
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.lbllastindexedtime;
+            this.layoutControlItem7.ControlAlignment = System.Drawing.ContentAlignment.BottomRight;
+            this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
+            this.layoutControlItem7.Location = new System.Drawing.Point(656, 0);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(112, 24);
+            this.layoutControlItem7.Text = "layoutControlItem7";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextToControlDistance = 0;
+            this.layoutControlItem7.TextVisible = false;
             // 
             // backgroundIndexer
             // 
@@ -315,11 +358,21 @@
             this.backgroundIndexer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundIndexer_ProgressChanged);
             this.backgroundIndexer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundIndexer_RunWorkerCompleted);
             // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
+            this.emptySpaceItem1.Location = new System.Drawing.Point(182, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(371, 24);
+            this.emptySpaceItem1.Text = "emptySpaceItem1";
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // StockOutIndicesBuilder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(706, 380);
+            this.ClientSize = new System.Drawing.Size(788, 380);
             this.Controls.Add(this.layoutControl1);
             this.Name = "StockOutIndicesBuilder";
             this.Text = "Stockout Indices Builder";
@@ -340,6 +393,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
@@ -365,10 +420,14 @@
         private System.Windows.Forms.BindingSource storebindingSource;
         private DevExpress.XtraEditors.LookUpEdit lkStore;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraGrid.Columns.GridColumn colFullItemName;
         private DevExpress.XtraGrid.Columns.GridColumn colItemId;
         private DevExpress.XtraGrid.Columns.GridColumn colIndexed;
+        private System.Windows.Forms.Label lbllastindexedtime;
+        private System.Windows.Forms.Label label1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }

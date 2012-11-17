@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -26,6 +27,22 @@ namespace StockoutIndexBuilder.DAL
       void Remove(AmcReport amcreport)
       {
           context.AmcReports.Remove(amcreport);
+      }
+      public List<AmcReport> AllAmcReport()
+      {
+          var reports = context.AmcReports.OrderByDescending(m => m.LastIndexedTime).ToList();
+          foreach (var amcReport in reports)
+          {
+              var name = context.VwGetAllItemses.SingleOrDefault(m => m.ID == amcReport.ItemID);
+              if (name != null) amcReport.FullItemName = name.FullItemName;
+          }
+          return reports;
+
+      }
+      public void Update(AmcReport amcReport)
+      {
+           context.Entry(amcReport).State = EntityState.Modified;
+           context.SaveChanges();
       }
     }
 }

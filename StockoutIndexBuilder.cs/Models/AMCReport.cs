@@ -11,14 +11,19 @@ namespace StockoutIndexBuilder.Models
     {
         [Key]
         public int ID { get; set; }
+        [ForeignKey("Item")]
         public int ItemID { get; set; }
         public int StoreID { get; set; }
+        [NotMapped]
         public string FullItemName { get; set; }
         public int AmcRange { get; set; }
         public double IssueInAmcRange { get; set; }
         public int DaysOutOfStock { get; set; }
         public double AmcWithDOS { get; set; }
         public double AmcWithOutDOS { get; set; }
+        public DateTime? LastIndexedTime { get; set; }
+
+        public virtual Item Item { get; set; }
 
     }
 }

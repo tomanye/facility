@@ -854,6 +854,7 @@
     <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModels.AMCViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModels.ItemViewModel.datasource" />
+    <None Include="Properties\DataSources\StockoutIndexBuilder.Models.AmcReport.datasource" />
     <None Include="Properties\DataSources\StockoutIndexBuilder.Models.Store.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1183,6 +1184,9 @@
     <None Include="Resources\icon-48-plugin.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\AmcReport.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\15_ItemsTableOptionalUnit2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1190,7 +1194,9 @@
     <Content Include="Scripts\IssueDocDeletedInsert.sql" />
     <Content Include="Scripts\ReceiveDocDeletedInsert.sql" />
     <Content Include="Scripts\SOHByProgram.sql" />
-    <Content Include="Scripts\Stockout.sql" />
+    <Content Include="Scripts\Stockout.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ConnectionStringManager.dll" />
     <Content Include="Scripts\11_vwGetAllItems.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1215,9 +1221,7 @@
     <Content Include="Scripts\01_HCMIS Queries.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\02_QueryGetTransactionDetails.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Scripts\02_QueryGetTransactionDetails.sql" />
     <Content Include="Scripts\03_GetConsumptionTrendByMonth.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using StockoutIndexBuilder.Models;
@@ -18,13 +19,22 @@ namespace StockoutIndexBuilder.DAL
 
         public void AddRange(IEnumerable<Stockout> stockouts)
         {
+            
+            foreach (var stockout in stockouts)
+            {
+               stockout.LastIndexedTime = DateTime.Now;
+               Context.Stockouts.Add(stockout);
+            }
+            Context.SaveChanges();
+        }
+        public void convertdate (IEnumerable<Stockout> stockouts)
+        {
             foreach (var stockout in stockouts)
             {
                 Context.Stockouts.Add(stockout);
             }
             Context.SaveChanges();
         }
-
         void Remove(Stockout stockout)
         {
             Context.Stockouts.Remove(stockout);
@@ -41,6 +51,7 @@ namespace StockoutIndexBuilder.DAL
             Context.SaveChanges();
         }
 
+
         public IEnumerable<Stockout> GetAll()
         {
             return Context.Stockouts.AsEnumerable();
@@ -54,10 +65,18 @@ namespace StockoutIndexBuilder.DAL
             }
             Context.SaveChanges();
         }
+        public void Update(Stockout stockout)
+        {
+            Context.Entry(stockout).State = EntityState.Modified;
+             Context.SaveChanges();
+        }
+
 
         public List<Item> AllItems()
         {
             return Context.Items.ToList();
         }
+
+       
     }
 }

@@ -15,10 +15,11 @@ namespace StockoutIndexBuilder.Models
         public string StockCode { get; set; }
         public string Strength  { get; set; }
         public int? DosageFormId { get; set; }
+        [ForeignKey("Product")]
         public int? IINID { get; set; }
 
         public virtual ICollection<Stockout> Stockouts { get; set; }
-        public virtual ICollection<Product>  Products { get; set; }
+        public virtual Product  Product { get; set; }
        
     }
 }

@@ -17,10 +17,6 @@ namespace PharmInventory.ViewModels
         public int? DosageFormId { get; set; }
         public int? IINID { get; set; }
         public string Strength { get; set; }
-        //public string FullItemName
-        //{
-        //    get { return String.Format("{0}{1}{2}{3}", StockCode, Strength, DosageFormId,IINID); }
-        //}
         public string FullItemName { get; set; }
         public int AmcRange { get; set; }
         public string Store { get; set; }
@@ -31,41 +27,71 @@ namespace PharmInventory.ViewModels
 
         public static AMCViewModel Create(int itemId, int storeId, int amcRange, DateTime endDate)
         {
-            //var vwGetAllItemsRepository =new vwGetAllItemsRepository();
+            var vwGetAllItemsRepository =new vwGetAllItemsRepository();
+            var amcrepo = new AmcReportRepository();
+            var allItemIds = amcrepo.AllAmcReport().SingleOrDefault(m => m.ItemID == itemId && m.StoreID == storeId);
             var products = vwGetAllItemsRepository.AllItems().SingleOrDefault(m => m.ID == itemId);
-            var amcReportRepository =new AmcReportRepository();
             var startDate = endDate.Subtract(TimeSpan.FromDays(amcRange*30));
-          
+            
                 var viewModel = new AMCViewModel()
                                     {
-
                                         ItemID = itemId,
                                         StoreID = storeId,
                                         AmcRange = amcRange,
                                         IssueInAmcRange =
                                             Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
                                         DaysOutOfStock =
-                                            Builder.CalculateStockoutDays(itemId, storeId, startDate, endDate),
+                                            Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
                                         AmcWithDos =
                                             Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,
                                                                                 CalculationOptions.Monthly)
                                     };
-                            var amcreport = new AmcReport {AmcRange = amcRange};
-                            amcreport.ItemID = itemId;
-                            amcreport.StoreID = storeId;
-                            amcreport.IssueInAmcRange = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate);
-                            amcreport.DaysOutOfStock = Builder.CalculateStockoutDays(itemId, storeId, startDate, endDate);
-                            amcreport.AmcWithDOS = Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,CalculationOptions.Monthly);
-                            amcreport.AmcWithOutDOS = Convert.ToDouble(viewModel.IssueInAmcRange) / Convert.ToDouble(viewModel.AmcRange);
-                            amcReportRepository.Add(amcreport);
+                AddorUpdateAmc(itemId, storeId, amcRange, endDate, amcrepo, viewModel, allItemIds, startDate);
 
-                if (products != null)
-                    viewModel.FullItemName = products.FullItemName;
-                viewModel.AmcWithoutDos = Convert.ToDouble(viewModel.IssueInAmcRange) / Convert.ToDouble(viewModel.AmcRange);
-                
-                return viewModel;
-            
+            if (products != null)
+            viewModel.FullItemName = products.FullItemName;
+            viewModel.AmcWithoutDos = Convert.ToDouble(Builder.CalculateTotalConsumptionWithoutDOS(itemId,storeId,startDate,endDate)) / Convert.ToDouble(viewModel.AmcRange);
+            return viewModel;
+         }
+
+        private static void AddorUpdateAmc(int itemId, int storeId, int amcRange, DateTime endDate, AmcReportRepository amcrepo,
+                                           AMCViewModel viewModel, AmcReport allItemIds, DateTime startDate)
+        {
+            if (allItemIds == null)
+            {
+                var amcreport = new AmcReport
+                                    {
+                                        ItemID = itemId,
+                                        StoreID = storeId,
+                                        AmcRange = amcRange,
+                                        IssueInAmcRange =
+                                            Builder.CalculateTotalConsumption(itemId, storeId, startDate,
+                                                                              endDate),
+                                        DaysOutOfStock =
+                                            Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
+                                        AmcWithDOS =
+                                            Builder.CalculateAverageConsumption(itemId, storeId, startDate,
+                                                                                endDate,
+                                                                                CalculationOptions.Monthly),
+                                        LastIndexedTime = DateTime.Now
+                                    };
+                amcreport.AmcWithOutDOS =
+                    Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate)/
+                    Convert.ToDouble(viewModel.AmcRange);
+                amcrepo.Add(amcreport);
+            }
+            else if (allItemIds != null)
+            {
+                allItemIds.IssueInAmcRange = Builder.CalculateTotalConsumption(itemId, storeId, startDate,
+                                                                               DateTime.Now);
+                allItemIds.DaysOutOfStock = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
+                allItemIds.AmcWithDOS = Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,
+                                                                            CalculationOptions.Monthly);
+            }
+            allItemIds.AmcWithOutDOS =
+                Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate)/
+                Convert.ToDouble(viewModel.AmcRange);
+            amcrepo.Update(allItemIds);
         }
-
     }
 }
