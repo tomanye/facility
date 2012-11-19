@@ -14,5 +14,6 @@ namespace StockoutIndexBuilder.DAL
        {
           return Context.ReceiveDocs.ToList();
        }
+
     }
 }

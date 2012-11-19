@@ -31,7 +31,6 @@ namespace PharmInventory.Forms.Transactions
 
         private void loadamc()
         {
-           
             var allamcs = _amcReportRepository.AllAmcReport();
             var allstores = _storerepository.AllStores();
              storebindingSource.DataSource = allstores;

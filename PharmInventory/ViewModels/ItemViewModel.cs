@@ -17,7 +17,7 @@ namespace PharmInventory.ViewModels
             DosageFormId = item.DosageFormId;
             Strength = item.Strength;
             IINID = item.IINID;
-
+          
         }
         public int ItemId { get; set; }        
         public string StockCode { get; set; }
