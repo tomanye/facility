@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BLL.dll" size="248832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BLL.dll" size="247808">
       <assemblyIdentity name="BLL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8rDJJnlrvN9T/1cPxUgkUTUx2uw=</dsig:DigestValue>
+        <dsig:DigestValue>+0ev2cTNPc5CMEW6UhZJwu1+T+E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>48ywowGs0AZRRr6eJoA3gULHsg0=</dsig:DigestValue>
+        <dsig:DigestValue>uuuy7OO0eGFOihWWLlhO/H0yZfs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1135,14 +1135,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1897984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HCMIS.exe" size="1898496">
       <assemblyIdentity name="HCMIS" version="2.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9gYPc5bokYBPuVtEvSXmPsKSygU=</dsig:DigestValue>
+        <dsig:DigestValue>M501M766yGkXac9fqnBpjFopBm8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1171,24 +1171,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StockoutIndexBuilder.dll" size="39936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StockoutIndexBuilder.dll" size="40448">
       <assemblyIdentity name="StockoutIndexBuilder" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>mCYY8QGMIusbTWMgIeaClpoO8Jw=</dsig:DigestValue>
+        <dsig:DigestValue>aLM0cmIlKJ6RPzzOlP+4IWyPz9U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="HCMIS.exe.config" size="4816">
+  <file name="HCMIS.exe.config" size="5313">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>wVyypB3wLt+hmxx5bCuaLM46H1A=</dsig:DigestValue>
+      <dsig:DigestValue>9m+vjl2SskV6scY6C4hWGLrbvKo=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Icon.ico" size="15086">
@@ -1380,16 +1380,16 @@
       <dsig:DigestValue>JEZG5h9noPxnie/A6Gni05y/vbs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\AmcReport.sql" size="744">
+  <file name="Scripts\16_AmcReport.sql" size="48">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>mwOg+im0U70pkfrLl3fyq63gNlg=</dsig:DigestValue>
+      <dsig:DigestValue>RZl4X8g7y4lFNCHMkldbZHL7+70=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\DisposalDelete.sql" size="1285">
+  <file name="Scripts\17_DisposalDelete.sql" size="1285">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1398,7 +1398,7 @@
       <dsig:DigestValue>SN6hlZIMJMboJ8pl4hVerLJ0z6c=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\DisposalDeleteInsert.sql" size="1918">
+  <file name="Scripts\18_DisposalDeleteInsert.sql" size="1918">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1407,7 +1407,7 @@
       <dsig:DigestValue>t4UFaV1USlvom4z82AxRbZ2liQQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\DisposalDeleteLoadAll.sql" size="366">
+  <file name="Scripts\19_DisposalDeleteLoadAll.sql" size="366">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1416,7 +1416,7 @@
       <dsig:DigestValue>d+4OKvkH9B/78AKWhhppeHEmImE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\DisposalDeleteLoadByPrimaryKey.sql" size="413">
+  <file name="Scripts\20_DisposalDeleteLoadByPrimaryKey.sql" size="413">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1425,7 +1425,7 @@
       <dsig:DigestValue>g1aXE/C36XGgkXI8ue8zqrkUfCU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\IssueDocDeletedInsert.sql" size="1491">
+  <file name="Scripts\21_IssueDocDeletedInsert.sql" size="1491">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1434,7 +1434,7 @@
       <dsig:DigestValue>h1Asuch6JfYxbIIdx/aL7oBaRro=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\IssueDocDeletedLoadAll.sql" size="518">
+  <file name="Scripts\22_IssueDocDeletedLoadAll.sql" size="518">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1443,7 +1443,7 @@
       <dsig:DigestValue>OZdpkE/y1ABVOugaokyhTuFAQmo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\IssueDocDeletedLoadByPrimaryKey.sql" size="565">
+  <file name="Scripts\23_IssueDocDeletedLoadByPrimaryKey.sql" size="565">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1452,7 +1452,7 @@
       <dsig:DigestValue>x1U6YATin8J1+Nx9MwJLDfxU1QQ=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\ReceiveDocDeleted.sql" size="2326">
+  <file name="Scripts\24_ReceiveDocDeleted.sql" size="2326">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1461,7 +1461,7 @@
       <dsig:DigestValue>Pr/qTDgpeiCbkZ+ZJzNtAM9rwUM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\ReceiveDocDeletedInsert.sql" size="2346">
+  <file name="Scripts\25_ReceiveDocDeletedInsert.sql" size="2346">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1470,7 +1470,7 @@
       <dsig:DigestValue>X1wWikkp6QVQglYG04xo3fWSjk8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\ReceiveDocDeletedLoadAll.sql" size="561">
+  <file name="Scripts\26_ReceiveDocDeletedLoadAll.sql" size="561">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -1479,7 +1479,16 @@
       <dsig:DigestValue>UP2r4y7RgSpNzbc1oAkVMtZF+E8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Scripts\Stockout.sql" size="699">
+  <file name="Scripts\27_SOHUpdated.sql" size="3937">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>9ARtmKvaXdLbAu3fEcV90++lolk=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Scripts\28_Stockout.sql" size="699">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
