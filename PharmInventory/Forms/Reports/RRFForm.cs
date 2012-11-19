@@ -141,12 +141,6 @@ namespace PharmInventory.Forms.Reports
 
         private void PopulateList()
         {
-            GeneralInfo info = new GeneralInfo();
-            info.LoadAll();
-            BLL.Region reg = new BLL.Region();
-            Zone zon = new Zone();
-            Woreda wor = new Woreda();
-
             _storeID = Convert.ToInt32(cboStores.EditValue);
              Items itm = new Items();
             
@@ -158,7 +152,7 @@ namespace PharmInventory.Forms.Reports
             tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             gridItemsChoice.DataSource = tblRRF;
             
-            ChooseGridView();
+           // ChooseGridView();
         }
 
         private void PopulateListByProgram()
@@ -482,6 +476,7 @@ namespace PharmInventory.Forms.Reports
             Cursor = Cursors.WaitCursor;
             int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
             ShowRRFDetailWindow(rrfID);
+            WindowVisibility(true);
             Cursor = Cursors.Default;
         }
 
@@ -489,14 +484,12 @@ namespace PharmInventory.Forms.Reports
         {
             RRF rrf = new RRF();
             rrf.LoadByPrimaryKey(rrfID);
-
             cboFromMonth.EditValue = rrf.FromMonth;
             cboFromYear.EditValue = rrf.FromYear;
             cboToMonth.EditValue = rrf.ToMonth;
             cboToYear.EditValue = rrf.ToYear;
             cboStores.EditValue = rrf.RRFType;
             PopulateList();
-            //PopulateList(rrf.RRFType, rrf.FromMonth, rrf.FromYear,rrf.ToMonth, rrf.ToYear);
             //Handle Edits here (Populate exact values from the database)
             if (!rrf.IsColumnNull("LastRRFStatus"))
             {
@@ -509,29 +502,6 @@ namespace PharmInventory.Forms.Reports
             }
             else
                 btnAutoPushToPFSA.Enabled = true;
-           WindowVisibility(true);
-        }
-
-        private void PopulateList(int storeId, int fromMonth, int fromYear, int toMonth, int toYear)
-        {
-            GeneralInfo info = new GeneralInfo();
-            info.LoadAll();
-            BLL.Region reg = new BLL.Region();
-            Zone zon = new Zone();
-            Woreda wor = new Woreda();
-
-            _storeID = storeId;// Convert.ToInt32(cboStores.EditValue);
-            Items itm = new Items();
-
-            _fromMonth = fromMonth; // int.Parse(cboFromMonth.EditValue.ToString());
-            _toMonth = toMonth; // int.Parse(cboToMonth.EditValue.ToString());
-            _toYear = toYear; // int.Parse(cboToYear.EditValue.ToString());
-            _fromYear = fromYear; // int.Parse(cboFromYear.EditValue.ToString());
-
-            tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
-            gridItemsChoice.DataSource = tblRRF;
-
-            ChooseGridView();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -556,13 +526,10 @@ namespace PharmInventory.Forms.Reports
 
         private void btnNewRRF_Click(object sender, EventArgs e)
         {
-            //ProgressCheckingVisibility(true);
             Cursor = Cursors.WaitCursor;
             var ethiopianDate = new EthiopianDate.EthiopianDate();
- 
             int currentMonth = ethiopianDate.Month;
             int currentYear = ethiopianDate.Year;
-
             int startingMonth = GetStartingMonth(currentMonth);
             int startingYear = GetStartingYear(currentMonth, currentYear);
             cboFromMonth.EditValue = startingMonth;
@@ -571,7 +538,7 @@ namespace PharmInventory.Forms.Reports
             cboStores.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
-            //bwCurrentRRF.RunWorkerAsync();
+
         }
 
         private void grdRRF_Click(object sender, EventArgs e)
