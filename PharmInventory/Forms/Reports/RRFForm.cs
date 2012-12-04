@@ -570,13 +570,6 @@ namespace PharmInventory.Forms.Reports
             PopulateListByProgram();
         }
 
-        private void grdViewRRFList_DoubleClick(object sender, EventArgs e)
-        {
-            int rrfID = Convert.ToInt32(grdViewRRFList.GetFocusedDataRow()["ID"]);
-            ShowRRFDetailWindow(rrfID);
-            WindowVisibility(true);
-        }
-
 
         private void gridItemChoiceView_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
