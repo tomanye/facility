@@ -1042,7 +1042,7 @@ namespace BLL
         /// <param name="toYear">In Ethiopian Calendar</param>
         /// <param name="toMonth">In Ethiopian Calendar</param>
         /// <returns></returns>
-        public DataTable GetRRFReport(int storeId, int fromYear, int fromMonth, int toYear, int toMonth)
+        public DataTable GetRRFReport(int storeId ,int fromYear, int fromMonth, int toYear, int toMonth)
         {
             Balance balance = new Balance();
             var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
@@ -1054,7 +1054,7 @@ namespace BLL
                 fromYear--;
                 fromMonth = 12;//Because SOH returns stock until the end of the month
             }
-            DataTable dtbl = balance.GetSOH(storeId, fromMonth, fromYear);
+            DataTable dtbl = balance.GetSOH(storeId,fromMonth, fromYear);
             DataTable dtbl2 = balance.GetSOH(storeId, toMonth, toYear);
 
             DateTime dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
@@ -1364,28 +1364,44 @@ namespace BLL
         public DataTable GetRRFReportByProgram(int storeId, int programid, int month, int year)
         {
             Balance balance = new Balance();
-            month--;//Because SOH returns stock until the end of the month.
+            var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, month, year));
+            var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, month, year));
+            if (month != 1)
+                month--;
+            else
+            {
+                year--;
+                month = 12;//Because SOH returns stock until the end of the month
+            }
+            //if (fromMonth != 1)
+            //    fromMonth--;
+            //else
+            //{
+            //    fromYear--;
+            //    fromMonth = 12;//Because SOH returns stock until the end of the month
+            //}
+            //month--;//Because SOH returns stock until the end of the month.
             DataTable dtbl = balance.GetSOHByPrograms(storeId, programid, month, year);
             DataTable dtbl2 = balance.GetSOHByPrograms(storeId, programid, month, year);
-            
+
 
             //CALENDAR:Needs to be fixed.
             DateTime dt1 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
             DateTime dt2 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
 
-            string query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
+            string query = string.Format("select Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             DataTable received = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) Quantity from IssueDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
+            query = string.Format("select Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(Quantity) Quantity from IssueDoc rd where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             DataTable issued = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(case when Losses = 1 then - Quantity else Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
+            query = string.Format("select Items.ID, isnull(Quantity,0) as Quantity from Items left join (select ItemID, sum(case when Losses = 1 then - Quantity else Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             DataTable lost = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
+            query = string.Format("select Items.ID, case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
             this.LoadFromRawSql(query);
             System.Data.DataTable preferredPackSizetbl = this.DataTable;
 
@@ -1448,7 +1464,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2)
+                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate) //z["DaysOutOfStock"] == DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                           }).ToArray();
 
             var t2 = (from n in t1
@@ -1459,17 +1475,17 @@ namespace BLL
                               FullItemName = n.FullItemName,
                               Unit = n.Unit,
                               StockCode = n.StockCode,
-                              BeginingBalance = n.BeginingBalance,
-                              SOH = n.SOH,
-                              Max = n.Max,
+                              BeginingBalance = n.BeginingBalance / n.QtyPerPack,
+                              SOH = n.SOH / n.QtyPerPack,
+                              Max = n.Max / n.QtyPerPack,
                               QtyPerPack = n.QtyPerPack,
-                              Received = n.Received,
-                              Issued = n.Issued,
-                              LossAdj = n.LossAdj,
-                              Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, dt1, dt2),//Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock) //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                              MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
-                          }).Distinct().ToArray();
+                              Received = Convert.ToInt32(n.Received) / n.QtyPerPack,
+                              Issued = Convert.ToInt32(n.Issued) / n.QtyPerPack,
+                              LossAdj = Convert.ToInt32(n.LossAdj) / n.QtyPerPack,
+                              Quantity = (n.Max - n.SOH < 0) ? 0 : (n.Max - n.SOH) / n.QtyPerPack,
+                              DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate), //Convert.ToInt32(n.DaysOutOfStock) == 60 ? 59 : Convert.ToInt32(n.DaysOutOfStock)//TODO: This is a quick fix.  We need to take stock status from the last three months.
+                              MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)) / n.QtyPerPack)
+                          }).ToArray();
 
 
             //return t;
@@ -1505,11 +1521,12 @@ namespace BLL
                 drv["Received"] = v.Received;
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
-                drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, dt1, dt2);
+                drv["DaysOutOfStock"] = v.DaysOutOfStock;
                 drv["MaxStockQty"] = v.MaxStockQty;
             }
 
             return value;
+            
 
         }
 

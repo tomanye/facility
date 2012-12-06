@@ -11,6 +11,9 @@ using DevExpress.XtraLayout.Utils;
 using PharmInventory.Reports;
 using PharmInventory.RRFService;
 using PharmInventory.HelperClasses;
+using DevExpress.XtraPrinting;
+using DevExpress.XtraPrinting.Preview;
+using DevExpress.XtraReports.UI;
 using EthiopianDate;
 
 namespace PharmInventory.Forms.Reports
@@ -54,6 +57,8 @@ namespace PharmInventory.Forms.Reports
             //object[] objProg = { 0, "All Programs", "", 0, "" };
             //dtProg.Rows.Add(objProg);
             //cboProgram.Properties.DataSource = dtProg;
+            //cboStores.ItemIndex = 0;
+            //cboProgram.ItemIndex = 0;
         }
 
         private void PopulateRRFs()
@@ -113,6 +118,7 @@ namespace PharmInventory.Forms.Reports
         private void PopulateList()
         {
             _storeID = Convert.ToInt32(cboStores.EditValue);
+            _programID = Convert.ToInt32(cboProgram.EditValue);
              Items itm = new Items();
             
             _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
@@ -120,7 +126,7 @@ namespace PharmInventory.Forms.Reports
             _toYear = int.Parse(cboToYear.EditValue.ToString());
             _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-            tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+            tblRRF = itm.GetRRFReport(_storeID,_fromYear, _fromMonth, _toYear, _toMonth);
             gridItemsChoice.DataSource = tblRRF;
             
             ChooseGridView();
@@ -128,11 +134,6 @@ namespace PharmInventory.Forms.Reports
 
         private void PopulateListByProgram()
         {
-            GeneralInfo info = new GeneralInfo();
-            info.LoadAll();
-            Region reg = new BLL.Region();
-            Zone zon = new Zone();
-            Woreda wor = new Woreda();
             _storeID = Convert.ToInt32(cboStores.EditValue);
             _programID = Convert.ToInt32(cboProgram.EditValue);
             Items itm = new Items();
@@ -217,6 +218,8 @@ namespace PharmInventory.Forms.Reports
             dtset.Tables.Add(tblRRF.Copy());
             rrfReport.DataSource = dtset;
             rrfReport.ShowPreviewDialog();
+       
+
             //printableComponentLink1.PrintingSystem = new DevExpress.XtraPrinting.PrintingSystem();
             //printableComponentLink1.Component = gridItemsChoice;
             //printableComponentLink1.ShowPreview();
@@ -509,8 +512,8 @@ namespace PharmInventory.Forms.Reports
             cboFromMonth.EditValue = startingMonth;
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth, startingYear);
-            cboStores.ItemIndex = 0;
-           // cboProgram.ItemIndex = 0;
+             cboStores.ItemIndex = 0;
+            //cboProgram.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
 
@@ -576,6 +579,7 @@ namespace PharmInventory.Forms.Reports
             if (e.Column.FieldName == "gridColumn40")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
+
 
     }
 }
