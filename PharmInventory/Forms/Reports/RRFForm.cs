@@ -147,7 +147,6 @@ namespace PharmInventory.Forms.Reports
             gridItemsChoice.DataSource = tblRRF;
 
             ChooseGridView();
-            //}
         }
 
         private static void PopulateTheYearCombo(ComboBoxEdit combo)
@@ -248,7 +247,8 @@ namespace PharmInventory.Forms.Reports
             }
             int rrfID = rrf.AddNewRRF(_storeID,_fromYear, _fromMonth, _toYear, _toMonth, true);
             BLL.Items itm = new BLL.Items();
-            DataTable dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
+            DataTable dtbl1 = new DataTable();
+            dtbl1=((DataView)gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
                 int itemID = Convert.ToInt32(dr["ID"]);
@@ -577,6 +577,12 @@ namespace PharmInventory.Forms.Reports
         private void gridItemChoiceView_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "gridColumn40")
+                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+        }
+
+        private void grdViewInPacks_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "gridColumn41")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
 

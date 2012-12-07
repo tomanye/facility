@@ -45,6 +45,7 @@
             this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridItemsChoice = new DevExpress.XtraGrid.GridControl();
             this.gridItemChoiceView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -206,7 +207,8 @@
             this.gridColumn18,
             this.gridColumn19,
             this.gridColumn20,
-            this.gridColumn21});
+            this.gridColumn21,
+            this.gridColumn41});
             this.grdViewInPacks.GridControl = this.gridItemsChoice;
             this.grdViewInPacks.IndicatorWidth = 40;
             this.grdViewInPacks.Name = "grdViewInPacks";
@@ -225,6 +227,7 @@
             this.grdViewInPacks.OptionsView.EnableAppearanceOddRow = true;
             this.grdViewInPacks.OptionsView.RowAutoHeight = true;
             this.grdViewInPacks.OptionsView.ShowGroupPanel = false;
+            this.grdViewInPacks.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.grdViewInPacks_CustomColumnDisplayText);
             // 
             // gridColumn1
             // 
@@ -235,7 +238,7 @@
             this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 79;
+            this.gridColumn1.Width = 83;
             // 
             // gridColumn11
             // 
@@ -246,7 +249,7 @@
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 1;
-            this.gridColumn11.Width = 325;
+            this.gridColumn11.Width = 343;
             // 
             // gridColumn12
             // 
@@ -258,7 +261,7 @@
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 2;
-            this.gridColumn12.Width = 62;
+            this.gridColumn12.Width = 65;
             // 
             // gridColumn13
             // 
@@ -273,7 +276,7 @@
             this.gridColumn13.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 3;
-            this.gridColumn13.Width = 62;
+            this.gridColumn13.Width = 65;
             // 
             // gridColumn14
             // 
@@ -288,7 +291,7 @@
             this.gridColumn14.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 4;
-            this.gridColumn14.Width = 62;
+            this.gridColumn14.Width = 65;
             // 
             // gridColumn15
             // 
@@ -303,7 +306,7 @@
             this.gridColumn15.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 5;
-            this.gridColumn15.Width = 62;
+            this.gridColumn15.Width = 65;
             // 
             // gridColumn16
             // 
@@ -318,7 +321,7 @@
             this.gridColumn16.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 6;
-            this.gridColumn16.Width = 62;
+            this.gridColumn16.Width = 65;
             // 
             // gridColumn17
             // 
@@ -333,11 +336,11 @@
             this.gridColumn17.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 7;
-            this.gridColumn17.Width = 62;
+            this.gridColumn17.Width = 65;
             // 
             // gridColumn18
             // 
-            this.gridColumn18.Caption = "Days Out of Stock";
+            this.gridColumn18.Caption = "DOS";
             this.gridColumn18.DisplayFormat.FormatString = "#,##0";
             this.gridColumn18.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn18.FieldName = "DaysOutOfStock";
@@ -346,6 +349,7 @@
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 8;
+            this.gridColumn18.Width = 58;
             // 
             // gridColumn19
             // 
@@ -360,7 +364,7 @@
             this.gridColumn19.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 9;
-            this.gridColumn19.Width = 62;
+            this.gridColumn19.Width = 76;
             // 
             // gridColumn20
             // 
@@ -373,14 +377,25 @@
             this.gridColumn20.UnboundExpression = "Quantity/QtyPerPack";
             this.gridColumn20.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 10;
-            this.gridColumn20.Width = 91;
+            this.gridColumn20.VisibleIndex = 11;
+            this.gridColumn20.Width = 98;
             // 
             // gridColumn21
             // 
             this.gridColumn21.Caption = "gridColumn21";
             this.gridColumn21.FieldName = "ID";
             this.gridColumn21.Name = "gridColumn21";
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "Qty to Reach Max";
+            this.gridColumn41.FieldName = "gridColumn41";
+            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.UnboundExpression = "[gridColumn19] - [gridColumn16]";
+            this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn41.Visible = true;
+            this.gridColumn41.VisibleIndex = 10;
+            this.gridColumn41.Width = 92;
             // 
             // gridItemsChoice
             // 
@@ -1883,5 +1898,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
     }
 }

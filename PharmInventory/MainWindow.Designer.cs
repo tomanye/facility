@@ -81,9 +81,6 @@ namespace PharmInventory
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiReceive = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
@@ -119,6 +116,9 @@ namespace PharmInventory
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarPipeline = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiRRF = new DevExpress.XtraNavBar.NavBarItem();
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -683,29 +683,6 @@ namespace PharmInventory
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
             // 
-            // navBarGroup5
-            // 
-            this.navBarGroup5.Caption = "Utilities";
-            this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
-            this.navBarGroup5.Name = "navBarGroup5";
-            this.navBarGroup5.SelectedLinkIndex = 2;
-            // 
-            // navBarItem4
-            // 
-            this.navBarItem4.Caption = "Database Actions";
-            this.navBarItem4.Name = "navBarItem4";
-            this.navBarItem4.SmallImage = global::PharmInventory.Properties.Resources._1287716501_database_save;
-            this.navBarItem4.Tag = "DataBase";
-            // 
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "Stockout Indexer";
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
-            this.navBarItem1.Tag = "stockoutindexer";
-            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "Transactions";
@@ -985,6 +962,29 @@ namespace PharmInventory
             this.navBarPipeline.Name = "navBarPipeline";
             this.navBarPipeline.SmallImage = global::PharmInventory.Properties.Resources._1287716461_pipe;
             this.navBarPipeline.Tag = "Pipeline";
+            // 
+            // navBarGroup5
+            // 
+            this.navBarGroup5.Caption = "Utilities";
+            this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
+            this.navBarGroup5.Name = "navBarGroup5";
+            this.navBarGroup5.SelectedLinkIndex = 2;
+            // 
+            // navBarItem4
+            // 
+            this.navBarItem4.Caption = "Database Actions";
+            this.navBarItem4.Name = "navBarItem4";
+            this.navBarItem4.SmallImage = global::PharmInventory.Properties.Resources._1287716501_database_save;
+            this.navBarItem4.Tag = "DataBase";
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "Stockout Indexer";
+            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
+            this.navBarItem1.Tag = "stockoutindexer";
             // 
             // lbiRRF
             // 
