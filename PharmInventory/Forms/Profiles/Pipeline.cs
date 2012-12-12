@@ -168,6 +168,7 @@ namespace PharmInventory.Forms.Profiles
             _pipeline.DUMin = Convert.ToDouble(cboDUMin.SelectedValue);
             _pipeline.DUMax = Convert.ToDouble(cboDUMax.SelectedValue);
             _pipeline.AMCRange = Convert.ToInt32(cboAmcRange.SelectedValue);
+            
             _pipeline.Save();
             PopulateFields();
         }

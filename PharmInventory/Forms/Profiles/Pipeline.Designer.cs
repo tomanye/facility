@@ -29,6 +29,9 @@ namespace PharmInventory.Forms.Profiles
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cboNearExpiryFlag = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cboAmcRange = new System.Windows.Forms.ComboBox();
@@ -58,17 +61,15 @@ namespace PharmInventory.Forms.Profiles
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cboNearExpiryFlag = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtmax.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMin.Properties)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -89,6 +90,38 @@ namespace PharmInventory.Forms.Profiles
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PipeLine";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.cboNearExpiryFlag);
+            this.groupBox6.Location = new System.Drawing.Point(440, 117);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(235, 100);
+            this.groupBox6.TabIndex = 18;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Near Expiry Flag for Dispensaries";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 40);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Less than";
+            // 
+            // cboNearExpiryFlag
+            // 
+            this.cboNearExpiryFlag.FormattingEnabled = true;
+            this.cboNearExpiryFlag.Items.AddRange(new object[] {
+            "2 Weeks",
+            "3 Weeks",
+            "1 Month"});
+            this.cboNearExpiryFlag.Location = new System.Drawing.Point(106, 35);
+            this.cboNearExpiryFlag.Name = "cboNearExpiryFlag";
+            this.cboNearExpiryFlag.Size = new System.Drawing.Size(100, 21);
+            this.cboNearExpiryFlag.TabIndex = 0;
             // 
             // groupBox5
             // 
@@ -123,6 +156,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.checkBox1);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label10);
@@ -407,37 +441,15 @@ namespace PharmInventory.Forms.Profiles
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // groupBox6
+            // checkBox1
             // 
-            this.groupBox6.Controls.Add(this.label13);
-            this.groupBox6.Controls.Add(this.cboNearExpiryFlag);
-            this.groupBox6.Location = new System.Drawing.Point(440, 117);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(235, 100);
-            this.groupBox6.TabIndex = 18;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Near Expiry Flag for Dispensaries";
-            // 
-            // cboNearExpiryFlag
-            // 
-            this.cboNearExpiryFlag.FormattingEnabled = true;
-            this.cboNearExpiryFlag.Items.AddRange(new object[] {
-            "2 Weeks",
-            "3 Weeks",
-            "1 Month"});
-            this.cboNearExpiryFlag.Location = new System.Drawing.Point(106, 35);
-            this.cboNearExpiryFlag.Name = "cboNearExpiryFlag";
-            this.cboNearExpiryFlag.Size = new System.Drawing.Size(100, 21);
-            this.cboNearExpiryFlag.TabIndex = 0;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 40);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Less than";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(117, 223);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(161, 17);
+            this.checkBox1.TabIndex = 13;
+            this.checkBox1.Text = "25& Added When Issuing";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Pipeline
             // 
@@ -450,6 +462,8 @@ namespace PharmInventory.Forms.Profiles
             this.Load += new System.EventHandler(this.Pipeline_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -460,8 +474,6 @@ namespace PharmInventory.Forms.Profiles
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -501,5 +513,6 @@ namespace PharmInventory.Forms.Profiles
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cboNearExpiryFlag;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

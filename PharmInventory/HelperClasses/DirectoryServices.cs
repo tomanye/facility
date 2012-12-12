@@ -55,14 +55,15 @@ namespace PharmInventory.HelperClasses
             RefreshUnits(soapClient, previousVersion);
             RefreshVEN(soapClient, previousVersion);
             RefreshABC(soapClient, previousVersion);
-           // RefreshSuppliers(soapClient, previousVersion);
+            RefreshSuppliers(soapClient, previousVersion);
             RefreshDosageForms(soapClient, previousVersion);
+            
             RefreshTypes(soapClient, previousVersion);
             RefreshDrugCategory(soapClient, previousVersion);
             RefreshSupplyCategory(soapClient, previousVersion);
             RefreshDrugSubCategory(soapClient, previousVersion);
 
-            //RefreshPrograms(soapClient,previousVersion);
+           // RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
             //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
             RefreshItems(soapClient, previousVersion, 1);

@@ -238,7 +238,8 @@ namespace PharmInventory.Forms.Transactions
                 else
                 {
                     ResetValues();
-                    XtraMessageBox.Show("You are tring to issue an Expired item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    string output= String.Format("{0} is already stocked out!", itemName);
+                    XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     tabControl1.TabIndex = 0;
                     break;
                 }

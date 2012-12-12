@@ -341,7 +341,7 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%'";  
+            gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
         }
 
         /// <summary>
