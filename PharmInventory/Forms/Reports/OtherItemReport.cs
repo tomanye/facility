@@ -350,5 +350,10 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
         }
 
+        private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+        }
+
     }
 }

@@ -34,6 +34,7 @@ namespace PharmInventory
             DevExpress.XtraCharts.PiePointOptions piePointOptions1 = new DevExpress.XtraCharts.PiePointOptions();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView1 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel2 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
+            DevExpress.XtraCharts.PiePointOptions piePointOptions2 = new DevExpress.XtraCharts.PiePointOptions();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView2 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
@@ -41,13 +42,15 @@ namespace PharmInventory
             DevExpress.XtraCharts.PointOptions pointOptions1 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel2 = new DevExpress.XtraCharts.PointSeriesLabel();
+            DevExpress.XtraCharts.PointOptions pointOptions2 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel3 = new DevExpress.XtraCharts.PointSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions2 = new DevExpress.XtraCharts.PointOptions();
+            DevExpress.XtraCharts.PointOptions pointOptions3 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel4 = new DevExpress.XtraCharts.PointSeriesLabel();
+            DevExpress.XtraCharts.PointOptions pointOptions4 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView4 = new DevExpress.XtraCharts.LineSeriesView();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
@@ -824,6 +827,8 @@ namespace PharmInventory
             // 
             // chartPie
             // 
+            this.chartPie.CrosshairOptions.ArgumentLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
+            this.chartPie.CrosshairOptions.ValueLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
             simpleDiagram3D1.RotationMatrixSerializable = "0.721958041191101;-0.528816044330597;0.446248203516006;0;0.691937506198883;0.5492" +
     "16389656067;-0.46860808134079;0;0.00272014550864697;0.647088348865509;0.76241779" +
     "3273926;0;0;0;0;1";
@@ -856,6 +861,7 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pie3DSeriesLabel1.LineVisible = true;
+            piePointOptions1.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
             pie3DSeriesLabel1.PointOptions = piePointOptions1;
@@ -865,6 +871,9 @@ namespace PharmInventory
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
             pie3DSeriesLabel2.LineVisible = true;
+            piePointOptions2.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            piePointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pie3DSeriesLabel2.PointOptions = piePointOptions2;
             this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
             this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
             this.chartPie.Size = new System.Drawing.Size(397, 272);
@@ -1151,7 +1160,7 @@ namespace PharmInventory
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label22, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
@@ -1539,9 +1548,13 @@ namespace PharmInventory
             // 
             // chartReceiveCost
             // 
+            this.chartReceiveCost.CrosshairOptions.ArgumentLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
+            this.chartReceiveCost.CrosshairOptions.ValueLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
+            xyDiagram1.AxisX.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
@@ -1565,6 +1578,7 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pointSeriesLabel1.LineVisible = true;
+            pointOptions1.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             pointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
             pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
             pointSeriesLabel1.PointOptions = pointOptions1;
@@ -1574,6 +1588,9 @@ namespace PharmInventory
             this.chartReceiveCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
             pointSeriesLabel2.LineVisible = true;
+            pointOptions2.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pointSeriesLabel2.PointOptions = pointOptions2;
             this.chartReceiveCost.SeriesTemplate.Label = pointSeriesLabel2;
             this.chartReceiveCost.SeriesTemplate.View = lineSeriesView2;
             this.chartReceiveCost.Size = new System.Drawing.Size(393, 272);
@@ -1747,9 +1764,13 @@ namespace PharmInventory
             // 
             // chartIssueCost
             // 
+            this.chartIssueCost.CrosshairOptions.ArgumentLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
+            this.chartIssueCost.CrosshairOptions.ValueLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(57)))), ((int)(((byte)(205)))));
+            xyDiagram2.AxisX.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.NumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
             xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
             xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
@@ -1773,15 +1794,19 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
             pointSeriesLabel3.LineVisible = true;
-            pointOptions2.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            pointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pointSeriesLabel3.PointOptions = pointOptions2;
+            pointOptions3.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pointOptions3.PointView = DevExpress.XtraCharts.PointView.SeriesName;
+            pointOptions3.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
+            pointSeriesLabel3.PointOptions = pointOptions3;
             series3.Label = pointSeriesLabel3;
             series3.Name = "Series 1";
             series3.View = lineSeriesView3;
             this.chartIssueCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3};
             pointSeriesLabel4.LineVisible = true;
+            pointOptions4.ArgumentNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pointOptions4.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.General;
+            pointSeriesLabel4.PointOptions = pointOptions4;
             this.chartIssueCost.SeriesTemplate.Label = pointSeriesLabel4;
             this.chartIssueCost.SeriesTemplate.View = lineSeriesView4;
             this.chartIssueCost.Size = new System.Drawing.Size(402, 272);

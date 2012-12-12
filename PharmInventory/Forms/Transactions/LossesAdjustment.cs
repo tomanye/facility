@@ -147,7 +147,7 @@ namespace PharmInventory
             tabControl1.SelectedTabPageIndex = 1;
             if (dtRecGrid.Columns.Count == 0)
             {
-                string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason" };
+                string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason"};
                 foreach (string col in str)
                 {
                     dtRecGrid.Columns.Add(col);
@@ -165,7 +165,7 @@ namespace PharmInventory
                 }
                 DataTable dtItm = itm.GetItemById(id);
                 string itemName = dtItm.Rows[0]["FullItemName"].ToString();
-                object[] obj = { id, dtItm.Rows[0]["StockCode"].ToString(), itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(), rec.QuantityLeft, price, "", "", Convert.ToInt32(dr["ReceiveID"]), 0 };
+                object[] obj = { id, dtItm.Rows[0]["StockCode"].ToString(), itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(), rec.QuantityLeft, price, "", "", Convert.ToInt32(dr["ReceiveID"]), 0};
                 dtRecGrid.Rows.Add(obj);
                 count++;
 

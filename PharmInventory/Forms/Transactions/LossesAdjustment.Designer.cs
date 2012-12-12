@@ -39,8 +39,6 @@ namespace PharmInventory
             this.ckExpired = new DevExpress.XtraEditors.CheckEdit();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.gridItemsChoice = new DevExpress.XtraGrid.GridControl();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gridItemChoiceView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -88,6 +86,7 @@ namespace PharmInventory
             this.ReasonLookup = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridRecieveView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
@@ -138,7 +137,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ckExpired.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -287,7 +285,6 @@ namespace PharmInventory
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridItemsChoice.ContextMenuStrip = this.contextMenuStrip1;
             this.gridItemsChoice.Location = new System.Drawing.Point(12, 102);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -297,21 +294,6 @@ namespace PharmInventory
             this.gridItemsChoice.TabIndex = 17;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridItemChoiceView});
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
-            this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "edit";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // gridItemChoiceView
             // 
@@ -706,7 +688,8 @@ namespace PharmInventory
             this.gridColumn17,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn18});
+            this.gridColumn18,
+            this.gridColumn25});
             this.gridAdjView.GridControl = this.AdjustmentGrid;
             this.gridAdjView.Name = "gridAdjView";
             this.gridAdjView.OptionsCustomization.AllowFilter = false;
@@ -892,6 +875,18 @@ namespace PharmInventory
             this.gridColumn18.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 2;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "Store Name";
+            this.gridColumn25.FieldName = "StoreName";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.OptionsColumn.AllowFocus = false;
+            this.gridColumn25.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 9;
             // 
             // ExpireDateEditor
             // 
@@ -1350,7 +1345,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ckExpired.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -1418,7 +1412,6 @@ namespace PharmInventory
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboStoreConfi;
         private DevExpress.XtraEditors.CheckEdit ckExpired;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraGrid.GridControl AdjustmentGrid;
         private DevExpress.XtraGrid.Views.Grid.GridView gridAdjView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
@@ -1499,6 +1492,6 @@ namespace PharmInventory
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidation;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
     }
 }

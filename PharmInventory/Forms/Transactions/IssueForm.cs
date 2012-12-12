@@ -770,7 +770,7 @@ namespace PharmInventory.Forms.Transactions
         {
             GridView view =sender as GridView;
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-            dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"]));
+            dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"]));
             dr.EndEdit();//added by tedy
             OnItemCheckedChanged(new object(), new EventArgs());
         }
