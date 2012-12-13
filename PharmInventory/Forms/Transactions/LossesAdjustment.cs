@@ -110,8 +110,9 @@ namespace PharmInventory
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%' AND [ExpiryDate] < '" + DateTime.Now.ToShortDateString() + "'";
             else
-                gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%'";
+                gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
                 gridItemChoiceView.RefreshData();
+             
                  
         }
 

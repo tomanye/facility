@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using BLL;
@@ -89,6 +90,7 @@ namespace PharmInventory.Forms.Reports
             IsReady = true;
             PopulateGrid();
         }
+       
 
         private void PopulateGrid()
         {
@@ -352,7 +354,7 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
         }
 
     }

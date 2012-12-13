@@ -157,21 +157,18 @@ namespace PharmInventory.Forms.ActivityLogs
             _dtDate.Value = DateTime.Now;
             _dtDate.CustomFormat = "MM/dd/yyyy";
 
-
-
-            if (iss.RowCount == 0)
-            {
-                if ((iss.RowCount == 0) || (iss.RecievDocID == null || iss.RecievDocID != rec.ID))
+            //if (iss.RowCount == 0)
+            //{
+                if ((iss.RowCount != 0) && (iss.RecievDocID != null && iss.RecievDocID == rec.ID))
                 {
-                    EditReceive edRec = new EditReceive(tranId, true);
+                    var edRec = new EditReceive(tranId, true);
                     MainWindow.ShowForms(edRec);
                 }
-            }
-            else
+            //}
+            else if(iss.RowCount ==0)
             {
-                XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.",
-                                    "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
+                var edRec = new EditReceive(tranId, false);
+                MainWindow.ShowForms(edRec);
             }
 
         }

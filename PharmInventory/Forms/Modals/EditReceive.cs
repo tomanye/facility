@@ -179,7 +179,9 @@ namespace PharmInventory.Forms.Modals
                 if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ReceiveDoc rec = new ReceiveDoc();
+                    IssueDoc iss =new IssueDoc();
                     rec.LoadByPrimaryKey(_tranId);
+                    iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
                     rec.RefNo = txtRefNo.Text;
                     dtRecDate.CustomFormat = "MM/dd/yyyy";
                      string dtValid  = "";
@@ -203,22 +205,39 @@ namespace PharmInventory.Forms.Modals
                              rec.Date = Convert.ToDateTime("2/28/" + year);
                          }
                      }
-
-                    rec.BatchNo = txtBatchNo.Text;
-                    rec.ExpDate = dtExpiryDate.Value;
-                    rec.NoOfPack = Convert.ToInt32(txtPack.Text);
-                    rec.QtyPerPack = Convert.ToInt32(txtQtyPack.Text);
-                    rec.Quantity = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
-                    rec.QuantityLeft = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
-                    rec.Out = false;
-                    rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
-                    rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
-                    rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
-                    rec.Remark = txtRemark.Text;
-                    rec.ReceivedBy = txtReceivedBy.Text;
-                    rec.Save();
-                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    if ((iss.RowCount != 0) && (iss.RecievDocID != null && iss.RecievDocID == rec.ID))
+                        {
+                            rec.BatchNo = txtBatchNo.Text;
+                            rec.ExpDate = dtExpiryDate.Value;
+                            rec.Remark = txtRemark.Text;
+                            rec.ReceivedBy = txtReceivedBy.Text;
+                            rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
+                            rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
+                            rec.Out = false;
+                            rec.Save();
+                            XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                    else if (iss.RowCount == 0)
+                    {
+                        rec.BatchNo = txtBatchNo.Text;
+                        rec.ExpDate = dtExpiryDate.Value;
+                        rec.Remark = txtRemark.Text;
+                        rec.ReceivedBy = txtReceivedBy.Text;
+                        rec.NoOfPack = Convert.ToInt32(txtPack.Text);
+                        rec.QtyPerPack = Convert.ToInt32(txtQtyPack.Text);
+                        rec.Quantity = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
+                        rec.QuantityLeft = Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text);
+                        rec.Out = false;
+                        rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
+                        rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
+                        rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
+                        rec.Save();
+                        XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                   
+                    
                 }
             }
             else

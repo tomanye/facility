@@ -36,6 +36,7 @@ namespace PharmInventory.Forms.Profiles
             this.label12 = new System.Windows.Forms.Label();
             this.cboAmcRange = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace PharmInventory.Forms.Profiles
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -177,6 +177,16 @@ namespace PharmInventory.Forms.Profiles
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Store";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(117, 223);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(187, 17);
+            this.checkBox1.TabIndex = 13;
+            this.checkBox1.Text = "25% Added When Receiving";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -440,16 +450,6 @@ namespace PharmInventory.Forms.Profiles
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(117, 223);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(161, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "25& Added When Issuing";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Pipeline
             // 

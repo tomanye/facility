@@ -131,6 +131,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
@@ -1293,7 +1294,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn19,
             this.gridColumn20,
             this.gridColumn21,
-            this.gridColumnRemove});
+            this.gridColumnRemove,
+            this.bandedGridColumn13});
             this.issueGridView.GridControl = this.issueGrid;
             this.issueGridView.Name = "issueGridView";
             this.issueGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
@@ -1314,6 +1316,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // gridBand3
             // 
+            this.gridBand3.Caption = "Staore Name";
             this.gridBand3.Columns.Add(this.gridColumn3);
             this.gridBand3.Columns.Add(this.gridColumn4);
             this.gridBand3.Columns.Add(this.gridColumn6);
@@ -1510,8 +1513,9 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand4.Columns.Add(this.gridColumn20);
             this.gridBand4.Columns.Add(this.gridColumn21);
             this.gridBand4.Columns.Add(this.gridColumnRemove);
+            this.gridBand4.Columns.Add(this.bandedGridColumn13);
             this.gridBand4.Name = "gridBand4";
-            this.gridBand4.Width = 219;
+            this.gridBand4.Width = 294;
             // 
             // gridColumn19
             // 
@@ -1564,6 +1568,13 @@ namespace PharmInventory.Forms.Transactions
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Minus)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
+            // 
+            // bandedGridColumn13
+            // 
+            this.bandedGridColumn13.Caption = "Store Name";
+            this.bandedGridColumn13.FieldName = "Store Name";
+            this.bandedGridColumn13.Name = "bandedGridColumn13";
+            this.bandedGridColumn13.Visible = true;
             // 
             // repositoryItemLookUpEdit2
             // 
@@ -2939,6 +2950,7 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn13;
 
     }
 }
