@@ -86,7 +86,6 @@ namespace PharmInventory
             this.ReasonLookup = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridRecieveView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
@@ -688,8 +687,7 @@ namespace PharmInventory
             this.gridColumn17,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn18,
-            this.gridColumn25});
+            this.gridColumn18});
             this.gridAdjView.GridControl = this.AdjustmentGrid;
             this.gridAdjView.Name = "gridAdjView";
             this.gridAdjView.OptionsCustomization.AllowFilter = false;
@@ -875,18 +873,6 @@ namespace PharmInventory
             this.gridColumn18.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 2;
-            // 
-            // gridColumn25
-            // 
-            this.gridColumn25.Caption = "Store Name";
-            this.gridColumn25.FieldName = "StoreName";
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.OptionsColumn.AllowEdit = false;
-            this.gridColumn25.OptionsColumn.AllowFocus = false;
-            this.gridColumn25.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 9;
             // 
             // ExpireDateEditor
             // 
@@ -1492,6 +1478,5 @@ namespace PharmInventory
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidation;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
     }
 }

@@ -239,8 +239,8 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl1.Controls.Add(this.radioGroup1);
             this.layoutControl1.Controls.Add(this.treeCategory);
             this.layoutControl1.Controls.Add(this.txtItemName);
-            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Controls.Add(this.xpButton1);
+            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5});

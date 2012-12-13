@@ -54,33 +54,7 @@ namespace PharmInventory
 
 
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-            if (dr == null) return;
-            int tranId = Convert.ToInt32(dr["ID"]);
-            Disposal dis = new Disposal();
 
-            dis.LoadByPrimaryKey(tranId);
-
-
-
-            if (dis.RowCount == 0)
-            {
-                if ((dis.RowCount > 0))
-                {
-                    EditLossAndAdjustment edRec = new EditLossAndAdjustment();
-                    MainWindow.ShowForms(edRec);
-                }
-
-            }
-            else
-            {
-                XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return;
-            }
-
-        }
 
         public void PopulateItemList(DataTable dtItem)
         {
@@ -511,7 +485,7 @@ namespace PharmInventory
         {
             GridView view = sender as GridView;
             DataRow dr = view.GetFocusedDataRow();
-            dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"])); // true;
+            dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"])); // true;
             dr.EndEdit();
             OnItemCheckedChanged(new object(), new EventArgs());
         }
@@ -561,30 +535,7 @@ namespace PharmInventory
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-           // gridItemChoiceView.ActiveFilterString = string.Format("ItemID={0}", Convert.ToInt32(lkCategories.EditValue));
-            
-
         }
-
-        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-           using (Form form = new Form())
-        {
-            form.ContextMenuStrip = new ContextMenuStrip();
-            ToolStripItem addMenuItem = form.ContextMenuStrip.Items.Add("edit");
-            ToolStripItem deleteMenuItem = form.ContextMenuStrip.Items.Add("delet");
-              if (e.ClickedItem == addMenuItem)
-              {
-                  MessageBox.Show("edit Menu Item Clicked.");
-              }
-              if (e.ClickedItem == deleteMenuItem)
-              {
-                  MessageBox.Show("delete Menu Item Clicked.");
-              }
-          };
-        }
-
-        
         
 
     }

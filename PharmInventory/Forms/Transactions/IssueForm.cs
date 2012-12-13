@@ -246,7 +246,7 @@ namespace PharmInventory.Forms.Transactions
             }
 
             issueGrid.DataSource = _dtRecGrid;
-          //  cboStoreConf.EditValue = cboStores.EditValue;
+            cboStoreConf.EditValue = cboStores.EditValue;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
             ReceivingUnits recUnit = new ReceivingUnits();
