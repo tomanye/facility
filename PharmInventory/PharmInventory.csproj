@@ -301,6 +301,12 @@
     <Compile Include="Forms\Modals\EditLossAndAdjustment.Designer.cs">
       <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Modals\EditLossForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Modals\EditLossForm.Designer.cs">
+      <DependentUpon>EditLossForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Modals\EditRecieveRefrenceNo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -668,6 +674,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditLossAndAdjustment.resx">
       <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Modals\EditLossForm.resx">
+      <DependentUpon>EditLossForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditRecieveRefrenceNo.resx">
       <DependentUpon>EditRecieveRefrenceNo.cs</DependentUpon>

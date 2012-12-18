@@ -52,21 +52,17 @@ namespace PharmInventory
                     gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
         }
 
-
-
-
-
         public void PopulateItemList(DataTable dtItem)
         {
             if (dtSelectedTable == null)
             {
                 dtSelectedTable = dtItem.Clone();
-                dtSelectedTable.PrimaryKey = new DataColumn[] { dtSelectedTable.Columns["ReceiveID"] };
+                dtSelectedTable.PrimaryKey = new[] { dtSelectedTable.Columns["ReceiveID"] };
             }
             try
             {
                 dtItem.Columns.Add("IsSelected", typeof(bool));
-                dtItem.Columns.Add("Unit", typeof(int));
+                //dtItem.Columns.Add("Unit", typeof(int));
             }
             catch { }
             gridItemsChoice.DataSource = dtItem;
@@ -535,6 +531,16 @@ namespace PharmInventory
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+        }
+
+        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
+        {
+            var dr = gridItemChoiceView.GetDataRow(gridItemChoiceView.GetSelectedRows()[0]);
+            var edit = new EditLossForm((int) dr["ItemID"], (string) dr["FullItemName"],
+                                        (string) dr["StockCode"], (string) dr["Unit"], (int) dr["StoreID"]);
+            edit.ShowDialog();
+            gridItemChoiceView.RefreshData();
+
         }
         
 
