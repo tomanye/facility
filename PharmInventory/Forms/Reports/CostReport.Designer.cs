@@ -451,6 +451,9 @@ namespace PharmInventory.Forms.Reports
             // gridColumn3
             // 
             this.gridColumn3.Caption = "SOH Amount";
+            this.gridColumn3.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn3.FieldName = "QuantityLeft";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;
@@ -695,6 +698,7 @@ namespace PharmInventory.Forms.Reports
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(null, new DevExpress.XtraPrinting.PageFooterArea(new string[] {
                 "",
                 "[Date Printed]",
