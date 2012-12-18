@@ -275,11 +275,19 @@ namespace BLL
             price = (this.DataTable.Rows[0]["Amount"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Amount"]) : 0;
             return price;
         }
+        public DataTable GetLossByItemId(int Id)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where ItemID = {0} and QuantityLeft > 0", Id));
+            return this.DataTable;
+        }
 
-        public bool MergeStore(int storeone, int storetwo)
+	    public bool MergeStore(int storeone, int storetwo)
         {
             this.FlushData();
             return this.LoadFromRawSql(String.Format("UPDATE Disposal SET StoreID = {0} WHERE StoreID = {1}", storeone, storetwo));
         }
-	}
+
+
+    }
 }
