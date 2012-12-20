@@ -54,14 +54,16 @@ namespace PharmInventory.Forms.Transactions
             PopulateCatTree(_selectedType);
             Stores stor = new Stores();
             stor.GetActiveStores();
-            storebindingSource.DataSource=stor.DefaultView;
-            cboStores.Properties.DataSource = storebindingSource.DataSource;
-            cboStores.ItemIndex = 0;
-            cboStores.Properties.DisplayMember = "StoreName";
-            cboStores.Properties.ValueMember = "ID";
+            //storebindingSource.DataSource=stor.DefaultView;
+            cboStores.Properties.DataSource = stor.DefaultView;
+           
+            //cboStores.Properties.DisplayMember = "StoreName";
+            //cboStores.Properties.ValueMember = "ID";
             cboStoreConf.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCategories.ItemIndex = 0;
+            cboStores.ItemIndex = 0;
+           
 
             int userID = MainWindow.LoggedinId;
             User us = new User();
@@ -235,10 +237,11 @@ namespace PharmInventory.Forms.Transactions
                     _dtRecGrid.Rows.Add(obj);
                     count++;
                 }
+
                 else
                 {
                     ResetValues();
-                    string output= String.Format("{0} is already stocked out item!", itemName);
+                    string output= String.Format("{0} is stocked out!", itemName);
                     XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     tabControl1.TabIndex = 0;
                     break;
@@ -604,7 +607,8 @@ namespace PharmInventory.Forms.Transactions
         {
             gridItemChoiceView.Columns[0].Visible = !ckStockOut.Checked;
 
-            gridItemChoiceView.ActiveFilterString = ckStockOut.Checked ? "[Status] = 'Stock Out'" : "[Status] != 'Stock Out'";
+            if (ckStockOut.Checked) gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
+            else gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
@@ -696,7 +700,7 @@ namespace PharmInventory.Forms.Transactions
         {
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
 
-            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
+            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
 
             if (b)
             {
@@ -832,8 +836,9 @@ namespace PharmInventory.Forms.Transactions
             {
                 _dtSelectedTable = dtList.Clone();
             }
-            gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
+            //gridItemChoiceView.ActiveFilterString = "";
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue)); 
+            //gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
             //progressBarControl1.Visible = false;
         }
 
@@ -853,6 +858,7 @@ namespace PharmInventory.Forms.Transactions
            // StoreID = Convert.ToInt32(cboStores.EditValue);
             //gridItemChoiceView_RowClick_1(object sender, RowClickEventArgs e)
            // PopulateGridList();
+
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
@@ -866,8 +872,14 @@ namespace PharmInventory.Forms.Transactions
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
+
+       
+
+
+
+
        
 
     }

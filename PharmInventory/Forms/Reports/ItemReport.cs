@@ -447,6 +447,8 @@ namespace PharmInventory.Forms.Reports
             cboStatus.EditValue = _filter;
             //if (ckExclude.Checked)
             //    gridItemChoiceView.ActiveFilterString = "[EverReceived] != '0' or SOH != '0'";
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+
         }
 
         /// <summary>

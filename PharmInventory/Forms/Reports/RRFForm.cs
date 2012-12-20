@@ -213,7 +213,7 @@ namespace PharmInventory.Forms.Reports
             //DataTable dtbl = itm.GetRRFReportInPacks(_storeID,_fromYear,_fromMonth,_toYear,_toMonth); //  gridItemsChoice.DataSource;
             //DataTable tbl = (DataTable)gridItemsChoice.DataSource;
             tblRRF.TableName = "DataTable1";
-            DataSet dtset = new DataSet();
+            var dtset = new DataSet();
             dtset.Tables.Add(tblRRF.Copy());
             rrfReport.DataSource = dtset;
             rrfReport.ShowPreviewDialog();

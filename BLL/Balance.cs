@@ -1102,7 +1102,7 @@ namespace BLL
             GeneralInfo pipline = new GeneralInfo();
             pipline.LoadAll();
             // string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
-            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@month", dtCurrent.Month);
             ld.Add("@year", dtCurrent.Year);
