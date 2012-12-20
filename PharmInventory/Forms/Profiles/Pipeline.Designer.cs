@@ -36,7 +36,6 @@ namespace PharmInventory.Forms.Profiles
             this.label12 = new System.Windows.Forms.Label();
             this.cboAmcRange = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -156,7 +155,6 @@ namespace PharmInventory.Forms.Profiles
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.checkBox1);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label10);
@@ -177,16 +175,6 @@ namespace PharmInventory.Forms.Profiles
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Store";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(117, 223);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(187, 17);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "25% Added When Receiving";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -513,6 +501,5 @@ namespace PharmInventory.Forms.Profiles
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cboNearExpiryFlag;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

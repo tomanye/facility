@@ -49,7 +49,7 @@ namespace PharmInventory
 
                 cboStores.ItemIndex = 0;
                 if (ckExpired.Checked)
-                    gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
+                    gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}#", DateTime.Now);
         }
 
         public void PopulateItemList(DataTable dtItem)
@@ -64,9 +64,11 @@ namespace PharmInventory
                 dtItem.Columns.Add("IsSelected", typeof(bool));
                 //dtItem.Columns.Add("Unit", typeof(int));
             }
-            catch { }
+            catch
+            {
+                
+            }
             gridItemsChoice.DataSource = dtItem;
-           
             string today = DateTime.Now.ToString("M/dd/yyyy");
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
@@ -371,11 +373,11 @@ namespace PharmInventory
         {
             if (cboStores.EditValue != null)
             {
-                dtAdjustDate.Value = DateTime.Now;
-                dtAdjustDate.CustomFormat = "MM/dd/yyyy";
-                DateTime dtCurrent = ConvertDate.DateConverter(dtAdjustDate.Text);
-                Items itm = new Items();
-                //DataTable dtItem = ((selectedType == "Drug")?itm.GetItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue),dtCurrent.Year): itm.GetCommoditiesReceivedByBatch(Convert.ToInt32(cboStores.EditValue)));
+                //dtAdjustDate.Value = DateTime.Now;
+                //dtAdjustDate.CustomFormat = "MM/dd/yyyy";
+                //DateTime dtCurrent = ConvertDate.DateConverter(dtAdjustDate.Text);
+                //Items itm = new Items();
+                ////DataTable dtItem = ((selectedType == "Drug")?itm.GetItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue),dtCurrent.Year): itm.GetCommoditiesReceivedByBatch(Convert.ToInt32(cboStores.EditValue)));
                 
                 BLL.ReceiveDoc rDoc = new ReceiveDoc();
                 DataTable dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue));  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
@@ -394,12 +396,14 @@ namespace PharmInventory
         {
             if(!ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = "";
+               // gridItemChoiceView.ActiveFilterString = "";
+                gridItemChoiceView.ActiveFilterString = String.Format("[TypeID]={0}",
+                                                                      (int) lkCategories.EditValue);
                 gridItemChoiceView.RefreshData();
             }
             if (ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}#", DateTime.Now);
+                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now,(int)lkCategories.EditValue);
 
             }
             
