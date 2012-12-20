@@ -54,7 +54,6 @@ namespace PharmInventory
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -314,8 +313,7 @@ namespace PharmInventory
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn23,
-            this.gridColumn25});
+            this.gridColumn23});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -457,7 +455,7 @@ namespace PharmInventory
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
+            this.gridColumn4.VisibleIndex = 6;
             this.gridColumn4.Width = 204;
             // 
             // gridColumn5
@@ -477,14 +475,6 @@ namespace PharmInventory
             this.gridColumn23.Caption = "TypeID";
             this.gridColumn23.FieldName = "TypeID";
             this.gridColumn23.Name = "gridColumn23";
-            // 
-            // gridColumn25
-            // 
-            this.gridColumn25.ColumnEdit = this.repositoryItemButtonEdit1;
-            this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 6;
-            this.gridColumn25.Width = 25;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -1518,7 +1508,6 @@ namespace PharmInventory
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidation;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }
