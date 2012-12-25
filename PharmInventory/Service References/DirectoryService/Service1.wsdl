@@ -618,11 +618,18 @@
       <s:complexType name="DrugCategory">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="CategoryCode" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PointsTo" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" nillable="true" type="s:boolean" />
-          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Created_Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Created_By" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Updated_By" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedBy" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryName" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetDrugSubCategory">
@@ -903,13 +910,22 @@
       </s:complexType>
       <s:complexType name="ItemManufacturer">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ManufacturerID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ItemID" nillable="true" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="QuantityPerLevel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ManufacturerID" nillable="true" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="PackageLevel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuantityPerLevel" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsssuingDefault" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecevingDefault" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BoxWidth" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BoxHeight" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="BoxLength" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="BrandName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StackHeight" nillable="true" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="IsDeleted" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="UpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LegacyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedBy" nillable="true" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="GetItemActivities">

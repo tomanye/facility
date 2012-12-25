@@ -1072,7 +1072,11 @@ namespace BLL
             this.LoadFromRawSql(query);
             DataTable lost = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
+            //query = string.Format("select distinct Items.ID, case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
+            //this.LoadFromRawSql(query);
+            //System.Data.DataTable preferredPackSizetbl = this.DataTable;
+
+            query = string.Format("select distinct ReceiveDoc.ItemID as ID, case ReceiveDoc.QtyPerPack when 0 then 1 else isnull(ReceiveDoc.QtyPerPack,1) end as QtyPerPack from ReceiveDoc");
             this.LoadFromRawSql(query);
             System.Data.DataTable preferredPackSizetbl = this.DataTable;
 
@@ -1087,12 +1091,17 @@ namespace BLL
                      join p in preferredPackSizetbl.AsEnumerable()
                      on y["ID"] equals p["ID"]
                      where Convert.ToInt32(y["EverReceived"]) == 1
-                     select new { ID = y["ID"], FullItemName = y["FullItemName"], Unit = y["Unit"], StockCode = y["StockCode"], BeginingBalance = Convert.ToInt32(y["SOH"]), SOH = Convert.ToInt32(z["SOH"]), Max = Convert.ToInt32(z["Max"]), QtyPerPack = Convert.ToInt32(p["QtyPerPack"]) }).ToArray();
+                     select new { ID = y["ID"], FullItemName = y["FullItemName"], Unit = y["Unit"],
+                         StockCode = y["StockCode"], BeginingBalance = Convert.ToInt32(y["SOH"]), 
+                         SOH = Convert.ToInt32(z["SOH"]), Max = Convert.ToInt32(z["Max"]), 
+                         QtyPerPack = Convert.ToInt32(p["QtyPerPack"]) }).Distinct().ToArray();
 
             var m = (from n in x
                      join z in received.AsEnumerable()
                      on n.ID equals z["ID"]
-                     select new { ID = n.ID, FullItemName = n.FullItemName, Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack, Received = z["Quantity"] }).ToArray();
+                     select new { ID = n.ID, FullItemName = n.FullItemName,
+                         Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, 
+                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack, Received = z["Quantity"] }).ToArray();
 
             var l = (from n in m
                      join z in issued.AsEnumerable()
@@ -1115,7 +1124,12 @@ namespace BLL
             var t = (from n in l
                      join z in lost.AsEnumerable()
                      on n.ID equals z["ID"]
-                     select new { ID = n.ID, FullItemName = n.FullItemName, Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack, Received = n.Received, Issued = n.Issued, LossAdj = z["Quantity"], Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH }).ToArray();
+                     select new { ID = n.ID, FullItemName = n.FullItemName, Unit = n.Unit, StockCode = n.StockCode, 
+                         BeginingBalance = n.BeginingBalance, SOH = n.SOH,
+                         Max = n.Max, QtyPerPack = n.QtyPerPack, 
+                         Received = n.Received, 
+                         Issued = n.Issued, LossAdj = z["Quantity"], 
+                         Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH }).ToArray();
 
             var t1 = (from n in t
                       join z in daysOutOfStock.AsEnumerable()
@@ -1157,7 +1171,7 @@ namespace BLL
                                   DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
-                              }).Distinct().ToArray();
+                              }).ToArray();
          
             //return t;
             // Converting shit into antoher shit.

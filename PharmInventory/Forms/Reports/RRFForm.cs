@@ -428,7 +428,8 @@ namespace PharmInventory.Forms.Reports
 
         private void ChooseGridView()
         {
-            gridItemsChoice.MainView = chkCalculateInPacks.Checked ? grdViewInPacks : gridItemChoiceView;
+            if (chkCalculateInPacks.Checked) gridItemsChoice.MainView = grdViewInPacks;
+            else gridItemsChoice.MainView = gridItemChoiceView;
         }
 
         private void cboFromYear_SelectedIndexChanged(object sender, EventArgs e)
