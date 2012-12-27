@@ -248,7 +248,7 @@ namespace PharmInventory.Forms.Reports
             int rrfID = rrf.AddNewRRF(_storeID,_fromYear, _fromMonth, _toYear, _toMonth, true);
             BLL.Items itm = new BLL.Items();
             DataTable dtbl1 = new DataTable();
-            dtbl1=((DataView)gridItemChoiceView.DataSource).Table;
+            if (gridItemChoiceView.DataSource != null) dtbl1=((DataView)gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
                 int itemID = Convert.ToInt32(dr["ID"]);
