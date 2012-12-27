@@ -3,8 +3,10 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using BLL;
+using CalendarLib;
 using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
+using DevExpress.XtraTreeList;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 
@@ -27,21 +29,19 @@ namespace PharmInventory.Forms.ActivityLogs
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
-            DisposalReasons rec = new DisposalReasons();
-            DataTable dtDis = rec.GetAvailableReasons();
+            var stor = new Stores();
+            stor.GetActiveStores();
+            cboStores.Properties.DataSource = stor.DefaultView;
+            cboStores.ItemIndex = 0;
+
+            var rec = new DisposalReasons();
+            var dtDis = rec.GetAvailableReasons();
             cboReasons.Properties.DataSource = dtDis;
             cboReasons.ItemIndex = 0;
 
             //Stores stor = new Stores();
 
             //cboStores.Properties.DataSource = stor.GetActiveStores();
-           
-            Stores stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
-            cboStores.ItemIndex = 0;
-
-
             try
             {
                 //CALENDAR:
@@ -82,12 +82,18 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
+            GetItemsByStore();
+        }
+
+        private void GetItemsByStore()
+        {
             if (cboStores.EditValue == null) return;
 
             //CALENDAR:
             Disposal adj = new Disposal();
             DataTable dtRec = adj.GetDistinctAdjustmentDocments(Convert.ToInt32(cboStores.EditValue));
-            /*PopulateDocument(dtRec);*/ lstTree.DataSource = dtRec;
+            /*PopulateDocument(dtRec);*/
+            lstTree.DataSource = dtRec;
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           CustomFormat = "MM/dd/yyyy",
@@ -177,14 +183,22 @@ namespace PharmInventory.Forms.ActivityLogs
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             //CALENDAR:
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-                                                      {
-                                                          CustomFormat = "MM/dd/yyyy",
-                                                          Value = DateTime.Now
-                                                      };
-            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+            DateTime dtCurrent;
+            DataRowView dr;
+            DateTimePickerEx dtDate;
+            GetSelectedNode(out dtCurrent, out dr, out dtDate);
+        }
 
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+        public void GetSelectedNode(out DateTime dtCurrent, out DataRowView dr, out DateTimePickerEx dtDate)
+        {
+            dtDate = new DateTimePickerEx
+                         {
+                             CustomFormat = "MM/dd/yyyy",
+                             Value = DateTime.Now
+                         };
+            dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+
+            dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
 
             if (dr == null) return;
 
@@ -201,11 +215,13 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
-                dtRec = disp.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+                dtRec = disp.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
+                                                dr["Date"].ToString());
                 lblAdjDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
             gridAdjustments.DataSource = dtRec;
         }
+
         /// <summary>
         /// Delete a row of adjustmen
         /// </summary>
@@ -339,6 +355,15 @@ namespace PharmInventory.Forms.ActivityLogs
             dispdelete.EurDate = (DateTime) dataRow["EurDate"];
             dispdelete.RecID = (int) dataRow["RecID"];
             dispdelete.Save();
+        }
+
+        private void lstTree_ShowingEditor(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var treeList = sender as TreeList;
+            if (treeList != null && treeList.FocusedNode.Id != 0)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

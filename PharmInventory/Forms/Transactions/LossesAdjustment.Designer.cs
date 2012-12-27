@@ -38,6 +38,7 @@ namespace PharmInventory
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.ckExpired = new DevExpress.XtraEditors.CheckEdit();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
+            this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.gridItemsChoice = new DevExpress.XtraGrid.GridControl();
             this.gridItemChoiceView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,7 +56,6 @@ namespace PharmInventory
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -216,8 +216,8 @@ namespace PharmInventory
             this.layoutControl1.Controls.Add(this.cboStores);
             this.layoutControl1.Controls.Add(this.ckExpired);
             this.layoutControl1.Controls.Add(this.txtItemName);
-            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Controls.Add(this.xpButton1);
+            this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(3, 3);
             this.layoutControl1.Name = "layoutControl1";
@@ -281,6 +281,17 @@ namespace PharmInventory
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 2;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged_1);
+            // 
+            // xpButton1
+            // 
+            this.xpButton1.Image = global::PharmInventory.Properties.Resources.pencil_go;
+            this.xpButton1.Location = new System.Drawing.Point(966, 584);
+            this.xpButton1.Name = "xpButton1";
+            this.xpButton1.Size = new System.Drawing.Size(73, 22);
+            this.xpButton1.StyleController = this.layoutControl1;
+            this.xpButton1.TabIndex = 2;
+            this.xpButton1.Text = "Pick";
+            this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // gridItemsChoice
             // 
@@ -484,17 +495,6 @@ namespace PharmInventory
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.Click += new System.EventHandler(this.repositoryItemButtonEdit1_Click);
-            // 
-            // xpButton1
-            // 
-            this.xpButton1.Image = global::PharmInventory.Properties.Resources.pencil_go;
-            this.xpButton1.Location = new System.Drawing.Point(966, 584);
-            this.xpButton1.Name = "xpButton1";
-            this.xpButton1.Size = new System.Drawing.Size(73, 22);
-            this.xpButton1.StyleController = this.layoutControl1;
-            this.xpButton1.TabIndex = 2;
-            this.xpButton1.Text = "Pick";
-            this.xpButton1.Click += new System.EventHandler(this.xpButton1_Click);
             // 
             // layoutControlGroup1
             // 

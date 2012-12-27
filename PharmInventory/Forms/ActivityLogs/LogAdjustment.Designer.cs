@@ -236,6 +236,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Size = new System.Drawing.Size(334, 586);
             this.lstTree.TabIndex = 34;
             this.lstTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.lstTree_FocusedNodeChanged);
+            this.lstTree.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.lstTree_ShowingEditor);
             // 
             // colRefNo
             // 

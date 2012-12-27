@@ -28,6 +28,11 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
+            Stores stor = new Stores();
+            stor.GetActiveStores();
+            cboStores.Properties.DataSource = stor.DefaultView;
+            cboStores.ItemIndex = 0;
+
             Supplier sup = new Supplier();
             DataTable dtSup = sup.GetSuppliersWithTransaction();
             cboSupplier.Properties.DataSource = dtSup;
@@ -37,17 +42,12 @@ namespace PharmInventory.Forms.ActivityLogs
             // bind the supplier lookup for the grid.
             lkEditSupplier.DataSource = dtSup;
 
-            Stores stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
-            cboStores.ItemIndex = 0;
-
             // bind the current dates
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
 
-            try
-            {
+            //try
+            //{
                 //CALENDAR:
 
                 CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
@@ -79,11 +79,11 @@ namespace PharmInventory.Forms.ActivityLogs
                     lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
                 }
                 gridReceives.DataSource = dtRec;
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
         }
 
         private void PopulateDocuments(DataTable dtRec)

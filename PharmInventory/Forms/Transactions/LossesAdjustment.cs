@@ -45,11 +45,12 @@ namespace PharmInventory
                
                 cboStores.Properties.DataSource = stor.DefaultView;
                 lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
-                lkCategories.ItemIndex = 0;
 
+                lkCategories.ItemIndex = 0;
                 cboStores.ItemIndex = 0;
+
                 if (ckExpired.Checked)
-                    gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}#", DateTime.Now);
+                    gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
         }
 
         public void PopulateItemList(DataTable dtItem)
@@ -59,32 +60,33 @@ namespace PharmInventory
                 dtSelectedTable = dtItem.Clone();
                 dtSelectedTable.PrimaryKey = new[] { dtSelectedTable.Columns["ReceiveID"] };
             }
+
+            gridItemsChoice.DataSource = dtItem;
+
             try
             {
                 dtItem.Columns.Add("IsSelected", typeof(bool));
-                //dtItem.Columns.Add("Unit", typeof(int));
             }
             catch
             {
                 
             }
-            gridItemsChoice.DataSource = dtItem;
-            string today = DateTime.Now.ToString("M/dd/yyyy");
-            if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
-            else
-                gridItemChoiceView.ActiveFilterString = "";
+           
+            //string today = DateTime.Now.ToString("M/dd/yyyy");
+            //if (ckExpired.Checked)
+            //    gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
+            ////
+            //else
+            //    gridItemChoiceView.ActiveFilterString = "";
         }
 
         private void txtItemName_TextChanged_1(object sender, EventArgs e)
         {
-
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = "[FullItemName] Like '" + txtItemName.Text + "%' AND [ExpiryDate] < '" + DateTime.Now.ToShortDateString() + "'";
             else
                 gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
                 gridItemChoiceView.RefreshData();
-             
                  
         }
 
@@ -397,13 +399,12 @@ namespace PharmInventory
             if(!ckExpired.Checked)
             {
                // gridItemChoiceView.ActiveFilterString = "";
-                gridItemChoiceView.ActiveFilterString = String.Format("[TypeID]={0}",
-                                                                      (int) lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
                 gridItemChoiceView.RefreshData();
             }
-            if (ckExpired.Checked)
+            else if (ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = string.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now,(int)lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now,(int)lkCategories.EditValue);
 
             }
             

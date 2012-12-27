@@ -450,7 +450,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "SOH Amount";
+            this.gridColumn3.Caption = "Balance Left";
             this.gridColumn3.DisplayFormat.FormatString = "#,##0";
             this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn3.FieldName = "QuantityLeft";
