@@ -653,7 +653,10 @@
     <Compile Include="ViewModels\AMCViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModelCollection.cs" />
-    <Content Include="Scripts\29_SOHByPrograms.sql" />
+    <Content Include="Scripts\28_SOHByPrograms.sql" />
+    <Content Include="Scripts\30_vwGetReceivedItemsBatchNo.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1246,7 +1249,7 @@
     <Content Include="Scripts\26_ReceiveDocDeletedLoadAll.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\28_Stockout.sql">
+    <Content Include="Scripts\29_Stockout.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="ConnectionStringManager.dll" />
