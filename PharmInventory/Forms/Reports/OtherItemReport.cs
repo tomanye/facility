@@ -354,7 +354,7 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'", Convert.ToInt32(lkCommodityTypes.EditValue));
         }
 
     }

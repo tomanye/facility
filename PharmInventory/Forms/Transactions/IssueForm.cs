@@ -231,13 +231,19 @@ namespace PharmInventory.Forms.Transactions
                 object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
                                    soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0,cboStores.Text};
 
-
+               
                 if (expAmount < soh && quantity < soh)
                 {
                     _dtRecGrid.Rows.Add(obj);
                     count++;
                 }
-
+                if (expAmount == soh && expAmount!=0)
+                {
+                    string output = String.Format("{0} is Expired!", itemName);
+                    XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    tabControl1.TabIndex = 0;
+                    break;
+                }
                 else
                 {
                     ResetValues();
@@ -873,6 +879,15 @@ namespace PharmInventory.Forms.Transactions
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+        }
+
+
+
+        private void chkExcludeStockedOut_CheckedChanged(object sender, EventArgs e)
+        {
+            gridItemChoiceView.Columns[0].Visible = !chkExcludeStockedOut.Checked;
+            if (chkExcludeStockedOut.Checked) gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
+            else gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
 
        

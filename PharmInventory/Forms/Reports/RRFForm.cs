@@ -206,7 +206,9 @@ namespace PharmInventory.Forms.Reports
             RRFReport rrfReport = new RRFReport
                                       {
                                           FacilityName = { Text = ginfo.HospitalName },
-                                          Period = { Text = string.Format("{0}, {1} - {2}, {3}",ethioDateFrom.GetMonthName(),ethioDateFrom.Year , ethioDateTo.GetMonthName(),ethioDateTo.Year) }
+                                          Period = { Text = string.Format("{0}, {1} - {2}, {3}",
+                                              ethioDateFrom.GetMonthName(),ethioDateFrom.Year , 
+                                              ethioDateTo.GetMonthName(),ethioDateTo.Year) }
                                       };
             //rrfReport.Year.Text = dtFrom.Text.Substring(dtFrom.Text.LastIndexOf('/') + 1);
             Items itm = new Items();
