@@ -172,7 +172,7 @@ namespace PharmInventory.Forms.Reports
             this.cmbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbYear.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "year")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "Year")});
             this.cmbYear.Properties.DisplayMember = "year";
             this.cmbYear.Properties.NullText = "";
             this.cmbYear.Properties.ValueMember = "year";
@@ -196,7 +196,7 @@ namespace PharmInventory.Forms.Reports
             this.cboReasons.Size = new System.Drawing.Size(209, 20);
             this.cboReasons.StyleController = this.layoutControl1;
             this.cboReasons.TabIndex = 33;
-            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
+            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboReasons_EditValueChanged);
             // 
             // xpButton1
             // 
@@ -416,9 +416,9 @@ namespace PharmInventory.Forms.Reports
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Quantity";
-            this.gridColumn4.DisplayFormat.FormatString = "##0.#0";
+            this.gridColumn4.DisplayFormat.FormatString = "##0";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "QuantityDetail";
+            this.gridColumn4.FieldName = "Quantity";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
@@ -714,7 +714,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
-            
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);

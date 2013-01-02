@@ -244,5 +244,10 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 50, 200, 100), BorderSide.None);
         }
 
+        private void cboReasons_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemListView.ActiveFilterString = String.Format("[ReasonId]={0}", (int)cboReasons.EditValue);
+        }
+
     }
 }

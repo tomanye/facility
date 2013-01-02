@@ -48,6 +48,7 @@ namespace PharmInventory.Forms.Transactions
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.chkExcludeStockedOut = new DevExpress.XtraEditors.CheckEdit();
             this.legend1 = new PharmInventory.UserControls.Legend();
             this.ckStockOut = new DevExpress.XtraEditors.CheckEdit();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
@@ -91,6 +92,7 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -226,14 +228,13 @@ namespace PharmInventory.Forms.Transactions
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
-            this.chkExcludeStockedOut = new DevExpress.XtraEditors.CheckEdit();
-            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckStockOut.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
@@ -263,6 +264,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -325,8 +327,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn1
@@ -428,6 +428,16 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl1.Size = new System.Drawing.Size(1049, 546);
             this.layoutControl1.TabIndex = 39;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // chkExcludeStockedOut
+            // 
+            this.chkExcludeStockedOut.Location = new System.Drawing.Point(208, 79);
+            this.chkExcludeStockedOut.Name = "chkExcludeStockedOut";
+            this.chkExcludeStockedOut.Properties.Caption = "Exclude Stocked Out";
+            this.chkExcludeStockedOut.Size = new System.Drawing.Size(164, 19);
+            this.chkExcludeStockedOut.StyleController = this.layoutControl1;
+            this.chkExcludeStockedOut.TabIndex = 41;
+            this.chkExcludeStockedOut.CheckedChanged += new System.EventHandler(this.chkExcludeStockedOut_CheckedChanged);
             // 
             // legend1
             // 
@@ -1016,6 +1026,18 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.chkExcludeStockedOut;
+            this.layoutControlItem27.CustomizationFormText = "Exclude Stocked Out";
+            this.layoutControlItem27.Location = new System.Drawing.Point(168, 48);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(168, 23);
+            this.layoutControlItem27.Text = "Exclude Stocked Out";
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextToControlDistance = 0;
+            this.layoutControlItem27.TextVisible = false;
             // 
             // groupBox2
             // 
@@ -2625,28 +2647,6 @@ namespace PharmInventory.Forms.Transactions
             this.printableComponentLink2.PrintingSystem = this.printingSystem1;
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
             // 
-            // chkExcludeStockedOut
-            // 
-            this.chkExcludeStockedOut.Location = new System.Drawing.Point(208, 79);
-            this.chkExcludeStockedOut.Name = "chkExcludeStockedOut";
-            this.chkExcludeStockedOut.Properties.Caption = "Exclude Stocked Out";
-            this.chkExcludeStockedOut.Size = new System.Drawing.Size(164, 19);
-            this.chkExcludeStockedOut.StyleController = this.layoutControl1;
-            this.chkExcludeStockedOut.TabIndex = 41;
-            this.chkExcludeStockedOut.CheckedChanged += new System.EventHandler(this.chkExcludeStockedOut_CheckedChanged);
-            // 
-            // layoutControlItem27
-            // 
-            this.layoutControlItem27.Control = this.chkExcludeStockedOut;
-            this.layoutControlItem27.CustomizationFormText = "Exclude Stocked Out";
-            this.layoutControlItem27.Location = new System.Drawing.Point(168, 48);
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(168, 23);
-            this.layoutControlItem27.Text = "Exclude Stocked Out";
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem27.TextToControlDistance = 0;
-            this.layoutControlItem27.TextVisible = false;
-            // 
             // IssueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2662,6 +2662,7 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckStockOut.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
@@ -2691,6 +2692,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -2756,8 +2758,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             this.ResumeLayout(false);
 
         }

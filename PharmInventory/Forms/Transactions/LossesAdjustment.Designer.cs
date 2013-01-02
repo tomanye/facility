@@ -70,6 +70,10 @@ namespace PharmInventory
             this.tabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.txtApprovedBy = new DevExpress.XtraEditors.TextEdit();
+            this.dtAdjustDate = new CalendarLib.DateTimePickerEx();
+            this.cboStoreConfi = new System.Windows.Forms.ComboBox();
+            this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.AdjustmentGrid = new DevExpress.XtraGrid.GridControl();
             this.gridAdjView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -102,10 +106,6 @@ namespace PharmInventory
             this.gridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.txtApprovedBy = new DevExpress.XtraEditors.TextEdit();
-            this.dtAdjustDate = new CalendarLib.DateTimePickerEx();
-            this.cboStoreConfi = new System.Windows.Forms.ComboBox();
-            this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
             this.txtRemark = new DevExpress.XtraEditors.TextEdit();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -155,6 +155,8 @@ namespace PharmInventory
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdjustmentGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAdjView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -165,8 +167,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -646,13 +646,13 @@ namespace PharmInventory
             // layoutControl2
             // 
             this.layoutControl2.Controls.Add(this.btnSave);
-            this.layoutControl2.Controls.Add(this.AdjustmentGrid);
             this.layoutControl2.Controls.Add(this.txtApprovedBy);
             this.layoutControl2.Controls.Add(this.dtAdjustDate);
             this.layoutControl2.Controls.Add(this.cboStoreConfi);
             this.layoutControl2.Controls.Add(this.txtRefNo);
             this.layoutControl2.Controls.Add(this.txtRemark);
             this.layoutControl2.Controls.Add(this.btnCancel);
+            this.layoutControl2.Controls.Add(this.AdjustmentGrid);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(3, 3);
             this.layoutControl2.Name = "layoutControl2";
@@ -672,6 +672,53 @@ namespace PharmInventory
             this.btnSave.TabIndex = 16;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtApprovedBy
+            // 
+            this.txtApprovedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtApprovedBy.Location = new System.Drawing.Point(78, 550);
+            this.txtApprovedBy.Name = "txtApprovedBy";
+            this.txtApprovedBy.Size = new System.Drawing.Size(518, 20);
+            this.txtApprovedBy.StyleController = this.layoutControl2;
+            this.txtApprovedBy.TabIndex = 4;
+            // 
+            // dtAdjustDate
+            // 
+            this.dtAdjustDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtAdjustDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtAdjustDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtAdjustDate.DayOfWeekCharacters = 2;
+            this.dtAdjustDate.ForeColor = System.Drawing.Color.Black;
+            this.dtAdjustDate.Location = new System.Drawing.Point(754, 36);
+            this.dtAdjustDate.Name = "dtAdjustDate";
+            this.dtAdjustDate.PopUpFontSize = 9.75F;
+            this.dtAdjustDate.Size = new System.Drawing.Size(285, 20);
+            this.dtAdjustDate.TabIndex = 12;
+            this.dtAdjustDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
+            // 
+            // cboStoreConfi
+            // 
+            this.cboStoreConfi.BackColor = System.Drawing.Color.LemonChiffon;
+            this.cboStoreConfi.DisplayMember = "StoreName";
+            this.cboStoreConfi.Enabled = false;
+            this.cboStoreConfi.FormattingEnabled = true;
+            this.cboStoreConfi.Location = new System.Drawing.Point(78, 12);
+            this.cboStoreConfi.Name = "cboStoreConfi";
+            this.cboStoreConfi.Size = new System.Drawing.Size(359, 21);
+            this.cboStoreConfi.TabIndex = 13;
+            this.cboStoreConfi.ValueMember = "ID";
+            // 
+            // txtRefNo
+            // 
+            this.txtRefNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRefNo.Location = new System.Drawing.Point(754, 12);
+            this.txtRefNo.Name = "txtRefNo";
+            this.txtRefNo.Size = new System.Drawing.Size(285, 20);
+            this.txtRefNo.StyleController = this.layoutControl2;
+            this.txtRefNo.TabIndex = 4;
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "This value is not valid";
+            this.dxValidation.SetValidationRule(this.txtRefNo, conditionValidationRule2);
             // 
             // AdjustmentGrid
             // 
@@ -1057,53 +1104,6 @@ namespace PharmInventory
             this.gridColumn9.Visible = true;
             this.gridColumn9.Width = 145;
             // 
-            // txtApprovedBy
-            // 
-            this.txtApprovedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtApprovedBy.Location = new System.Drawing.Point(78, 550);
-            this.txtApprovedBy.Name = "txtApprovedBy";
-            this.txtApprovedBy.Size = new System.Drawing.Size(518, 20);
-            this.txtApprovedBy.StyleController = this.layoutControl2;
-            this.txtApprovedBy.TabIndex = 4;
-            // 
-            // dtAdjustDate
-            // 
-            this.dtAdjustDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtAdjustDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtAdjustDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtAdjustDate.DayOfWeekCharacters = 2;
-            this.dtAdjustDate.ForeColor = System.Drawing.Color.Black;
-            this.dtAdjustDate.Location = new System.Drawing.Point(754, 36);
-            this.dtAdjustDate.Name = "dtAdjustDate";
-            this.dtAdjustDate.PopUpFontSize = 9.75F;
-            this.dtAdjustDate.Size = new System.Drawing.Size(285, 20);
-            this.dtAdjustDate.TabIndex = 12;
-            this.dtAdjustDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
-            // 
-            // cboStoreConfi
-            // 
-            this.cboStoreConfi.BackColor = System.Drawing.Color.LemonChiffon;
-            this.cboStoreConfi.DisplayMember = "StoreName";
-            this.cboStoreConfi.Enabled = false;
-            this.cboStoreConfi.FormattingEnabled = true;
-            this.cboStoreConfi.Location = new System.Drawing.Point(78, 12);
-            this.cboStoreConfi.Name = "cboStoreConfi";
-            this.cboStoreConfi.Size = new System.Drawing.Size(359, 21);
-            this.cboStoreConfi.TabIndex = 13;
-            this.cboStoreConfi.ValueMember = "ID";
-            // 
-            // txtRefNo
-            // 
-            this.txtRefNo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRefNo.Location = new System.Drawing.Point(754, 12);
-            this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(285, 20);
-            this.txtRefNo.StyleController = this.layoutControl2;
-            this.txtRefNo.TabIndex = 4;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "This value is not valid";
-            this.dxValidation.SetValidationRule(this.txtRefNo, conditionValidationRule2);
-            // 
             // txtRemark
             // 
             this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1377,6 +1377,8 @@ namespace PharmInventory
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdjustmentGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAdjView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -1387,8 +1389,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();

@@ -148,6 +148,8 @@ namespace PharmInventory
             DisposalReasons disRes = new DisposalReasons();
             disRes.LoadAll();
             ReasonLookup.DataSource = disRes.DefaultView;
+            ReasonLookup.DisplayMember = "Reason";
+            ReasonLookup.ValueMember = "ID";
             AdjustmentGrid.DataSource = dtRecGrid;
             cboStoreConfi.Text = cboStores.Text;
         }
