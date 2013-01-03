@@ -171,8 +171,8 @@ namespace PharmInventory.Forms.Reports
                 {
                     if (cboStatus.EditValue.ToString() == "Stock Out")
                     {
-                        gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [Received] != '0') and [Status] = 'Stock Out'";
-                        gridItemChoiceView.Columns[14].Visible = true;
+                        gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
+                       // gridItemChoiceView.Columns[14].Visible = true;
                     }
                     else
                     {
