@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -16,10 +17,10 @@ using PharmInventory.HelperClasses;
 
 namespace PharmInventory
 {
-   
+
     public partial class GeneralChart : XtraForm
     {
-       
+
         public GeneralChart()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace PharmInventory
 
         private void GeneralReport_Load(object sender, EventArgs e)
         {
-            
+
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
@@ -44,28 +45,28 @@ namespace PharmInventory
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
 
-            
+
             cboYear.Properties.DataSource = Items.AllYears();
-         
+
             cboYear.EditValue = dtCurrent.Year;
             if (cboYear.Properties.Columns.Count > 0)
                 cboYear.Properties.Columns[0].Alignment = DevExpress.Utils.HorzAlignment.Near;
-            
+
         }
 
-        DateTime dtCurrent = new DateTime();
-        int curMont = 0;
-        int curYear = 0;
+        private DateTime dtCurrent = new DateTime();
+        private int curMont = 0;
+        private int curYear = 0;
 
         private void GenerateStockStatusPieChart()
         {
             ReceiveDoc rec = new ReceiveDoc();
-            
+
             //progressBar1.Visible = true;
             chartPie.UseWaitCursor = true;
             chartPie.Series.Clear();
             int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 0;
-            
+
             //int neverRec = rec.CountNeverReceivedItems(storeId);
 
             curYear = Convert.ToInt32(cboYear.EditValue);
@@ -73,39 +74,39 @@ namespace PharmInventory
             //progressBar1.PerformStep();
             Balance bal = new Balance();
             Int64 stockin = bal.CountStockIn(storeId, curMont, curYear);
-           // progressBar1.PerformStep();
-            Int64 stockout =  bal.CountStockOut(storeId, curMont, curYear);
-           // progressBar1.PerformStep();
+            // progressBar1.PerformStep();
+            Int64 stockout = bal.CountStockOut(storeId, curMont, curYear);
+            // progressBar1.PerformStep();
             Int64 overstock = bal.CountOverStock(storeId, curMont, curYear);
-           // progressBar1.PerformStep();
+            // progressBar1.PerformStep();
             Int64 nearEOP = bal.CountNearEOP(storeId, curMont, curYear);
-           // progressBar1.PerformStep();
-            Int64 BelowEOP = bal.CountBelowEOP(storeId,curMont,curYear);
-           // progressBar1.PerformStep();
+            // progressBar1.PerformStep();
+            Int64 BelowEOP = bal.CountBelowEOP(storeId, curMont, curYear);
+            // progressBar1.PerformStep();
             //Int64 belowMin = bal.CountBelowMin(storeId,curMont,curYear);
-           // progressBar1.PerformStep();
-            object[] obj = { stockin, stockout, overstock, nearEOP,BelowEOP };
+            // progressBar1.PerformStep();
+            object[] obj = {stockin, stockout, overstock, nearEOP, BelowEOP};
 
             DataTable dtList = new DataTable();
             dtList.Columns.Add("Type");
             dtList.Columns.Add("Value");
-            dtList.Columns[1].DataType = typeof(Int64);
+            dtList.Columns[1].DataType = typeof (Int64);
 
-            
 
-            object[] oo = {"In Stock",obj[0]};
+
+            object[] oo = {"In Stock", obj[0]};
             dtList.Rows.Add(oo);
 
-            object[] oo2 = { "Stock Out", obj[1] };
+            object[] oo2 = {"Stock Out", obj[1]};
             dtList.Rows.Add(oo2);
 
-            object[] oo3 = { "Over Stock", obj[2] };
+            object[] oo3 = {"Over Stock", obj[2]};
             dtList.Rows.Add(oo3);
 
-            object[] oo4 = { "Near EOP", obj[3] };
+            object[] oo4 = {"Near EOP", obj[3]};
             dtList.Rows.Add(oo4);
 
-            object[] oo5 = { "Below EOP", obj[4] };
+            object[] oo5 = {"Below EOP", obj[4]};
             dtList.Rows.Add(oo5);
 
             //object[] oo6 = { "Below Min", obj[5] };
@@ -113,17 +114,17 @@ namespace PharmInventory
 
             Series ser = new Series("pie", ViewType.Pie3D);
             ser.DataSource = dtList;
-            
+
             ser.ArgumentScaleType = ScaleType.Qualitative;
             ser.ArgumentDataMember = "Type";
             ser.ValueScaleType = ScaleType.Numerical;
-            ser.ValueDataMembers.AddRange(new string[] { "Value" });
+            ser.ValueDataMembers.AddRange(new string[] {"Value"});
             ser.PointOptions.PointView = PointView.ArgumentAndValues;
             ser.LegendText = "Key";
             ser.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
             ser.PointOptions.ValueNumericOptions.Precision = 0;
 
-           // progressBar1.PerformStep();
+            // progressBar1.PerformStep();
             //ser.SeriesPointsSorting = SortingMode.Ascending;
             //ser.SeriesPointsSortingKey = SeriesPointKey.Value_1;
 
@@ -132,11 +133,11 @@ namespace PharmInventory
             //((PieSeriesView)ser.View).ExplodeMode = PieExplodeMode.UseFilters;
             //((PieSeriesView)ser.View).Rotation = 90;
 
-            ((PieSeriesLabel)ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
-            ((PiePointOptions)ser.PointOptions).PointView = PointView.ArgumentAndValues;
-            
+            ((PieSeriesLabel) ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
+            ((PiePointOptions) ser.PointOptions).PointView = PointView.ArgumentAndValues;
 
-            
+
+
             chartPie.Series.Add(ser);
             chartPie.Size = new System.Drawing.Size(1000, 500);
             //progressBar1.PerformStep();
@@ -144,11 +145,11 @@ namespace PharmInventory
             info.LoadAll();
 
             lblHeader.Text = info.HospitalName + " Stock Status summary of year " + curYear + " of " + cboStores.Text;
-           // progressBar1.Visible = false;
+            // progressBar1.Visible = false;
             chartPie.UseWaitCursor = false;
         }
 
-     
+
 
         private void tabPage8_Click(object sender, EventArgs e)
         {
@@ -158,13 +159,13 @@ namespace PharmInventory
         private void cboStores_SelectedValueChanged_1(object sender, EventArgs e)
         {
             if (cboStores.EditValue != null && cboYear.EditValue != null)
-            GenerateStockStatusPieChart();
+                GenerateStockStatusPieChart();
         }
 
         private void cboYear_SelectedValueChanged(object sender, EventArgs e)
         {
-           if(cboStores.EditValue != null && cboYear.EditValue != null)
-            GenerateStockStatusPieChart();
+            if (cboStores.EditValue != null && cboYear.EditValue != null)
+                GenerateStockStatusPieChart();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -175,9 +176,130 @@ namespace PharmInventory
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
-            GenerateStockStatusPieChart();
+            PopulateSStatus1();
+        }
+        private void PopulateSStatus1()
+        {
+            if (curMont != 0 && curYear != 0)
+            {
+                var storeId = Convert.ToInt32(cboStores.EditValue);
+
+                Balance blnc = new Balance();
+                DataTable dtbl = blnc.GetSOH(storeId, curMont, curYear);
+
+                Items itm = new Items();
+                Balance bal = new Balance();
+                ReceiveDoc rec = new ReceiveDoc();
+
+                Programs prog = new Programs();
+                prog.GetProgramByName("Family Planning");
+                DataTable dtItm = itm.GetItemsByProgram(prog.ID);
+                int totalECLS = dtItm.Rows.Count;
+              
+                int stockin = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Normal"
+                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               select m).Count();
+             
+                int stockout = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Stock Out"
+                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                select m).Count();
+            
+                int overstock = (from m in dtbl.AsEnumerable()
+                                 where m["Status"].ToString() == "Over Stocked"
+                                 && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                 select m).Count();
+              
+                int nearEOP = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Near EOP"
+                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               select m).Count();
+             
+                int belowEOP = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Below EOP"
+                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                select m).Count();
+               
+                int freeStockOut = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Stock Out"
+                                    && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                    select m).Count();
+            
+                object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
+                int totalItm = stockin + stockout + nearEOP + overstock;
+
+                decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+             
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(stockout) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(overstock) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(nearEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                int totalFree = itm.CountFreeItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                totalFree = itm.CountVitalItems();
+               //totalFree = itm.CountVitalItems();
+                //percen = ((totalECLS != 0)?(Convert.ToDecimal(eclsStockout) / Convert.ToDecimal(totalECLS)) * 100:0);
+                //percen = Decimal.Round(percen, 0);
+                //lblEclsStock.Text = eclsStockout.ToString() + " (" + percen.ToString("#.0") + "%)"; 
+
+                GenerateStockStatusPieChart(obj);
+            }
+        }
+
+        private void GenerateStockStatusPieChart(Object[] obj)
+        {
+            chartPie.Series.Clear();
+
+            DataTable dtList = new DataTable();
+            dtList.Columns.Add("Type");
+            dtList.Columns.Add("Value");
+            dtList.Columns[1].DataType = typeof(Int64);
+            object[] oo = { "Stock In", obj[0] };
+            dtList.Rows.Add(oo);
+
+            object[] oo2 = { "Stock Out", obj[1] };
+            dtList.Rows.Add(oo2);
+
+            //object[] oo6 = { "Below Min", obj[5] };
+            //dtList.Rows.Add(oo6);
+
+            object[] oo3 = { "OverStock", obj[2] };
+            dtList.Rows.Add(oo3);
+
+            object[] oo4 = { "Near EOP", obj[3] };
+            dtList.Rows.Add(oo4);
+
+            object[] oo5 = { "Below EOP", obj[4] };
+            dtList.Rows.Add(oo5);
+
+
+
+            Series ser = new Series("pie", ViewType.Pie3D);
+            ser.DataSource = dtList;
+
+            ser.ArgumentScaleType = ScaleType.Qualitative;
+            ser.ArgumentDataMember = "Type";
+            ser.ValueScaleType = ScaleType.Numerical;
+            ser.ValueDataMembers.AddRange(new string[] { "Value" });
+            ser.PointOptions.PointView = PointView.Argument;
+            ser.LegendText = "Key";
+
+            ser.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+            ((PieSeriesLabel)ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
+            ((PiePointOptions)ser.PointOptions).PointView = PointView.ArgumentAndValues;
+            ser.PointOptions.ValueNumericOptions.Precision = 0;
+            chartPie.Series.Add(ser);
+            //chartPie.Size = new System.Drawing.Size(500, 300);
         }
 
 
-        }
     }
+}
+
