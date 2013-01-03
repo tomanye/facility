@@ -191,7 +191,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Reason", "Reason")});
             this.cboReasons.Properties.DisplayMember = "Reason";
             this.cboReasons.Properties.DropDownRows = 8;
-            this.cboReasons.Properties.NullText = "Select Adjustment Reason";
+            this.cboReasons.Properties.NullText = "Select Adjustment Reasons";
             this.cboReasons.Properties.ValueMember = "ID";
             this.cboReasons.Size = new System.Drawing.Size(209, 20);
             this.cboReasons.StyleController = this.layoutControl1;
@@ -458,6 +458,11 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.Caption = "Reason";
             this.gridColumn7.FieldName = "Reason";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsColumn.AllowFocus = false;
+            this.gridColumn7.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn7.OptionsColumn.AllowMove = false;
+            this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
             this.gridColumn7.Width = 154;

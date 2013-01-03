@@ -365,7 +365,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 0;
-            this.colItemName.Width = 415;
+            this.colItemName.Width = 367;
             // 
             // gridColumn66
             // 
@@ -396,6 +396,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
+            this.gridColumn4.Width = 92;
             // 
             // gridColumn6
             // 
@@ -412,7 +413,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 131;
+            this.gridColumn6.Width = 137;
             // 
             // gridColumn7
             // 
@@ -427,7 +428,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 3;
-            this.gridColumn7.Width = 66;
+            this.gridColumn7.Width = 74;
             // 
             // gridColumn1
             // 
@@ -441,7 +442,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 4;
-            this.gridColumn1.Width = 136;
+            this.gridColumn1.Width = 131;
             // 
             // gridColumn2
             // 
@@ -458,16 +459,20 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;
-            this.gridColumn3.Width = 72;
+            this.gridColumn3.Width = 93;
             // 
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Balance Amount In Birr";
-            this.gridColumn8.FieldName = "Price";
+            this.gridColumn8.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn8.FieldName = "ReceivedPrice";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 131;
+            this.gridColumn8.Width = 153;
             // 
             // repositoryItemCheckEdit1
             // 
