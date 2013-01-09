@@ -175,7 +175,7 @@ namespace DAL
 			{
 				get
 				{
-					return new SqlParameter("@Cost", SqlDbType.Decimal, 0);
+					return new SqlParameter("@Cost", SqlDbType.VarChar, 50);
 				}
 			}
 			
@@ -517,15 +517,15 @@ namespace DAL
 			}
 		}
 
-		public virtual decimal Cost
+		public virtual string Cost
 	    {
 			get
 	        {
-				return base.Getdecimal(ColumnNames.Cost);
+				return base.Getstring(ColumnNames.Cost);
 			}
 			set
 	        {
-				base.Setdecimal(ColumnNames.Cost, value);
+				base.Setstring(ColumnNames.Cost, value);
 			}
 		}
 
@@ -800,7 +800,7 @@ namespace DAL
 				if(string.Empty == value)
 					this.SetColumnNull(ColumnNames.Cost);
 				else
-					this.Cost = base.SetdecimalAsString(ColumnNames.Cost, value);
+					this.Cost = base.SetstringAsString(ColumnNames.Cost, value);
 			}
 		}
 

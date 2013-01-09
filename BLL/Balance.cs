@@ -823,7 +823,7 @@ namespace BLL
 
         public DataTable GetBinCard(int storeID, int itemID, int year)
         {
-            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@StoreID", storeID);
             ld.Add("@ItemID", itemID);
             ld.Add("@Year", year);

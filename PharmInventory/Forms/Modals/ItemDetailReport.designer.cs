@@ -144,6 +144,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtBBalance = new DevExpress.XtraEditors.TextEdit();
             this.label28 = new System.Windows.Forms.Label();
@@ -307,7 +309,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 88;
+            this.gridColumn7.Width = 100;
             // 
             // gridColumn8
             // 
@@ -326,7 +328,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn8.OptionsFilter.AllowFilter = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 3;
-            this.gridColumn8.Width = 76;
+            this.gridColumn8.Width = 81;
             // 
             // txtItemName
             // 
@@ -918,7 +920,9 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn11,
             this.gridColumn12,
             this.gridColumn13,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn5,
+            this.gridColumn14});
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Honeydew;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -964,7 +968,7 @@ namespace PharmInventory.Forms.Modals
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 0;
-            this.colItemName.Width = 76;
+            this.colItemName.Width = 86;
             // 
             // gridColumn6
             // 
@@ -979,7 +983,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 1;
-            this.gridColumn6.Width = 79;
+            this.gridColumn6.Width = 90;
             // 
             // gridColumn10
             // 
@@ -996,8 +1000,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 4;
-            this.gridColumn10.Width = 84;
+            this.gridColumn10.VisibleIndex = 6;
+            this.gridColumn10.Width = 90;
             // 
             // gridColumn11
             // 
@@ -1014,8 +1018,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn11.OptionsColumn.ReadOnly = true;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 5;
-            this.gridColumn11.Width = 101;
+            this.gridColumn11.VisibleIndex = 7;
+            this.gridColumn11.Width = 105;
             // 
             // gridColumn12
             // 
@@ -1028,8 +1032,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn12.OptionsColumn.ReadOnly = true;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 6;
-            this.gridColumn12.Width = 104;
+            this.gridColumn12.VisibleIndex = 8;
+            this.gridColumn12.Width = 129;
             // 
             // gridColumn13
             // 
@@ -1044,8 +1048,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn13.OptionsColumn.ReadOnly = true;
             this.gridColumn13.OptionsFilter.AllowFilter = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 7;
-            this.gridColumn13.Width = 107;
+            this.gridColumn13.VisibleIndex = 9;
+            this.gridColumn13.Width = 141;
             // 
             // gridColumn9
             // 
@@ -1059,8 +1063,26 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 168;
+            this.gridColumn9.VisibleIndex = 10;
+            this.gridColumn9.Width = 191;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Loss (-)";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 69;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Adjustment (+)";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 5;
+            this.gridColumn14.Width = 114;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -1481,7 +1503,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 188F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -2262,6 +2284,8 @@ namespace PharmInventory.Forms.Modals
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.ComboBoxEdit cboFiscalYear;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
 
 
 

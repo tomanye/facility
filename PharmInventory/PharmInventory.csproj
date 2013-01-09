@@ -123,10 +123,6 @@
     <Reference Include="CalendarLib">
       <HintPath>Common DLLs\CalendarLib.dll</HintPath>
     </Reference>
-    <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Users\Tedy\Desktop\DAL.dll</HintPath>
-    </Reference>
     <Reference Include="DevExpress.BonusSkins.v12.2, Version=12.2.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -657,6 +653,7 @@
     <Content Include="Scripts\30_vwGetReceivedItemsBatchNo.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\31_AlterItemsTable.sql" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1041,6 +1038,10 @@
       <Project>{69805B41-7B24-48D7-9A7A-F6018F4A6087}</Project>
       <Name>ConnectionStringManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{2B12B6DD-2142-492F-A990-78F5EB3F840A}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StockoutIndexBuilder.cs\StockoutIndexBuilder.csproj">
       <Project>{9AA5EB03-5F0A-4C22-A474-EF289057B3C5}</Project>
       <Name>StockoutIndexBuilder</Name>
@@ -1386,52 +1387,52 @@
   <ItemGroup>
     <PublishFile Include="DevExpress.BonusSkins.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Data.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.OfficeSkins.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.PivotGrid.v12.2.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraPivotGrid.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

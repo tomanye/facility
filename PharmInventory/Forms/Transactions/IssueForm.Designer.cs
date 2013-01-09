@@ -449,6 +449,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // ckStockOut
             // 
+            this.ckStockOut.Enabled = false;
             this.ckStockOut.Location = new System.Drawing.Point(40, 79);
             this.ckStockOut.Name = "ckStockOut";
             this.ckStockOut.Properties.Caption = "Show Stocked Out";

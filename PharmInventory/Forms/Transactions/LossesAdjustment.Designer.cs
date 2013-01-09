@@ -74,6 +74,8 @@ namespace PharmInventory
             this.dtAdjustDate = new CalendarLib.DateTimePickerEx();
             this.cboStoreConfi = new System.Windows.Forms.ComboBox();
             this.txtRefNo = new DevExpress.XtraEditors.TextEdit();
+            this.txtRemark = new DevExpress.XtraEditors.TextEdit();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.AdjustmentGrid = new DevExpress.XtraGrid.GridControl();
             this.gridAdjView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -106,8 +108,6 @@ namespace PharmInventory
             this.gridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.txtRemark = new DevExpress.XtraEditors.TextEdit();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -157,6 +157,7 @@ namespace PharmInventory
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdjustmentGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAdjView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -167,7 +168,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
@@ -720,6 +720,27 @@ namespace PharmInventory
             conditionValidationRule2.ErrorText = "This value is not valid";
             this.dxValidation.SetValidationRule(this.txtRefNo, conditionValidationRule2);
             // 
+            // txtRemark
+            // 
+            this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtRemark.Location = new System.Drawing.Point(78, 574);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(518, 20);
+            this.txtRemark.StyleController = this.layoutControl2;
+            this.txtRemark.TabIndex = 4;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
+            this.btnCancel.Location = new System.Drawing.Point(942, 584);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(97, 22);
+            this.btnCancel.StyleController = this.layoutControl2;
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // AdjustmentGrid
             // 
             this.AdjustmentGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1104,27 +1125,6 @@ namespace PharmInventory
             this.gridColumn9.Visible = true;
             this.gridColumn9.Width = 145;
             // 
-            // txtRemark
-            // 
-            this.txtRemark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRemark.Location = new System.Drawing.Point(78, 574);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(518, 20);
-            this.txtRemark.StyleController = this.layoutControl2;
-            this.txtRemark.TabIndex = 4;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnCancel.Location = new System.Drawing.Point(942, 584);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(97, 22);
-            this.btnCancel.StyleController = this.layoutControl2;
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // layoutControlGroup4
             // 
             this.layoutControlGroup4.CustomizationFormText = "Root";
@@ -1379,6 +1379,7 @@ namespace PharmInventory
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdjustmentGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridAdjView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -1389,7 +1390,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();

@@ -255,7 +255,7 @@
             // 
             this.gridColumn12.Caption = "PPPS";
             this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn12.FieldName = "QtyPerPack";
+            this.gridColumn12.FieldName = "StockCodeDACA";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
@@ -266,8 +266,6 @@
             // gridColumn13
             // 
             this.gridColumn13.Caption = "Beginning Balance";
-            this.gridColumn13.DisplayFormat.FormatString = "#,##0.0";
-            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "gridColumn13";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
@@ -281,8 +279,6 @@
             // gridColumn14
             // 
             this.gridColumn14.Caption = "Received";
-            this.gridColumn14.DisplayFormat.FormatString = "#,##0.0";
-            this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn14.FieldName = "gridColumn14";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
@@ -296,7 +292,7 @@
             // gridColumn15
             // 
             this.gridColumn15.Caption = "Losses/Adjustments";
-            this.gridColumn15.DisplayFormat.FormatString = "#,##0.0";
+            this.gridColumn15.DisplayFormat.FormatString = "#,##0";
             this.gridColumn15.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn15.FieldName = "gridColumn15";
             this.gridColumn15.Name = "gridColumn15";
@@ -311,7 +307,7 @@
             // gridColumn16
             // 
             this.gridColumn16.Caption = "Ending Balance";
-            this.gridColumn16.DisplayFormat.FormatString = "#,##0.0";
+            this.gridColumn16.DisplayFormat.FormatString = "#,##0";
             this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn16.FieldName = "gridColumn16";
             this.gridColumn16.Name = "gridColumn16";
@@ -326,7 +322,7 @@
             // gridColumn17
             // 
             this.gridColumn17.Caption = "Consumption";
-            this.gridColumn17.DisplayFormat.FormatString = "#,##0.0";
+            this.gridColumn17.DisplayFormat.FormatString = "#,##0";
             this.gridColumn17.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn17.FieldName = "gridColumn17";
             this.gridColumn17.Name = "gridColumn17";

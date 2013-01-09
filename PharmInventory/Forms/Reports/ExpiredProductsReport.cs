@@ -34,10 +34,13 @@ namespace PharmInventory.Forms.Reports
 
             DisposalReasons rec = new DisposalReasons();
             DataTable dtDis = rec.GetAvailableReasons();
-            object[] objRec = { 0, "All Reasons", "" };
-            dtDis.Rows.Add(objRec);
+            //object[] objRec = { 0, "All Reasons", "" };
+            //dtDis.Rows.Add(objRec);
             cboReasons.Properties.DataSource = dtDis;
-            cboReasons.EditValue = 1;
+            cboReasons.Properties.DisplayMember = "Reason";
+            cboReasons.Properties.ValueMember = "ID";
+             cboReasons.ItemIndex = 0;
+            //cboStores.ItemIndex = 0;
 
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
@@ -97,13 +100,16 @@ namespace PharmInventory.Forms.Reports
         {
             if(cboStores.EditValue != null)
             {
-                int year = Convert.ToInt32(cmbYear.EditValue);
-                int reasonId = ((cboReasons.EditValue != null) ? Convert.ToInt32(cboReasons.EditValue) : 0);
+                //int year = Convert.ToInt32(cmbYear.EditValue);
+                //int reasonId;
+                //if (cboReasons.EditValue == null) reasonId = 0;
+                //else reasonId = Convert.ToInt32(cboReasons.EditValue);
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
                 //DataTable dtItem = ((_selectedType == "Drug") ? itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue)) : itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
                 //DataTable dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), year, reasonId);
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(lkCommodityTypes.EditValue));
+               // DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToInt32(cboReasons.EditValue));
                 PopulateItemList(dtItem);
             }
         }
@@ -194,7 +200,7 @@ namespace PharmInventory.Forms.Reports
             {
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(lkCommodityTypes.EditValue)) ;//
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToInt32(cboReasons.EditValue));//
                 PopulateItemList(dtItem);
                 PopulateCatTree(_selectedType);
             }
@@ -245,11 +251,7 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 50, 200, 100), BorderSide.None);
         }
 
-        private void cboReasons_EditValueChanged(object sender, EventArgs e)
-        {
-            if(cboReasons.EditValue !=null)
-            gridItemListView.ActiveFilterString = String.Format("ReasonId={0}", (int)cboReasons.EditValue);
-        }
+
 
     }
 }

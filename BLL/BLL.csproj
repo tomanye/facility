@@ -96,8 +96,9 @@
     <Reference Include="EthiopianDate">
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
     </Reference>
-    <Reference Include="MyGeneration.dOOdads">
-      <HintPath>..\DAL\bin\Debug\MyGeneration.dOOdads.dll</HintPath>
+    <Reference Include="MyGeneration.dOOdads, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MyGeneration.dOOdads.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

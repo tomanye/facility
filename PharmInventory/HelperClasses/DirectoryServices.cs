@@ -55,20 +55,20 @@ namespace PharmInventory.HelperClasses
             RefreshUnits(soapClient, previousVersion);
             RefreshVEN(soapClient, previousVersion);
             RefreshABC(soapClient, previousVersion);
-            //RefreshSuppliers(soapClient, previousVersion);
+           // //RefreshSuppliers(soapClient, previousVersion);
             RefreshDosageForms(soapClient, previousVersion);
-            
+
             RefreshTypes(soapClient, previousVersion);
             RefreshDrugCategory(soapClient, previousVersion);
             RefreshSupplyCategory(soapClient, previousVersion);
             RefreshDrugSubCategory(soapClient, previousVersion);
 
-           // RefreshPrograms(soapClient,previousVersion);
+           //// RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
-            //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
+           // //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
             RefreshItems(soapClient, previousVersion, 1);
             RefreshItems(soapClient, previousVersion, 2);
-
+           
             RefreshDrugItemCategory(soapClient, previousVersion);
             RefreshItemSupplyCategory(soapClient, previousVersion);
 
@@ -743,8 +743,7 @@ namespace PharmInventory.HelperClasses
             }
             //XtraMessageBox.Show("Drug Category\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
-
-
+       
         private static void FillDosageFormAttributes(DirectoryService.DosageForm dsDosageForm, DosageForm localDosageForm)
         {
             localDosageForm.Form = dsDosageForm.Form;
@@ -1131,7 +1130,7 @@ namespace PharmInventory.HelperClasses
             if (dsItem.VEN.HasValue && dsItem.VEN.Value != 0) localItem.VEN = dsItem.VEN.Value;
             if (dsItem.ABC.HasValue && dsItem.ABC.Value != 0) localItem.ABC = dsItem.ABC.Value;
             if (dsItem.IsDeleted.HasValue) localItem.IsDiscontinued = dsItem.IsDeleted.Value;
-            if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value; //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
+            if (dsItem.QtyPerPack.HasValue) localItem.Cost = dsItem.QtyPerPack.Value.ToString(); //We are using the Cost Column to store the Preferred Qty Per Pack for the item.
             if (dsItem.EDL.HasValue) localItem.EDL = dsItem.EDL.Value;
             if (dsItem.Pediatric.HasValue) localItem.Pediatric = dsItem.Pediatric.Value;
             //localItem.IsFree = true;
@@ -1246,7 +1245,7 @@ namespace PharmInventory.HelperClasses
                 else
                     bv.ABC = 1;
                 if (v.QtyPerPack.HasValue)
-                    bv.Cost = v.QtyPerPack.Value;
+                    bv.Cost = v.QtyPerPack.Value.ToString();
                 if (v.EDL.HasValue)
                     bv.EDL = v.EDL.Value;
                 if (v.Pediatric.HasValue)

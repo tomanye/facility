@@ -18,4 +18,5 @@ namespace ConnectionStringManager
             Application.Run(new ConnectionStringManager(regKey, previousConnectionStringRegKey));
         }
     }
+ 
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Data;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
@@ -45,6 +47,9 @@ namespace PharmInventory.Forms.Modals
             DataTable dtItem = itm.GetItemById(_itemId);
             txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["DosageForm"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
             ckExculed.Checked = itm.IsInHospitalList;
+            txtText.Text = itm.StockCodeDACA ?? string.Empty;
+            txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
+           
             try
             {
                 if (dtItem.Rows[0]["ABC"].ToString() == "A")
@@ -128,6 +133,18 @@ namespace PharmInventory.Forms.Modals
             PopulateFields();
         }
 
+        private string ValidateFields()
+        {
+            string valid = "true";
+             if (txtQuantityPerPack.Text != "" && txtText.Text != "")
+                    valid = "true";
+             else if (txtQuantityPerPack.Text !="" && txtText.Text == "")
+             {
+                 valid = "Prefered pack text is required";
+                 return valid;
+             }
+            return valid;
+        }
         /// <summary>
         /// Closes the form
         /// </summary>
@@ -164,8 +181,20 @@ namespace PharmInventory.Forms.Modals
 
             if (rdV.Checked || rdE.Checked || rdN.Checked)
                 itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
-            itm.IsInHospitalList = ckExculed.Checked;
-            itm.Save();
+          
+                itm.IsInHospitalList = ckExculed.Checked;
+            string valid = ValidateFields();
+            if (valid == "true")
+            {
+                itm.StockCodeDACA = txtText.Text;
+                itm.Cost = txtQuantityPerPack.Text;
+                itm.Save();
+            }
+            else
+            {
+                XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
 
 
             //TODO: To add categories
@@ -252,5 +281,7 @@ namespace PharmInventory.Forms.Modals
         {
 
         }
+
+       
     }
 }

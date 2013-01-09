@@ -196,7 +196,7 @@ namespace PharmInventory.Forms.Reports
             this.cboReasons.Size = new System.Drawing.Size(209, 20);
             this.cboReasons.StyleController = this.layoutControl1;
             this.cboReasons.TabIndex = 33;
-            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboReasons_EditValueChanged);
+            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // xpButton1
             // 
