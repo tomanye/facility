@@ -414,10 +414,10 @@ namespace PharmInventory.Forms.Transactions
       
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            if (ckStockOut.Checked)
-                gridItemChoiceView.ActiveFilterString = "[Status] = 'Stock Out' AND [FullItemName] Like '" +
+            if (chkExcludeStockedOut.Checked)
+                gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out' AND [FullItemName] Like '" +
                                                         txtItemName.Text + "%'";
-            else if (!ckStockOut.Checked)
+            else if (!chkExcludeStockedOut.Checked)
             {
                 //gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out' AND [FullItemName] Like '" +
                 //                                        txtItemName.Text + "%'";
@@ -878,23 +878,31 @@ namespace PharmInventory.Forms.Transactions
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            if (chkExcludeStockedOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString =
+                    string.Format("[Status] !='Stock Out' and TypeID ={0})",Convert.ToInt32(lkCategories.EditValue));
+            }
+            else if (!chkExcludeStockedOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            }
         }
-
 
 
         private void chkExcludeStockedOut_CheckedChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.Columns[0].Visible = !chkExcludeStockedOut.Checked;
-            if (chkExcludeStockedOut.Checked) gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
-            else gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+           // gridItemChoiceView.Columns[0].Visible = !chkExcludeStockedOut.Checked;
+            if (chkExcludeStockedOut.Checked) 
+            {
+                gridItemChoiceView.ActiveFilterString =
+                    string.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            }
+            else if (!chkExcludeStockedOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            }
         }
-
-       
-
-
-
-
        
 
     }
