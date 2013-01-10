@@ -653,8 +653,7 @@
     <Content Include="Scripts\30_vwGetReceivedItemsBatchNo.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\31_AlterItemsTable.sql" />
-    <Content Include="Scripts\32_AltervwGetAllItems.sql" />
+    <Content Include="Scripts\32_AllProdsNov20.sql" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1227,7 +1226,7 @@
     <Content Include="Scripts\18_DisposalDeleteInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\19_DisposalDeleteLoadAll.sql">
+    <Content Include="Scripts\19_ALTER TABLE Items.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\20_DisposalDeleteLoadByPrimaryKey.sql">
@@ -1287,7 +1286,7 @@
     <Content Include="Scripts\04_GetMonthlyConsumptionByUnits.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\05_AllProdsNov20.sql">
+    <Content Include="Scripts\05_AltervwGetAllItems.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\06_SupplyCategory_ID_AutoNumberRemove.sql">
