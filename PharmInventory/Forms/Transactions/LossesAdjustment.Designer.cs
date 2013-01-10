@@ -280,6 +280,7 @@ namespace PharmInventory
             this.txtItemName.Size = new System.Drawing.Size(328, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 2;
+            
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged_1);
             // 
             // xpButton1

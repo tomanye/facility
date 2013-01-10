@@ -459,9 +459,9 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetRecievedItemsWithBalanceForStore(int storeID)
+        public DataTable GetRecievedItemsWithBalanceForStore(int storeID,int typeID)
         {
-            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and QuantityLeft > 0", storeID);
+            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, rd.Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft > 0", storeID,typeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

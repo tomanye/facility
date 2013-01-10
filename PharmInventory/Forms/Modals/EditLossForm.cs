@@ -39,7 +39,7 @@ namespace PharmInventory.Forms.Modals
         private void btnUpdateLoss_Click(object sender, EventArgs e)
         {
             var disposal = new ReceiveDoc();
-            disposal.GetRecievedItemsWithBalanceForStore(_storeid);
+         //   disposal.GetRecievedItemsWithBalanceForStore(_storeid);
             if (disposal.ExpDate > DateTime.Today)
             {
                 disposal.AddNew();
