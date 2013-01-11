@@ -29,11 +29,11 @@ namespace PharmInventory.Forms.Transactions
     /// </summary>
     public partial class IssueForm : XtraForm
     {
-        private DataTable _allSelectedItemsFromAllStores;   
+        private DataTable _allSelectedItemsFromAllStores;
         public IssueForm()
         {
             InitializeComponent();
-         }
+        }
 
         #region Members
         DataTable _dtRec = new DataTable();
@@ -54,23 +54,21 @@ namespace PharmInventory.Forms.Transactions
             PopulateCatTree(_selectedType);
             Stores stor = new Stores();
             stor.GetActiveStores();
-            //storebindingSource.DataSource=stor.DefaultView;
-            cboStores.Properties.DataSource = stor.DefaultView;
-           
-            //cboStores.Properties.DisplayMember = "StoreName";
-            //cboStores.Properties.ValueMember = "ID";
+            storebindingSource.DataSource = stor.DefaultView;
+            cboStores.Properties.DataSource = storebindingSource.DataSource;
+            cboStores.ItemIndex = 0;
+            cboStores.Properties.DisplayMember = "StoreName";
+            cboStores.Properties.ValueMember = "ID";
             cboStoreConf.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCategories.ItemIndex = 0;
-            cboStores.ItemIndex = 0;
-           
 
             int userID = MainWindow.LoggedinId;
             User us = new User();
             us.LoadByPrimaryKey(userID);
             txtIssuedBy.Text = us.FullName;
 
-          
+
         }
 
         private void PopulateCatTree(String type)
@@ -133,9 +131,9 @@ namespace PharmInventory.Forms.Transactions
         /// <returns>True - If input is valid, False - If input is invalid</returns>
         private bool Validation()
         {
-             if (_tabPage == 0)
+            if (_tabPage == 0)
             {
-                
+
                 if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
                 {
                     PopulateGridList();
@@ -172,7 +170,7 @@ namespace PharmInventory.Forms.Transactions
         /// <summary>
         /// Populates the grid based on the selection.
         /// </summary>
-        
+
         private void PopulateGridList()
         {
             if (issueGrid.DataSource != null)
@@ -194,7 +192,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Unit", "Store SOH", "Dispatchable", "MR Issue Qty", 
                                    "DU Remaining SOH", "DU AMC", "Recommended Qty", "Pack Qty", "Qty Per Pack", 
-                                   "Requested Qty", "MR DU SOH","Store Name"};
+                                   "Requested Qty", "MR DU SOH"};
                 foreach (string col in str)
                 {
                     _dtRecGrid.Columns.Add(col);
@@ -204,55 +202,47 @@ namespace PharmInventory.Forms.Transactions
             int count = 1;
             Int64 quantity = 0;
             int storeId = Convert.ToInt32(cboStores.EditValue);
-            
+
             dtIssueDate.Value = DateTime.Now;
             dtIssueDate.CustomFormat = "MM/dd/yyyy";
-            DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text); 
+            DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
             int storeID = Convert.ToInt32(cboStores.EditValue);
-            if(_dtSelectedTable !=null)
-            foreach (DataRow lst in _dtSelectedTable.Rows)//(ListViewItem lst in lstItem.Items)
-            {
-                int itmID = Convert.ToInt32(lst["ID"]);
-                DataTable dtExp = itm.GetExpiredItemsByID(Convert.ToInt32(cboStores.EditValue), itmID);
-                DataTable dtItm = itm.GetItemById(itmID);
-                Int64 expAmount = 0;
-
-                foreach (DataRow dr in dtExp.Rows)
+            if (_dtSelectedTable != null)
+                foreach (DataRow lst in _dtSelectedTable.Rows)//(ListViewItem lst in lstItem.Items)
                 {
-                    expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), Convert.ToInt32(cboStores.EditValue));
-                    quantity = Convert.ToInt64(dr["Quantity"]) - expAmount;//+ adjQuant - issuedQuant - lostQuant 
-                }
-                Int64 soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
-                Int64 dispatchable = Convert.ToInt64(lst["Dispatchable"]);
-                
+                    int itmID = Convert.ToInt32(lst["ID"]);
+                    DataTable dtExp = itm.GetExpiredItemsByID(Convert.ToInt32(cboStores.EditValue), itmID);
+                    DataTable dtItm = itm.GetItemById(itmID);
+                    Int64 expAmount = 0;
+
+                    foreach (DataRow dr in dtExp.Rows)
+                    {
+                        expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), Convert.ToInt32(cboStores.EditValue));
+                        quantity = Convert.ToInt64(dr["Quantity"]) - expAmount;//+ adjQuant - issuedQuant - lostQuant 
+                    }
+                    Int64 soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
+                    Int64 dispatchable = Convert.ToInt64(lst["Dispatchable"]);
 
 
-                string itemName = lst["FullItemName"].ToString();
-                object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0,cboStores.Text};
 
-               
-                if (expAmount < soh && quantity < soh)
-                {
-                    _dtRecGrid.Rows.Add(obj);
-                    count++;
+                    string itemName = lst["FullItemName"].ToString();
+                    object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
+                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0};
+
+
+                    if (expAmount < soh && quantity < soh)
+                    {
+                        _dtRecGrid.Rows.Add(obj);
+                        count++;
+                    }
+                    else
+                    {
+                        ResetValues();
+                        XtraMessageBox.Show("You are tring to issue an Expired item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        tabControl1.TabIndex = 0;
+                        break;
+                    }
                 }
-                if (expAmount == soh && expAmount!=0)
-                {
-                    string output = String.Format("{0} is Expired!", itemName);
-                    XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    tabControl1.TabIndex = 0;
-                    break;
-                }
-                else
-                {
-                    ResetValues();
-                    string output= String.Format("{0} is stocked out!", itemName);
-                    XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    tabControl1.TabIndex = 0;
-                    break;
-                }
-            }
 
             issueGrid.DataSource = _dtRecGrid;
             cboStoreConf.EditValue = cboStores.EditValue;
@@ -411,19 +401,31 @@ namespace PharmInventory.Forms.Transactions
             }
         }
 
-      
+        private void ckSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            //foreach (ListViewItem lst in lstItem.Items)
+            //{
+            //    lst.Checked = ckSelectAll.Checked;
+            //}
+
+            //if (ckSelectAll.Checked)
+            //{
+            //    ckSelectAll.Text = "UnSelect All";
+            //}
+            //else
+            //{
+            //    ckSelectAll.Text = "Select All";
+            //}
+        }
+
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            if (chkExcludeStockedOut.Checked)
-                gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out' AND [FullItemName] Like '" +
-                                                        txtItemName.Text + "%'";
-            else if (!chkExcludeStockedOut.Checked)
+            if (ckStockOut.Checked)
+                gridItemChoiceView.ActiveFilterString = "[Status] = 'Stock Out' AND [FullItemName] Like '" + txtItemName.Text + "%'";
+            else if (!ckStockOut.Checked)
             {
-                //gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out' AND [FullItemName] Like '" +
-                //                                        txtItemName.Text + "%'";
-                gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",
-                                                                      txtItemName.Text,
-                                                                      (int) (lkCategories.EditValue ?? 0));
+                gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ",
+                                                                      txtItemName.Text, (int) lkCategories.EditValue);
             }
         }
 
@@ -487,7 +489,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            Dictionary<int, long> confirmedItemsQuantity =new Dictionary<int, long>();
+            Dictionary<int, long> confirmedItemsQuantity = new Dictionary<int, long>();
             List<int> confirmedItems = new List<int>();
             string valid = ValidateFields();
             if (valid == "true")
@@ -546,7 +548,7 @@ namespace PharmInventory.Forms.Transactions
                             confirmedItemsQuantity[itemId] += recDoc.QuantityLeft;
                         else
                         {
-                            confirmedItemsQuantity.Add(itemId, recDoc.QuantityLeft);    
+                            confirmedItemsQuantity.Add(itemId, recDoc.QuantityLeft);
                         }
                         recDoc.Save();
                         //Log Activity
@@ -559,9 +561,9 @@ namespace PharmInventory.Forms.Transactions
                 // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
                 // Refresh AMC
                 var storeId = Convert.ToInt32(cboStores.EditValue);
-                
+
                 StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
-                
+
             }
             else
             {
@@ -613,8 +615,7 @@ namespace PharmInventory.Forms.Transactions
         {
             gridItemChoiceView.Columns[0].Visible = !ckStockOut.Checked;
 
-            if (ckStockOut.Checked) gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
-            else gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            gridItemChoiceView.ActiveFilterString = ckStockOut.Checked ? "[Status] = 'Stock Out'" : "[Status] != 'Stock Out'";
         }
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
@@ -639,7 +640,24 @@ namespace PharmInventory.Forms.Transactions
             ////printableComponentLink2.PrintDlg();
         }
 
-      
+        private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            //DateTime xx = dtIssueDate.Value;
+            //dtIssueDate.Value = DateTime.Now; //Commented so that the issue date and the pick list printing date will be the same.
+            dtIssueDate.CustomFormat = "MM/dd/yyyy";
+            DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
+            //dtIssueDate.Value = xx;
+            string[] header = { "Pick List ", "Date: " + dtCurrent.ToShortDateString(), " Ref No: " + txtConfRef.Text, "From: " + txtStore.Text, "To: " + txtIssuedTo.Text };
+            printableComponentLink2.PageHeaderFooter = header;
+            printableComponentLink2.Landscape = true;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(20, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(20, 20, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(20, 40, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(300, 20, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(300, 40, 200, 100), BorderSide.None);
+        }
+
         private void cboReceivingUnits_SelectedValueChanged(object sender, EventArgs e)
         {
             DataTable issGrid = (DataTable)issueGrid.DataSource;
@@ -701,12 +719,23 @@ namespace PharmInventory.Forms.Transactions
             PopulateItemList();
         }
 
+        //private void gridItemChoiceView_RowClick(object sender, RowClickEventArgs e)
+        //{
+        //    GridView view = sender as GridView;
+        //    if (view != null)
+        //    {
+        //        DataRow dr = view.GetFocusedDataRow();
+        //        dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) ? true : !Convert.ToBoolean(dr["IsSelected"])); // true;
+        //    }
+        //    OnItemCheckedChanged(new object(), new EventArgs());
+        //}
 
         private void OnItemCheckedChanged(object sender, EventArgs e)
         {
+            //Commented out by tedy
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
 
-            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
+            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
 
             if (b)
             {
@@ -742,9 +771,10 @@ namespace PharmInventory.Forms.Transactions
 
         private void gridItemChoiceView_RowClick_1(object sender, RowClickEventArgs e)
         {
+            GridView view = sender as GridView;
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"]));
-            dr.EndEdit();
+            dr.EndEdit();//added by tedy
             OnItemCheckedChanged(new object(), new EventArgs());
         }
 
@@ -823,7 +853,15 @@ namespace PharmInventory.Forms.Transactions
             con.ShowDialog();
         }
 
-       private void bw_DoWork(object sender, DoWorkEventArgs e)
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        {
+            //if (e.Info.IsRowIndicator)
+            //{
+            //    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            //}
+        }
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             int storeId = Convert.ToInt32(e.Argument);
             dtIssueDate.Value = DateTime.Now;
@@ -833,7 +871,13 @@ namespace PharmInventory.Forms.Transactions
             e.Result = bal.ItemListToIssue(storeId, dtCurrent, _selectedType, bw);
         }
 
-     
+        private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //progressBarControl1.Properties.Maximum = 100;
+            //progressBarControl1.EditValue = e.ProgressPercentage;
+            //progressBarControl1.PerformStep();
+        }
+
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             DataTable dtList;
@@ -842,9 +886,8 @@ namespace PharmInventory.Forms.Transactions
             {
                 _dtSelectedTable = dtList.Clone();
             }
-            //gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue)); 
-            //gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
+            gridItemChoiceView.ActiveFilterString = "";
+            gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
             //progressBarControl1.Visible = false;
         }
 
@@ -861,10 +904,18 @@ namespace PharmInventory.Forms.Transactions
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-           // StoreID = Convert.ToInt32(cboStores.EditValue);
+            // StoreID = Convert.ToInt32(cboStores.EditValue);
             //gridItemChoiceView_RowClick_1(object sender, RowClickEventArgs e)
-           // PopulateGridList();
+            // PopulateGridList();
+        }
 
+        private void repositoryItemButtonEdit3_Click(object sender, EventArgs e)
+        {
+            DataRow dr = issueGridView.GetDataRow(issueGridView.GetSelectedRows()[0]);
+            if (dr != null)
+            {
+                dr.Delete();
+            }
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
@@ -880,30 +931,38 @@ namespace PharmInventory.Forms.Transactions
         {
             if (chkExcludeStockedOut.Checked)
             {
-                gridItemChoiceView.ActiveFilterString =
-                    string.Format("[Status] !='Stock Out' and TypeID ={0})",Convert.ToInt32(lkCategories.EditValue));
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
             else if (!chkExcludeStockedOut.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
+            else if(ckStockOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            }
+            else if(!ckStockOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            }
         }
-
+        private void toolTipController1_BeforeShow(object sender, DevExpress.Utils.ToolTipControllerShowEventArgs e)
+        {
+            //
+        }
 
         private void chkExcludeStockedOut_CheckedChanged(object sender, EventArgs e)
         {
-           // gridItemChoiceView.Columns[0].Visible = !chkExcludeStockedOut.Checked;
-            if (chkExcludeStockedOut.Checked) 
+            if (chkExcludeStockedOut.Checked)
             {
-                gridItemChoiceView.ActiveFilterString =
-                    string.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
             else if (!chkExcludeStockedOut.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
         }
-       
+
 
     }
 }

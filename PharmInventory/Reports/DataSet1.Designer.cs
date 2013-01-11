@@ -338,6 +338,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnStockCodeDACA;
             
+            private global::System.Data.DataColumn columnQtyPerPack;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable1DataTable() {
@@ -469,6 +471,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QtyPerPackColumn {
+                get {
+                    return this.columnQtyPerPack;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -504,7 +514,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string StockCode, string FullItemName, string BeginingBalance, int SOH, string Issued, string Received, string Quantity, string Max, string LossAdj, string DaysOutOfStock, int MaxStockQty, string StockCodeDACA) {
+            public DataTable1Row AddDataTable1Row(string StockCode, string FullItemName, string BeginingBalance, int SOH, string Issued, string Received, string Quantity, string Max, string LossAdj, string DaysOutOfStock, int MaxStockQty, string StockCodeDACA, string QtyPerPack) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StockCode,
@@ -518,7 +528,8 @@ namespace PharmInventory.Reports {
                         LossAdj,
                         DaysOutOfStock,
                         MaxStockQty,
-                        StockCodeDACA};
+                        StockCodeDACA,
+                        QtyPerPack};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -553,6 +564,7 @@ namespace PharmInventory.Reports {
                 this.columnDaysOutOfStock = base.Columns["DaysOutOfStock"];
                 this.columnMaxStockQty = base.Columns["MaxStockQty"];
                 this.columnStockCodeDACA = base.Columns["StockCodeDACA"];
+                this.columnQtyPerPack = base.Columns["QtyPerPack"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -582,6 +594,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnMaxStockQty);
                 this.columnStockCodeDACA = new global::System.Data.DataColumn("StockCodeDACA", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStockCodeDACA);
+                this.columnQtyPerPack = new global::System.Data.DataColumn("QtyPerPack", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyPerPack);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1149,6 +1163,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QtyPerPack {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.QtyPerPackColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyPerPack\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.QtyPerPackColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStockCodeNull() {
                 return this.IsNull(this.tableDataTable1.StockCodeColumn);
             }
@@ -1289,6 +1319,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetStockCodeDACANull() {
                 this[this.tableDataTable1.StockCodeDACAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQtyPerPackNull() {
+                return this.IsNull(this.tableDataTable1.QtyPerPackColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQtyPerPackNull() {
+                this[this.tableDataTable1.QtyPerPackColumn] = global::System.Convert.DBNull;
             }
         }
         

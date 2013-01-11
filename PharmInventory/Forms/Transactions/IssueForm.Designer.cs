@@ -431,6 +431,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // chkExcludeStockedOut
             // 
+            this.chkExcludeStockedOut.Enabled = false;
             this.chkExcludeStockedOut.Location = new System.Drawing.Point(208, 79);
             this.chkExcludeStockedOut.Name = "chkExcludeStockedOut";
             this.chkExcludeStockedOut.Properties.Caption = "Exclude Stocked Out";
@@ -449,7 +450,6 @@ namespace PharmInventory.Forms.Transactions
             // 
             // ckStockOut
             // 
-            this.ckStockOut.Enabled = false;
             this.ckStockOut.Location = new System.Drawing.Point(40, 79);
             this.ckStockOut.Name = "ckStockOut";
             this.ckStockOut.Properties.Caption = "Show Stocked Out";

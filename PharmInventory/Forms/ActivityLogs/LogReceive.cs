@@ -33,8 +33,8 @@ namespace PharmInventory.Forms.ActivityLogs
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
 
-            Supplier sup = new Supplier();
-            DataTable dtSup = sup.GetSuppliersWithTransaction();
+            var sup = new Supplier();
+            var dtSup = sup.GetSuppliersWithTransaction();
             cboSupplier.Properties.DataSource = dtSup;
             cboSupplier.ItemIndex = -1;
             cboSupplier.Text = "Select Supplier";
@@ -46,28 +46,24 @@ namespace PharmInventory.Forms.ActivityLogs
             dtFrom.Value = DateTime.Now;
             dtTo.Value = DateTime.Now;
 
-            //try
-            //{
+            try
+            {
                 //CALENDAR:
-
-                CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-                                                          {
-                                                              CustomFormat = "MM/dd/yyyy",
-                                                              Value = DateTime.Now
-                                                          };
-                DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-
-                DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
-
+                //var dtDate = new CalendarLib.DateTimePickerEx
+                //                                          {
+                //                                              CustomFormat = "MM/dd/yyyy",
+                //                                              Value = DateTime.Now
+                //                                          };
+               // DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+                var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
                 if (dr == null) return;
-
-                ReceiveDoc rec = new ReceiveDoc();
+                var rec = new ReceiveDoc();
                 DataTable dtRec;
                 if (dr["ParentID"] == DBNull.Value)
                 {
-                    int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
-                    DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
-                    DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                   // int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
+                    var dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                    var dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
                     dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
                     string dateString = dr["RefNo"].ToString();
                     lblRecDate.Text = dateString;
@@ -79,11 +75,11 @@ namespace PharmInventory.Forms.ActivityLogs
                     lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
                 }
                 gridReceives.DataSource = dtRec;
-            //}
-            //catch (Exception ex)
-            //{
+            }
+            catch (Exception ex)
+            {
 
-            //}
+            }
         }
 
         private void PopulateDocuments(DataTable dtRec)
@@ -98,12 +94,10 @@ namespace PharmInventory.Forms.ActivityLogs
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             if (cboStores.EditValue == null) return;
-
             ReceiveDoc rec = new ReceiveDoc();
-
             DataTable dtRec = rec.GetDistinctRecDocments(Convert.ToInt32(cboStores.EditValue));
             PopulateDocuments(dtRec);
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            var dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           CustomFormat = "MM/dd/yyyy",
                                                           Value = DateTime.Now
@@ -317,16 +311,12 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             else
             {
-                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
-                                                  dr["Date"].ToString());
+                dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),dr["Date"].ToString());
                 lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
 
             gridReceives.DataSource = dtRec;
         }
-
-
-
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {

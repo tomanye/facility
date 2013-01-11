@@ -27,6 +27,7 @@
               <xs:element name="DaysOutOfStock" msprop:Generator_ColumnVarNameInTable="columnDaysOutOfStock" msprop:Generator_ColumnPropNameInRow="DaysOutOfStock" msprop:Generator_ColumnPropNameInTable="DaysOutOfStockColumn" msprop:Generator_UserColumnName="DaysOutOfStock" type="xs:string" minOccurs="0" />
               <xs:element name="MaxStockQty" msprop:Generator_ColumnVarNameInTable="columnMaxStockQty" msprop:Generator_ColumnPropNameInRow="MaxStockQty" msprop:Generator_ColumnPropNameInTable="MaxStockQtyColumn" msprop:Generator_UserColumnName="MaxStockQty" type="xs:int" minOccurs="0" />
               <xs:element name="StockCodeDACA" msprop:Generator_ColumnVarNameInTable="columnStockCodeDACA" msprop:Generator_ColumnPropNameInRow="StockCodeDACA" msprop:Generator_ColumnPropNameInTable="StockCodeDACAColumn" msprop:Generator_UserColumnName="StockCodeDACA" type="xs:string" minOccurs="0" />
+              <xs:element name="QtyPerPack" msprop:Generator_ColumnVarNameInTable="columnQtyPerPack" msprop:Generator_ColumnPropNameInRow="QtyPerPack" msprop:Generator_ColumnPropNameInTable="QtyPerPackColumn" msprop:Generator_UserColumnName="QtyPerPack" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

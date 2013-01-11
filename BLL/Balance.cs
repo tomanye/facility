@@ -788,7 +788,7 @@ namespace BLL
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
-            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@month", month);
             ld.Add("@year", year);
