@@ -1180,6 +1180,7 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
+                                 
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();

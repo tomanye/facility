@@ -8,6 +8,7 @@ namespace BLL
 {
 	public class GeneralInfo : _GeneralInfo
 	{
+
 		public GeneralInfo()
 		{
 		

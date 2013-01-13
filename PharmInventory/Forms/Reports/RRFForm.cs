@@ -8,6 +8,7 @@ using DevExpress.XtraEditors;
 using CommCtrl;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraLayout.Utils;
+using PharmInventory.RRFLookUpService;
 using PharmInventory.RRFTransactionService;
 using PharmInventory.Reports;
 using PharmInventory.RRFService;
@@ -31,6 +32,8 @@ namespace PharmInventory.Forms.Reports
         private int _programID;
         private DataTable tblRRF;
 
+        private string userName, password;
+
         public RRFForm()
         {
             InitializeComponent();
@@ -47,13 +50,13 @@ namespace PharmInventory.Forms.Reports
             cboStores.Properties.DataSource = stor.DefaultView;
             ReceivingUnits ru = new ReceivingUnits();
             PopulateRRFs();
-            
+
             WindowVisibility(false);
             EnableDisableStatusCheck();
             Programs prog = new Programs();
             prog.GetAllPrograms();
             cboProgram.Properties.DataSource = prog.DefaultView;
-           
+
 
             //DataTable dtProg = prog.GetSubPrograms();
             //object[] objProg = { 0, "All Programs", "", 0, "" };
@@ -72,7 +75,7 @@ namespace PharmInventory.Forms.Reports
 
         private void SetEndingMonthAndYear(int startingMonth, int startingYear)
         {
-            if(startingMonth<=11)
+            if (startingMonth <= 11)
             {
                 cboToMonth.EditValue = startingMonth + 1;
                 cboToYear.EditValue = startingYear;
@@ -88,7 +91,7 @@ namespace PharmInventory.Forms.Reports
         private static int GetStartingMonth(int currentMonth)
         {
             int startingMonth;
-            if(currentMonth>2)
+            if (currentMonth > 2)
             {
                 startingMonth = currentMonth - 2;
             }
@@ -100,9 +103,9 @@ namespace PharmInventory.Forms.Reports
             return startingMonth;
         }
 
-        private static int GetStartingYear(int currentMonth,int currentYear)
+        private static int GetStartingYear(int currentMonth, int currentYear)
         {
-            if(currentMonth<=2)
+            if (currentMonth <= 2)
             {
                 return currentYear - 1;
             }
@@ -121,16 +124,16 @@ namespace PharmInventory.Forms.Reports
         {
             _storeID = Convert.ToInt32(cboStores.EditValue);
             _programID = Convert.ToInt32(cboProgram.EditValue);
-             Items itm = new Items();
-            
+            Items itm = new Items();
+
             _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
             _toMonth = int.Parse(cboToMonth.EditValue.ToString());
             _toYear = int.Parse(cboToYear.EditValue.ToString());
             _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-            tblRRF = itm.GetRRFReport(_storeID,_fromYear, _fromMonth, _toYear, _toMonth);
+            tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             gridItemsChoice.DataSource = tblRRF;
-            
+
             ChooseGridView();
         }
 
@@ -145,7 +148,7 @@ namespace PharmInventory.Forms.Reports
             _toYear = int.Parse(cboToYear.EditValue.ToString());
             _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-            tblRRF = itm.GetRRFReportByProgram(_storeID,_programID,_fromMonth,_toYear);
+            tblRRF = itm.GetRRFReportByProgram(_storeID, _programID, _fromMonth, _toYear);
             gridItemsChoice.DataSource = tblRRF;
 
             ChooseGridView();
@@ -153,8 +156,8 @@ namespace PharmInventory.Forms.Reports
 
         private static void PopulateTheYearCombo(ComboBoxEdit combo)
         {
-            int []years=new int[25];
-            for(int i=0;i<25;i++)
+            int[] years = new int[25];
+            for (int i = 0; i < 25; i++)
             {
                 years[i] = 2003 + i;
             }
@@ -164,8 +167,8 @@ namespace PharmInventory.Forms.Reports
 
         private static void PopulateTheMonthCombos(ComboBoxEdit combo)
         {
-            int []months=new int[12];
-            for(int i=0;i<12;i++)
+            int[] months = new int[12];
+            for (int i = 0; i < 12; i++)
             {
                 months[i] = i + 1;
             }
@@ -197,20 +200,23 @@ namespace PharmInventory.Forms.Reports
             if (XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             SaveRRF();
-            
+
             GeneralInfo ginfo = new GeneralInfo();
             ginfo.LoadAll();
 
-            EthiopianDate.EthiopianDate ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth,1);
+            EthiopianDate.EthiopianDate ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth, 1);
             EthiopianDate.EthiopianDate ethioDateTo = new EthiopianDate.EthiopianDate(_toYear, _toMonth, 30);
-            
+
 
             RRFReport rrfReport = new RRFReport
                                       {
                                           FacilityName = { Text = ginfo.HospitalName },
-                                          Period = { Text = string.Format("{0}, {1} - {2}, {3}",
-                                              ethioDateFrom.GetMonthName(),ethioDateFrom.Year , 
-                                              ethioDateTo.GetMonthName(),ethioDateTo.Year) }
+                                          Period =
+                                          {
+                                              Text = string.Format("{0}, {1} - {2}, {3}",
+                                                  ethioDateFrom.GetMonthName(), ethioDateFrom.Year,
+                                                  ethioDateTo.GetMonthName(), ethioDateTo.Year)
+                                          }
                                       };
             //rrfReport.Year.Text = dtFrom.Text.Substring(dtFrom.Text.LastIndexOf('/') + 1);
             Items itm = new Items();
@@ -221,7 +227,7 @@ namespace PharmInventory.Forms.Reports
             dtset.Tables.Add(tblRRF.Copy());
             rrfReport.DataSource = dtset;
             rrfReport.ShowPreviewDialog();
-       
+
 
             //printableComponentLink1.PrintingSystem = new DevExpress.XtraPrinting.PrintingSystem();
             //printableComponentLink1.Component = gridItemsChoice;
@@ -232,8 +238,9 @@ namespace PharmInventory.Forms.Reports
         {
 
             var orders = GetOrders();
-            var facilityID = 0; // Get from general info
-            var serviceModel = CompileOrder(facilityID, orders);
+            var ginf = new GeneralInfo();
+            ginf.LoadAll();
+            var serviceModel = CompileOrder(ginf.FacilityID, orders);
             Send(serviceModel);
 
             // You are done
@@ -251,22 +258,22 @@ namespace PharmInventory.Forms.Reports
         private int SaveRRF()
         {
             RRF rrf = new RRF();
-            if(rrf.RRFExists(_storeID,_fromYear, _fromMonth, _toYear, _toMonth))
+            if (rrf.RRFExists(_storeID, _fromYear, _fromMonth, _toYear, _toMonth))
             {
-                if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save", 
+                if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return -1;
             }
-            int rrfID = rrf.AddNewRRF(_storeID,_fromYear, _fromMonth, _toYear, _toMonth, true);
+            int rrfID = rrf.AddNewRRF(_storeID, _fromYear, _fromMonth, _toYear, _toMonth, true);
             BLL.Items itm = new BLL.Items();
             DataTable dtbl1 = new DataTable();
-            if (gridItemChoiceView.DataSource != null) dtbl1=((DataView)gridItemChoiceView.DataSource).Table;
+            if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView)gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
                 int itemID = Convert.ToInt32(dr["ID"]);
                 int requestedqty = Convert.ToInt32(dr["Quantity"]);
                 int storeID = int.Parse(cboStores.EditValue.ToString());
-                 RRFDetail rrfDetail = new RRFDetail();
+                RRFDetail rrfDetail = new RRFDetail();
                 rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
 
             }
@@ -277,20 +284,52 @@ namespace PharmInventory.Forms.Reports
         {
             var orders = new List<RRFTransactionService.Order>();
             // Get from datatable
-            tblRRF =(DataTable) gridItemChoiceView.DataSource;
+            var gridview = (DataTable)grdViewRRFList.DataSource;
+            tblRRF = (DataTable)gridItemChoiceView.DataSource;
 
-            foreach(var rrf in tblRRF.Rows)
+            BLL.GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+
+            RRFLookUpService.ServiceRRFLookupClient client = new ServiceRRFLookupClient();
+            var rrfForm = new RRFLookUpService.RRForm();
+            FormMeta[] form = client.GetForms(info.ID, userName, password);
+            RRFLookUpService.RRReportingPeriod[] periods = client.GetCurrentReportingPeriod(info.ID, userName, password);
+            rrfForm = client.GetFacilityRRForm(info.ID, form[0].Id, periods[0].Id, 1, userName, password)[0]; //Hard coding to be removed.
+
+            foreach (DataRow rrf in gridview.Rows)
             {
                 var order = new RRFTransactionService.Order();
-                order.Id = 0; // Set order properties
-                order.OrderStatus = 1;
+                order.Id = (int)rrf["Id"];
+                order.RequestCompletedDate = Convert.ToDateTime(rrf["DateOfSubmission"]);
+                order.OrderTypeId = (int)rrf["RRfTpyeId"];
+                // Set order properties
+                BLL.User user = new User();
+                user.LoadByPrimaryKey(MainWindow.LoggedinId);
+                order.OrderCompletedBy = user.FullName;
+                order.RequestCompletedDate = DateTime.Now;
+                //order.RequestVerifiedDate = DateTime.Now;
+                order.OrderTypeId = 1; //This needs to be changed to constant class or something. 1 - Regular, 2 - Emergency'
+                order.SubmittedBy = user.FullName;
+                order.SubmittedDate = DateTime.Now;
+                order.SupplyChainUnitId = info.FacilityID;
+                order.FormId = rrfForm.Id; //Form.ID? or RRFForm.ID? - doesn't make sense
+                order.ReportingPeriodId = periods[0].Id; //Asked again here?  Because RRFForm already contains this.
+
                 var details = new List<RRFTransactionService.OrderDetail>();
-                // foreach(var rrfLine in rrf.Lines)
-                //{
-                //  var detail = new RRFTransactionService.OrderDetail();
-                //  detail.Adjus = 
-                // details.Add(detail);
-                //}
+
+                foreach (DataRow rrfLine in tblRRF.Rows)
+                {
+                    var detail = new RRFTransactionService.OrderDetail();
+                    //detail.Adjustments[0].Amount =  (int)rrfLine["Adjustments"];
+                    detail.BeginningBalance = (int?)rrfLine["BeginningBalance"];
+                    detail.DaysOutOfStocks[0].NumberOfDaysOutOfStock = (int)rrfLine["DaysOutOfStocks"];
+                    detail.EndingBalance = (int)rrfLine["EndingBalance"];
+                    detail.ItemId = (int)rrfLine["ID"]; //Needs to come from the Code column of Items table.
+                    detail.QuantityReceived = (int)rrfLine["Received"];
+                    detail.QuantityOrdered = (int)rrfLine["Quantity"];
+                    detail.LossAdjustment = (int)rrfLine["LossAdj"];
+                    details.Add(detail);
+                }
                 order.OrderDetails = details.ToArray();
                 orders.Add(order);
             }
@@ -308,8 +347,8 @@ namespace PharmInventory.Forms.Reports
             var fOrder = new FacilityOrderViewModel
                              {
                                  FacilityID = facilityID,
-                                 Username = "",
-                                 Password = "",
+                                 Username = "HCMISTest",
+                                 Password = "123!@#abc",
                                  Orders = orders.ToArray()
                              };
             Send(fOrder);
@@ -342,14 +381,14 @@ namespace PharmInventory.Forms.Reports
                 XtraMessageBox.Show("The Facility ID Was not set, Please correct that and try again.");
                 return;
             }
-            
+
             int facilityID = ginfo.FacilityID;
             int startMonth = Convert.ToInt32(cboFromMonth.EditValue);
             int endMonth = Convert.ToInt32(cboToMonth.EditValue); //startMonth + 1;
             int fromYear = Convert.ToInt32(cboFromYear.EditValue);
             int toYear = Convert.ToInt32(cboToYear.EditValue);
 
-         
+
             bool check;
             RRFService.ServiceSoapClient sc = new RRFService.ServiceSoapClient();
             try
@@ -428,11 +467,11 @@ namespace PharmInventory.Forms.Reports
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
             }
         }
-        
+
         private void btnCheckStatus_Click(object sender, EventArgs e)
         {
             ProgressCheckingVisibility(true);
@@ -460,7 +499,7 @@ namespace PharmInventory.Forms.Reports
                 XtraMessageBox.Show("The Facility ID was not set, Please correct that and try again.");
                 return "Unknown";
             }
-            
+
             int facilityID = ginfo.FacilityID;
             RRF rrf = new RRF();
             rrf.LoadByPrimaryKey(rrfID);
@@ -469,7 +508,7 @@ namespace PharmInventory.Forms.Reports
             //TODO: The Server side RRF reception will also have to handle the From/To Year values.
             int toYear = rrf.ToYear;//Convert.ToInt32(cboToYear.EditValue);
             int fromYear = rrf.FromYear;//Convert.ToInt32(cboFromYear.EditValue);
-            
+
             RRFService.ServiceSoapClient sc = new RRFService.ServiceSoapClient();
             try
             {
@@ -577,7 +616,7 @@ namespace PharmInventory.Forms.Reports
             cboFromMonth.EditValue = startingMonth;
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth, startingYear);
-             cboStores.ItemIndex = 0;
+            cboStores.ItemIndex = 0;
             //cboProgram.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
@@ -623,7 +662,7 @@ namespace PharmInventory.Forms.Reports
 
         private void bwRRFSubmit_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            
+
         }
 
         private void bwRRFSubmit_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)

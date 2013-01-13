@@ -779,11 +779,11 @@
             this.layoutControl1.Controls.Add(this.picSync);
             this.layoutControl1.Controls.Add(this.btnNewRRF);
             this.layoutControl1.Controls.Add(this.btnBack);
-            this.layoutControl1.Controls.Add(this.grdRRF);
             this.layoutControl1.Controls.Add(this.btnCheckStatus);
             this.layoutControl1.Controls.Add(this.cboToYear);
             this.layoutControl1.Controls.Add(this.cboToMonth);
             this.layoutControl1.Controls.Add(this.lblRRFStatus);
+            this.layoutControl1.Controls.Add(this.grdRRF);
             this.layoutControl1.Controls.Add(this.chkCalculateInPacks);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.gridItemsChoice);
