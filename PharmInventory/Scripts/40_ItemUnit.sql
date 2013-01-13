@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[ItemUnit](
 	[ID] [int] NOT NULL,
-	[ItemID] [int] NOT NULL,
-	[QtyPerUnit] [int] NOT NULL,
-	[Text] [varchar](50) NOT NULL,
+	[ItemID] [int]  NULL,
+	[QtyPerUnit] [int]  NULL,
+	[Text] [varchar](50)  NULL,
  CONSTRAINT [PK_ItemUnit] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
