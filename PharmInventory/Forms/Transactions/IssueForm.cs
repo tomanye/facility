@@ -765,6 +765,7 @@ namespace PharmInventory.Forms.Transactions
                 try
                 {
                     _dtSelectedTable.ImportRow(dr);
+                    
                 }
                 catch { }
             }
@@ -783,6 +784,7 @@ namespace PharmInventory.Forms.Transactions
                         foreach (DataRow r in dataRows)
                         {
                             r.Delete();
+                            txtItemName.Text = "";
                         }
                     }
                     catch { }
@@ -796,6 +798,8 @@ namespace PharmInventory.Forms.Transactions
         {
             GridView view = sender as GridView;
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
+            txtItemName.Select();
+            txtItemName.SelectAll();
             dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"]));
             dr.EndEdit();//added by me
             OnItemCheckedChanged(new object(), new EventArgs());
