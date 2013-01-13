@@ -111,7 +111,9 @@ namespace PharmInventory.Forms.Reports
             if ((cboYear.EditValue == null) || (cboMonth.EditValue == null) || (cboStores.EditValue == null))
                 return;
 
-            int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
+            int storeId;
+            if (cboStores.EditValue == null) storeId = 1;
+            else storeId = Convert.ToInt32(cboStores.EditValue);
             int month = Convert.ToInt32(cboMonth.EditValue);
             int year = Convert.ToInt32(cboYear.EditValue);
 
@@ -321,7 +323,8 @@ namespace PharmInventory.Forms.Reports
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
             ckExcNeverIssued.Enabled = ckExclude.Checked;
-            gridItemChoiceView.ActiveFilterString = ckExclude.Checked ? "[EverReceived] != '0' or SOH != '0'" : "";
+            if (ckExclude.Checked) gridItemChoiceView.ActiveFilterString = string.Format("[EverReceived] != '0' or SOH != '0' and TypeID={0}", (int)lkCommodityTypes.EditValue);
+            else gridItemChoiceView.ActiveFilterString = "";
         }
 
         /// <summary>

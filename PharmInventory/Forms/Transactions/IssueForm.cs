@@ -68,7 +68,8 @@ namespace PharmInventory.Forms.Transactions
             us.LoadByPrimaryKey(userID);
             txtIssuedBy.Text = us.FullName;
 
-
+            if (!chkExcludeStockedOut.Checked)
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
         }
 
         private void PopulateCatTree(String type)
@@ -234,6 +235,20 @@ namespace PharmInventory.Forms.Transactions
                     {
                         _dtRecGrid.Rows.Add(obj);
                         count++;
+                    }
+                    else if (soh == 0)
+                    {
+                        string output = String.Format("{0} is stocked out!", itemName);
+                        XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        tabControl1.TabIndex = 0;
+                        break;
+                    }
+                    else if (expAmount == soh && expAmount != 0)
+                    {
+                        string output = String.Format("{0} is Expired!", itemName);
+                        XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        tabControl1.TabIndex = 0;
+                        break;
                     }
                     else
                     {
@@ -613,9 +628,10 @@ namespace PharmInventory.Forms.Transactions
 
         private void ckStockOut_CheckedChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.Columns[0].Visible = !ckStockOut.Checked;
+            //gridItemChoiceView.Columns[0].Visible = !ckStockOut.Checked;
 
-            gridItemChoiceView.ActiveFilterString = ckStockOut.Checked ? "[Status] = 'Stock Out'" : "[Status] != 'Stock Out'";
+            if (ckStockOut.Checked) gridItemChoiceView.ActiveFilterString = "[Status] = 'Stock Out'";
+            else gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}",(int)lkCategories.EditValue);
         }
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
@@ -774,7 +790,7 @@ namespace PharmInventory.Forms.Transactions
             GridView view = sender as GridView;
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"]));
-            dr.EndEdit();//added by tedy
+            dr.EndEdit();//added by me
             OnItemCheckedChanged(new object(), new EventArgs());
         }
 
@@ -887,7 +903,7 @@ namespace PharmInventory.Forms.Transactions
                 _dtSelectedTable = dtList.Clone();
             }
             gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.ActiveFilterString = "[Status] != 'Stock Out'";
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue)); ;
             //progressBarControl1.Visible = false;
         }
 
@@ -929,39 +945,26 @@ namespace PharmInventory.Forms.Transactions
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            if (chkExcludeStockedOut.Checked)
-            {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-            }
-            else if (!chkExcludeStockedOut.Checked)
-            {
+            if(ckStockOut.Checked)
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] =='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+            else 
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-            }
-            else if(ckStockOut.Checked)
-            {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-            }
-            else if(!ckStockOut.Checked)
-            {
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-            }
-        }
-        private void toolTipController1_BeforeShow(object sender, DevExpress.Utils.ToolTipControllerShowEventArgs e)
-        {
-            //
+
         }
 
         private void chkExcludeStockedOut_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkExcludeStockedOut.Checked)
-            {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] !='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
-            }
-            else if (!chkExcludeStockedOut.Checked)
+            if (!chkExcludeStockedOut.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
+            else if (chkExcludeStockedOut.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status] !='Stock Out'", Convert.ToInt32(lkCategories.EditValue));
+            }
         }
+     
+       
 
 
     }

@@ -30,7 +30,6 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -134,7 +133,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -220,14 +219,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -431,10 +430,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             // chkExcludeStockedOut
             // 
-            this.chkExcludeStockedOut.Enabled = false;
             this.chkExcludeStockedOut.Location = new System.Drawing.Point(208, 79);
             this.chkExcludeStockedOut.Name = "chkExcludeStockedOut";
-            this.chkExcludeStockedOut.Properties.Caption = "Exclude Stocked Out";
+            this.chkExcludeStockedOut.Properties.Caption = "Exclude Stock Out";
             this.chkExcludeStockedOut.Size = new System.Drawing.Size(164, 19);
             this.chkExcludeStockedOut.StyleController = this.layoutControl1;
             this.chkExcludeStockedOut.TabIndex = 41;
@@ -450,6 +448,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // ckStockOut
             // 
+            this.ckStockOut.Enabled = false;
             this.ckStockOut.Location = new System.Drawing.Point(40, 79);
             this.ckStockOut.Name = "ckStockOut";
             this.ckStockOut.Properties.Caption = "Show Stocked Out";
@@ -545,6 +544,7 @@ namespace PharmInventory.Forms.Transactions
             this.txtItemName.Size = new System.Drawing.Size(234, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 2;
+            
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
             // gridSplitContainer1
@@ -1031,11 +1031,11 @@ namespace PharmInventory.Forms.Transactions
             // layoutControlItem27
             // 
             this.layoutControlItem27.Control = this.chkExcludeStockedOut;
-            this.layoutControlItem27.CustomizationFormText = "Exclude Stocked Out";
+            this.layoutControlItem27.CustomizationFormText = "layoutControlItem27";
             this.layoutControlItem27.Location = new System.Drawing.Point(168, 48);
             this.layoutControlItem27.Name = "layoutControlItem27";
             this.layoutControlItem27.Size = new System.Drawing.Size(168, 23);
-            this.layoutControlItem27.Text = "Exclude Stocked Out";
+            this.layoutControlItem27.Text = "layoutControlItem27";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextToControlDistance = 0;
             this.layoutControlItem27.TextVisible = false;

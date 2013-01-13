@@ -829,7 +829,7 @@ namespace BLL
             ld.Add("@Year", year);
             
             LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
-            
+            //return this.DataTable;
             // Set the balance  
             int balance = (int)GetBeginningBalance(year,itemID,storeID);
             while (!EOF)
