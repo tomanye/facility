@@ -2,11 +2,15 @@ D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\QuickUpdator.exe.config
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\QuickUpdator.exe
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\QuickUpdator.pdb
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\BLL.dll
+D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\ConnectionStringManager.dll
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\DAL.dll
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\MyGeneration.dOOdads.dll
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\EthiopianDate.dll
+D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\StockoutIndexBuilder.dll
+D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\EntityFramework.dll
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\BLL.pdb
 D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\DAL.pdb
+D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\StockoutIndexBuilder.pdb
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\ResolveAssemblyReference.cache
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.UpdatorForm.resources
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.Properties.Resources.resources
@@ -15,7 +19,3 @@ D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\GenerateResource.writ
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.exe.licenses
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.exe
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.pdb
-D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\ConnectionStringManager.dll
-D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\StockoutIndexBuilder.dll
-D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\StockoutIndexBuilder.pdb
-D:\Projects\JSI\FacilityEdition\QuickUpdator\bin\Debug\EntityFramework.dll

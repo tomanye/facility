@@ -323,7 +323,7 @@ namespace PharmInventory.Forms.Reports
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
             ckExcNeverIssued.Enabled = ckExclude.Checked;
-            if (ckExclude.Checked) gridItemChoiceView.ActiveFilterString = string.Format("[EverReceived] != '0' or SOH != '0' and TypeID={0}", (int)lkCommodityTypes.EditValue);
+            if (ckExclude.Checked) gridItemChoiceView.ActiveFilterString = string.Format("[EverReceived] != '0' and SOH != '0' and TypeID={0}", (int)lkCommodityTypes.EditValue);
             else gridItemChoiceView.ActiveFilterString = "";
         }
 

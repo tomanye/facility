@@ -147,6 +147,9 @@
     <Compile Include="_SubCategory.cs" />
     <Compile Include="_Supplier.cs" />
     <Compile Include="_SupplyCategory.cs" />
+    <Compile Include="_Transfer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="_Type.cs" />
     <Compile Include="_Unit.cs" />
     <Compile Include="_User.cs" />

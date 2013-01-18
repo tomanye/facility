@@ -28,7 +28,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
@@ -43,8 +43,9 @@ namespace PharmInventory.Forms.ActivityLogs
             lkEditSupplier.DataSource = dtSup;
 
             // bind the current dates
-            dtFrom.Value = DateTime.Now;
-            dtTo.Value = DateTime.Now;
+
+            //dtFrom.Value = DateTime.Now;
+            //dtTo.Value = DateTime.Now;
 
             try
             {
@@ -70,8 +71,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
                 else
                 {
-                    dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
-                                                      dr["Date"].ToString());
+                    dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),dr["Date"].ToString());
                     lblRecDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
                 }
                 gridReceives.DataSource = dtRec;
@@ -94,7 +94,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             if (cboStores.EditValue == null) return;
-            ReceiveDoc rec = new ReceiveDoc();
+            var rec = new ReceiveDoc();
             DataTable dtRec = rec.GetDistinctRecDocments(Convert.ToInt32(cboStores.EditValue));
             PopulateDocuments(dtRec);
             var dtDate = new CalendarLib.DateTimePickerEx
@@ -104,8 +104,8 @@ namespace PharmInventory.Forms.ActivityLogs
                                                       };
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
             int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
-            DateTime dt1 = new DateTime(yr, 11, 1);
-            DateTime dt2 = new DateTime(dtCurrent.Year, dtCurrent.Month, dtCurrent.Day);
+            var dt1 = new DateTime(yr, 11, 1);
+            var dt2 = new DateTime(dtCurrent.Year, dtCurrent.Month, dtCurrent.Day);
             dtRec = rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
             gridReceives.DataSource = dtRec;
         }

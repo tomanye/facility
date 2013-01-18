@@ -2,6 +2,7 @@
 using BLL;
 using DevExpress.XtraEditors;
 using PharmInventory.Forms.ActivityLogs;
+using PharmInventory.Forms.Modals;
 using PharmInventory.Forms.Profiles;
 using PharmInventory.Forms.Reports;
 using PharmInventory.Forms.Transactions;
@@ -192,6 +193,10 @@ namespace PharmInventory
                 case "Over Stocked":
                     frm = new OtherItemReport("Over Stocked");
                     AddTab("Over Stock Items", frm);
+                    break;
+                case "Transfers":
+                    frm = new TransferForm();
+                    AddTab("Transfer Form", frm);
                     break;
                 case "Stock Out":
                     frm = new OtherItemReport("Stock Out");

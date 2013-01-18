@@ -563,15 +563,7 @@ namespace PharmInventory
            
         }
 
-        private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
-        {
-            var dr = gridItemChoiceView.GetDataRow(gridItemChoiceView.GetSelectedRows()[0]);
-            var edit = new EditLossForm((int) dr["ItemID"], (string) dr["FullItemName"],
-                                        (string) dr["StockCode"], (string) dr["Unit"], (int) dr["StoreID"]);
-            edit.ShowDialog();
-            gridItemChoiceView.RefreshData();
-
-        }
+       
 
 
         

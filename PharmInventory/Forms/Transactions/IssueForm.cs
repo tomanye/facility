@@ -240,10 +240,10 @@ namespace PharmInventory.Forms.Transactions
                     {
                         string output = String.Format("{0} is stocked out!", itemName);
                         XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        tabControl1.TabIndex = 0;
+                        
                         break;
                     }
-                    else if (expAmount == soh && expAmount != 0)
+                    else if (expAmount == soh || expAmount != 0)
                     {
                         string output = String.Format("{0} is Expired!", itemName);
                         XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -376,7 +376,7 @@ namespace PharmInventory.Forms.Transactions
                                 object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"], 
                                                    dtIssueGrid.Rows[i]["Item Name"], qu, batch, dtx.ToString("MMM dd,yyyy"), 
                                                    packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
-                                                   Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.#0"), 
+                                                   Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
                                                    dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                    dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],sohbalance };
                                 dtIssueConf.Rows.Add(obj);

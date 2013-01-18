@@ -30,6 +30,7 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -133,7 +134,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource();
+            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -156,6 +157,10 @@ namespace PharmInventory.Forms.Transactions
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtConfRef = new DevExpress.XtraEditors.TextEdit();
+            this.txtIssuedTo = new DevExpress.XtraEditors.TextEdit();
+            this.txtIssuedDate = new CalendarLib.DateTimePickerEx();
+            this.txtStore = new DevExpress.XtraEditors.TextEdit();
             this.gridConfirmation = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gdRowNo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -196,10 +201,6 @@ namespace PharmInventory.Forms.Transactions
             this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn10 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.txtConfRef = new DevExpress.XtraEditors.TextEdit();
-            this.txtIssuedTo = new DevExpress.XtraEditors.TextEdit();
-            this.txtIssuedDate = new CalendarLib.DateTimePickerEx();
-            this.txtStore = new DevExpress.XtraEditors.TextEdit();
             this.txtConIssuedBy = new DevExpress.XtraEditors.TextEdit();
             this.btnConfirm = new DevExpress.XtraEditors.SimpleButton();
             this.txtConRemark = new DevExpress.XtraEditors.TextEdit();
@@ -219,14 +220,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -295,6 +296,9 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfRef.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIssuedTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridConfirmation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
@@ -306,9 +310,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StoreItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfRef.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIssuedTo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConIssuedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
@@ -544,7 +545,6 @@ namespace PharmInventory.Forms.Transactions
             this.txtItemName.Size = new System.Drawing.Size(234, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 2;
-            
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
             // 
             // gridSplitContainer1
@@ -1858,11 +1858,11 @@ namespace PharmInventory.Forms.Transactions
             // 
             // layoutControl3
             // 
-            this.layoutControl3.Controls.Add(this.gridConfirmation);
             this.layoutControl3.Controls.Add(this.txtConfRef);
             this.layoutControl3.Controls.Add(this.txtIssuedTo);
             this.layoutControl3.Controls.Add(this.txtIssuedDate);
             this.layoutControl3.Controls.Add(this.txtStore);
+            this.layoutControl3.Controls.Add(this.gridConfirmation);
             this.layoutControl3.Controls.Add(this.txtConIssuedBy);
             this.layoutControl3.Controls.Add(this.btnConfirm);
             this.layoutControl3.Controls.Add(this.txtConRemark);
@@ -1873,6 +1873,55 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl3.Size = new System.Drawing.Size(1055, 552);
             this.layoutControl3.TabIndex = 20;
             this.layoutControl3.Text = "layoutControl3";
+            // 
+            // txtConfRef
+            // 
+            this.txtConfRef.Location = new System.Drawing.Point(106, 12);
+            this.txtConfRef.Name = "txtConfRef";
+            this.txtConfRef.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
+            this.txtConfRef.Properties.Appearance.Options.UseBackColor = true;
+            this.txtConfRef.Properties.ReadOnly = true;
+            this.txtConfRef.Size = new System.Drawing.Size(319, 20);
+            this.txtConfRef.StyleController = this.layoutControl3;
+            this.txtConfRef.TabIndex = 2;
+            // 
+            // txtIssuedTo
+            // 
+            this.txtIssuedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIssuedTo.Location = new System.Drawing.Point(738, 36);
+            this.txtIssuedTo.Name = "txtIssuedTo";
+            this.txtIssuedTo.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
+            this.txtIssuedTo.Properties.Appearance.Options.UseBackColor = true;
+            this.txtIssuedTo.Properties.ReadOnly = true;
+            this.txtIssuedTo.Size = new System.Drawing.Size(305, 20);
+            this.txtIssuedTo.StyleController = this.layoutControl3;
+            this.txtIssuedTo.TabIndex = 2;
+            // 
+            // txtIssuedDate
+            // 
+            this.txtIssuedDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.txtIssuedDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.txtIssuedDate.DayOfWeekCharacters = 2;
+            this.txtIssuedDate.Enabled = false;
+            this.txtIssuedDate.ForeColor = System.Drawing.Color.Black;
+            this.txtIssuedDate.Location = new System.Drawing.Point(106, 36);
+            this.txtIssuedDate.Name = "txtIssuedDate";
+            this.txtIssuedDate.PopUpFontSize = 9.75F;
+            this.txtIssuedDate.Size = new System.Drawing.Size(319, 20);
+            this.txtIssuedDate.TabIndex = 12;
+            this.txtIssuedDate.Value = new System.DateTime(2011, 10, 5, 0, 0, 0, 0);
+            // 
+            // txtStore
+            // 
+            this.txtStore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtStore.Location = new System.Drawing.Point(738, 12);
+            this.txtStore.Name = "txtStore";
+            this.txtStore.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
+            this.txtStore.Properties.Appearance.Options.UseBackColor = true;
+            this.txtStore.Properties.ReadOnly = true;
+            this.txtStore.Size = new System.Drawing.Size(305, 20);
+            this.txtStore.StyleController = this.layoutControl3;
+            this.txtStore.TabIndex = 2;
             // 
             // gridConfirmation
             // 
@@ -2013,6 +2062,7 @@ namespace PharmInventory.Forms.Transactions
             // gridColumn48
             // 
             this.gridColumn48.Caption = "Unit Price";
+            this.gridColumn48.DisplayFormat.FormatString = "#,##0.#0";
             this.gridColumn48.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn48.FieldName = "Unit Price";
             this.gridColumn48.Name = "gridColumn48";
@@ -2347,55 +2397,6 @@ namespace PharmInventory.Forms.Transactions
             this.bandedGridColumn11.Visible = true;
             this.bandedGridColumn11.Width = 145;
             // 
-            // txtConfRef
-            // 
-            this.txtConfRef.Location = new System.Drawing.Point(106, 12);
-            this.txtConfRef.Name = "txtConfRef";
-            this.txtConfRef.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
-            this.txtConfRef.Properties.Appearance.Options.UseBackColor = true;
-            this.txtConfRef.Properties.ReadOnly = true;
-            this.txtConfRef.Size = new System.Drawing.Size(319, 20);
-            this.txtConfRef.StyleController = this.layoutControl3;
-            this.txtConfRef.TabIndex = 2;
-            // 
-            // txtIssuedTo
-            // 
-            this.txtIssuedTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIssuedTo.Location = new System.Drawing.Point(738, 36);
-            this.txtIssuedTo.Name = "txtIssuedTo";
-            this.txtIssuedTo.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
-            this.txtIssuedTo.Properties.Appearance.Options.UseBackColor = true;
-            this.txtIssuedTo.Properties.ReadOnly = true;
-            this.txtIssuedTo.Size = new System.Drawing.Size(305, 20);
-            this.txtIssuedTo.StyleController = this.layoutControl3;
-            this.txtIssuedTo.TabIndex = 2;
-            // 
-            // txtIssuedDate
-            // 
-            this.txtIssuedDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.txtIssuedDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.txtIssuedDate.DayOfWeekCharacters = 2;
-            this.txtIssuedDate.Enabled = false;
-            this.txtIssuedDate.ForeColor = System.Drawing.Color.Black;
-            this.txtIssuedDate.Location = new System.Drawing.Point(106, 36);
-            this.txtIssuedDate.Name = "txtIssuedDate";
-            this.txtIssuedDate.PopUpFontSize = 9.75F;
-            this.txtIssuedDate.Size = new System.Drawing.Size(319, 20);
-            this.txtIssuedDate.TabIndex = 12;
-            this.txtIssuedDate.Value = new System.DateTime(2011, 10, 5, 0, 0, 0, 0);
-            // 
-            // txtStore
-            // 
-            this.txtStore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtStore.Location = new System.Drawing.Point(738, 12);
-            this.txtStore.Name = "txtStore";
-            this.txtStore.Properties.Appearance.BackColor = System.Drawing.Color.OldLace;
-            this.txtStore.Properties.Appearance.Options.UseBackColor = true;
-            this.txtStore.Properties.ReadOnly = true;
-            this.txtStore.Size = new System.Drawing.Size(305, 20);
-            this.txtStore.StyleController = this.layoutControl3;
-            this.txtStore.TabIndex = 2;
-            // 
             // txtConIssuedBy
             // 
             this.txtConIssuedBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2728,6 +2729,9 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfRef.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIssuedTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridConfirmation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
@@ -2739,9 +2743,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StoreItemLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtConfRef.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIssuedTo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConIssuedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtConRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();

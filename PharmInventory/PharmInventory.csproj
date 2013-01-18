@@ -198,7 +198,6 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    
     <Reference Include="DevExpress.XtraReports.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
@@ -294,11 +293,11 @@
     <Compile Include="Forms\Modals\EditLossAndAdjustment.Designer.cs">
       <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\EditLossForm.cs">
+    <Compile Include="Forms\Modals\TransferForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\EditLossForm.Designer.cs">
-      <DependentUpon>EditLossForm.cs</DependentUpon>
+    <Compile Include="Forms\Modals\TransferForm.Designer.cs">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Modals\EditRecieveRefrenceNo.cs">
       <SubType>Form</SubType>
@@ -672,8 +671,8 @@
     <EmbeddedResource Include="Forms\Modals\EditLossAndAdjustment.resx">
       <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\EditLossForm.resx">
-      <DependentUpon>EditLossForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Modals\TransferForm.resx">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditRecieveRefrenceNo.resx">
       <DependentUpon>EditRecieveRefrenceNo.cs</DependentUpon>

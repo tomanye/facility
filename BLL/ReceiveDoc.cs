@@ -375,6 +375,13 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetReceivedItems(int itemId ,int storeId)
+        {
+            this.FlushData();
+            this.LoadFromRawSql("select * from ReceiveDoc where ItemID ={0} And StoreID={1}", itemId, storeId);
+            return this.DataTable;
+
+        }
         public int CountNeverReceivedItems(int storeId)
         {
             this.FlushData();
@@ -461,10 +468,11 @@ namespace BLL
 
         public DataTable GetRecievedItemsWithBalanceForStore(int storeID,int typeID)
         {
-            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, rd.Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft > 0", storeID,typeID);
+            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft,RefNo, rd.Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft > 0", storeID,typeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+
 
         public bool MergeStore(int storeone, int storetwo)
         {

@@ -14,7 +14,6 @@ D:\Projects\JSI\AMCCalculator\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBui
 D:\Projects\JSI\AMCCalculator\StockoutIndexBuilder.cs\bin\Debug\EntityFramework.dll
 D:\Projects\JSI\AMCCalculator\StockoutIndexBuilder.cs\bin\Debug\EntityFramework.xml
 D:\Projects\JSI\AMCCalculator\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.pdb
-D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll.config
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.pdb
@@ -23,5 +22,6 @@ D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\EntityFramewor
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\EthiopianDate.dll
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\MyGeneration.dOOdads.dll
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\bin\Debug\DAL.pdb
+D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.dll
 D:\Projects\JSI\FacilityEdition\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.pdb

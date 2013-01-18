@@ -88,6 +88,7 @@ namespace PharmInventory
             this.nbiInventory = new DevExpress.XtraNavBar.NavBarItem();
             this.btnStockoutIndexer = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem5 = new DevExpress.XtraNavBar.NavBarItem();
+            this.LbTransfer = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiStockStatusReport = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiOverStocked = new DevExpress.XtraNavBar.NavBarItem();
@@ -670,7 +671,8 @@ namespace PharmInventory
             this.btnStockoutIndexer,
             this.navBarItem1,
             this.navBarItem5,
-            this.navBarItem6});
+            this.navBarItem6,
+            this.LbTransfer});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -695,7 +697,8 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLossAdjustment),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiInventory),
             new DevExpress.XtraNavBar.NavBarItemLink(this.btnStockoutIndexer),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.LbTransfer)});
             this.navBarGroup1.Name = "navBarGroup1";
             this.navBarGroup1.SelectedLinkIndex = 4;
             // 
@@ -743,6 +746,13 @@ namespace PharmInventory
             this.navBarItem5.SmallImage = global::PharmInventory.Properties.Resources.Blue_cube1;
             this.navBarItem5.Tag = "AMCs";
             this.navBarItem5.Visible = false;
+            // 
+            // LbTransfer
+            // 
+            this.LbTransfer.Caption = "Item Transfer";
+            this.LbTransfer.Name = "LbTransfer";
+            this.LbTransfer.SmallImage = global::PharmInventory.Properties.Resources.Excel;
+            this.LbTransfer.Tag = "Transfers";
             // 
             // navBarGroup2
             // 
@@ -1149,6 +1159,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
         private DevExpress.XtraNavBar.NavBarItem navBarItem5;
         private DevExpress.XtraNavBar.NavBarItem navBarItem6;
+        private DevExpress.XtraNavBar.NavBarItem LbTransfer;
     }
 }
 

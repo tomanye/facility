@@ -278,10 +278,10 @@ namespace BLL
         public DataTable GetLossByItemId(int Id)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo, Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where ItemID = {0} and QuantityLeft > 0", Id));
+            this.LoadFromRawSql(String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft, RefNo,rd.Cost, EurDate from ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where ItemID = {0} and QuantityLeft > 0", Id));
             return this.DataTable;
         }
-
+       
 	    public bool MergeStore(int storeone, int storetwo)
         {
             this.FlushData();
