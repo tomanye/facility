@@ -126,10 +126,10 @@ namespace PharmInventory.Forms.Modals
             {
                 if (XtraMessageBox.Show("Are you sure you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MyGeneration.dOOdads.TransactionMgr mgr = MyGeneration.dOOdads.TransactionMgr.ThreadTransactionMgr();
+                    //MyGeneration.dOOdads.TransactionMgr mgr = MyGeneration.dOOdads.TransactionMgr.ThreadTransactionMgr();
                     try
                     {
-                        mgr.BeginTransaction();
+                      //  mgr.BeginTransaction();
                         ReceiveDoc receiveValidation = new ReceiveDoc();
                         if (!receiveValidation.ValidateReceiveDate(Convert.ToDateTime(dtRecDate.Value)))
                         {
@@ -219,13 +219,13 @@ namespace PharmInventory.Forms.Modals
                         receiveDoc.QuantityLeft = receiveDoc.QuantityLeft -trans.QuantityLeft;
                         receiveDoc.Save();
                         ResetFields();
-                        mgr.CommitTransaction();
+                        //mgr.CommitTransaction();
 
 
                     }
                     catch (Exception exp)
                     {
-                        mgr.RollbackTransaction();
+                        //mgr.RollbackTransaction();
                         BLL.User user = new User();
                         user.LoadByPrimaryKey(MainWindow.LoggedinId);
                         if (user.UserType == UserType.Constants.SYSTEM_ADMIN)
@@ -450,6 +450,11 @@ namespace PharmInventory.Forms.Modals
 
             dtRecGrid.ImportRow(dr);
             dtRecGrid.DefaultView.Sort = "Stock Code";
+        }
+
+        private void lkFromStore_EditValueChanged(object sender, EventArgs e)
+        {
+            PopulateItemList(receive.GetReceivedNotIssuedItems((int)lkFromStore.EditValue));
         }
         
 

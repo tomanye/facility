@@ -258,6 +258,7 @@
             this.lkFromStore.Size = new System.Drawing.Size(496, 20);
             this.lkFromStore.StyleController = this.layoutControl2;
             this.lkFromStore.TabIndex = 30;
+            this.lkFromStore.EditValueChanged += new System.EventHandler(this.lkFromStore_EditValueChanged);
             // 
             // lkCategories
             // 
@@ -593,7 +594,7 @@
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(978, 395);
-            this.tabPage2.Text = "Step Two - Populate";
+            this.tabPage2.Text = "Step Two - Populate and Save";
             // 
             // layoutControl3
             // 

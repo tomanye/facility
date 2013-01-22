@@ -323,8 +323,14 @@ namespace PharmInventory.Forms.Reports
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
             ckExcNeverIssued.Enabled = ckExclude.Checked;
-            if (ckExclude.Checked) gridItemChoiceView.ActiveFilterString = string.Format("[EverReceived] != '0' and SOH != '0' and TypeID={0}", (int)lkCommodityTypes.EditValue);
-            else gridItemChoiceView.ActiveFilterString = "";
+            if (ckExclude.Checked)
+                //gridItemChoiceView.ActiveFilterString =
+                //   string.Format("[EverReceived] != '0' and SOH != '0' and TypeID={0}",
+                //                 (int) lkCommodityTypes.EditValue);
+                gridItemChoiceView.ActiveFilterString = "SOH != '0' or [EverReceived] !='0' or AMC!= '0'";
+
+            else
+                gridItemChoiceView.ActiveFilterString = "";
         }
 
         /// <summary>
@@ -446,10 +452,11 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            gridItemsChoice.DataSource = (DataTable)e.Result;
+            gridItemsChoice.DataSource = e.Result;
             cboStatus.EditValue = _filter;
-            //if (ckExclude.Checked)
-            //    gridItemChoiceView.ActiveFilterString = "[EverReceived] != '0' or SOH != '0'";
+            if (ckExclude.Checked)
+                gridItemChoiceView.ActiveFilterString = "[EverReceived] != '0' or SOH != '0' or AMC != '0'";
+            else
             gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
 
         }

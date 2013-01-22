@@ -435,12 +435,11 @@ namespace PharmInventory.Forms.Transactions
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            if (ckStockOut.Checked)
-                gridItemChoiceView.ActiveFilterString = "[Status] = 'Stock Out' AND [FullItemName] Like '" + txtItemName.Text + "%'";
+            if (chkExcludeStockedOut.Checked)
+                gridItemChoiceView.ActiveFilterString = string.Format("[Status] != 'Stock Out' AND [FullItemName] Like '{0}%' and [TypeID]={1}", txtItemName.Text, (int)lkCategories.EditValue);
             else if (!ckStockOut.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ",
-                                                                      txtItemName.Text, (int) lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ",txtItemName.Text, (int) lkCategories.EditValue);
             }
         }
 
@@ -513,6 +512,7 @@ namespace PharmInventory.Forms.Transactions
                 {
                     IssueDoc issDoc = new IssueDoc();
                     ReceiveDoc recDoc = new ReceiveDoc();
+                    Transfer trans = new Transfer();
                     Balance bal = new Balance();
                     DataTable dtConfirmation = (DataTable)gridConfirmation.DataSource;
                     for (int i = 0; i < dtConfirmation.Rows.Count; i++)
@@ -538,8 +538,10 @@ namespace PharmInventory.Forms.Transactions
                         issDoc.EurDate = dtIssueDate.Value;
                         dtIssueDate.IsGregorianCurrentCalendar = false;
                         issDoc.RecievDocID = Convert.ToInt32(dtConfirmation.Rows[i]["RecId"]); // Used to have 8 as an index
+                        
                         issDoc.IsApproved = true;
                         issDoc.IsTransfer = false;
+
                         issDoc.Remark = txtRemark.Text;
                         issDoc.IssuedBy = txtIssuedBy.Text;
                         issDoc.DUSOH = Convert.ToInt32(dtConfirmation.Rows[i]["DUSOH"]);
@@ -945,7 +947,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            if(ckStockOut.Checked)
+            if(chkExcludeStockedOut.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("[Status] =='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             else 
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));

@@ -274,6 +274,14 @@ namespace DAL
 					return new SqlParameter("@OrderID", SqlDbType.Int, 0);
 				}
 			}
+
+            public static SqlParameter TransferID
+            {
+                get
+                {
+                    return new SqlParameter("@TransferID", SqlDbType.Int, 0);
+                }
+            }
 			
 		}
 		#endregion		
@@ -303,6 +311,7 @@ namespace DAL
             public const string RecievDocID = "RecievDocID";
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
+		    public const string TransferID = "TransferID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -332,6 +341,7 @@ namespace DAL
 					ht[RecievDocID] = _IssueDoc.PropertyNames.RecievDocID;
 					ht[EurDate] = _IssueDoc.PropertyNames.EurDate;
 					ht[OrderID] = _IssueDoc.PropertyNames.OrderID;
+				    ht[TransferID] = _IssueDoc.PropertyNames.TransferID;
 
 				}
 				return (string)ht[columnName];
@@ -366,6 +376,7 @@ namespace DAL
             public const string RecievDocID = "RecievDocID";
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
+            public const string TransferID = "TransferID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -395,6 +406,7 @@ namespace DAL
 					ht[RecievDocID] = _IssueDoc.ColumnNames.RecievDocID;
 					ht[EurDate] = _IssueDoc.ColumnNames.EurDate;
 					ht[OrderID] = _IssueDoc.ColumnNames.OrderID;
+                    ht[OrderID] = _IssueDoc.ColumnNames.TransferID;
 
 				}
 				return (string)ht[propertyName];
@@ -429,6 +441,7 @@ namespace DAL
             public const string RecievDocID = "s_RecievDocID";
             public const string EurDate = "s_EurDate";
             public const string OrderID = "s_OrderID";
+		    public const string TransferID = "s_TransferID";
 
 		}
 		#endregion		
@@ -700,6 +713,19 @@ namespace DAL
 				base.Setint(ColumnNames.OrderID, value);
 			}
 		}
+
+        public virtual int TransferID
+        {
+            get
+            {
+
+                return base.Getint(ColumnNames.TransferID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.TransferID, value);
+            }
+        }
 
 
 		#endregion
@@ -1035,6 +1061,21 @@ namespace DAL
 					this.OrderID = base.SetintAsString(ColumnNames.OrderID, value);
 			}
 		}
+
+        public virtual string s_TransferID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.TransferID) ? string.Empty : base.GetintAsString(ColumnNames.TransferID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.TransferID);
+                else
+                    this.TransferID = base.SetintAsString(ColumnNames.TransferID, value);
+            }
+        }
 
 
 		#endregion		
@@ -2358,6 +2399,10 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.OrderID);
 			p.SourceColumn = ColumnNames.OrderID;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.TransferID);
+            p.SourceColumn = ColumnNames.TransferID;
+            p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;

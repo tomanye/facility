@@ -1228,9 +1228,6 @@
     <Content Include="Scripts\20_DisposalDeleteLoadByPrimaryKey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\21_IssueDocDeletedInsert.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\22_IssueDocDeletedLoadAll.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1273,7 +1270,7 @@
     <Content Include="Scripts\01_HCMIS Queries.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\02_QueryGetTransactionDetails.sql">
+    <Content Include="Scripts\06_QueryGetTransactionDetails.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\03_GetConsumptionTrendByMonth.sql">
@@ -1283,9 +1280,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\05_AltervwGetAllItems.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\06_SupplyCategory_ID_AutoNumberRemove.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\07_SupplyCategory_StoredProcs.sql">
