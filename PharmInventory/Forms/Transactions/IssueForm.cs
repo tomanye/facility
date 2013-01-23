@@ -342,7 +342,13 @@ namespace PharmInventory.Forms.Transactions
                             itm.NeedExpiryBatch = true;
                             itm.Save();
                         }
-                        _dtRec = itm.NeedExpiryBatch ? rec.GetBatchToIssue(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss) : rec.GetSupplyToIssueWithOutBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIssueDate.Value);
+                        if (itm.NeedExpiryBatch)
+                            _dtRec = rec.GetBatchToIssue(Convert.ToInt32(cboStores.EditValue),
+                                                         Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss);
+                        else
+                            _dtRec = rec.GetSupplyToIssueWithOutBatch(Convert.ToInt32(cboStores.EditValue),
+                                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]),
+                                                                      dtIssueDate.Value);
 
                         // Extream measures:
                         // This has tobe properly mitigated
@@ -512,7 +518,6 @@ namespace PharmInventory.Forms.Transactions
                 {
                     IssueDoc issDoc = new IssueDoc();
                     ReceiveDoc recDoc = new ReceiveDoc();
-                    Transfer trans = new Transfer();
                     Balance bal = new Balance();
                     DataTable dtConfirmation = (DataTable)gridConfirmation.DataSource;
                     for (int i = 0; i < dtConfirmation.Rows.Count; i++)
