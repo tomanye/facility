@@ -801,7 +801,7 @@ namespace PharmInventory.Forms.Transactions
             txtItemName.Select();
             txtItemName.SelectAll();
             dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"]));
-            dr.EndEdit();//added by me
+            dr.EndEdit();
             OnItemCheckedChanged(new object(), new EventArgs());
         }
 
