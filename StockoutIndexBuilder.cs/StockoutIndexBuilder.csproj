@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\HCMIS.Utilities.ClientApp\bin\Debug\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Tedy\Desktop\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EthiopianDate">
       <HintPath>..\PharmInventory\Common DLLs\EthiopianDate.dll</HintPath>
