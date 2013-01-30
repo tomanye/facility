@@ -165,6 +165,15 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query = String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice, datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' ) ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
+
+
         public DataTable GetAllTransaction(int storeId)
         {
             this.FlushData();
@@ -179,13 +188,7 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
-        {
-            this.FlushData();
-            string query = String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice, datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' ) ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
-            this.LoadFromRawSql(query);
-            return this.DataTable;
-        }
+       
 
         public Int64 GetReceivedQtyByDateRange(int itemId,int storeId, DateTime dt1, DateTime dt2)
         {

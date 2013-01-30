@@ -287,7 +287,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            var dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           CustomFormat = "MM/dd/yyyy",
                                                           Value = DateTime.Now
