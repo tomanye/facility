@@ -9,3 +9,14 @@ D:\Projects\JSI\FacilityEdition\BLL\bin\Debug\StockoutIndexBuilder.pdb
 D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\ResolveAssemblyReference.cache
 D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\BLL.dll
 D:\Projects\JSI\FacilityEdition\BLL\obj\Debug\BLL.pdb
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\BLL.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\BLL.pdb
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\DAL.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\EthiopianDate.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\StockoutIndexBuilder.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\DAL.pdb
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\bin\Debug\StockoutIndexBuilder.pdb
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\obj\Debug\BLL.dll
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\BLL\obj\Debug\BLL.pdb

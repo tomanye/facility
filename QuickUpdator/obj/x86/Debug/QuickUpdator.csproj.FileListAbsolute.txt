@@ -19,3 +19,4 @@ D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\GenerateResource.writ
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.exe.licenses
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.exe
 D:\Projects\JSI\FacilityEdition\QuickUpdator\obj\x86\Debug\QuickUpdator.pdb
+C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\QuickUpdator\bin\Debug\QuickUpdator.exe.config
