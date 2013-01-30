@@ -42,7 +42,6 @@
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockoutindexergridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colFullItemName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colItemId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -189,7 +188,6 @@
             // 
             this.stockoutindexergridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colFullItemName,
-            this.colItemId,
             this.colIndexed});
             this.stockoutindexergridView.GridControl = this.gridControl1;
             this.stockoutindexergridView.Name = "stockoutindexergridView";
@@ -203,18 +201,8 @@
             this.colFullItemName.OptionsColumn.AllowEdit = false;
             this.colFullItemName.OptionsColumn.ReadOnly = true;
             this.colFullItemName.Visible = true;
-            this.colFullItemName.VisibleIndex = 1;
+            this.colFullItemName.VisibleIndex = 0;
             this.colFullItemName.Width = 578;
-            // 
-            // colItemId
-            // 
-            this.colItemId.FieldName = "ItemId";
-            this.colItemId.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.colItemId.Name = "colItemId";
-            this.colItemId.OptionsColumn.AllowEdit = false;
-            this.colItemId.Visible = true;
-            this.colItemId.VisibleIndex = 0;
-            this.colItemId.Width = 62;
             // 
             // colIndexed
             // 
@@ -222,7 +210,7 @@
             this.colIndexed.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Right;
             this.colIndexed.Name = "colIndexed";
             this.colIndexed.Visible = true;
-            this.colIndexed.VisibleIndex = 2;
+            this.colIndexed.VisibleIndex = 1;
             this.colIndexed.Width = 97;
             // 
             // repositoryItemCheckEdit1
@@ -422,7 +410,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraGrid.Columns.GridColumn colFullItemName;
-        private DevExpress.XtraGrid.Columns.GridColumn colItemId;
         private DevExpress.XtraGrid.Columns.GridColumn colIndexed;
         private System.Windows.Forms.Label lbllastindexedtime;
         private System.Windows.Forms.Label label1;
