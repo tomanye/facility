@@ -106,6 +106,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)));
                 month = 10;
+             
             }
             else
                 btnSave.Enabled = false;
@@ -406,13 +407,14 @@ namespace PharmInventory.Forms.Transactions
         private void LoadInventoryItems()
         {
             dtDate.Value = DateTime.Now;
-            DateTime dtCurent = new DateTime();
+            DateTime dtCurent;
             dtDate.CustomFormat = "MM/dd/yyyy";
             dtCurent = ConvertDate.DateConverter(dtDate.Text);
 
             int year = dtCurent.Year;
             Items itm = new Items();
-            DataTable dtItm = ((ckExclude.Checked) ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue)));
+            DataTable dtItm = (ckExclude == null || (!ckExclude.Checked)
+                                   ? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue)));
             PopulateItemList(dtItm, year);
             dtDate.CustomFormat = "MMMM dd, yyyy";
         }

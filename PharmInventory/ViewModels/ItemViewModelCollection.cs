@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using PharmInventory.ViewModels;
+using StockoutIndexBuilder.DAL;
 using StockoutIndexBuilder.Models;
 
 namespace PharmInventory.ViewModels
@@ -78,9 +79,13 @@ namespace PharmInventory.ViewModels
         public static List<ItemViewModel> Create(IEnumerable<Item> items)
         {
             var collection = new List<ItemViewModel>();
+            var vwGetAllItemsRepository = new vwGetAllItemsRepository();
+           
             foreach (var item in items)
             {
                 var viewModel = new ItemViewModel(item);
+                var products = vwGetAllItemsRepository.FindBy(viewModel.ItemId).SingleOrDefault();
+                if (products != null) viewModel.FullItemName = products.FullItemName;
                 collection.Add(viewModel);
             }
             return collection;

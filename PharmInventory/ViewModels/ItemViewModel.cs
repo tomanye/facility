@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using StockoutIndexBuilder;
 using StockoutIndexBuilder.DAL;
 using StockoutIndexBuilder.Models;
 
@@ -17,6 +18,7 @@ namespace PharmInventory.ViewModels
             DosageFormId = item.DosageFormId;
             Strength = item.Strength;
             IINID = item.IINID;
+         //  FullItemName =item.Product.
           
         }
         public int ItemId { get; set; }        
@@ -31,10 +33,12 @@ namespace PharmInventory.ViewModels
             set { _indexed = value; }
         }
 
-        public string FullItemName
-        {
-            get { return String.Format("{0}{1}{2}", StockCode, Strength, IINID); }
-        }
-        
+        public string FullItemName { get; set; }
+        //{
+        //    get { return String.Format("{0}{1}{2}", StockCode, Strength, IINID); }
+        //}
+
+    
     }
+
 }

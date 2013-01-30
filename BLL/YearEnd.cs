@@ -87,8 +87,8 @@ namespace BLL
             this.Query.Load();
 
             if (this.DataTable.Rows.Count > 0)
-                return false;
-
+                 return false;
+                
             return true;
         }
 

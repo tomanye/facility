@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.lbllastindexedtime = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lkStore = new DevExpress.XtraEditors.LookUpEdit();
             this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnBuildIndexer = new DevExpress.XtraEditors.SimpleButton();
             this.progressIndex = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.itemsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -54,8 +54,8 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.backgroundIndexer = new System.ComponentModel.BackgroundWorker();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.backgroundIndexer = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkStore.Properties)).BeginInit();
@@ -101,14 +101,6 @@
             this.lbllastindexedtime.Name = "lbllastindexedtime";
             this.lbllastindexedtime.Size = new System.Drawing.Size(108, 20);
             this.lbllastindexedtime.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(565, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Last Indexed Time:";
             // 
             // lkStore
             // 
@@ -156,6 +148,14 @@
             this.progressIndex.Name = "progressIndex";
             this.progressIndex.Size = new System.Drawing.Size(600, 22);
             this.progressIndex.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(565, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Last Indexed Time:";
             // 
             // gridSplitContainer1
             // 
@@ -351,13 +351,6 @@
             this.layoutControlItem7.TextToControlDistance = 0;
             this.layoutControlItem7.TextVisible = false;
             // 
-            // backgroundIndexer
-            // 
-            this.backgroundIndexer.WorkerReportsProgress = true;
-            this.backgroundIndexer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundIndexer_DoWork);
-            this.backgroundIndexer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundIndexer_ProgressChanged);
-            this.backgroundIndexer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundIndexer_RunWorkerCompleted);
-            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
@@ -367,6 +360,13 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(371, 24);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // backgroundIndexer
+            // 
+            this.backgroundIndexer.WorkerReportsProgress = true;
+            this.backgroundIndexer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundIndexer_DoWork);
+            this.backgroundIndexer.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundIndexer_ProgressChanged);
+            this.backgroundIndexer.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundIndexer_RunWorkerCompleted);
             // 
             // StockOutIndicesBuilder
             // 
