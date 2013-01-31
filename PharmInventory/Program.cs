@@ -72,7 +72,7 @@ namespace PharmInventory
 
         private static void CreateDatabaseTables()
         {
-             var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
+            var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
 
             //Get the sql. scripts file in the directory
             FileInfo[] scripts = scriptsDirectory.GetFiles();
@@ -81,9 +81,9 @@ namespace PharmInventory
             {
                 try
                 {
-                string script = scriptFile.OpenText().ReadToEnd();
-                ExecuteNonQuery(script);
-                scriptFile.OpenText().Close();
+                    string script = scriptFile.OpenText().ReadToEnd();
+                    ExecuteNonQuery(script);
+                    scriptFile.OpenText().Close();
 
                 }
                 catch (Exception)
