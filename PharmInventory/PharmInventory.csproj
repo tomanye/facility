@@ -881,6 +881,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="PharmInventory_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\IndexBuilder.ViewModels.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModels.AMCViewModel.datasource" />
