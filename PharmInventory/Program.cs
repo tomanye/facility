@@ -46,10 +46,14 @@ namespace PharmInventory
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
-            StockoutIndexBuilder.Settings.ConnectionString = Registry.GetValue("HKEY_CURRENT_USER\\Software\\JSI\\HCMIS\\Configuration", "ConnectionString", null).ToString();
-
+            try
+            {
+                ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
+                StockoutIndexBuilder.Settings.ConnectionString = Registry.GetValue("HKEY_CURRENT_USER\\Software\\JSI\\HCMIS\\Configuration", "ConnectionString", null).ToString();
+            }
+            catch
+            {
+            }
             if (ApplicationDeployment.IsNetworkDeployed)
             {
                 HCMIS = ApplicationDeployment.CurrentDeployment;
