@@ -657,6 +657,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\32_AllProdsNov20.sql" />
+    <Content Include="Scripts\33_disposalinsert.sql" />
+    <Content Include="Scripts\34_disposal.sql" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
