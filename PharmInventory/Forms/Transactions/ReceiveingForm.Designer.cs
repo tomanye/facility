@@ -851,7 +851,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.gridColumn13.AppearanceCell.BackColor = System.Drawing.Color.WhiteSmoke;
             this.gridColumn13.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn13.Caption = "Item Name";
+            this.gridColumn13.Caption = "Full Item Name";
             this.gridColumn13.FieldName = "Item Name";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
