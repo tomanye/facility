@@ -51,7 +51,7 @@ namespace PharmInventory.Forms.Reports
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
-            lkCommodityTypes.ItemIndex = 0;
+           // lkCommodityTypes.ItemIndex = 0;
 
             string[] arr = new string[] {"All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked"};
             cboStatus.Properties.DataSource = arr;
@@ -97,7 +97,9 @@ namespace PharmInventory.Forms.Reports
             cboIssuedTo.Text = "Select Issue Location";
             
             this._isReady = true;
-            PopulateGrid();
+
+          PopulateGrid();
+
         }
 
         /// <summary>
@@ -325,7 +327,7 @@ namespace PharmInventory.Forms.Reports
             ckExcNeverIssued.Enabled = ckExclude.Checked;
             if (ckExclude.Checked)
                 //gridItemChoiceView.ActiveFilterString =
-                //   string.Format("[EverReceived] != '0' and SOH != '0' and TypeID={0}",
+                //   string.Format("[EverReceived] != '0' or SOH != '0' or TypeID={0}",
                 //                 (int) lkCommodityTypes.EditValue);
                 gridItemChoiceView.ActiveFilterString = "SOH != '0' or [EverReceived] !='0' or AMC!= '0'";
 
@@ -455,10 +457,10 @@ namespace PharmInventory.Forms.Reports
             gridItemsChoice.DataSource = e.Result;
             cboStatus.EditValue = _filter;
             if (ckExclude.Checked)
-                gridItemChoiceView.ActiveFilterString = "[EverReceived] != '0' or SOH != '0' or AMC != '0'";
+                gridItemChoiceView.ActiveFilterString =
+                    string.Format("[EverReceived] != '0' or SOH != '0' or AMC != '0'");
             else
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
-
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}",Convert.ToInt32(lkCommodityTypes.EditValue));
         }
 
         /// <summary>

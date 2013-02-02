@@ -216,7 +216,7 @@ namespace PharmInventory.Forms.Reports
             this.lkCommodityTypes.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
             this.lkCommodityTypes.Properties.DisplayMember = "Name";
-            this.lkCommodityTypes.Properties.NullText = "";
+            this.lkCommodityTypes.Properties.NullText = "All";
             this.lkCommodityTypes.Properties.ValueMember = "ID";
             this.lkCommodityTypes.Size = new System.Drawing.Size(154, 20);
             this.lkCommodityTypes.StyleController = this.layoutControl1;

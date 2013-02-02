@@ -593,6 +593,7 @@ namespace PharmInventory.Forms.Transactions
             }
             //Print after confirm
             xpButton2_Click(sender, e);
+            RefreshItems();
         }
 
 
@@ -623,6 +624,13 @@ namespace PharmInventory.Forms.Transactions
             tabControl1.SelectedTabPageIndex = 0;
         }
 
+        public void RefreshItems()
+        {
+            PopulateItemList();
+            _tabPage = 0;
+            tabControl1.SelectedTabPageIndex = 0;
+            gridItemChoiceView.RefreshData();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ResetValues();
