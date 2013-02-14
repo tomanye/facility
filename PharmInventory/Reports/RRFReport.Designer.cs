@@ -893,7 +893,7 @@ namespace PharmInventory.Reports
             // calculatedField1
             // 
             this.calculatedField1.DataMember = "DataTable1";
-            this.calculatedField1.Expression = "Max(MaxStockQty-SOH,0)";
+            this.calculatedField1.Expression = "Max([calculatedField7]-[calculatedField6],0)";
             this.calculatedField1.Name = "calculatedField1";
             // 
             // calculatedField2

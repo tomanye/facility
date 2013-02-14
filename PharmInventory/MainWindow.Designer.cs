@@ -81,6 +81,11 @@ namespace PharmInventory
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarFacilitySettings = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarPipeline = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiReceive = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
@@ -112,11 +117,6 @@ namespace PharmInventory
             this.lbiIssueLog = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiLossAdjustLog = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiInventoryLog = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarFacilitySettings = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarPipeline = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
@@ -685,6 +685,44 @@ namespace PharmInventory
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
             // 
+            // navBarGroup6
+            // 
+            this.navBarGroup6.Caption = "Profiles";
+            this.navBarGroup6.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarFacilitySettings),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarPipeline)});
+            this.navBarGroup6.Name = "navBarGroup6";
+            // 
+            // navBarFacilitySettings
+            // 
+            this.navBarFacilitySettings.Caption = "Facility Settings";
+            this.navBarFacilitySettings.Name = "navBarFacilitySettings";
+            this.navBarFacilitySettings.SmallImage = global::PharmInventory.Properties.Resources._1287716487_wheel;
+            this.navBarFacilitySettings.Tag = "Facility Settings";
+            // 
+            // navBarItem2
+            // 
+            this.navBarItem2.Caption = "Customize Drug List";
+            this.navBarItem2.Name = "navBarItem2";
+            this.navBarItem2.SmallImage = global::PharmInventory.Properties.Resources._1287716655_cog_edit;
+            this.navBarItem2.Tag = "Customize Druglist";
+            // 
+            // navBarItem3
+            // 
+            this.navBarItem3.Caption = "Facility Details";
+            this.navBarItem3.Name = "navBarItem3";
+            this.navBarItem3.SmallImage = global::PharmInventory.Properties.Resources._1287716472_Hospital;
+            this.navBarItem3.Tag = "Facility Details";
+            // 
+            // navBarPipeline
+            // 
+            this.navBarPipeline.Caption = "Pipeline";
+            this.navBarPipeline.Name = "navBarPipeline";
+            this.navBarPipeline.SmallImage = global::PharmInventory.Properties.Resources._1287716461_pipe;
+            this.navBarPipeline.Tag = "Pipeline";
+            // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "Transactions";
@@ -934,44 +972,6 @@ namespace PharmInventory
             this.lbiInventoryLog.Name = "lbiInventoryLog";
             this.lbiInventoryLog.SmallImage = global::PharmInventory.Properties.Resources._1286957665_File_Receive;
             this.lbiInventoryLog.Tag = "Inventory Log";
-            // 
-            // navBarGroup6
-            // 
-            this.navBarGroup6.Caption = "Profiles";
-            this.navBarGroup6.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarFacilitySettings),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem2),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem3),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarPipeline)});
-            this.navBarGroup6.Name = "navBarGroup6";
-            // 
-            // navBarFacilitySettings
-            // 
-            this.navBarFacilitySettings.Caption = "Facility Settings";
-            this.navBarFacilitySettings.Name = "navBarFacilitySettings";
-            this.navBarFacilitySettings.SmallImage = global::PharmInventory.Properties.Resources._1287716487_wheel;
-            this.navBarFacilitySettings.Tag = "Facility Settings";
-            // 
-            // navBarItem2
-            // 
-            this.navBarItem2.Caption = "Customize Drug List";
-            this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.SmallImage = global::PharmInventory.Properties.Resources._1287716655_cog_edit;
-            this.navBarItem2.Tag = "Customize Druglist";
-            // 
-            // navBarItem3
-            // 
-            this.navBarItem3.Caption = "Facility Details";
-            this.navBarItem3.Name = "navBarItem3";
-            this.navBarItem3.SmallImage = global::PharmInventory.Properties.Resources._1287716472_Hospital;
-            this.navBarItem3.Tag = "Facility Details";
-            // 
-            // navBarPipeline
-            // 
-            this.navBarPipeline.Caption = "Pipeline";
-            this.navBarPipeline.Name = "navBarPipeline";
-            this.navBarPipeline.SmallImage = global::PharmInventory.Properties.Resources._1287716461_pipe;
-            this.navBarPipeline.Tag = "Pipeline";
             // 
             // navBarGroup5
             // 

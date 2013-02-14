@@ -5,6 +5,7 @@ using DevExpress.XtraEditors;
 using Microsoft.Win32;
 using PharmInventory.Forms.Tools;
 using ConnectionStringManager;
+using PharmInventory.Forms.Transactions;
 using PharmInventory.HelperClasses;
 using System.ComponentModel;
 namespace PharmInventory.Forms.Modals
@@ -67,7 +68,10 @@ namespace PharmInventory.Forms.Modals
                         HelperClasses.DatabaseHelpers.AutoBackUp();
                     }
                     DatabaseHelpers.FixInconsistencies(); //Clean any database inconsistencies
+
+                    //XtraMessageBox.Show("Would you please chose the FE Settings", "Warning");
                     MainWindow mw = new MainWindow {UserId = MainWindow.LoggedinId = us.ID};
+                    //XtraForm1 mw = new XtraForm1();
                     UsId = us.ID;
                     mw.Show();
 

@@ -369,7 +369,6 @@
             this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn20.FieldName = "gridColumn20";
             this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.UnboundExpression = "Quantity/QtyPerPack";
             this.gridColumn20.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn20.Visible = true;
@@ -387,6 +386,7 @@
             this.gridColumn41.Caption = "Qty to Reach Max";
             this.gridColumn41.FieldName = "gridColumn41";
             this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.OptionsColumn.AllowEdit = false;
             this.gridColumn41.UnboundExpression = "[gridColumn19] - [gridColumn16]";
             this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn41.Visible = true;
@@ -736,6 +736,7 @@
             this.gridColumn40.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn40.FieldName = "gridColumn40";
             this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.OptionsColumn.AllowEdit = false;
             this.gridColumn40.UnboundExpression = "[gridColumn7]-[SOH]";
             this.gridColumn40.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn40.Visible = true;

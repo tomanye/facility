@@ -260,6 +260,7 @@ namespace PharmInventory.Forms.Transactions
                 }
 
             issueGrid.DataSource = _dtRecGrid;
+            ChooseGridView();
             cboStoreConf.EditValue = cboStores.EditValue;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
@@ -268,6 +269,8 @@ namespace PharmInventory.Forms.Transactions
             cboReceivingUnits.Properties.DataSource = recUnit.DefaultView;
             cboReceivingUnits.Properties.DisplayMember = "Name";
             cboReceivingUnits.Properties.ValueMember = "ID";
+
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -982,9 +985,28 @@ namespace PharmInventory.Forms.Transactions
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status] !='Stock Out'", Convert.ToInt32(lkCategories.EditValue));
             }
         }
-     
-       
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //Write the print
+        }
+
+         private void ChooseGridView()
+        {
+            if (chkvaccineProgram.Checked) issueGrid.MainView = gridViewToVaccine;
+            else issueGrid.MainView = issueGridView;
+        }
 
 
+        private void chkvaccineProgram_CheckedChanged(object sender, EventArgs e)
+        {
+            ChooseGridView();
+        }
+
+        private void ChooseIssueGridView()
+        {
+            if (checkEdit1.Checked) issueGrid.MainView = gridViewToVaccine;
+            else issueGrid.MainView = issueGridView;
+        }
     }
 }

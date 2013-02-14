@@ -111,7 +111,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.lstDUs.CheckOnClick = true;
             this.lstDUs.FormattingEnabled = true;
-            this.lstDUs.Location = new System.Drawing.Point(401, 267);
+            this.lstDUs.Location = new System.Drawing.Point(401, 273);
             this.lstDUs.Name = "lstDUs";
             this.lstDUs.Size = new System.Drawing.Size(369, 116);
             this.lstDUs.TabIndex = 12;
@@ -158,7 +158,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtQuantityPerPack
             // 
-            this.txtQuantityPerPack.Location = new System.Drawing.Point(193, 67);
+            this.txtQuantityPerPack.Location = new System.Drawing.Point(193, 73);
             this.txtQuantityPerPack.Name = "txtQuantityPerPack";
             this.txtQuantityPerPack.Size = new System.Drawing.Size(186, 20);
             this.txtQuantityPerPack.StyleController = this.layout;
@@ -166,7 +166,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(193, 91);
+            this.txtText.Location = new System.Drawing.Point(193, 97);
             this.txtText.Name = "txtText";
             this.txtText.Size = new System.Drawing.Size(186, 20);
             this.txtText.StyleController = this.layout;
@@ -199,7 +199,7 @@ namespace PharmInventory.Forms.Modals
             // rdN
             // 
             this.rdN.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdN.Location = new System.Drawing.Point(401, 202);
+            this.rdN.Location = new System.Drawing.Point(401, 208);
             this.rdN.Margin = new System.Windows.Forms.Padding(0);
             this.rdN.Name = "rdN";
             this.rdN.Size = new System.Drawing.Size(369, 25);
@@ -210,7 +210,7 @@ namespace PharmInventory.Forms.Modals
             // rdC
             // 
             this.rdC.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdC.Location = new System.Drawing.Point(398, 116);
+            this.rdC.Location = new System.Drawing.Point(398, 122);
             this.rdC.Name = "rdC";
             this.rdC.Size = new System.Drawing.Size(375, 25);
             this.rdC.TabIndex = 4;
@@ -220,7 +220,7 @@ namespace PharmInventory.Forms.Modals
             // rdE
             // 
             this.rdE.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdE.Location = new System.Drawing.Point(587, 173);
+            this.rdE.Location = new System.Drawing.Point(587, 179);
             this.rdE.Margin = new System.Windows.Forms.Padding(0);
             this.rdE.Name = "rdE";
             this.rdE.Size = new System.Drawing.Size(183, 25);
@@ -231,7 +231,7 @@ namespace PharmInventory.Forms.Modals
             // rdV
             // 
             this.rdV.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdV.Location = new System.Drawing.Point(401, 173);
+            this.rdV.Location = new System.Drawing.Point(401, 179);
             this.rdV.Margin = new System.Windows.Forms.Padding(0);
             this.rdV.Name = "rdV";
             this.rdV.Size = new System.Drawing.Size(182, 25);
@@ -243,7 +243,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.lstPrograms.CheckOnClick = true;
             this.lstPrograms.FormattingEnabled = true;
-            this.lstPrograms.Location = new System.Drawing.Point(18, 267);
+            this.lstPrograms.Location = new System.Drawing.Point(18, 273);
             this.lstPrograms.Name = "lstPrograms";
             this.lstPrograms.Size = new System.Drawing.Size(367, 116);
             this.lstPrograms.TabIndex = 11;
@@ -251,7 +251,7 @@ namespace PharmInventory.Forms.Modals
             // rdA
             // 
             this.rdA.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdA.Location = new System.Drawing.Point(398, 58);
+            this.rdA.Location = new System.Drawing.Point(398, 64);
             this.rdA.Name = "rdA";
             this.rdA.Size = new System.Drawing.Size(375, 25);
             this.rdA.TabIndex = 4;
@@ -263,7 +263,7 @@ namespace PharmInventory.Forms.Modals
             this.cboPrograms.DisplayMember = "Name";
             this.cboPrograms.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPrograms.FormattingEnabled = true;
-            this.cboPrograms.Location = new System.Drawing.Point(189, 209);
+            this.cboPrograms.Location = new System.Drawing.Point(189, 215);
             this.cboPrograms.Name = "cboPrograms";
             this.cboPrograms.Size = new System.Drawing.Size(194, 21);
             this.cboPrograms.TabIndex = 10;
@@ -273,7 +273,7 @@ namespace PharmInventory.Forms.Modals
             // rdB
             // 
             this.rdB.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdB.Location = new System.Drawing.Point(398, 87);
+            this.rdB.Location = new System.Drawing.Point(398, 93);
             this.rdB.Name = "rdB";
             this.rdB.Size = new System.Drawing.Size(375, 25);
             this.rdB.TabIndex = 4;
@@ -296,7 +296,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.lstSuppliers.CheckOnClick = true;
             this.lstSuppliers.FormattingEnabled = true;
-            this.lstSuppliers.Location = new System.Drawing.Point(18, 152);
+            this.lstSuppliers.Location = new System.Drawing.Point(18, 158);
             this.lstSuppliers.Name = "lstSuppliers";
             this.lstSuppliers.Size = new System.Drawing.Size(367, 20);
             this.lstSuppliers.TabIndex = 11;
@@ -452,7 +452,7 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
             this.layoutControlItem13.Location = new System.Drawing.Point(0, 29);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(373, 34);
+            this.layoutControlItem13.Size = new System.Drawing.Size(373, 29);
             this.layoutControlItem13.Text = "layoutControlItem13";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem13.TextToControlDistance = 0;
@@ -487,7 +487,7 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlItem8.CustomizationFormText = "Sub Programs";
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(371, 135);
+            this.layoutControlItem8.Size = new System.Drawing.Size(371, 129);
             this.layoutControlItem8.Text = "Sub Programs";
             this.layoutControlItem8.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
@@ -556,7 +556,7 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlItem5.CustomizationFormText = "Dispensing Units";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(373, 135);
+            this.layoutControlItem5.Size = new System.Drawing.Size(373, 129);
             this.layoutControlItem5.Text = "Dispensing Units";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);

@@ -48,7 +48,7 @@ namespace PharmInventory
 
                 lkCategories.ItemIndex = 0;
                 cboStores.ItemIndex = 0;
-
+                dtAdjustDate.Value = DateTime.Now;
                 if (ckExpired.Checked)
                     gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
         }

@@ -16,6 +16,7 @@ using Woreda = BLL.Woreda;
 using Zone = BLL.Zone;
 using ABC = BLL.ABC;
 using System.ServiceModel;
+using Stores = BLL.Stores;
 
 namespace PharmInventory.HelperClasses
 {
@@ -70,11 +71,14 @@ namespace PharmInventory.HelperClasses
             RefreshItems(soapClient, previousVersion, 2);
            
             RefreshDrugItemCategory(soapClient, previousVersion);
+           
             RefreshItemSupplyCategory(soapClient, previousVersion);
 
             generalInfo.HospitalContact = lastVersion.ToString();
             generalInfo.Save();
         }
+
+        
 
         private static void RefreshABC(Service1SoapClient soapClient, int? previousVersion)
         {
