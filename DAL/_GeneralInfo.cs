@@ -306,6 +306,14 @@ namespace DAL
 					return new SqlParameter("@RRFStatusFirstUpdateAfter", SqlDbType.VarChar, 50);
 				}
 			}
+
+            public static SqlParameter NormalFacility
+            {
+                get
+                {
+                    return new SqlParameter("@NormalFacility", SqlDbType.Bit, 1);
+                }
+            }
 			
 		}
 		#endregion		
@@ -339,6 +347,7 @@ namespace DAL
             public const string DSUpdateFrequency = "DSUpdateFrequency";
             public const string RRFStatusUpdateFrequency = "RRFStatusUpdateFrequency";
             public const string RRFStatusFirstUpdateAfter = "RRFStatusFirstUpdateAfter";
+		    public const string NormalFacility = "NormalFacility";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -372,6 +381,7 @@ namespace DAL
 					ht[DSUpdateFrequency] = _GeneralInfo.PropertyNames.DSUpdateFrequency;
 					ht[RRFStatusUpdateFrequency] = _GeneralInfo.PropertyNames.RRFStatusUpdateFrequency;
 					ht[RRFStatusFirstUpdateAfter] = _GeneralInfo.PropertyNames.RRFStatusFirstUpdateAfter;
+				    ht[NormalFacility] = _GeneralInfo.PropertyNames.NormalFacility;
 
 				}
 				return (string)ht[columnName];
@@ -410,6 +420,7 @@ namespace DAL
             public const string DSUpdateFrequency = "DSUpdateFrequency";
             public const string RRFStatusUpdateFrequency = "RRFStatusUpdateFrequency";
             public const string RRFStatusFirstUpdateAfter = "RRFStatusFirstUpdateAfter";
+		    public const string NormalFacility = "NormalFacility";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -443,6 +454,7 @@ namespace DAL
 					ht[DSUpdateFrequency] = _GeneralInfo.ColumnNames.DSUpdateFrequency;
 					ht[RRFStatusUpdateFrequency] = _GeneralInfo.ColumnNames.RRFStatusUpdateFrequency;
 					ht[RRFStatusFirstUpdateAfter] = _GeneralInfo.ColumnNames.RRFStatusFirstUpdateAfter;
+				    ht[NormalFacility] = _GeneralInfo.ColumnNames.NormalFacility;
 
 				}
 				return (string)ht[propertyName];
@@ -481,6 +493,7 @@ namespace DAL
             public const string DSUpdateFrequency = "s_DSUpdateFrequency";
             public const string RRFStatusUpdateFrequency = "s_RRFStatusUpdateFrequency";
             public const string RRFStatusFirstUpdateAfter = "s_RRFStatusFirstUpdateAfter";
+            public const string NormalFacility = "NormalFacility";
 
 		}
 		#endregion		
@@ -798,6 +811,18 @@ namespace DAL
 				base.Setstring(ColumnNames.RRFStatusFirstUpdateAfter, value);
 			}
 		}
+
+        public virtual bool NormalFacility
+        {
+            get
+            {
+                return base.Getbool(ColumnNames.NormalFacility);
+            }
+            set
+            {
+                base.Setbool(ColumnNames.NormalFacility, value);
+            }
+        }
 
 
 		#endregion
@@ -1193,6 +1218,21 @@ namespace DAL
 					this.RRFStatusFirstUpdateAfter = base.SetstringAsString(ColumnNames.RRFStatusFirstUpdateAfter, value);
 			}
 		}
+
+        public virtual string s_NormalFacility
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.NormalFacility) ? string.Empty : base.GetstringAsString(ColumnNames.NormalFacility);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.NormalFacility);
+                else
+                    this.NormalFacility = base.SetboolAsString(ColumnNames.NormalFacility, value);
+            }
+        }
 
 
 		#endregion		
@@ -2724,6 +2764,10 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.RRFStatusFirstUpdateAfter);
 			p.SourceColumn = ColumnNames.RRFStatusFirstUpdateAfter;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.NormalFacility);
+            p.SourceColumn = ColumnNames.NormalFacility;
+            p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;

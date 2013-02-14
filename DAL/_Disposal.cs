@@ -210,21 +210,7 @@ namespace DAL
 					return new SqlParameter("@RecID", SqlDbType.Int, 0);
 				}
 			}
-            public static SqlParameter NoOfPack
-            {
-                get
-                {
-                    return new SqlParameter("@NoOfPack", SqlDbType.Int, 0);
-                }
-            }
-
-            public static SqlParameter QtyPerPack
-            {
-                get
-                {
-                    return new SqlParameter("@QtyPerPack", SqlDbType.Int, 0);
-                }
-            }
+           
           
 		}
 		#endregion		
@@ -246,9 +232,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
-		    public const string NoOfPack = "NoOfPack";
-		    public const string QtyPerPack = "QtyPerPack";
-		
+		   
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -271,10 +255,7 @@ namespace DAL
 				        ht[RefNo] = PropertyNames.RefNo;
 				        ht[EurDate] = PropertyNames.EurDate;
 				        ht[RecID] = PropertyNames.RecID;
-				        ht[NoOfPack] = PropertyNames.NoOfPack;
-				        ht[QtyPerPack] = PropertyNames.QtyPerPack;
-
-				    }
+				     }
 				   
 
 				}
@@ -302,9 +283,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
-            public const string NoOfPack = "NoOfPack";
-            public const string QtyPerPack = "QtyPerPack";
-		   
+          
 			static public string ToColumnName(string propertyName)
 			{
 				if(ht == null)
@@ -325,10 +304,7 @@ namespace DAL
 					ht[RefNo] = _Disposal.ColumnNames.RefNo;
 					ht[EurDate] = _Disposal.ColumnNames.EurDate;
 					ht[RecID] = _Disposal.ColumnNames.RecID;
-                    ht[NoOfPack] = PropertyNames.NoOfPack;
-                    ht[QtyPerPack] = PropertyNames.QtyPerPack;
-				   
-
+                  
 				}
 				return (string)ht[propertyName];
 			}
@@ -354,9 +330,7 @@ namespace DAL
             public const string RefNo = "s_RefNo";
             public const string EurDate = "s_EurDate";
             public const string RecID = "s_RecID";
-		    public const string NoOfPack = "s_NoOfPack";
-		    public const string QtyPerPack = "s_QtyPerPack";
-
+		   
 
 		}
 		#endregion		
@@ -531,28 +505,7 @@ namespace DAL
 			}
 		}
 
-        public virtual int NoOfPack
-        {
-            get
-            {
-                return base.Getint(ColumnNames.NoOfPack);
-            }
-            set
-            {
-                base.Setint(ColumnNames.NoOfPack, value);
-            }
-        }
-        public virtual int QtyPerPack
-        {
-            get
-            {
-                return base.Getint(ColumnNames.QtyPerPack);
-            }
-            set
-            {
-                base.Setint(ColumnNames.QtyPerPack, value);
-            }
-        }
+       
 	    #endregion
 		
 		#region String Properties
@@ -766,34 +719,6 @@ namespace DAL
 					this.RecID = base.SetintAsString(ColumnNames.RecID, value);
 			}
 		}
-        public virtual string s_NoOfPack
-        {
-            get
-            {
-                return this.IsColumnNull(ColumnNames.NoOfPack) ? string.Empty : base.GetintAsString(ColumnNames.NoOfPack);
-            }
-            set
-            {
-                if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.NoOfPack);
-                else
-                    this.RecID = base.SetintAsString(ColumnNames.NoOfPack, value);
-            }
-        }
-        public virtual string s_QtyPerPack
-        {
-            get
-            {
-                return this.IsColumnNull(ColumnNames.QtyPerPack) ? string.Empty : base.GetintAsString(ColumnNames.QtyPerPack);
-            }
-            set
-            {
-                if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.QtyPerPack);
-                else
-                    this.RecID = base.SetintAsString(ColumnNames.QtyPerPack, value);
-            }
-        }
 
 		#endregion		
 	
@@ -966,25 +891,7 @@ namespace DAL
 							return where;
 					}
 				}
-                public WhereParameter NoOfPack
-                {
-                    get
-                    {
-                        WhereParameter where = new WhereParameter(ColumnNames.NoOfPack, Parameters.NoOfPack);
-                        this._clause._entity.Query.AddWhereParameter(where);
-                        return where;
-                    }
-                }
-                public WhereParameter QtyPerPack
-                {
-                    get
-                    {
-                        WhereParameter where = new WhereParameter(ColumnNames.QtyPerPack, Parameters.QtyPerPack);
-                        this._clause._entity.Query.AddWhereParameter(where);
-                        return where;
-                    }
-                }
-               
+              
 
 				private WhereClause _clause;
 			}
@@ -1158,29 +1065,7 @@ namespace DAL
 				}
 			}
 
-            public WhereParameter NoOfPack
-            {
-                get
-                {
-                    if (_QtyPerPack_W == null)
-                    {
-                        _QtyPerPack_W = TearOff.NoOfPack;
-                    }
-                    return _QtyPerPack_W;
-                }
-            }
-
-            public WhereParameter QtyPerPack
-            {
-                get
-                {
-                    if (_QtyPerPack_W == null)
-                    {
-                        _QtyPerPack_W = TearOff.QtyPerPack;
-                    }
-                    return _QtyPerPack_W;
-                }
-            }
+     
 
             private WhereParameter _ID_W = null;
 			private WhereParameter _ItemID_W = null;
@@ -1196,9 +1081,7 @@ namespace DAL
 			private WhereParameter _RefNo_W = null;
 			private WhereParameter _EurDate_W = null;
 			private WhereParameter _RecID_W = null;
-		    private WhereParameter _NoOfPack_W = null;
-            private WhereParameter _QtyPerPack_W = null;
-		 
+		
 			public void WhereClauseReset()
 			{
 				_ID_W = null;
@@ -1410,24 +1293,7 @@ namespace DAL
 							return aggregate;
 					}
 				}
-                public AggregateParameter NoOfPack
-                {
-                    get
-                    {
-                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.NoOfPack, Parameters.NoOfPack);
-                        this._clause._entity.Query.AddAggregateParameter(aggregate);
-                        return aggregate;
-                    }
-                }
-                public AggregateParameter QtyPerPack
-                {
-                    get
-                    {
-                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.QtyPerPack, Parameters.QtyPerPack);
-                        this._clause._entity.Query.AddAggregateParameter(aggregate);
-                        return aggregate;
-                    }
-                }
+             
 				private AggregateClause _clause;
 			}
 			#endregion
@@ -1600,30 +1466,7 @@ namespace DAL
 				}
 			}
 
-            public AggregateParameter NoOfPack
-            {
-                get
-                {
-                    if (_NoOfPack_W == null)
-                    {
-                        _NoOfPack_W = TearOff.NoOfPack;
-                    }
-                    return _NoOfPack_W;
-                }
-            }
-
-            public AggregateParameter QtyPerPack
-            {
-                get
-                {
-                    if (_QtyPerPack_W == null)
-                    {
-                        _QtyPerPack_W = TearOff.QtyPerPack;
-                    }
-                    return _QtyPerPack_W;
-                }
-            }
-           
+      
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _ItemID_W = null;
 			private AggregateParameter _StoreId_W = null;
@@ -1658,9 +1501,7 @@ namespace DAL
 				_RefNo_W = null;
 				_EurDate_W = null;
 				_RecID_W = null;
-			    _NoOfPack_W = null;
-			    _QtyPerPack_W = null;
-
+			
 				this._entity.Query.FlushAggregateParameters();
 
 			}
@@ -1792,13 +1633,7 @@ namespace DAL
 			p.SourceColumn = ColumnNames.RecID;
 			p.SourceVersion = DataRowVersion.Current;
 
-            p = cmd.Parameters.Add(Parameters.NoOfPack);
-            p.SourceColumn = ColumnNames.NoOfPack;
-            p.SourceVersion = DataRowVersion.Current;
-
-            p = cmd.Parameters.Add(Parameters.QtyPerPack);
-            p.SourceColumn = ColumnNames.QtyPerPack;
-            p.SourceVersion = DataRowVersion.Current;
+        
 
             return cmd;
 		}

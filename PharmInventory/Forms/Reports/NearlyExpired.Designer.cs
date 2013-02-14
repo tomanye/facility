@@ -150,7 +150,7 @@ namespace PharmInventory.Forms.Reports
             this.lkCommodityTypes.Size = new System.Drawing.Size(237, 20);
             this.lkCommodityTypes.StyleController = this.layoutControl1;
             this.lkCommodityTypes.TabIndex = 49;
-            this.lkCommodityTypes.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
+            this.lkCommodityTypes.EditValueChanged += new System.EventHandler(this.lkCommodityTypes_EditValueChanged);
             // 
             // xpButton1
             // 

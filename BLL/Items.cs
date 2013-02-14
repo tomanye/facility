@@ -607,7 +607,7 @@ namespace BLL
         public DataTable GetExpiredItemsByBatch(int storeId, int commodityType)
         {
             this.FlushData();
-            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId, commodityType);
+            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId, commodityType);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -821,7 +821,8 @@ namespace BLL
         public DataTable GetNearlyExpiredItemsByBatch(int storeId, int commodityType , DateTime dtCurrent)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItemsByBatch ib WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND (ib.ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
+            string query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
+            this.LoadFromRawSql(query);
             this.DataTable.Columns.Add("MOS");
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {

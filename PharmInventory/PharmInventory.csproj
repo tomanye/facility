@@ -663,6 +663,8 @@
     <Content Include="Scripts\33_altedisposal.sql" />
     <Content Include="Scripts\34_IssueDocDeleted.sql" />
     <Content Include="Scripts\35_IssueDocDeletedInsert.sql" />
+    <Content Include="Scripts\36_alterunit.sql" />
+    <Content Include="Scripts\37_GetReceivedItems.sql" />
     <Content Include="XMLFile1.xml" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
