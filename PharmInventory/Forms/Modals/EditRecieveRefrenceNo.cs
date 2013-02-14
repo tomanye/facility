@@ -34,7 +34,7 @@ namespace PharmInventory.Forms.Modals
             {
                 rec.GetTransactionByRefNo(_refno);
                 refnotextEdit.Text = rec.RefNo;
-                dateEdit2.EditValue = rec.EurDate;
+                dateEdit2.EditValue = rec.Date;
             }
         }
 
