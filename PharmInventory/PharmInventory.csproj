@@ -30,7 +30,8 @@
     <SccProvider>
     </SccProvider>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>C:\STORAGE\Dropbox\FE Labs\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
