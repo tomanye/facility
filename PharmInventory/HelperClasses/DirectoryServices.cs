@@ -74,8 +74,17 @@ namespace PharmInventory.HelperClasses
            
             RefreshItemSupplyCategory(soapClient, previousVersion);
 
+            RefreshItemUnits(soapClient, previousVersion);
+
             generalInfo.HospitalContact = lastVersion.ToString();
             generalInfo.Save();
+        }
+
+        private static void RefreshItemUnits(Service1SoapClient soapClient, int? previousVersion)
+        {
+            //List<DirectoryService.ItemUnit> list = soapClient.GetItemUnitsWithUnitDetail(userName, password,
+            //                                                                             previousVersion, null);
+          
         }
 
         

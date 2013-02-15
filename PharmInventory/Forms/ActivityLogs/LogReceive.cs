@@ -438,11 +438,11 @@ namespace PharmInventory.Forms.ActivityLogs
                 rec.MarkAsDeleted();
                 rec.Save();
 
-                XtraMessageBox.Show("Items successfully deleted.");
+                XtraMessageBox.Show("Item successfully deleted.", "Success");
             }
             else
             {
-                XtraMessageBox.Show("Unable to delete, Transaction with refrence number has been processed");
+                return;
             }
         }
 

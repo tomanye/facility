@@ -318,7 +318,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
                 dis.MarkAsDeleted();
                 dis.Save();
-                XtraMessageBox.Show("Items successfully deleted.");
+                XtraMessageBox.Show("Item successfully deleted.", "Success");
             }
         }
 

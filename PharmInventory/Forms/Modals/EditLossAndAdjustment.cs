@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -21,6 +22,8 @@ namespace PharmInventory.Forms.Modals
         {
             InitializeComponent();
             _refno = refno;
+            dtLossDate.Value = DateTime.Now;
+            dtLossDate.Value = DateTime.Now;
 
         }
 
@@ -33,9 +36,18 @@ namespace PharmInventory.Forms.Modals
                     foreach (DataRow datarow in dtbl.Rows)
                     {
                         datarow["RefNo"] = refNotextEdit.Text;
-                        datarow["EurDate"] = Convert.ToDateTime(dateEdit1.EditValue);
+                        DateTime xx = dtLossDate.Value;
+                        dtLossDate.CustomFormat = "MM/dd/yyyy";
+                        DateTime dtRec = new DateTime();
+                        datarow["Date"] = ConvertDate.DateConverter(dtLossDate.Text);
+                        dtLossDate.IsGregorianCurrentCalendar = true;
+
+                        datarow["EurDate"] = dtLossDate.Value;
+                        dtLossDate.IsGregorianCurrentCalendar = false;
                     }
                     dis.Save();
+                    Close();
+                    XtraMessageBox.Show("Refrence No and Date is successfully updated", "Success");
                 }
 
                 else
@@ -59,7 +71,7 @@ namespace PharmInventory.Forms.Modals
             {
                 dis.GetTransactionByRefNo(_refno);
                 refNotextEdit.Text = dis.RefNo;
-                if (dateEdit1 != null) dateEdit1.EditValue = dis.EurDate;
+                dtLossDate.Value = dis.Date;
             }
         }
 
