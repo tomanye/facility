@@ -52,11 +52,11 @@ namespace PharmInventory.HelperClasses
                 }
             }
 
-            //RefreshAdminUnits(soapClient, previousVersion);
+           // RefreshAdminUnits(soapClient, previousVersion);
             RefreshUnits(soapClient, previousVersion);
             RefreshVEN(soapClient, previousVersion);
             RefreshABC(soapClient, previousVersion);
-           // //RefreshSuppliers(soapClient, previousVersion);
+            // //RefreshSuppliers(soapClient, previousVersion);
             RefreshDosageForms(soapClient, previousVersion);
 
             RefreshTypes(soapClient, previousVersion);
@@ -64,17 +64,17 @@ namespace PharmInventory.HelperClasses
             RefreshSupplyCategory(soapClient, previousVersion);
             RefreshDrugSubCategory(soapClient, previousVersion);
 
-           //// RefreshPrograms(soapClient,previousVersion);
+            //// RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
-           // //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
+            // //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
             RefreshItems(soapClient, previousVersion, 1);
             RefreshItems(soapClient, previousVersion, 2);
-           
+
             RefreshDrugItemCategory(soapClient, previousVersion);
-           
+
             RefreshItemSupplyCategory(soapClient, previousVersion);
 
-           // RefreshItemUnits(soapClient, previousVersion);
+            RefreshItemUnits(soapClient, previousVersion);
 
             generalInfo.HospitalContact = lastVersion.ToString();
             generalInfo.Save();
@@ -82,9 +82,25 @@ namespace PharmInventory.HelperClasses
 
         private static void RefreshItemUnits(Service1SoapClient soapClient, int? previousVersion)
         {
-            //List<DirectoryService.ItemUnit> list = soapClient.GetItemUnitsWithUnitDetail(userName, password,
-            //                                                                             previousVersion, null);
-          
+            List<DirectoryService.ItemUnitWithUnitDetail> list = soapClient.GetItemUnitsWithUnitDetail(userName, password,
+                                                                                       previousVersion, null);
+            var iu = new BLL.ItemUnit();
+            foreach (DirectoryService.ItemUnitWithUnitDetail v in list)
+            {
+                iu.LoadByPrimaryKey(v.ID);
+                if(iu.RowCount==0)
+                {
+                    iu.AddNew();
+                }
+                if(v.ID != 0)
+                iu.ID = v.ID;
+                if (v.ItemID != null)
+                    iu.ItemID= v.ItemID.Value;
+                    iu.QtyPerUnit = v.QtyPerUnit;
+                    iu.Text = v.Text;
+                iu.Save();
+            }
+
         }
 
         

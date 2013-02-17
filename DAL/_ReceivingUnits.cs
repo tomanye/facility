@@ -135,7 +135,7 @@ namespace DAL
 			{
 				get
 				{
-					return new SqlParameter("@Woreda", SqlDbType.Int, 0);
+					return new SqlParameter("@Woreda", SqlDbType.VarChar, 50);
 				}
 			}
 			
@@ -170,6 +170,30 @@ namespace DAL
 					return new SqlParameter("@IsActive", SqlDbType.Bit, 0);
 				}
 			}
+
+            public static SqlParameter FacilityType
+            {
+                get
+                {
+                    return new SqlParameter("@FacilityType", SqlDbType.VarChar, 50);
+                }
+            }
+
+            public static SqlParameter Region
+            {
+                get
+                {
+                    return new SqlParameter("@Region", SqlDbType.VarChar, 50);
+                }
+            }
+
+            public static SqlParameter Zone
+            {
+                get
+                {
+                    return new SqlParameter("@Zone", SqlDbType.VarChar, 50);
+                }
+            }
 			
 		}
 		#endregion		
@@ -187,6 +211,10 @@ namespace DAL
             public const string Max = "Max";
             public const string IsActive = "IsActive";
 
+            public const string Region = "Region";
+            public const string Zone = "Zone";
+            public const string FacilityType = "FacilityType";
+
 			static public string ToPropertyName(string columnName)
 			{
 				if(ht == null)
@@ -202,6 +230,9 @@ namespace DAL
 					ht[Min] = _ReceivingUnits.PropertyNames.Min;
 					ht[Max] = _ReceivingUnits.PropertyNames.Max;
 					ht[IsActive] = _ReceivingUnits.PropertyNames.IsActive;
+                    ht[Region] = _ReceivingUnits.PropertyNames.Region;
+                    ht[Zone] = _ReceivingUnits.PropertyNames.Zone;
+                    ht[FacilityType] = _ReceivingUnits.PropertyNames.FacilityType;
 
 				}
 				return (string)ht[columnName];
@@ -223,6 +254,9 @@ namespace DAL
             public const string Min = "Min";
             public const string Max = "Max";
             public const string IsActive = "IsActive";
+            public const string Region = "Region";
+            public const string Zone = "Zone";
+            public const string FacilityType = "FacilityType";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -239,7 +273,9 @@ namespace DAL
 					ht[Min] = _ReceivingUnits.ColumnNames.Min;
 					ht[Max] = _ReceivingUnits.ColumnNames.Max;
 					ht[IsActive] = _ReceivingUnits.ColumnNames.IsActive;
-
+                    ht[Region] = _ReceivingUnits.ColumnNames.Region;
+                    ht[Zone] = _ReceivingUnits.ColumnNames.Zone;
+                    ht[FacilityType] = _ReceivingUnits.ColumnNames.FacilityType;
 				}
 				return (string)ht[propertyName];
 			}
@@ -260,6 +296,9 @@ namespace DAL
             public const string Min = "s_Min";
             public const string Max = "s_Max";
             public const string IsActive = "s_IsActive";
+            public const string Region = "s_Region";
+            public const string Zone = "s_Zone";
+            public const string FacilityType = "s_FacilityType";
 
 		}
 		#endregion		
@@ -314,15 +353,15 @@ namespace DAL
 			}
 		}
 
-		public virtual int Woreda
+		public virtual string Woreda
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.Woreda);
+				return base.Getstring(ColumnNames.Woreda);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.Woreda, value);
+				base.Setstring(ColumnNames.Woreda, value);
 			}
 		}
 
@@ -374,6 +413,41 @@ namespace DAL
 			}
 		}
 
+        public virtual string Region
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.Region);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.Region, value);
+            }
+        }
+
+        public virtual string Zone
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.Zone);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.Zone, value);
+            }
+        }
+
+        public virtual string FacilityType
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.FacilityType);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.FacilityType, value);
+            }
+        }
 
 		#endregion
 		
@@ -443,14 +517,14 @@ namespace DAL
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.Woreda) ? string.Empty : base.GetintAsString(ColumnNames.Woreda);
+				return this.IsColumnNull(ColumnNames.Woreda) ? string.Empty : base.GetstringAsString(ColumnNames.Woreda);
 			}
 			set
 	        {
 				if(string.Empty == value)
 					this.SetColumnNull(ColumnNames.Woreda);
 				else
-					this.Woreda = base.SetintAsString(ColumnNames.Woreda, value);
+					this.Woreda = base.SetstringAsString(ColumnNames.Woreda, value);
 			}
 		}
 
@@ -499,20 +573,65 @@ namespace DAL
 			}
 		}
 
-		public virtual string s_IsActive
+		public virtual string s_Region
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.IsActive) ? string.Empty : base.GetboolAsString(ColumnNames.IsActive);
+				return this.IsColumnNull(ColumnNames.Region) ? string.Empty : base.GetstringAsString(ColumnNames.Region);
 			}
 			set
 	        {
 				if(string.Empty == value)
-					this.SetColumnNull(ColumnNames.IsActive);
+					this.SetColumnNull(ColumnNames.Region);
 				else
-					this.IsActive = base.SetboolAsString(ColumnNames.IsActive, value);
+					this.Region = base.SetstringAsString(ColumnNames.Region, value);
 			}
 		}
+
+        public virtual string s_Zone
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.Zone) ? string.Empty : base.GetstringAsString(ColumnNames.Zone);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.Zone);
+                else
+                    this.Zone = base.SetstringAsString(ColumnNames.Zone, value);
+            }
+        }
+
+        public virtual string s_FacilityType
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.FacilityType) ? string.Empty : base.GetstringAsString(ColumnNames.FacilityType);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.FacilityType);
+                else
+                    this.FacilityType = base.SetstringAsString(ColumnNames.FacilityType, value);
+            }
+        }
+
+        public virtual string s_IsActive
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.IsActive) ? string.Empty : base.GetboolAsString(ColumnNames.IsActive);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.IsActive);
+                else
+                    this.IsActive = base.SetboolAsString(ColumnNames.IsActive, value);
+            }
+        }
 
 
 		#endregion		
@@ -637,6 +756,36 @@ namespace DAL
 					}
 				}
 
+                public WhereParameter Region
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.Region, Parameters.Region);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter Zone
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.Zone, Parameters.Zone);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter FacilityType
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.FacilityType, Parameters.FacilityType);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
 
 				private WhereClause _clause;
 			}
@@ -738,17 +887,56 @@ namespace DAL
 				}
 			}
 
-			public WhereParameter IsActive
-		    {
-				get
-		        {
-					if(_IsActive_W == null)
-	        	    {
-						_IsActive_W = TearOff.IsActive;
-					}
-					return _IsActive_W;
-				}
-			}
+			
+
+            public WhereParameter Region
+            {
+                get
+                {
+                    if (_Region_W == null)
+                    {
+                        _Region_W = TearOff.Region;
+                    }
+                    return _Region_W;
+                }
+            }
+
+            public WhereParameter Zone
+            {
+                get
+                {
+                    if (_Zone_W == null)
+                    {
+                        _Zone_W = TearOff.Zone;
+                    }
+                    return _Zone_W;
+                }
+            }
+
+            public WhereParameter FacilityType
+            {
+                get
+                {
+                    if (_FacilityType_W == null)
+                    {
+                        _FacilityType_W = TearOff.FacilityType;
+                    }
+                    return _FacilityType_W;
+                }
+            }
+
+
+            public WhereParameter IsActive
+            {
+                get
+                {
+                    if (_IsActive_W == null)
+                    {
+                        _IsActive_W = TearOff.IsActive;
+                    }
+                    return _IsActive_W;
+                }
+            }
 
 			private WhereParameter _ID_W = null;
 			private WhereParameter _Name_W = null;
@@ -758,7 +946,10 @@ namespace DAL
 			private WhereParameter _Route_W = null;
 			private WhereParameter _Min_W = null;
 			private WhereParameter _Max_W = null;
-			private WhereParameter _IsActive_W = null;
+            private WhereParameter _IsActive_W = null;
+            private WhereParameter _Region_W = null;
+            private WhereParameter _Zone_W = null;
+            private WhereParameter _FacilityType_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -771,6 +962,9 @@ namespace DAL
 				_Min_W = null;
 				_Max_W = null;
 				_IsActive_W = null;
+                _Region_W = null;
+                _Zone_W = null;
+                _FacilityType_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -916,6 +1110,35 @@ namespace DAL
 							return aggregate;
 					}
 				}
+               
+                public AggregateParameter Region
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.Region, Parameters.Region);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+                public AggregateParameter Zone
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.Zone, Parameters.Zone);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter FacilityType
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.FacilityType, Parameters.FacilityType);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
 
 
 				private AggregateClause _clause;
@@ -1017,7 +1240,41 @@ namespace DAL
 					return _Max_W;
 				}
 			}
+            public AggregateParameter Region
+            {
+                get
+                {
+                    if (_Region_W == null)
+                    {
+                        _Region_W = TearOff.Region;
+                    }
+                    return _Region_W;
+                }
+            }
 
+            public AggregateParameter Zone
+            {
+                get
+                {
+                    if (_Zone_W == null)
+                    {
+                        _Zone_W = TearOff.Zone;
+                    }
+                    return _Zone_W;
+                }
+            }
+
+            public AggregateParameter FacilityType
+            {
+                get
+                {
+                    if (_FacilityType_W == null)
+                    {
+                        _FacilityType_W = TearOff.FacilityType;
+                    }
+                    return _FacilityType_W;
+                }
+            }
 			public AggregateParameter IsActive
 		    {
 				get
@@ -1039,6 +1296,9 @@ namespace DAL
 			private AggregateParameter _Min_W = null;
 			private AggregateParameter _Max_W = null;
 			private AggregateParameter _IsActive_W = null;
+            private AggregateParameter _Region_W = null;
+            private AggregateParameter _Zone_W = null;
+            private AggregateParameter _FacilityType_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -1051,6 +1311,9 @@ namespace DAL
 				_Min_W = null;
 				_Max_W = null;
 				_IsActive_W = null;
+                _Region_W = null;
+                _Zone_W = null;
+                _FacilityType_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1160,6 +1423,18 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.IsActive);
 			p.SourceColumn = ColumnNames.IsActive;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.Region);
+            p.SourceColumn = ColumnNames.Region;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.Zone);
+            p.SourceColumn = ColumnNames.Zone;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.FacilityType);
+            p.SourceColumn = ColumnNames.FacilityType;
+            p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;

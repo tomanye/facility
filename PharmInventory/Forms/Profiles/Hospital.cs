@@ -58,7 +58,7 @@ namespace PharmInventory.Forms.Profiles
             cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
             cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
             _hospitalId = _hospInfo.ID;
-             chkNormal.EditValue = _hospInfo.NormalFacility;
+           //  chkNormal.EditValue = _hospInfo.NormalFacility;
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
@@ -121,7 +121,7 @@ namespace PharmInventory.Forms.Profiles
             _hospInfo.DSUpdateFrequency = cboDSUpdateFrequency.EditValue.ToString();
             _hospInfo.RRFStatusUpdateFrequency = cboHCTSUpdateFrequency.EditValue.ToString();
             _hospInfo.RRFStatusFirstUpdateAfter = cboHCTSFirstUpdate.EditValue.ToString();
-            _hospInfo.NormalFacility = (bool) chkNormal.EditValue;
+            //_hospInfo.NormalFacility = (bool) chkNormal.EditValue;
             //_hospInfo.Region = Convert.ToInt32(cboRegion.SelectedValue);
             //_hospInfo.Woreda = Convert.ToInt32(cboWoreda.SelectedValue);
             //_hospInfo.Zone = Convert.ToInt32(cboZone.SelectedValue);

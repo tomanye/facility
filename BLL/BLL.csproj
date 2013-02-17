@@ -122,6 +122,7 @@
     <Compile Include="Items.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ItemUnit.cs" />
     <Compile Include="Pallete.cs" />
     <Compile Include="PhysicalStore.cs" />
     <Compile Include="PickFace.cs" />
