@@ -63,6 +63,10 @@ namespace PharmInventory.Forms.Transactions
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCategories.ItemIndex = 0;
 
+            var unit = new ItemUnit();
+            var units = unit.GetAllUnits();
+            UnitsbindingSource.DataSource = units.DefaultView;
+
             int userID = MainWindow.LoggedinId;
             User us = new User();
             us.LoadByPrimaryKey(userID);
@@ -186,6 +190,7 @@ namespace PharmInventory.Forms.Transactions
             Items itmB = new Items();
             Balance bal = new Balance();
             IssueDoc iss = new IssueDoc();
+            ReceiveDoc receiveDoc =new ReceiveDoc();
             _tabPage = 1;
             tabControl1.SelectedTabPageIndex = 1;
 
@@ -193,7 +198,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Unit", "Store SOH", "Dispatchable", "MR Issue Qty", 
                                    "DU Remaining SOH", "DU AMC", "Recommended Qty", "Pack Qty", "Qty Per Pack", 
-                                   "Requested Qty", "MR DU SOH"};
+                                   "Requested Qty", "MR DU SOH","UnitID"};
                 foreach (string col in str)
                 {
                     _dtRecGrid.Columns.Add(col);
@@ -215,7 +220,7 @@ namespace PharmInventory.Forms.Transactions
                     DataTable dtExp = itm.GetExpiredItemsByID(Convert.ToInt32(cboStores.EditValue), itmID);
                     DataTable dtItm = itm.GetItemById(itmID);
                     Int64 expAmount = 0;
-
+                    DataTable dtitm1 = receiveDoc.GetReceivedItems(itmID, storeID);
                     foreach (DataRow dr in dtExp.Rows)
                     {
                         expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), Convert.ToInt32(cboStores.EditValue));
@@ -224,11 +229,11 @@ namespace PharmInventory.Forms.Transactions
                     Int64 soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
                     Int64 dispatchable = Convert.ToInt64(lst["Dispatchable"]);
 
-
+                    
 
                     string itemName = lst["FullItemName"].ToString();
                     object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0};
+                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0,dtitm1.Rows[0]["UnitID"]};
 
 
                     if (expAmount < soh && quantity < soh)
@@ -270,6 +275,8 @@ namespace PharmInventory.Forms.Transactions
             cboReceivingUnits.Properties.DisplayMember = "Name";
             cboReceivingUnits.Properties.ValueMember = "ID";
 
+
+
            
         }
 
@@ -298,7 +305,7 @@ namespace PharmInventory.Forms.Transactions
                 DataTable dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID" };
                 foreach (string col in strr)
                 {
                     dtIssueConf.Columns.Add(col);
@@ -387,7 +394,7 @@ namespace PharmInventory.Forms.Transactions
                                                    packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
                                                    Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
                                                    dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
-                                                   dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],sohbalance };
+                                                   dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],sohbalance,dtIssueGrid.Rows[i]["UnitID"]};
                                 dtIssueConf.Rows.Add(obj);
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
                                 j++;
@@ -557,6 +564,7 @@ namespace PharmInventory.Forms.Transactions
                         issDoc.Quantity = Convert.ToInt64(dtConfirmation.Rows[i]["Quantity"]);
                         issDoc.NoOfPack = Convert.ToInt32(dtConfirmation.Rows[i]["No Of Pack"]);
                         issDoc.QtyPerPack = Convert.ToInt32(dtConfirmation.Rows[i]["Qty Per Pack"]);
+                        //issDoc.UnitID = Convert.ToInt32(dtConfirmation.Rows[i]["UnitID"]);
                         issDoc.BatchNo = dtConfirmation.Rows[i]["BatchNo"].ToString();
                         issDoc.Cost = Convert.ToDouble(dtConfirmation.Rows[i]["Unit Price"]);
 
@@ -1007,6 +1015,20 @@ namespace PharmInventory.Forms.Transactions
         {
             if (checkEdit1.Checked) issueGrid.MainView = gridViewToVaccine;
             else issueGrid.MainView = issueGridView;
+        }
+
+        private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
+        {
+            var edit = sender as LookUpEdit;
+            if (edit == null) return;
+            var clone = new ItemUnit();
+            var row = gridItemChoiceView.GetFocusedDataRow();
+            var id = (int)row["ID"];
+            var filterunit = clone.LoadFromSQl(id);
+            //UnitsbindingSource.DataSource = clone.DefaultView;
+            edit.Properties.DataSource = filterunit;
+            edit.Properties.DisplayMember = "Text";
+            edit.Properties.ValueMember = "ID";
         }
     }
 }

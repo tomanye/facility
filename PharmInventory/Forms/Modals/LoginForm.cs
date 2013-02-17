@@ -70,8 +70,7 @@ namespace PharmInventory.Forms.Modals
                     DatabaseHelpers.FixInconsistencies(); //Clean any database inconsistencies
 
                     //XtraMessageBox.Show("Would you please chose the FE Settings", "Warning");
-                    MainWindow mw = new MainWindow {UserId = MainWindow.LoggedinId = us.ID};
-                    //XtraForm1 mw = new XtraForm1();
+                    var mw = new MainWindow {UserId = MainWindow.LoggedinId = us.ID};
                     UsId = us.ID;
                     mw.Show();
 

@@ -531,8 +531,12 @@ namespace PharmInventory.Forms.Profiles
                 ReceivingUnits recUnit = new ReceivingUnits();
                 recUnit.LoadByPrimaryKey(selected);
                 txtReceivingUnit.Text = recUnit.Name;
-                txtDescription.Text = recUnit.Description;
+                memoEdit1.Text = recUnit.Description;
                 txtPhone.Text = recUnit.Phone;
+                txtWoreda.Text = recUnit.Woreda;
+                txtRegion.Text = recUnit.Region;
+                txtZone.Text = recUnit.Zone;
+                txtType.Text = recUnit.FacilityType;
                 chkIsDispensaryActive.Checked = recUnit.IsColumnNull("IsActive") ? true : recUnit.IsActive;
                 _receivingUnitId = recUnit.ID;
                 try
@@ -576,10 +580,14 @@ namespace PharmInventory.Forms.Profiles
                 recUnit.AddNew();
             recUnit.Name = txtReceivingUnit.Text;
             recUnit.Phone = txtPhone.Text;
-            recUnit.Description = txtDescription.Text;
+            recUnit.Description = memoEdit1.Text;
             recUnit.IsActive = chkIsDispensaryActive.Checked;
             recUnit.Min = Convert.ToDouble(cboDUMin.SelectedValue);
             recUnit.Max = Convert.ToDouble(cboDUMax.SelectedValue);
+            recUnit.Woreda = txtWoreda.Text;
+            recUnit.Region = txtRegion.Text;
+            recUnit.Zone = txtZone.Text;
+            recUnit.FacilityType = txtType.Text;
             recUnit.Save();
             recUnit.LoadAll();
             PopulateReceivingUnit(recUnit);
@@ -603,9 +611,13 @@ namespace PharmInventory.Forms.Profiles
         /// </summary>
         private void ResetIssuesLocation()
         {
-            txtDescription.Text = "";
+            memoEdit1.Text = "";
             txtPhone.Text = "";
             txtReceivingUnit.Text = "";
+            txtRegion.Text = "";
+            txtZone.Text = "";
+            txtWoreda.Text = "";
+            txtType.Text = "";
             _receivingUnitId = 0;
             btnIssueSave.Text = "Save";
         }

@@ -282,6 +282,14 @@ namespace DAL
                     return new SqlParameter("@SubProgramID", SqlDbType.Int, 0);
 				}
 			}
+
+            public static SqlParameter UnitID
+            {
+                get
+                {
+                    return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+                }
+            }
 		}
 		#endregion		
 	
@@ -311,6 +319,8 @@ namespace DAL
             public const string EurDate = "EurDate";
             public const string BoxLevel = "BoxLevel";
             public const string SubProgramID = "SubProgramID";
+            public const string UnitID = "UnitID";
+
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -341,6 +351,7 @@ namespace DAL
 					ht[EurDate] = _ReceiveDoc.PropertyNames.EurDate;
 					ht[BoxLevel] = _ReceiveDoc.PropertyNames.BoxLevel;
                     ht[SubProgramID] = _ReceiveDoc.PropertyNames.SubProgramID;
+				    ht[UnitID] = _ReceiveDoc.PropertyNames.UnitID;
 
 				}
 				return (string)ht[columnName];
@@ -376,6 +387,8 @@ namespace DAL
             public const string EurDate = "EurDate";
             public const string BoxLevel = "BoxLevel";
             public const string SubProgramID = "SubProgramID";
+            public const string UnitID = "UnitID";
+
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -406,6 +419,7 @@ namespace DAL
 					ht[EurDate] = _ReceiveDoc.ColumnNames.EurDate;
 					ht[BoxLevel] = _ReceiveDoc.ColumnNames.BoxLevel;
                     ht[SubProgramID] = _ReceiveDoc.ColumnNames.SubProgramID;
+                    ht[UnitID] = _ReceiveDoc.ColumnNames.UnitID;
 				}
 				return (string)ht[propertyName];
 			}
@@ -440,6 +454,7 @@ namespace DAL
             public const string EurDate = "s_EurDate";
             public const string BoxLevel = "s_BoxLevel";
             public const string SubProgramID = "s_SubProgramID";
+            public const string UnitID = "s_UnitID";
 		}
 		#endregion		
 		
@@ -720,6 +735,18 @@ namespace DAL
                 base.Setint(ColumnNames.SubProgramID, value);
 			}
 		}
+
+        public virtual int UnitID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.UnitID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.UnitID, value);
+            }
+        }
 
 		#endregion
 		
@@ -1070,6 +1097,21 @@ namespace DAL
 			}
 		}
 
+        public virtual string s_UnitID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.UnitID) ? string.Empty : base.GetintAsString(ColumnNames.UnitID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.UnitID);
+                else
+                    this.BoxLevel = base.SetintAsString(ColumnNames.UnitID, value);
+            }
+        }
+
 		#endregion		
 	
 		#region Where Clause
@@ -1331,6 +1373,16 @@ namespace DAL
 							return where;
 					}
 				}
+
+                public WhereParameter UnitID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
 
 				private WhereClause _clause;
 			}
@@ -1612,6 +1664,18 @@ namespace DAL
 				}
 			}
 
+            public WhereParameter UnitID
+            {
+                get
+                {
+                    if (_UnitID_W == null)
+                    {
+                        _UnitID_W = TearOff.UnitID;
+                    }
+                    return _UnitID_W;
+                }
+            }
+
 			private WhereParameter _ID_W = null;
 			private WhereParameter _BatchNo_W = null;
 			private WhereParameter _ItemID_W = null;
@@ -1635,6 +1699,7 @@ namespace DAL
 			private WhereParameter _EurDate_W = null;
 			private WhereParameter _BoxLevel_W = null;
             private WhereParameter _SubProgramID_W = null;
+            private WhereParameter _UnitID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1661,6 +1726,7 @@ namespace DAL
 				_EurDate_W = null;
 				_BoxLevel_W = null;
                 _SubProgramID_W = null;
+			    _UnitID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1947,6 +2013,17 @@ namespace DAL
 					}
 				}
 
+                public AggregateParameter UnitID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+
 				private AggregateClause _clause;
 			}
 			#endregion
@@ -2227,6 +2304,18 @@ namespace DAL
 				}
 			}
 
+            public AggregateParameter UnitID
+            {
+                get
+                {
+                    if (_UnitID_W == null)
+                    {
+                        _UnitID_W = TearOff.UnitID;
+                    }
+                    return _UnitID_W;
+                }
+            }
+
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _BatchNo_W = null;
 			private AggregateParameter _ItemID_W = null;
@@ -2250,6 +2339,7 @@ namespace DAL
 			private AggregateParameter _EurDate_W = null;
 			private AggregateParameter _BoxLevel_W = null;
             private AggregateParameter _SubProgramID_W = null;
+            private AggregateParameter _UnitID_W = null;
 			public void AggregateClauseReset()
 			{
 				_ID_W = null;
@@ -2275,6 +2365,7 @@ namespace DAL
 				_EurDate_W = null;
 				_BoxLevel_W = null;
                 _SubProgramID_W = null;
+			    _UnitID_W = null;
 				this._entity.Query.FlushAggregateParameters();
 
 			}
@@ -2439,6 +2530,10 @@ namespace DAL
             p = cmd.Parameters.Add(Parameters.SubProgramID);
             p.SourceColumn = ColumnNames.SubProgramID;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.UnitID);
+            p.SourceColumn = ColumnNames.UnitID;
+            p.SourceVersion = DataRowVersion.Current;
 			return cmd;
 		}
 	}

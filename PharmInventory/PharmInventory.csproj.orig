@@ -147,6 +147,8 @@
     <Reference Include="DevExpress.Utils.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Utils.v12.2.UI">
+    </Reference>
     <Reference Include="DevExpress.XtraBars.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
@@ -656,7 +658,31 @@
     <Content Include="Scripts\30_vwGetReceivedItemsBatchNo.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\32_AllProdsNov20.sql" />
+    <Content Include="Scripts\31_AllProdsNov20.sql" />
+    <Content Include="Scripts\33_disposalinsert.sql" />
+    <Content Include="Scripts\32_altedisposal.sql" />
+    <Content Include="Scripts\34_IssueDocDeleted.sql" />
+    <Content Include="Scripts\35_IssueDocDeletedInsert.sql" />
+    <Content Include="Scripts\36_alterunit.sql" />
+    <Content Include="Scripts\37_GetReceivedItems.sql" />
+    <Content Include="Scripts\38_NeedExpiryBatchForPahramaceuticals.sql" />
+    <Content Include="Scripts\39_SetNeedExpiryBatchForSupplies.sql" />
+    <Content Include="Scripts\40_ItemUnit.sql" />
+    <Content Include="Scripts\42_CreateItemUnitInsert.sql" />
+    <Content Include="Scripts\43_CreateItemUnitLoadAll.sql" />
+    <Content Include="Scripts\44_CreateItemUnitLoadByPrimayKey.sql" />
+    <Content Include="Scripts\45_AlterReceiveDoc.sql" />
+    <Content Include="Scripts\46_ReceiveDocInsert.sql" />
+    <Content Include="Scripts\47_ReceiveDocUpdate.sql" />
+    <Content Include="Scripts\48_ReceiveDocLoadAll.sql" />
+    <Content Include="Scripts\49_DeleteWoredaForeignKey.sql" />
+    <Content Include="Scripts\50_alterWoreda.sql" />
+    <Content Include="Scripts\51_AddColumnsToReceivingUnits.sql" />
+    <Content Include="Scripts\52_ReceivingUnitInsert.sql" />
+    <Content Include="Scripts\53_ReceivingUnitUpdate.sql" />
+    <Content Include="Scripts\54_ReceivingUnitLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\55_ReceivingUnitLoadAll.sql" />
+    <Content Include="XMLFile1.xml" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -883,6 +909,7 @@
     </None>
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\BLL.ItemUnit.datasource" />
     <None Include="Properties\DataSources\IndexBuilder.ViewModels.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModel.ItemViewModel.datasource" />
     <None Include="Properties\DataSources\PharmInventory.ViewModels.AMCViewModel.datasource" />

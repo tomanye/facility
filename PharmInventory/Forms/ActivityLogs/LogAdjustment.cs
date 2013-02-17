@@ -332,7 +332,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
                 dis.MarkAsDeleted();
                 dis.Save();
-                XtraMessageBox.Show("Item successfully deleted.");
+                XtraMessageBox.Show("Item successfully deleted.","Success");
             }
         }
 
@@ -346,10 +346,10 @@ namespace PharmInventory.Forms.ActivityLogs
             dispdelete.ReasonId = (int) dataRow["ReasonID"];
             dispdelete.Quantity = (long) dataRow["Quantity"];
             dispdelete.Date = (DateTime) dataRow["Date"];
-            dispdelete.ApprovedBy = (string) dataRow["ApprovedBy"];
+            //dispdelete.ApprovedBy = (string) dataRow["ApprovedBy"];
             dispdelete.Losses = (bool) dataRow["Losses"];
             dispdelete.BatchNo = (string) dataRow["BatchNo"];
-            dispdelete.Remark = (string) dataRow["Remark"];
+           // dispdelete.Remark = (string) dataRow["Remark"];
             dispdelete.Cost = (double) dataRow["Cost"];
             dispdelete.RefNo = (string) dataRow["RefNo"];
             dispdelete.EurDate = (DateTime) dataRow["EurDate"];

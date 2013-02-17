@@ -210,6 +210,14 @@ namespace DAL
 					return new SqlParameter("@RecID", SqlDbType.Int, 0);
 				}
 			}
+
+            //public static SqlParameter UnitID
+            //{
+            //    get
+            //    {
+            //        return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+            //    }
+            //}
            
           
 		}
@@ -232,6 +240,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
+            //public const string UnitID = "UnitID";
 		   
 
 			static public string ToPropertyName(string columnName)
@@ -255,6 +264,7 @@ namespace DAL
 				        ht[RefNo] = PropertyNames.RefNo;
 				        ht[EurDate] = PropertyNames.EurDate;
 				        ht[RecID] = PropertyNames.RecID;
+                        //ht[UnitID] = PropertyNames.UnitID;
 				     }
 				   
 
@@ -283,6 +293,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
+            //public const string UnitID = "UnitID";
           
 			static public string ToColumnName(string propertyName)
 			{
@@ -304,6 +315,7 @@ namespace DAL
 					ht[RefNo] = _Disposal.ColumnNames.RefNo;
 					ht[EurDate] = _Disposal.ColumnNames.EurDate;
 					ht[RecID] = _Disposal.ColumnNames.RecID;
+                    //ht[UnitID] = _Disposal.ColumnNames.UnitID;
                   
 				}
 				return (string)ht[propertyName];
@@ -330,6 +342,7 @@ namespace DAL
             public const string RefNo = "s_RefNo";
             public const string EurDate = "s_EurDate";
             public const string RecID = "s_RecID";
+            //public const string UnitID = "s_UnitID";
 		   
 
 		}
@@ -504,6 +517,18 @@ namespace DAL
 				base.Setint(ColumnNames.RecID, value);
 			}
 		}
+
+        //public virtual int UnitID
+        //{
+        //    get
+        //    {
+        //        return base.Getint(ColumnNames.UnitID);
+        //    }
+        //    set
+        //    {
+        //        base.Setint(ColumnNames.UnitID, value);
+        //    }
+        //}
 
        
 	    #endregion
@@ -720,6 +745,21 @@ namespace DAL
 			}
 		}
 
+        //public virtual string s_UnitID
+        //{
+        //    get
+        //    {
+        //        return this.IsColumnNull(ColumnNames.UnitID) ? string.Empty : base.GetintAsString(ColumnNames.UnitID);
+        //    }
+        //    set
+        //    {
+        //        if (string.Empty == value)
+        //            this.SetColumnNull(ColumnNames.UnitID);
+        //        else
+        //            this.UnitID = base.SetintAsString(ColumnNames.UnitID, value);
+        //    }
+        //}
+
 		#endregion		
 	
 		#region Where Clause
@@ -891,6 +931,17 @@ namespace DAL
 							return where;
 					}
 				}
+
+                //public WhereParameter UnitID
+                //{
+                //    get
+                //    {
+                //        WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                //        this._clause._entity.Query.AddWhereParameter(where);
+                //        return where;
+                //    }
+                //}
+              
               
 
 				private WhereClause _clause;
@@ -1065,6 +1116,18 @@ namespace DAL
 				}
 			}
 
+            //public WhereParameter UnitID
+            //{
+            //    get
+            //    {
+            //        if (_UnitID_W == null)
+            //        {
+            //            _UnitID_W = TearOff.UnitID;
+            //        }
+            //        return _UnitID_W;
+            //    }
+            //}
+
      
 
             private WhereParameter _ID_W = null;
@@ -1081,6 +1144,7 @@ namespace DAL
 			private WhereParameter _RefNo_W = null;
 			private WhereParameter _EurDate_W = null;
 			private WhereParameter _RecID_W = null;
+		    private WhereParameter _UnitID_W = null;
 		
 			public void WhereClauseReset()
 			{
@@ -1098,6 +1162,7 @@ namespace DAL
 				_RefNo_W = null;
 				_EurDate_W = null;
 				_RecID_W = null;
+			    _UnitID_W = null;
 			    
 				this._entity.Query.FlushWhereParameters();
 
@@ -1293,6 +1358,16 @@ namespace DAL
 							return aggregate;
 					}
 				}
+
+                //public AggregateParameter UnitID
+                //{
+                //    get
+                //    {
+                //        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitID, Parameters.UnitID);
+                //        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                //        return aggregate;
+                //    }
+                //}
              
 				private AggregateClause _clause;
 			}
@@ -1466,6 +1541,18 @@ namespace DAL
 				}
 			}
 
+            //public AggregateParameter UnitID
+            //{
+            //    get
+            //    {
+            //        if (_UnitID_W == null)
+            //        {
+            //            _UnitID_W = TearOff.UnitID;
+            //        }
+            //        return _UnitID_W;
+            //    }
+            //}
+
       
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _ItemID_W = null;
@@ -1481,8 +1568,8 @@ namespace DAL
 			private AggregateParameter _RefNo_W = null;
 			private AggregateParameter _EurDate_W = null;
 		    private AggregateParameter _RecID_W = null;
-            private AggregateParameter _NoOfPack_W = null;
-            private AggregateParameter _QtyPerPack_W = null;
+            private AggregateParameter _UnitID_W = null;
+
 
 
 			public void AggregateClauseReset()
@@ -1501,6 +1588,7 @@ namespace DAL
 				_RefNo_W = null;
 				_EurDate_W = null;
 				_RecID_W = null;
+			    _UnitID_W = null;
 			
 				this._entity.Query.FlushAggregateParameters();
 
@@ -1633,6 +1721,9 @@ namespace DAL
 			p.SourceColumn = ColumnNames.RecID;
 			p.SourceVersion = DataRowVersion.Current;
 
+            //p = cmd.Parameters.Add(Parameters.UnitID);
+            //p.SourceColumn = ColumnNames.UnitID;
+            //p.SourceVersion = DataRowVersion.Current;
         
 
             return cmd;

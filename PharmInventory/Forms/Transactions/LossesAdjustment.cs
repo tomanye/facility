@@ -46,6 +46,11 @@ namespace PharmInventory
                 cboStores.Properties.DataSource = stor.DefaultView;
                 lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
 
+                var unit = new ItemUnit();
+                var xx=unit.GetAllUnits();
+                unitsbindingSource.DataSource = xx.DefaultView;
+                
+                
                 lkCategories.ItemIndex = 0;
                 cboStores.ItemIndex = 0;
                 dtAdjustDate.Value = DateTime.Now;
@@ -133,7 +138,8 @@ namespace PharmInventory
             tabControl1.SelectedTabPageIndex = 1;
             if (dtRecGrid.Columns.Count == 0)
             {
-                string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason"};
+                string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason",
+                               "UnitID"};
                 foreach (string col in str)
                 {
                     dtRecGrid.Columns.Add(col);
@@ -142,7 +148,8 @@ namespace PharmInventory
             int count = 1;
             foreach (DataRow dr in dtSelectedTable.Rows)
             {
-                rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
+               rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
+              
                 int id = Convert.ToInt32(dr["ItemID"]);
                 double price = 0;
                 if (!rec.IsColumnNull("Cost"))
@@ -151,7 +158,13 @@ namespace PharmInventory
                 }
                 DataTable dtItm = itm.GetItemById(id);
                 string itemName = dtItm.Rows[0]["FullItemName"].ToString();
-                object[] obj = { id, dtItm.Rows[0]["StockCode"].ToString(), itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(), rec.QuantityLeft, price, "", "", Convert.ToInt32(dr["ReceiveID"]), 0};
+                var obj = new object[] {};
+                if(!rec.IsColumnNull("UnitID"))
+                obj = new object[] {id, dtItm.Rows[0]["StockCode"].ToString(), 
+                    itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
+                    rec.QuantityLeft, price, "", "", 
+                    Convert.ToInt32(dr["ReceiveID"]),
+                    rec.UnitID};
                 dtRecGrid.Rows.Add(obj);
                 count++;
 
@@ -284,6 +297,7 @@ namespace PharmInventory
                             dis.Quantity = Convert.ToInt64(dtAdjVal.Rows[i]["Adjustment"]);
                         }
                         dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
+                       // dis.UnitID =Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();
@@ -299,7 +313,8 @@ namespace PharmInventory
                                     rec.Out = true;
                                 else
                                     rec.Out = false;
-                                rec.Save();
+                                 rec.UnitID = Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
+                                    rec.Save();
                                 //Log Activity, ActivityID for save is 1
                                // logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity +" LOSS has been made.");
                             }
@@ -562,6 +577,36 @@ namespace PharmInventory
             }
            
         }
+
+        private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
+        {
+            var edit = sender as LookUpEdit;
+            if (edit == null) return;
+            var clone = new ItemUnit();
+            var row = gridAdjView.GetFocusedDataRow();
+            var id = Convert.ToInt32(row["ID"]);
+            var filterunit = clone.LoadFromSQl(id);
+            //UnitsbindingSource.DataSource = clone.DefaultView;
+            edit.Properties.DataSource = filterunit;
+            edit.Properties.DisplayMember = "Text";
+            edit.Properties.ValueMember = "ID";
+        }
+
+        private void unitrepositoryItemLookUpEdit_Enter_1(object sender, EventArgs e)
+        {
+            var edit = sender as LookUpEdit;
+            if (edit == null) return;
+            var clone = new ItemUnit();
+            var row = gridAdjView.GetFocusedDataRow();
+            var id = Convert.ToInt32(row["ID"]);
+            var filterunit = clone.LoadFromSQl(id);
+            //UnitsbindingSource.DataSource = clone.DefaultView;
+            edit.Properties.DataSource = filterunit;
+            edit.Properties.DisplayMember = "Text";
+            edit.Properties.ValueMember = "ID";
+        }
+
+        
 
        
 

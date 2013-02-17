@@ -275,6 +275,13 @@ namespace DAL
 				}
 			}
 
+            //public static SqlParameter UnitID
+            //{
+            //    get
+            //    {
+            //        return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+            //    }
+            //}
         
 		}
 		#endregion		
@@ -304,6 +311,7 @@ namespace DAL
             public const string RecievDocID = "RecievDocID";
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
+           // public const string UnitID = "UnitID";
 		 
 
 			static public string ToPropertyName(string columnName)
@@ -334,7 +342,8 @@ namespace DAL
 					ht[RecievDocID] = _IssueDoc.PropertyNames.RecievDocID;
 					ht[EurDate] = _IssueDoc.PropertyNames.EurDate;
 					ht[OrderID] = _IssueDoc.PropertyNames.OrderID;
-				   
+				    //ht[UnitID] = _IssueDoc.PropertyNames.UnitID;
+
 				}
 				return (string)ht[columnName];
 			}
@@ -368,6 +377,7 @@ namespace DAL
             public const string RecievDocID = "RecievDocID";
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
+           // public const string UnitID = "UnitID";
           
 
 			static public string ToColumnName(string propertyName)
@@ -398,6 +408,7 @@ namespace DAL
 					ht[RecievDocID] = _IssueDoc.ColumnNames.RecievDocID;
 					ht[EurDate] = _IssueDoc.ColumnNames.EurDate;
 					ht[OrderID] = _IssueDoc.ColumnNames.OrderID;
+                    //ht[UnitID] = _IssueDoc.ColumnNames.UnitID;
                   
 
 				}
@@ -433,6 +444,7 @@ namespace DAL
             public const string RecievDocID = "s_RecievDocID";
             public const string EurDate = "s_EurDate";
             public const string OrderID = "s_OrderID";
+            //public const string UnitID = "s_UnitID";
 		    
 
 		}
@@ -705,6 +717,18 @@ namespace DAL
 				base.Setint(ColumnNames.OrderID, value);
 			}
 		}
+
+        //public virtual int UnitID
+        //{
+        //    get
+        //    {
+        //        return base.Getint(ColumnNames.UnitID);
+        //    }
+        //    set
+        //    {
+        //        base.Setint(ColumnNames.UnitID, value);
+        //    }
+        //}
 
         
 
@@ -1042,6 +1066,21 @@ namespace DAL
 			}
 		}
 
+        //public virtual string s_UnitID
+        //{
+        //    get
+        //    {
+        //        return this.IsColumnNull(ColumnNames.UnitID) ? string.Empty : base.GetintAsString(ColumnNames.UnitID);
+        //    }
+        //    set
+        //    {
+        //        if (string.Empty == value)
+        //            this.SetColumnNull(ColumnNames.UnitID);
+        //        else
+        //            this.UnitID = base.SetintAsString(ColumnNames.UnitID, value);
+        //    }
+        //}
+
        
 
 		#endregion		
@@ -1295,6 +1334,16 @@ namespace DAL
 							return where;
 					}
 				}
+
+                //public WhereParameter UnitID
+                //{
+                //    get
+                //    {
+                //        WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                //        this._clause._entity.Query.AddWhereParameter(where);
+                //        return where;
+                //    }
+                //}
 
 
 				private WhereClause _clause;
@@ -1565,6 +1614,18 @@ namespace DAL
 				}
 			}
 
+            //public WhereParameter UnitID
+            //{
+            //    get
+            //    {
+            //        if (_UnitID_W == null)
+            //        {
+            //            _UnitID_W = TearOff.UnitID;
+            //        }
+            //        return _UnitID_W;
+            //    }
+            //}
+
 			private WhereParameter _ID_W = null;
 			private WhereParameter _ItemID_W = null;
 			private WhereParameter _StoreId_W = null;
@@ -1587,6 +1648,7 @@ namespace DAL
 			private WhereParameter _RecievDocID_W = null;
 			private WhereParameter _EurDate_W = null;
 			private WhereParameter _OrderID_W = null;
+            //private WhereParameter _UnitID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1612,6 +1674,7 @@ namespace DAL
 				_RecievDocID_W = null;
 				_EurDate_W = null;
 				_OrderID_W = null;
+                //_UnitID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1888,6 +1951,16 @@ namespace DAL
 					}
 				}
 
+                //public AggregateParameter UnitID
+                //{
+                //    get
+                //    {
+                //        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitID, Parameters.UnitID);
+                //        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                //        return aggregate;
+                //    }
+                //}
+
 
 				private AggregateClause _clause;
 			}
@@ -2157,6 +2230,18 @@ namespace DAL
 				}
 			}
 
+            //public AggregateParameter UnitID
+            //{
+            //    get
+            //    {
+            //        if (_UnitID_W == null)
+            //        {
+            //            _UnitID_W = TearOff.UnitID;
+            //        }
+            //        return _UnitID_W;
+            //    }
+            //}
+
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _ItemID_W = null;
 			private AggregateParameter _StoreId_W = null;
@@ -2179,6 +2264,7 @@ namespace DAL
 			private AggregateParameter _RecievDocID_W = null;
 			private AggregateParameter _EurDate_W = null;
 			private AggregateParameter _OrderID_W = null;
+            private AggregateParameter _UnitID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2204,6 +2290,7 @@ namespace DAL
 				_RecievDocID_W = null;
 				_EurDate_W = null;
 				_OrderID_W = null;
+			    _UnitID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2365,6 +2452,10 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.OrderID);
 			p.SourceColumn = ColumnNames.OrderID;
 			p.SourceVersion = DataRowVersion.Current;
+
+            //p = cmd.Parameters.Add(Parameters.UnitID);
+            //p.SourceColumn = ColumnNames.UnitID;
+            //p.SourceVersion = DataRowVersion.Current;
 
          return cmd;
 		}

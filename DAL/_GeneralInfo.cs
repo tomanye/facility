@@ -812,17 +812,17 @@ namespace DAL
 			}
 		}
 
-        public virtual bool NormalFacility
-        {
-            get
-            {
-                return base.Getbool(ColumnNames.NormalFacility);
-            }
-            set
-            {
-                base.Setbool(ColumnNames.NormalFacility, value);
-            }
-        }
+        //public virtual bool NormalFacility
+        //{
+        //    get
+        //    {
+        //        return base.Getbool(ColumnNames.NormalFacility);
+        //    }
+        //    set
+        //    {
+        //        base.Setbool(ColumnNames.NormalFacility, value);
+        //    }
+        //}
 
 
 		#endregion
@@ -1219,20 +1219,20 @@ namespace DAL
 			}
 		}
 
-        public virtual string s_NormalFacility
-        {
-            get
-            {
-                return this.IsColumnNull(ColumnNames.NormalFacility) ? string.Empty : base.GetstringAsString(ColumnNames.NormalFacility);
-            }
-            set
-            {
-                if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.NormalFacility);
-                else
-                    this.NormalFacility = base.SetboolAsString(ColumnNames.NormalFacility, value);
-            }
-        }
+        //public virtual string s_NormalFacility
+        //{
+        //    get
+        //    {
+        //        return this.IsColumnNull(ColumnNames.NormalFacility) ? string.Empty : base.GetstringAsString(ColumnNames.NormalFacility);
+        //    }
+        //    set
+        //    {
+        //        if (string.Empty == value)
+        //            this.SetColumnNull(ColumnNames.NormalFacility);
+        //        else
+        //            this.NormalFacility = base.SetboolAsString(ColumnNames.NormalFacility, value);
+        //    }
+        //}
 
 
 		#endregion		
@@ -2765,9 +2765,9 @@ namespace DAL
 			p.SourceColumn = ColumnNames.RRFStatusFirstUpdateAfter;
 			p.SourceVersion = DataRowVersion.Current;
 
-            p = cmd.Parameters.Add(Parameters.NormalFacility);
-            p.SourceColumn = ColumnNames.NormalFacility;
-            p.SourceVersion = DataRowVersion.Current;
+            //p = cmd.Parameters.Add(Parameters.NormalFacility);
+            //p.SourceColumn = ColumnNames.NormalFacility;
+            //p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;
