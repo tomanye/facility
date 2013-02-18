@@ -425,6 +425,13 @@ namespace BLL
             return this.DataTable;
 		}
 
+        public DataTable GetIssuedItemsByID(int id)
+        {
+            this.FlushData();
+         this.LoadFromRawSql(String.Format("select * from vwGetIssuedItems where ID={0}", id));
+            return this.DataTable;
+        }
+
 		public bool MergeStore(int storeone, int storetwo)
 		{
 			this.FlushData();

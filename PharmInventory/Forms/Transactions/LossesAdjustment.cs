@@ -297,7 +297,7 @@ namespace PharmInventory
                             dis.Quantity = Convert.ToInt64(dtAdjVal.Rows[i]["Adjustment"]);
                         }
                         dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
-                       // dis.UnitID =Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
+                        dis.UnitID =Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();
@@ -313,7 +313,7 @@ namespace PharmInventory
                                     rec.Out = true;
                                 else
                                     rec.Out = false;
-                                 rec.UnitID = Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
+                               //  rec.UnitID = Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
                                     rec.Save();
                                 //Log Activity, ActivityID for save is 1
                                // logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity +" LOSS has been made.");
@@ -578,19 +578,6 @@ namespace PharmInventory
            
         }
 
-        private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
-        {
-            var edit = sender as LookUpEdit;
-            if (edit == null) return;
-            var clone = new ItemUnit();
-            var row = gridAdjView.GetFocusedDataRow();
-            var id = Convert.ToInt32(row["ID"]);
-            var filterunit = clone.LoadFromSQl(id);
-            //UnitsbindingSource.DataSource = clone.DefaultView;
-            edit.Properties.DataSource = filterunit;
-            edit.Properties.DisplayMember = "Text";
-            edit.Properties.ValueMember = "ID";
-        }
 
         private void unitrepositoryItemLookUpEdit_Enter_1(object sender, EventArgs e)
         {

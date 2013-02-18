@@ -1334,8 +1334,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem7.Control = this.cboStores;
             this.layoutControlItem7.CustomizationFormText = "Store";
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(335, 24);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(335, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(335, 24);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.Text = "Store";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(70, 13);
             // 
@@ -1344,8 +1347,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem8.Control = this.cboSupplier;
             this.layoutControlItem8.CustomizationFormText = "Supplier";
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(335, 24);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(335, 24);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(335, 24);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.Text = "Supplier";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(70, 13);
             // 

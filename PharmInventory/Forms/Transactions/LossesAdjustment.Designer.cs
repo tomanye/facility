@@ -89,6 +89,7 @@ namespace PharmInventory
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.lkCategories = new DevExpress.XtraEditors.LookUpEdit();
@@ -131,7 +132,6 @@ namespace PharmInventory
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
@@ -165,6 +165,7 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -191,7 +192,6 @@ namespace PharmInventory
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControlItem10
@@ -241,10 +241,10 @@ namespace PharmInventory
             this.dtAdjustDate.CalendarForeColor = System.Drawing.Color.Black;
             this.dtAdjustDate.DayOfWeekCharacters = 2;
             this.dtAdjustDate.ForeColor = System.Drawing.Color.Black;
-            this.dtAdjustDate.Location = new System.Drawing.Point(692, 36);
+            this.dtAdjustDate.Location = new System.Drawing.Point(693, 36);
             this.dtAdjustDate.Name = "dtAdjustDate";
             this.dtAdjustDate.PopUpFontSize = 9.75F;
-            this.dtAdjustDate.Size = new System.Drawing.Size(347, 20);
+            this.dtAdjustDate.Size = new System.Drawing.Size(346, 20);
             this.dtAdjustDate.TabIndex = 12;
             this.dtAdjustDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
             this.dtAdjustDate.Value = new System.DateTime(2010, 10, 13, 0, 0, 0, 0);
@@ -849,8 +849,11 @@ namespace PharmInventory
             this.emptySpaceItem8.AllowHotTrack = false;
             this.emptySpaceItem8.CustomizationFormText = "emptySpaceItem8";
             this.emptySpaceItem8.Location = new System.Drawing.Point(367, 24);
+            this.emptySpaceItem8.MaxSize = new System.Drawing.Size(248, 24);
+            this.emptySpaceItem8.MinSize = new System.Drawing.Size(248, 24);
             this.emptySpaceItem8.Name = "emptySpaceItem8";
-            this.emptySpaceItem8.Size = new System.Drawing.Size(247, 24);
+            this.emptySpaceItem8.Size = new System.Drawing.Size(248, 24);
+            this.emptySpaceItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem8.Text = "emptySpaceItem8";
             this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -858,11 +861,27 @@ namespace PharmInventory
             // 
             this.layoutControlItem1.Control = this.dtAdjustDate;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(614, 24);
+            this.layoutControlItem1.Location = new System.Drawing.Point(615, 24);
+            this.layoutControlItem1.MaxSize = new System.Drawing.Size(416, 24);
+            this.layoutControlItem1.MinSize = new System.Drawing.Size(416, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(417, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(416, 24);
+            this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "Date";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(62, 13);
+            // 
+            // emptySpaceItem7
+            // 
+            this.emptySpaceItem7.AllowHotTrack = false;
+            this.emptySpaceItem7.CustomizationFormText = "emptySpaceItem7";
+            this.emptySpaceItem7.Location = new System.Drawing.Point(367, 0);
+            this.emptySpaceItem7.MaxSize = new System.Drawing.Size(246, 24);
+            this.emptySpaceItem7.MinSize = new System.Drawing.Size(246, 24);
+            this.emptySpaceItem7.Name = "emptySpaceItem7";
+            this.emptySpaceItem7.Size = new System.Drawing.Size(246, 24);
+            this.emptySpaceItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem7.Text = "emptySpaceItem7";
+            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
             // cboStores
             // 
@@ -1368,16 +1387,6 @@ namespace PharmInventory
             this.tabPage2});
             this.tabControl1.SelectedPageChanging += new DevExpress.XtraTab.TabPageChangingEventHandler(this.tabControl1_SelectedPageChanging);
             // 
-            // emptySpaceItem7
-            // 
-            this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.CustomizationFormText = "emptySpaceItem7";
-            this.emptySpaceItem7.Location = new System.Drawing.Point(367, 0);
-            this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(246, 24);
-            this.emptySpaceItem7.Text = "emptySpaceItem7";
-            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // LossesAdjustment
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1422,6 +1431,7 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -1449,7 +1459,6 @@ namespace PharmInventory
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -211,13 +211,13 @@ namespace DAL
 				}
 			}
 
-            //public static SqlParameter UnitID
-            //{
-            //    get
-            //    {
-            //        return new SqlParameter("@UnitID", SqlDbType.Int, 0);
-            //    }
-            //}
+            public static SqlParameter UnitID
+            {
+                get
+                {
+                    return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+                }
+            }
            
           
 		}
@@ -240,7 +240,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
-            //public const string UnitID = "UnitID";
+            public const string UnitID = "UnitID";
 		   
 
 			static public string ToPropertyName(string columnName)
@@ -264,7 +264,7 @@ namespace DAL
 				        ht[RefNo] = PropertyNames.RefNo;
 				        ht[EurDate] = PropertyNames.EurDate;
 				        ht[RecID] = PropertyNames.RecID;
-                        //ht[UnitID] = PropertyNames.UnitID;
+                        ht[UnitID] = PropertyNames.UnitID;
 				     }
 				   
 
@@ -293,7 +293,7 @@ namespace DAL
             public const string RefNo = "RefNo";
             public const string EurDate = "EurDate";
             public const string RecID = "RecID";
-            //public const string UnitID = "UnitID";
+            public const string UnitID = "UnitID";
           
 			static public string ToColumnName(string propertyName)
 			{
@@ -315,7 +315,7 @@ namespace DAL
 					ht[RefNo] = _Disposal.ColumnNames.RefNo;
 					ht[EurDate] = _Disposal.ColumnNames.EurDate;
 					ht[RecID] = _Disposal.ColumnNames.RecID;
-                    //ht[UnitID] = _Disposal.ColumnNames.UnitID;
+                    ht[UnitID] = _Disposal.ColumnNames.UnitID;
                   
 				}
 				return (string)ht[propertyName];
@@ -342,7 +342,7 @@ namespace DAL
             public const string RefNo = "s_RefNo";
             public const string EurDate = "s_EurDate";
             public const string RecID = "s_RecID";
-            //public const string UnitID = "s_UnitID";
+            public const string UnitID = "s_UnitID";
 		   
 
 		}
@@ -518,17 +518,17 @@ namespace DAL
 			}
 		}
 
-        //public virtual int UnitID
-        //{
-        //    get
-        //    {
-        //        return base.Getint(ColumnNames.UnitID);
-        //    }
-        //    set
-        //    {
-        //        base.Setint(ColumnNames.UnitID, value);
-        //    }
-        //}
+        public virtual int UnitID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.UnitID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.UnitID, value);
+            }
+        }
 
        
 	    #endregion
@@ -745,20 +745,20 @@ namespace DAL
 			}
 		}
 
-        //public virtual string s_UnitID
-        //{
-        //    get
-        //    {
-        //        return this.IsColumnNull(ColumnNames.UnitID) ? string.Empty : base.GetintAsString(ColumnNames.UnitID);
-        //    }
-        //    set
-        //    {
-        //        if (string.Empty == value)
-        //            this.SetColumnNull(ColumnNames.UnitID);
-        //        else
-        //            this.UnitID = base.SetintAsString(ColumnNames.UnitID, value);
-        //    }
-        //}
+        public virtual string s_UnitID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.UnitID) ? string.Empty : base.GetintAsString(ColumnNames.UnitID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.UnitID);
+                else
+                    this.UnitID = base.SetintAsString(ColumnNames.UnitID, value);
+            }
+        }
 
 		#endregion		
 	
@@ -932,15 +932,15 @@ namespace DAL
 					}
 				}
 
-                //public WhereParameter UnitID
-                //{
-                //    get
-                //    {
-                //        WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
-                //        this._clause._entity.Query.AddWhereParameter(where);
-                //        return where;
-                //    }
-                //}
+                public WhereParameter UnitID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
               
               
 
@@ -1116,17 +1116,17 @@ namespace DAL
 				}
 			}
 
-            //public WhereParameter UnitID
-            //{
-            //    get
-            //    {
-            //        if (_UnitID_W == null)
-            //        {
-            //            _UnitID_W = TearOff.UnitID;
-            //        }
-            //        return _UnitID_W;
-            //    }
-            //}
+            public WhereParameter UnitID
+            {
+                get
+                {
+                    if (_UnitID_W == null)
+                    {
+                        _UnitID_W = TearOff.UnitID;
+                    }
+                    return _UnitID_W;
+                }
+            }
 
      
 
@@ -1359,15 +1359,15 @@ namespace DAL
 					}
 				}
 
-                //public AggregateParameter UnitID
-                //{
-                //    get
-                //    {
-                //        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitID, Parameters.UnitID);
-                //        this._clause._entity.Query.AddAggregateParameter(aggregate);
-                //        return aggregate;
-                //    }
-                //}
+                public AggregateParameter UnitID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
              
 				private AggregateClause _clause;
 			}
@@ -1541,17 +1541,17 @@ namespace DAL
 				}
 			}
 
-            //public AggregateParameter UnitID
-            //{
-            //    get
-            //    {
-            //        if (_UnitID_W == null)
-            //        {
-            //            _UnitID_W = TearOff.UnitID;
-            //        }
-            //        return _UnitID_W;
-            //    }
-            //}
+            public AggregateParameter UnitID
+            {
+                get
+                {
+                    if (_UnitID_W == null)
+                    {
+                        _UnitID_W = TearOff.UnitID;
+                    }
+                    return _UnitID_W;
+                }
+            }
 
       
 			private AggregateParameter _ID_W = null;
@@ -1721,9 +1721,9 @@ namespace DAL
 			p.SourceColumn = ColumnNames.RecID;
 			p.SourceVersion = DataRowVersion.Current;
 
-            //p = cmd.Parameters.Add(Parameters.UnitID);
-            //p.SourceColumn = ColumnNames.UnitID;
-            //p.SourceVersion = DataRowVersion.Current;
+            p = cmd.Parameters.Add(Parameters.UnitID);
+            p.SourceColumn = ColumnNames.UnitID;
+            p.SourceVersion = DataRowVersion.Current;
         
 
             return cmd;
