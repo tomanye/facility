@@ -173,12 +173,11 @@ namespace PharmInventory
                 DataTable dtItm = itm.GetItemById(id);
                 string itemName = dtItm.Rows[0]["FullItemName"].ToString();
                 var obj = new object[] {};
-                if(!rec.IsColumnNull("UnitID"))
                 obj = new object[] {id, dtItm.Rows[0]["StockCode"].ToString(), 
                     itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
                     rec.QuantityLeft, price, "", "", 
                     Convert.ToInt32(dr["ReceiveID"]),
-                    rec.UnitID};
+                   0};
                 dtRecGrid.Rows.Add(obj);
                 count++;
 
@@ -311,7 +310,7 @@ namespace PharmInventory
                             dis.Quantity = Convert.ToInt64(dtAdjVal.Rows[i]["Adjustment"]);
                         }
                         dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
-                        dis.UnitID =Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
+                        dis.UnitID = VisibilitySetting.HandleUnits == false ? 0 : Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();

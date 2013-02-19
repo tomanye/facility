@@ -598,7 +598,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.Quantity = Convert.ToInt64(dtConfirm.Rows[i]["Quantity"]);
                             issDoc.NoOfPack = Convert.ToInt32(dtConfirm.Rows[i]["No Of Pack"]);
                             issDoc.QtyPerPack = Convert.ToInt32(dtConfirm.Rows[i]["Qty Per Pack"]);
-                            issDoc.UnitID = Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
+                            issDoc.UnitID = VisibilitySetting.HandleUnits == false ? 0 : Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
                             issDoc.BatchNo = dtConfirm.Rows[i]["BatchNo"].ToString();
                             issDoc.Cost = Convert.ToDouble(dtConfirm.Rows[i]["Unit Price"]);
 
