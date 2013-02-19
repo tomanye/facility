@@ -40,18 +40,18 @@ namespace PharmInventory
         /// <param name="e"></param>
         private void LossesAdjustment_Load(object sender, EventArgs e)
         {
-            var UnitColumn = ((GridView)gridItemsChoice.MainView).Columns[4];
+            var UnitColumn = ((GridView)AdjustmentGrid.MainView).Columns[10];
             //var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[10];
          
             if(VisibilitySetting.HandleUnits)
             {
-                UnitColumn.Visible = false;
+                UnitColumn.Visible = true;
                 //UnitColumn1.Visible = true;
             }
 
             else if(VisibilitySetting.HandleUnits==false)
             {
-                UnitColumn.Visible = true;
+                UnitColumn.Visible = false;
                // UnitColumn1.Visible = false;
             }
             Stores stor = new Stores();
