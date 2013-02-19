@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Profiles
 {
@@ -44,6 +45,7 @@ namespace PharmInventory.Forms.Profiles
         /// </summary>
         private void PopulateFields()
         {
+            chkHandleUnits.Checked = VisibilitySetting.HandleUnits;
             _hospInfo.LoadAll();
             txtHospitalName.Text = _hospInfo.HospitalName;
             txtPhone.Text = _hospInfo.Telephone;
@@ -99,13 +101,16 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(chkHandleUnits.Checked!=VisibilitySetting.HandleUnits)
+                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY,chkHandleUnits.Checked.ToString());
             if (_hospitalId == 0)
                 return;
 
             if (XtraMessageBox.Show("Are You sure, You want to save the changes to Hospital General Info.?", "Confirmation",
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
-
+            if (chkHandleUnits.Checked != VisibilitySetting.HandleUnits)
+                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, chkHandleUnits.Checked.ToString());
             _hospInfo.LoadByPrimaryKey(_hospitalId);
             _hospInfo.HospitalName = txtHospitalName.Text;
             //_hospInfo.HospitalContact = txtContactPerson.Text;
@@ -164,5 +169,6 @@ namespace PharmInventory.Forms.Profiles
         {
             txtLogo.Text = openFileDialog1.FileName;
         }
+
     }
 }

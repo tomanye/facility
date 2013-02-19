@@ -10,7 +10,7 @@ using System.Deployment.Application;
 using System.ComponentModel;
 using Microsoft.Win32;
 using System.Threading;
-
+using PharmInventory.HelperClasses;
 
 
 namespace PharmInventory
@@ -31,6 +31,7 @@ namespace PharmInventory
         [STAThread]
         static void Main()
         {
+            var setting = VisibilitySetting.HandleUnits;
            
             //                              ERROR LOGGING                                    ///
 

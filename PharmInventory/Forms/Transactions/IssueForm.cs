@@ -54,6 +54,35 @@ namespace PharmInventory.Forms.Transactions
         /// <param name="e"></param>
         private void IssuingForm_Load(object sender, EventArgs e)
         {
+            var unitcolumn = ((GridView) gridItemsChoice.MainView).Columns[4];
+            var amc = ((GridView)gridItemsChoice.MainView).Columns[8];
+            var unitid = ((GridView)issueGrid.MainView).Columns[14];
+            var unitcolumn1 = ((GridView)issueGrid.MainView).Columns[2];
+            var duremainingsoh = ((GridView)issueGrid.MainView).Columns[7];
+            var duamc = ((GridView)issueGrid.MainView).Columns[8];
+            var requestedqty = ((GridView)issueGrid.MainView).Columns[12];
+            if(VisibilitySetting.HandleUnits)
+            {
+                unitcolumn.Visible = false;
+                amc.Visible = false;
+                unitcolumn1.Visible = false;
+                unitid.Visible = true;
+                duremainingsoh.Visible = false;
+                duamc.Visible = false;
+                requestedqty.Visible = true;
+            }
+            else if (VisibilitySetting.HandleUnits == false)
+            {
+                unitcolumn.Visible = true;
+                amc.Visible = true;
+                unitcolumn1.Visible = true;
+                unitid.Visible = false;
+                duremainingsoh.Visible = true;
+                duamc.Visible = true;
+                requestedqty.Visible = true;
+
+            }
+
             PopulateCatTree(_selectedType);
             Stores stor = new Stores();
             stor.GetActiveStores();
@@ -267,7 +296,6 @@ namespace PharmInventory.Forms.Transactions
                 }
 
             issueGrid.DataSource = _dtRecGrid;
-            ChooseGridView();
             cboStoreConf.EditValue = cboStores.EditValue;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
@@ -1009,19 +1037,8 @@ namespace PharmInventory.Forms.Transactions
             }
         }
   
-       private void ChooseGridView()
-        {
-            if (chkvaccineProgram.Checked) issueGrid.MainView = gridViewToVaccine;
-            else issueGrid.MainView = issueGridView;
-        }
-
-
-        private void chkvaccineProgram_CheckedChanged(object sender, EventArgs e)
-        {
-            ChooseGridView();
-        }
-
-        private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
+       
+       private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
         {
             var edit = sender as LookUpEdit;
             if (edit == null) return;

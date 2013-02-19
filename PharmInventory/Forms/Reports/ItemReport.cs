@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
@@ -44,6 +45,25 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
+            var amc = ((GridView)gridItemsChoice.MainView).Columns[3];
+            var mos = ((GridView)gridItemsChoice.MainView).Columns[4];
+            var min = ((GridView)gridItemsChoice.MainView).Columns[5];
+            var max = ((GridView)gridItemsChoice.MainView).Columns[6];
+           
+            if(VisibilitySetting.HandleUnits)
+            {
+                amc.Visible = false;
+                mos.Visible = false;
+                min.Visible = false;
+                max.Visible = false;
+            }
+            else if(VisibilitySetting.HandleUnits ==false)
+            {
+                amc.Visible = true;
+                mos.Visible = true;
+                min.Visible = true;
+                max.Visible = true;
+            }
             //CALENDAR:
             PopulateCatTree(_selectedType);
 

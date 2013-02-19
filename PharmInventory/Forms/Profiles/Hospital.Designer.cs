@@ -65,6 +65,9 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
+            this.chkHandleUnits = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).BeginInit();
@@ -97,6 +100,9 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHandleUnits.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -111,6 +117,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // groupBox1ConvertedLayout
             // 
+            this.groupBox1ConvertedLayout.Controls.Add(this.chkHandleUnits);
             this.groupBox1ConvertedLayout.Controls.Add(this.chkNormal);
             this.groupBox1ConvertedLayout.Controls.Add(this.cboHCTSFirstUpdate);
             this.groupBox1ConvertedLayout.Controls.Add(this.cboHCTSUpdateFrequency);
@@ -222,7 +229,7 @@ namespace PharmInventory.Forms.Profiles
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnCancel.Location = new System.Drawing.Point(308, 400);
+            this.btnCancel.Location = new System.Drawing.Point(308, 472);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 22);
             this.btnCancel.StyleController = this.groupBox1ConvertedLayout;
@@ -235,7 +242,7 @@ namespace PharmInventory.Forms.Profiles
             this.btnSave.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Appearance.Options.UseFont = true;
             this.btnSave.Image = global::PharmInventory.Properties.Resources.disk;
-            this.btnSave.Location = new System.Drawing.Point(226, 400);
+            this.btnSave.Location = new System.Drawing.Point(226, 472);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(78, 22);
             this.btnSave.StyleController = this.groupBox1ConvertedLayout;
@@ -281,7 +288,8 @@ namespace PharmInventory.Forms.Profiles
             this.emptySpaceItem3,
             this.layoutControlGroup2,
             this.layoutControlGroup3,
-            this.layoutControlGroup4});
+            this.layoutControlGroup4,
+            this.layoutControlGroup5});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(887, 548);
@@ -291,7 +299,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.layoutControlItem9.Control = this.btnCancel;
             this.layoutControlItem9.CustomizationFormText = "btnCancelitem";
-            this.layoutControlItem9.Location = new System.Drawing.Point(296, 388);
+            this.layoutControlItem9.Location = new System.Drawing.Point(296, 460);
             this.layoutControlItem9.Name = "btnCancelitem";
             this.layoutControlItem9.Size = new System.Drawing.Size(91, 26);
             this.layoutControlItem9.Text = "btnCancelitem";
@@ -303,7 +311,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.layoutControlItem10.Control = this.btnSave;
             this.layoutControlItem10.CustomizationFormText = "btnSaveitem";
-            this.layoutControlItem10.Location = new System.Drawing.Point(214, 388);
+            this.layoutControlItem10.Location = new System.Drawing.Point(214, 460);
             this.layoutControlItem10.Name = "btnSaveitem";
             this.layoutControlItem10.Size = new System.Drawing.Size(82, 26);
             this.layoutControlItem10.Text = "btnSaveitem";
@@ -315,9 +323,9 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(214, 414);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(214, 486);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(173, 114);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(173, 42);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -325,9 +333,9 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 388);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 460);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(214, 140);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(214, 68);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -498,6 +506,38 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // chkHandleUnits
+            // 
+            this.chkHandleUnits.Location = new System.Drawing.Point(24, 437);
+            this.chkHandleUnits.Name = "chkHandleUnits";
+            this.chkHandleUnits.Properties.Caption = "Handle Units";
+            this.chkHandleUnits.Size = new System.Drawing.Size(359, 19);
+            this.chkHandleUnits.StyleController = this.groupBox1ConvertedLayout;
+            this.chkHandleUnits.TabIndex = 15;
+           
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.chkHandleUnits;
+            this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(363, 23);
+            this.layoutControlItem6.Text = "layoutControlItem6";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextToControlDistance = 0;
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // layoutControlGroup5
+            // 
+            this.layoutControlGroup5.CustomizationFormText = "FE Setting";
+            this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6});
+            this.layoutControlGroup5.Location = new System.Drawing.Point(0, 388);
+            this.layoutControlGroup5.Name = "layoutControlGroup5";
+            this.layoutControlGroup5.Size = new System.Drawing.Size(387, 72);
+            this.layoutControlGroup5.Text = "FE Setting";
+            // 
             // Hospital
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -540,6 +580,9 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkHandleUnits.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -582,5 +625,8 @@ namespace PharmInventory.Forms.Profiles
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.CheckEdit chkNormal;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.CheckEdit chkHandleUnits;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

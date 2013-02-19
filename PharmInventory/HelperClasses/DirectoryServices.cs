@@ -67,9 +67,11 @@ namespace PharmInventory.HelperClasses
             //// RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
             // //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
-            RefreshItemUnits(soapClient, previousVersion);
+           
             RefreshItems(soapClient, previousVersion, 1);
             RefreshItems(soapClient, previousVersion, 2);
+
+            RefreshItemUnits(soapClient, previousVersion);
 
             RefreshDrugItemCategory(soapClient, previousVersion);
 
@@ -83,10 +85,9 @@ namespace PharmInventory.HelperClasses
 
         private static void RefreshItemUnits(Service1SoapClient soapClient, int? previousVersion)
         {
-            List<DirectoryService.ItemUnitWithUnitDetail> list = soapClient.GetItemUnitsWithUnitDetail(userName, password,
-                                                                                       previousVersion, null);
+            List<ItemUnitWithUnitDetail> list = soapClient.GetItemUnitsWithUnitDetail(userName, password,previousVersion, null);
             var iu = new BLL.ItemUnit();
-            foreach (DirectoryService.ItemUnitWithUnitDetail v in list)
+            foreach (ItemUnitWithUnitDetail v in list)
             {
                 iu.LoadByPrimaryKey(v.ID);
                 if(iu.RowCount==0)

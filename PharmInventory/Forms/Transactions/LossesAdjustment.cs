@@ -40,22 +40,36 @@ namespace PharmInventory
         /// <param name="e"></param>
         private void LossesAdjustment_Load(object sender, EventArgs e)
         {
-                Stores stor = new Stores();
-                stor.GetActiveStores();
-               
-                cboStores.Properties.DataSource = stor.DefaultView;
-                lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+            var UnitColumn = ((GridView)gridItemsChoice.MainView).Columns[4];
+            //var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[10];
+         
+            if(VisibilitySetting.HandleUnits)
+            {
+                UnitColumn.Visible = false;
+                //UnitColumn1.Visible = true;
+            }
 
-                var unit = new ItemUnit();
-                var xx=unit.GetAllUnits();
-                unitsbindingSource.DataSource = xx.DefaultView;
+            else if(VisibilitySetting.HandleUnits==false)
+            {
+                UnitColumn.Visible = true;
+               // UnitColumn1.Visible = false;
+            }
+            Stores stor = new Stores();
+            stor.GetActiveStores();
+               
+            cboStores.Properties.DataSource = stor.DefaultView;
+            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+
+            var unit = new ItemUnit();
+            var xx=unit.GetAllUnits();
+            unitsbindingSource.DataSource = xx.DefaultView;
                 
                 
-                lkCategories.ItemIndex = 0;
-                cboStores.ItemIndex = 0;
-                dtAdjustDate.Value = DateTime.Now;
-                if (ckExpired.Checked)
-                    gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
+            lkCategories.ItemIndex = 0;
+            cboStores.ItemIndex = 0;
+            dtAdjustDate.Value = DateTime.Now;
+            if (ckExpired.Checked)
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
         }
 
         public void PopulateItemList(DataTable dtItem)
