@@ -13,8 +13,8 @@ CREATE TABLE [dbo].[DisposalDelete](
 	[Cost] [float] NULL,
 	[RefNo] [varchar](50) NULL,
 	[EurDate] [datetime] NULL,
-	[RecID] [int] NULL,
-	[UnitID][int] Null,
+	[RecID] [int] NULL
+	
  CONSTRAINT [PK_DisposalDelete] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
