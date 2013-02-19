@@ -710,6 +710,7 @@
     <Content Include="Scripts\53_ReceivingUnitUpdate.sql" />
     <Content Include="Scripts\54_ReceivingUnitLoadByPrimaryKey.sql" />
     <Content Include="Scripts\55_ReceivingUnitLoadAll.sql" />
+    <Content Include="Scripts\56_Disposal.sql" />
     <Content Include="Scripts\57_DisposalInsert.sql" />
     <Content Include="Scripts\58_DisposalLoadAll.sql" />
     <Content Include="Scripts\59_DisposalLoadByPrimaryKey.sql" />
