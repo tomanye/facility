@@ -715,6 +715,7 @@
     <Content Include="Scripts\64_AlterIssueDocLoadByPrimaryKey.sql" />
     <Content Include="Scripts\65_AlterIssueDocUpdate.sql" />
     <Content Include="Scripts\66_CreateItemUnitLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\67_ItemUnitUpdate.sql" />
     <Content Include="XMLFile1.xml" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>

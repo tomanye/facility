@@ -288,7 +288,7 @@ namespace PharmInventory.Forms.Profiles
             this.tbSuppliers.Controls.Add(this.layoutControl1);
             this.tbSuppliers.Name = "tbSuppliers";
             this.tbSuppliers.Padding = new System.Windows.Forms.Padding(3);
-            this.tbSuppliers.Size = new System.Drawing.Size(987, 647);
+            this.tbSuppliers.Size = new System.Drawing.Size(987, 648);
             this.tbSuppliers.Text = "Suppliers";
             // 
             // layoutControl1
@@ -309,7 +309,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControl1.Location = new System.Drawing.Point(3, 3);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(981, 641);
+            this.layoutControl1.Size = new System.Drawing.Size(981, 642);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -323,7 +323,7 @@ namespace PharmInventory.Forms.Profiles
             this.lstSuppliers.Name = "lstSuppliers";
             this.lstSuppliers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.lstSuppliers.Size = new System.Drawing.Size(559, 617);
+            this.lstSuppliers.Size = new System.Drawing.Size(559, 618);
             this.lstSuppliers.TabIndex = 33;
             this.lstSuppliers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewSupplies});
@@ -705,7 +705,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem38});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(981, 641);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(981, 642);
             this.layoutControlGroup1.Text = "Root";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -799,7 +799,7 @@ namespace PharmInventory.Forms.Profiles
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(573, 244);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(388, 377);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(388, 378);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -863,7 +863,7 @@ namespace PharmInventory.Forms.Profiles
             this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
             this.emptySpaceItem4.Location = new System.Drawing.Point(563, 0);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(10, 621);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(10, 622);
             this.emptySpaceItem4.Text = "emptySpaceItem4";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -873,7 +873,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem38.CustomizationFormText = "layoutControlItem38";
             this.layoutControlItem38.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem38.Name = "layoutControlItem38";
-            this.layoutControlItem38.Size = new System.Drawing.Size(563, 621);
+            this.layoutControlItem38.Size = new System.Drawing.Size(563, 622);
             this.layoutControlItem38.Text = "layoutControlItem38";
             this.layoutControlItem38.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem38.TextToControlDistance = 0;
@@ -885,7 +885,7 @@ namespace PharmInventory.Forms.Profiles
             this.tbStores.Appearance.PageClient.Options.UseBackColor = true;
             this.tbStores.Controls.Add(this.layoutControl2);
             this.tbStores.Name = "tbStores";
-            this.tbStores.Size = new System.Drawing.Size(987, 647);
+            this.tbStores.Size = new System.Drawing.Size(987, 648);
             this.tbStores.Text = "Stores";
             // 
             // layoutControl2
@@ -1114,7 +1114,7 @@ namespace PharmInventory.Forms.Profiles
             this.tbShelf.Appearance.PageClient.Options.UseBackColor = true;
             this.tbShelf.Controls.Add(this.layoutControl3);
             this.tbShelf.Name = "tbShelf";
-            this.tbShelf.Size = new System.Drawing.Size(987, 647);
+            this.tbShelf.Size = new System.Drawing.Size(987, 648);
             this.tbShelf.Text = "Bin Location";
             // 
             // layoutControl3
@@ -1409,7 +1409,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.tbReceivingUnits.Controls.Add(this.layoutControl4);
             this.tbReceivingUnits.Name = "tbReceivingUnits";
-            this.tbReceivingUnits.Size = new System.Drawing.Size(987, 647);
+            this.tbReceivingUnits.Size = new System.Drawing.Size(987, 648);
             this.tbReceivingUnits.Text = "Issue Locations";
             // 
             // layoutControl4
