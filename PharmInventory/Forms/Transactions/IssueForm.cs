@@ -625,13 +625,13 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    var iss = issDoc.GetIssuedItemsByID(Convert.ToInt32(issDoc.ID));
-                    var pick = new PickListReport();
-                    dtConfirm.TableName = "DataTable1";
-                    var dtset = new DataSet();
-                    dtset.Tables.Add(iss.Copy());
-                    pick.DataSource = dtset;
-                    pick.ShowPreviewDialog();
+                    //var iss = issDoc.GetIssuedItemsByID(Convert.ToInt32(issDoc.ID));
+                    //var pick = new PickListReport();
+                    //dtConfirm.TableName = "DataTable1";
+                    //var dtset = new DataSet();
+                    //dtset.Tables.Add(iss.Copy());
+                    //pick.DataSource = dtset;
+                    //pick.ShowPreviewDialog();
                 }
                 // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
                 // Refresh AMC
