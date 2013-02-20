@@ -22,12 +22,12 @@ namespace PharmInventory.Forms.Modals
         {
             InitializeComponent();
             _refno = refno;
-            dtIssueDate.Value = DateTime.Now;
-         }
+        }
 
         private void EditIssueDocRefrenceNo_Load(object sender, EventArgs e)
         {
             dtIssueDate.Value = DateTime.Now;
+            dtIssueDate.IsGregorianCurrentCalendar = true;
             if(_refno!=null)
             {
                 var iss = new IssueDoc();

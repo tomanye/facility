@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -22,7 +23,6 @@ namespace PharmInventory.Forms.Modals
         {
             InitializeComponent();
             _refno = refno;
-            dtRecDate.Value = DateTime.Now;
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -31,12 +31,17 @@ namespace PharmInventory.Forms.Modals
 
         private void EditRecieveRefrenceNo_Load(object sender, EventArgs e)
         {
+           // dtRecDate.Value = DateTime.Now;
             var rec = new ReceiveDoc();
             if(_refno!=null)
             {
+                dtRecDate.ResetValue();
                 rec.GetTransactionByRefNo(_refno);
+                var xx = Convert.ToDateTime(rec.Date);
                 refnotextEdit.Text = rec.RefNo;
-                dtRecDate.Value = rec.Date;
+                dtRecDate.Value = xx;
+
+
             }
         }
 
@@ -49,9 +54,8 @@ namespace PharmInventory.Forms.Modals
                 foreach (DataRow datarow in dtbl.Rows)
                 {
                     datarow["RefNo"] = refnotextEdit.Text;
-                    DateTime xx = dtRecDate.Value;
                     dtRecDate.CustomFormat = "MM/dd/yyyy";
-                    DateTime dtRec = new DateTime();
+
                     datarow["Date"] = ConvertDate.DateConverter(dtRecDate.Text);
                     dtRecDate.IsGregorianCurrentCalendar = true;
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.dtLossDate = new CalendarLib.DateTimePickerEx();
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.btnUpdate = new DevExpress.XtraEditors.SimpleButton();
             this.refNotextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -38,10 +39,9 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dtLossDate = new CalendarLib.DateTimePickerEx();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refNotextEdit.Properties)).BeginInit();
@@ -51,9 +51,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -67,14 +67,28 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(753, 249, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(354, 190);
+            this.layoutControl1.Size = new System.Drawing.Size(391, 289);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // dtLossDate
+            // 
+            this.dtLossDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtLossDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtLossDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtLossDate.DayOfWeekCharacters = 2;
+            this.dtLossDate.ForeColor = System.Drawing.Color.Black;
+            this.dtLossDate.Location = new System.Drawing.Point(76, 36);
+            this.dtLossDate.Name = "dtLossDate";
+            this.dtLossDate.PopUpFontSize = 9.75F;
+            this.dtLossDate.Size = new System.Drawing.Size(295, 20);
+            this.dtLossDate.TabIndex = 11;
+            this.dtLossDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
             // 
             // btnClose
             // 
             this.btnClose.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnClose.Location = new System.Drawing.Point(263, 156);
+            this.btnClose.Location = new System.Drawing.Point(297, 255);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(78, 22);
             this.btnClose.StyleController = this.layoutControl1;
@@ -85,7 +99,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Image = global::PharmInventory.Properties.Resources.disk;
-            this.btnUpdate.Location = new System.Drawing.Point(181, 156);
+            this.btnUpdate.Location = new System.Drawing.Point(215, 255);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(78, 22);
             this.btnUpdate.StyleController = this.layoutControl1;
@@ -97,7 +111,7 @@
             // 
             this.refNotextEdit.Location = new System.Drawing.Point(76, 12);
             this.refNotextEdit.Name = "refNotextEdit";
-            this.refNotextEdit.Size = new System.Drawing.Size(266, 20);
+            this.refNotextEdit.Size = new System.Drawing.Size(303, 20);
             this.refNotextEdit.StyleController = this.layoutControl1;
             this.refNotextEdit.TabIndex = 4;
             // 
@@ -115,7 +129,7 @@
             this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(354, 190);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(391, 289);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -125,7 +139,7 @@
             this.layoutControlItem1.CustomizationFormText = "Refrence No";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(334, 24);
+            this.layoutControlItem1.Size = new System.Drawing.Size(371, 24);
             this.layoutControlItem1.Text = "Refrence No";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 13);
             // 
@@ -133,7 +147,7 @@
             // 
             this.layoutControlItem3.Control = this.btnUpdate;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(169, 144);
+            this.layoutControlItem3.Location = new System.Drawing.Point(203, 243);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -148,11 +162,11 @@
             // 
             this.layoutControlItem4.Control = this.btnClose;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(251, 144);
+            this.layoutControlItem4.Location = new System.Drawing.Point(285, 243);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(83, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(86, 26);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "layoutControlItem4";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -163,11 +177,11 @@
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 144);
-            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(169, 26);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(169, 26);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 228);
+            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(203, 26);
+            this.emptySpaceItem1.MinSize = new System.Drawing.Size(203, 26);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(169, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(203, 26);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -178,9 +192,22 @@
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 48);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(334, 96);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(367, 180);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.dtLossDate;
+            this.layoutControlItem7.CustomizationFormText = "Date";
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(363, 24);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(363, 24);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(371, 24);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.Text = "Date";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 13);
             // 
             // layoutControlItem5
             // 
@@ -202,36 +229,11 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(60, 13);
             this.layoutControlItem6.TextToControlDistance = 5;
             // 
-            // dtLossDate
-            // 
-            this.dtLossDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtLossDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtLossDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtLossDate.DayOfWeekCharacters = 2;
-            this.dtLossDate.ForeColor = System.Drawing.Color.Black;
-            this.dtLossDate.Location = new System.Drawing.Point(76, 36);
-            this.dtLossDate.Name = "dtLossDate";
-            this.dtLossDate.PopUpFontSize = 9.75F;
-            this.dtLossDate.Size = new System.Drawing.Size(266, 20);
-            this.dtLossDate.TabIndex = 11;
-            this.dtLossDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dtLossDate.Value = new System.DateTime(2010, 10, 13, 0, 0, 0, 0);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.dtLossDate;
-            this.layoutControlItem7.CustomizationFormText = "Date";
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(334, 24);
-            this.layoutControlItem7.Text = "Date";
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(60, 13);
-            // 
             // EditLossAndAdjustment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 190);
+            this.ClientSize = new System.Drawing.Size(391, 289);
             this.Controls.Add(this.layoutControl1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -248,9 +250,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,8 +270,8 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private CalendarLib.DateTimePickerEx dtLossDate;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
     }
 }
