@@ -1,9 +1,9 @@
-CREATE PROCEDURE [dbo].[proc_ItemUnitUpdate]
+Create PROCEDURE [dbo].[proc_ItemUnitUpdate]
 (
 	@ID int,
 	@ItemID int = NULL,
 	@QtyPerUnit int = NULL,
-	@Text int =null
+	@Text varchar(50) =null
 )
 AS
 BEGIN
