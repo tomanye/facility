@@ -411,23 +411,29 @@ namespace PharmInventory.Forms.Transactions
                                 double reqPackQty = Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"]);
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
-                                DateTime dtx = new DateTime();
+                                DateTime? dtx = new DateTime();
                                 if (itm.NeedExpiryBatch)
                                 {
                                     dtx = Convert.ToDateTime(_dtRec.Rows[j]["ExpDate"]);
                                     if (dtx <= DateTime.Now.AddDays(duMaxDays))
                                         nearExp = true;
                                 }
+                                else if (!itm.NeedExpiryBatch)
+                                {
+                                    dtx = null;
+                                   // nearExp = false;
+                                }
                                 int rowNo = j + 1;
-                                object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"], 
-                                                   dtIssueGrid.Rows[i]["Item Name"], qu, batch, dtx.ToString("MMM dd,yyyy"), 
-                                                   packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
-                                                   Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
-                                                   dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
-                                                   dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                   sohbalance,dtIssueGrid.Rows[i]["UnitID"]};
-                                dtIssueConf.Rows.Add(obj);
-                                quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
+
+                                    object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"], 
+                                                     dtIssueGrid.Rows[i]["Item Name"], qu, batch,dtx, 
+                                                     packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
+                                                     Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
+                                                     dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
+                                                     dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"]};
+                                    dtIssueConf.Rows.Add(obj);
+                                  quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
                                 j++;
                             }
                         }
@@ -453,6 +459,7 @@ namespace PharmInventory.Forms.Transactions
                     txtStore.Text = cboStores.Text;
                     txtConIssuedBy.Text = txtIssuedBy.Text;
                     txtConRemark.Text = txtRemark.Text;
+                    txtConRecipientName.Text = txtRecipientName.Text;
                     gridConfirmation.DataSource = dtIssueConf;
                 }
             }
@@ -592,6 +599,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.IsTransfer = false;
 
                             issDoc.Remark = txtRemark.Text;
+                            issDoc.RecipientName = txtRecipientName.Text;
                             issDoc.IssuedBy = txtIssuedBy.Text;
                             issDoc.DUSOH = Convert.ToInt32(dtConfirm.Rows[i]["DUSOH"]);
                             issDoc.ItemID = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);

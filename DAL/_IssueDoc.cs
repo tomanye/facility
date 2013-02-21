@@ -282,6 +282,14 @@ namespace DAL
                     return new SqlParameter("@UnitID", SqlDbType.Int, 0);
                 }
             }
+
+            public static SqlParameter RecipientName
+            {
+                get
+                {
+                    return new SqlParameter("@RecipientName", SqlDbType.VarChar, 200);
+                }
+            }
         
 		}
 		#endregion		
@@ -312,6 +320,8 @@ namespace DAL
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
             public const string UnitID = "UnitID";
+            public const string RecipientName = "RecipientName";
+
 		 
 
 			static public string ToPropertyName(string columnName)
@@ -343,6 +353,7 @@ namespace DAL
 					ht[EurDate] = _IssueDoc.PropertyNames.EurDate;
 					ht[OrderID] = _IssueDoc.PropertyNames.OrderID;
                     ht[UnitID] = _IssueDoc.PropertyNames.UnitID;
+                    ht[RecipientName] = _IssueDoc.PropertyNames.RecipientName;
 
 				}
 				return (string)ht[columnName];
@@ -378,6 +389,7 @@ namespace DAL
             public const string EurDate = "EurDate";
             public const string OrderID = "OrderID";
             public const string UnitID = "UnitID";
+            public const string RecipientName = "RecipientName";
           
 
 			static public string ToColumnName(string propertyName)
@@ -409,6 +421,7 @@ namespace DAL
 					ht[EurDate] = _IssueDoc.ColumnNames.EurDate;
 					ht[OrderID] = _IssueDoc.ColumnNames.OrderID;
                     ht[UnitID] = _IssueDoc.ColumnNames.UnitID;
+                    ht[RecipientName] = _IssueDoc.ColumnNames.RecipientName;
                   
 
 				}
@@ -445,6 +458,7 @@ namespace DAL
             public const string EurDate = "s_EurDate";
             public const string OrderID = "s_OrderID";
             public const string UnitID = "s_UnitID";
+            public const string RecipientName = "s_RecipientName";
 		    
 
 		}
@@ -727,6 +741,18 @@ namespace DAL
             set
             {
                 base.Setint(ColumnNames.UnitID, value);
+            }
+        }
+
+        public virtual string RecipientName
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.RecipientName);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.RecipientName, value);
             }
         }
 
@@ -1081,6 +1107,20 @@ namespace DAL
             }
         }
 
+        public virtual string s_RecipientName
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.RecipientName) ? string.Empty : base.GetstringAsString(ColumnNames.RecipientName);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.RecipientName);
+                else
+                    this.RecipientName = base.SetstringAsString(ColumnNames.RecipientName, value);
+            }
+        }
        
 
 		#endregion		
@@ -1340,6 +1380,16 @@ namespace DAL
                     get
                     {
                         WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter RecipientName
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.RecipientName, Parameters.RecipientName);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1626,6 +1676,18 @@ namespace DAL
                 }
             }
 
+            public WhereParameter RecipientName
+            {
+                get
+                {
+                    if (_RecipientName_W == null)
+                    {
+                        _RecipientName_W = TearOff.RecipientName;
+                    }
+                    return _RecipientName_W;
+                }
+            }
+
 			private WhereParameter _ID_W = null;
 			private WhereParameter _ItemID_W = null;
 			private WhereParameter _StoreId_W = null;
@@ -1649,6 +1711,7 @@ namespace DAL
 			private WhereParameter _EurDate_W = null;
 			private WhereParameter _OrderID_W = null;
             private WhereParameter _UnitID_W = null;
+		    private WhereParameter _RecipientName_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1675,6 +1738,7 @@ namespace DAL
 				_EurDate_W = null;
 				_OrderID_W = null;
                 _UnitID_W = null;
+			    _RecipientName_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1961,6 +2025,16 @@ namespace DAL
                     }
                 }
 
+                public AggregateParameter RecipientName
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.RecipientName, Parameters.RecipientName);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
 
 				private AggregateClause _clause;
 			}
@@ -2230,18 +2304,30 @@ namespace DAL
 				}
 			}
 
-            //public AggregateParameter UnitID
-            //{
-            //    get
-            //    {
-            //        if (_UnitID_W == null)
-            //        {
-            //            _UnitID_W = TearOff.UnitID;
-            //        }
-            //        return _UnitID_W;
-            //    }
-            //}
+            public AggregateParameter UnitID
+            {
+                get
+                {
+                    if (_UnitID_W == null)
+                    {
+                        _UnitID_W = TearOff.UnitID;
+                    }
+                    return _UnitID_W;
+                }
+            }
 
+
+            public AggregateParameter RecipientName
+            {
+                get
+                {
+                    if (_RecipientName_W == null)
+                    {
+                        _RecipientName_W = TearOff.RecipientName;
+                    }
+                    return _RecipientName_W;
+                }
+            }
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _ItemID_W = null;
 			private AggregateParameter _StoreId_W = null;
@@ -2265,6 +2351,7 @@ namespace DAL
 			private AggregateParameter _EurDate_W = null;
 			private AggregateParameter _OrderID_W = null;
             private AggregateParameter _UnitID_W = null;
+            private AggregateParameter _RecipientName_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2291,6 +2378,7 @@ namespace DAL
 				_EurDate_W = null;
 				_OrderID_W = null;
 			    _UnitID_W = null;
+			    _RecipientName_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2455,6 +2543,10 @@ namespace DAL
 
             p = cmd.Parameters.Add(Parameters.UnitID);
             p.SourceColumn = ColumnNames.UnitID;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.RecipientName);
+            p.SourceColumn = ColumnNames.RecipientName;
             p.SourceVersion = DataRowVersion.Current;
 
          return cmd;

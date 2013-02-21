@@ -710,12 +710,15 @@
     <Content Include="Scripts\59_DisposalLoadByPrimaryKey.sql" />
     <Content Include="Scripts\60_DisposalUpdate.sql" />
     <Content Include="Scripts\61_AlterIssuedAddUnitId.sql" />
-    <Content Include="Scripts\62_AlterIssueDocInsert.sql" />
-    <Content Include="Scripts\63_AlterIssueDocLoadAll.sql" />
-    <Content Include="Scripts\64_AlterIssueDocLoadByPrimaryKey.sql" />
-    <Content Include="Scripts\65_AlterIssueDocUpdate.sql" />
-    <Content Include="Scripts\66_CreateItemUnitLoadByPrimaryKey.sql" />
-    <Content Include="Scripts\67_ItemUnitUpdate.sql" />
+    <Content Include="Scripts\62_AlterIssueDocAddRecipientName.sql" />
+    <Content Include="Scripts\63_AlterIssueDocInsert.sql" />
+    <Content Include="Scripts\64_AlterIssueDocLoadAll.sql" />
+    <Content Include="Scripts\65_AlterIssueDocLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\66_AlterIssueDocUpdate.sql" />
+    <Content Include="Scripts\67_CreateItemUnitLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\68_ItemUnitUpdate.sql" />
+    <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
+    <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
     <Content Include="XMLFile1.xml" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
