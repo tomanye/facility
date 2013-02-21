@@ -633,9 +633,10 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //var iss = issDoc.GetIssuedItemsByID(Convert.ToInt32(issDoc.ID));
+                             
+                    //var iss = issDoc.GetIssuedItemsByID(issDoc.ID);
                     //var pick = new PickListReport();
-                    //dtConfirm.TableName = "DataTable1";
+                    //iss.TableName = "DataTable1";
                     //var dtset = new DataSet();
                     //dtset.Tables.Add(iss.Copy());
                     //pick.DataSource = dtset;
@@ -653,7 +654,7 @@ namespace PharmInventory.Forms.Transactions
             }
             //Print after confirm
             
-            
+             xpButton2_Click(sender,e);
              RefreshItems();
         }
 
@@ -739,7 +740,7 @@ namespace PharmInventory.Forms.Transactions
             dtIssueDate.CustomFormat = "MM/dd/yyyy";
             DateTime dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
             //dtIssueDate.Value = xx;
-            string[] header = { "Pick List ", "Date: " + dtCurrent.ToShortDateString(), " Ref No: " + txtConfRef.Text, "From: " + txtStore.Text, "To: " + txtIssuedTo.Text };
+            string[] header = { "Issue Pick List ", "Date: " + dtCurrent.ToShortDateString(), " Ref No: " + txtConfRef.Text, "From: " + txtStore.Text, "To: " + txtIssuedTo.Text };
             printableComponentLink2.PageHeaderFooter = header;
             //printableComponentLink2.Landscape = true;
             //printableComponentLink2.ShowPreviewDialog();

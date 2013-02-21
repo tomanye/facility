@@ -474,19 +474,14 @@
     <Content Include="Scripts\17_DisposalDelete.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Reports\DataSet2.cs">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
+    <Compile Include="Reports\IssueDataSet.cs">
+      <DependentUpon>IssueDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\DataSet2.Designer.cs">
+    <Compile Include="Reports\IssueDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\DataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet3.xsd</DependentUpon>
+      <DependentUpon>IssueDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\PickListReport.cs">
       <SubType>Component</SubType>
@@ -719,7 +714,6 @@
     <Content Include="Scripts\68_ItemUnitUpdate.sql" />
     <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
     <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
-    <Content Include="XMLFile1.xml" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1006,27 +1000,16 @@
     <None Include="Reports\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
-    <None Include="Reports\DataSet2.xsc">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
+    <None Include="Reports\IssueDataSet.xsc">
+      <DependentUpon>IssueDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Reports\DataSet2.xsd">
+    <None Include="Reports\IssueDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+      <LastGenOutput>IssueDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Reports\DataSet2.xss">
-      <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\DataSet3.xsc">
-      <DependentUpon>DataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="Reports\DataSet3.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Reports\DataSet3.xss">
-      <DependentUpon>DataSet3.xsd</DependentUpon>
+    <None Include="Reports\IssueDataSet.xss">
+      <DependentUpon>IssueDataSet.xsd</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ABC.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1452,62 +1435,62 @@
   <ItemGroup>
     <PublishFile Include="DevExpress.CodeParser.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.OfficeSkins.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpf.Printing.v12.2.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpo.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraCharts.v12.2.Extensions">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraVerticalGrid.v12.2">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

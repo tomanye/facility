@@ -428,7 +428,7 @@ namespace BLL
         public DataTable GetIssuedItemsByID(int id)
         {
             this.FlushData();
-         this.LoadFromRawSql(String.Format("select * from vwGetIssuedItems where ID={0}", id));
+            this.LoadFromRawSql(String.Format("select * from vwGetIssuedItems where ID={0}", id));
             return this.DataTable;
         }
 
