@@ -37,20 +37,15 @@ namespace PharmInventory.HelperClasses
 
        public static string GetRegistryValue(string keyName, string valueName)
        {
-           RegistryKey localMachine = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
-           var KEY = localMachine.OpenSubKey(keyName);
-           var value = KEY.GetValue(valueName);
-           if (value != null)
-               return value.ToString();
-           return "";
+           var key = Registry.CurrentUser.OpenSubKey(keyName);
+           return key.GetValue(valueName).ToString();
+           
        }
 
 
        public static void SetRegistryValue(string valueName, string value)
        {
-           RegistryKey localMachine = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64);
-           var rsKey = localMachine.OpenSubKey(REGISTRY_PATH, true);
-           rsKey.SetValue(valueName, value);
+           Registry.CurrentUser.OpenSubKey(REGISTRY_PATH).SetValue(valueName, value);
        }
 
 
