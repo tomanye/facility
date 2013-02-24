@@ -97,7 +97,11 @@ namespace PharmInventory.HelperClasses
                 if(v.ID != 0)
                 iu.ID = v.ID;
                 if (v.ItemID != null)
-                    iu.ItemID= v.ItemID.Value;
+                {
+
+                    Items itm = new Items(); 
+                    iu.ItemID = itm.LoadByMappingID(v.ItemID.Value);
+                }
                     iu.QtyPerUnit = v.QtyPerUnit;
                     iu.Text = v.Text;
                 iu.Save();
