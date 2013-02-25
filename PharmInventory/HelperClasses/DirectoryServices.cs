@@ -285,11 +285,11 @@ namespace PharmInventory.HelperClasses
             List<DirectoryService.Items> dsItemsList = new List<DirectoryService.Items>();
             if (DrugsOrSuppliesMode == 1)
             {
-                dsItemsList = soapClient.GetDrugItems(userName, password, lastVersionNumber, null);
+                dsItemsList = soapClient.GetDrugItems(userName, password, 0, null);
             }
             else if (DrugsOrSuppliesMode == 2)
             {
-                dsItemsList = soapClient.GetSupplyItems(userName, password, lastVersionNumber, null);
+                dsItemsList = soapClient.GetSupplyItems(userName, password, 0, null);
             }
 
             BLL.Items localItem = new Items();

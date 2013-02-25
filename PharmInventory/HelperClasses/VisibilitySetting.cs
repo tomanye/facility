@@ -42,12 +42,11 @@ namespace PharmInventory.HelperClasses
            
        }
 
-
        public static void SetRegistryValue(string valueName, string value)
        {
-           Registry.CurrentUser.OpenSubKey(REGISTRY_PATH).SetValue(valueName, value);
+           var openSubKey = Registry.CurrentUser.OpenSubKey(REGISTRY_PATH);
+           if (openSubKey != null)
+               openSubKey.SetValue(valueName, value);
        }
-
-
-    }
+   }
 }

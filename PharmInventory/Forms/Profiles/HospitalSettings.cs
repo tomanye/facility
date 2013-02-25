@@ -575,25 +575,33 @@ namespace PharmInventory.Forms.Profiles
             
             ReceivingUnits recUnit = new ReceivingUnits();
             if (_receivingUnitId != 0)
+            {
                 recUnit.LoadByPrimaryKey(_receivingUnitId);
+                recUnit.Save();
+
+                XtraMessageBox.Show("Issue Location Record Updated.", "Confirmation", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+            }
             else
+            {
                 recUnit.AddNew();
-            recUnit.Name = txtReceivingUnit.Text;
-            recUnit.Phone = txtPhone.Text;
-            recUnit.Description = memoEdit1.Text;
-            recUnit.IsActive = chkIsDispensaryActive.Checked;
-            recUnit.Min = Convert.ToDouble(cboDUMin.SelectedValue);
-            recUnit.Max = Convert.ToDouble(cboDUMax.SelectedValue);
-            recUnit.Woreda = txtWoreda.Text;
-            recUnit.Region = txtRegion.Text;
-            recUnit.Zone = txtZone.Text;
-            recUnit.FacilityType = txtType.Text;
-            recUnit.Save();
-            recUnit.LoadAll();
-            PopulateReceivingUnit(recUnit);
-            ResetIssuesLocation();
-            XtraMessageBox.Show("Issue Location Record Updated.", "Confirmation", MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
+                recUnit.Name = txtReceivingUnit.Text;
+                recUnit.Phone = txtPhone.Text;
+                recUnit.Description = memoEdit1.Text;
+                recUnit.IsActive = chkIsDispensaryActive.Checked;
+                recUnit.Min = Convert.ToDouble(cboDUMin.SelectedValue);
+                recUnit.Max = Convert.ToDouble(cboDUMax.SelectedValue);
+                recUnit.Woreda = txtWoreda.Text;
+                recUnit.Region = txtRegion.Text;
+                recUnit.Zone = txtZone.Text;
+                recUnit.FacilityType = txtType.Text;
+                recUnit.Save();
+                recUnit.LoadAll();
+                PopulateReceivingUnit(recUnit);
+                ResetIssuesLocation();
+                XtraMessageBox.Show("Issue Location Record Saved.", "Confirmation", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
@@ -655,7 +663,7 @@ namespace PharmInventory.Forms.Profiles
                 Supplier sup = new Supplier();
                 sup.LoadByPrimaryKey(selected);
                 txtCompanyName.Text = sup.CompanyName;
-                txtAddress.Text = sup.Address;
+                 txtAddress.Text = sup.Address;
                 txtContactPerson.Text = sup.ContactPerson;
                 txtMobile.Text = sup.Mobile;
                 txtTelephone.Text = sup.Telephone;

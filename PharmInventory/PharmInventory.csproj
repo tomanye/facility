@@ -717,6 +717,7 @@
     <Content Include="Scripts\68_ItemUnitUpdate.sql" />
     <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
     <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
+    <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
