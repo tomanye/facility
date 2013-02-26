@@ -113,6 +113,12 @@ namespace PharmInventory.Forms.Transactions
             loadamc();
         }
 
-       
+        private void btnExportToEx_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            gridControl1.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
+      
     }
 }

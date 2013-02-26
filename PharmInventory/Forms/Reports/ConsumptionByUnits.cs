@@ -446,8 +446,7 @@ namespace PharmInventory.Forms.Reports
 
         private void cboDUnits_EditValueChanged(object sender, EventArgs e)
         {
-            string issuedto = cboDUnits.EditValue.ToString();
-            gridItemChoiceView.ActiveFilterString = "[IssuedTo] = '" + issuedto + "'";
+           gridItemChoiceView.ActiveFilterString = string.Format("[IssuedTo] = '{0}'", (int)(cboDUnits.EditValue));
         }
     }
 }

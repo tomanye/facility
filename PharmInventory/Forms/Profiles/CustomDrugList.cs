@@ -148,6 +148,9 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void toolBtnSave_Click(object sender, EventArgs e)
         {
+            DataRow dr = gridItemChoiceView.GetFocusedDataRow();
+            int itemId = Convert.ToInt32(dr["ID"]);
+            _itm.LoadByPrimaryKey(itemId);
             _itm.Save();
         }
 

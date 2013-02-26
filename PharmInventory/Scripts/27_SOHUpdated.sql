@@ -45,6 +45,7 @@ BEGIN
 		isnull(loss.Quantity,0) as Lost, 
 		isnull(adj.Quantity,0) as Adjusted , 
 		isnull(amc.Quantity,0) as AMC ,
+		isnull(dos.Quantity,0) as DOS ,
 		 ( isnull(bb.Quantity,0) + isnull(rd.Quantity,0) + isnull(adj.Quantity,0) - isnull(id.Quantity,0) - isnull(loss.Quantity,0)) as SOH, 
 		 isnull(amc.Quantity * @min, 0) as Min, 
 		 isnull(amc.Quantity * @max,0) as Max, 
@@ -67,6 +68,8 @@ BEGIN
 		left join
 		(select Max(AmcWithDos) as Quantity,ar.ItemID from AmcReport ar where ar.StoreID=@storeid group by ItemID)as amc on amc.ItemID = vw.ID 
 		left join
+		(select Max(DaysOutOfStock) as Quantity,ar.ItemID from AmcReport ar where ar.StoreID=@storeid group by ItemID)as dos on dos.ItemID = vw.ID 
+	     left join
 		(select ItemID , sum(Quantity) Quantity from Disposal where StoreID = @storeid and (date between @fromdate and @todate) and Losses = 1 group by ItemID ) as loss on loss.ItemID = vw.ID 
 		left join
 		(select ItemID , sum(Quantity) Quantity from Disposal where StoreID = @storeid and (date between @fromdate and @todate) and Losses = 0 group by ItemID ) as adj on adj.ItemID = vw.ID 

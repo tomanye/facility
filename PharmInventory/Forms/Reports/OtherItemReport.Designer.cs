@@ -139,7 +139,7 @@ namespace PharmInventory.Forms.Reports
             this.colStatus.OptionsColumn.AllowEdit = false;
             this.colStatus.OptionsFilter.AllowFilter = false;
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 7;
+            this.colStatus.VisibleIndex = 8;
             this.colStatus.Width = 115;
             // 
             // gridColumn29
@@ -593,7 +593,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 6;
+            this.gridColumn5.VisibleIndex = 7;
             this.gridColumn5.Width = 62;
             // 
             // gridColumn7
@@ -604,7 +604,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.VisibleIndex = 9;
             this.gridColumn7.Width = 81;
             // 
             // gridColumn67
@@ -639,9 +639,11 @@ namespace PharmInventory.Forms.Reports
             // 
             // dos
             // 
-            this.dos.Caption = "Days on StockOut";
-            this.dos.FieldName = "DaysStockedOut";
+            this.dos.Caption = "DOS";
+            this.dos.FieldName = "DOS";
             this.dos.Name = "dos";
+            this.dos.Visible = true;
+            this.dos.VisibleIndex = 6;
             // 
             // repositoryItemCheckEdit1
             // 

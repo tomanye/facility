@@ -64,21 +64,17 @@ namespace PharmInventory.Forms.Transactions
             if(VisibilitySetting.HandleUnits)
             {
                 unitcolumn.Visible = false;
-                amc.Visible = false;
+               // amc.Visible = false;
                 unitcolumn1.Visible = false;
                 unitid.Visible = true;
-                duremainingsoh.Visible = false;
-                duamc.Visible = false;
                 requestedqty.Visible = true;
             }
             else if (VisibilitySetting.HandleUnits == false)
             {
                 unitcolumn.Visible = true;
-                amc.Visible = true;
+                //amc.Visible = true;
                 unitcolumn1.Visible = true;
                 unitid.Visible = false;
-                duremainingsoh.Visible = true;
-                duamc.Visible = true;
                 requestedqty.Visible = true;
 
             }
