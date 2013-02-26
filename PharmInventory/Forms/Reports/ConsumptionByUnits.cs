@@ -53,7 +53,7 @@ namespace PharmInventory.Forms.Reports
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
-            cboStores.EditValue = 1;
+            cboStores.EditValue = 0;
 
 
             string[] arr = new string[] {"All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked"};
@@ -447,6 +447,11 @@ namespace PharmInventory.Forms.Reports
         private void cboDUnits_EditValueChanged(object sender, EventArgs e)
         {
            gridItemChoiceView.ActiveFilterString = string.Format("[IssuedTo] = '{0}'", (int)(cboDUnits.EditValue));
+        }
+
+        private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemChoiceView.ActiveFilterString = string.Format("[TypeID] = '{0}'", (int)(lkCommodityTypes.EditValue));
         }
     }
 }
