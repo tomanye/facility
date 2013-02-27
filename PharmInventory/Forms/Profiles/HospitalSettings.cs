@@ -577,7 +577,20 @@ namespace PharmInventory.Forms.Profiles
             if (_receivingUnitId != 0)
             {
                 recUnit.LoadByPrimaryKey(_receivingUnitId);
+                recUnit.Name = txtReceivingUnit.Text;
+                recUnit.Phone = txtPhone.Text;
+                recUnit.Description = memoEdit1.Text;
+                recUnit.IsActive = chkIsDispensaryActive.Checked;
+                recUnit.Min = Convert.ToDouble(cboDUMin.SelectedValue);
+                recUnit.Max = Convert.ToDouble(cboDUMax.SelectedValue);
+                recUnit.Woreda = txtWoreda.Text;
+                recUnit.Region = txtRegion.Text;
+                recUnit.Zone = txtZone.Text;
+                recUnit.FacilityType = txtType.Text;
                 recUnit.Save();
+              
+
+                //recUnit.Save();
 
                 XtraMessageBox.Show("Issue Location Record Updated.", "Confirmation", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

@@ -781,7 +781,6 @@ namespace PharmInventory.Forms.Transactions
             this.bandedGridColumn13.ColumnEdit = this.unitrepositoryItemLookUpEdit;
             this.bandedGridColumn13.FieldName = "UnitID";
             this.bandedGridColumn13.Name = "bandedGridColumn13";
-            this.bandedGridColumn13.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.bandedGridColumn13.Visible = true;
             this.bandedGridColumn13.Width = 67;
             // 

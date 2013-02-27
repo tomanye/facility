@@ -502,7 +502,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\RRFLookUpService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\RRFService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RRFTransactionService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -718,6 +728,50 @@
     <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
     <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
+    <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.SubmitResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ValidationMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFTransactionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RRFTransactionService\configuration.svcinfo" />
+    <None Include="Service References\RRFTransactionService\configuration91.svcinfo" />
+    <None Include="Service References\RRFTransactionService\ServiceOrder.disco" />
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.AdjustmentReason.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.AdjustmentType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.FormMeta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.RRForm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.RRFType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.RRReportingPeriod.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.StockOutReason.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RRFLookUpService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RRFLookUpService\configuration.svcinfo" />
+    <None Include="Service References\RRFLookUpService\configuration91.svcinfo" />
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.disco" />
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -1104,10 +1158,33 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\HCMISRegistrations\Registrations.wsdl" />
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.wsdl" />
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RRFService\PharmInventory.RRFService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RRFService\Service.wsdl" />
+    <None Include="Service References\RRFTransactionService\ServiceOrder.wsdl" />
+    <None Include="Service References\RRFTransactionService\ServiceOrder.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFTransactionService\ServiceOrder1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFTransactionService\ServiceOrder2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFTransactionService\ServiceOrder3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -1434,7 +1511,9 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DirectoryService\" />
     <WCFMetadataStorage Include="Service References\HCMISRegistrations\" />
+    <WCFMetadataStorage Include="Service References\RRFLookUpService\" />
     <WCFMetadataStorage Include="Service References\RRFService\" />
+    <WCFMetadataStorage Include="Service References\RRFTransactionService\" />
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="DevExpress.CodeParser.v12.2">
