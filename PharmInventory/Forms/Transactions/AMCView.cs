@@ -93,6 +93,8 @@ namespace PharmInventory.Forms.Transactions
             if (e.Column.FieldName == "")
 
                 e.DisplayText = (e.RowHandle + 1).ToString();
+
+           
         }
 
         private void btnBuild_Click(object sender, EventArgs e)

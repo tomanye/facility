@@ -44,6 +44,7 @@ namespace PharmInventory.Forms.Transactions
         int _catID = 0;
         String _selectedType = "Drug";
         DataTable _dtSelectedTable=null;
+        
         #endregion
 
         /// <summary>
@@ -60,22 +61,25 @@ namespace PharmInventory.Forms.Transactions
             var unitcolumn1 = ((GridView)issueGrid.MainView).Columns[2];
             var duremainingsoh = ((GridView)issueGrid.MainView).Columns[7];
             var duamc = ((GridView)issueGrid.MainView).Columns[8];
-            var requestedqty = ((GridView)issueGrid.MainView).Columns[12];
+            var mrdusoh = ((GridView)issueGrid.MainView).Columns[6];
+            var recommendedqty = ((GridView)issueGrid.MainView).Columns[9];
+            //var requestedqty = ((GridView)issueGrid.MainView).Columns[12];
+            var qtyperpack = ((GridView) issueGrid.MainView).Columns[11];
             if(VisibilitySetting.HandleUnits)
             {
                 unitcolumn.Visible = false;
-               // amc.Visible = false;
                 unitcolumn1.Visible = false;
                 unitid.Visible = true;
-                requestedqty.Visible = true;
+                qtyperpack.Visible = false;
+                mrdusoh.Visible = false;
+                recommendedqty.Visible = false;
             }
             else if (VisibilitySetting.HandleUnits == false)
             {
                 unitcolumn.Visible = true;
-                //amc.Visible = true;
                 unitcolumn1.Visible = true;
                 unitid.Visible = false;
-                requestedqty.Visible = true;
+                qtyperpack.Visible = true;
 
             }
 
@@ -369,6 +373,8 @@ namespace PharmInventory.Forms.Transactions
                         return;
                     }
 
+                    
+
                     if (sohQty >= Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]))
                     {
                         Items itm = new Items();
@@ -401,13 +407,26 @@ namespace PharmInventory.Forms.Transactions
                             {
                                 string batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
+                          
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
-                                double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);
+                                 double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);
                                 double packPrice = unitPrice * qtyPerPack; //Convert.ToDouble(dtIssueGrid.Rows[i]["Qty Per Pack"]);
                                 double reqPackQty = Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"]);
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
                                 DateTime? dtx = new DateTime();
+
+                                if (VisibilitySetting.HandleUnits == false)
+                                {
+                                    rec.UnitID = 0;
+                                    rec.QtyPerPack = Convert.ToInt32(dtIssueGrid.Rows[i]["Qty Per Pack"]);
+                                }
+                                else if (VisibilitySetting.HandleUnits)
+                                {
+                                    rec.UnitID = Convert.ToInt32(dtIssueGrid.Rows[i]["UnitID"]);
+                                    rec.QtyPerPack = 1;
+                                }
+
                                 if (itm.NeedExpiryBatch)
                                 {
                                     dtx = Convert.ToDateTime(_dtRec.Rows[j]["ExpDate"]);
@@ -420,7 +439,7 @@ namespace PharmInventory.Forms.Transactions
                                    // nearExp = false;
                                 }
                                 int rowNo = j + 1;
-
+                                
                                     object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"], 
                                                      dtIssueGrid.Rows[i]["Item Name"], qu, batch,dtx, 
                                                      packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
@@ -522,17 +541,17 @@ namespace PharmInventory.Forms.Transactions
             if (dtIssueGrid != null)
                 for (int i = 0; i < dtIssueGrid.Rows.Count; i++)
                 {
-                    if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) == 0)
-                    {
-                        dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Cannot be 0");
-                        valid = "All * marked fields are required!";
-                    }
+                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) == 0)
+                    //{
+                    //    dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Cannot be 0");
+                    //    valid = "All * marked fields are required!";
+                    //}
 
-                    if (Convert.ToInt64(dtIssueGrid.Rows[i]["Qty Per Pack"]) == 0)
-                    {
-                        dtIssueGrid.Rows[i].SetColumnError("Qty Per Pack", "Cannot be 0");
-                        valid = "All * marked fields are required!";
-                    }
+                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Qty Per Pack"]) == 0)
+                    //{
+                    //    dtIssueGrid.Rows[i].SetColumnError("Qty Per Pack", "Cannot be 0");
+                    //    valid = "All * marked fields are required!";
+                    //}
 
                     if (Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]) == 0)
                     {
@@ -1055,6 +1074,7 @@ namespace PharmInventory.Forms.Transactions
             edit.Properties.DataSource = filterunit.DefaultView;
             edit.Properties.DisplayMember = "Text";
             edit.Properties.ValueMember = "ID";
+           
         }
 
         private void printableComponentLink2_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -1064,5 +1084,7 @@ namespace PharmInventory.Forms.Transactions
             string[] header = { "Pick List ", "Date: " + dtCurrent.ToShortDateString(), " Ref No: " + txtConfRef.Text, "From: " + txtStore.Text, "To: " + txtIssuedTo.Text };
             printableComponentLink2.PageHeaderFooter = header;
          }
+
+       
     }
 }

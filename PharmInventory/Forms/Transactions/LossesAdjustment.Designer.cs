@@ -357,8 +357,6 @@ namespace PharmInventory
             this.gridColumn11.OptionsColumn.AllowFocus = false;
             this.gridColumn11.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn11.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 0;
             this.gridColumn11.Width = 113;
             // 
             // gridColumn13
@@ -374,7 +372,7 @@ namespace PharmInventory
             this.gridColumn13.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn13.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
+            this.gridColumn13.VisibleIndex = 0;
             this.gridColumn13.Width = 282;
             // 
             // gridColumn14
@@ -387,7 +385,7 @@ namespace PharmInventory
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.VisibleIndex = 1;
             this.gridColumn14.Width = 140;
             // 
             // gridColumn19
@@ -400,7 +398,7 @@ namespace PharmInventory
             this.gridColumn19.OptionsColumn.AllowEdit = false;
             this.gridColumn19.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 4;
+            this.gridColumn19.VisibleIndex = 3;
             this.gridColumn19.Width = 87;
             // 
             // gridColumn20
@@ -411,7 +409,7 @@ namespace PharmInventory
             this.gridColumn20.OptionsColumn.AllowEdit = false;
             this.gridColumn20.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 5;
+            this.gridColumn20.VisibleIndex = 4;
             this.gridColumn20.Width = 80;
             // 
             // gridColumn15
@@ -424,7 +422,7 @@ namespace PharmInventory
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 6;
+            this.gridColumn15.VisibleIndex = 5;
             this.gridColumn15.Width = 100;
             // 
             // repositoryItemTextEdit1
@@ -445,7 +443,7 @@ namespace PharmInventory
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 7;
+            this.gridColumn16.VisibleIndex = 6;
             this.gridColumn16.Width = 100;
             // 
             // repositoryItemTextEdit2
@@ -477,7 +475,7 @@ namespace PharmInventory
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 8;
+            this.gridColumn22.VisibleIndex = 7;
             this.gridColumn22.Width = 158;
             // 
             // ReasonLookup
@@ -520,7 +518,7 @@ namespace PharmInventory
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn25.Visible = true;
-            this.gridColumn25.VisibleIndex = 3;
+            this.gridColumn25.VisibleIndex = 2;
             // 
             // unitrepositoryItemLookUpEdit
             // 
@@ -1065,13 +1063,11 @@ namespace PharmInventory
             this.gridColumn28.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn28.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn28.OptionsFilter.AllowFilter = false;
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 1;
             this.gridColumn28.Width = 91;
             // 
             // colItemName
             // 
-            this.colItemName.Caption = "Item Name";
+            this.colItemName.Caption = "Item";
             this.colItemName.FieldName = "FullItemName";
             this.colItemName.Name = "colItemName";
             this.colItemName.OptionsColumn.AllowEdit = false;
@@ -1079,7 +1075,7 @@ namespace PharmInventory
             this.colItemName.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 2;
+            this.colItemName.VisibleIndex = 1;
             this.colItemName.Width = 338;
             // 
             // gridColumn29
@@ -1092,7 +1088,7 @@ namespace PharmInventory
             this.gridColumn29.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn29.OptionsFilter.AllowFilter = false;
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 3;
+            this.gridColumn29.VisibleIndex = 2;
             this.gridColumn29.Width = 78;
             // 
             // gridColumn66
@@ -1118,7 +1114,7 @@ namespace PharmInventory
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
+            this.gridColumn2.VisibleIndex = 3;
             this.gridColumn2.Width = 110;
             // 
             // gridColumn3
@@ -1128,7 +1124,7 @@ namespace PharmInventory
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.VisibleIndex = 4;
             this.gridColumn3.Width = 88;
             // 
             // gridColumn4
@@ -1140,7 +1136,7 @@ namespace PharmInventory
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 6;
+            this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 184;
             // 
             // gridColumn5
