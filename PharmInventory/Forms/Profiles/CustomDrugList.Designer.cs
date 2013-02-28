@@ -293,8 +293,6 @@ namespace PharmInventory.Forms.Profiles
             this.gridColumn28.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn28.OptionsColumn.AllowMove = false;
             this.gridColumn28.OptionsFilter.AllowFilter = false;
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 0;
             this.gridColumn28.Width = 112;
             // 
             // colItemName
@@ -305,7 +303,7 @@ namespace PharmInventory.Forms.Profiles
             this.colItemName.OptionsColumn.AllowEdit = false;
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 1;
+            this.colItemName.VisibleIndex = 0;
             this.colItemName.Width = 464;
             // 
             // gridColumn29
@@ -316,7 +314,7 @@ namespace PharmInventory.Forms.Profiles
             this.gridColumn29.OptionsColumn.AllowEdit = false;
             this.gridColumn29.OptionsFilter.AllowFilter = false;
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 2;
+            this.gridColumn29.VisibleIndex = 1;
             this.gridColumn29.Width = 31;
             // 
             // VEN
@@ -330,7 +328,7 @@ namespace PharmInventory.Forms.Profiles
             this.VEN.OptionsColumn.AllowMove = false;
             this.VEN.OptionsFilter.AllowFilter = false;
             this.VEN.Visible = true;
-            this.VEN.VisibleIndex = 3;
+            this.VEN.VisibleIndex = 2;
             this.VEN.Width = 45;
             // 
             // IsInHospitalList
@@ -340,7 +338,7 @@ namespace PharmInventory.Forms.Profiles
             this.IsInHospitalList.FieldName = "IsInHospitalList";
             this.IsInHospitalList.Name = "IsInHospitalList";
             this.IsInHospitalList.Visible = true;
-            this.IsInHospitalList.VisibleIndex = 4;
+            this.IsInHospitalList.VisibleIndex = 3;
             this.IsInHospitalList.Width = 89;
             // 
             // repositoryItemCheckEdit1

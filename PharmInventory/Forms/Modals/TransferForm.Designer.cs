@@ -392,8 +392,6 @@
             this.gridColumn28.OptionsColumn.AllowEdit = false;
             this.gridColumn28.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn28.OptionsFilter.AllowFilter = false;
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 1;
             this.gridColumn28.Width = 117;
             // 
             // colItemName
@@ -405,7 +403,7 @@
             this.colItemName.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 2;
+            this.colItemName.VisibleIndex = 1;
             this.colItemName.Width = 494;
             // 
             // gridColumn29
@@ -417,7 +415,7 @@
             this.gridColumn29.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn29.OptionsFilter.AllowFilter = false;
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 3;
+            this.gridColumn29.VisibleIndex = 2;
             this.gridColumn29.Width = 98;
             // 
             // gridColumn1
@@ -731,8 +729,6 @@
             this.gridColumn11.OptionsColumn.AllowFocus = false;
             this.gridColumn11.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn11.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 0;
             this.gridColumn11.Width = 59;
             // 
             // gridColumn13
@@ -759,7 +755,7 @@
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 2;
+            this.gridColumn15.VisibleIndex = 1;
             this.gridColumn15.Width = 69;
             // 
             // repositoryItemSpinEdit1
@@ -787,7 +783,7 @@
             this.gridColumn14.OptionsColumn.AllowShowHide = false;
             this.gridColumn14.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 3;
+            this.gridColumn14.VisibleIndex = 2;
             this.gridColumn14.Width = 69;
             // 
             // gridColumn18
@@ -812,7 +808,7 @@
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 5;
+            this.gridColumn19.VisibleIndex = 4;
             this.gridColumn19.Width = 76;
             // 
             // repositoryItemTextEdit1
@@ -856,7 +852,7 @@
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 8;
+            this.gridColumn22.VisibleIndex = 7;
             this.gridColumn22.Width = 230;
             // 
             // ExpireDateEditor

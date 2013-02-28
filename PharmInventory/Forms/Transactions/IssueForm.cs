@@ -73,6 +73,7 @@ namespace PharmInventory.Forms.Transactions
                 qtyperpack.Visible = false;
                 mrdusoh.Visible = false;
                 recommendedqty.Visible = false;
+                duamc.Visible = false;
             }
             else if (VisibilitySetting.HandleUnits == false)
             {
@@ -80,6 +81,7 @@ namespace PharmInventory.Forms.Transactions
                 unitcolumn1.Visible = true;
                 unitid.Visible = false;
                 qtyperpack.Visible = true;
+                duamc.Visible = true;
 
             }
 

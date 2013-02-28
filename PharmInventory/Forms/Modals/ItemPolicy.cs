@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Utils;
+using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -130,6 +132,16 @@ namespace PharmInventory.Forms.Modals
             cboPrograms.DataSource = prog.DefaultView;
             cboPrograms.SelectedIndex = -1;
 
+            if(VisibilitySetting.HandleUnits ==true)
+            {
+                txtQuantityPerPack.Enabled = false;
+                txtText.Enabled = false;
+            }
+            else if (VisibilitySetting.HandleUnits == false)
+            {
+                txtQuantityPerPack.Enabled = true;
+                txtText.Enabled = true;
+            }
             PopulateFields();
         }
 
