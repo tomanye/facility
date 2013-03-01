@@ -50,20 +50,20 @@ namespace PharmInventory.Forms.Reports
             var min = ((GridView)gridItemsChoice.MainView).Columns[5];
             var max = ((GridView)gridItemsChoice.MainView).Columns[6];
            
-            if(VisibilitySetting.HandleUnits)
-            {
-                amc.Visible = false;
-                mos.Visible = false;
-                min.Visible = false;
-                max.Visible = false;
-            }
-            else if(VisibilitySetting.HandleUnits ==false)
-            {
-                amc.Visible = true;
-                mos.Visible = true;
-                min.Visible = true;
-                max.Visible = true;
-            }
+            //if(VisibilitySetting.HandleUnits)
+            //{
+            //    amc.Visible = false;
+            //    mos.Visible = false;
+            //    min.Visible = false;
+            //    max.Visible = false;
+            //}
+            //else if(VisibilitySetting.HandleUnits ==false)
+            //{
+            //    amc.Visible = true;
+            //    mos.Visible = true;
+            //    min.Visible = true;
+            //    max.Visible = true;
+            //}
             //CALENDAR:
             PopulateCatTree(_selectedType);
 

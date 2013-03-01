@@ -253,6 +253,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -393,6 +394,18 @@
     <Compile Include="Forms\Transactions\AMCView.Designer.cs">
       <DependentUpon>AMCView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Transactions\IssueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\IssueForm.Designer.cs">
+      <DependentUpon>IssueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Transactions\LossesAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Transactions\LossesAdjustment.Designer.cs">
+      <DependentUpon>LossesAdjustment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Transactions\StockOutIndicesBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,12 +462,7 @@
     </Compile>
     <Compile Include="HelperClasses\DatabaseHelpers.cs" />
     <Compile Include="HelperClasses\EthCal.cs" />
-    <Compile Include="Forms\Transactions\LossesAdjustment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Transactions\LossesAdjustment.Designer.cs">
-      <DependentUpon>LossesAdjustment.cs</DependentUpon>
-    </Compile>
+    <Compile Include="HelperClasses\FeSetting.cs" />
     <Compile Include="HelperClasses\MainWindowController.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,12 +652,6 @@
     <Compile Include="Forms\UtilitiesAndForms\DatabaseActions.Designer.cs">
       <DependentUpon>DatabaseActions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Transactions\IssueForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Transactions\IssueForm.Designer.cs">
-      <DependentUpon>IssueForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Profiles\Hospital.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -728,6 +730,7 @@
     <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
     <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
+    <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -838,6 +841,14 @@
     <EmbeddedResource Include="Forms\Transactions\AMCView.resx">
       <DependentUpon>AMCView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\IssueForm.resx">
+      <DependentUpon>IssueForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Transactions\LossesAdjustment.resx">
+      <DependentUpon>LossesAdjustment.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\StockOutIndicesBuilder.resx">
       <DependentUpon>StockOutIndicesBuilder.cs</DependentUpon>
     </EmbeddedResource>
@@ -861,10 +872,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ActivityLogs\LogPickList.resx">
       <DependentUpon>LogPickList.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Transactions\LossesAdjustment.resx">
-      <DependentUpon>LossesAdjustment.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
@@ -947,10 +954,6 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\DatabaseActions.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DatabaseActions.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Transactions\IssueForm.resx">
-      <DependentUpon>IssueForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Profiles\Hospital.resx">
       <SubType>Designer</SubType>

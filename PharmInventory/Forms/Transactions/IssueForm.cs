@@ -65,7 +65,19 @@ namespace PharmInventory.Forms.Transactions
             var recommendedqty = ((GridView)issueGrid.MainView).Columns[9];
             //var requestedqty = ((GridView)issueGrid.MainView).Columns[12];
             var qtyperpack = ((GridView) issueGrid.MainView).Columns[11];
-            if(VisibilitySetting.HandleUnits)
+            if(VisibilitySetting.HandleUnits==3)
+            {
+                unitcolumn.Visible = false;
+                unitcolumn1.Visible = false;
+                unitid.Visible = true;
+                qtyperpack.Visible = false;
+                mrdusoh.Visible = false;
+                duamc.Visible = true;
+                recommendedqty.Visible = false;
+                duamc.Visible = false;
+            }
+
+            else if (VisibilitySetting.HandleUnits == 2)
             {
                 unitcolumn.Visible = false;
                 unitcolumn1.Visible = false;
@@ -75,7 +87,7 @@ namespace PharmInventory.Forms.Transactions
                 recommendedqty.Visible = false;
                 duamc.Visible = false;
             }
-            else if (VisibilitySetting.HandleUnits == false)
+            else 
             {
                 unitcolumn.Visible = true;
                 unitcolumn1.Visible = true;
@@ -418,12 +430,12 @@ namespace PharmInventory.Forms.Transactions
                                 bool nearExp = false;
                                 DateTime? dtx = new DateTime();
 
-                                if (VisibilitySetting.HandleUnits == false)
+                                if (VisibilitySetting.HandleUnits == 1)
                                 {
                                     rec.UnitID = 0;
                                     rec.QtyPerPack = Convert.ToInt32(dtIssueGrid.Rows[i]["Qty Per Pack"]);
                                 }
-                                else if (VisibilitySetting.HandleUnits)
+                                else if (VisibilitySetting.HandleUnits == 2)
                                 {
                                     rec.UnitID = Convert.ToInt32(dtIssueGrid.Rows[i]["UnitID"]);
                                     rec.QtyPerPack = 1;
@@ -623,7 +635,14 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.Quantity = Convert.ToInt64(dtConfirm.Rows[i]["Quantity"]);
                             issDoc.NoOfPack = Convert.ToInt32(dtConfirm.Rows[i]["No Of Pack"]);
                             issDoc.QtyPerPack = Convert.ToInt32(dtConfirm.Rows[i]["Qty Per Pack"]);
-                            issDoc.UnitID = VisibilitySetting.HandleUnits == false ? 0 : Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
+                            if (VisibilitySetting.HandleUnits == 1)
+                            {
+                                issDoc.UnitID = 0;
+                            }
+                            else if (VisibilitySetting.HandleUnits == 2)
+                            {
+                                issDoc.UnitID = Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
+                            }
                             issDoc.BatchNo = dtConfirm.Rows[i]["BatchNo"].ToString();
                             issDoc.Cost = Convert.ToDouble(dtConfirm.Rows[i]["Unit Price"]);
 

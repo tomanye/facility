@@ -43,17 +43,24 @@ namespace PharmInventory
             var UnitColumn = ((GridView)AdjustmentGrid.MainView).Columns[10];
             //var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[10];
          
-            if(VisibilitySetting.HandleUnits)
+            if(VisibilitySetting.HandleUnits==2)
             {
                 UnitColumn.Visible = true;
                 //UnitColumn1.Visible = true;
             }
 
-            else if(VisibilitySetting.HandleUnits==false)
+            else if(VisibilitySetting.HandleUnits==1)
             {
                 UnitColumn.Visible = false;
                // UnitColumn1.Visible = false;
             }
+
+            else if (VisibilitySetting.HandleUnits == 3)
+            {
+                UnitColumn.Visible = true;
+                // UnitColumn1.Visible = false;
+            }
+
             Stores stor = new Stores();
             stor.GetActiveStores();
                
@@ -310,7 +317,14 @@ namespace PharmInventory
                             dis.Quantity = Convert.ToInt64(dtAdjVal.Rows[i]["Adjustment"]);
                         }
                         dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
-                        dis.UnitID = VisibilitySetting.HandleUnits == false ? 0 : Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
+                        if (VisibilitySetting.HandleUnits == 1)
+                        {
+                            dis.UnitID = 0;
+                        }
+                        else if (VisibilitySetting.HandleUnits == 2)
+                        {
+                            dis.UnitID = Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
+                        }
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();

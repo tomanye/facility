@@ -36,7 +36,7 @@ namespace PharmInventory.Forms.Profiles
            // Woreda wor = new Woreda();
            // wor.LoadAll();
            // cboWoreda.DataSource = wor.DefaultView;
-
+            GetLookUp();
             PopulateFields();
         }
 
@@ -45,8 +45,9 @@ namespace PharmInventory.Forms.Profiles
         /// </summary>
         private void PopulateFields()
         {
-            chkHandleUnits.Checked = VisibilitySetting.HandleUnits;
+            lookUpEdit1.EditValue = Convert.ToInt32(VisibilitySetting.GetRegistryValue(VisibilitySetting.REGISTRY_PATH,VisibilitySetting.HANDLE_UNITS_KEY));
             _hospInfo.LoadAll();
+           
             txtHospitalName.Text = _hospInfo.HospitalName;
             txtPhone.Text = _hospInfo.Telephone;
             //txtContactPerson.Text = _hospInfo.HospitalContact;
@@ -66,6 +67,16 @@ namespace PharmInventory.Forms.Profiles
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
             }
         }
+
+        private void GetLookUp()
+        {
+            var fe = new FeSetting();
+            settingbindingSource.DataSource = fe.GetFeLookup();
+            //lookUpEdit1.Properties.DisplayMember = "Name";
+            //lookUpEdit1.Properties.ValueMember = "RecordID";
+        }
+
+        
 
         /// <summary>
         /// Handles the region changed event
@@ -101,18 +112,29 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(chkHandleUnits.Checked!=VisibilitySetting.HandleUnits)
-                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY,chkHandleUnits.Checked.ToString());
-            if (_hospitalId == 0)
+           if (_hospitalId == 0)
                 return;
 
             if (XtraMessageBox.Show("Are You sure, You want to save the changes to Hospital General Info.?", "Confirmation",
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
-            if (chkHandleUnits.Checked != VisibilitySetting.HandleUnits)
-                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, chkHandleUnits.Checked.ToString());
+          
+            if ((int)lookUpEdit1.EditValue ==1)
+            {
+                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 1);
+            }
+            else if ((int)lookUpEdit1.EditValue == 2)
+            {
+                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 2);
+            }
+            else if ((int)lookUpEdit1.EditValue == 3)
+            {
+                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 3);
+            }
+
             _hospInfo.LoadByPrimaryKey(_hospitalId);
             _hospInfo.HospitalName = txtHospitalName.Text;
+          
             //_hospInfo.HospitalContact = txtContactPerson.Text;
             _hospInfo.Telephone = txtPhone.Text;
             if(txtUserName.Text.IndexOf(';')!=-1 || txtPassword.Text.IndexOf(';')!=-1)
@@ -150,6 +172,9 @@ namespace PharmInventory.Forms.Profiles
             }
 
             _hospInfo.Save();
+            XtraMessageBox.Show("Facility Setting Successfully Saved.", "Success",
+                                MessageBoxButtons.OK);
+
 
             PopulateFields();
             this.Parent.Parent.Text = _hospInfo.HospitalName + " - Ethiopian Health Commodity Management Information System(HCMS)";

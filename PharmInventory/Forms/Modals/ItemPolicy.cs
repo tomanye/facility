@@ -132,12 +132,17 @@ namespace PharmInventory.Forms.Modals
             cboPrograms.DataSource = prog.DefaultView;
             cboPrograms.SelectedIndex = -1;
 
-            if(VisibilitySetting.HandleUnits ==true)
+            if(VisibilitySetting.HandleUnits ==2)
             {
                 txtQuantityPerPack.Enabled = false;
                 txtText.Enabled = false;
             }
-            else if (VisibilitySetting.HandleUnits == false)
+            else if (VisibilitySetting.HandleUnits == 3)
+            {
+                txtQuantityPerPack.Enabled = false;
+                txtText.Enabled = false;
+            }
+            else 
             {
                 txtQuantityPerPack.Enabled = true;
                 txtText.Enabled = true;

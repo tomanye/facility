@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using Microsoft.Win32;
 
 namespace PharmInventory.HelperClasses
@@ -11,20 +14,20 @@ namespace PharmInventory.HelperClasses
        public const string REGISTRY_PATH = @"Software\JSI\HCMIS\Configuration";
        public const string HANDLE_UNITS_KEY = @"HandleUnits";
 
-       public static bool HandleUnits
+       public static int HandleUnits
        {
            get
            {
                try
                {
                    var value = GetRegistryValue(REGISTRY_PATH, HANDLE_UNITS_KEY);
-                   var handleUnits = Convert.ToBoolean(value);
+                   var handleUnits = Convert.ToInt32(value);
                    return handleUnits;
                }
                catch (Exception)
                {
-                   SetRegistryValue(HANDLE_UNITS_KEY, "false");
-                   return false;
+                   SetRegistryValue(HANDLE_UNITS_KEY, 1);
+                   return 1;
                }
            }
        }
@@ -38,15 +41,23 @@ namespace PharmInventory.HelperClasses
        public static string GetRegistryValue(string keyName, string valueName)
        {
            var key = Registry.CurrentUser.OpenSubKey(keyName);
-           return key.GetValue(valueName).ToString();
-           
+           if (key != null) return key.GetValue(valueName).ToString();
+           return null;
        }
 
-       public static void SetRegistryValue(string valueName, string value)
+       public static void SetRegistryValue(string valueName, int value)
        {
-           var openSubKey = Registry.CurrentUser.OpenSubKey(REGISTRY_PATH);
-           if (openSubKey != null)
-               openSubKey.SetValue(valueName, value);
+           try
+           {
+               Registry.CurrentUser.DeleteValue(REGISTRY_PATH, false);
+               RegistryKey rk = Registry.CurrentUser.CreateSubKey(REGISTRY_PATH);
+               if (rk != null) rk.SetValue(valueName, value);
+           }
+           catch (Exception ex)
+           {
+               string message = ex.InnerException.Message;
+               XtraMessageBox.Show(message);
+           }
        }
    }
 }

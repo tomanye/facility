@@ -31,7 +31,7 @@ namespace PharmInventory
         [STAThread]
         static void Main()
         {
-            var setting = VisibilitySetting.HandleUnits;
+           // var setting = VisibilitySetting.HandleUnits;
            
             //                              ERROR LOGGING                                    ///
 
