@@ -475,6 +475,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
     <Content Include="Scripts\01_HCMIS Queries.sql" />
     <Content Include="Scripts\03_GetConsumptionTrendByMonth.sql" />
     <Content Include="Scripts\04_GetMonthlyConsumptionByUnits.sql" />

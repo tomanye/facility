@@ -8,6 +8,7 @@ using DevExpress.XtraEditors;
 using CommCtrl;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraLayout.Utils;
+using PharmInventory.RRFTransactionService;
 using PharmInventory.Reports;
 using PharmInventory.RRFService;
 using PharmInventory.HelperClasses;
@@ -15,6 +16,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraReports.UI;
 using EthiopianDate;
+using PharmInventory.ViewModels;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -228,6 +230,14 @@ namespace PharmInventory.Forms.Reports
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
         {
+
+            var orders = GetOrders();
+            var facilityID = 0; // Get from general info
+            var serviceModel = CompileOrder(facilityID, orders);
+            Send(serviceModel);
+
+            // You are done
+
             //contextMenuStrip1.Show(btnAutoPushToPFSA, 0, 0);
             //btnAutoPushToPFSA.Enabled = false;
             if (XtraMessageBox.Show("Are you sure you want to save and submit the RRF to PFSA?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -263,6 +273,57 @@ namespace PharmInventory.Forms.Reports
             return rrf.ID;
         }
 
+        public List<RRFTransactionService.Order> GetOrders()
+        {
+            var orders = new List<RRFTransactionService.Order>();
+            // Get from datatable
+            tblRRF =(DataTable) gridItemChoiceView.DataSource;
+
+            foreach(var rrf in tblRRF.Rows)
+            {
+                var order = new RRFTransactionService.Order();
+                order.Id = 0; // Set order properties
+                order.OrderStatus = 1;
+                var details = new List<RRFTransactionService.OrderDetail>();
+                // foreach(var rrfLine in rrf.Lines)
+                //{
+                //  var detail = new RRFTransactionService.OrderDetail();
+                //  detail.Adjus = 
+                // details.Add(detail);
+                //}
+                order.OrderDetails = details.ToArray();
+                orders.Add(order);
+            }
+
+            // loop through each record and create order & order details objects
+            return orders;
+        }
+
+        /// <summary>
+        /// Compiles a RRF Order that will be used by Send() method
+        /// </summary>
+        /// <returns>FacilityOrderViewModel</returns>
+        private FacilityOrderViewModel CompileOrder(int facilityID, List<RRFTransactionService.Order> orders)
+        {
+            var fOrder = new FacilityOrderViewModel
+                             {
+                                 FacilityID = facilityID,
+                                 Username = "",
+                                 Password = "",
+                                 Orders = orders.ToArray()
+                             };
+            Send(fOrder);
+            return fOrder;
+        }
+
+        private void Send(FacilityOrderViewModel fOrder)
+        {
+            var client = new RRFTransactionService.ServiceOrderClient();
+            var result = client.SubmitFacilityOrders(fOrder.FacilityID, fOrder.Orders, fOrder.Username, fOrder.Password);
+            // Do something with the result
+            client.Close();
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -288,6 +349,7 @@ namespace PharmInventory.Forms.Reports
             int fromYear = Convert.ToInt32(cboFromYear.EditValue);
             int toYear = Convert.ToInt32(cboToYear.EditValue);
 
+         
             bool check;
             RRFService.ServiceSoapClient sc = new RRFService.ServiceSoapClient();
             try
