@@ -71,9 +71,9 @@ namespace PharmInventory.Forms.Transactions
                 unitcolumn1.Visible = false;
                 unitid.Visible = true;
                 qtyperpack.Visible = false;
-                mrdusoh.Visible = false;
+                mrdusoh.Visible = true;
                 duamc.Visible = true;
-                recommendedqty.Visible = false;
+                recommendedqty.Visible = true;
                 duamc.Visible = false;
             }
 
