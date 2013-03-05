@@ -78,7 +78,18 @@ namespace PharmInventory.Forms.Modals
             //DataTable dtSlf = itmShelf.GetLocationByItem(itm.ID);
             //lstBinLocation.DataSource = dtSlf;
 
+            var unit = new ItemUnit();
+            var itemunits= unit.LoadFromSQl(_itemId);
+            itemunitbindingSource.DataSource = itemunits;
 
+            if (VisibilitySetting.HandleUnits == 2 && VisibilitySetting.HandleUnits == 3)
+            {
+                listBox1.Visible = true;
+            }
+            else if(VisibilitySetting.HandleUnits == 1)
+            {
+                listBox1.Hide();
+            }
             Supplier sup = new Supplier();
             sup.GetActiveSuppliers();
             ItemSupplier itmSup = new ItemSupplier();
@@ -136,16 +147,19 @@ namespace PharmInventory.Forms.Modals
             {
                 txtQuantityPerPack.Enabled = false;
                 txtText.Enabled = false;
+                listBox1.Visible = true;
             }
             else if (VisibilitySetting.HandleUnits == 3)
             {
                 txtQuantityPerPack.Enabled = false;
                 txtText.Enabled = false;
+                listBox1.Visible = true;
             }
             else 
             {
                 txtQuantityPerPack.Enabled = true;
                 txtText.Enabled = true;
+                listBox1.Hide();
             }
             PopulateFields();
         }
@@ -158,6 +172,17 @@ namespace PharmInventory.Forms.Modals
              else if (txtQuantityPerPack.Text !="" && txtText.Text == "")
              {
                  valid = "Prefered pack text is required";
+                 return valid;
+             }
+
+             else if (VisibilitySetting.HandleUnits ==2 && itemunitbindingSource.Current ==null)
+             {
+                 valid = "Item unit is required";
+                 return valid;
+             }
+             else if (VisibilitySetting.HandleUnits == 3 && itemunitbindingSource.Current == null)
+             {
+                 valid = "Item unit is required";
                  return valid;
              }
             return valid;
