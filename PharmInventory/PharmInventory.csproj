@@ -876,7 +876,6 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
       <DependentUpon>Registrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\PickListReport.resx">
       <DependentUpon>PickListReport.cs</DependentUpon>
     </EmbeddedResource>
