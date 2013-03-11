@@ -39,6 +39,10 @@ namespace PharmInventory.Forms.ActivityLogs
             cboSupplier.ItemIndex = -1;
             cboSupplier.Text = "Select Supplier";
 
+            var itemunit = new ItemUnit();
+            var units = itemunit.GetAllUnits();
+            unitsbindingSource.DataSource = units.DefaultView;
+
             // bind the supplier lookup for the grid.
             lkEditSupplier.DataSource = dtSup;
 

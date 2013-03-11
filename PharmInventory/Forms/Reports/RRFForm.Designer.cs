@@ -1691,7 +1691,7 @@
             this.printableComponentLink1.ImageCollection.Images.SetKeyName(0, "PFSALogo.jpg");
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(50, 50, 130, 50);
-            this.printableComponentLink1.Owner = null;
+            //this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
                 "[Image 0]",

@@ -39,6 +39,9 @@ namespace PharmInventory.Forms.ActivityLogs
             cboReasons.Properties.DataSource = dtDis;
             cboReasons.ItemIndex = 0;
 
+            var itemunit = new ItemUnit();
+            var units = itemunit.GetAllUnits();
+            unitbindingSource.DataSource = units.DefaultView;
             //Stores stor = new Stores();
 
             //cboStores.Properties.DataSource = stor.GetActiveStores();

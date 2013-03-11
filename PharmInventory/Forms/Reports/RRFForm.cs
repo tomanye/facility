@@ -31,8 +31,10 @@ namespace PharmInventory.Forms.Reports
         private int _toMonth;
         private int _programID;
         private DataTable tblRRF;
+        private DataTable tblrrf;
 
-        private string userName, password;
+        private const string userName = "HCMISTest";
+         private const string password ="123!@#abc";
 
         public RRFForm()
         {
@@ -236,7 +238,7 @@ namespace PharmInventory.Forms.Reports
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
         {
-
+            
             var orders = GetOrders();
             var ginf = new GeneralInfo();
             ginf.LoadAll();
@@ -283,9 +285,9 @@ namespace PharmInventory.Forms.Reports
         public List<RRFTransactionService.Order> GetOrders()
         {
             var orders = new List<RRFTransactionService.Order>();
-            // Get from datatable
-            var gridview = (DataTable)grdViewRRFList.DataSource;
-            tblRRF = (DataTable)gridItemChoiceView.DataSource;
+            //Get from datatable
+            tblrrf = (DataTable)grdRRF.DataSource;
+            tblRRF = (DataTable)gridItemsChoice.DataSource;
 
             BLL.GeneralInfo info = new GeneralInfo();
             info.LoadAll();
@@ -294,9 +296,9 @@ namespace PharmInventory.Forms.Reports
             var rrfForm = new RRFLookUpService.RRForm();
             FormMeta[] form = client.GetForms(info.ID, userName, password);
             RRFLookUpService.RRReportingPeriod[] periods = client.GetCurrentReportingPeriod(info.ID, userName, password);
-            rrfForm = client.GetFacilityRRForm(info.ID, form[0].Id, periods[0].Id, 1, userName, password)[0]; //Hard coding to be removed.
+           // rrfForm = client.GetFacilityRRForm(info.ID, form[0].Id, periods[0].Id, 1, userName, password)[1]; //Hard coding to be removed.
 
-            foreach (DataRow rrf in gridview.Rows)
+            foreach (DataRow rrf in tblrrf.Rows)
             {
                 var order = new RRFTransactionService.Order();
                 order.Id = (int)rrf["Id"];

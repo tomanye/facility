@@ -35,6 +35,11 @@ namespace PharmInventory.Forms.ActivityLogs
             cboIssuedTo.ItemIndex = -1;//.SelectedIndex = -1;
             cboIssuedTo.Text = @"Select Issue Location";
 
+
+            var itemunit = new ItemUnit();
+            var units = itemunit.GetAllUnits();
+            unitbindingSource.DataSource = units.DefaultView;
+
             // populate the receiving unit's lookup edit
             ReceivingUnits rus = new ReceivingUnits();
             rus.GetActiveDispensaries();

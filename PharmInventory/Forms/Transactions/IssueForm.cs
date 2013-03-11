@@ -74,7 +74,7 @@ namespace PharmInventory.Forms.Transactions
                 mrdusoh.Visible = true;
                 duamc.Visible = true;
                 recommendedqty.Visible = true;
-                duamc.Visible = false;
+                duamc.Visible = true;
             }
 
             else if (VisibilitySetting.HandleUnits == 2)
@@ -277,7 +277,8 @@ namespace PharmInventory.Forms.Transactions
                     
 
                     string itemName = lst["FullItemName"].ToString();
-                    object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
+                    object[] obj = { itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
+                                       itemName, dtItm.Rows[0]["Unit"].ToString(), 
                                    soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0,0};
 
 
@@ -358,7 +359,9 @@ namespace PharmInventory.Forms.Transactions
                 DUs.LoadByPrimaryKey(Convert.ToInt32(cboReceivingUnits.EditValue));
                 double duMax = 0.5;
                 try
-                { duMax = DUs.Max; }
+                {
+                    duMax = DUs.Max;
+                }
                 catch { }
                 double duMaxDays = duMax * 30;
                 lblNearExpiryComment.Text = "*Near Expiry means items that has expiry in the next " + duMaxDays.ToString() + " Days.";
@@ -916,14 +919,25 @@ namespace PharmInventory.Forms.Transactions
         {
             GridView view = sender as GridView;
             if (view == null) return;
-
+            var iu =new ItemUnit();
+           
             if ((view.FocusedColumn.FieldName == "Pack Qty") || (view.FocusedColumn.FieldName == "Qty Per Pack") || (view.FocusedColumn.FieldName == "DU Remaining SOH"))
             {
                 DataRow dr = issueGridView.GetDataRow(issueGridView.GetSelectedRows()[0]);
-
+                iu.LoadByPrimaryKey(Convert.ToInt32(dr["UnitID"]));
+                
                 int qty = Convert.ToInt32(dr["Pack Qty"]);
-                int qtyPerpack = Convert.ToInt32(dr["Qty Per Pack"]);
-                if (qty > 0 && qtyPerpack > 0)
+                int qtyPerpack=Convert.ToInt32(dr["Qty Per Pack"]);
+                int qtyperunit = iu.QtyPerUnit;
+                if(VisibilitySetting.HandleUnits ==2)
+                {
+                    dr["Requested Qty"] = (qtyperunit * qty);
+                }
+                else if(VisibilitySetting.HandleUnits ==3)
+                {
+                    dr["Requested Qty"] = (qtyperunit * qty);
+                }
+                else if (qty > 0 && qtyPerpack > 0)
                 {
                     dr["Requested Qty"] = (qtyPerpack * qty);
                 }

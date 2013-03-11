@@ -17,7 +17,7 @@ namespace BLL
 		public DataTable GetTransactionByRefNo(string refNo, System.DateTime date)
 		{
 			this.FlushData();
-			this.LoadFromRawSql(String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID join vwGetAllItems vw on id.ItemID = vw.ID  WHERE id.RefNo = '{0}' and id.Date = '{1}'", refNo, date.ToShortDateString()));
+            this.LoadFromRawSql(String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID join vwGetAllItems vw on id.ItemID = vw.ID join ItemUnit iu on id.UnitID = iu.ID  WHERE id.RefNo = '{0}' and id.Date = '{1}'", refNo, date.ToShortDateString()));
 			return this.DataTable;
 		}
 
