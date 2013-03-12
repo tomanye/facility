@@ -82,9 +82,13 @@ namespace PharmInventory.Forms.Modals
             var itemunits= unit.LoadFromSQl(_itemId);
             itemunitbindingSource.DataSource = itemunits;
 
-            if (VisibilitySetting.HandleUnits == 2 && VisibilitySetting.HandleUnits == 3)
+            if (VisibilitySetting.HandleUnits == 2)
             {
                 listBox1.Visible = true;
+            }
+            else if(VisibilitySetting.HandleUnits == 3)
+            {
+                 listBox1.Visible = true;
             }
             else if(VisibilitySetting.HandleUnits == 1)
             {
@@ -175,16 +179,17 @@ namespace PharmInventory.Forms.Modals
                  return valid;
              }
 
-             else if (VisibilitySetting.HandleUnits ==2 && itemunitbindingSource.Current ==null)
-             {
-                 valid = "Item unit is required";
-                 return valid;
-             }
-             else if (VisibilitySetting.HandleUnits == 3 && itemunitbindingSource.Current == null)
-             {
-                 valid = "Item unit is required";
-                 return valid;
-             }
+             //else if (VisibilitySetting.HandleUnits ==2 || itemunitbindingSource.Current ==null)
+             //{
+             //    valid = "Item unit is required";
+             //    return valid;
+             //}
+            
+             //else if (VisibilitySetting.HandleUnits == 3 || itemunitbindingSource.Current == null)
+             //{
+             //    valid = "Item unit is required";
+             //    return valid;
+             //}
             return valid;
         }
         /// <summary>
@@ -225,6 +230,8 @@ namespace PharmInventory.Forms.Modals
                 itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
           
                 itm.IsInHospitalList = ckExculed.Checked;
+                
+            
             string valid = ValidateFields();
             if (valid == "true")
             {
@@ -232,6 +239,7 @@ namespace PharmInventory.Forms.Modals
                 itm.Cost = txtQuantityPerPack.Text;
                 itm.Save();
             }
+            
             else
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);

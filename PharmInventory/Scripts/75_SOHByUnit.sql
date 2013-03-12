@@ -1,4 +1,4 @@
-CREATE PROCEDURE [dbo].[SOHByUnit] @storeid int, 
+Create PROCEDURE [dbo].[SOHByUnit] @storeid int, 
                                    @month   int, 
                                    @year    int, 
                                    @days    int 
@@ -53,7 +53,8 @@ AS
                                       WHERE  StoreID = @storeid) THEN 1 
                        ELSE 0 
                      END                            AS EverReceived, 
-                     isnull(rd.Quantity, 0)         AS Received, 
+                     isnull(rd.Quantity, 0)         AS Received,
+                     isnull(rd.UnitID, 0)           AS UnitID, 
                      isnull(rd.QuantityLeft, 0)     AS QuantityLeft, 
                      isnull(id.Quantity, 0)         AS Issued, 
                      isnull(id2.Quantity, 0)        AS IssuedMonth, 
@@ -84,106 +85,102 @@ AS
                             ON vw.ID = pp.ItemID 
                      LEFT JOIN Programs p 
                             ON pp.ProgramID = p.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       UnitID, 
-                                       sum(Quantity /NullIf(QtyPerPack,1)) Quantity, 
-                                       sum(QuantityLeft / QtyPerPack) 
+                     LEFT JOIN (SELECT rd.ItemID, 
+                                       rd.UnitID, 
+                                       sum(rd.Quantity /ISNULL(NULLIF(QtyPerPack,0),1)) Quantity, 
+                                       sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) 
                                        QuantityLeft 
-                                FROM   ReceiveDoc 
-                                WHERE  StoreID = @storeid 
+                                FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
+                                WHERE  rd.StoreID = @storeid 
                                        AND ( date BETWEEN @fromdate AND @todate 
                                            ) 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS rd 
+                                GROUP  BY rd.ItemID, rd.UnitID) AS rd 
                             ON rd.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       UnitID, 
-                                       sum(Quantity / NullIf(QtyPerPack,1)) Quantity 
-                                FROM   IssueDoc 
-                                WHERE  StoreID = @storeid 
+                     LEFT JOIN (SELECT id.ItemID, 
+                                       id.UnitID, 
+                                       sum(id.Quantity / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                                FROM   IssueDoc id left join ItemUnit iu on id.UnitID = iu.ID
+                                WHERE  id.StoreID = @storeid 
                                        AND ( date BETWEEN @fromdate AND @todate 
                                            ) 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS id 
+                                GROUP  BY id.ItemID,id.UnitID) AS id 
                             ON id.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       UnitID, 
-                                       sum(Quantity / NullIf(QtyPerPack,1)) Quantity 
-                                FROM   IssueDoc 
-                                WHERE  StoreID = @storeid 
+                     LEFT JOIN (SELECT id.ItemID, 
+                                       id.UnitID, 
+                                       sum(id.Quantity / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                                FROM   IssueDoc id left join ItemUnit iu on id.UnitID = iu.ID
+                                WHERE  id.StoreID = @storeid 
                                        AND ( year(date) = @year 
                                              AND MONTH(date) = @month ) 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS id2 
+                                GROUP  BY id.ItemID, 
+                                          id.UnitID) AS id2 
                             ON id2.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       UnitID, 
-                                       sum(PhysicalInventory / NullIf(QtyPerPack,1)) 
+                     LEFT JOIN (SELECT ye.ItemID, 
+                                       ye.UnitID, 
+                                       sum(PhysicalInventory / ISNULL(NULLIF(QtyPerPack,0),1)) 
                                        Quantity 
-                                FROM   YearEnd 
-                                WHERE  StoreID = @storeid 
+                                FROM   YearEnd ye left join ItemUnit iu on ye.UnitID = iu.ID
+                                WHERE  ye.StoreID = @storeid 
                                        AND Year = Year(@fromdate) 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS bb 
+                                GROUP  BY ye.ItemID, 
+                                          ye.UnitID) AS bb 
                             ON bb.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       UnitID, 
-                                       sum(QuantityLeft / NullIf(QtyPerPack,1)) Quantity 
-                                FROM   ReceiveDoc 
+                     LEFT JOIN (SELECT rd.ItemID, 
+                                       rd.UnitID, 
+                                       sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                                FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
                                 WHERE  StoreID = @storeid 
                                        AND ExpDate < GETDATE() 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS ed 
+                                GROUP  BY rd.ItemID, 
+                                          rd.UnitID) AS ed 
                             ON ed.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, sum(QuantityLeft / NullIf(QtyPerPack,1)) Quantity 
-                                FROM   ReceiveDoc rd 
+                     LEFT JOIN (SELECT rd.ItemID, sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                                FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
                                        JOIN vwGetAllItems v 
                                          ON rd.ItemID = v.ID 
                                 WHERE  StoreID = @storeid 
                                        AND ExpDate BETWEEN GETDATE() AND 
                                            DATEADD(day, v.NearExpiryTrigger, 
                                            GETDATE()) 
-                                GROUP  BY ItemID) AS nEx 
+                                GROUP  BY rd.ItemID) AS nEx 
                             ON nEx.ItemID = vw.ID 
-                     LEFT JOIN (SELECT Max(AmcWithDos/NullIf(QtyPerPack,1)) AS Quantity, 
+                     LEFT JOIN (SELECT Max(AmcWithDos/ISNULL(NULLIF(QtyPerPack,0),1)) AS Quantity, 
                                        ar.UnitID, 
                                        ar.ItemID 
-                                FROM   AmcReport ar 
+                                FROM   AmcReport ar left join ItemUnit iu on ar.UnitID = iu.ID
                                 WHERE  ar.StoreID = @storeid 
-                                GROUP  BY ItemID ,UnitID)AS amc 
+                                GROUP  BY ar.ItemID ,ar.UnitID)AS amc 
                             ON amc.ItemID = vw.ID 
-                     LEFT JOIN (SELECT Max(DaysOutOfStock / Nullif(QtyPerPack,1)) AS 
+                     LEFT JOIN (SELECT Max(DaysOutOfStock / ISNULL(NULLIF(QtyPerPack,0),1)) AS 
                                        Quantity, 
                                        ar.UnitID, 
                                        ar.ItemID 
-                                FROM   AmcReport ar 
+                                FROM   AmcReport ar left join ItemUnit iu on ar.UnitID = iu.ID
                                 WHERE  ar.StoreID = @storeid 
-                                GROUP  BY ItemID, UnitID)AS dos 
+                                GROUP  BY ar.ItemID, ar.UnitID)AS dos 
                             ON dos.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       sum(Quantity /NullIf(QtyPerPack,1)) Quantity, 
+                     LEFT JOIN (SELECT di.ItemID, 
+                                       sum(di.Quantity /ISNULL(NULLIF(QtyPerPack,0),1)) Quantity, 
                                        UnitID 
-                                FROM   Disposal 
+                                FROM   Disposal di left join ItemUnit iu on di.UnitID = iu.ID
                                 WHERE  StoreID = @storeid 
                                        AND ( date BETWEEN @fromdate AND @todate 
                                            ) 
                                        AND Losses = 1 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS loss 
+                                GROUP  BY di.ItemID, 
+                                          di.UnitID) AS loss 
                             ON loss.ItemID = vw.ID 
-                     LEFT JOIN (SELECT ItemID, 
-                                       sum(Quantity /NullIf(QtyPerPack,1)) Quantity, 
+                     LEFT JOIN (SELECT di.ItemID, 
+                                       sum(di.Quantity /ISNULL(NULLIF(QtyPerPack,0),1)) Quantity, 
                                        UnitID 
-                                FROM   Disposal 
+                                FROM   Disposal di left join ItemUnit iu on di.UnitID = iu.ID
                                 WHERE  StoreID = @storeid 
                                        AND ( date BETWEEN @fromdate AND @todate 
                                            ) 
                                        AND Losses = 0 
-                                GROUP  BY ItemID, 
-                                          UnitID) AS adj 
+                                GROUP  BY di.ItemID, 
+                                          di.UnitID) AS adj 
                             ON adj.ItemID = vw.ID 
               WHERE  vw.IsInHospitalList = 1) t 
       ORDER  BY t.FullItemName 
   END 
-
-

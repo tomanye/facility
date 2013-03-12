@@ -689,7 +689,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // itemunitbindingSource
             // 
-            this.itemunitbindingSource.DataSource = typeof(BLL.ItemUnit);
+         //   this.itemunitbindingSource.DataSource = typeof(BLL.ItemUnit);
             // 
             // ItemPolicy
             // 
