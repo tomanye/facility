@@ -1161,19 +1161,7 @@ namespace PharmInventory.Forms.Transactions
             printableComponentLink2.PageHeaderFooter = header;
          }
 
-        private void repositoryItemLookUpEdit1_Enter(object sender, EventArgs e)
-        {
-            var edit = sender as LookUpEdit;
-            if (edit == null) return;
-            var clone = new ItemUnit();
-            var row = gridItemChoiceView.GetFocusedDataRow();
-            var id = Convert.ToInt32(row["ID"]);
-            var filterunit = clone.LoadFromSQl(id);
-
-            edit.Properties.DataSource = filterunit.DefaultView;
-            edit.Properties.DisplayMember = "Text";
-            edit.Properties.ValueMember = "ID";
-        }
+      
 
        
     }

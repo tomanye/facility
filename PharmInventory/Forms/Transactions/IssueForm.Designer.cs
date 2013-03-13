@@ -30,7 +30,6 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -78,7 +77,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.unitrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.UnitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UnitsbindingSource = new System.Windows.Forms.BindingSource();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -91,7 +90,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -120,7 +119,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -267,14 +265,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewToVaccine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -301,7 +299,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkCategories.Properties)).BeginInit();
@@ -1173,8 +1170,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
             this.gridItemsChoice.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit3,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemCheckEdit3});
             this.gridItemsChoice.Size = new System.Drawing.Size(997, 404);
             this.gridItemsChoice.TabIndex = 36;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1403,20 +1399,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn26.Caption = "TypeID";
             this.gridColumn26.FieldName = "TypeID";
             this.gridColumn26.Name = "gridColumn26";
-            // 
-            // repositoryItemLookUpEdit1
-            // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Text", 32, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
-            this.repositoryItemLookUpEdit1.DataSource = this.UnitsbindingSource;
-            this.repositoryItemLookUpEdit1.DisplayMember = "Text";
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            this.repositoryItemLookUpEdit1.NullText = "Select Unit";
-            this.repositoryItemLookUpEdit1.ValueMember = "ID";
-            this.repositoryItemLookUpEdit1.Enter += new System.EventHandler(this.repositoryItemLookUpEdit1_Enter);
             // 
             // gridView2
             // 
@@ -3288,7 +3270,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkCategories.Properties)).EndInit();
@@ -3613,7 +3594,6 @@ namespace PharmInventory.Forms.Transactions
         private TextEdit txtConRecipientName;
         private MemoEdit txtConRemark;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
 
     }
 }
