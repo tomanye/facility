@@ -733,7 +733,8 @@
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
     <Content Include="Scripts\72_AlterAmcReport.sql" />
     <Content Include="Scripts\73_AlterYearEnd.sql" />
-    <Content Include="Scripts\74_SOHByUnit.sql" />
+    <Content Include="Scripts\75_SOHByUnit.sql" />
+    <Content Include="Scripts\74_alterDisposal.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
