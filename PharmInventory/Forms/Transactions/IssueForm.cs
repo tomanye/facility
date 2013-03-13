@@ -65,7 +65,7 @@ namespace PharmInventory.Forms.Transactions
             var recommendedqty = ((GridView)issueGrid.MainView).Columns[9];
             var requestedqty = ((GridView)issueGrid.MainView).Columns[12];
             var qtyperpack = ((GridView) issueGrid.MainView).Columns[11];
-            var unitcolumn3 = ((GridView)gridItemsChoice.MainView).Columns[14];
+            //var unitcolumn3 = ((GridView)gridItemsChoice.MainView).Columns[14];
             switch (VisibilitySetting.HandleUnits)
             {
                 case 3:

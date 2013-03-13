@@ -1,4 +1,4 @@
-ALTER TABLE AmcReport 
+ALTER TABLE YearEnd 
 Add 
 UnitID int null,
 QtyPerPack int null
