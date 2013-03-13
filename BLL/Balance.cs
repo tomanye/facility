@@ -788,27 +788,19 @@ namespace BLL
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
-            var ld = new System.Collections.Specialized.ListDictionary();
-            ld.Add("@storeid", storeId);
-            ld.Add("@month", month);
-            ld.Add("@year", year);
-            
-            ld.Add("@days", DateTime.DaysInMonth(year, month));
-            
-            ////this.LoadFromSqlNoExec("SOH", ld);
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
 
         public Int64 GetSOH(int itemID, int storeId, int month, int year)
         {
-            //System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
-            //ld.Add("@storeid", storeId);
-            //ld.Add("@month", month);
-            //ld.Add("@year", year);
-            //ld.Add("@days", DateTime.DaysInMonth(year, month));
-
-            //LoadFromSql("SOH", ld, CommandType.StoredProcedure);
             GetSOH(storeId, month, year);
             while (!this.EOF)
             {
@@ -820,7 +812,33 @@ namespace BLL
             }
             return 0;
         }
+        public Int64 GetSOHByUnit(int itemID, int storeId, int month, int year)
+        {
+            GetSOHByUnit(storeId, month, year);
+            while (!this.EOF)
+            {
+                if (this.ID == itemID)
+                {
+                    return this.SOH;
+                }
+                this.MoveNext();
+            }
+            return 0;
+        }
 
+        public DataTable GetSOHByUnit(int storeId, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHByUnit", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+            
         public DataTable GetBinCard(int storeID, int itemID, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary();
@@ -1107,30 +1125,30 @@ namespace BLL
             ld.Add("@month", dtCurrent.Month);
             ld.Add("@year", dtCurrent.Year);
             ld.Add("@days", DateTime.DaysInMonth(dtCurrent.Year,dtCurrent.Month));
-            //ld.Add("@amcrange", pipline.AMCRange);
-            //ld.Add("@min", pipline.Min);
-            //ld.Add("@max", pipline.Max);
-            //ld.Add("@eop", pipline.EOP);
-
-            //this.LoadFromSqlNoExec("SOH", ld);
-
+         
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
 
-           // Add the necessary fields
             this.DataTable.Columns.Add("IsSelected", typeof(bool));
-            //this.DataTable.Columns.Add("NewAMC", typeof (double));
-
-            //foreach (DataRow row in this.DataTable.Rows)
-            //{
-            //    row.BeginEdit();
-            //   // row["NewAMC"] = Builder.CachedAMC((int)row["ID"], storeId);
-
-            //}
             return this.DataTable;
-
-            //this.Exe
         }
 
+
+        public DataTable ItemsListToIssueByUnit(int storeId, DateTime dtCurrent, string selectedType, BackgroundWorker bw)
+        {
+            var pipline = new GeneralInfo();
+            pipline.LoadAll();
+            int days = DateTime.DaysInMonth(dtCurrent.Year, dtCurrent.Month);
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", dtCurrent.Month},
+                             {"@year", dtCurrent.Year},
+                             {"@days", days}
+                         };
+            this.LoadFromSql("SOHByUnit", ld, CommandType.StoredProcedure);
+            this.DataTable.Columns.Add("IsSelected", typeof(bool));
+            return this.DataTable;
+        }
         public long GetBeginningBalance(int year, int item, int storeID)
         {
             YearEnd yearEnd = new YearEnd();
