@@ -467,6 +467,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HelperClasses\RegistrationHelper.cs" />
+    <Compile Include="HelperClasses\RRFHelper.cs" />
     <Compile Include="HelperClasses\SchemaHelpers.cs" />
     <Compile Include="HelperClasses\UpdateManager.cs" />
     <Compile Include="HelperClasses\VisibilitySetting.cs" />

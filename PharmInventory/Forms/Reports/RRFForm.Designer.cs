@@ -69,6 +69,10 @@
             this.picSync = new System.Windows.Forms.PictureBox();
             this.btnNewRRF = new DevExpress.XtraEditors.SimpleButton();
             this.btnBack = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCheckStatus = new DevExpress.XtraEditors.SimpleButton();
+            this.cboToYear = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cboToMonth = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lblRRFStatus = new DevExpress.XtraEditors.LabelControl();
             this.grdRRF = new DevExpress.XtraGrid.GridControl();
             this.grdViewRRFList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,10 +94,6 @@
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnCheckStatus = new DevExpress.XtraEditors.SimpleButton();
-            this.cboToYear = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cboToMonth = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.lblRRFStatus = new DevExpress.XtraEditors.LabelControl();
             this.chkCalculateInPacks = new System.Windows.Forms.CheckBox();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.cboFromYear = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -140,12 +140,12 @@
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSync)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboToYear.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboToMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdRRF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewRRFList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboToYear.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboToMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFromYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFromMonth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProgram.Properties)).BeginInit();
@@ -841,6 +841,45 @@
             this.btnBack.Text = "Back";
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnCheckStatus
+            // 
+            this.btnCheckStatus.Enabled = false;
+            this.btnCheckStatus.Location = new System.Drawing.Point(24, 43);
+            this.btnCheckStatus.Name = "btnCheckStatus";
+            this.btnCheckStatus.Size = new System.Drawing.Size(89, 22);
+            this.btnCheckStatus.StyleController = this.layoutControl1;
+            this.btnCheckStatus.TabIndex = 40;
+            this.btnCheckStatus.Text = "Check Status";
+            this.btnCheckStatus.Click += new System.EventHandler(this.btnCheckStatus_Click);
+            // 
+            // cboToYear
+            // 
+            this.cboToYear.Location = new System.Drawing.Point(970, 554);
+            this.cboToYear.Name = "cboToYear";
+            this.cboToYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboToYear.Size = new System.Drawing.Size(50, 20);
+            this.cboToYear.StyleController = this.layoutControl1;
+            this.cboToYear.TabIndex = 45;
+            // 
+            // cboToMonth
+            // 
+            this.cboToMonth.Location = new System.Drawing.Point(1024, 554);
+            this.cboToMonth.Name = "cboToMonth";
+            this.cboToMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboToMonth.Size = new System.Drawing.Size(50, 20);
+            this.cboToMonth.StyleController = this.layoutControl1;
+            this.cboToMonth.TabIndex = 44;
+            // 
+            // lblRRFStatus
+            // 
+            this.lblRRFStatus.Location = new System.Drawing.Point(24, 696);
+            this.lblRRFStatus.Name = "lblRRFStatus";
+            this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
+            this.lblRRFStatus.StyleController = this.layoutControl1;
+            this.lblRRFStatus.TabIndex = 40;
+            // 
             // grdRRF
             // 
             this.grdRRF.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1259,45 +1298,6 @@
             this.gridColumn34.FieldName = "ID";
             this.gridColumn34.Name = "gridColumn34";
             // 
-            // btnCheckStatus
-            // 
-            this.btnCheckStatus.Enabled = false;
-            this.btnCheckStatus.Location = new System.Drawing.Point(24, 43);
-            this.btnCheckStatus.Name = "btnCheckStatus";
-            this.btnCheckStatus.Size = new System.Drawing.Size(89, 22);
-            this.btnCheckStatus.StyleController = this.layoutControl1;
-            this.btnCheckStatus.TabIndex = 40;
-            this.btnCheckStatus.Text = "Check Status";
-            this.btnCheckStatus.Click += new System.EventHandler(this.btnCheckStatus_Click);
-            // 
-            // cboToYear
-            // 
-            this.cboToYear.Location = new System.Drawing.Point(970, 554);
-            this.cboToYear.Name = "cboToYear";
-            this.cboToYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboToYear.Size = new System.Drawing.Size(50, 20);
-            this.cboToYear.StyleController = this.layoutControl1;
-            this.cboToYear.TabIndex = 45;
-            // 
-            // cboToMonth
-            // 
-            this.cboToMonth.Location = new System.Drawing.Point(1024, 554);
-            this.cboToMonth.Name = "cboToMonth";
-            this.cboToMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboToMonth.Size = new System.Drawing.Size(50, 20);
-            this.cboToMonth.StyleController = this.layoutControl1;
-            this.cboToMonth.TabIndex = 44;
-            // 
-            // lblRRFStatus
-            // 
-            this.lblRRFStatus.Location = new System.Drawing.Point(24, 696);
-            this.lblRRFStatus.Name = "lblRRFStatus";
-            this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
-            this.lblRRFStatus.StyleController = this.layoutControl1;
-            this.lblRRFStatus.TabIndex = 40;
-            // 
             // chkCalculateInPacks
             // 
             this.chkCalculateInPacks.Location = new System.Drawing.Point(329, 554);
@@ -1691,7 +1691,7 @@
             this.printableComponentLink1.ImageCollection.Images.SetKeyName(0, "PFSALogo.jpg");
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(50, 50, 130, 50);
-            //this.printableComponentLink1.Owner = null;
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
                 "[Image 0]",
@@ -1757,12 +1757,12 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSync)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboToYear.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboToMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdRRF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewRRFList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboToYear.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboToMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFromYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFromMonth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProgram.Properties)).EndInit();

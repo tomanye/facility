@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.ServiceModel;
 using System.Windows.Forms;
 using BLL;
 using System.Linq;
@@ -34,7 +35,8 @@ namespace PharmInventory.Forms.Reports
         private DataTable tblrrf;
 
         private const string userName = "HCMISTest";
-         private const string password ="123!@#abc";
+        private const string password = "123!@#abc";
+        private const int facilityID = 65;
 
         public RRFForm()
         {
@@ -72,6 +74,7 @@ namespace PharmInventory.Forms.Reports
         {
             RRF rrf = new RRF();
             grdRRF.DataSource = rrf.GetSavedRRFForDisplay();
+            tblrrf = rrf.GetSavedRRFForDisplay();
             grdRRF.RefreshDataSource();
         }
 
@@ -238,7 +241,7 @@ namespace PharmInventory.Forms.Reports
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
         {
-            
+
             var orders = GetOrders();
             var ginf = new GeneralInfo();
             ginf.LoadAll();
@@ -285,42 +288,51 @@ namespace PharmInventory.Forms.Reports
         public List<RRFTransactionService.Order> GetOrders()
         {
             var orders = new List<RRFTransactionService.Order>();
-            //Get from datatable
-            //RRF rrf =new RRF();
-            //rrf.LoadAll()
             tblrrf = (DataTable)grdRRF.DataSource;
             tblRRF = (DataTable)gridItemsChoice.DataSource;
 
-            BLL.GeneralInfo info = new GeneralInfo();
+            var info = new GeneralInfo();
             info.LoadAll();
 
-            RRFLookUpService.ServiceRRFLookupClient client = new ServiceRRFLookupClient();
-            var rrfForm = new RRFLookUpService.RRForm();
-            //FormMeta[] form = client.GetForms(info.ID, userName, password);
-           // RRFLookUpService.RRReportingPeriod[] periods = client.GetCurrentReportingPeriod(info.ID, userName, password);
-           // rrfForm = client.GetFacilityRRForm(info.ID, form[0].Id, periods[0].Id, 1, userName, password)[1]; //Hard coding to be removed.
-
+            var client = new ServiceRRFLookupClient();
+            //var periods = client.GetCurrentReportingPeriod(info.ID, userName, password);
+            var form = client.GetForms(facilityID, userName, password);
+            //  var formcategories = client.GetFacilityRRForm(65, formid, period, 1, userName, password).First().FormCategories.ToList();
+            var chosenCatId =  RRFHelper.GetRrfCategoryId(cboProgram.Text);
+            var rrfs = client.GetFacilityRRForm(facilityID, 66, 81, 1, userName, password);
+            var formCategories = rrfs.First().FormCategories;
+            var chosenCategoryBody = formCategories.First(x => x.Id == chosenCatId); //Hard coding to be removed.
+            var items = chosenCategoryBody.Pharmaceuticals; //Let's just store the items here (May not be required)
+            //    FormMeta[] form = client.Get();
+            
+            //foreach (var rrFormPharmaceutical in items)
+            //{
+            //    rrFormPharmaceutical.Itemid
+            //}
+            
+          
+            var user = new User();
+            user.LoadByPrimaryKey(MainWindow.LoggedinId);
             foreach (DataRow rrf in tblRRF.Rows)
             {
                 var order = new RRFTransactionService.Order
                                 {
-                                    //Id = (int)rrf["Id"],
-                                    //RequestCompletedDate = Convert.ToDateTime(rrf["DateOfSubmission"])
-                                };
+                                    Id = (int)rrf["Id"],
+                                    RequestCompletedDate = DateTime.Now,//Convert.ToDateTime(rrf["DateOfSubmissionEth"]),
+                                    OrderCompletedBy = user.FullName,
+                                    RequestVerifiedDate = DateTime.Now,
+                                    OrderTypeId = 1, //This needs to be changed to constant class or something. 1 - Regular, 2 - Emergency'
+                                    SubmittedBy = user.FullName,
+                                    SubmittedDate = DateTime.Now,
+                                    SupplyChainUnitId = facilityID,
+                                    OrderStatus = 1,
+                                    FormId = form[0].Id
+                                    };
                 // order.OrderTypeId = (int)tblrrf.Rows[i]["RRfTpyeId"];
                 // Set order properties
-                BLL.User user = new User();
-                user.LoadByPrimaryKey(MainWindow.LoggedinId);
-                order.OrderCompletedBy = user.FullName;
-                order.RequestCompletedDate = DateTime.Now;
-                //order.RequestVerifiedDate = DateTime.Now;
-                order.OrderTypeId = 1; //This needs to be changed to constant class or something. 1 - Regular, 2 - Emergency'
-                order.SubmittedBy = user.FullName;
-                order.SubmittedDate = DateTime.Now;
-                order.SupplyChainUnitId = 65;
-                order.RequestCompletedDate = DateTime.Now;
+  
                 //order.FormId = rrfForm.Id; //Form.ID? or RRFForm.ID? - doesn't make sense
-              //  order.ReportingPeriodId = periods[0].Id; //Asked again here?  Because RRFForm already contains this.
+                //  order.ReportingPeriodId = periods[0].Id; //Asked again here?  Because RRFForm already contains this.
 
                 var details = new List<RRFTransactionService.OrderDetail>();
 
@@ -329,7 +341,6 @@ namespace PharmInventory.Forms.Reports
                     var detail = new RRFTransactionService.OrderDetail();
                     if(rrfLine!=null)
                     //detail.Adjustments[0].Amount =  (int)rrfLine["Adjustments"];
-                    if (rrfLine != null)
                     {
                         detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
                         //detail.DaysOutOfStocks = Convert.ToInt32(rrfLine["DaysOutOfStock"]);
@@ -338,6 +349,12 @@ namespace PharmInventory.Forms.Reports
                         detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
                         detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
                         detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
+                        var rrFormPharmaceutical = items.FirstOrDefault(x => x.Itemid == Convert.ToInt32(rrfLine["ID"]));
+                        if (rrFormPharmaceutical != null)
+                            detail.PharmaceuticalId = rrFormPharmaceutical.PharmaceuticalId;
+                        //  detail.PharmaceuticalId = Convert.ToInt32(rrfLine["ItemID"]);
+                       // detail.PharmaceuticalId = pharId;
+
                     }
                     details.Add(detail);
                 }
@@ -363,15 +380,26 @@ namespace PharmInventory.Forms.Reports
                                  Orders = orders.ToArray()
                              };
             Send(fOrder);
+          
             return fOrder;
         }
 
         private void Send(FacilityOrderViewModel fOrder)
         {
-            var client = new RRFTransactionService.ServiceOrderClient();
-            var result = client.SubmitFacilityOrders(65, fOrder.Orders, userName, password);
+
+            var client = new ServiceOrderClient(new BasicHttpBinding(BasicHttpSecurityMode.None)
+                                                    {
+                                                        MaxReceivedMessageSize = 2147483647,
+                                                        MaxBufferSize = 2147483647,
+                                                        MaxBufferPoolSize = 2147483647
+
+                                                    },
+                                                (new EndpointAddress("http://213.55.76.188:40301/Order/ServiceOrder.svc")));
+            client.SubmitFacilityOrders(65, fOrder.Orders, userName, password);
             // Do something with the result
             client.Close();
+            XtraMessageBox.Show("RRF's sent successfully!", "Success");
+          
         }
 
         /// <summary>

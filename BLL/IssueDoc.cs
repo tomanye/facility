@@ -17,7 +17,12 @@ namespace BLL
 		public DataTable GetTransactionByRefNo(string refNo, System.DateTime date)
 		{
 			this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID join vwGetAllItems vw on id.ItemID = vw.ID join ItemUnit iu on id.UnitID = iu.ID  WHERE id.RefNo = '{0}' and id.Date = '{1}'", refNo, date.ToShortDateString()));
+		    string query =
+		        String.Format(
+		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID join vwGetAllItems vw on id.ItemID = vw.ID join ItemUnit iu on id.UnitID = iu.ID  WHERE id.RefNo = '{0}' and id.Date = '{1}'",
+		            refNo, date.ToShortDateString());
+
+            this.LoadFromRawSql(query);
 			return this.DataTable;
 		}
 
@@ -231,7 +236,11 @@ namespace BLL
 		public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
 		{
 			this.FlushData();
-			this.LoadFromRawSql(String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID   WHERE id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString()));
+		    string query =
+		        String.Format(
+		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID   WHERE id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
+		            storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+			this.LoadFromRawSql(query);
 			return this.DataTable;
 		}
 

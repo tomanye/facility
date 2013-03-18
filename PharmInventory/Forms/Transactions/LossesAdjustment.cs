@@ -41,24 +41,22 @@ namespace PharmInventory
         private void LossesAdjustment_Load(object sender, EventArgs e)
         {
             var UnitColumn = ((GridView)AdjustmentGrid.MainView).Columns[10];
-            //var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[10];
+            var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[4];
          
-            if(VisibilitySetting.HandleUnits==2)
+            switch (VisibilitySetting.HandleUnits)
             {
-                UnitColumn.Visible = true;
-                //UnitColumn1.Visible = true;
-            }
-
-            else if(VisibilitySetting.HandleUnits==1)
-            {
-                UnitColumn.Visible = false;
-               // UnitColumn1.Visible = false;
-            }
-
-            else if (VisibilitySetting.HandleUnits == 3)
-            {
-                UnitColumn.Visible = true;
-                // UnitColumn1.Visible = false;
+                case 2:
+                    UnitColumn.Visible = true;
+                    UnitColumn1.Visible = false;
+                    break;
+                case 1:
+                    UnitColumn.Visible = false;
+                    UnitColumn1.Visible = true;
+                    break;
+                case 3:
+                    UnitColumn.Visible = true;
+                    UnitColumn1.Visible = false;
+                    break;
             }
 
             Stores stor = new Stores();
