@@ -978,6 +978,9 @@ namespace PharmInventory.RRFTransactionService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SupplychainunitidField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1010,6 +1013,19 @@ namespace PharmInventory.RRFTransactionService {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Supplychainunitid {
+            get {
+                return this.SupplychainunitidField;
+            }
+            set {
+                if ((this.SupplychainunitidField.Equals(value) != true)) {
+                    this.SupplychainunitidField = value;
+                    this.RaisePropertyChanged("Supplychainunitid");
                 }
             }
         }

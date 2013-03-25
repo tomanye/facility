@@ -99,8 +99,8 @@ namespace PharmInventory.Forms.Reports
             int month = dtCur.Month;
             int year = (month < 11) ? dtCur.Year : dtCur.Year + 1;
             int itemId = Convert.ToInt32(dr["ID"]);
-            ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-            con.ShowDialog();
+            //ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+            //con.ShowDialog();
         }
 
         private void radioGroup1_EditValueChanged(object sender, EventArgs e)

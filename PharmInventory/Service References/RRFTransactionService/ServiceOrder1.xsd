@@ -144,6 +144,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="ApprovedOrderDetails" nillable="true" type="tns:ArrayOfApprovedOrderDetail" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Supplychainunitid" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ApprovedOrder" nillable="true" type="tns:ApprovedOrder" />

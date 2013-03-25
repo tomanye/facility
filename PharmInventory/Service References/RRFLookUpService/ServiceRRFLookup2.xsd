@@ -138,7 +138,7 @@
   <xs:complexType name="RRFormPharmaceutical">
     <xs:sequence>
       <xs:element minOccurs="0" name="BeginningBalance" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Itemid" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="PharmaceuticalId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>

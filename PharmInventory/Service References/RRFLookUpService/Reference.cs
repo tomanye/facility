@@ -749,7 +749,7 @@ namespace PharmInventory.RRFLookUpService {
         private System.Nullable<int> BeginningBalanceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ItemidField;
+        private int ItemIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PharmaceuticalIdField;
@@ -778,14 +778,14 @@ namespace PharmInventory.RRFLookUpService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Itemid {
+        public int ItemId {
             get {
-                return this.ItemidField;
+                return this.ItemIdField;
             }
             set {
-                if ((this.ItemidField.Equals(value) != true)) {
-                    this.ItemidField = value;
-                    this.RaisePropertyChanged("Itemid");
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
                 }
             }
         }
