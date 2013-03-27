@@ -445,12 +445,12 @@ namespace PharmInventory.Forms.Transactions
                         // This has tobe properly mitigated
                         // if there is the balance an there is no batch to be issued, just select the last batch and add the balance to it.
 
-
+                       
 
                         if (rec.RowCount > 0)
                         {
-                            int j = 0;
-                            Int64 quantity = 0;
+                           int j = 0;
+                           Int64 quantity = 0;
                             double sohbalance = 0;
                             if (VisibilitySetting.HandleUnits == 1)
                             {

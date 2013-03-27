@@ -66,7 +66,10 @@ namespace BLL
         public DataTable GetTransactionByDateRange(int storeId, DateTime dt1,DateTime dt2)
         {
             this.FlushData();
-            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo, CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' ) ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo, " +
+                                         "CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail " +
+                                         "FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID " +
+                                         "JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' ) ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -74,7 +77,8 @@ namespace BLL
         public Int64 GetLossesByDateRange(int itemId, int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT Sum(Quantity) AS Loss FROM Disposal WHERE StoreId = {0} AND Losses = 1 AND ItemID = {3} AND (Date BETWEEN '{1}' AND '{2}' ) ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString(),itemId));
+            this.LoadFromRawSql(String.Format("SELECT Sum(Quantity) AS Loss FROM Disposal" +
+                                              " WHERE StoreId = {0} AND Losses = 1 AND ItemID = {3} AND (Date BETWEEN '{1}' AND '{2}' ) ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString(),itemId));
             return ((this.DataTable.Rows[0]["Loss"] != DBNull.Value) ? Convert.ToInt64(this.DataTable.Rows[0]["Loss"]) : 0);
         }
 

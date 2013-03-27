@@ -150,6 +150,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.dtTo.PopUpFontSize = 9.75F;
             this.dtTo.Size = new System.Drawing.Size(134, 20);
             this.dtTo.TabIndex = 12;
+            this.dtTo.Value = new System.DateTime(2013, 3, 27, 0, 0, 0, 0);
             this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // dtFrom
@@ -164,6 +165,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.dtFrom.PopUpFontSize = 9.75F;
             this.dtFrom.Size = new System.Drawing.Size(134, 20);
             this.dtFrom.TabIndex = 12;
+            this.dtFrom.Value = new System.DateTime(2013, 3, 27, 0, 0, 0, 0);
             this.dtFrom.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // cboIssuedTo

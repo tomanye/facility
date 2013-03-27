@@ -19,7 +19,9 @@ namespace BLL
 			this.FlushData();
 		    string query =
 		        String.Format(
-		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID join vwGetAllItems vw on id.ItemID = vw.ID join ItemUnit iu on id.UnitID = iu.ID  WHERE id.RefNo = '{0}' and id.Date = '{1}'",
+		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI " +
+		            "FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID " +
+		            "join vwGetAllItems vw on id.ItemID =vw.ID WHERE id.RefNo = '{0}' and id.Date = '{1}'",
 		            refNo, date.ToShortDateString());
 
             this.LoadFromRawSql(query);
