@@ -61,6 +61,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -539,7 +540,8 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn40});
+            this.gridColumn40,
+            this.gridColumn42});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
@@ -743,6 +745,14 @@
             this.gridColumn40.VisibleIndex = 10;
             this.gridColumn40.Width = 71;
             // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Program";
+            this.gridColumn42.FieldName = "ProgramName";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 12;
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -783,11 +793,11 @@
             this.layoutControl1.Controls.Add(this.cboToYear);
             this.layoutControl1.Controls.Add(this.cboToMonth);
             this.layoutControl1.Controls.Add(this.lblRRFStatus);
-            this.layoutControl1.Controls.Add(this.grdRRF);
             this.layoutControl1.Controls.Add(this.chkCalculateInPacks);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.gridItemsChoice);
             this.layoutControl1.Controls.Add(this.cboStores);
+            this.layoutControl1.Controls.Add(this.grdRRF);
             this.layoutControl1.Controls.Add(this.cboFromYear);
             this.layoutControl1.Controls.Add(this.btnAutoPushToPFSA);
             this.layoutControl1.Controls.Add(this.cboFromMonth);
@@ -1691,6 +1701,7 @@
             this.printableComponentLink1.ImageCollection.Images.SetKeyName(0, "PFSALogo.jpg");
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(50, 50, 130, 50);
+            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
                 "[Image 0]",
@@ -1895,5 +1906,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
     }
 }

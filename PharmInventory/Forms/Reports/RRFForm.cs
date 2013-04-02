@@ -36,7 +36,7 @@ namespace PharmInventory.Forms.Reports
 
         private const string userName = "HCMISTest";
         private const string password = "123!@#abc";
-        private const int facilityID = 65;
+        private const int facilityID = 866;
 
         public RRFForm()
         {
@@ -287,31 +287,18 @@ namespace PharmInventory.Forms.Reports
 
         public List<RRFTransactionService.Order> GetOrders()
         {
-            var orders = new List<RRFTransactionService.Order>();
-           // tblrrf = (DataTable)grdRRF.DataSource;
-            tblRRF = (gridItemChoiceView.DataSource as DataView).ToTable();
-            
-
-            var info = new GeneralInfo();
-            info.LoadAll();
-
             var client = new ServiceRRFLookupClient();
-            //var periods = client.GetCurrentReportingPeriod(info.ID, userName, password);
+            var orders = new List<RRFTransactionService.Order>();
+            tblRRF = (gridItemChoiceView.DataSource as DataView).ToTable();
+
+            var periods = client.GetCurrentReportingPeriod(facilityID, userName, password);
             var form = client.GetForms(facilityID, userName, password);
-            //  var formcategories = client.GetFacilityRRForm(65, formid, period, 1, userName, password).First().FormCategories.ToList();
             var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
-            var rrfs = client.GetFacilityRRForm(facilityID, 76, 94, 1, userName, password);
+            var rrfs = client.GetFacilityRRForm(facilityID, form[0].Id, periods[0].Id, 1, userName, password);
             var formCategories = rrfs.First().FormCategories;
-            var chosenCategoryBody = formCategories.First(x => x.Id == 90); //Hard coding to be removed.
+            var chosenCategoryBody = formCategories.First(x => x.Id == 89); //Hard coding to be removed.
             var items = chosenCategoryBody.Pharmaceuticals; //Let's just store the items here (May not be required)
-            //    FormMeta[] form = client.Get();
-
-            //foreach (var rrFormPharmaceutical in items)
-            //{
-            //    rrFormPharmaceutical.Itemid
-            //}
-
-
+           
             var user = new User();
             user.LoadByPrimaryKey(MainWindow.LoggedinId);
 
@@ -326,8 +313,8 @@ namespace PharmInventory.Forms.Reports
                 SubmittedDate = DateTime.Now,
                 SupplyChainUnitId = facilityID,
                 OrderStatus = 1,//TODO: hardcoding
-                FormId = 76,//TODO: hardcoding
-                ReportingPeriodId = 94 //TODO: hardcoding
+                FormId = form[0].Id,//TODO: hardcoding
+                ReportingPeriodId = periods[0].Id //TODO: hardcoding
             };
             
             // order.OrderTypeId = (int)tblrrf.Rows[i]["RRfTpyeId"];
@@ -337,8 +324,7 @@ namespace PharmInventory.Forms.Reports
             //  order.ReportingPeriodId = periods[0].Id; //Asked again here?  Because RRFForm already contains this.
 
             var details = new List<RRFTransactionService.OrderDetail>();
-            int i = 0;
-            var xx = tblRRF.Rows.Count;
+       
             foreach (DataRow rrfLine in tblRRF.Rows)
             {
                 var detail = new RRFTransactionService.OrderDetail();
@@ -346,25 +332,77 @@ namespace PharmInventory.Forms.Reports
                 {
 
                     detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
-                    //detail.DaysOutOfStocks[0].NumberOfDaysOutOfStock= Convert.ToInt32(rrfLine["DaysOutOfStock"]);
                     detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
-                    //detail.ItemId = Convert.ToInt32(rrfLine["ID"]); //Needs to come from the Code column of Items table.
                     detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
                     detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
                     detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
-                    var rrFormPharmaceutical = items.FirstOrDefault(x => x.PharmaceuticalId == Convert.ToInt32(rrfLine["ID"]));
+                    int hcmisItemID = Convert.ToInt32(rrfLine["ID"]);
+                    var rrFormPharmaceutical = items.FirstOrDefault(x => x.PharmaceuticalId == hcmisItemID);
                     if (rrFormPharmaceutical != null)
                         detail.ItemId = rrFormPharmaceutical.ItemId;
                     else
-                        throw new Exception("Item ID Mismatch");
+                        continue;// throw new Exception("Item ID Mismatch");
+                    
+                    var rdDoc = new ReceiveDoc();
+                    var disposal = new Disposal();
+                    rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                    disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID, periods[0].StartDate,
+                                                                periods[0].EndDate);
+                    int receiveDocEntries = rdDoc.RowCount;
+                    int disposalEntries = disposal.RowCount;
+
+                    detail.Expiries = new Expiry[receiveDocEntries];
+                    detail.Adjustments = new Adjustment[disposalEntries];
+
+                    rdDoc.Rewind();
+                    int expiryAmountTotal = 0;
+                    for (int j = 0; j < receiveDocEntries;j++ )
+                    {
+                        
+                        Expiry exp = new Expiry();
+                        exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                        expiryAmountTotal += exp.Amount;
+
+                        exp.BatchNo = rdDoc.BatchNo;
+                        exp.ExpiryDate = rdDoc.ExpDate;
+                        if (expiryAmountTotal >= detail.EndingBalance)
+                            exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                        detail.Expiries[j] = exp;
+                        rdDoc.MoveNext();
+                        
+                    }
+
+                    disposal.Rewind();
+
+                    int lossadjamt = 0;
+                    for(int j=0;j<disposalEntries;j++)
+                    {
+                        Adjustment adj = new Adjustment { Amount = Convert.ToInt32(disposal.Quantity), TypeId = 11, ReasonId = 39 };
+                        lossadjamt += adj.Amount;
+
+                        if (lossadjamt >= detail.LossAdjustment)
+                            detail.LossAdjustment = lossadjamt;
+                        
+                        detail.Adjustments[j] = adj;
+                        disposal.MoveNext();
+                    }
+
+                    var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                    detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                    for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                    {
+                        DaysOutOfStock dos = new DaysOutOfStock();
+                        dos.NumberOfDaysOutOfStock = stockoutIndexedLists[j].NumberOfDays;
+                        dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                        detail.DaysOutOfStocks[j] = dos;
+                    }
 
                 }
                 details.Add(detail);
             }
             order.OrderDetails = details.ToArray();
             orders.Add(order);
-
-
             // loop through each record and create order & order details objects
             return orders;
         }
@@ -377,14 +415,13 @@ namespace PharmInventory.Forms.Reports
         {
             var fOrder = new FacilityOrderViewModel
                              {
-                                 FacilityID = 65,
+                                 FacilityID = facilityID,
                                  Username = "HCMISTest",
                                  Password = "123!@#abc",
                                  Orders = orders.ToArray()
                              };
-           Send(fOrder);
-
-            return fOrder;
+         //  Send(fOrder);
+           return fOrder;
         }
 
         private void Send(FacilityOrderViewModel fOrder)
@@ -395,14 +432,15 @@ namespace PharmInventory.Forms.Reports
                                                         MaxReceivedMessageSize = 2147483647,
                                                         MaxBufferSize = 2147483647,
                                                         MaxBufferPoolSize = 2147483647
-
                                                     },
                                                 (new EndpointAddress("http://213.55.76.188:40301/Order/ServiceOrder.svc")));
-            var result = client.SubmitFacilityOrders(65, fOrder.Orders, userName, password);
-            // Do something with the result
-            //   var mess = result[0].ValidationMessages;
+            var result = client.SubmitFacilityOrders(facilityID, fOrder.Orders, userName, password);
+            var firstOrDefault = result.FirstOrDefault();
+            XtraMessageBox.Show(firstOrDefault != null && firstOrDefault.OrderIsValid
+                                    ? "RRFs Sent Successfully"
+                                    : "RRF Not Sent Successfuly.");
             client.Close();
-            XtraMessageBox.Show("RRFs Sent Successfully");
+          
 
         }
 

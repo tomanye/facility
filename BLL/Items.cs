@@ -1147,7 +1147,8 @@ namespace BLL
                                  StockCodeDACA =n.StockCodeDACA,
                                  QtyPerPack = n.QtyPerPack,
                                  Received = n.Received,
-                                 Issued = Convert.ToInt32(z["Quantity"])
+                                 Issued = Convert.ToInt32(z["Quantity"]),
+                                 
                              }).ToArray();
 
             var t = (from n in l
@@ -1180,7 +1181,7 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
-                                 
+                                  
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
@@ -1201,6 +1202,7 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
+                                  
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.

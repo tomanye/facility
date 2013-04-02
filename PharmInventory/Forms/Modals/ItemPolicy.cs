@@ -155,8 +155,8 @@ namespace PharmInventory.Forms.Modals
             }
             else if (VisibilitySetting.HandleUnits == 3)
             {
-                txtQuantityPerPack.Enabled = false;
-                txtText.Enabled = false;
+                txtQuantityPerPack.Enabled = true;
+                txtText.Enabled = true;
                 listBox1.Visible = true;
             }
             else 
@@ -179,17 +179,17 @@ namespace PharmInventory.Forms.Modals
                  return valid;
              }
 
-             //else if (VisibilitySetting.HandleUnits ==2 || itemunitbindingSource.Current ==null)
-             //{
-             //    valid = "Item unit is required";
-             //    return valid;
-             //}
-            
-             //else if (VisibilitySetting.HandleUnits == 3 || itemunitbindingSource.Current == null)
-             //{
-             //    valid = "Item unit is required";
-             //    return valid;
-             //}
+             else if (VisibilitySetting.HandleUnits == 2 || itemunitbindingSource.Current == null)
+             {
+                 valid = "Item unit is required";
+                 return valid;
+             }
+
+             else if (VisibilitySetting.HandleUnits == 3 || itemunitbindingSource.Current == null)
+             {
+                 valid = "Item unit is required";
+                 return valid;
+             }
             return valid;
         }
         /// <summary>

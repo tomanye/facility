@@ -537,11 +537,18 @@ namespace BLL
         /// <returns></returns>
         public static DateTime GetLastReceivedDate()
         {
-            BLL.ReceiveDoc rd = new ReceiveDoc();
+            var rd = new ReceiveDoc();
             rd.LoadFromRawSql(String.Format("SELECT TOP (1) EurDate FROM ReceiveDoc ORDER BY EurDate DESC"));
             DateTime dt = (rd.DataTable.Rows.Count > 0) ? Convert.ToDateTime(rd.DataTable.Rows[0]["EurDate"]) : new DateTime();
             return dt;
         }
-        
+
+
+        public void GetAllWithQuantityLeft(int itemID,int storeID,int programID)
+        {
+            this.FlushData();
+            string query =string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and SubProgramID={2}",itemID, storeID, programID);
+            this.LoadFromRawSql(query);
+        }
     }
 }

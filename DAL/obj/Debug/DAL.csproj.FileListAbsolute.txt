@@ -3,8 +3,3 @@ C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\bin\Debug\D
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\DAL.dll
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\DAL.pdb
-D:\Projects\JSI\FacilityEdition\DAL\bin\Debug\DAL.dll
-D:\Projects\JSI\FacilityEdition\DAL\bin\Debug\DAL.pdb
-D:\Projects\JSI\FacilityEdition\DAL\obj\Debug\ResolveAssemblyReference.cache
-D:\Projects\JSI\FacilityEdition\DAL\obj\Debug\DAL.dll
-D:\Projects\JSI\FacilityEdition\DAL\obj\Debug\DAL.pdb

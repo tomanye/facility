@@ -13,3 +13,4 @@ DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit, DevExpress.XtraG
 DevExpress.XtraEditors.LookUpEdit, DevExpress.XtraEditors.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v12.2, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraCharts.ChartControl, DevExpress.XtraCharts.v12.2.UI, Version=12.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpressReg.LicensePatcher, DevExpressReg, Version=12.1.0.0, Culture=neutral, PublicKeyToken=d6ff4ebaea2d8ac4
