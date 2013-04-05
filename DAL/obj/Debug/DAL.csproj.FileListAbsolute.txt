@@ -1,9 +1,0 @@
-C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\bin\Debug\DAL.dll
-C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\bin\Debug\DAL.pdb
-C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\DAL.dll
-C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\DAL\obj\Debug\DAL.pdb
-E:\JSI\Projects\Facility\DAL\bin\Debug\DAL.dll
-E:\JSI\Projects\Facility\DAL\bin\Debug\DAL.pdb
-E:\JSI\Projects\Facility\DAL\obj\Debug\DAL.dll
-E:\JSI\Projects\Facility\DAL\obj\Debug\DAL.pdb
