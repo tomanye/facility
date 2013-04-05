@@ -87,7 +87,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="UpdatorForm.resx">
       <DependentUpon>UpdatorForm.cs</DependentUpon>
     </EmbeddedResource>
