@@ -25,3 +25,14 @@ C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\StockoutIndexBu
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\StockoutIndexBuilder.cs\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.dll
 C:\Users\Administrator\bamboo-home\xml-data\build-dir\HF-FB-JOB1\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.pdb
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll.config
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\StockoutIndexBuilder.pdb
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\DAL.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\EntityFramework.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\EthiopianDate.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\MyGeneration.dOOdads.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\bin\Debug\DAL.pdb
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.csprojResolveAssemblyReference.cache
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.dll
+E:\JSI\Projects\Facility\StockoutIndexBuilder.cs\obj\Debug\StockoutIndexBuilder.pdb

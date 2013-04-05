@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,6 +66,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnEmergency = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picSync = new System.Windows.Forms.PictureBox();
             this.btnNewRRF = new DevExpress.XtraEditors.SimpleButton();
@@ -74,6 +75,8 @@
             this.cboToYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboToMonth = new DevExpress.XtraEditors.ComboBoxEdit();
             this.lblRRFStatus = new DevExpress.XtraEditors.LabelControl();
+            this.chkCalculateInPacks = new System.Windows.Forms.CheckBox();
+            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.grdRRF = new DevExpress.XtraGrid.GridControl();
             this.grdViewRRFList = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -95,8 +98,6 @@
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.chkCalculateInPacks = new System.Windows.Forms.CheckBox();
-            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.cboFromYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnAutoPushToPFSA = new DevExpress.XtraEditors.SimpleButton();
             this.cboFromMonth = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -123,6 +124,7 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lcCheckingProgress = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
@@ -172,7 +174,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcCheckingProgress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -399,10 +403,10 @@
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode1.LevelTemplate = this.grdViewInPacks;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.grdViewInPacks;
+            gridLevelNode2.RelationName = "Level1";
             this.gridItemsChoice.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridItemsChoice.Location = new System.Drawing.Point(24, 602);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -543,13 +547,13 @@
             this.gridColumn40,
             this.gridColumn42});
             this.gridItemChoiceView.FixedLineWidth = 1;
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.Column = this.gridColumn40;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
-            styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Green;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.Column = this.gridColumn40;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
+            styleFormatCondition2.Expression = "[gridColumn7]<[SOH]";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
+            styleFormatCondition2});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -769,7 +773,7 @@
             // 
             // cboStores
             // 
-            this.cboStores.Location = new System.Drawing.Point(79, 554);
+            this.cboStores.Location = new System.Drawing.Point(78, 554);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
@@ -778,13 +782,14 @@
             this.cboStores.Properties.DisplayMember = "StoreName";
             this.cboStores.Properties.NullText = "";
             this.cboStores.Properties.ValueMember = "ID";
-            this.cboStores.Size = new System.Drawing.Size(246, 20);
+            this.cboStores.Size = new System.Drawing.Size(247, 20);
             this.cboStores.StyleController = this.layoutControl1;
             this.cboStores.TabIndex = 34;
             this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnEmergency);
             this.layoutControl1.Controls.Add(this.pictureBox1);
             this.layoutControl1.Controls.Add(this.picSync);
             this.layoutControl1.Controls.Add(this.btnNewRRF);
@@ -811,12 +816,22 @@
             this.layoutControl1.TabIndex = 38;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnEmergency
+            // 
+            this.btnEmergency.Location = new System.Drawing.Point(210, 43);
+            this.btnEmergency.Name = "btnEmergency";
+            this.btnEmergency.Size = new System.Drawing.Size(111, 22);
+            this.btnEmergency.StyleController = this.layoutControl1;
+            this.btnEmergency.TabIndex = 48;
+            this.btnEmergency.Text = "Emergency RRF";
+            this.btnEmergency.Click += new System.EventHandler(this.btnEmergency_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PharmInventory.Properties.Resources.Loading;
             this.pictureBox1.Location = new System.Drawing.Point(669, 696);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 22);
+            this.pictureBox1.Size = new System.Drawing.Size(39, 22);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 40;
             this.pictureBox1.TabStop = false;
@@ -824,9 +839,9 @@
             // picSync
             // 
             this.picSync.Image = global::PharmInventory.Properties.Resources.Loading;
-            this.picSync.Location = new System.Drawing.Point(210, 43);
+            this.picSync.Location = new System.Drawing.Point(325, 43);
             this.picSync.Name = "picSync";
-            this.picSync.Size = new System.Drawing.Size(33, 22);
+            this.picSync.Size = new System.Drawing.Size(34, 22);
             this.picSync.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picSync.TabIndex = 39;
             this.picSync.TabStop = false;
@@ -864,11 +879,11 @@
             // 
             // cboToYear
             // 
-            this.cboToYear.Location = new System.Drawing.Point(970, 554);
+            this.cboToYear.Location = new System.Drawing.Point(969, 554);
             this.cboToYear.Name = "cboToYear";
             this.cboToYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboToYear.Size = new System.Drawing.Size(50, 20);
+            this.cboToYear.Size = new System.Drawing.Size(51, 20);
             this.cboToYear.StyleController = this.layoutControl1;
             this.cboToYear.TabIndex = 45;
             // 
@@ -889,6 +904,26 @@
             this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
             this.lblRRFStatus.StyleController = this.layoutControl1;
             this.lblRRFStatus.TabIndex = 40;
+            // 
+            // chkCalculateInPacks
+            // 
+            this.chkCalculateInPacks.Location = new System.Drawing.Point(329, 554);
+            this.chkCalculateInPacks.Name = "chkCalculateInPacks";
+            this.chkCalculateInPacks.Size = new System.Drawing.Size(419, 20);
+            this.chkCalculateInPacks.TabIndex = 38;
+            this.chkCalculateInPacks.Text = "Calculate in Packs";
+            this.chkCalculateInPacks.UseVisualStyleBackColor = true;
+            this.chkCalculateInPacks.CheckedChanged += new System.EventHandler(this.chkCalculateInPacks_CheckedChanged);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(974, 696);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(100, 22);
+            this.btnPrint.StyleController = this.layoutControl1;
+            this.btnPrint.TabIndex = 37;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // grdRRF
             // 
@@ -1308,33 +1343,13 @@
             this.gridColumn34.FieldName = "ID";
             this.gridColumn34.Name = "gridColumn34";
             // 
-            // chkCalculateInPacks
-            // 
-            this.chkCalculateInPacks.Location = new System.Drawing.Point(329, 554);
-            this.chkCalculateInPacks.Name = "chkCalculateInPacks";
-            this.chkCalculateInPacks.Size = new System.Drawing.Size(419, 20);
-            this.chkCalculateInPacks.TabIndex = 38;
-            this.chkCalculateInPacks.Text = "Calculate in Packs";
-            this.chkCalculateInPacks.UseVisualStyleBackColor = true;
-            this.chkCalculateInPacks.CheckedChanged += new System.EventHandler(this.chkCalculateInPacks_CheckedChanged);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(974, 696);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 22);
-            this.btnPrint.StyleController = this.layoutControl1;
-            this.btnPrint.TabIndex = 37;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
             // cboFromYear
             // 
-            this.cboFromYear.Location = new System.Drawing.Point(807, 554);
+            this.cboFromYear.Location = new System.Drawing.Point(806, 554);
             this.cboFromYear.Name = "cboFromYear";
             this.cboFromYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboFromYear.Size = new System.Drawing.Size(50, 20);
+            this.cboFromYear.Size = new System.Drawing.Size(51, 20);
             this.cboFromYear.StyleController = this.layoutControl1;
             this.cboFromYear.TabIndex = 43;
             this.cboFromYear.SelectedIndexChanged += new System.EventHandler(this.cboFromYear_SelectedIndexChanged);
@@ -1362,7 +1377,7 @@
             // 
             // cboProgram
             // 
-            this.cboProgram.Location = new System.Drawing.Point(79, 578);
+            this.cboProgram.Location = new System.Drawing.Point(78, 578);
             this.cboProgram.Name = "cboProgram";
             this.cboProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
@@ -1371,7 +1386,7 @@
             this.cboProgram.Properties.DisplayMember = "Name";
             this.cboProgram.Properties.NullText = "";
             this.cboProgram.Properties.ValueMember = "ID";
-            this.cboProgram.Size = new System.Drawing.Size(248, 20);
+            this.cboProgram.Size = new System.Drawing.Size(249, 20);
             this.cboProgram.StyleController = this.layoutControl1;
             this.cboProgram.TabIndex = 39;
             this.cboProgram.EditValueChanged += new System.EventHandler(this.cboProgram_EditValueChanged);
@@ -1603,7 +1618,8 @@
             this.layoutControlItem8,
             this.emptySpaceItem2,
             this.layoutControlItem15,
-            this.lcCheckingProgress});
+            this.lcCheckingProgress,
+            this.layoutControlItem13});
             this.lcRRFList.Location = new System.Drawing.Point(0, 0);
             this.lcRRFList.Name = "lcRRFList";
             this.lcRRFList.Size = new System.Drawing.Size(1078, 511);
@@ -1640,10 +1656,10 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(278, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(393, 0);
             this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(776, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(661, 26);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1667,7 +1683,7 @@
             // 
             this.lcCheckingProgress.Control = this.picSync;
             this.lcCheckingProgress.CustomizationFormText = "Working...";
-            this.lcCheckingProgress.Location = new System.Drawing.Point(186, 0);
+            this.lcCheckingProgress.Location = new System.Drawing.Point(301, 0);
             this.lcCheckingProgress.MaxSize = new System.Drawing.Size(92, 0);
             this.lcCheckingProgress.MinSize = new System.Drawing.Size(92, 24);
             this.lcCheckingProgress.Name = "lcCheckingProgress";
@@ -1677,6 +1693,18 @@
             this.lcCheckingProgress.TextLocation = DevExpress.Utils.Locations.Right;
             this.lcCheckingProgress.TextSize = new System.Drawing.Size(51, 13);
             this.lcCheckingProgress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.btnEmergency;
+            this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
+            this.layoutControlItem13.Location = new System.Drawing.Point(186, 0);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(115, 26);
+            this.layoutControlItem13.Text = "layoutControlItem13";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextToControlDistance = 0;
+            this.layoutControlItem13.TextVisible = false;
             // 
             // simpleButton2
             // 
@@ -1701,7 +1729,6 @@
             this.printableComponentLink1.ImageCollection.Images.SetKeyName(0, "PFSALogo.jpg");
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(50, 50, 130, 50);
-            this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
                 "[Image 0]",
@@ -1798,7 +1825,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcCheckingProgress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1907,5 +1936,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private DevExpress.XtraEditors.SimpleButton btnEmergency;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
     }
 }
