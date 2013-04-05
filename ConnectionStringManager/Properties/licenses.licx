@@ -3,4 +3,3 @@ DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v12.1, Version=12.1.4.0, Cu
 DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraEditors.LookUpEdit, DevExpress.XtraEditors.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
 DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
-DevExpressReg.LicensePatcher, DevExpressReg, Version=12.1.0.0, Culture=neutral, PublicKeyToken=d6ff4ebaea2d8ac4
