@@ -39,7 +39,8 @@ namespace PharmInventory.Forms.Reports
             cboReasons.Properties.DataSource = dtDis;
             cboReasons.Properties.DisplayMember = "Reason";
             cboReasons.Properties.ValueMember = "ID";
-             cboReasons.ItemIndex = 0;
+           //  cboReasons.ItemIndex = 0;
+         
             //cboStores.ItemIndex = 0;
 
             dtDate.Value = DateTime.Now;
@@ -109,7 +110,8 @@ namespace PharmInventory.Forms.Reports
                 //DataTable dtItem = ((_selectedType == "Drug") ? itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue)) : itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
                 //DataTable dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), year, reasonId);
                // DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToInt32(cboReasons.EditValue));
+              //  DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToInt32(cboReasons.EditValue));
+                DataTable dtItem = itm.GetExpiredItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));
                 PopulateItemList(dtItem);
             }
         }
@@ -249,6 +251,11 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 35, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 50, 200, 100), BorderSide.None);
+        }
+
+        private void cboReasons_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemListView.ActiveFilterString = string.Format("ReasonID={0}", Convert.ToInt32(cboReasons.EditValue));
         }
 
 

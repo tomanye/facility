@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Profiles
@@ -38,6 +39,7 @@ namespace PharmInventory.Forms.Profiles
            // cboWoreda.DataSource = wor.DefaultView;
             GetLookUp();
             PopulateFields();
+          
         }
 
         /// <summary>

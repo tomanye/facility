@@ -323,13 +323,10 @@ namespace PharmInventory.Forms.Reports
 
             var order = new RRFTransactionService.Order
                             {
-                                //Id = (int)rrf["Id"],
                                 RequestCompletedDate = DateTime.Now, //Convert.ToDateTime(rrf["DateOfSubmissionEth"]),
                                 OrderCompletedBy = user.FullName,
                                 RequestVerifiedDate = DateTime.Now,
                                 OrderTypeId = _standardRRF ? STANDARD_ORDER : EMERGENCY_ORDER,
-                                //OrderTypeId = 1,
-                                //This needs to be changed to constant class or something. 1 - Regular, 2 - Emergency'
                                 SubmittedBy = user.FullName,
                                 SubmittedDate = DateTime.Now,
                                 SupplyChainUnitId = facilityID,
@@ -339,13 +336,6 @@ namespace PharmInventory.Forms.Reports
                             };
 
 
-
-            // order.OrderTypeId = (int)tblrrf.Rows[i]["RRfTpyeId"];
-            // Set order properties
-
-            //order.FormId = rrfForm.Id; //Form.ID? or RRFForm.ID? - doesn't make sense
-            //  order.ReportingPeriodId = periods[0].Id; //Asked again here?  Because RRFForm already contains this.
-
             var details = new List<RRFTransactionService.OrderDetail>();
 
             foreach (DataRow rrfLine in tblRRF.Rows)
@@ -353,12 +343,6 @@ namespace PharmInventory.Forms.Reports
                 var detail = new RRFTransactionService.OrderDetail();
                 int hcmisItemID = Convert.ToInt32(rrfLine["ID"]);
                 var rrFormPharmaceutical = items.SingleOrDefault(x => x.PharmaceuticalId == hcmisItemID);
-
-                //var rrFormPharmaceutical1 = items.SingleOrDefault(x => x.PharmaceuticalId == 387);
-                //  var rrFormPharmaceutical2 = items.SingleOrDefault(x => x.PharmaceuticalId == 388);
-                //  var rrFormPharmaceutical3 = items.SingleOrDefault(x => x.PharmaceuticalId == 389);
-                //   var rrFormPharmaceutical4 = items.SingleOrDefault(x => x.PharmaceuticalId == 391);
-                // var rrFormPharmaceutical5 = items.SingleOrDefault(x => x.PharmaceuticalId == 392);
 
 
                 if (rrFormPharmaceutical != null && rrFormPharmaceutical.PharmaceuticalId == 2114)

@@ -19,7 +19,9 @@ namespace BLL
             this.FlushData();
             string query =
                 String.Format(
-                    "SELECT *, CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail, ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo FROM Disposal d JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID WHERE (RefNo = '{0}') AND Date = '{2}' AND StoreId = {1}",
+                    "SELECT *, CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail," +
+                    " ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo " +
+                    "FROM Disposal d JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID JOIN ItemUnit iu on d.UnitID = iu.ID WHERE (RefNo = '{0}') AND Date = '{2}' AND StoreId = {1}",
                     refNo, storeId, dtAdj);
             this.LoadFromRawSql(query);
             return this.DataTable;

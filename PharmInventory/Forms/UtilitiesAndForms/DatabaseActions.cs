@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Windows.Forms;
 using BLL;
 using System.IO;
@@ -210,6 +211,32 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnRunSSIS_Click(object sender, EventArgs e)
         {
+            var geninfo = new GeneralInfo();
+            geninfo.LoadAll();
+            var facilityID = geninfo.FacilityID;
+            const string remoteComputer = @"\\192.168.2.62";
+            const string usernameAndPassword = "-u \"Administrator\" -p \"lucky@bole2005\"";
+            const string ssisCommand = @"C:\SSIS\ExecutePackages.exe";
+            string ssisCommandParameters = string.Format("-pull {0}", facilityID);
+            var p = new Process();
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = @"E:\Tools\PsExec.exe";
+            p.StartInfo.Arguments = String.Format("{0} {1} \"{2}\" {3}", remoteComputer, usernameAndPassword, ssisCommand, ssisCommandParameters);
+
+            if (!File.Exists(p.StartInfo.FileName))
+            {
+                MessageBox.Show("PsTools Not Installed. Please contact the administrator");
+                return;
+            }
+                
+            p.Start();
+
+            string output = p.StandardOutput.ReadToEnd();
+
+            p.WaitForExit();
+            MessageBox.Show(String.Format("Output {0}", output));
+
 
         }
 

@@ -268,6 +268,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ActivityLogs\LogTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ActivityLogs\LogTransfer.Designer.cs">
+      <DependentUpon>LogTransfer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Legacy\ECLS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -736,6 +742,9 @@
     <Content Include="Scripts\73_AlterYearEnd.sql" />
     <Content Include="Scripts\75_SOHByUnit.sql" />
     <Content Include="Scripts\74_alterDisposal.sql" />
+    <Content Include="Scripts\76_AlterReceiveDocLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\77_AlterTransfer.sql" />
+    <Content Include="Scripts\78_AlterTransferInsert.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -781,6 +790,9 @@
     <None Include="Service References\RRFLookUpService\configuration.svcinfo" />
     <None Include="Service References\RRFLookUpService\configuration91.svcinfo" />
     <None Include="Service References\RRFLookUpService\ServiceRRFLookup.disco" />
+    <EmbeddedResource Include="Forms\ActivityLogs\LogTransfer.resx">
+      <DependentUpon>LogTransfer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Legacy\ECLS.resx">
       <DependentUpon>ECLS.cs</DependentUpon>
     </EmbeddedResource>
@@ -887,6 +899,7 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
       <DependentUpon>Registrations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\PickListReport.resx">
       <DependentUpon>PickListReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1526,62 +1539,62 @@
   <ItemGroup>
     <PublishFile Include="DevExpress.CodeParser.v12.1">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.OfficeSkins.v12.1">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpf.Printing.v12.1.Core">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpo.v12.1">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraCharts.v12.1.Extensions">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraVerticalGrid.v12.1">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

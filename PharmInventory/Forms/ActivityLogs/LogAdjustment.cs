@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BLL;
 using CalendarLib;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraTreeList;
 using PharmInventory.Forms.Modals;
@@ -17,6 +18,7 @@ namespace PharmInventory.Forms.ActivityLogs
     /// </summary>
     public partial class LogAdjustment : XtraForm
     {
+        private DataTable dtRec;
         public LogAdjustment()
         {
             InitializeComponent();
@@ -36,39 +38,44 @@ namespace PharmInventory.Forms.ActivityLogs
 
             var rec = new DisposalReasons();
             var dtDis = rec.GetAvailableReasons();
-            cboReasons.Properties.DataSource = dtDis;
-            cboReasons.ItemIndex = 0;
+            cboReasons.Properties.DataSource = dtDis.DefaultView;
+           // cboReasons.ItemIndex = 0;
 
             var itemunit = new ItemUnit();
             var units = itemunit.GetAllUnits();
             unitbindingSource.DataSource = units.DefaultView;
-            //Stores stor = new Stores();
 
-            //cboStores.Properties.DataSource = stor.GetActiveStores();
-            try
+            var unitcolumn = ((GridView)gridAdjustments.MainView).Columns[10];
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    unitcolumn.Visible = false;
+                    break;
+                case 2:
+                    unitcolumn.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    break;
+            }
+             try
             {
                 //CALENDAR:
-                CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+                var dtDate = new CalendarLib.DateTimePickerEx
                 {
                     CustomFormat = "MM/dd/yyyy",
                     Value = DateTime.Now
                 };
-                DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-
-                DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
-
+                var dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
                 if (dr == null) return;
 
-                Disposal disp = new Disposal();
-                DataTable dtRec;
+                var disp = new Disposal();
                 if (dr["ParentID"] == DBNull.Value)
                 {
-                    int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
-                    DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
-                    DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
-                    dtRec = disp.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
-                    string dateString = dr["RefNo"].ToString();
-                    lblAdjDate.Text = dateString;
+                    var dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
+                    var dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
+                    dtRec = disp.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue),dt1,dt2);
+                    lblAdjDate.Text = dr["RefNo"].ToString();
                 }
                 else
                 {
@@ -85,38 +92,35 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            GetItemsByStore();
-        }
-
-        private void GetItemsByStore()
-        {
             if (cboStores.EditValue == null) return;
+            var adj = new Disposal();
+            dtRec = adj.GetDistinctAdjustmentDocments(Convert.ToInt32(cboStores.EditValue));
+            PopulateDocuments(dtRec);
 
-            //CALENDAR:
-            Disposal adj = new Disposal();
-            DataTable dtRec = adj.GetDistinctAdjustmentDocments(Convert.ToInt32(cboStores.EditValue));
-            /*PopulateDocument(dtRec);*/
-            lstTree.DataSource = dtRec;
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-                                                      {
-                                                          CustomFormat = "MM/dd/yyyy",
-                                                          Value = DateTime.Now
-                                                      };
-            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-            int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
-            DateTime dt1 = new DateTime(yr, 11, 1);
-            DateTime dt2 = new DateTime(dtCurrent.Year, dtCurrent.Month, dtCurrent.Day);
-            dtRec = adj.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
-            lblAdjDate.Text = @"Current Year";
-            gridAdjustments.DataSource = dtRec;
+            //var dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
+            //if (dr == null) return;
+
+            //dtRec = adj.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+            //lblAdjDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+            //gridAdjustments.DataSource = dtRec;
+          
+
         }
+
+        private void PopulateDocuments(DataTable dtRec)
+        {
+            lstTree.DataSource = dtRec;
+            lstTree.ExpandAll();
+        }
+
 
         private void cboReasons_EditValueChanged(object sender, EventArgs e)
         {
             if (cboStores.EditValue != null && cboReasons.EditValue != null)
             {
-                Disposal adj = new Disposal();
-                DataTable dtRec = adj.GetTransactionByReason(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(cboReasons.EditValue));
+                var adj = new Disposal();
+                dtRec = adj.GetTransactionByReason(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(cboReasons.EditValue));
+                //PopulateDocuments(dtRec);
                 gridAdjustments.DataSource = dtRec;                
             }
         }
@@ -150,11 +154,10 @@ namespace PharmInventory.Forms.ActivityLogs
         private void btnPrint_Click(object sender, EventArgs e)
         {
             
-            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
-            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
+            var ps = new PrintingSystem();
+            var pcl = new PrintableComponentLink(ps);
 
             pcl.CreateReportHeaderArea += PclCreateReportHeaderArea;
-
             pcl.Component = gridAdjustments;
             pcl.Landscape = true;
 
@@ -164,9 +167,9 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private static void PclCreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
         {
-            GeneralInfo info = new GeneralInfo();
+            var info = new GeneralInfo();
             info.LoadAll();
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            var dtDate = new DateTimePickerEx
                                                       {
                                                           Value = DateTime.Now,
                                                           CustomFormat = "MM/dd/yyyy"
@@ -174,9 +177,6 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
             //Old header
             string header = info.HospitalName + " Loss/Adjustment Activity Log " + dtCurrent.ToString("MM dd,yyyy");
-            //string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            //header with reference number
-            //string header = info.HospitalName + " Loss/Adjustment Activity Log" + refNumber;
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 40),
                                                  DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Arial", 16);
@@ -185,46 +185,35 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            //CALENDAR:
-            DateTime dtCurrent;
-            DataRowView dr;
-            DateTimePickerEx dtDate;
-            GetSelectedNode(out dtCurrent, out dr, out dtDate);
-        }
-
-        public void GetSelectedNode(out DateTime dtCurrent, out DataRowView dr, out DateTimePickerEx dtDate)
-        {
-            dtDate = new DateTimePickerEx
-                         {
-                             CustomFormat = "MM/dd/yyyy",
-                             Value = DateTime.Now
-                         };
-            dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-
-            dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
-
+            var dtDate = new DateTimePickerEx
+            {
+                CustomFormat = "MM/dd/yyyy",
+                Value = DateTime.Now
+            };
+            DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+            var dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
             if (dr == null) return;
 
-            Disposal disp = new Disposal();
+            var adj = new Disposal();
             DataTable dtRec;
             if (dr["ParentID"] == DBNull.Value)
             {
                 int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
                 DateTime dt1 = new DateTime(Convert.ToInt32(dr["ID"]) - 1, 11, 1);
                 DateTime dt2 = new DateTime(Convert.ToInt32(dr["ID"]), 11, 1);
-                dtRec = disp.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
-                string dateString = dr["RefNo"].ToString();
-                lblAdjDate.Text = dateString;
+                dtRec = adj.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dt1, dt2);
+                lblAdjDate.Text = dr["RefNo"].ToString();
             }
             else
             {
-                dtRec = disp.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
-                                                dr["Date"].ToString());
+                dtRec = adj.GetDocumentByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
                 lblAdjDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
+
             gridAdjustments.DataSource = dtRec;
         }
 
+       
         /// <summary>
         /// Delete a row of adjustmen
         /// </summary>
@@ -244,18 +233,20 @@ namespace PharmInventory.Forms.ActivityLogs
             //Retrieve the adjustment with the value of the primary key(id)
             disposal.LoadByPrimaryKey(ID);
 
-
-            int itemId = disposal.ItemID;
-            int storeID = disposal.StoreId;
-            int recieveID = disposal.RecID;
+             int recieveID = disposal.RecID;
+           
 
             receiveDoc.LoadByPrimaryKey(recieveID);
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //check for losss
+             
+               
                 if (disposal.Losses) //it was loss
                 {
+                    receiveDoc.LoadByPrimaryKey(recieveID);
+                    var s = receiveDoc.Quantity;
                     receiveDoc.Quantity = receiveDoc.Quantity + disposal.Quantity;
                     receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + disposal.Quantity;
                     if (receiveDoc.Out)
@@ -264,6 +255,8 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
                 else // it was adjustment
                 {
+                    receiveDoc.LoadByPrimaryKey(recieveID);
+                    var s = receiveDoc.Quantity;
                     receiveDoc.Quantity = receiveDoc.Quantity - disposal.Quantity;
                     receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - disposal.Quantity;
                     if (receiveDoc.Quantity == 0)

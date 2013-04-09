@@ -15,12 +15,12 @@ namespace PharmInventory.HelperClasses
        private const int facilityID = 866;
        public static int GetRrfCategoryId(string programName)
        {
-           //var client1 =new ServiceRRFLookupClient();
-           //var periods = client1.GetCurrentReportingPeriod(facilityID, UserName, Password);
-           //var period = periods[0].Id;
-           //var forms = client1.GetForms(facilityID, UserName, Password);
-           //var formid = forms[0].Id;
-           //var formcategories = client1.GetFacilityRRForm(facilityID, formid, period, 1, UserName, Password).First().FormCategories.ToList();
+           var client1 = new ServiceRRFLookupClient();
+           var periods = client1.GetCurrentReportingPeriod(facilityID, UserName, Password);
+           var period = periods[0].Id;
+           var forms = client1.GetForms(facilityID, UserName, Password);
+           var formid = forms[0].Id;
+           var formcategories = client1.GetFacilityRRForm(facilityID, formid, period, 1, UserName, Password).First().FormCategories.ToList();
           
                switch (programName)
                {

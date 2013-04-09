@@ -25,6 +25,7 @@ namespace PharmInventory.Forms.Modals
         /// <param name="allowOnlyPartialEdit">True to allow only partial edit</param>
         public EditReceive(int tId,bool allowOnlyPartialEdit)
         {
+           
             InitializeComponent();
             _tranId = tId;
                         
@@ -36,6 +37,10 @@ namespace PharmInventory.Forms.Modals
                 txtQuantity.Properties.ReadOnly = true;
                 txtReceivedBy.Properties.ReadOnly = true;
             }
+            //var itemunit = new ItemUnit();
+            //var units = itemunit.GetAllUnits();
+           
+            //itemUnitBindingSource.DataSource = units.DefaultView;
         }
         
         private void btnCancel_Click(object sender, EventArgs e)
@@ -50,23 +55,30 @@ namespace PharmInventory.Forms.Modals
         /// <param name="e"></param>
         private void EditReceive_Load(object sender, EventArgs e)
         {
-            Stores str = new Stores();
+            var str = new Stores();
             str.LoadAll();
             cboStores.DataSource = str.DefaultView;
 
-            Supplier sup = new Supplier();
+            var sup = new Supplier();
             sup.GetActiveSuppliers();
             cboSupplier.DataSource = sup.DefaultView;
 
             if(_tranId != 0)
             {
-                ReceiveDoc rec = new ReceiveDoc();
-                Items itm = new Items();
+                var rec = new ReceiveDoc();
+                var itm = new Items();
 
                 
                 rec.LoadByPrimaryKey(_tranId);
                 
-                DataTable dtItm = itm.GetItemById(rec.ItemID);
+                var dtItm = itm.GetItemById(rec.ItemID);
+
+                var units = new ItemUnit();
+                var unit = units.LoadFromSQl(rec.ItemID);
+                lkItemUnit.Properties.DataSource = unit;
+                lkItemUnit.Properties.DisplayMember = "Text";
+                lkItemUnit.Properties.ValueMember = "ID";
+
                 string itemName = dtItm.Rows[0]["ItemName"].ToString() + " - " + dtItm.Rows[0]["DosageForm"].ToString() + " - " + dtItm.Rows[0]["Strength"].ToString();
 
                 txtRefNo.Text = rec.RefNo;
@@ -98,6 +110,7 @@ namespace PharmInventory.Forms.Modals
                     dtExpiryDate.Value = rec.ExpDate;
                 cboStores.SelectedValue = rec.StoreID;
                 cboSupplier.SelectedValue = rec.SupplierID;
+                lkItemUnit.EditValue = rec.UnitID;
                 txtItemName.Text = itemName;
                 txtReceivedBy.Text = rec.ReceivedBy;
                 txtRemark.Text = rec.Remark;
@@ -212,6 +225,7 @@ namespace PharmInventory.Forms.Modals
                             rec.Remark = txtRemark.Text;
                             rec.ReceivedBy = txtReceivedBy.Text;
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
+                            rec.UnitID = Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                             rec.Out = false;
                             rec.Save();
@@ -231,6 +245,7 @@ namespace PharmInventory.Forms.Modals
                         rec.Out = false;
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
+                        rec.UnitID = Convert.ToInt32(lkItemUnit.EditValue);
                         rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
                         rec.Save();
                         XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

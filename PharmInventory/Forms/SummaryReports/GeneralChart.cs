@@ -13,6 +13,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Runtime.InteropServices;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
 
 namespace PharmInventory
@@ -170,8 +171,14 @@ namespace PharmInventory
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+           // printableComponentLink1.CreateDocument();
+           // printableComponentLink1.ShowPreviewDialog();
+
+
+            printableComponentLink1.CreateMarginalHeaderArea += printableComponentLink1_CreateMarginalHeaderArea;
             printableComponentLink1.CreateDocument();
-            printableComponentLink1.ShowPreviewDialog();
+            printableComponentLink1.ShowPreview();
+            //printableComponentLink1.ShowPreviewDialog();
         }
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
@@ -297,6 +304,18 @@ namespace PharmInventory
             ser.PointOptions.ValueNumericOptions.Precision = 0;
             chartPie.Series.Add(ser);
             //chartPie.Size = new System.Drawing.Size(500, 300);
+        }
+
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            string[] header = { info.HospitalName + " Balance Report Items", " Store: " + cboStores.Text };
+            printableComponentLink1.PageHeaderFooter = header;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            //TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
         }
 
 

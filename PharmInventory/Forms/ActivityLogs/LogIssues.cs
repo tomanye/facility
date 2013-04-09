@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
@@ -29,7 +30,7 @@ namespace PharmInventory.Forms.ActivityLogs
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
-            ReceivingUnits rec = new ReceivingUnits();
+            var rec = new ReceivingUnits();
             DataTable drRec = rec.GetAllApplicableDU();
             cboIssuedTo.Properties.DataSource = drRec;
             cboIssuedTo.ItemIndex = -1;//.SelectedIndex = -1;
@@ -41,14 +42,27 @@ namespace PharmInventory.Forms.ActivityLogs
             unitbindingSource.DataSource = units.DefaultView;
 
             // populate the receiving unit's lookup edit
-            ReceivingUnits rus = new ReceivingUnits();
+            var rus = new ReceivingUnits();
             rus.GetActiveDispensaries();
             lkEditReceivingUnis.DataSource = rus.DefaultView;
 
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
+            var unitcolumn = ((GridView)gridIssues.MainView).Columns[12];
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    unitcolumn.Visible = false;
+                   break;
+                case 2:
+                    unitcolumn.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    break;
+            }
 
             try
             {

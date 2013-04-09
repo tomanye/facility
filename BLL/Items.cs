@@ -612,6 +612,17 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetExpiredItems(int storeId, int commodityType)
+        {
+            this.FlushData();
+               string query =
+                    string.Format(
+                        "SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0}",
+                        storeId, commodityType);
+                this.LoadFromRawSql(query);
+                return this.DataTable;
+          
+        }
         public DataTable GetExpiredItemsByBatch(int storeId, int commodityType ,int reasonId)
         {
             this.FlushData();

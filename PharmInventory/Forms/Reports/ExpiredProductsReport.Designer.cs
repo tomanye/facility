@@ -107,6 +107,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // rdDrug
@@ -151,7 +152,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // lkCommodityTypes
             // 
-            this.lkCommodityTypes.Location = new System.Drawing.Point(153, 67);
+            this.lkCommodityTypes.Location = new System.Drawing.Point(152, 67);
             this.lkCommodityTypes.Name = "lkCommodityTypes";
             this.lkCommodityTypes.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -160,14 +161,14 @@ namespace PharmInventory.Forms.Reports
             this.lkCommodityTypes.Properties.DisplayMember = "Name";
             this.lkCommodityTypes.Properties.NullText = "";
             this.lkCommodityTypes.Properties.ValueMember = "ID";
-            this.lkCommodityTypes.Size = new System.Drawing.Size(335, 20);
+            this.lkCommodityTypes.Size = new System.Drawing.Size(336, 20);
             this.lkCommodityTypes.StyleController = this.layoutControl1;
             this.lkCommodityTypes.TabIndex = 51;
             this.lkCommodityTypes.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // cmbYear
             // 
-            this.cmbYear.Location = new System.Drawing.Point(717, 67);
+            this.cmbYear.Location = new System.Drawing.Point(716, 67);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -176,14 +177,14 @@ namespace PharmInventory.Forms.Reports
             this.cmbYear.Properties.DisplayMember = "year";
             this.cmbYear.Properties.NullText = "";
             this.cmbYear.Properties.ValueMember = "year";
-            this.cmbYear.Size = new System.Drawing.Size(209, 20);
+            this.cmbYear.Size = new System.Drawing.Size(210, 20);
             this.cmbYear.StyleController = this.layoutControl1;
             this.cmbYear.TabIndex = 33;
             this.cmbYear.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // cboReasons
             // 
-            this.cboReasons.Location = new System.Drawing.Point(717, 43);
+            this.cboReasons.Location = new System.Drawing.Point(716, 43);
             this.cboReasons.Name = "cboReasons";
             this.cboReasons.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -191,12 +192,12 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Reason", "Reason")});
             this.cboReasons.Properties.DisplayMember = "Reason";
             this.cboReasons.Properties.DropDownRows = 8;
-            this.cboReasons.Properties.NullText = "Select Adjustment Reasons";
+            this.cboReasons.Properties.NullText = "All";
             this.cboReasons.Properties.ValueMember = "ID";
-            this.cboReasons.Size = new System.Drawing.Size(209, 20);
+            this.cboReasons.Size = new System.Drawing.Size(210, 20);
             this.cboReasons.StyleController = this.layoutControl1;
             this.cboReasons.TabIndex = 33;
-            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
+            this.cboReasons.EditValueChanged += new System.EventHandler(this.cboReasons_EditValueChanged);
             // 
             // xpButton1
             // 
@@ -236,9 +237,9 @@ namespace PharmInventory.Forms.Reports
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(153, 91);
+            this.txtItemName.Location = new System.Drawing.Point(152, 91);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(335, 20);
+            this.txtItemName.Size = new System.Drawing.Size(336, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 45;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
@@ -476,7 +477,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // cboStores
             // 
-            this.cboStores.Location = new System.Drawing.Point(153, 43);
+            this.cboStores.Location = new System.Drawing.Point(152, 43);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStores.Properties.Appearance.Options.UseFont = true;
@@ -487,7 +488,7 @@ namespace PharmInventory.Forms.Reports
             this.cboStores.Properties.DisplayMember = "StoreName";
             this.cboStores.Properties.NullText = "";
             this.cboStores.Properties.ValueMember = "ID";
-            this.cboStores.Size = new System.Drawing.Size(335, 20);
+            this.cboStores.Size = new System.Drawing.Size(336, 20);
             this.cboStores.StyleController = this.layoutControl1;
             this.cboStores.TabIndex = 0;
             this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
@@ -719,7 +720,6 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
-            //this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
@@ -766,6 +766,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }
