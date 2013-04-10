@@ -899,7 +899,6 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
       <DependentUpon>Registrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\PickListReport.resx">
       <DependentUpon>PickListReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1600,6 +1599,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>echo/&gt;  $(ProjectDir)Properties\licenses.licx</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
