@@ -226,7 +226,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
             if (!File.Exists(p.StartInfo.FileName))
             {
-                MessageBox.Show("PsTools Not Installed. Please contact the administrator");
+                XtraMessageBox.Show("PsTools Not Installed. Please contact the administrator","Warning");
                 return;
             }
                 
