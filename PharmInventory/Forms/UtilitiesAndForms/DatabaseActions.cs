@@ -218,24 +218,16 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             const string usernameAndPassword = "-u \"Administrator\" -p \"lucky@bole2005\"";
             const string ssisCommand = @"C:\SSIS\ExecutePackages.exe";
             string ssisCommandParameters = string.Format("-pull {0}", facilityID);
-            var p = new Process();
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.FileName = @"E:\Tools\PsExec.exe";
-            p.StartInfo.Arguments = String.Format("{0} {1} \"{2}\" {3}", remoteComputer, usernameAndPassword, ssisCommand, ssisCommandParameters);
-
-            if (!File.Exists(p.StartInfo.FileName))
+            string fileName = @"E:\Tools\PsExec.exe";
+            string arguments = String.Format("{0} {1} \"{2}\" {3}", remoteComputer, usernameAndPassword, ssisCommand,
+                                             ssisCommandParameters);
+            if (!File.Exists(fileName))
             {
                 XtraMessageBox.Show("PsTools Not Installed. Please contact the administrator","Warning");
                 return;
             }
-                
-            p.Start();
-
-            string output = p.StandardOutput.ReadToEnd();
-
-            p.WaitForExit();
-            MessageBox.Show(String.Format("Output {0}", output));
+            Process.Start(fileName, arguments).WaitForExit();
+            XtraMessageBox.Show("Synchronisation Successfull!");
 
 
         }

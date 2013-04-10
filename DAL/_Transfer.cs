@@ -188,14 +188,7 @@ namespace DAL
                }
            }
 
-           public static SqlParameter ManufacturerId
-           {
-               get
-               {
-                   return new SqlParameter("@ManufacturerId", SqlDbType.Int, 0);
-               }
-           }
-
+         
            public static SqlParameter QuantityLeft
            {
                get
@@ -243,6 +236,13 @@ namespace DAL
                    return new SqlParameter("@SubProgramID", SqlDbType.Int, 0);
                }
            }
+           public static SqlParameter UnitID
+           {
+               get
+               {
+                   return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+               }
+           }
        }
        #endregion
 
@@ -266,13 +266,13 @@ namespace DAL
            public const string RefNo = "RefNo";
            public const string Cost = "Cost";
            public const string IsApproved = "IsApproved";
-           public const string ManufacturerId = "ManufacturerId";
            public const string QuantityLeft = "QuantityLeft";
            public const string NoOfPack = "NoOfPack";
            public const string QtyPerPack = "QtyPerPack";
            public const string EurDate = "EurDate";
            public const string BoxLevel = "BoxLevel";
            public const string SubProgramID = "SubProgramID";
+           public const string UnitID = "UnitID";
 
            static public string ToPropertyName(string columnName)
            {
@@ -297,7 +297,6 @@ namespace DAL
                    ht[RefNo] = _Transfer.PropertyNames.RefNo;
                    ht[Cost] = _Transfer.PropertyNames.Cost;
                    ht[IsApproved] = _Transfer.PropertyNames.IsApproved;
-                   ht[ManufacturerId] = _Transfer.PropertyNames.ManufacturerId;
                    ht[QuantityLeft] = _Transfer.PropertyNames.QuantityLeft;
                    ht[NoOfPack] = _Transfer.PropertyNames.NoOfPack;
                    ht[QtyPerPack] = _Transfer.PropertyNames.QtyPerPack;
@@ -333,13 +332,13 @@ namespace DAL
            public const string RefNo = "RefNo";
            public const string Cost = "Cost";
            public const string IsApproved = "IsApproved";
-           public const string ManufacturerId = "ManufacturerId";
            public const string QuantityLeft = "QuantityLeft";
            public const string NoOfPack = "NoOfPack";
            public const string QtyPerPack = "QtyPerPack";
            public const string EurDate = "EurDate";
            public const string BoxLevel = "BoxLevel";
            public const string SubProgramID = "SubProgramID";
+           public const string UnitID = "UnitID";
 
            static public string ToColumnName(string propertyName)
            {
@@ -364,13 +363,13 @@ namespace DAL
                    ht[RefNo] = _Transfer.ColumnNames.RefNo;
                    ht[Cost] = _Transfer.ColumnNames.Cost;
                    ht[IsApproved] = _Transfer.ColumnNames.IsApproved;
-                   ht[ManufacturerId] = _Transfer.ColumnNames.ManufacturerId;
                    ht[QuantityLeft] = _Transfer.ColumnNames.QuantityLeft;
                    ht[NoOfPack] = _Transfer.ColumnNames.NoOfPack;
                    ht[QtyPerPack] = _Transfer.ColumnNames.QtyPerPack;
                    ht[EurDate] = _Transfer.ColumnNames.EurDate;
                    ht[BoxLevel] = _Transfer.ColumnNames.BoxLevel;
                    ht[SubProgramID] = _Transfer.ColumnNames.SubProgramID;
+                   ht[UnitID] = _Transfer.ColumnNames.UnitID;
                }
                return (string)ht[propertyName];
            }
@@ -399,13 +398,13 @@ namespace DAL
            public const string RefNo = "s_RefNo";
            public const string Cost = "s_Cost";
            public const string IsApproved = "s_IsApproved";
-           public const string ManufacturerId = "s_ManufacturerId";
            public const string QuantityLeft = "s_QuantityLeft";
            public const string NoOfPack = "s_NoOfPack";
            public const string QtyPerPack = "s_QtyPerPack";
            public const string EurDate = "s_EurDate";
            public const string BoxLevel = "s_BoxLevel";
            public const string SubProgramID = "s_SubProgramID";
+           public const string UnitID = "s_UnitID";
        }
        #endregion
 
@@ -615,17 +614,7 @@ namespace DAL
            }
        }
 
-       public virtual int ManufacturerId
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.ManufacturerId);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.ManufacturerId, value);
-           }
-       }
+      
 
        public virtual long QuantityLeft
        {
@@ -696,6 +685,18 @@ namespace DAL
            set
            {
                base.Setint(_Transfer.ColumnNames.SubProgramID, value);
+           }
+       }
+
+       public virtual int UnitID
+       {
+           get
+           {
+               return base.Getint(_Transfer.ColumnNames.UnitID);
+           }
+           set
+           {
+               base.Setint(_Transfer.ColumnNames.UnitID, value);
            }
        }
 
@@ -958,20 +959,7 @@ namespace DAL
            }
        }
 
-       public virtual string s_ManufacturerId
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.ManufacturerId) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.ManufacturerId);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.ManufacturerId);
-               else
-                   this.ManufacturerId = base.SetintAsString(_Transfer.ColumnNames.ManufacturerId, value);
-           }
-       }
+       
 
        public virtual string s_QuantityLeft
        {
@@ -1060,6 +1048,21 @@ namespace DAL
                    this.SetColumnNull(_Transfer.ColumnNames.SubProgramID);
                else
                    this.BoxLevel = base.SetintAsString(_Transfer.ColumnNames.SubProgramID, value);
+           }
+       }
+
+       public virtual string s_UnitID
+       {
+           get
+           {
+               return this.IsColumnNull(_Transfer.ColumnNames.UnitID) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.UnitID);
+           }
+           set
+           {
+               if (string.Empty == value)
+                   this.SetColumnNull(_Transfer.ColumnNames.UnitID);
+               else
+                   this.UnitID = base.SetintAsString(_Transfer.ColumnNames.UnitID, value);
            }
        }
 
@@ -1265,16 +1268,7 @@ namespace DAL
                    }
                }
 
-               public WhereParameter ManufacturerId
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.ManufacturerId, _Transfer.Parameters.ManufacturerId);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
+              
                public WhereParameter QuantityLeft
                {
                    get
@@ -1334,6 +1328,17 @@ namespace DAL
                        return where;
                    }
                }
+
+               public WhereParameter UnitID
+               {
+                   get
+                   {
+                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.UnitID, _Transfer.Parameters.UnitID);
+                       this._clause._entity.Query.AddWhereParameter(where);
+                       return where;
+                   }
+               }
+
 
                private _Transfer.WhereClause _clause;
            }
@@ -1543,15 +1548,15 @@ namespace DAL
                }
            }
 
-           public WhereParameter ManufacturerId
+           public WhereParameter UnitID
            {
                get
                {
-                   if (_ManufacturerId_W == null)
+                   if (_UnitID_W == null)
                    {
-                       _ManufacturerId_W = TearOff.ManufacturerId;
+                       _UnitID_W = TearOff.UnitID;
                    }
-                   return _ManufacturerId_W;
+                   return _UnitID_W;
                }
            }
 
@@ -1644,13 +1649,13 @@ namespace DAL
            private WhereParameter _RefNo_W = null;
            private WhereParameter _Cost_W = null;
            private WhereParameter _IsApproved_W = null;
-           private WhereParameter _ManufacturerId_W = null;
            private WhereParameter _QuantityLeft_W = null;
            private WhereParameter _NoOfPack_W = null;
            private WhereParameter _QtyPerPack_W = null;
            private WhereParameter _EurDate_W = null;
            private WhereParameter _BoxLevel_W = null;
            private WhereParameter _SubProgramID_W = null;
+           private WhereParameter _UnitID_W = null;
 
            public void WhereClauseReset()
            {
@@ -1671,13 +1676,13 @@ namespace DAL
                _RefNo_W = null;
                _Cost_W = null;
                _IsApproved_W = null;
-               _ManufacturerId_W = null;
                _QuantityLeft_W = null;
                _NoOfPack_W = null;
                _QtyPerPack_W = null;
                _EurDate_W = null;
                _BoxLevel_W = null;
                _SubProgramID_W = null;
+               _UnitID_W = null;
 
                this._entity.Query.FlushWhereParameters();
 
@@ -1904,15 +1909,7 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter ManufacturerId
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.ManufacturerId, _Transfer.Parameters.ManufacturerId);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
+              
 
                public AggregateParameter QuantityLeft
                {
@@ -1969,6 +1966,16 @@ namespace DAL
                    get
                    {
                        AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.SubProgramID, _Transfer.Parameters.SubProgramID);
+                       this._clause._entity.Query.AddAggregateParameter(aggregate);
+                       return aggregate;
+                   }
+               }
+
+               public AggregateParameter UnitID
+               {
+                   get
+                   {
+                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.UnitID, _Transfer.Parameters.UnitID);
                        this._clause._entity.Query.AddAggregateParameter(aggregate);
                        return aggregate;
                    }
@@ -2182,15 +2189,15 @@ namespace DAL
                }
            }
 
-           public AggregateParameter ManufacturerId
+           public AggregateParameter UnitID
            {
                get
                {
-                   if (_ManufacturerId_W == null)
+                   if (_UnitID_W == null)
                    {
-                       _ManufacturerId_W = TearOff.ManufacturerId;
+                       _UnitID_W = TearOff.UnitID;
                    }
-                   return _ManufacturerId_W;
+                   return _UnitID_W;
                }
            }
 
@@ -2283,13 +2290,13 @@ namespace DAL
            private AggregateParameter _RefNo_W = null;
            private AggregateParameter _Cost_W = null;
            private AggregateParameter _IsApproved_W = null;
-           private AggregateParameter _ManufacturerId_W = null;
            private AggregateParameter _QuantityLeft_W = null;
            private AggregateParameter _NoOfPack_W = null;
            private AggregateParameter _QtyPerPack_W = null;
            private AggregateParameter _EurDate_W = null;
            private AggregateParameter _BoxLevel_W = null;
            private AggregateParameter _SubProgramID_W = null;
+           private AggregateParameter _UnitID_W = null;
            public void AggregateClauseReset()
            {
                _ID_W = null;
@@ -2309,13 +2316,13 @@ namespace DAL
                _RefNo_W = null;
                _Cost_W = null;
                _IsApproved_W = null;
-               _ManufacturerId_W = null;
                _QuantityLeft_W = null;
                _NoOfPack_W = null;
                _QtyPerPack_W = null;
                _EurDate_W = null;
                _BoxLevel_W = null;
                _SubProgramID_W = null;
+               _UnitID_W = null;
                this._entity.Query.FlushAggregateParameters();
 
            }
@@ -2457,8 +2464,8 @@ namespace DAL
            p.SourceColumn = ColumnNames.IsApproved;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.ManufacturerId);
-           p.SourceColumn = ColumnNames.ManufacturerId;
+           p = cmd.Parameters.Add(Parameters.UnitID);
+           p.SourceColumn = ColumnNames.UnitID;
            p.SourceVersion = DataRowVersion.Current;
 
            p = cmd.Parameters.Add(Parameters.QuantityLeft);

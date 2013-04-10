@@ -140,7 +140,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.btnRunSSIS.Size = new System.Drawing.Size(322, 52);
             this.btnRunSSIS.StyleController = this.groupBox1ConvertedLayout;
             this.btnRunSSIS.TabIndex = 12;
-            this.btnRunSSIS.Text = "Send";
+            this.btnRunSSIS.Text = "Send Reports";
             this.btnRunSSIS.Click += new System.EventHandler(this.btnRunSSIS_Click);
             // 
             // lblLastSyncDate
