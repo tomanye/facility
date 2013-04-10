@@ -31,6 +31,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.components = new System.ComponentModel.Container();
             this.btnAutoBackup = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
+            this.btnRunSSIS = new DevExpress.XtraEditors.SimpleButton();
             this.lblLastSyncDate = new System.Windows.Forms.Label();
             this.lblLastBackupDate = new System.Windows.Forms.Label();
             this.picSync = new System.Windows.Forms.PictureBox();
@@ -59,15 +60,14 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem13 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnRunSSIS = new DevExpress.XtraEditors.SimpleButton();
-            this.emptySpaceItem13 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picSync)).BeginInit();
@@ -91,9 +91,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +130,18 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.groupBox1ConvertedLayout.Root = this.layoutControlGroup1;
             this.groupBox1ConvertedLayout.Size = new System.Drawing.Size(909, 512);
             this.groupBox1ConvertedLayout.TabIndex = 1;
+            // 
+            // btnRunSSIS
+            // 
+            this.btnRunSSIS.Appearance.Font = new System.Drawing.Font("Verdana", 9.25F);
+            this.btnRunSSIS.Appearance.Options.UseFont = true;
+            this.btnRunSSIS.Location = new System.Drawing.Point(193, 310);
+            this.btnRunSSIS.Name = "btnRunSSIS";
+            this.btnRunSSIS.Size = new System.Drawing.Size(322, 52);
+            this.btnRunSSIS.StyleController = this.groupBox1ConvertedLayout;
+            this.btnRunSSIS.TabIndex = 12;
+            this.btnRunSSIS.Text = "Send";
+            this.btnRunSSIS.Click += new System.EventHandler(this.btnRunSSIS_Click);
             // 
             // lblLastSyncDate
             // 
@@ -499,6 +511,21 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem6.Text = "emptySpaceItem6";
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnRunSSIS;
+            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
+            this.layoutControlItem8.Location = new System.Drawing.Point(181, 279);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(326, 56);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(326, 56);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(326, 56);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem8.Text = "layoutControlItem8";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextToControlDistance = 0;
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // emptySpaceItem8
             // 
             this.emptySpaceItem8.AllowHotTrack = false;
@@ -521,6 +548,16 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem12.Text = "emptySpaceItem12";
             this.emptySpaceItem12.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // emptySpaceItem13
+            // 
+            this.emptySpaceItem13.AllowHotTrack = false;
+            this.emptySpaceItem13.CustomizationFormText = "emptySpaceItem13";
+            this.emptySpaceItem13.Location = new System.Drawing.Point(181, 335);
+            this.emptySpaceItem13.Name = "emptySpaceItem13";
+            this.emptySpaceItem13.Size = new System.Drawing.Size(688, 16);
+            this.emptySpaceItem13.Text = "emptySpaceItem13";
+            this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // folderBrowserDialog1
             // 
             this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
@@ -533,43 +570,6 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
             this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.btnRunSSIS;
-            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem8.Location = new System.Drawing.Point(181, 279);
-            this.layoutControlItem8.MaxSize = new System.Drawing.Size(326, 56);
-            this.layoutControlItem8.MinSize = new System.Drawing.Size(326, 56);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(326, 56);
-            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem8.Text = "layoutControlItem8";
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextToControlDistance = 0;
-            this.layoutControlItem8.TextVisible = false;
-            // 
-            // btnRunSSIS
-            // 
-            this.btnRunSSIS.Appearance.Font = new System.Drawing.Font("Verdana", 9.25F);
-            this.btnRunSSIS.Appearance.Options.UseFont = true;
-            this.btnRunSSIS.Location = new System.Drawing.Point(193, 310);
-            this.btnRunSSIS.Name = "btnRunSSIS";
-            this.btnRunSSIS.Size = new System.Drawing.Size(322, 52);
-            this.btnRunSSIS.StyleController = this.groupBox1ConvertedLayout;
-            this.btnRunSSIS.TabIndex = 12;
-            this.btnRunSSIS.Text = "Send";
-            this.btnRunSSIS.Click += new System.EventHandler(this.btnRunSSIS_Click);
-            // 
-            // emptySpaceItem13
-            // 
-            this.emptySpaceItem13.AllowHotTrack = false;
-            this.emptySpaceItem13.CustomizationFormText = "emptySpaceItem13";
-            this.emptySpaceItem13.Location = new System.Drawing.Point(181, 335);
-            this.emptySpaceItem13.Name = "emptySpaceItem13";
-            this.emptySpaceItem13.Size = new System.Drawing.Size(688, 16);
-            this.emptySpaceItem13.Text = "emptySpaceItem13";
-            this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
             // 
             // DatabaseActions
             // 
@@ -604,9 +604,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).EndInit();
             this.ResumeLayout(false);
 
