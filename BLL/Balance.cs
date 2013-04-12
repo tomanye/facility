@@ -750,7 +750,7 @@ namespace BLL
             GeneralInfo pipline = new GeneralInfo();
             
             // Dont Iterate
-            DataTable dtbl=new DataTable();
+            var dtbl=new DataTable();
             if (programID == 0) //We don't filter by program ID.
             {
                 dtbl = GetSOH(storeId, month, year);
@@ -759,7 +759,8 @@ namespace BLL
             {
               //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
                 dtbl = GetSOHByPrograms(storeId,programID, month, year);
-            }            
+            }           
+            
             
             dtbl.Columns.Add("MOS",typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
@@ -1117,7 +1118,7 @@ namespace BLL
 
         public DataTable ItemListToIssue(int storeId, DateTime dtCurrent, string selectedType, BackgroundWorker bw)
         {
-            GeneralInfo pipline = new GeneralInfo();
+            var pipline = new GeneralInfo();
             pipline.LoadAll();
             // string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
             var ld = new System.Collections.Specialized.ListDictionary();
@@ -1158,6 +1159,48 @@ namespace BLL
                 return yearEnd.PhysicalInventory;
             }
             return 0;
+        }
+
+        public object BalanceOfAllItemsUsingUnit(int storeId, int year, int month, string _selectedType, int programID, int commodityTypeID, DateTime _dtCur, BackgroundWorker bw)
+        {
+            DataTable dtBal = new DataTable();
+            GeneralInfo pipline = new GeneralInfo();
+
+            // Dont Iterate
+            var dtbl = new DataTable();
+            if (programID == 0) //We don't filter by program ID.
+            {
+                dtbl = GetSOHByUnit(storeId, month, year);
+            }
+            else //We filter by program ID.
+            {
+                //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
+                dtbl = GetSOHByPrograms(storeId, programID, month, year);
+            }
+
+
+            dtbl.Columns.Add("MOS", typeof(float));
+            dtbl.Columns.Add("ReorderAmount", typeof(int));
+            // dtbl.Columns.Add("DaysStockedOut", typeof(int));
+            //dtbl.Columns.Add("amc", typeof(double));
+            int amc;
+            foreach (DataRow dr in dtbl.Rows)
+            {
+                amc = Convert.ToInt32(dr["AMC"]);
+                if (amc > 0)
+                {
+                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
+                }
+                else
+                {
+                    dr["MOS"] = 0;
+                }
+                // 
+                int reorder = Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
+                dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
+
+            }
+            return dtbl;
         }
     }
 }

@@ -47,6 +47,7 @@ namespace PharmInventory
             DevExpress.UserSkins.BonusSkins.Register();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+           
             try
             {
                 ConnStringManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);

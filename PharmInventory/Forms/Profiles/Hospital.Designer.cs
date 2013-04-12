@@ -32,7 +32,6 @@ namespace PharmInventory.Forms.Profiles
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chkNormal = new DevExpress.XtraEditors.CheckEdit();
             this.cboHCTSFirstUpdate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboHCTSUpdateFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -66,14 +65,14 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).BeginInit();
@@ -105,15 +104,16 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(308, 115);
+            this.button1.Location = new System.Drawing.Point(307, 121);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 22);
+            this.button1.Size = new System.Drawing.Size(128, 22);
             this.button1.StyleController = this.groupBox1ConvertedLayout;
             this.button1.TabIndex = 7;
             this.button1.Text = "Browse";
@@ -145,7 +145,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(24, 413);
+            this.lookUpEdit1.Location = new System.Drawing.Point(24, 419);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -159,13 +159,9 @@ namespace PharmInventory.Forms.Profiles
             this.lookUpEdit1.StyleController = this.groupBox1ConvertedLayout;
             this.lookUpEdit1.TabIndex = 18;
             // 
-            // settingbindingSource
-            // 
-            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
-            // 
             // chkNormal
             // 
-            this.chkNormal.Location = new System.Drawing.Point(24, 141);
+            this.chkNormal.Location = new System.Drawing.Point(24, 147);
             this.chkNormal.Name = "chkNormal";
             this.chkNormal.Properties.Caption = "Normal Facility";
             this.chkNormal.Size = new System.Drawing.Size(411, 19);
@@ -174,7 +170,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboHCTSFirstUpdate
             // 
-            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(151, 346);
+            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(150, 352);
             this.cboHCTSFirstUpdate.Name = "cboHCTSFirstUpdate";
             this.cboHCTSFirstUpdate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -183,13 +179,13 @@ namespace PharmInventory.Forms.Profiles
             "1 Hour",
             "2 Hours",
             "4 Hours"});
-            this.cboHCTSFirstUpdate.Size = new System.Drawing.Size(284, 20);
+            this.cboHCTSFirstUpdate.Size = new System.Drawing.Size(285, 20);
             this.cboHCTSFirstUpdate.StyleController = this.groupBox1ConvertedLayout;
             this.cboHCTSFirstUpdate.TabIndex = 13;
             // 
             // cboHCTSUpdateFrequency
             // 
-            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(151, 322);
+            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(150, 328);
             this.cboHCTSUpdateFrequency.Name = "cboHCTSUpdateFrequency";
             this.cboHCTSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -198,54 +194,54 @@ namespace PharmInventory.Forms.Profiles
             "2 Hours",
             "5 Hours",
             "Daily"});
-            this.cboHCTSUpdateFrequency.Size = new System.Drawing.Size(284, 20);
+            this.cboHCTSUpdateFrequency.Size = new System.Drawing.Size(285, 20);
             this.cboHCTSUpdateFrequency.StyleController = this.groupBox1ConvertedLayout;
             this.cboHCTSUpdateFrequency.TabIndex = 12;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(151, 231);
+            this.txtPassword.Location = new System.Drawing.Point(150, 237);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(284, 20);
+            this.txtPassword.Size = new System.Drawing.Size(285, 20);
             this.txtPassword.StyleController = this.groupBox1ConvertedLayout;
             this.txtPassword.TabIndex = 10;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(151, 207);
+            this.txtUserName.Location = new System.Drawing.Point(150, 213);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(284, 20);
+            this.txtUserName.Size = new System.Drawing.Size(285, 20);
             this.txtUserName.StyleController = this.groupBox1ConvertedLayout;
             this.txtUserName.TabIndex = 9;
             // 
             // txtFacilityID
             // 
-            this.txtFacilityID.Location = new System.Drawing.Point(151, 67);
+            this.txtFacilityID.Location = new System.Drawing.Point(150, 73);
             this.txtFacilityID.Name = "txtFacilityID";
             this.txtFacilityID.Properties.Mask.EditMask = "n0";
             this.txtFacilityID.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtFacilityID.Size = new System.Drawing.Size(284, 20);
+            this.txtFacilityID.Size = new System.Drawing.Size(285, 20);
             this.txtFacilityID.StyleController = this.groupBox1ConvertedLayout;
             this.txtFacilityID.TabIndex = 8;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(151, 91);
+            this.txtPhone.Location = new System.Drawing.Point(150, 97);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Properties.Appearance.Options.UseFont = true;
-            this.txtPhone.Size = new System.Drawing.Size(284, 20);
+            this.txtPhone.Size = new System.Drawing.Size(285, 20);
             this.txtPhone.StyleController = this.groupBox1ConvertedLayout;
             this.txtPhone.TabIndex = 1;
             // 
             // txtHospitalName
             // 
-            this.txtHospitalName.Location = new System.Drawing.Point(151, 43);
+            this.txtHospitalName.Location = new System.Drawing.Point(150, 49);
             this.txtHospitalName.Name = "txtHospitalName";
             this.txtHospitalName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHospitalName.Properties.Appearance.Options.UseFont = true;
-            this.txtHospitalName.Size = new System.Drawing.Size(284, 20);
+            this.txtHospitalName.Size = new System.Drawing.Size(285, 20);
             this.txtHospitalName.StyleController = this.groupBox1ConvertedLayout;
             this.txtHospitalName.TabIndex = 1;
             // 
@@ -277,7 +273,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboDSUpdateFrequency
             // 
-            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(151, 255);
+            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(150, 261);
             this.cboDSUpdateFrequency.Name = "cboDSUpdateFrequency";
             this.cboDSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -286,13 +282,13 @@ namespace PharmInventory.Forms.Profiles
             "7 Days",
             "15 Days",
             "Montly"});
-            this.cboDSUpdateFrequency.Size = new System.Drawing.Size(284, 20);
+            this.cboDSUpdateFrequency.Size = new System.Drawing.Size(285, 20);
             this.cboDSUpdateFrequency.StyleController = this.groupBox1ConvertedLayout;
             this.cboDSUpdateFrequency.TabIndex = 11;
             // 
             // txtLogo
             // 
-            this.txtLogo.Location = new System.Drawing.Point(24, 115);
+            this.txtLogo.Location = new System.Drawing.Point(24, 121);
             this.txtLogo.Name = "txtLogo";
             this.txtLogo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogo.Properties.Appearance.Options.UseFont = true;
@@ -548,6 +544,16 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem17.TextToControlDistance = 0;
             this.layoutControlItem17.TextVisible = false;
             // 
+            // emptySpaceItem4
+            // 
+            this.emptySpaceItem4.AllowHotTrack = false;
+            this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
+            this.emptySpaceItem4.Location = new System.Drawing.Point(257, 0);
+            this.emptySpaceItem4.Name = "emptySpaceItem4";
+            this.emptySpaceItem4.Size = new System.Drawing.Size(158, 24);
+            this.emptySpaceItem4.Text = "emptySpaceItem4";
+            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
@@ -563,15 +569,9 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // emptySpaceItem4
+            // settingbindingSource
             // 
-            this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
-            this.emptySpaceItem4.Location = new System.Drawing.Point(257, 0);
-            this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(158, 24);
-            this.emptySpaceItem4.Text = "emptySpaceItem4";
-            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
             // 
             // Hospital
             // 
@@ -586,7 +586,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).EndInit();
             this.groupBox1ConvertedLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).EndInit();
@@ -618,8 +617,9 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

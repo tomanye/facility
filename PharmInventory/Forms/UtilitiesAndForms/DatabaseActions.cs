@@ -9,8 +9,10 @@ using System.IO;
 using DevExpress.XtraEditors;
 using System.Configuration;
 using DevExpress.XtraLayout.Utils;
+using Microsoft.Win32;
 using PharmInventory.DirectoryService;
 using PharmInventory.Forms.Tools;
+using PharmInventory.HelperClasses;
 using ABC = BLL.ABC;
 using DosageForm = BLL.DosageForm;
 using Items = BLL.Items;
@@ -25,9 +27,26 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 {
     public partial class DatabaseActions : XtraForm
     {
+        public const string UIDPWD_REGISTRY_PATH = @"Software\JSI\HCMIS\Configuration\UIDConfig";
+        public const string REMOTE_REGISTRY_PATH = @"Software\JSI\HCMIS\Configuration\RSConfig";
+        public const string PSCONFIG_REGISTRY_PATH = @"Software\JSI\HCMIS\Configuration\PSConfig";
+       
+        public const string HANDLE_UNITS_KEY = @"HandleUnits";
+        public const string PS_CONFIG_KEY = @"PSConfig";
+
+        public const string UID_PWD_KEY = @"UserNameAndPasswordConfig";
+        public const string REMOTE_CONFIG_KEY = @"RemoteServerAddressConfig";
+        public const  string keyvalue1 ="-u \"Administrator\" -p \"lucky@bole2005\"";
+        public const  string keyvalue2 ="\\192.168.2.62";
+        public const string keyvalue3 = @"C:\Tools\PsExec.exe";
+
         public DatabaseActions()
         {
             InitializeComponent();
+            Write1(UID_PWD_KEY,keyvalue1);
+            Write2(REMOTE_CONFIG_KEY,keyvalue2);
+            Write3(PS_CONFIG_KEY, keyvalue3);
+
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
@@ -214,11 +233,13 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             var geninfo = new GeneralInfo();
             geninfo.LoadAll();
             var facilityID = geninfo.FacilityID;
-            const string remoteComputer = @"\\192.168.2.62";
-            const string usernameAndPassword = "-u \"Administrator\" -p \"lucky@bole2005\"";
+           // const string remoteComputer = @"\\192.168.2.62";
+            var remoteComputer = VisibilitySetting.RemoteServerAddressConfig;
+          //  const string usernameAndPassword = "-u \"Administrator\" -p \"lucky@bole2005\"";
+            var usernameAndPassword =VisibilitySetting.UserNameAndPasswordConfig;
             const string ssisCommand = @"C:\SSIS\ExecutePackages.exe";
             string ssisCommandParameters = string.Format("-pull {0}", facilityID);
-            string fileName = @"E:\Tools\PsExec.exe";
+            var fileName = VisibilitySetting.PSConfig;
             string arguments = String.Format("{0} {1} \"{2}\" {3}", remoteComputer, usernameAndPassword, ssisCommand,
                                              ssisCommandParameters);
             if (!File.Exists(fileName))
@@ -230,6 +251,54 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             XtraMessageBox.Show("Synchronisation Successfull!");
 
 
+        }
+
+        public bool Write1(string KeyName, string valueName)
+        {
+             try
+            {
+                // if the sub key doesn't exsit ... create it.
+                RegistryKey sk1 = Registry.CurrentUser.CreateSubKey(UIDPWD_REGISTRY_PATH);
+                // Save the value
+                sk1.SetValue(UID_PWD_KEY, keyvalue1);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Write2(string KeyName, string valueName)
+        {
+            try
+            {
+                // if the sub key doesn't exsit ... create it.
+                RegistryKey sk1 = Registry.CurrentUser.CreateSubKey(REMOTE_REGISTRY_PATH);
+                // Save the value
+                sk1.SetValue(REMOTE_CONFIG_KEY, keyvalue2);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Write3(string KeyName, string valueName)
+        {
+            try
+            {
+                // if the sub key doesn't exsit ... create it.
+                RegistryKey sk1 = Registry.CurrentUser.CreateSubKey(PSCONFIG_REGISTRY_PATH);
+                // Save the value
+                sk1.SetValue(PS_CONFIG_KEY, keyvalue3);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
 

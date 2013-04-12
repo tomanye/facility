@@ -135,7 +135,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.btnRunSSIS.Appearance.Font = new System.Drawing.Font("Verdana", 9.25F);
             this.btnRunSSIS.Appearance.Options.UseFont = true;
-            this.btnRunSSIS.Location = new System.Drawing.Point(193, 310);
+            this.btnRunSSIS.Location = new System.Drawing.Point(193, 316);
             this.btnRunSSIS.Name = "btnRunSSIS";
             this.btnRunSSIS.Size = new System.Drawing.Size(322, 52);
             this.btnRunSSIS.StyleController = this.groupBox1ConvertedLayout;
@@ -145,7 +145,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             // lblLastSyncDate
             // 
-            this.lblLastSyncDate.Location = new System.Drawing.Point(518, 248);
+            this.lblLastSyncDate.Location = new System.Drawing.Point(518, 254);
             this.lblLastSyncDate.Name = "lblLastSyncDate";
             this.lblLastSyncDate.Size = new System.Drawing.Size(359, 48);
             this.lblLastSyncDate.TabIndex = 11;
@@ -153,7 +153,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             // lblLastBackupDate
             // 
-            this.lblLastBackupDate.Location = new System.Drawing.Point(518, 68);
+            this.lblLastBackupDate.Location = new System.Drawing.Point(518, 74);
             this.lblLastBackupDate.Name = "lblLastBackupDate";
             this.lblLastBackupDate.Size = new System.Drawing.Size(359, 46);
             this.lblLastBackupDate.TabIndex = 10;
@@ -162,7 +162,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // picSync
             // 
             this.picSync.Image = global::PharmInventory.Properties.Resources.Loading;
-            this.picSync.Location = new System.Drawing.Point(216, 382);
+            this.picSync.Location = new System.Drawing.Point(216, 387);
             this.picSync.Name = "picSync";
             this.picSync.Size = new System.Drawing.Size(46, 43);
             this.picSync.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -171,7 +171,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             // lblSync
             // 
-            this.lblSync.Location = new System.Drawing.Point(266, 382);
+            this.lblSync.Location = new System.Drawing.Point(266, 387);
             this.lblSync.Name = "lblSync";
             this.lblSync.Size = new System.Drawing.Size(399, 43);
             this.lblSync.TabIndex = 7;
@@ -182,7 +182,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.btnRefreshDirectoryService.Appearance.Font = new System.Drawing.Font("Verdana", 9.25F);
             this.btnRefreshDirectoryService.Appearance.Options.UseFont = true;
-            this.btnRefreshDirectoryService.Location = new System.Drawing.Point(193, 248);
+            this.btnRefreshDirectoryService.Location = new System.Drawing.Point(193, 254);
             this.btnRefreshDirectoryService.Name = "btnRefreshDirectoryService";
             this.btnRefreshDirectoryService.Size = new System.Drawing.Size(321, 48);
             this.btnRefreshDirectoryService.StyleController = this.groupBox1ConvertedLayout;
@@ -194,7 +194,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.btnRestore.Appearance.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestore.Appearance.Options.UseFont = true;
-            this.btnRestore.Location = new System.Drawing.Point(193, 128);
+            this.btnRestore.Location = new System.Drawing.Point(193, 134);
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(321, 46);
             this.btnRestore.StyleController = this.groupBox1ConvertedLayout;
@@ -206,7 +206,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.btnBackup.Appearance.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackup.Appearance.Options.UseFont = true;
-            this.btnBackup.Location = new System.Drawing.Point(193, 68);
+            this.btnBackup.Location = new System.Drawing.Point(193, 74);
             this.btnBackup.Name = "btnBackup";
             this.btnBackup.Size = new System.Drawing.Size(321, 46);
             this.btnBackup.StyleController = this.groupBox1ConvertedLayout;
@@ -218,7 +218,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.btnImportUpdate.Appearance.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImportUpdate.Appearance.Options.UseFont = true;
-            this.btnImportUpdate.Location = new System.Drawing.Point(193, 188);
+            this.btnImportUpdate.Location = new System.Drawing.Point(193, 194);
             this.btnImportUpdate.Name = "btnImportUpdate";
             this.btnImportUpdate.Size = new System.Drawing.Size(321, 46);
             this.btnImportUpdate.StyleController = this.groupBox1ConvertedLayout;
@@ -324,7 +324,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
             this.emptySpaceItem2.Location = new System.Drawing.Point(869, 37);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(20, 436);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(20, 430);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -336,7 +336,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem1.MaxSize = new System.Drawing.Size(181, 0);
             this.emptySpaceItem1.MinSize = new System.Drawing.Size(181, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(181, 436);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(181, 430);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -370,7 +370,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.lcSyncLabel.Control = this.lblSync;
             this.lcSyncLabel.CustomizationFormText = "layoutControlItem7";
-            this.lcSyncLabel.Location = new System.Drawing.Point(254, 351);
+            this.lcSyncLabel.Location = new System.Drawing.Point(254, 350);
             this.lcSyncLabel.MaxSize = new System.Drawing.Size(0, 47);
             this.lcSyncLabel.MinSize = new System.Drawing.Size(24, 47);
             this.lcSyncLabel.Name = "lcSyncLabel";
@@ -385,7 +385,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.lcSyncPic.Control = this.picSync;
             this.lcSyncPic.CustomizationFormText = "layoutControlItem2";
-            this.lcSyncPic.Location = new System.Drawing.Point(204, 351);
+            this.lcSyncPic.Location = new System.Drawing.Point(204, 350);
             this.lcSyncPic.MaxSize = new System.Drawing.Size(50, 0);
             this.lcSyncPic.MinSize = new System.Drawing.Size(50, 24);
             this.lcSyncPic.Name = "lcSyncPic";
@@ -400,9 +400,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.CustomizationFormText = "emptySpaceItem5";
-            this.emptySpaceItem5.Location = new System.Drawing.Point(181, 398);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(181, 397);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(476, 75);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(476, 70);
             this.emptySpaceItem5.Text = "emptySpaceItem5";
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -423,9 +423,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.emptySpaceItem9.AllowHotTrack = false;
             this.emptySpaceItem9.CustomizationFormText = "emptySpaceItem9";
-            this.emptySpaceItem9.Location = new System.Drawing.Point(657, 351);
+            this.emptySpaceItem9.Location = new System.Drawing.Point(657, 350);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(212, 122);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(212, 117);
             this.emptySpaceItem9.Text = "emptySpaceItem9";
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -502,7 +502,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
             this.emptySpaceItem6.CustomizationFormText = "emptySpaceItem6";
-            this.emptySpaceItem6.Location = new System.Drawing.Point(181, 351);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(181, 350);
             this.emptySpaceItem6.MaxSize = new System.Drawing.Size(23, 0);
             this.emptySpaceItem6.MinSize = new System.Drawing.Size(23, 10);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
@@ -554,7 +554,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
             this.emptySpaceItem13.CustomizationFormText = "emptySpaceItem13";
             this.emptySpaceItem13.Location = new System.Drawing.Point(181, 335);
             this.emptySpaceItem13.Name = "emptySpaceItem13";
-            this.emptySpaceItem13.Size = new System.Drawing.Size(688, 16);
+            this.emptySpaceItem13.Size = new System.Drawing.Size(688, 15);
             this.emptySpaceItem13.Text = "emptySpaceItem13";
             this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
             // 

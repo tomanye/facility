@@ -469,8 +469,24 @@ namespace PharmInventory.Forms.Reports
             //    month = 1; //When we're sending the month as 1 if the year has been incremented (Fiscal year = year + 1 if month > 10)
             //}
 
-            DataTable dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID,commodityTypeID,_dtCur, bw);
-            e.Result = dtBal;
+            if (VisibilitySetting.HandleUnits == 1)
+            {
+                var dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID, commodityTypeID,
+                                                        _dtCur, bw);
+                e.Result = dtBal;
+            }
+            else if(VisibilitySetting.HandleUnits == 2)
+            {
+                var dtBal = bal.BalanceOfAllItemsUsingUnit(storeId, year, month, _selectedType, programID, commodityTypeID,
+                                                       _dtCur, bw);
+                e.Result = dtBal;
+            }
+            else if (VisibilitySetting.HandleUnits == 3)
+            {
+                var dtBal = bal.BalanceOfAllItemsUsingUnit(storeId, year, month, _selectedType, programID, commodityTypeID,
+                                                       _dtCur, bw);
+                e.Result = dtBal;
+            }
         }
 
         /// <summary>

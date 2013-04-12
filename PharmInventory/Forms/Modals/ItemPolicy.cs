@@ -210,14 +210,14 @@ namespace PharmInventory.Forms.Modals
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Items itm = new Items();
-            ItemSupplier itmSup = new ItemSupplier();
+            var itm = new Items();
+            var itmSup = new ItemSupplier();
             if (_itemId != 0)
                 itm.LoadByPrimaryKey(_itemId);
             else
             {
                 itm.AddNew();
-                ProductsCategory prodCate = new ProductsCategory();
+                var prodCate = new ProductsCategory();
                 prodCate.AddNew();
                 prodCate.ItemId = itm.ID;
                 prodCate.SubCategoryID = Convert.ToInt32(_categoryId);

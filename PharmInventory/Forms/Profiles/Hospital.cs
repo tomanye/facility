@@ -114,25 +114,34 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+            User user =new User();
+            user.LoadByPrimaryKey(MainWindow.LoggedinId);
            if (_hospitalId == 0)
                 return;
 
             if (XtraMessageBox.Show("Are You sure, You want to save the changes to Hospital General Info.?", "Confirmation",
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
-          
-            if ((int)lookUpEdit1.EditValue ==1)
+
+            if (user.UserName != "admin")
             {
-                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 1);
+                XtraMessageBox.Show("You have no previledge to change FE setting!", "Error");
+                return;
+               
             }
-            else if ((int)lookUpEdit1.EditValue == 2)
+            switch (Convert.ToInt32(lookUpEdit1.EditValue))
             {
-                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 2);
+                case 1:
+                    VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 1);
+                    break;
+                case 2:
+                    VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 2);
+                    break;
+                case 3:
+                    VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 3);
+                    break;
             }
-            else if ((int)lookUpEdit1.EditValue == 3)
-            {
-                VisibilitySetting.SetRegistryValue(VisibilitySetting.HANDLE_UNITS_KEY, 3);
-            }
+
 
             _hospInfo.LoadByPrimaryKey(_hospitalId);
             _hospInfo.HospitalName = txtHospitalName.Text;
