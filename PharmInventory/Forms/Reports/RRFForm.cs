@@ -991,7 +991,15 @@ namespace PharmInventory.Forms.Reports
 
         private void ChooseGridView()
         {
-            if (chkCalculateInPacks.Checked) gridItemsChoice.MainView = grdViewInPacks;
+
+            if (chkCalculateInPacks.Checked)
+            {
+                gridItemsChoice.MainView = grdViewInPacks;
+            }
+            else if (chkCalculateInPacks.Checked && cboProgram != null)
+            {
+                grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
+            }
             else gridItemsChoice.MainView = gridItemChoiceView;
         }
 
@@ -1135,8 +1143,9 @@ namespace PharmInventory.Forms.Reports
 
         private void cboProgram_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboProgram.EditValue == null) return;
-            PopulateListByProgram();
+            //if (cboProgram.EditValue == null) return;
+            //PopulateListByProgram();
+            gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
         }
 
 

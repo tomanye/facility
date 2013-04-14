@@ -1131,16 +1131,18 @@ namespace BLL
                      on y["ID"] equals p["ID"]
                      where Convert.ToInt32(y["EverReceived"]) == 1
                      select new { ID = y["ID"], FullItemName = y["FullItemName"], Unit = y["Unit"],
-                         StockCode = y["StockCode"], BeginingBalance = Convert.ToInt32(y["SOH"]), 
-                         SOH = Convert.ToInt32(z["SOH"]), Max = Convert.ToInt32(z["Max"]), 
-                         QtyPerPack = Convert.ToInt32(p["QtyPerPack"]),StockCodeDACA =p["StockCodeDACA"] }).Distinct().ToArray();
+                         StockCode = y["StockCode"], BeginingBalance = Convert.ToDouble(y["SOH"]), ProgramID=y["ProgramID"],
+                         SOH = Convert.ToDouble(z["SOH"]), Max = Convert.ToInt32(z["Max"]),
+                                  QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
+                                  StockCodeDACA = p["StockCodeDACA"]
+                     }).Distinct().ToArray();
 
             var m = (from n in x
                      join z in received.AsEnumerable()
                      on n.ID equals z["ID"]
                      select new { ID = n.ID, FullItemName = n.FullItemName,
                          Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, 
-                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack,StockCodeDACA =n.StockCodeDACA, Received = z["Quantity"] }).ToArray();
+                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack,StockCodeDACA =n.StockCodeDACA,ProgramID=n.ProgramID, Received = z["Quantity"] }).ToArray();
 
             var l = (from n in m
                      join z in issued.AsEnumerable()
@@ -1158,6 +1160,7 @@ namespace BLL
                                  StockCodeDACA =n.StockCodeDACA,
                                  QtyPerPack = n.QtyPerPack,
                                  Received = n.Received,
+                                 ProgramID=n.ProgramID,
                                  Issued = Convert.ToInt32(z["Quantity"]),
                                  
                              }).ToArray();
@@ -1171,6 +1174,7 @@ namespace BLL
                                   StockCodeDACA = n.StockCodeDACA,
                                   QtyPerPack = n.QtyPerPack, 
                          Received = n.Received, 
+                         ProgramID=n.ProgramID,
                          Issued = n.Issued, LossAdj = z["Quantity"], 
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH }).ToArray();
 
@@ -1192,7 +1196,7 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
-                                  
+                                  ProgramID = n.ProgramID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
@@ -1213,7 +1217,7 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
-                                  
+                                  ProgramID = n.ProgramID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
@@ -1228,17 +1232,17 @@ namespace BLL
             value.Columns.Add("FullItemName");
             value.Columns.Add("Unit");
             value.Columns.Add("StockCode");
-            value.Columns.Add("BeginingBalance", typeof(int));
-            value.Columns.Add("SOH", typeof(int));
-            value.Columns.Add("Max", typeof(int));
+            value.Columns.Add("BeginingBalance", typeof(double));
+            value.Columns.Add("SOH", typeof(double));
+            value.Columns.Add("Max", typeof(double));
             value.Columns.Add("StockCodeDACA", typeof(string));
-            value.Columns.Add("QtyPerPack", typeof(int));
-            value.Columns.Add("Issued", typeof(int));
-            value.Columns.Add("Received", typeof(int));
-            value.Columns.Add("LossAdj", typeof(int));
-            value.Columns.Add("Quantity", typeof(int));
+            value.Columns.Add("QtyPerPack", typeof(double));
+            value.Columns.Add("Issued", typeof(double));
+            value.Columns.Add("Received", typeof(double));
+            value.Columns.Add("LossAdj", typeof(double));
+            value.Columns.Add("Quantity", typeof(double));
             value.Columns.Add("DaysOutOfStock", typeof(int));
-            value.Columns.Add("MaxStockQty", typeof(int));
+            value.Columns.Add("MaxStockQty", typeof(double));
             value.Columns.Add("ProgramID",typeof(int));
             foreach (var v in t2)
             {
@@ -1256,6 +1260,7 @@ namespace BLL
                 drv["Received"] = v.Received;
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
+                drv["ProgramId"] = v.ProgramID;
                 drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
 

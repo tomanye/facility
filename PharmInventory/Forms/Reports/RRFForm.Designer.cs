@@ -61,7 +61,6 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -271,11 +270,13 @@
             // gridColumn13
             // 
             this.gridColumn13.Caption = "Beginning Balance";
+            this.gridColumn13.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "gridColumn13";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.OptionsFilter.AllowFilter = false;
-            this.gridColumn13.UnboundExpression = "BeginingBalance/QtyPerPack";
+            this.gridColumn13.UnboundExpression = "[BeginingBalance]/[QtyPerPack]";
             this.gridColumn13.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 3;
@@ -284,6 +285,8 @@
             // gridColumn14
             // 
             this.gridColumn14.Caption = "Received";
+            this.gridColumn14.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn14.FieldName = "gridColumn14";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
@@ -312,7 +315,7 @@
             // gridColumn16
             // 
             this.gridColumn16.Caption = "Ending Balance";
-            this.gridColumn16.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn16.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn16.FieldName = "gridColumn16";
             this.gridColumn16.Name = "gridColumn16";
@@ -355,7 +358,7 @@
             // gridColumn19
             // 
             this.gridColumn19.Caption = "Maximum Stock ";
-            this.gridColumn19.DisplayFormat.FormatString = "#,##0.0";
+            this.gridColumn19.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn19.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn19.FieldName = "gridColumn19";
             this.gridColumn19.Name = "gridColumn19";
@@ -389,6 +392,8 @@
             // gridColumn41
             // 
             this.gridColumn41.Caption = "Qty to Reach Max";
+            this.gridColumn41.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn41.FieldName = "gridColumn41";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.AllowEdit = false;
@@ -544,8 +549,7 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn40,
-            this.gridColumn42});
+            this.gridColumn40});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Green;
             styleFormatCondition2.Appearance.Options.UseBackColor = true;
@@ -611,7 +615,7 @@
             this.VEN.AppearanceHeader.Options.UseTextOptions = true;
             this.VEN.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.VEN.Caption = "Beginning Balance";
-            this.VEN.DisplayFormat.FormatString = "#,##0";
+            this.VEN.DisplayFormat.FormatString = "#,##0.00";
             this.VEN.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.VEN.FieldName = "BeginingBalance";
             this.VEN.Name = "VEN";
@@ -659,7 +663,7 @@
             this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumn4.Caption = "Ending Balance ";
-            this.gridColumn4.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn4.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "SOH";
             this.gridColumn4.Name = "gridColumn4";
@@ -704,7 +708,7 @@
             this.gridColumn7.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn7.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumn7.Caption = "Maximum Stock ";
-            this.gridColumn7.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn7.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn7.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn7.FieldName = "gridColumn7";
             this.gridColumn7.Name = "gridColumn7";
@@ -721,7 +725,7 @@
             this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumn8.Caption = "Quantity Ordered";
-            this.gridColumn8.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
@@ -738,7 +742,7 @@
             // gridColumn40
             // 
             this.gridColumn40.Caption = "Qty to Reach Max";
-            this.gridColumn40.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn40.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn40.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn40.FieldName = "gridColumn40";
             this.gridColumn40.Name = "gridColumn40";
@@ -748,14 +752,6 @@
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 10;
             this.gridColumn40.Width = 71;
-            // 
-            // gridColumn42
-            // 
-            this.gridColumn42.Caption = "Program";
-            this.gridColumn42.FieldName = "ProgramName";
-            this.gridColumn42.Name = "gridColumn42";
-            this.gridColumn42.Visible = true;
-            this.gridColumn42.VisibleIndex = 12;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -1935,7 +1931,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraEditors.SimpleButton btnEmergency;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
     }
