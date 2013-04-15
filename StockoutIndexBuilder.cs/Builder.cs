@@ -45,6 +45,7 @@ namespace StockoutIndexBuilder
             var receipts = ReceiptsByItem(itemID,storeID).OrderBy(m => m.Date);
             var issues = IssuesByItem(itemID,storeID).OrderBy(m => m.Date);
             var disposals = DisposalsByItem(itemID,storeID).OrderBy(m => m.Date);
+            var adjustments = AdjustmentsByItem(itemID, storeID).OrderBy(m => m.Date);
 
             var receiptsInnerJoin = (from transactionDate in allTransactions
                                      join receipt in receipts
@@ -81,6 +82,17 @@ namespace StockoutIndexBuilder
                                           Date = transactionDate.Date,
                                           Quantity = disposal == null ? null : disposal.Quantity
                                       }).ToArray();
+            var adjustmentsInnerJoin = (from transactionDate in allTransactions
+                                      join adjustment in adjustments
+                                      on new { transactionDate.TransactionID, transactionDate.Date, transactionDate.TransactionType } equals new { adjustment.TransactionID, adjustment.Date, adjustment.TransactionType }
+                                      into temp
+                                      from adjustment in temp.DefaultIfEmpty()
+                                      select new Transaction
+                                      {
+                                          TransactionType = transactionDate.TransactionType,
+                                          Date = transactionDate.Date,
+                                          Quantity = adjustment == null ? null : adjustment.Quantity
+                                      }).ToArray();
             var stockOuts = new List<Stockout>();
             long? balance = 0;
             var stockOut = new Stockout() { ItemID = itemID, StoreID = storeID};
@@ -102,21 +114,44 @@ namespace StockoutIndexBuilder
                         break;
                     case TransactionType.Issue:
                         if (allTransactions[i].TransactionType != issuesInnerJoin[i].TransactionType)
-                            throw new Exception("The algorithm you wrote was crap!");
+                            throw new Exception("Algorithm Error!");
                         balance -= issuesInnerJoin[i].Quantity;
-                        if (balance == 0)
-                            stockOut.StartDate = allTransactions[i].Date.Value;                        
+                        if (balance <= 0)
+                        {
+                            stockOut.StartDate = allTransactions[i].Date.Value;
+                            balance = 0;
+                        }
+                            
                         break;
                     case TransactionType.Disposal:
                         if (allTransactions[i].TransactionType != disposalsInnerJoin[i].TransactionType)
-                            throw new Exception("The algorithm you wrote was crap!");
+                            throw new Exception("Algorithm Error!");
                         balance -= disposalsInnerJoin[i].Quantity;
                         if (balance <= 0)
+                        {
                             stockOut.StartDate = allTransactions[i].Date.Value;
+                            balance = 0;
+                        }
+                        break;
+                    case TransactionType.Adjustment:
+                        if (allTransactions[i].TransactionType != adjustmentsInnerJoin[i].TransactionType)
+                            throw new Exception("Algorithm Error!");
+                        if (balance == 0 && stockOut.StartDate != DateTime.Parse("1/1/0001"))
+                        {
+                            stockOut.EndDate = allTransactions[i].Date.Value;
+                            stockOuts.Add(stockOut);
+                            stockOut = new Stockout() { ItemID = itemID , StoreID = storeID};
+                        }
+                        balance += adjustmentsInnerJoin[i].Quantity;
                         break;
                     default:
                         break;
                 }
+            }
+            if (stockOut.StartDate != DateTime.Parse("1/1/0001") && !stockOut.EndDate.HasValue)
+            {
+                stockOut.EndDate = DateTime.Today;
+                stockOuts.Add(stockOut);
             }
             return stockOuts;
         }
@@ -133,8 +168,8 @@ namespace StockoutIndexBuilder
 
             dates.AddRange((from receipt in db.ReceiveDocs.Where(m => m.ItemID == itemID && m.StoreID==storeID).OrderBy(m => m.Date) select new Transaction { TransactionID = receipt.ID, Date = receipt.Date, TransactionTypeCode = (int)TransactionType.Receipt }).ToList()); // Receipts
             dates.AddRange((from issue in db.IssueDocs.Where(m => m.ItemID == itemID && m.StoreID ==storeID).OrderBy(m => m.Date) select new Transaction { TransactionID = issue.ID, Date = issue.Date, TransactionTypeCode = (int)TransactionType.Issue }).ToList()); // Issues
-            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID ==storeID).OrderBy(m => m.Date) select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Disposal }).ToList()); // Disposals
-
+            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID ==storeID && (bool) m.IsLoss).OrderBy(m => m.Date) select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Disposal }).ToList()); // Disposals
+            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID == storeID && !(bool)m.IsLoss).OrderBy(m => m.Date) select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Adjustment }).ToList()); // Adjustments
             return dates.OrderBy(m => m.Date).ToList();
         }
 
@@ -160,8 +195,17 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var receipts = from disposal in db.Disposals
-                           where disposal.ItemID == itemID && disposal.StoreID ==storeID
+                           where disposal.ItemID == itemID && disposal.StoreID ==storeID && (bool)disposal.IsLoss
                            select new Transaction { TransactionID = disposal.ID, TransactionTypeCode = (int)TransactionType.Disposal, Date = disposal.Date, Quantity = disposal.Quantity };
+            return receipts.ToList();
+        }
+
+        static List<Transaction> AdjustmentsByItem(int itemID, int storeID)
+        {
+            var db = new StockoutEntities();
+            var receipts = from disposal in db.Disposals
+                           where disposal.ItemID == itemID && disposal.StoreID == storeID && !(bool)disposal.IsLoss
+                           select new Transaction { TransactionID = disposal.ID, TransactionTypeCode = (int)TransactionType.Adjustment, Date = disposal.Date, Quantity = disposal.Quantity };
             return receipts.ToList();
         }
         #endregion

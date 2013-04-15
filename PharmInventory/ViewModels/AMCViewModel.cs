@@ -30,25 +30,29 @@ namespace PharmInventory.ViewModels
         {
             var vwGetAllItemsRepository =new vwGetAllItemsRepository();
             var amcrepo = new AmcReportRepository();
+            var stockoutrepo = new StockoutRepository();
             var allItemIds = amcrepo.AllAmcReport().SingleOrDefault(m => m.ItemID == itemId && m.StoreID == storeId);
             var products = vwGetAllItemsRepository.AllItems().SingleOrDefault(m => m.ID == itemId);
             var startDate = endDate.Subtract(TimeSpan.FromDays(amcRange*30));
-            
-                var viewModel = new AMCViewModel()
+
+            var viewModel = new AMCViewModel()
                                     {
                                         ItemID = itemId,
                                         StoreID = storeId,
                                         AmcRange = amcRange,
                                         IssueInAmcRange =
                                             Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate),
-                                        DaysOutOfStock =
-                                            Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
+                                          //  Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
                                         AmcWithDos =
                                             Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,
                                                                                 CalculationOptions.Monthly),
                                         IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
                                     };
-                AddorUpdateAmc(itemId, storeId, amcRange, endDate, amcrepo, viewModel, allItemIds, startDate);
+            var singleOrDefault = stockoutrepo.GetStockoutsByItemandStore(itemId, storeId).SingleOrDefault();
+            if (singleOrDefault != null)
+                viewModel.DaysOutOfStock = singleOrDefault.NumberOfDays;
+            viewModel.DaysOutOfStock = 0;
+            AddorUpdateAmc(itemId, storeId, amcRange, endDate, amcrepo, viewModel, allItemIds, startDate);
 
             if (products != null)
             viewModel.FullItemName = products.FullItemName;

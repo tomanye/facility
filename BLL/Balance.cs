@@ -746,8 +746,8 @@ namespace BLL
 
         public DataTable BalanceOfAllItems(int storeId, int year, int month,string selectedType,int programID,int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
         {
-            DataTable dtBal = new DataTable();
-            GeneralInfo pipline = new GeneralInfo();
+            var dtBal = new DataTable();
+            var pipline = new GeneralInfo();
             
             // Dont Iterate
             var dtbl=new DataTable();

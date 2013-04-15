@@ -9,7 +9,8 @@ namespace StockoutIndexBuilder
     {
         Receipt = 0,
         Issue = 1,
-        Disposal = 2
+        Disposal = 2,
+        Adjustment = 3
     }
 
     class Transaction

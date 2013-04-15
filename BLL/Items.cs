@@ -1142,7 +1142,8 @@ namespace BLL
                      on n.ID equals z["ID"]
                      select new { ID = n.ID, FullItemName = n.FullItemName,
                          Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, 
-                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack,StockCodeDACA =n.StockCodeDACA,ProgramID=n.ProgramID, Received = z["Quantity"] }).ToArray();
+                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack,StockCodeDACA =n.StockCodeDACA,
+                         ProgramID=n.ProgramID, Received = z["Quantity"] }).ToArray();
 
             var l = (from n in m
                      join z in issued.AsEnumerable()
@@ -1198,7 +1199,8 @@ namespace BLL
                                   LossAdj = n.LossAdj,
                                   ProgramID = n.ProgramID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                                  DaysOutOfStock  = 
+                                  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
 
             var t2 = (from n in t1
@@ -1260,7 +1262,7 @@ namespace BLL
                 drv["Received"] = v.Received;
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
-                drv["ProgramId"] = v.ProgramID;
+                drv["ProgramID"] = v.ProgramID;
                 drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
 

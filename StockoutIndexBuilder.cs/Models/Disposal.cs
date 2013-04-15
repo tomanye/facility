@@ -17,5 +17,7 @@ namespace StockoutIndexBuilder.Models
         [Column("EurDate")]
         public DateTime? Date { get; set; }
         public int StoreID { get; set; }
+        [Column("Losses")]
+        public bool? IsLoss { get; set; }
     }
 }
