@@ -1,2 +1,2 @@
 alter table Disposal
-add QtyPerPack int null
+add UnitID int null

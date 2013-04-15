@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -408,10 +408,10 @@
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.grdViewInPacks;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.grdViewInPacks;
+            gridLevelNode1.RelationName = "Level1";
             this.gridItemsChoice.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridItemsChoice.Location = new System.Drawing.Point(24, 602);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -551,13 +551,13 @@
             this.gridColumn9,
             this.gridColumn40});
             this.gridItemChoiceView.FixedLineWidth = 1;
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Green;
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.Column = this.gridColumn40;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
-            styleFormatCondition2.Expression = "[gridColumn7]<[SOH]";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Column = this.gridColumn40;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
+            styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition2});
+            styleFormatCondition1});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -814,6 +814,7 @@
             // 
             // btnEmergency
             // 
+            this.btnEmergency.Enabled = false;
             this.btnEmergency.Location = new System.Drawing.Point(210, 43);
             this.btnEmergency.Name = "btnEmergency";
             this.btnEmergency.Size = new System.Drawing.Size(111, 22);
