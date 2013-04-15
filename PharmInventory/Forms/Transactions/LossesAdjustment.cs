@@ -59,16 +59,22 @@ namespace PharmInventory
                     break;
             }
 
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
                
             cboStores.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
 
             var unit = new ItemUnit();
-            var xx=unit.GetAllUnits();
-            unitsbindingSource.DataSource = xx.DefaultView;
-                
+            var allunits=unit.GetAllUnits();
+            unitsbindingSource.DataSource = allunits.DefaultView;
+
+            var disRes = new DisposalReasons();
+            var allreasons = disRes.GetAllReasons();
+            reasonBindingSource.DataSource = allreasons.DefaultView;
+            //ReasonLookup.DataSource = disRes.DefaultView;
+            //ReasonLookup.DisplayMember = "Reason";
+            //ReasonLookup.ValueMember = "ID";
                 
             lkCategories.ItemIndex = 0;
             cboStores.ItemIndex = 0;
@@ -187,11 +193,11 @@ namespace PharmInventory
                 count++;
 
             }
-            DisposalReasons disRes = new DisposalReasons();
-            disRes.LoadAll();
-            ReasonLookup.DataSource = disRes.DefaultView;
-            ReasonLookup.DisplayMember = "Reason";
-            ReasonLookup.ValueMember = "ID";
+
+            //var disRes = new DisposalReasons();
+            //var allreasons = disRes.GetAllReasons();
+            //reasonBindingSource.DataSource = allreasons.DefaultView;
+
             AdjustmentGrid.DataSource = dtRecGrid;
             cboStoreConfi.Text = cboStores.Text;
         }

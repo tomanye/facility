@@ -19,5 +19,12 @@ namespace BLL
             this.LoadFromRawSql(String.Format("SELECT * FROM DisposalReasons WHERE ID IN (SELECT ReasonID FROM Disposal)"));
             return this.DataTable;
         }
+
+        public DataTable GetAllReasons()
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM DisposalReasons"));
+            return this.DataTable;
+        }
 	}
 }
