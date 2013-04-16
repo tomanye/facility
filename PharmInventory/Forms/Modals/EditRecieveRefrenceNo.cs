@@ -24,24 +24,19 @@ namespace PharmInventory.Forms.Modals
             InitializeComponent();
             _refno = refno;
         }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+   
         private void EditRecieveRefrenceNo_Load(object sender, EventArgs e)
         {
-           // dtRecDate.Value = DateTime.Now;
+            dtRecDate.Value = DateTime.Now;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
             var rec = new ReceiveDoc();
             if(_refno!=null)
             {
                 dtRecDate.ResetValue();
                 rec.GetTransactionByRefNo(_refno);
-                var xx = Convert.ToDateTime(rec.Date);
                 refnotextEdit.Text = rec.RefNo;
-                dtRecDate.Value = xx;
-
-
+                DateTime dtDate = Convert.ToDateTime(rec.Date.ToString("MM/dd/yyyy"));
+                txtDate.Text = dtDate.ToShortDateString();
             }
         }
 
@@ -54,13 +49,7 @@ namespace PharmInventory.Forms.Modals
                 foreach (DataRow datarow in dtbl.Rows)
                 {
                     datarow["RefNo"] = refnotextEdit.Text;
-                    dtRecDate.CustomFormat = "MM/dd/yyyy";
-
-                    datarow["Date"] = ConvertDate.DateConverter(dtRecDate.Text);
-                    dtRecDate.IsGregorianCurrentCalendar = true;
-
-                    datarow["EurDate"] = dtRecDate.Value;
-                    dtRecDate.IsGregorianCurrentCalendar = false;
+                    datarow["Date"] = txtDate.Text;
                 }
                 rec.Save();
                 Close();
@@ -73,6 +62,18 @@ namespace PharmInventory.Forms.Modals
                 return;
             }
             this.Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            groupBox1.Visible = true;
+        }
+
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            txtDate.Text = dtRecDate.Text;
         }
     }
 }

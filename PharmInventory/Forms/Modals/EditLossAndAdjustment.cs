@@ -22,28 +22,34 @@ namespace PharmInventory.Forms.Modals
         {
             InitializeComponent();
             _refno = refno;
-            dtLossDate.Value = DateTime.Now;
-            dtLossDate.Value = DateTime.Now;
+         
+        }
 
+        private void EditLossAndAdjustment_Load(object sender, EventArgs e)
+        {
+            dtRecDate.Value = DateTime.Now;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            var dis = new Disposal();
+            if (_refno != null)
+            {
+                dis.GetTransactionByRefNo(_refno);
+                txtRefNo.Text = dis.RefNo;
+                DateTime dtDate = Convert.ToDateTime(dis.Date.ToString("MM/dd/yyyy"));
+                txtDate.Text = dtDate.ToShortDateString();
+                // dtLossDate.Value = dis.Date;
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var dis =new Disposal();
-            DataTable dtbl=dis.GetTransactionByRefNo(_refno);
+            var dtbl=dis.GetTransactionByRefNo(_refno);
                 if (dis.RowCount > 0)
                 {
                     foreach (DataRow datarow in dtbl.Rows)
                     {
-                        datarow["RefNo"] = refNotextEdit.Text;
-                        DateTime xx = dtLossDate.Value;
-                        dtLossDate.CustomFormat = "MM/dd/yyyy";
-                        DateTime dtRec = new DateTime();
-                        datarow["Date"] = ConvertDate.DateConverter(dtLossDate.Text);
-                        dtLossDate.IsGregorianCurrentCalendar = true;
-
-                        datarow["EurDate"] = dtLossDate.Value;
-                        dtLossDate.IsGregorianCurrentCalendar = false;
+                        datarow["RefNo"] = txtRefNo.Text;
+                        datarow["Date"] = txtDate.Text;
                     }
                     dis.Save();
                     Close();
@@ -58,21 +64,18 @@ namespace PharmInventory.Forms.Modals
                 this.Close();
          }
         
+        
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            groupBox1.Visible = true;
         }
 
-        private void EditLossAndAdjustment_Load(object sender, EventArgs e)
+        private void btnChange_Click(object sender, EventArgs e)
         {
-            var dis = new Disposal();
-            if(_refno!=null)
-            {
-                dis.GetTransactionByRefNo(_refno);
-                refNotextEdit.Text = dis.RefNo;
-                dtLossDate.Value = dis.Date;
-            }
+            groupBox1.Visible = false;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            txtDate.Text = dtRecDate.Text;
         }
 
       

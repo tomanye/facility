@@ -293,7 +293,7 @@ namespace PharmInventory.Forms.Reports
                 int itemID = Convert.ToInt32(dr["ID"]);
                 int requestedqty = Convert.ToInt32(dr["Quantity"]);
                 int storeID = int.Parse(cboStores.EditValue.ToString());
-                RRFDetail rrfDetail = new RRFDetail();
+                var rrfDetail = new RRFDetail();
                 rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
 
             }

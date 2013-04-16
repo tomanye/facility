@@ -26,14 +26,15 @@ namespace PharmInventory.Forms.Modals
 
         private void EditIssueDocRefrenceNo_Load(object sender, EventArgs e)
         {
-            dtIssueDate.Value = DateTime.Now;
-            dtIssueDate.IsGregorianCurrentCalendar = true;
+            dtRecDate.Value = DateTime.Now;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
             if(_refno!=null)
             {
                 var iss = new IssueDoc();
                 iss.GetTransactionByRefNo(_refno);
+                DateTime dtDate = Convert.ToDateTime(iss.Date.ToString("MM/dd/yyyy"));
+                txtDate.Text = dtDate.ToShortDateString();
                 refnotextEdit.Text = iss.RefNo;
-                dtIssueDate.Value = iss.Date;
             }
         }
 
@@ -51,14 +52,14 @@ namespace PharmInventory.Forms.Modals
                 foreach (DataRow datarow in dtbl.Rows)
                 {
                     datarow["RefNo"] = refnotextEdit.Text;
-                    DateTime xx = dtIssueDate.Value;
-                    dtIssueDate.CustomFormat = "MM/dd/yyyy";
+                   // DateTime xx = dtIssueDate.Value;
+                   // dtIssueDate.CustomFormat = "MM/dd/yyyy";
                     DateTime dtRec = new DateTime();
-                    datarow["Date"] = ConvertDate.DateConverter(dtIssueDate.Text);
-                    dtIssueDate.IsGregorianCurrentCalendar = true;
-
-                    datarow["EurDate"] = dtIssueDate.Value;
-                    dtIssueDate.IsGregorianCurrentCalendar = false;
+                   // datarow["Date"] = ConvertDate.DateConverter(dtIssueDate.Text);
+                   // dtIssueDate.IsGregorianCurrentCalendar = true;
+                    datarow["Date"] = txtDate.Text;
+                   // datarow["EurDate"] = dtIssueDate.Value;
+                  //  dtIssueDate.IsGregorianCurrentCalendar = false;
                 }
                 isd.Save();
                 Close();
@@ -71,6 +72,19 @@ namespace PharmInventory.Forms.Modals
                 return;
             }
             this.Close();
+        }
+
+        private void xpButton1_Click(object sender, EventArgs e)
+        {
+            groupBox1.Visible = false;
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            txtDate.Text = dtRecDate.Text;
+        }
+
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            groupBox1.Visible = true;
         }
     }
 }

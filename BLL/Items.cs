@@ -1085,7 +1085,7 @@ namespace BLL
             else
             {
                 fromYear--;
-                fromMonth = 12;//Because SOH returns stock until the end of the month
+                fromMonth = 12; //Because SOH returns stock until the end of the month
             }
             DataTable dtbl = balance.GetSOH(storeId,fromMonth, fromYear);
             DataTable dtbl2 = balance.GetSOH(storeId, toMonth, toYear);
@@ -1120,7 +1120,7 @@ namespace BLL
             DataTable preferredPackSizetbl = DataTable;
 
             BLL.Items itm = new Items();
-            System.Data.DataTable daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
+            var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
 
             //query=string.Format("select ")
 
@@ -1199,8 +1199,7 @@ namespace BLL
                                   LossAdj = n.LossAdj,
                                   ProgramID = n.ProgramID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock  = 
-                                  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
+                                  DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                               }).ToArray();
 
             var t2 = (from n in t1
@@ -1229,7 +1228,7 @@ namespace BLL
             //return t;
             // Converting shit into antoher shit.
             // Just because i was not able to read the elemntes of the anonymus type in another method
-            DataTable value = new DataTable();
+            var value = new DataTable();
             value.Columns.Add("ID", typeof(int));
             value.Columns.Add("FullItemName");
             value.Columns.Add("Unit");
