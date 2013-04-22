@@ -160,7 +160,7 @@ namespace BLL
         public DataTable GetTransactionByRefNo(string refNo, int storeId, string dt)
         {
             this.FlushData();
-            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice , datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID  join ItemUnit iu on rd.UnitID =iu.ID WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
+            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice , datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID  WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

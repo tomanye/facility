@@ -110,7 +110,9 @@ namespace PharmInventory.Forms.Modals
                     dtExpiryDate.Value = rec.ExpDate;
                 cboStores.SelectedValue = rec.StoreID;
                 cboSupplier.SelectedValue = rec.SupplierID;
-                lkItemUnit.EditValue = rec.UnitID;
+
+                if (!rec.IsColumnNull("UnitID"))
+                    lkItemUnit.EditValue = rec.UnitID;
                 txtItemName.Text = itemName;
                 txtReceivedBy.Text = rec.ReceivedBy;
                 txtRemark.Text = rec.Remark;

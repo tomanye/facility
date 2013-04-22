@@ -30,7 +30,6 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -44,7 +43,6 @@ namespace PharmInventory.Forms.Transactions
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition11 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition12 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition13 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition14 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -78,7 +76,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.unitrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.UnitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UnitsbindingSource = new System.Windows.Forms.BindingSource();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -91,7 +89,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -151,11 +149,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem28 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -268,14 +266,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewToVaccine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -319,11 +317,11 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -1234,6 +1232,7 @@ namespace PharmInventory.Forms.Transactions
             styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
             styleFormatCondition5.Value1 = "Normal";
             styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition6.Appearance.BackColor2 = System.Drawing.Color.Red;
             styleFormatCondition6.Appearance.Options.UseBackColor = true;
             styleFormatCondition6.ApplyToRow = true;
             styleFormatCondition6.Column = this.gridColumn15;
@@ -1245,8 +1244,7 @@ namespace PharmInventory.Forms.Transactions
             styleFormatCondition3,
             styleFormatCondition4,
             styleFormatCondition5,
-            styleFormatCondition6,
-            styleFormatCondition7});
+            styleFormatCondition6});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -1453,50 +1451,50 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn67,
             this.gridColumn68,
             this.gridColumn69});
-            styleFormatCondition8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            styleFormatCondition7.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            styleFormatCondition7.Appearance.Options.UseBackColor = true;
+            styleFormatCondition7.ApplyToRow = true;
+            styleFormatCondition7.Column = this.gridColumn68;
+            styleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition7.Value1 = "Stock Out";
+            styleFormatCondition8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             styleFormatCondition8.Appearance.Options.UseBackColor = true;
             styleFormatCondition8.ApplyToRow = true;
             styleFormatCondition8.Column = this.gridColumn68;
             styleFormatCondition8.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition8.Value1 = "Stock Out";
-            styleFormatCondition9.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            styleFormatCondition8.Value1 = "Below EOP";
+            styleFormatCondition9.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
             styleFormatCondition9.Appearance.Options.UseBackColor = true;
             styleFormatCondition9.ApplyToRow = true;
             styleFormatCondition9.Column = this.gridColumn68;
             styleFormatCondition9.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition9.Value1 = "Below EOP";
-            styleFormatCondition10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
+            styleFormatCondition9.Value1 = "Near EOP";
+            styleFormatCondition10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
             styleFormatCondition10.Appearance.Options.UseBackColor = true;
             styleFormatCondition10.ApplyToRow = true;
             styleFormatCondition10.Column = this.gridColumn68;
             styleFormatCondition10.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition10.Value1 = "Near EOP";
-            styleFormatCondition11.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
+            styleFormatCondition10.Value1 = "Over Stocked";
+            styleFormatCondition11.Appearance.BackColor = System.Drawing.Color.White;
             styleFormatCondition11.Appearance.Options.UseBackColor = true;
             styleFormatCondition11.ApplyToRow = true;
             styleFormatCondition11.Column = this.gridColumn68;
             styleFormatCondition11.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition11.Value1 = "Over Stocked";
-            styleFormatCondition12.Appearance.BackColor = System.Drawing.Color.White;
+            styleFormatCondition11.Value1 = "Normal";
+            styleFormatCondition12.Appearance.BackColor = System.Drawing.Color.Red;
             styleFormatCondition12.Appearance.Options.UseBackColor = true;
             styleFormatCondition12.ApplyToRow = true;
-            styleFormatCondition12.Column = this.gridColumn68;
-            styleFormatCondition12.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition12.Value1 = "Normal";
-            styleFormatCondition13.Appearance.BackColor = System.Drawing.Color.Red;
-            styleFormatCondition13.Appearance.Options.UseBackColor = true;
-            styleFormatCondition13.ApplyToRow = true;
-            styleFormatCondition13.Column = this.gridColumn65;
-            styleFormatCondition13.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition13.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
+            styleFormatCondition12.Column = this.gridColumn65;
+            styleFormatCondition12.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition12.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
             this.gridView3.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
+            styleFormatCondition7,
             styleFormatCondition8,
             styleFormatCondition9,
             styleFormatCondition10,
             styleFormatCondition11,
             styleFormatCondition12,
-            styleFormatCondition13,
-            styleFormatCondition14});
+            styleFormatCondition13});
             this.gridView3.GridControl = this.gridItemsChoice;
             this.gridView3.IndicatorWidth = 40;
             this.gridView3.Name = "gridView3";
@@ -1767,11 +1765,11 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem28,
             this.layoutControlItem6,
             this.layoutControlItem3,
-            this.layoutControlItem4,
             this.emptySpaceItem3,
             this.layoutControlItem2,
             this.layoutControlItem27,
-            this.emptySpaceItem2});
+            this.emptySpaceItem2,
+            this.layoutControlItem4});
             this.layoutControlGroup3.Location = new System.Drawing.Point(28, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
@@ -1864,20 +1862,6 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem3.Text = "Filter By Item Name";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(94, 13);
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.cboStores;
-            this.layoutControlItem4.CustomizationFormText = "Store";
-            this.layoutControlItem4.Location = new System.Drawing.Point(396, 0);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(271, 73);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(271, 73);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(271, 73);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.Text = "Store";
-            this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(94, 13);
-            // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
@@ -1929,6 +1913,20 @@ namespace PharmInventory.Forms.Transactions
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.cboStores;
+            this.layoutControlItem4.CustomizationFormText = "Store";
+            this.layoutControlItem4.Location = new System.Drawing.Point(396, 0);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(271, 73);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(271, 73);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(271, 73);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.Text = "Store";
+            this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(94, 13);
             // 
             // groupBox2
             // 
@@ -3339,11 +3337,11 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
