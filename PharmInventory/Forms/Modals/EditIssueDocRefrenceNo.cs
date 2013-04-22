@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
-using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -34,15 +33,11 @@ namespace PharmInventory.Forms.Modals
                 iss.GetTransactionByRefNo(_refno);
                 DateTime dtDate = Convert.ToDateTime(iss.Date.ToString("MM/dd/yyyy"));
                 txtDate.Text = dtDate.ToShortDateString();
-                refnotextEdit.Text = iss.RefNo;
+                txtRefNo.Text = iss.RefNo;
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+    
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             var isd = new IssueDoc();
@@ -51,15 +46,9 @@ namespace PharmInventory.Forms.Modals
             {
                 foreach (DataRow datarow in dtbl.Rows)
                 {
-                    datarow["RefNo"] = refnotextEdit.Text;
-                   // DateTime xx = dtIssueDate.Value;
-                   // dtIssueDate.CustomFormat = "MM/dd/yyyy";
-                    DateTime dtRec = new DateTime();
-                   // datarow["Date"] = ConvertDate.DateConverter(dtIssueDate.Text);
-                   // dtIssueDate.IsGregorianCurrentCalendar = true;
+                    datarow["RefNo"] = txtRefNo.Text;
                     datarow["Date"] = txtDate.Text;
-                   // datarow["EurDate"] = dtIssueDate.Value;
-                  //  dtIssueDate.IsGregorianCurrentCalendar = false;
+             
                 }
                 isd.Save();
                 Close();

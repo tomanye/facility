@@ -45,7 +45,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Image = global::PharmInventory.Properties.Resources.disk;
-            this.btnUpdate.Location = new System.Drawing.Point(284, 162);
+            this.btnUpdate.Location = new System.Drawing.Point(305, 162);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(84, 22);
             this.btnUpdate.TabIndex = 13;
@@ -56,7 +56,7 @@
             // 
             this.refnotextEdit.Location = new System.Drawing.Point(102, 12);
             this.refnotextEdit.Name = "refnotextEdit";
-            this.refnotextEdit.Size = new System.Drawing.Size(266, 20);
+            this.refnotextEdit.Size = new System.Drawing.Size(247, 20);
             this.refnotextEdit.TabIndex = 12;
             // 
             // labelControl1
@@ -80,13 +80,13 @@
             this.txtDate.Location = new System.Drawing.Point(102, 36);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(224, 20);
+            this.txtDate.Size = new System.Drawing.Size(247, 20);
             this.txtDate.TabIndex = 17;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(324, 39);
+            this.linkLabel1.Location = new System.Drawing.Point(351, 39);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(44, 13);
             this.linkLabel1.TabIndex = 18;
@@ -103,7 +103,7 @@
             this.dtRecDate.Location = new System.Drawing.Point(10, 20);
             this.dtRecDate.Name = "dtRecDate";
             this.dtRecDate.PopUpFontSize = 9.75F;
-            this.dtRecDate.Size = new System.Drawing.Size(231, 22);
+            this.dtRecDate.Size = new System.Drawing.Size(291, 22);
             this.dtRecDate.TabIndex = 11;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
             this.dtRecDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
@@ -112,7 +112,7 @@
             // 
             this.btnChange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnChange.Image = global::PharmInventory.Properties.Resources.icon_accept;
-            this.btnChange.Location = new System.Drawing.Point(250, 20);
+            this.btnChange.Location = new System.Drawing.Point(307, 20);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(70, 22);
             this.btnChange.TabIndex = 7;
@@ -125,7 +125,7 @@
             this.groupBox1.Controls.Add(this.btnChange);
             this.groupBox1.Location = new System.Drawing.Point(12, 62);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(356, 94);
+            this.groupBox1.Size = new System.Drawing.Size(383, 94);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Change Date";
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 186);
+            this.ClientSize = new System.Drawing.Size(399, 186);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.txtDate);
@@ -143,6 +143,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.refnotextEdit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditRecieveRefrenceNo";

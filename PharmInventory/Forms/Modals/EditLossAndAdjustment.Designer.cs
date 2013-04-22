@@ -97,7 +97,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(364, 41);
+            this.linkLabel1.Location = new System.Drawing.Point(356, 41);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(44, 13);
             this.linkLabel1.TabIndex = 18;
@@ -114,7 +114,7 @@
             this.dtRecDate.Location = new System.Drawing.Point(10, 20);
             this.dtRecDate.Name = "dtRecDate";
             this.dtRecDate.PopUpFontSize = 9.75F;
-            this.dtRecDate.Size = new System.Drawing.Size(231, 22);
+            this.dtRecDate.Size = new System.Drawing.Size(284, 22);
             this.dtRecDate.TabIndex = 11;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
             this.dtRecDate.Value = new System.DateTime(2012, 10, 25, 0, 0, 0, 0);
@@ -146,7 +146,7 @@
             // 
             this.txtRefNo.Location = new System.Drawing.Point(107, 13);
             this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(297, 20);
+            this.txtRefNo.Size = new System.Drawing.Size(246, 20);
             this.txtRefNo.TabIndex = 25;
             // 
             // txtDate
@@ -154,7 +154,7 @@
             this.txtDate.Location = new System.Drawing.Point(107, 38);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.ReadOnly = true;
-            this.txtDate.Size = new System.Drawing.Size(260, 20);
+            this.txtDate.Size = new System.Drawing.Size(246, 20);
             this.txtDate.TabIndex = 26;
             // 
             // EditLossAndAdjustment
@@ -169,6 +169,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnUpdate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditLossAndAdjustment";

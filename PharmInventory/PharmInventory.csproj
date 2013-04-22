@@ -812,9 +812,6 @@
     <EmbeddedResource Include="Forms\Modals\EditIssueDocRefrenceNo.resx">
       <DependentUpon>EditIssueDocRefrenceNo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\EditIssueDocRefrenceNo.yo.resx">
-      <DependentUpon>EditIssueDocRefrenceNo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditLossAndAdjustment.resx">
       <DependentUpon>EditLossAndAdjustment.cs</DependentUpon>
     </EmbeddedResource>
