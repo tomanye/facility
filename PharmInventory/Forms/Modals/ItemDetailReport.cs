@@ -30,7 +30,17 @@ namespace PharmInventory.Forms.Modals
         /// <param name="strid">The Store ID</param>
         /// <param name="yr">The Fiscal Year</param>
         /// <param name="tab">The tab index to be shown</param>
-        public ItemDetailReport(int itmId, int strid, int yr,int tab)
+        public ItemDetailReport(int itmId, int strid, int yr, int tab, int unitId)
+        {
+            InitializeComponent();
+            _itemId = itmId;
+            _storeId = strid;
+            _year = (yr < 1990) ? 2001 : yr;
+            _tabInd = tab;
+            _unitID = unitId;
+        }
+
+        public ItemDetailReport(int itmId, int strid, int yr, int tab)
         {
             InitializeComponent();
             _itemId = itmId;
@@ -38,10 +48,10 @@ namespace PharmInventory.Forms.Modals
             _year = (yr < 1990) ? 2001 : yr;
             _tabInd = tab;
         }
-
         #region Members
 
         readonly int _itemId = 0;
+        readonly int _unitID = 0;
         readonly int _storeId = 1;
         int _year = 0;
         readonly int _tabInd = 0;
@@ -65,7 +75,7 @@ namespace PharmInventory.Forms.Modals
             System.Int32 dwRop // raster operation code
         );
         int _first = 0;
-        
+
         private void PopulateLogisticSummary()
         {
             //dtDate.Value = DateTime.Now;
@@ -92,7 +102,7 @@ namespace PharmInventory.Forms.Modals
                 int storeId = Convert.ToInt32(drStr["ID"]);
                 Int64 soh = bal.GetSOH(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
                 double amc = Builder.CalculateAverageConsumption(_itemId, storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly); //bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year); //Builder.CalculateAverageConsumption(_itemId, storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)),dtCurrent,CalculationOptions.Monthly);
-                    //bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
+                //bal.CalculateAMC(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
                 Int64 issue = iss.GetIssuedQuantityByMonth(_itemId, storeId, _dtCurrent.Month, _dtCurrent.Year);
                 decimal mos = ((amc > 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                 mos = Decimal.Round(mos, 1);
@@ -193,7 +203,7 @@ namespace PharmInventory.Forms.Modals
             lblItemID.Text = _itemId.ToString();
 
             PopulateLogisticSummary();
-           
+
         }
 
         private void PopulateBinCardYearCombo()
@@ -247,7 +257,7 @@ namespace PharmInventory.Forms.Modals
             // int yr = ()?dtCurrent.Year : dtCurrent.Year -1;
             DataTable dtItm = itm.GetItemById(_itemId);
             string dosage = lblBUnit.Text;
-            double amc =Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly);//bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
+            double amc = Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly);//bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             Int64 soh = bal.GetSOH(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             double sohPrice = bal.GetSOHAmount(_itemId, _storeId, _dtCurrent.Month, _dtCurrent.Year);
             string sohPriStr = ((sohPrice != 0) ? sohPrice.ToString("C") + " ETB" : "0 ETB");
@@ -752,7 +762,7 @@ namespace PharmInventory.Forms.Modals
             int yer = _year;
             //int mth = (_year > _dtCurrent.Year) ? _dtCurrent.Month : 10;
             int mth = _dtCurrent.Month;
-            EthiopianDate.EthiopianDate ethioDate=new EthiopianDate.EthiopianDate(_year,1,1);
+            EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(_year, 1, 1);
 
             //if (_dtCurrent.Month < 11)
             //{
@@ -795,7 +805,7 @@ namespace PharmInventory.Forms.Modals
             string balanceAm = "";
 
 
-            
+
             string ddDate = "";
             string batNo = "";
             foreach (DataRow dvRec in dtRec.Rows)
@@ -1077,8 +1087,23 @@ namespace PharmInventory.Forms.Modals
         {
             //Get the bin card.
             Balance balance = new Balance();
-            txtBBalance.Text = balance.GetBeginningBalance(Convert.ToInt32(cboFiscalYear.EditValue),_itemId,_storeId).ToString();
-            gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId, Convert.ToInt32(cboFiscalYear.EditValue));
+            txtBBalance.Text = balance.GetBeginningBalance(Convert.ToInt32(cboFiscalYear.EditValue), _itemId, _storeId).ToString();
+            if (VisibilitySetting.HandleUnits == 1)
+            {
+                gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId,
+                                                              Convert.ToInt32(cboFiscalYear.EditValue));
+            }
+            else if (VisibilitySetting.HandleUnits == 2)
+            {
+                gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,
+                                                             Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
+            }
+            else if (VisibilitySetting.HandleUnits == 3)
+            {
+                gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,
+                                                             Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -1172,7 +1197,7 @@ namespace PharmInventory.Forms.Modals
                     else
                         xSOH = con[i];
                     object[] str = { co[i], xSOH };
-                    amc[i] = ((du == 0) ? Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly): bal.CalculateDUAMC(_itemId, du, mon[i], yr, 0));//bal.CalculateAMC(_itemId, _storeId, mon[i], yr) 
+                    amc[i] = ((du == 0) ? Builder.CalculateAverageConsumption(_itemId, _storeId, _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent, CalculationOptions.Monthly) : bal.CalculateDUAMC(_itemId, du, mon[i], yr, 0));//bal.CalculateAMC(_itemId, _storeId, mon[i], yr) 
                     object xAmc = null;
                     if (amc[i] == 0)
                     {
@@ -1371,10 +1396,10 @@ namespace PharmInventory.Forms.Modals
             //Int64 soh = bal.GetSOH(itemId,storeId,dtCurrent.Month,year);
             //if (bal.RowCount > 0)
             //{
-           //Int64 amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _year);
-             amcCurent = Builder.CalculateAverageConsumption(_itemId, _storeId,
-                                                                   _dtCurrent.Subtract(TimeSpan.FromDays(180)),
-                                                                   _dtCurrent, CalculationOptions.Monthly);
+            //Int64 amcCurent = bal.CalculateAMC(_itemId, _storeId, _dtCurrent.Month, _year);
+            amcCurent = Builder.CalculateAverageConsumption(_itemId, _storeId,
+                                                                  _dtCurrent.Subtract(TimeSpan.FromDays(180)),
+                                                                  _dtCurrent, CalculationOptions.Monthly);
             min = info.Min * amcCurent;
             max = info.Max * amcCurent;
             nearEOP = Convert.ToInt64(amcCurent * (info.EOP + 0.25));
@@ -2198,8 +2223,8 @@ namespace PharmInventory.Forms.Modals
                     if (!(yr == _dtCurrent.Year && mon[i] > _dtCurrent.Month && mon[i] < 11))
                     {
                         Int64 soh = bal.GetSOH(_itemId, storeId, mon[i], yr);
-                        double  amc = Builder.CalculateAverageConsumption(_itemId, _storeId,
-                                                                        _dtCurrent.Subtract(TimeSpan.FromDays(180)),_dtCurrent,
+                        double amc = Builder.CalculateAverageConsumption(_itemId, _storeId,
+                                                                        _dtCurrent.Subtract(TimeSpan.FromDays(180)), _dtCurrent,
                                                                         CalculationOptions.Monthly);
                         decimal mos = ((amc != 0) ? Convert.ToDecimal(soh) / Convert.ToDecimal(amc) : 0);
                         cons[i] = Decimal.Round(mos, 1);

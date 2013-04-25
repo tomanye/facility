@@ -19,7 +19,7 @@ namespace PharmInventory.Forms.Reports
         {
             InitializeComponent();
         }
-        
+
         String _selectedType = "Drug";
 
         /// <summary>
@@ -74,11 +74,11 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
+            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
             {
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(lkCommodityTypes.EditValue)) ;//: itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));//: itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
                 PopulateItemList(dtItem);
             }
         }
@@ -164,8 +164,8 @@ namespace PharmInventory.Forms.Reports
             {
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem =  itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(lkCommodityTypes.EditValue));//
-               
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));//
+
                 PopulateItemList(dtItem);
                 PopulateCatTree(_selectedType);
             }
@@ -182,6 +182,7 @@ namespace PharmInventory.Forms.Reports
             if (view != null)
             {
                 DataRow dr = view.GetFocusedDataRow();
+
                 if (dr != null)
                 {
                     dtDate.Value = DateTime.Now;

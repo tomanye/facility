@@ -1,3 +1,10 @@
+USE [HumeraHSdb]
+GO
+/****** Object:  StoredProcedure [dbo].[SOHByUnit]    Script Date: 4/24/2013 9:15:30 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 ALTER PROCEDURE [dbo].[SOHByUnit] @storeid int, 
                                    @month   int, 
                                    @year    int, 
@@ -89,9 +96,8 @@ AS
                             ON vw.ID = iu.ItemID 
                      LEFT JOIN (SELECT rd.ItemID, 
                                        rd.UnitID, 
-                                       sum(rd.Quantity /ISNULL(NULLIF(QtyPerPack,0),1)) Quantity, 
-                                       sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) 
-                                       QuantityLeft 
+                                       sum(rd.Quantity) Quantity, 
+                                       sum(rd.QuantityLeft) QuantityLeft 
                                 FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
                                 WHERE  rd.StoreID = @storeid 
                                        AND ( date BETWEEN @fromdate AND @todate 
@@ -100,12 +106,12 @@ AS
                             ON rd.ItemID = vw.ID and rd.UnitID =iu.ID
                      LEFT JOIN (SELECT id.ItemID, 
                                        id.UnitID, 
-                                       sum(id.Quantity / ISNULL(NULLIF(id.QtyPerPack,0),1)) Quantity 
+                                       sum(id.Quantity) Quantity 
                                 FROM   IssueDoc id left join ReceiveDoc rd on id.RecievDocID =rd.ID
                                 WHERE  id.StoreID = @storeid  and  id.RecievDocID =rd.ID AND ( id.date BETWEEN @fromdate AND @todate) 
                                 GROUP  BY id.ItemID,id.UnitID) AS id 
                             ON id.ItemID = vw.ID  and id.UnitID =rd.UnitID
-                     LEFT JOIN (SELECT id.ItemID, id.UnitID, sum(id.Quantity / ISNULL(NULLIF(id.QtyPerPack,0),1)) Quantity 
+                     LEFT JOIN (SELECT id.ItemID, id.UnitID, sum(id.Quantity) Quantity 
                                 FROM   IssueDoc id left join ReceiveDoc rd on id.RecievDocID =rd.ID
                                 WHERE  id.StoreID = @storeid  and  id.RecievDocID =rd.ID 
                                        AND ( year(id.date) = @year 
@@ -115,7 +121,7 @@ AS
                             ON id2.ItemID = vw.ID and id2.UnitID =rd.UnitID
                      LEFT JOIN (SELECT ye.ItemID, 
                                        ye.UnitID, 
-                                       sum(PhysicalInventory / ISNULL(NULLIF(QtyPerPack,0),1)) 
+                                       sum(PhysicalInventory) 
                                        Quantity 
                                 FROM   YearEnd ye left join ItemUnit iu on ye.UnitID = iu.ID
                                 WHERE  ye.StoreID = @storeid 
@@ -125,14 +131,14 @@ AS
                             ON bb.ItemID = vw.ID and bb.UnitID =iu.ID
                      LEFT JOIN (SELECT rd.ItemID, 
                                        rd.UnitID, 
-                                       sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                                       sum(rd.QuantityLeft) Quantity 
                                 FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
                                 WHERE  StoreID = @storeid 
                                        AND ExpDate < GETDATE() 
                                 GROUP  BY rd.ItemID, 
                                           rd.UnitID) AS ed 
                             ON ed.ItemID = vw.ID 
-                     LEFT JOIN (SELECT rd.ItemID,  rd.UnitID,sum(rd.QuantityLeft / ISNULL(NULLIF(QtyPerPack,0),1)) Quantity 
+                     LEFT JOIN (SELECT rd.ItemID,  rd.UnitID,sum(rd.QuantityLeft) Quantity 
                                 FROM   ReceiveDoc rd left join ItemUnit iu on rd.UnitID = iu.ID
                                        JOIN vwGetAllItems v 
                                          ON rd.ItemID = v.ID 
@@ -142,14 +148,14 @@ AS
                                            GETDATE()) 
                                 GROUP  BY rd.ItemID,rd.UnitID) AS nEx 
                             ON nEx.ItemID = vw.ID and nEx.UnitID =rd.UnitID
-                     LEFT JOIN (SELECT Max(AmcWithDos/ISNULL(NULLIF(QtyPerPack,0),1)) AS Quantity, 
+                     LEFT JOIN (SELECT Max(AmcWithDos) AS Quantity, 
                                        ar.UnitID, 
                                        ar.ItemID 
                                 FROM   AmcReport ar left join ItemUnit iu on ar.UnitID = iu.ID
                                 WHERE  ar.StoreID = @storeid 
                                 GROUP  BY ar.ItemID ,ar.UnitID)AS amc 
                             ON amc.ItemID = vw.ID  and amc.UnitID =iu.ID
-                     LEFT JOIN (SELECT Max(DaysOutOfStock / ISNULL(NULLIF(QtyPerPack,0),1)) AS 
+                     LEFT JOIN (SELECT Max(DaysOutOfStock) AS 
                                        Quantity, 
                                        ar.UnitID, 
                                        ar.ItemID 
@@ -158,7 +164,7 @@ AS
                                 GROUP  BY ar.ItemID, ar.UnitID)AS dos 
                             ON dos.ItemID = vw.ID and dos.UnitID =iu.ID
                      LEFT JOIN (SELECT di.ItemID, 
-                                       sum(di.Quantity /ISNULL(NULLIF(di.QtyPerPack,0),1)) Quantity, 
+                                       sum(di.Quantity) Quantity, 
                                        di.UnitID 
                                 FROM   Disposal di left join ReceiveDoc rd on di.RecID =rd.ID
                                 WHERE  di.StoreID = @storeid  and  di.RecID =rd.ID
@@ -169,7 +175,7 @@ AS
                                           di.UnitID) AS loss 
                             ON loss.ItemID = vw.ID and loss.UnitID =iu.ID
                      LEFT JOIN (SELECT di.ItemID, 
-                                       sum(di.Quantity /ISNULL(NULLIF(di.QtyPerPack,0),1)) Quantity, 
+                                       sum(di.Quantity) Quantity, 
                                        di.UnitID 
                                 FROM   Disposal di left join ReceiveDoc rd on di.RecID =rd.ID
                                 WHERE  di.StoreID = @storeid and  di.RecID =rd.ID 

@@ -21,7 +21,7 @@ namespace PharmInventory.Forms.Reports
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Initialilze the form with a filter on the grid
         /// </summary>
@@ -37,6 +37,7 @@ namespace PharmInventory.Forms.Reports
         DateTime _dtCur = new DateTime();
         String _selectedType = "Drug";
         bool _isReady = false;
+        private int unitID = 0;
 
         /// <summary>
         /// Loads the form and loads the lookups and the grid
@@ -49,7 +50,7 @@ namespace PharmInventory.Forms.Reports
             var mos = ((GridView)gridItemsChoice.MainView).Columns[4];
             var min = ((GridView)gridItemsChoice.MainView).Columns[5];
             var max = ((GridView)gridItemsChoice.MainView).Columns[6];
-           
+
             //if(VisibilitySetting.HandleUnits)
             //{
             //    amc.Visible = false;
@@ -71,9 +72,9 @@ namespace PharmInventory.Forms.Reports
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
-           // lkCommodityTypes.ItemIndex = 0;
+            // lkCommodityTypes.ItemIndex = 0;
 
-            string[] arr = new string[] {"All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked"};
+            string[] arr = new string[] { "All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked" };
             cboStatus.Properties.DataSource = arr;
 
             DataTable dtMonths = new DataTable();
@@ -91,7 +92,7 @@ namespace PharmInventory.Forms.Reports
             //    currentMont -= 11;
             //}
 
-            
+
             DataTable dtyears = Items.AllYears();
             //if (year == _dtCur.Year + 1)
             //{
@@ -115,10 +116,10 @@ namespace PharmInventory.Forms.Reports
             cboIssuedTo.Properties.DataSource = drRec;
             cboIssuedTo.ItemIndex = -1;
             cboIssuedTo.Text = "Select Issue Location";
-            
+
             this._isReady = true;
 
-          PopulateGrid();
+            PopulateGrid();
 
         }
 
@@ -155,7 +156,7 @@ namespace PharmInventory.Forms.Reports
             int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
             if (!bw.IsBusy)
             {
-                bw.RunWorkerAsync(new int[] { storeId, month, year, programID,commodityType });
+                bw.RunWorkerAsync(new int[] { storeId, month, year, programID, commodityType });
             }
         }
 
@@ -196,7 +197,7 @@ namespace PharmInventory.Forms.Reports
                 isStock = "[EverReceived] != '0' AND ";
             else
                 isStock = "";
-            
+
             switch (value.Substring(0, 1))
             {
                 case "S":
@@ -211,7 +212,7 @@ namespace PharmInventory.Forms.Reports
                     //toolStripButtonAddItems.Enabled = false;
                     break;
                 case "P":
-                    gridItemChoiceView.ActiveFilterString =  isStock;
+                    gridItemChoiceView.ActiveFilterString = isStock;
                     // toolStripButtonAddItems.Enabled = false;
                     break;
             }
@@ -232,7 +233,7 @@ namespace PharmInventory.Forms.Reports
             cboStores.ItemIndex = 0;
             PopulateGrid();
         }
-        
+
         /// <summary>
         /// Update the form based on the store selected.
         /// </summary>
@@ -250,7 +251,7 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void cboStatus_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboStatus.EditValue == null) 
+            if (cboStatus.EditValue == null)
                 return;
 
             if (cboStatus.EditValue.ToString() != "All")
@@ -294,9 +295,9 @@ namespace PharmInventory.Forms.Reports
             //{
             //    currentMont += 2;
             //}
-            
+
             //string[] mon = { "Hamle", "Nehase", "Meskerem", "Tikemt", "Hedar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miziya", "Genbot", "Sene" };
-            
+
             int[] val = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             string[] mon = { "Meskerem", "Tikemt", "Hedar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miziya", "Genbot", "Sene", "Hamle", "Nehase" };
             int i; //currentMont;
@@ -321,10 +322,10 @@ namespace PharmInventory.Forms.Reports
                 object[] obj = { val[j], mon[j] };
                 dtMonths.Rows.Add(obj);
             }
-            
+
             cboMonth.Properties.DataSource = dtMonths;
-            
-            if(Convert.ToInt32(cboYear.EditValue) != currentYear)
+
+            if (Convert.ToInt32(cboYear.EditValue) != currentYear)
             {
                 cboMonth.ItemIndex = 0;
             }
@@ -332,7 +333,7 @@ namespace PharmInventory.Forms.Reports
             {
                 cboMonth.ItemIndex = j;
             }
-            
+
             //cboMonth_SelectedValueChanged(null, null);
             PopulateGrid();
         }
@@ -390,7 +391,7 @@ namespace PharmInventory.Forms.Reports
         {
             PopulateGrid();
         }
-        
+
         private void cboIssuedTo_SelectedValueChanged(object sender, EventArgs e)
         {
             //if (cboIssuedTo.SelectedValue != null)
@@ -427,7 +428,6 @@ namespace PharmInventory.Forms.Reports
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
             if (dr == null)
                 return;
-
             int itemId = Convert.ToInt32(dr["ID"]);
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
@@ -436,13 +436,31 @@ namespace PharmInventory.Forms.Reports
             int month = Convert.ToInt32(cboMonth.EditValue);
             //int year = (month < 11) ? Convert.ToInt32(cboYear.EditValue) : Convert.ToInt32(cboYear.EditValue);
             int year = Convert.ToInt32(cboYear.EditValue);
-            EthiopianDate.EthiopianDate ethioDate=new EthiopianDate.EthiopianDate(year,month,30);
-            
-            //ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-            ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);//ethioDate.FiscalYear
-            con.ShowDialog();
+            var ethioDate = new EthiopianDate.EthiopianDate(year, month, 30);
+
+            if (VisibilitySetting.HandleUnits == 2)
+            {
+                unitID = Convert.ToInt32(dr["UnitID"]);
+                var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
+                con1.ShowDialog();
+            }
+            else if (VisibilitySetting.HandleUnits == 3)
+            {
+                unitID = Convert.ToInt32(dr["UnitID"]);
+                var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
+                con1.ShowDialog();
+            }
+
+            else
+            {
+
+                //ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                //ethioDate.FiscalYear
+                con.ShowDialog();
+            }
         }
-        
+
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
@@ -460,9 +478,9 @@ namespace PharmInventory.Forms.Reports
         {
             Balance bal = new Balance();
 
-            int[] arr = (int [])e.Argument;
+            int[] arr = (int[])e.Argument;
 
-            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3], commodityTypeID=arr[4];
+            int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[4];
 
             //if (year == EthiopianDate.EthiopianDate.Now.Year + 1)
             //{
@@ -480,14 +498,14 @@ namespace PharmInventory.Forms.Reports
                     break;
                 case 2:
                     {
-                        var dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID, commodityTypeID,
+                        var dtBal = bal.BalanceOfAllItemsUsingUnit(storeId, year, month, _selectedType, programID, commodityTypeID,
                                                           _dtCur, bw);
                         e.Result = dtBal;
                     }
                     break;
                 case 3:
                     {
-                        var dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID, commodityTypeID,
+                        var dtBal = bal.BalanceOfAllItemsUsingUnit(storeId, year, month, _selectedType, programID, commodityTypeID,
                                                           _dtCur, bw);
                         e.Result = dtBal;
                     }
@@ -508,7 +526,7 @@ namespace PharmInventory.Forms.Reports
                 gridItemChoiceView.ActiveFilterString =
                     string.Format("[EverReceived] != '0' or SOH != '0' or AMC != '0'");
             else
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}",Convert.ToInt32(lkCommodityTypes.EditValue));
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
         }
 
         /// <summary>
@@ -518,14 +536,14 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void btnExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDlg = new SaveFileDialog {Filter = "Microsoft Excel | *.xls"};
+            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel | *.xls" };
 
             if (DialogResult.OK == saveDlg.ShowDialog())
             {
                 gridItemsChoice.MainView.ExportToXls(saveDlg.FileName);
             }
         }
-        
+
         /// <summary>
         /// Shows a print preview of the grid content
         /// </summary>

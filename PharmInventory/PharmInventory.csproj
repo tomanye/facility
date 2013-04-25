@@ -746,6 +746,8 @@
     <Content Include="Scripts\77_AlterTransfer.sql" />
     <Content Include="Scripts\78_AlterTransferInsert.sql" />
     <Content Include="Scripts\79_AlterSOHByUnit.sql" />
+    <Content Include="Scripts\80_AlterBalanceTable.sql" />
+    <Content Include="Scripts\81_Rpt_BinCardByUnit.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

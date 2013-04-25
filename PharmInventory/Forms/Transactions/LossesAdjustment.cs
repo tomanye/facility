@@ -42,7 +42,7 @@ namespace PharmInventory
         {
             var UnitColumn = ((GridView)AdjustmentGrid.MainView).Columns[10];
             var UnitColumn1 = ((GridView)gridItemsChoice.MainView).Columns[4];
-         
+
             switch (VisibilitySetting.HandleUnits)
             {
                 case 2:
@@ -61,12 +61,12 @@ namespace PharmInventory
 
             var stor = new Stores();
             stor.GetActiveStores();
-               
+
             cboStores.Properties.DataSource = stor.DefaultView;
             lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
 
             var unit = new ItemUnit();
-            var allunits=unit.GetAllUnits();
+            var allunits = unit.GetAllUnits();
             unitsbindingSource.DataSource = allunits.DefaultView;
 
             var disRes = new DisposalReasons();
@@ -75,7 +75,7 @@ namespace PharmInventory
             //ReasonLookup.DataSource = disRes.DefaultView;
             //ReasonLookup.DisplayMember = "Reason";
             //ReasonLookup.ValueMember = "ID";
-                
+
             lkCategories.ItemIndex = 0;
             cboStores.ItemIndex = 0;
             dtAdjustDate.Value = DateTime.Now;
@@ -99,9 +99,9 @@ namespace PharmInventory
             }
             catch
             {
-                
+
             }
-           
+
             //string today = DateTime.Now.ToString("M/dd/yyyy");
             //if (ckExpired.Checked)
             //    gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
@@ -118,14 +118,14 @@ namespace PharmInventory
                     String.Format("[FullItemName] Like '{0}%' AND [ExpiryDate] < '{1}'",
                                   txtItemName.Text, DateTime.Now.ToShortDateString());
                 gridItemChoiceView.RefreshData();
-               
+
             }
             else if (!ckExpired.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = "";
                 gridItemChoiceView.ActiveFilterString =
                     String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1} And [StoreID]={2}", txtItemName.Text,
-                                  (int) (lkCategories.EditValue ?? 0), (int) (cboStores.EditValue ?? 0));
+                                  (int)(lkCategories.EditValue ?? 0), (int)(cboStores.EditValue ?? 0));
                 gridItemChoiceView.RefreshData();
             }
 
@@ -173,8 +173,8 @@ namespace PharmInventory
             int count = 1;
             foreach (DataRow dr in dtSelectedTable.Rows)
             {
-               rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
-              
+                rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
+
                 int id = Convert.ToInt32(dr["ItemID"]);
                 double price = 0;
                 if (!rec.IsColumnNull("Cost"))
@@ -183,12 +183,40 @@ namespace PharmInventory
                 }
                 DataTable dtItm = itm.GetItemById(id);
                 string itemName = dtItm.Rows[0]["FullItemName"].ToString();
-                var obj = new object[] {};
-                obj = new object[] {id, dtItm.Rows[0]["StockCode"].ToString(), 
-                    itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
-                    rec.QuantityLeft, price, "", "", 
-                    Convert.ToInt32(dr["ReceiveID"]),
-                   0};
+                var obj = new object[] { };
+                switch (VisibilitySetting.HandleUnits)
+                {
+                    case 1:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),
+                                     itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
+                                     rec.QuantityLeft, price, "", "",
+                                     Convert.ToInt32(dr["ReceiveID"]),
+                                     0, 0
+                                 };
+                        break;
+                    case 2:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),
+                                     itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
+                                     rec.QuantityLeft, price, "", "",
+                                     Convert.ToInt32(dr["ReceiveID"]),
+                                     0, rec.UnitID
+                                 };
+                        break;
+                    default:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),
+                                     itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),
+                                     rec.QuantityLeft, price, "", "",
+                                     Convert.ToInt32(dr["ReceiveID"]),
+                                     0, rec.UnitID
+                                 };
+                        break;
+                }
                 dtRecGrid.Rows.Add(obj);
                 count++;
 
@@ -344,10 +372,10 @@ namespace PharmInventory
                                     rec.Out = true;
                                 else
                                     rec.Out = false;
-                               //  rec.UnitID = Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
-                                    rec.Save();
+                                //  rec.UnitID = Convert.ToInt32(dtAdjVal.Rows[i]["UnitID"]);
+                                rec.Save();
                                 //Log Activity, ActivityID for save is 1
-                               // logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity +" LOSS has been made.");
+                                // logger.SaveAction(1, 1, "Transaction\\LossesAdjustment.cs", "Loss/Adjustmet of " + dis.Quantity +" LOSS has been made.");
                             }
                             else
                             {
@@ -439,14 +467,14 @@ namespace PharmInventory
                 //DateTime dtCurrent = ConvertDate.DateConverter(dtAdjustDate.Text);
                 //Items itm = new Items();
                 ////DataTable dtItem = ((selectedType == "Drug")?itm.GetItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue),dtCurrent.Year): itm.GetCommoditiesReceivedByBatch(Convert.ToInt32(cboStores.EditValue)));
-                
+
                 BLL.ReceiveDoc rDoc = new ReceiveDoc();
-                DataTable dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),(int)lkCategories.EditValue);  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
+                DataTable dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue), (int)lkCategories.EditValue);  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
                 PopulateItemList(dtItem);
             }
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
-          // lkCategories_EditValueChanged(null, null);
+            // lkCategories_EditValueChanged(null, null);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -462,16 +490,16 @@ namespace PharmInventory
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1} ", DateTime.Now, (int)lkCategories.EditValue);
 
             }
-            else if(!ckExpired.Checked)
+            else if (!ckExpired.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = "";
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
                 gridItemChoiceView.RefreshData();
             }
-            
-            
-       }
-        
+
+
+        }
+
 
 
         //private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
@@ -606,7 +634,7 @@ namespace PharmInventory
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
             }
-           
+
         }
 
 
@@ -623,13 +651,6 @@ namespace PharmInventory
             edit.Properties.DisplayMember = "Text";
             edit.Properties.ValueMember = "ID";
         }
-
-        
-
-       
-
-
-        
 
     }
 }

@@ -59,14 +59,14 @@ namespace PharmInventory.Forms.Reports
             dtCur = ConvertDate.DateConverter(dtDate.Text);
             int currentMont = dtCur.Month;
             int year = ((currentMont < 11) ? dtCur.Year : dtCur.Year + 1);
-           // this is just a try
+            // this is just a try
             if (currentMont >= 11)
             {
                 currentMont -= 11;
             }
 
 
-            
+
             DataTable dtyears = Items.AllYears();
 
             cboYear.Properties.DataSource = dtyears;
@@ -90,7 +90,7 @@ namespace PharmInventory.Forms.Reports
             IsReady = true;
             PopulateGrid();
         }
-       
+
 
         private void PopulateGrid()
         {
@@ -118,7 +118,7 @@ namespace PharmInventory.Forms.Reports
                     int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
                     if (!bw.IsBusy)
                     {
-                        bw.RunWorkerAsync(new int[] { storeId, month, year, programID,commodityType });
+                        bw.RunWorkerAsync(new int[] { storeId, month, year, programID, commodityType });
                     }
                 }
             }
@@ -146,7 +146,7 @@ namespace PharmInventory.Forms.Reports
             catID = categoryId;
             gridItemChoiceView.ClearSelection();
             gridItemChoiceView.SelectRow(0);
-           
+
         }
 
         private void cboMonth_SelectedValueChanged(object sender, EventArgs e)
@@ -156,7 +156,7 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-      
+
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -172,7 +172,7 @@ namespace PharmInventory.Forms.Reports
                     if (cboStatus.EditValue.ToString() == "Stock Out")
                     {
                         gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
-                       // gridItemChoiceView.Columns[14].Visible = true;
+                        // gridItemChoiceView.Columns[14].Visible = true;
                     }
                     else
                     {
@@ -200,13 +200,15 @@ namespace PharmInventory.Forms.Reports
             {
                 currentYear++;
                 currentMont -= 10;
-            }else{
+            }
+            else
+            {
                 currentMont += 2;
             }
             int[] val = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
             string[] mon = { "Hamle", "Nehase", "Meskerem", "Tikemt", "Hedar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miziya", "Genbot", "Sene" };
             int i = 0; //currentMont;
-            if (Convert.ToInt32(cboYear.EditValue) == currentYear )
+            if (Convert.ToInt32(cboYear.EditValue) == currentYear)
             {
                 for (i = 0; i < val.Length; i++)
                 {
@@ -231,7 +233,7 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-       
+
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
@@ -256,7 +258,7 @@ namespace PharmInventory.Forms.Reports
             //}
         }
 
-     
+
 
         private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -265,7 +267,7 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-       
+
 
         private void gridItemsChoice_DoubleClick(object sender, EventArgs e)
         {
@@ -295,15 +297,29 @@ namespace PharmInventory.Forms.Reports
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            Balance bal = new Balance();
-            DataTable dtBal = new DataTable();
+            var bal = new Balance();
+            var dtBal = new DataTable();
 
-            int[] arr = (int [])e.Argument;
+            int[] arr = (int[])e.Argument;
 
-            int storeId = arr[0], month=arr[1], year= arr[2], programID=arr[3],commodityTypeID = arr[4];
+            int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[4];
 
-            dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID,commodityTypeID,dtCur, bw);
-            e.Result = dtBal;
+            if (VisibilitySetting.HandleUnits == 1)
+            {
+                dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                e.Result = dtBal;
+            }
+            else if (VisibilitySetting.HandleUnits == 2)
+            {
+                dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                e.Result = dtBal;
+            }
+            else
+            {
+                dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                e.Result = dtBal;
+            }
+            //  e.Result = dtBal;
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -316,7 +332,7 @@ namespace PharmInventory.Forms.Reports
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-          
+
         }
 
 

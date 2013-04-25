@@ -13,14 +13,14 @@ namespace BLL
     /// <summary>
     /// A proxy class to deal with any Item balance related functionality
     /// </summary>
-	public class Balance : _Balance
-	{
-		public Balance()
-		{
-		
-		}
+    public class Balance : _Balance
+    {
+        public Balance()
+        {
 
-        public DataTable GetBalance(int itemId,int storeId, int month, int year)
+        }
+
+        public DataTable GetBalance(int itemId, int storeId, int month, int year)
         {
             this.FlushData();
             this.Where.WhereClauseReset();
@@ -50,7 +50,7 @@ namespace BLL
                                             -
                                             ISNULL((select Quantity from Disposal where 
                                             ItemID={0} and StoreId={1} and Losses=1 and Date>{2}),0)
-                                            as Qty",itemID,storeID,date);
+                                            as Qty", itemID, storeID, date);
             bal.FlushData();
             bal.LoadFromRawSql(query);
             return int.Parse(bal.GetColumn("Qty").ToString());
@@ -59,24 +59,24 @@ namespace BLL
         public DataTable GetLastBalance(int itemId, int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT TOP(1) * FROM Balance WHERE ItemID = {0} AND StoreId= {1} ORDER BY Year DESC, Month DESC",itemId,storeId));
+            this.LoadFromRawSql(String.Format("SELECT TOP(1) * FROM Balance WHERE ItemID = {0} AND StoreId= {1} ORDER BY Year DESC, Month DESC", itemId, storeId));
             return this.DataTable;
         }
 
         public DataTable GetCurrentSOHAsOfDate(int itemId, int storeId, DateTime date)
         {
-            
+
             this.FlushData();
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@month", date.Month);
             ld.Add("@year", date.Year);
-            ld.Add("@days", DateTime.DaysInMonth(date.Year,date.Month));
-            
+            ld.Add("@days", DateTime.DaysInMonth(date.Year, date.Month));
+
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
-                
+
         /// <summary>
         /// Makes sure that every quantity in the Loss/Adjustment table is entered as positive.
         /// The Losses are entered with positive quantity and with the Losses bit set to 1.
@@ -109,7 +109,7 @@ namespace BLL
         /// <param name="month"></param>
         /// <param name="year"></param>
         /// <returns></returns>
-        public Int64 CalculateAMC(int itemId, int storeId, int month,int year)
+        public Int64 CalculateAMC(int itemId, int storeId, int month, int year)
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
@@ -118,9 +118,9 @@ namespace BLL
             IssueDoc iss = new IssueDoc();
             int yr = year;// (month > 10) ? year - 1 : year;
 
-            DateTime dt1 = new DateTime(yr,month,DateTime.DaysInMonth(yr,month));
+            DateTime dt1 = new DateTime(yr, month, DateTime.DaysInMonth(yr, month));
             DateTime dt2 = dt1.AddMonths(-range);
-            range = iss.GetAvailableNoOfMonths(itemId, storeId, dt2, dt1);     
+            range = iss.GetAvailableNoOfMonths(itemId, storeId, dt2, dt1);
             cons = iss.GetIssuedQuantityByDateRange(itemId, storeId, dt2, dt1);
             Int64 AMC = cons / range;
             return AMC;
@@ -168,11 +168,11 @@ namespace BLL
             Disposal dis = new Disposal();
             YearEnd yEnd = new YearEnd();
 
-            int month = (mon > 2)? mon -2 : ((mon ==1 )?11:12);
+            int month = (mon > 2) ? mon - 2 : ((mon == 1) ? 11 : 12);
             int year = (mon > 2) ? yr : yr - 1;
             Int64 cons = 0;
-            cons = ( rec.GetReceivedQuantityTillMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityTillMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityTillMonth(itemId, storeId, month, year) - dis.GetLossesQuantityTillMonth(itemId, storeId, month, year));
-            
+            cons = (rec.GetReceivedQuantityTillMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityTillMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityTillMonth(itemId, storeId, month, year) - dis.GetLossesQuantityTillMonth(itemId, storeId, month, year));
+
             return cons;
         }
 
@@ -220,7 +220,7 @@ namespace BLL
             //int month = (mon > 2) ? mon - 2 : ((mon == 1) ? 11 : 12);
             //int year = (mon > 2) ? yr : yr - 1;
             double cons = 0;
-            cons = (yEnd.GetBBalanceAmount(year, storeId, itemId,month) + rec.GetReceivedAmount(itemId, storeId, year) + dis.GetAdjustedAmount(itemId, storeId, year) - iss.GetIssuedAmount(itemId, storeId, year) - dis.GetLossesAmount(itemId, storeId, year));
+            cons = (yEnd.GetBBalanceAmount(year, storeId, itemId, month) + rec.GetReceivedAmount(itemId, storeId, year) + dis.GetAdjustedAmount(itemId, storeId, year) - iss.GetIssuedAmount(itemId, storeId, year) - dis.GetLossesAmount(itemId, storeId, year));
             this.FlushData();
             // this.LoadFromRawSql(String.Format("SELECT SUM(QuantityLeft) AS Quantity FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1} AND ((Month(Date) <= {2} AND Year(Date) = {3}) OR (Month(Date) > 10 AND Year(Date) = {4})))", itemId, storeId, month, year, year - 1));
 
@@ -252,7 +252,7 @@ namespace BLL
             //int month = (mon > 2) ? mon - 2 : ((mon == 1) ? 11 : 12);
             //int year = (mon > 2) ? yr : yr - 1;
             Int64 cons = 0;
-            cons = ( rec.GetReceivedQuantityPastMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityPastMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityPastMonth(itemId, storeId, month, year) - dis.GetLossesQuantityPastMonth(itemId, storeId, month, year));
+            cons = (rec.GetReceivedQuantityPastMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityPastMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityPastMonth(itemId, storeId, month, year) - dis.GetLossesQuantityPastMonth(itemId, storeId, month, year));
             this.FlushData();
             // this.LoadFromRawSql(String.Format("SELECT SUM(QuantityLeft) AS Quantity FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1} AND ((Month(Date) <= {2} AND Year(Date) = {3}) OR (Month(Date) > 10 AND Year(Date) = {4})))", itemId, storeId, month, year, year - 1));
 
@@ -271,18 +271,18 @@ namespace BLL
             //int month = (mon > 2) ? mon - 2 : ((mon == 1) ? 11 : 12);
             //int year = (mon > 2) ? yr : yr - 1;
             Int64 cons = 0;
-            cons = (this.GetSOH(itemId,storeId,month -1,year) + rec.GetReceivedQuantityPerMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityPerMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityPerMonth(itemId, storeId, month, year) - dis.GetLossesQuantityPerMonth(itemId, storeId, month, year));
-            
+            cons = (this.GetSOH(itemId, storeId, month - 1, year) + rec.GetReceivedQuantityPerMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityPerMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityPerMonth(itemId, storeId, month, year) - dis.GetLossesQuantityPerMonth(itemId, storeId, month, year));
+
             return cons;
         }
 
-        public int CountStockIn(int storeId,int month,int year)
+        public int CountStockIn(int storeId, int month, int year)
         {
 
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Normal"
-                               select m).AsDataView().Count;
+                         where m["Status"].ToString() == "Normal"
+                         select m).AsDataView().Count;
             return items;
         }
 
@@ -301,11 +301,11 @@ namespace BLL
             {
                 count += (from DataRow dr in dtItem.Rows
                           let AMC = bal.CalculateAMCAll(Convert.ToInt32(dr["ID"]), month, year)
-                          let MinCon = AMC*min
-                          let maxCon = AMC*max
-                          let eopCon = AMC*(eop + 0.25)
+                          let MinCon = AMC * min
+                          let maxCon = AMC * max
+                          let eopCon = AMC * (eop + 0.25)
                           let SOH = bal.GetSOHAll(Convert.ToInt32(dr["ID"]), month, year)
-                          let MOS = (AMC != 0) ? (SOH/AMC) : 0
+                          let MOS = (AMC != 0) ? (SOH / AMC) : 0
                           let reorder = (maxCon > SOH) ? maxCon - SOH : 0
                           where SOH > eopCon && (SOH <= MinCon)
                           select MinCon).Count();
@@ -314,11 +314,11 @@ namespace BLL
             {
                 count += (from DataRow dr in dtItem.Rows
                           let AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, year)
-                          let MinCon = AMC*min
-                          let maxCon = AMC*max
-                          let eopCon = AMC*(eop + 0.25)
+                          let MinCon = AMC * min
+                          let maxCon = AMC * max
+                          let eopCon = AMC * (eop + 0.25)
                           let SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year)
-                          let MOS = (AMC != 0) ? (SOH/AMC) : 0
+                          let MOS = (AMC != 0) ? (SOH / AMC) : 0
                           let reorder = (maxCon > SOH) ? maxCon - SOH : 0
                           where SOH > eopCon && (SOH <= MinCon)
                           select MinCon).Count();
@@ -382,7 +382,7 @@ namespace BLL
             int min = pipline.Min;
             int max = pipline.Max;
             double eop = pipline.EOP;
-          
+
             Balance bal = new Balance();
             foreach (DataRow dr in dtItem.Rows)
             {
@@ -409,7 +409,7 @@ namespace BLL
             int items = (from m in this.DataTable.AsEnumerable()
                          where m["Status"].ToString() == "Near EOP"
                          select m).AsDataView().Count;
-            return items;            
+            return items;
         }
 
         public int CountBelowEOP(int storeId, int month, int year)
@@ -419,7 +419,7 @@ namespace BLL
                          where m["Status"].ToString() == "Below EOP"
                          select m).AsDataView().Count;
             return items;
-          
+
         }
 
         public DataTable GetNearEOP(int storeId, int month, int year)
@@ -445,10 +445,10 @@ namespace BLL
         {
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Stock Out" //&& (Convert.ToInt32(m["SOH"]) > 0 || Convert.ToInt32(m["AMC"]) > 0)
-                               select m).AsDataView().Count;
+                         where m["Status"].ToString() == "Stock Out" //&& (Convert.ToInt32(m["SOH"]) > 0 || Convert.ToInt32(m["AMC"]) > 0)
+                         select m).AsDataView().Count;
             return items;
-         
+
         }
 
         public DataTable GetStockOut(int storeId, int month, int year)
@@ -458,7 +458,7 @@ namespace BLL
                                where m["Status"].ToString() == "Stock Out"
                                select m).CopyToDataTable();
             return items;
-            
+
         }
 
         public DataTable GetReceivedStockOut(int storeId, int month, int year)
@@ -468,18 +468,18 @@ namespace BLL
                                where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["Received"]) > 0
                                select m).CopyToDataTable();
             return items;
-          
+
         }
 
         public int CountOverStock(int storeId, int month, int year)
         {
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Over Stocked"
-                               select m).AsDataView().Count;
+                         where m["Status"].ToString() == "Over Stocked"
+                         select m).AsDataView().Count;
             return items;
 
-            
+
         }
 
         public DataTable GetOverStock(int storeId, int month, int year)
@@ -489,17 +489,17 @@ namespace BLL
                                where m["Status"].ToString() == "Over Stocked"
                                select m).CopyToDataTable();
             return items;
-           
+
         }
 
         public int CountFreeItemsStockOut(int storeId, int month, int year)
         {
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Stock Out" && (Convert.ToInt32(m["AMC"]) > 0 || Convert.ToInt32(m["SOH"]) > 0) 
-                               select m).AsDataView().Count;
+                         where m["Status"].ToString() == "Stock Out" && (Convert.ToInt32(m["AMC"]) > 0 || Convert.ToInt32(m["SOH"]) > 0)
+                         select m).AsDataView().Count;
             return items;
-          
+
         }
 
         public DataTable GetFreeItemsStockOut(int storeId, int month, int year)
@@ -507,10 +507,10 @@ namespace BLL
 
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                         where m["Status"].ToString() == "Stock Out"
-                         select m).CopyToDataTable();
+                               where m["Status"].ToString() == "Stock Out"
+                               select m).CopyToDataTable();
             return items;
-           
+
         }
 
         public int CountVitalItemsStockOut(int storeId, int month, int year)
@@ -580,7 +580,7 @@ namespace BLL
             int min = pipline.Min;
             int max = pipline.Max;
             double eop = pipline.EOP;
-           
+
             DataTable dt = new DataTable();
             string[] cols = { "ID", "FullItemName", "DosageForm", "Strength", "Unit", "StockCode" };
             foreach (string st in cols)
@@ -597,7 +597,7 @@ namespace BLL
                 Int64 SOH = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
                 decimal MOS = (AMC != 0) ? (SOH / AMC) : 0;
                 Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
-                
+
                 if (SOH == 0)
                 {
                     object[] obb = { dr["ID"], dr["ItemName"], dr["DosageForm"], dr["Strength"], dr["Unit"], dr["StockCode"] };
@@ -625,7 +625,7 @@ namespace BLL
             int min = pipline.Min;
             int max = pipline.Max;
             double eop = pipline.EOP;
-           
+
             Balance bal = new Balance();
             foreach (DataRow dr in dtItem.Rows)
             {
@@ -679,28 +679,28 @@ namespace BLL
             //yr = (month > 10) ? year : year  + 1 ;
             //Int64 lastIss = iss.GetDUIssueByMonth(itemId, receivingUnit, month, yr);
             Int64 lastIss = iss.GetDULastIssueQty(itemId, receivingUnit);
-           // lastIss = ((lastIss > 0)? (lastIss - LastSOH) : lastIss );
+            // lastIss = ((lastIss > 0)? (lastIss - LastSOH) : lastIss );
             cons = cons + lastIss - LastSOH;
             //cons = cons - LastSOH;
-            cons = ((cons > 0)?cons: 0);
+            cons = ((cons > 0) ? cons : 0);
             Int64 AMC = cons / range;
             return AMC;
         }
 
-        public Int64 GetDUSOH(int itemID, int receivingUnit,int month,int year)
+        public Int64 GetDUSOH(int itemID, int receivingUnit, int month, int year)
         {
             Int64 quantity = 0;
-            int yr = ((month > 10)?year:year+1);
+            int yr = ((month > 10) ? year : year + 1);
             IssueDoc iss = new IssueDoc();
-            quantity = iss.GetDUSOHByMonth(itemID,receivingUnit,month,yr);
+            quantity = iss.GetDUSOHByMonth(itemID, receivingUnit, month, yr);
             return quantity;
         }
 
-        public DataTable CostBalanceByYear(int storeId, int year,int month, BackgroundWorker bw)
+        public DataTable CostBalanceByYear(int storeId, int year, int month, BackgroundWorker bw)
         {
             DataTable dtBal = new DataTable();
             GeneralInfo pipline = new GeneralInfo();
-         
+
             // Dont Iterate
             DataTable dtbl = new DataTable();
             dtbl = GetSOH(storeId, month, year);
@@ -728,48 +728,48 @@ namespace BLL
             DataTable dtbl = new DataTable();
             //if (programID == 0) //We don't filter by program ID.
             //{
-                System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
-                ld.Add("@storeid", storeId);
-                ld.Add("@year", year);
+            System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
+            ld.Add("@storeid", storeId);
+            ld.Add("@year", year);
 
-                ////this.LoadFromSqlNoExec("SOH", ld);
-                this.LoadFromSql("GetConsumptionTrendByMonth", ld, CommandType.StoredProcedure);
-                return this.DataTable;
+            ////this.LoadFromSqlNoExec("SOH", ld);
+            this.LoadFromSql("GetConsumptionTrendByMonth", ld, CommandType.StoredProcedure);
+            return this.DataTable;
             //}
             //else //We filter by program ID.
             //{
             //    dtbl = GetSOHByPrograms(storeId, programID, month, year);
             //}
-           // return dtbl;
+            // return dtbl;
         }
 
 
-        public DataTable BalanceOfAllItems(int storeId, int year, int month,string selectedType,int programID,int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
+        public DataTable BalanceOfAllItems(int storeId, int year, int month, string selectedType, int programID, int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
         {
             var dtBal = new DataTable();
             var pipline = new GeneralInfo();
-            
+
             // Dont Iterate
-            var dtbl=new DataTable();
+            var dtbl = new DataTable();
             if (programID == 0) //We don't filter by program ID.
             {
                 dtbl = GetSOH(storeId, month, year);
             }
             else //We filter by program ID.
             {
-              //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
-                dtbl = GetSOHByPrograms(storeId,programID, month, year);
-            }           
-            
-            
-            dtbl.Columns.Add("MOS",typeof(float));
+                //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
+                dtbl = GetSOHByPrograms(storeId, programID, month, year);
+            }
+
+
+            dtbl.Columns.Add("MOS", typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
-           // dtbl.Columns.Add("DaysStockedOut", typeof(int));
+            // dtbl.Columns.Add("DaysStockedOut", typeof(int));
             //dtbl.Columns.Add("amc", typeof(double));
             int amc;
             foreach (DataRow dr in dtbl.Rows)
             {
-               amc = Convert.ToInt32(dr["AMC"]);
+                amc = Convert.ToInt32(dr["AMC"]);
                 if (amc > 0)
                 {
                     dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
@@ -779,13 +779,13 @@ namespace BLL
                     dr["MOS"] = 0;
                 }
                 // 
-                int reorder =  Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
+                int reorder = Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
-               
+
             }
             return dtbl;
 
-          }
+        }
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
@@ -813,12 +813,12 @@ namespace BLL
             }
             return 0;
         }
-        public Int64 GetSOHByUnit(int itemID, int storeId, int month, int year)
+        public Int64 GetSOHByUnit(int itemID, int storeId, int month, int year, int unitID)
         {
             GetSOHByUnit(storeId, month, year);
             while (!this.EOF)
             {
-                if (this.ID == itemID)
+                if (this.ID == itemID && this.UnitID == unitID)
                 {
                     return this.SOH;
                 }
@@ -839,22 +839,44 @@ namespace BLL
             this.LoadFromSql("SOHByUnit", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
-            
+
         public DataTable GetBinCard(int storeID, int itemID, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@StoreID", storeID);
             ld.Add("@ItemID", itemID);
             ld.Add("@Year", year);
-            
+
             LoadFromSql("rpt_Bincard", ld, CommandType.StoredProcedure);
             //return this.DataTable;
             // Set the balance  
-            int balance = (int)GetBeginningBalance(year,itemID,storeID);
+            int balance = (int)GetBeginningBalance(year, itemID, storeID);
             while (!EOF)
             {
                 balance += Convert.ToInt32(GetColumn("Balance"));
-                SetColumn("Balance",balance);
+                SetColumn("Balance", balance);
+                MoveNext();
+            }
+
+            return this.DataTable;
+        }
+
+        public DataTable GetBinCard2(int storeID, int itemID, int year, int unitID)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary();
+            ld.Add("@StoreID", storeID);
+            ld.Add("@ItemID", itemID);
+            ld.Add("@Year", year);
+            ld.Add("@UnitID", unitID);
+
+            LoadFromSql("rpt_BincardByUnit", ld, CommandType.StoredProcedure);
+            //return this.DataTable;
+            // Set the balance  
+            int balance = (int)GetBeginningBalance(year, itemID, storeID);
+            while (!EOF)
+            {
+                balance += Convert.ToInt32(GetColumn("Balance"));
+                SetColumn("Balance", balance);
                 MoveNext();
             }
 
@@ -881,11 +903,11 @@ namespace BLL
         {
             GeneralInfo pipline = new GeneralInfo();
             pipline.LoadAll();
-            
+
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@date1", dt);
-            
+
             ld.Add("@amcrange", pipline.AMCRange);
             ld.Add("@min", pipline.Min);
             ld.Add("@max", pipline.Max);
@@ -897,7 +919,7 @@ namespace BLL
         }
 
 
-        public DataTable OverStockedItems (int storeId, int year, int month, string selectedType, BackgroundWorker bw)
+        public DataTable OverStockedItems(int storeId, int year, int month, string selectedType, BackgroundWorker bw)
         {
             DataTable dtBal = new DataTable();
             GeneralInfo pipline = new GeneralInfo();
@@ -905,7 +927,7 @@ namespace BLL
             Balance bal = new Balance();
             IssueDoc iss = new IssueDoc();
             ReceiveDoc rec = new ReceiveDoc();
-            string[] str = { "FullItemName", "SOH", "AMC", "MOS", "Min", "Max","ExcessQty","ExcessAmount", "CategoryId", "SubCategoryID", "ID" };
+            string[] str = { "FullItemName", "SOH", "AMC", "MOS", "Min", "Max", "ExcessQty", "ExcessAmount", "CategoryId", "SubCategoryID", "ID" };
             foreach (string s in str)
             {
                 dtBal.Columns.Add(s);
@@ -916,11 +938,11 @@ namespace BLL
             double eop = pipline.EOP;
             DataTable dtItem = new DataTable();
 
-                dtItem = ((selectedType == "Drug") ? itm.GetAllItems(1) : itm.GetAllSupply());
-                int i = 1;
+            dtItem = ((selectedType == "Drug") ? itm.GetAllItems(1) : itm.GetAllSupply());
+            int i = 1;
             foreach (DataRow dr in dtItem.Rows)
             {
-                
+
                 string itemName = dr["FullItemName"].ToString();
                 int yer = (month < 11) ? year : year - 1;
                 Int64 AMC = bal.CalculateAMC(Convert.ToInt32(dr["ID"]), storeId, month, yer);
@@ -957,7 +979,7 @@ namespace BLL
             {
                 if (i > 0)
                 {
-                    dtResult.Columns.Add(s,typeof(double));
+                    dtResult.Columns.Add(s, typeof(double));
                 }
                 else
                 {
@@ -970,7 +992,7 @@ namespace BLL
             {
                 string itemName = dr["FullItemName"].ToString();// +" - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
                 int itemId = Convert.ToInt32(dr["ID"]);
-                Int64 bb = yEnd.GetBBalance(year, storeId, itemId, month);                
+                Int64 bb = yEnd.GetBBalance(year, storeId, itemId, month);
                 double bbAmount = yEnd.GetBBalanceAmount(year, storeId, itemId, month);
                 Int64 recQuant = rec.GetReceivedQuantityTillMonth(itemId, storeId, month, year);
                 double recPrice = rec.GetReceivedAmountTillMonth(itemId, storeId, month, year);
@@ -986,7 +1008,7 @@ namespace BLL
                 {
                     ;
                 }
-                
+
                 int Isrec = ((bb == 0 && recQuant == 0) ? 0 : 1);
                 object[] obj = { itemName, bb, bbAmount, recQuant, recPrice, issuedQuant, issPrice, lossQuant, lossAmount, adjQuant, adjAmount, SOH, SOHAmount, Isrec, itemId, Convert.ToInt32(dr["CategoryId"]), Convert.ToInt32(dr["SubCategoryID"]) };
                 dtResult.Rows.Add(obj);
@@ -1032,7 +1054,7 @@ namespace BLL
             //            dt2 = new DateTime(year, 10, 30);
             //         break;
             //    }
-           
+
             //string[] col = { "FullItemName", "ReceivedQty", "ReceivedAmount", "IssuedQty", "IssuedAmount", "Received", "ID", "CategoryId", "SubCategoryID" };
 
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
@@ -1074,7 +1096,7 @@ namespace BLL
         }
 
         //SupplyListToIssue
-        public DataTable ItemListToIssue(int storeId, DateTime dtCurrent,string selectedType)
+        public DataTable ItemListToIssue(int storeId, DateTime dtCurrent, string selectedType)
         {
             GeneralInfo pipline = new GeneralInfo();
             DataTable dtList = new DataTable();
@@ -1088,13 +1110,13 @@ namespace BLL
             int min = pipline.Min;
             int max = pipline.Max;
             double eop = pipline.EOP;
-           // int storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
+            // int storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
 
-            
+
             int count = 1;
             Balance bal = new Balance();
             Items itmB = new Items();
-            DataTable dtItem = ((selectedType == "Drug")? itmB.GetAllItems(1) : itmB.GetAllSupply());
+            DataTable dtItem = ((selectedType == "Drug") ? itmB.GetAllItems(1) : itmB.GetAllSupply());
             int curYear = dtCurrent.Year;
             int curMonth = dtCurrent.Month;
             foreach (DataRow dr in dtItem.Rows)
@@ -1109,7 +1131,7 @@ namespace BLL
                 string status = (soh <= eopCon && soh > beloweopCon) ? "Near EOP" : ((soh > 0 && soh <= beloweopCon) ? "Below EOP" : ((soh > maxCon && maxCon != 0) ? "Excess Stock" : ((soh <= 0) ? "Stock Out" : "Normal")));//((SOH > beloweopCon && SOH <= MinCon) ? "Below Min" : ((SOH > maxCon && maxCon != 0) ? "Excess Stock" : ((SOH <= 0) ? "Stock Out" : "Normal"));
                 string itemName = dr["FullItemName"].ToString();
                 Int64 expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dr["ID"]), storeId);
-                object[] obj = { count.ToString(), dr["StockCode"].ToString(), itemName, dr["Unit"].ToString(), soh, AMC, expAmount ,Convert.ToInt32(dr["CategoryId"]), Convert.ToInt32(dr["SubCategoryID"]), Convert.ToInt32(dr["ID"]),status,DBNull.Value };
+                object[] obj = { count.ToString(), dr["StockCode"].ToString(), itemName, dr["Unit"].ToString(), soh, AMC, expAmount, Convert.ToInt32(dr["CategoryId"]), Convert.ToInt32(dr["SubCategoryID"]), Convert.ToInt32(dr["ID"]), status, DBNull.Value };
                 dtList.Rows.Add(obj);
                 count++;
             }
@@ -1125,8 +1147,8 @@ namespace BLL
             ld.Add("@storeid", storeId);
             ld.Add("@month", dtCurrent.Month);
             ld.Add("@year", dtCurrent.Year);
-            ld.Add("@days", DateTime.DaysInMonth(dtCurrent.Year,dtCurrent.Month));
-         
+            ld.Add("@days", DateTime.DaysInMonth(dtCurrent.Year, dtCurrent.Month));
+
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
 
             this.DataTable.Columns.Add("IsSelected", typeof(bool));
@@ -1153,7 +1175,7 @@ namespace BLL
         public long GetBeginningBalance(int year, int item, int storeID)
         {
             YearEnd yearEnd = new YearEnd();
-            yearEnd.LoadByItemIDStoreAndYear(item, storeID, year- 1,false);
+            yearEnd.LoadByItemIDStoreAndYear(item, storeID, year - 1, false);
             if (yearEnd.RowCount > 0)
             {
                 return yearEnd.PhysicalInventory;

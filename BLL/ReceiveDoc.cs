@@ -10,12 +10,12 @@ namespace BLL
     /// <summary>
     /// This class is a proxy to access all the recieve documens
     /// </summary>
-	public class ReceiveDoc : _ReceiveDoc
-	{
-		public ReceiveDoc()
-		{
-		
-		}
+    public class ReceiveDoc : _ReceiveDoc
+    {
+        public ReceiveDoc()
+        {
+
+        }
 
         /// <summary>
         ///  Loads all the batchs that didn't yet get issued
@@ -25,7 +25,7 @@ namespace BLL
         /// <param name="itemId">The Item that is about to be Issued</param>
         /// <param name="dt">Data of propossed Issue</param>
         /// <returns></returns>
-        public DataTable GetBatchToIssue(int storeId , int itemId , DateTime dt)
+        public DataTable GetBatchToIssue(int storeId, int itemId, DateTime dt)
         {
             FlushData();
             string query = String.Format("SELECT * FROM ReceiveDoc WHERE (ExpDate > GETDATE()) AND (ItemID = {1}) AND (Out = 0) AND (QuantityLeft != 0) AND (StoreID = {0} AND (Date <= '{2}')) ORDER BY ExpDate", storeId, itemId, dt.ToString());
@@ -116,7 +116,7 @@ namespace BLL
         /// <param name="storeId">Logical Store ID</param>
         /// <param name="receiveID">Specific Receive ID</param>
         /// <returns></returns>
-        public DataTable GetTransactionByBatchAndID(int itemId, string batchNo,int storeId,int receiveID)
+        public DataTable GetTransactionByBatchAndID(int itemId, string batchNo, int storeId, int receiveID)
         {
             this.FlushData();
             this.Where.WhereClauseReset();
@@ -150,7 +150,7 @@ namespace BLL
             //The following is added for the benefit of tree control and having parents there.
             {
                 DataRowView drv = dtbl.DefaultView.AddNew();
-                 drv["RefNo"] = drv["ID"] = (this.DataRow["Year"].ToString());
+                drv["RefNo"] = drv["ID"] = (this.DataRow["Year"].ToString());
                 this.MoveNext();
             }
             return dtbl;
@@ -185,16 +185,16 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetTransactionBySupplierId(int storeId,int supplierId)
+        public DataTable GetTransactionBySupplierId(int storeId, int supplierId)
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice, datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND SupplierID = {1} ORDER BY Date DESC", storeId, supplierId));
             return this.DataTable;
         }
 
-       
 
-        public Int64 GetReceivedQtyByDateRange(int itemId,int storeId, DateTime dt1, DateTime dt2)
+
+        public Int64 GetReceivedQtyByDateRange(int itemId, int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT Sum( Quantity ) AS Received FROM ReceiveDoc WHERE StoreId = {0} AND ItemID = {3} AND (Date BETWEEN '{1}' AND '{2}' )", storeId, dt1.ToShortDateString(), dt2.ToShortDateString(), itemId));
@@ -209,25 +209,25 @@ namespace BLL
             return ((this.DataTable.Rows[0]["Price"] != DBNull.Value) ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0);
         }
 
-        public Int64 GetReceivedQuantity(int itemId, int storeId,int year)
+        public Int64 GetReceivedQuantity(int itemId, int storeId, int year)
         {
-            
+
             this.FlushData();
             string query = String.Format("SELECT SUM(Quantity) AS Quantity FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1}) AND ((Year(Date) = {2} AND Month(Date) < 11) OR (Year(Date) = {3} AND Month(Date) > 10))", itemId, storeId, year, year - 1);
-            this.LoadFromRawSql( query );
+            this.LoadFromRawSql(query);
             Int64 quant = 0;
             quant = (this.DataTable.Rows[0]["Quantity"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["Quantity"]) : 0;
             return quant;
         }
 
-        public Int64 GetReceivedQuantityTillMonth(int itemId, int storeId,int month,int year)
+        public Int64 GetReceivedQuantityTillMonth(int itemId, int storeId, int month, int year)
         {
             //CALENDAR
             this.FlushData();
-            int yr = (month < 11) ? year - 1 : year; 
+            int yr = (month < 11) ? year - 1 : year;
             DateTime dt1 = new DateTime(yr, 11, 1);
             DateTime dt2 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
-            this.LoadFromRawSql(String.Format("SELECT SUM(Quantity) AS Quantity FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1} AND ( Date between '{2}' AND '{3}'))",itemId,storeId,dt1.ToString(),dt2.ToString()));
+            this.LoadFromRawSql(String.Format("SELECT SUM(Quantity) AS Quantity FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1} AND ( Date between '{2}' AND '{3}'))", itemId, storeId, dt1.ToString(), dt2.ToString()));
             Int64 quant = 0;
             quant = (this.DataTable.Rows[0]["Quantity"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["Quantity"]) : 0;
             return quant;
@@ -271,17 +271,17 @@ namespace BLL
             return quant;
         }
 
-        public double GetReceivedAmount(int itemId, int storeId,int year)
+        public double GetReceivedAmount(int itemId, int storeId, int year)
         {
             //There should be a date range for the last month or some thing
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT SUM(Quantity * Cost) AS Price FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1}) AND ((Year(Date) = {2} AND Month(Date) < 11) OR (Year(Date) = {3} AND Month(Date) > 10))", itemId, storeId,year,year-1));
+            this.LoadFromRawSql(String.Format("SELECT SUM(Quantity * Cost) AS Price FROM ReceiveDoc WHERE (ItemID = {0}) AND (StoreID = {1}) AND ((Year(Date) = {2} AND Month(Date) < 11) OR (Year(Date) = {3} AND Month(Date) > 10))", itemId, storeId, year, year - 1));
             double price = 0;
             price = (this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0;
             return price;
         }
 
-        public double GetReceivedAmountTillMonth(int itemId, int storeId,int month, int year)
+        public double GetReceivedAmountTillMonth(int itemId, int storeId, int month, int year)
         {
             //There should be a date range for the last month or some thing
             this.FlushData();
@@ -308,7 +308,7 @@ namespace BLL
         public DataTable GetTransactionByItemId(int storeId, int itemId, int year)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT * FROM ReceiveDoc WHERE StoreID = {0} AND ItemID ={1} AND (( YEAR(Date)={2} AND Month(Date) < 11 ) OR (Year(Date) ={3} AND Month(Date) > 10 ))ORDER BY Date", storeId, itemId, year, year-1));
+            this.LoadFromRawSql(String.Format("SELECT * FROM ReceiveDoc WHERE StoreID = {0} AND ItemID ={1} AND (( YEAR(Date)={2} AND Month(Date) < 11 ) OR (Year(Date) ={3} AND Month(Date) > 10 ))ORDER BY Date", storeId, itemId, year, year - 1));
             return this.DataTable;
         }
 
@@ -343,9 +343,9 @@ namespace BLL
             {
                 firstReceiveDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);//So that we don't get the exact time of the receive which would make the receive date entered earlier than now.
             }
-            
-            long difference=receiveDate.Subtract(firstReceiveDate).Ticks;
-            if (difference<0)// receiveDate < firstReceiveDate)
+
+            long difference = receiveDate.Subtract(firstReceiveDate).Ticks;
+            if (difference < 0)// receiveDate < firstReceiveDate)
             {
                 return false;
             }
@@ -371,7 +371,7 @@ namespace BLL
         public DataTable GetNeverReceivedItems(int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)",storeId));
+            this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)", storeId));
             return this.DataTable;
         }
 
@@ -382,7 +382,7 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetReceivedItems(int itemId ,int storeId)
+        public DataTable GetReceivedItems(int itemId, int storeId)
         {
             this.FlushData();
             this.LoadFromRawSql("select * from ReceiveDoc where ItemID ={0} And StoreID={1}", itemId, storeId);
@@ -400,7 +400,7 @@ namespace BLL
             {
                 this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)", storeId));
             }
-          
+
             return this.Getint("Count");
         }
 
@@ -415,7 +415,7 @@ namespace BLL
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0})))", storeId));
-            return this.Getint("Count") ;
+            return this.Getint("Count");
         }
 
         /// <summary>
@@ -426,13 +426,13 @@ namespace BLL
         /// <param name="month"></param>
         /// <param name="year"></param>
         /// <returns></returns>
-        public DataTable GetAllTransaction(int itemId, int storeId,int month, int year)
+        public DataTable GetAllTransaction(int itemId, int storeId, int month, int year)
         {
             this.FlushData();
             //DateTime dt1 = new DateTime(year - 1, 11, 1);
             //int yr = (month > 10) ? year - 1 : year;
             //DateTime dt2 = new DateTime(yr, month, DateTime.DaysInMonth(yr, month));
-            EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(year,month, 30);
+            EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(year, month, 30);
             DateTime startOfFiscalYear = ethioDate.StartOfFiscalYear.ToGregorianDate();
             DateTime toDate = ethioDate.ToGregorianDate();
             //int yr = (month < 11) ? year - 1 : year;
@@ -473,10 +473,10 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetRecievedItemsWithBalanceForStore(int storeID,int typeID)
+        public DataTable GetRecievedItemsWithBalanceForStore(int storeID, int typeID)
         {
-            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft,RefNo, rd.Cost, EurDate from ReceiveDoc rd " +
-                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft > 0 order by FullItemName", storeID,typeID);
+            string query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate, StoreID,QuantityLeft,RefNo,rd.UnitID, rd.Cost, EurDate from ReceiveDoc rd " +
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft > 0 order by FullItemName", storeID, typeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -485,7 +485,7 @@ namespace BLL
         public bool MergeStore(int storeone, int storetwo)
         {
             this.FlushData();
-            return this.LoadFromRawSql(String.Format("UPDATE ReceiveDoc SET StoreID = {0} WHERE StoreID = {1}",storeone,storetwo));
+            return this.LoadFromRawSql(String.Format("UPDATE ReceiveDoc SET StoreID = {0} WHERE StoreID = {1}", storeone, storetwo));
         }
 
         internal static int ItemReceived(int itemID, int storeId)
@@ -493,7 +493,7 @@ namespace BLL
             string query = string.Format("select sum(Quantity) as Quantity from ReceiveDoc rd where ItemID = {0} and StoreID = {1}", itemID, storeId);
             ReceiveDoc rd = new ReceiveDoc();
             rd.LoadFromRawSql(query);
-            if( rd.RowCount > 0 && ! rd.IsColumnNull("Quantity") && rd.Quantity > 0 )
+            if (rd.RowCount > 0 && !rd.IsColumnNull("Quantity") && rd.Quantity > 0)
             {
                 return 1;
             }
@@ -526,8 +526,8 @@ namespace BLL
                 return false;
             }
         }
-        
-        
+
+
         /// <summary>
         /// Gets the last issued date for the facility
         /// </summary>
@@ -543,10 +543,10 @@ namespace BLL
         }
 
 
-        public void GetAllWithQuantityLeft(int itemID,int storeID,int programID)
+        public void GetAllWithQuantityLeft(int itemID, int storeID, int programID)
         {
             this.FlushData();
-            string query =string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and SubProgramID={2}",itemID, storeID, programID);
+            string query = string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and SubProgramID={2}", itemID, storeID, programID);
             this.LoadFromRawSql(query);
         }
     }
