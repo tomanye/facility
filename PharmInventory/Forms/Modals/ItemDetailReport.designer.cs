@@ -29,6 +29,7 @@ namespace PharmInventory.Forms.Modals
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
@@ -197,14 +198,14 @@ namespace PharmInventory.Forms.Modals
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.printDoc = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtitmName = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.lblBUnit = new System.Windows.Forms.Label();
             this.cboDU = new System.Windows.Forms.ComboBox();
             this.xpButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.printingSystem2 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.printingSystem2 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
@@ -398,7 +399,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.PageVisible = false;
-            this.tabPage11.Size = new System.Drawing.Size(902, 532);
+            this.tabPage11.Size = new System.Drawing.Size(902, 531);
             this.tabPage11.Text = "Dispensery Unit Balances";
             // 
             // gridDispensaryView
@@ -407,7 +408,7 @@ namespace PharmInventory.Forms.Modals
             this.gridDispensaryView.Location = new System.Drawing.Point(3, 3);
             this.gridDispensaryView.MainView = this.gridView1;
             this.gridDispensaryView.Name = "gridDispensaryView";
-            this.gridDispensaryView.Size = new System.Drawing.Size(896, 526);
+            this.gridDispensaryView.Size = new System.Drawing.Size(896, 525);
             this.gridDispensaryView.TabIndex = 0;
             this.gridDispensaryView.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -1423,7 +1424,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);

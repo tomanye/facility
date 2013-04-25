@@ -740,14 +740,13 @@
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
     <Content Include="Scripts\72_AlterAmcReport.sql" />
     <Content Include="Scripts\73_AlterYearEnd.sql" />
-    <Content Include="Scripts\75_SOHByUnit.sql" />
     <Content Include="Scripts\74_alterDisposal.sql" />
     <Content Include="Scripts\76_AlterReceiveDocLoadByPrimaryKey.sql" />
     <Content Include="Scripts\77_AlterTransfer.sql" />
     <Content Include="Scripts\78_AlterTransferInsert.sql" />
-    <Content Include="Scripts\79_AlterSOHByUnit.sql" />
-    <Content Include="Scripts\80_AlterBalanceTable.sql" />
-    <Content Include="Scripts\81_Rpt_BinCardByUnit.sql" />
+    <Content Include="Scripts\75_AlterSOHByUnit.sql" />
+    <Content Include="Scripts\79_AlterBalanceTable.sql" />
+    <Content Include="Scripts\80_Rpt_BinCardByUnit.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -1224,7 +1223,7 @@
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockoutIndexBuilder.cs\StockoutIndexBuilder.csproj">
-      <Project>{9AA5EB03-5F0A-4C22-A474-EF289057B3C5}</Project>
+      <Project>{9aa5eb03-5f0a-4c22-a474-ef289057b3c5}</Project>
       <Name>StockoutIndexBuilder</Name>
     </ProjectReference>
   </ItemGroup>
@@ -1542,62 +1541,62 @@
   <ItemGroup>
     <PublishFile Include="DevExpress.CodeParser.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.OfficeSkins.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpf.Printing.v12.1.Core">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.Xpo.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraCharts.v12.1.Extensions">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="DevExpress.XtraVerticalGrid.v12.1">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
