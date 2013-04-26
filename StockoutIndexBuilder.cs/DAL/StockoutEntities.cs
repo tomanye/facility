@@ -24,5 +24,6 @@ namespace StockoutIndexBuilder.DAL
         public DbSet<GeneralInfo> GenralInfos { get; set; }
         public DbSet<vwGetAllItems>VwGetAllItemses { get; set; }
         public DbSet<AmcReport> AmcReports { get; set; }
+        public DbSet<ItemUnit> Units { get; set; }
     }
 }

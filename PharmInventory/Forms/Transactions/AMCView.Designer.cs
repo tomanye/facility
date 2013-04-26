@@ -64,6 +64,9 @@
             this.colAmcWithOutDOS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
@@ -79,6 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -116,7 +121,7 @@
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(42, 12);
+            this.lookUpEdit1.Location = new System.Drawing.Point(41, 12);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -126,7 +131,7 @@
             this.lookUpEdit1.Properties.DisplayMember = "StoreName";
             this.lookUpEdit1.Properties.NullText = "[Select Store]";
             this.lookUpEdit1.Properties.ValueMember = "ID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(167, 20);
+            this.lookUpEdit1.Size = new System.Drawing.Size(168, 20);
             this.lookUpEdit1.StyleController = this.layoutControl1;
             this.lookUpEdit1.TabIndex = 4;
             this.lookUpEdit1.EditValueChanged += new System.EventHandler(this.lookUpEdit1_EditValueChanged);
@@ -142,7 +147,8 @@
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemLookUpEdit2});
             this.gridControl1.Size = new System.Drawing.Size(1098, 345);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -163,7 +169,8 @@
             this.colAmcWithOutDOS1,
             this.colLastIndexedTime,
             this.gridColumn3,
-            this.gridColumn4});
+            this.gridColumn4,
+            this.gridColumn5});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupedColumns = true;
@@ -186,7 +193,7 @@
             this.colAmcRange1.Name = "colAmcRange1";
             this.colAmcRange1.OptionsColumn.AllowEdit = false;
             this.colAmcRange1.Visible = true;
-            this.colAmcRange1.VisibleIndex = 2;
+            this.colAmcRange1.VisibleIndex = 3;
             this.colAmcRange1.Width = 72;
             // 
             // colIssueInAmcRange1
@@ -196,7 +203,7 @@
             this.colIssueInAmcRange1.Name = "colIssueInAmcRange1";
             this.colIssueInAmcRange1.OptionsColumn.AllowEdit = false;
             this.colIssueInAmcRange1.Visible = true;
-            this.colIssueInAmcRange1.VisibleIndex = 4;
+            this.colIssueInAmcRange1.VisibleIndex = 5;
             this.colIssueInAmcRange1.Width = 146;
             // 
             // colDaysOutOfStock1
@@ -205,7 +212,7 @@
             this.colDaysOutOfStock1.Name = "colDaysOutOfStock1";
             this.colDaysOutOfStock1.OptionsColumn.AllowEdit = false;
             this.colDaysOutOfStock1.Visible = true;
-            this.colDaysOutOfStock1.VisibleIndex = 5;
+            this.colDaysOutOfStock1.VisibleIndex = 6;
             this.colDaysOutOfStock1.Width = 95;
             // 
             // colAmcWithDOS1
@@ -217,7 +224,7 @@
             this.colAmcWithDOS1.Name = "colAmcWithDOS1";
             this.colAmcWithDOS1.OptionsColumn.AllowEdit = false;
             this.colAmcWithDOS1.Visible = true;
-            this.colAmcWithDOS1.VisibleIndex = 6;
+            this.colAmcWithDOS1.VisibleIndex = 7;
             this.colAmcWithDOS1.Width = 120;
             // 
             // colAmcWithOutDOS1
@@ -229,7 +236,7 @@
             this.colAmcWithOutDOS1.Name = "colAmcWithOutDOS1";
             this.colAmcWithOutDOS1.OptionsColumn.AllowEdit = false;
             this.colAmcWithOutDOS1.Visible = true;
-            this.colAmcWithOutDOS1.VisibleIndex = 7;
+            this.colAmcWithOutDOS1.VisibleIndex = 8;
             this.colAmcWithOutDOS1.Width = 132;
             // 
             // colLastIndexedTime
@@ -239,7 +246,7 @@
             this.colLastIndexedTime.Name = "colLastIndexedTime";
             this.colLastIndexedTime.OptionsColumn.AllowEdit = false;
             this.colLastIndexedTime.Visible = true;
-            this.colLastIndexedTime.VisibleIndex = 8;
+            this.colLastIndexedTime.VisibleIndex = 9;
             this.colLastIndexedTime.Width = 132;
             // 
             // gridColumn3
@@ -258,7 +265,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 134;
             // 
             // repositoryItemLookUpEdit1
@@ -472,6 +479,25 @@
             this.gridColumn2.VisibleIndex = 7;
             this.gridColumn2.Width = 138;
             // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Unit";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Text", 32, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEdit2.DataSource = this.unitsBindingSource;
+            this.repositoryItemLookUpEdit2.DisplayMember = "Text";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.ValueMember = "ID";
+            // 
             // AMCView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,6 +522,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -537,6 +565,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.SimpleButton btnExportToEx;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private System.Windows.Forms.BindingSource unitsBindingSource;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
       
 
     }

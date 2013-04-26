@@ -21,6 +21,7 @@ namespace PharmInventory.Forms.Transactions
         private readonly GeneralInfoRepository _generalInfoRepository = new GeneralInfoRepository();
         private readonly ReceiveDocRepository _receiveDocRepository =new ReceiveDocRepository();
         private readonly AmcReportRepository _amcReportRepository =new AmcReportRepository();
+        private readonly UnitRepository _unitRepository = new UnitRepository();
         private List<AMCViewModel> _datasource; 
         public AMCView()
         {
@@ -36,6 +37,9 @@ namespace PharmInventory.Forms.Transactions
              storebindingSource.DataSource = allstores;
              lookUpEdit1.ItemIndex = 0;
             amcbindingSource.DataSource = allamcs.Distinct().OrderBy(m=>m.FullItemName);
+
+            var allunits = _unitRepository.GetAll();
+            unitsBindingSource.DataSource = allunits;
         }
 
         private void lookUpEdit1_EditValueChanged(object sender, EventArgs e)

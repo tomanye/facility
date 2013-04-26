@@ -86,14 +86,18 @@ namespace BLL
 
         public DataTable GetItemsWithLastIssuedOrDisposedDate()
         {
-            const string query = "select distinct * from Items itm left join (select ItemID, DATEDIFF(dd,max(Date),GETDATE()) as DaysOutOfStock from (select ItemID,Date from (select id.ItemID ItemID,max(id.EurDate) Date from IssueDoc id where id.ItemID in (select ItemID from ReceiveDoc rd group by ItemID having sum(rd.QuantityLeft)=0) group by id.ItemID) x union (select d.ItemID ItemID,max(d.EurDate) Date from Disposal d where ItemID in (select ItemID from ReceiveDoc rd group by ItemID having sum(rd.QuantityLeft)=0) group by d.ItemID)) x group by x.ItemID ) as y on itm.ID=y.ItemID";
+            string query = "select distinct * from Items itm left join (select ItemID, DATEDIFF(dd,max(Date),GETDATE()) as DaysOutOfStock " +
+                                 "from (select ItemID,Date from (select id.ItemID ItemID,max(id.EurDate) Date from IssueDoc id " +
+                                 "where id.ItemID in (select ItemID from ReceiveDoc rd group by ItemID having sum(rd.QuantityLeft)=0) group by id.ItemID) " +
+                                 "x union (select d.ItemID ItemID,max(d.EurDate) Date from Disposal d where ItemID in (select ItemID from ReceiveDoc rd group by " +
+                                 "ItemID having sum(rd.QuantityLeft)=0) group by d.ItemID)) x group by x.ItemID ) as y on itm.ID=y.ItemID";
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
 
         public static DataTable AllYears()
         {
-            Items itm = new Items();
+            var itm = new Items();
             itm.FlushData();
             itm.LoadFromRawSql(@"SELECT Distinct YEAR(Date)as year from ReceiveDoc
                                     union 
@@ -1077,7 +1081,7 @@ namespace BLL
         /// <returns></returns>
         public DataTable GetRRFReport(int storeId ,int fromYear, int fromMonth, int toYear, int toMonth)
         {
-            Balance balance = new Balance();
+            var balance = new Balance();
             var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
             var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, toMonth, toYear));
             if (fromMonth != 1)
@@ -1087,39 +1091,41 @@ namespace BLL
                 fromYear--;
                 fromMonth = 12; //Because SOH returns stock until the end of the month
             }
-            DataTable dtbl = balance.GetSOH(storeId,fromMonth, fromYear);
-            DataTable dtbl2 = balance.GetSOH(storeId, toMonth, toYear);
+            var dtbl = balance.GetSOHByUnit(storeId,fromMonth, fromYear);
+            var dtbl2 = balance.GetSOHByUnit(storeId, toMonth, toYear);
 
-            DateTime dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
-            DateTime dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
+            var dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
+            var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
 
-            string query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from" +
-                                         " Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd " +
-                                         "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID) as" +
-                                         " A on Items.ID = A.ItemID", dt1, dt2, storeId);
+            var query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from" +
+                                         " Items left join (select ItemID,UnitID, sum(Quantity) as Quantity from ReceiveDoc rd " +
+                                         "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID,UnitID) as" +
+                                         " A on Items.ID = A.ItemID left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
-            DataTable received = this.DataTable;
+            var received = this.DataTable;
 
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
-                                  "from Items left join (select ItemID, sum(Quantity) Quantity " +
+                                  "from Items left join (select ItemID, UnitID,sum(Quantity) Quantity " +
                                   "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
-                                  "StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
+                                  "StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
+                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
-            DataTable issued = this.DataTable;
+            var issued = this.DataTable;
 
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from " +
-                                  "Items left join (select ItemID, sum(case when Losses = 1 then - Quantity else " +
+                                  "Items left join (select ItemID, UnitID,sum(case when Losses = 1 then - Quantity else " +
                                   "Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' " +
-                                  "and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID", dt1, dt2, storeId);
+                                  "and StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
+                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
-            DataTable lost = this.DataTable;
+            var lost = this.DataTable;
 
             query = string.Format("select distinct Items.ID,Items.StockCodeDACA,Items.Cost, case Items.Cost " +
                                   "when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
             this.LoadFromRawSql(query);
-            DataTable preferredPackSizetbl = DataTable;
+            var preferredPackSizetbl = DataTable;
 
-            BLL.Items itm = new Items();
+            var itm = new Items();
             var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
 
             //query=string.Format("select ")
@@ -1130,20 +1136,36 @@ namespace BLL
                      join p in preferredPackSizetbl.AsEnumerable()
                      on y["ID"] equals p["ID"]
                      where Convert.ToInt32(y["EverReceived"]) == 1
-                     select new { ID = y["ID"], FullItemName = y["FullItemName"], Unit = y["Unit"],
-                         StockCode = y["StockCode"], BeginingBalance = Convert.ToDouble(y["SOH"]), ProgramID=y["ProgramID"],
-                         SOH = Convert.ToDouble(z["SOH"]), Max = Convert.ToInt32(z["Max"]),
-                                  QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
-                                  StockCodeDACA = p["StockCodeDACA"]
+                     select new { ID = y["ID"],
+                         FullItemName = y["FullItemName"], 
+                         Unit = y["Unit"],
+                         StockCode = y["StockCode"], 
+                         BeginingBalance = Convert.ToDouble(y["SOH"]), 
+                         ProgramID=y["ProgramID"],
+                         UnitID =y["UnitID"],
+                         SOH = Convert.ToDouble(z["SOH"]), 
+                         Max = Convert.ToInt32(z["Max"]),
+                         QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
+                         StockCodeDACA = p["StockCodeDACA"]
                      }).Distinct().ToArray();
 
             var m = (from n in x
                      join z in received.AsEnumerable()
                      on n.ID equals z["ID"]
-                     select new { ID = n.ID, FullItemName = n.FullItemName,
-                         Unit = n.Unit, StockCode = n.StockCode, BeginingBalance = n.BeginingBalance, 
-                         SOH = n.SOH, Max = n.Max, QtyPerPack = n.QtyPerPack,StockCodeDACA =n.StockCodeDACA,
-                         ProgramID=n.ProgramID, Received = z["Quantity"] }).ToArray();
+                     select new { 
+                         ID = n.ID, 
+                         FullItemName = n.FullItemName,
+                         Unit = n.Unit, 
+                         StockCode = n.StockCode, 
+                         BeginingBalance = n.BeginingBalance, 
+                         SOH = n.SOH, 
+                         Max = n.Max, 
+                         QtyPerPack = n.QtyPerPack,
+                         StockCodeDACA =n.StockCodeDACA,
+                         ProgramID=n.ProgramID, 
+                         Received = z["Quantity"] ,
+                         UnitID =n.UnitID
+                         }).ToArray();
 
             var l = (from n in m
                      join z in issued.AsEnumerable()
@@ -1162,6 +1184,7 @@ namespace BLL
                                  QtyPerPack = n.QtyPerPack,
                                  Received = n.Received,
                                  ProgramID=n.ProgramID,
+                                 UnitID =n.UnitID,
                                  Issued = Convert.ToInt32(z["Quantity"]),
                                  
                              }).ToArray();
@@ -1169,15 +1192,21 @@ namespace BLL
             var t = (from n in l
                      join z in lost.AsEnumerable()
                      on n.ID equals z["ID"]
-                     select new { ID = n.ID, FullItemName = n.FullItemName, Unit = n.Unit, StockCode = n.StockCode, 
-                         BeginingBalance = n.BeginingBalance, SOH = n.SOH,
-                                  Max = n.Max,
-                                  StockCodeDACA = n.StockCodeDACA,
-                                  QtyPerPack = n.QtyPerPack, 
+                     select new { ID = n.ID,
+                         FullItemName = n.FullItemName, 
+                         Unit = n.Unit, 
+                         StockCode = n.StockCode, 
+                         BeginingBalance = n.BeginingBalance, 
+                         SOH = n.SOH,
+                         Max = n.Max,
+                         StockCodeDACA = n.StockCodeDACA,
+                         QtyPerPack = n.QtyPerPack, 
                          Received = n.Received, 
                          ProgramID=n.ProgramID,
-                         Issued = n.Issued, LossAdj = z["Quantity"], 
-                         Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH }).ToArray();
+                         Issued = n.Issued, LossAdj = z["Quantity"],
+                                  Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                        UnitID = n.UnitID
+                     }).ToArray();
 
             var t1 = (from n in t
                       join z in daysOutOfStock.AsEnumerable()
@@ -1197,10 +1226,11 @@ namespace BLL
                                   Received = n.Received,
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
+                                  UnitID =n.UnitID,
                                   ProgramID = n.ProgramID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock  = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
-                              }).ToArray();
+                                  }).ToArray();
 
             var t2 = (from n in t1
                       select
@@ -1219,11 +1249,12 @@ namespace BLL
                                   Issued = n.Issued,
                                   LossAdj = n.LossAdj,
                                   ProgramID = n.ProgramID,
+                                  UnitID =n.UnitID,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                                  MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock)))
-                              }).ToArray();
+                                  MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock))),
+                             }).ToArray();
          
             //return t;
             // Converting shit into antoher shit.
@@ -1245,6 +1276,7 @@ namespace BLL
             value.Columns.Add("DaysOutOfStock", typeof(int));
             value.Columns.Add("MaxStockQty", typeof(double));
             value.Columns.Add("ProgramID",typeof(int));
+            value.Columns.Add("UnitID", typeof(int));
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1264,6 +1296,7 @@ namespace BLL
                 drv["ProgramID"] = v.ProgramID;
                 drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
+                drv["UnitID"] = v.UnitID;
 
             }
 

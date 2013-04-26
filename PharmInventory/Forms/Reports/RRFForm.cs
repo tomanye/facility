@@ -49,6 +49,11 @@ namespace PharmInventory.Forms.Reports
 
         private void RRFForm_Load(object sender, EventArgs e)
         {
+
+            var unit = new ItemUnit();
+            var units = unit.GetAllUnits();
+            unitsBindingSource.DataSource = units.DefaultView;
+
             PopulateTheMonthCombos(cboFromMonth);
             PopulateTheMonthCombos(cboToMonth);
             PopulateTheYearCombo(cboFromYear);

@@ -62,12 +62,14 @@
     <Compile Include="DAL\StockoutRepository.cs" />
     <Compile Include="Builder.cs" />
     <Compile Include="DAL\StoreRepository.cs" />
+    <Compile Include="DAL\UnitRepository.cs" />
     <Compile Include="DAL\vwGetAllItemsRepository.cs" />
     <Compile Include="Models\AMCReport.cs" />
     <Compile Include="Models\Disposal.cs" />
     <Compile Include="Models\GeneralInfo.cs" />
     <Compile Include="Models\IssueDoc.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemUnit.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ReceiveDoc.cs" />
     <Compile Include="Models\Stockout.cs" />

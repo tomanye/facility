@@ -21,6 +21,8 @@ namespace StockoutIndexBuilder.Models
         public int StoreID { get; set; }
         [NotMapped]
         public string FullItemName { get; set; }
+
+        public int UnitID { get; set; }
         public virtual Item Item{ get; set; }
         
 

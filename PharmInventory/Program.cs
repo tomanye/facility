@@ -81,7 +81,7 @@ namespace PharmInventory
             var scriptsDirectory = new DirectoryInfo(Path.Combine(Application.StartupPath, "Scripts"));
 
             //Get the sql. scripts file in the directory
-            FileInfo[] scripts = scriptsDirectory.GetFiles();
+            var scripts = scriptsDirectory.GetFiles();
             // Foreach scripts 
             foreach (var scriptFile in scripts)
             {
@@ -101,13 +101,11 @@ namespace PharmInventory
 
         public static void ExecuteNonQuery(string query)
         {
-            string sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
-            using (SqlConnection connection = new SqlConnection(sqlConnectionString))
+            var sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (var connection = new SqlConnection(sqlConnectionString))
             {
-                SqlCommand command = new SqlCommand();
-                command.CommandText = query;
-                command.CommandType = CommandType.Text;
-                command.Connection = connection;
+                var command = new SqlCommand
+                                  {CommandText = query, CommandType = CommandType.Text, Connection = connection};
                 connection.Open();
                 command.ExecuteNonQuery();
             }
