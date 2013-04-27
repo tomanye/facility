@@ -7,13 +7,13 @@ using System.Text;
 
 namespace StockoutIndexBuilder.Models
 {
-    [Table("ItemUnit")]
+   [Table("ItemUnit")]
    public class ItemUnit
     {
         [Key]
         public int ID { get; set; }
         public int ItemID { get; set; }
-        public int QuantityPerUnit { get; set; }
+        public int QtyPerUnit { get; set; }
         public string Text { get; set; }
     }
 }

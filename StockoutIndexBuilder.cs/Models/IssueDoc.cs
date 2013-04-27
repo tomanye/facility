@@ -18,5 +18,8 @@ namespace StockoutIndexBuilder.Models
         [Column("EurDate")]
         public DateTime? Date { get; set; }
         public long Quantity { get; set; }
+        public int UnitID { get; set; }
+
+       
     }
 }

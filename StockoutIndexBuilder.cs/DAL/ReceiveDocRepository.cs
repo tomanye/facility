@@ -15,5 +15,11 @@ namespace StockoutIndexBuilder.DAL
           return Context.ReceiveDocs.ToList();
        }
 
+       public IEnumerable<ReceiveDoc> GetReceivedItemUnit(int receivedocid)
+       {
+           return Context.ReceiveDocs.Where(m => m.ID == receivedocid).ToList();
+       }
+
+
     }
 }

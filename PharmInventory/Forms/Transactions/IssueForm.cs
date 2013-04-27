@@ -267,8 +267,8 @@ namespace PharmInventory.Forms.Transactions
                 foreach (DataRow lst in _dtSelectedTable.Rows)//(ListViewItem lst in lstItem.Items)
                 {
                     var itmID = Convert.ToInt32(lst["ID"]);
-                    DataTable dtExp = itm.GetExpiredItemsByID(Convert.ToInt32(cboStores.EditValue), itmID);
-                    DataTable dtItm = itm.GetItemById(itmID);
+                    var dtExp = itm.GetExpiredItemsByID(Convert.ToInt32(cboStores.EditValue), itmID);
+                    var dtItm = itm.GetItemById(itmID);
                     Int64 expAmount = 0;
                     foreach (DataRow dr in dtExp.Rows)
                     {
@@ -288,16 +288,15 @@ namespace PharmInventory.Forms.Transactions
                     }
                     else if (VisibilitySetting.HandleUnits == 2)
                     {
-                        var unitid = Convert.ToInt32(lst["UnitID"]);
-                        soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, unitid);
+                       
+                        soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
                         obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
                                        itemName, dtItm.Rows[0]["Unit"].ToString(), 
                                    soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
                     }
                     else
                     {
-                        var unitid = Convert.ToInt32(lst["UnitID"]);
-                        soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, unitid);
+                       soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
                         obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
                                        itemName, dtItm.Rows[0]["Unit"].ToString(), 
                                    soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
@@ -336,7 +335,7 @@ namespace PharmInventory.Forms.Transactions
             cboStoreConf.EditValue = cboStores.EditValue;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
-            ReceivingUnits recUnit = new ReceivingUnits();
+            var recUnit = new ReceivingUnits();
             recUnit.GetActiveDispensaries();
             cboReceivingUnits.Properties.DataSource = recUnit.DefaultView;
             cboReceivingUnits.Properties.DisplayMember = "Name";
@@ -648,14 +647,14 @@ namespace PharmInventory.Forms.Transactions
             {
                 if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    IssueDoc issDoc = new IssueDoc();
-                    ReceiveDoc recDoc = new ReceiveDoc();
-                    Balance bal = new Balance();
+                    var issDoc = new IssueDoc();
+                    var recDoc = new ReceiveDoc();
                     DataTable dtConfirm;
                     using (dtConfirm = (DataTable)gridConfirmation.DataSource)
                     {
                         for (int i = 0; i < dtConfirm.Rows.Count; i++)
                         {
+                           var receivedocid = Convert.ToInt32(dtConfirm.Rows[i]["RecId"]);
                             issDoc.GetDULastIssue(Convert.ToInt32(dtConfirm.Rows[i]["ItemID"]), Convert.ToInt32(cboReceivingUnits.EditValue));
                             confirmedItems.Add(Convert.ToInt32(dtConfirm.Rows[i]["ItemID"]));
                             if (issDoc.RowCount > 0)
@@ -676,7 +675,7 @@ namespace PharmInventory.Forms.Transactions
                             dtIssueDate.IsGregorianCurrentCalendar = true;
                             issDoc.EurDate = dtIssueDate.Value;
                             dtIssueDate.IsGregorianCurrentCalendar = false;
-                            issDoc.RecievDocID = Convert.ToInt32(dtConfirm.Rows[i]["RecId"]); // Used to have 8 as an index
+                            issDoc.RecievDocID =Convert.ToInt32(dtConfirm.Rows[i]["RecId"]); // Used to have 8 as an index
 
                             issDoc.IsApproved = true;
                             issDoc.IsTransfer = false;
@@ -707,9 +706,6 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.RecomendedQty = Convert.ToInt32(dtConfirm.Rows[i]["DURecomended"]);// ((recQty > 0) ? Convert.ToInt64(recQty) : 0);
                             //End DU
                             issDoc.Save();
-
-
-
                             //updating the receiving doc
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
                             recDoc.QuantityLeft = recDoc.QuantityLeft - issDoc.Quantity;
@@ -727,19 +723,14 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    //var iss = issDoc.GetIssuedItemsByID(issDoc.ID);
-                    //var pick = new PickListReport();
-                    //iss.TableName = "DataTable1";
-                    //var dtset = new DataSet();
-                    //dtset.Tables.Add(iss.Copy());
-                    //pick.DataSource = dtset;
-                    //pick.ShowPreviewDialog();
                 }
+
                 // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
                 // Refresh AMC
                 var storeId = Convert.ToInt32(cboStores.EditValue);
+
                 StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
+                
 
             }
             else

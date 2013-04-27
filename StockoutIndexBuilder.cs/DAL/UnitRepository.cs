@@ -14,5 +14,11 @@ namespace StockoutIndexBuilder.DAL
        {
            return _context.Units.ToList();
        }
-    }
+
+       public IEnumerable<ItemUnit> GetUnitsByItemId(int ItemID)
+       {
+           return _context.Units.Where(m=>m.ItemID==ItemID).ToList();
+       }
+
+      }
 }

@@ -96,6 +96,7 @@ namespace PharmInventory.Forms.Modals
             }
             Supplier sup = new Supplier();
             sup.GetActiveSuppliers();
+
             ItemSupplier itmSup = new ItemSupplier();
             itm.GetItemsBySupplier(_itemId);
             foreach (DataRowView dv in sup.DefaultView)

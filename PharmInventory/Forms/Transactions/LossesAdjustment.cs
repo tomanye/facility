@@ -357,6 +357,10 @@ namespace PharmInventory
                         {
                             dis.UnitID = Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
                         }
+                        else if (VisibilitySetting.HandleUnits == 3)
+                        {
+                            dis.UnitID = Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
+                        }
                         dis.RecID = Convert.ToInt32(dtAdjVal.Rows[i]["RecID"]);
                         dis.EurDate = dtAdjustDate.Value;
                         dis.Save();

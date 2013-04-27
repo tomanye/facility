@@ -287,11 +287,13 @@ namespace StockoutIndexBuilder
 
         #endregion
 
+
         public static void RefreshAMCValues(int storeId, Dictionary<int,long> items)
         {
             var context = new StockoutEntities();
             var genaralinfo = context.GenralInfos.First();
             var endDate = DateTime.Now;
+            var unitrepository = new UnitRepository();
             var startDate = endDate.Subtract(TimeSpan.FromDays(genaralinfo.AMCRange * 30));
             
             try
@@ -312,35 +314,37 @@ namespace StockoutIndexBuilder
                       context.Stockouts.Add(stockOut);
                       context.SaveChanges();
                   }
-                  
+                  var lastissued = context.IssueDocs.OrderByDescending(m => m.ID).First();
+                  var issuedoc = context.IssueDocs.First(m => m.ItemID == row.Key && m.StoreID == storeId&& m.ID==lastissued.ID);
+                 
+                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID==storeId && m.UnitID ==issuedoc.UnitID);
 
-                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID==storeId);
-
-                    
-                    // Update AMC value
+                    // Add AMC value
                   if(allItemIds==null)
                   {
-                      var amcreport = new AmcReport
-                                          {
-                                              ItemID = row.Key,
-                                              StoreID = storeId,
-                                              AmcRange = genaralinfo.AMCRange,
-                                              IssueInAmcRange =
-                                                  CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
-                                                                                    DateTime.Today),
-                                              DaysOutOfStock =
-                                                  CalculateStockoutDays(row.Key, storeId, startDate, endDate),
-                                              AmcWithDOS =
-                                                  CalculateAverageConsumption(row.Key, storeId, startDate,endDate,CalculationOptions.Monthly),
-                                              AmcWithOutDOS = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate) / Convert.ToDouble(genaralinfo.AMCRange),
-                                              LastIndexedTime = DateTime.Now,
-                                              IssueWithDOS =Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now)
-
-
-                                          };
-                      context.AmcReports.Add(amcreport);
-                        
+                      if (issuedoc != null)
+                      {
+                          var amcreport = new AmcReport
+                                              {
+                                                  ItemID = row.Key,
+                                                  StoreID = storeId,
+                                                  AmcRange = genaralinfo.AMCRange,
+                                                  IssueInAmcRange =
+                                                      CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
+                                                                                          DateTime.Today),
+                                                  DaysOutOfStock =
+                                                      CalculateStockoutDays(row.Key, storeId, startDate, endDate),
+                                                  AmcWithDOS =
+                                                      CalculateAverageConsumption(row.Key, storeId, startDate,endDate,CalculationOptions.Monthly),
+                                                  AmcWithOutDOS = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate) / Convert.ToDouble(genaralinfo.AMCRange),
+                                                  LastIndexedTime = DateTime.Now,
+                                                  IssueWithDOS =Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now),
+                                                  UnitID =issuedoc.UnitID
+                                              };
+                          context.AmcReports.Add(amcreport);
+                      }
                   }
+                  // Update AMC value
                   else
                   {
                       allItemIds.IssueInAmcRange = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
@@ -353,6 +357,7 @@ namespace StockoutIndexBuilder
                           Convert.ToDouble(genaralinfo.AMCRange);
                       allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now);
                       allItemIds.LastIndexedTime = DateTime.Now;
+                      if (issuedoc != null) allItemIds.UnitID = issuedoc.UnitID;
                   }
 
                   context.SaveChanges();
@@ -367,6 +372,8 @@ namespace StockoutIndexBuilder
                 throw;
             }
         }
+
+       
 
         private static object GetSOHAsOfDate(int itemId, int storeId, DateTime dateTime)
         {

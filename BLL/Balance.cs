@@ -818,7 +818,7 @@ namespace BLL
             GetSOHByUnit(storeId, month, year);
             while (!this.EOF)
             {
-                if (this.ID == itemID && this.UnitID == unitID)
+                if (this.ID == itemID && this.UnitID==unitID)
                 {
                     return this.SOH;
                 }

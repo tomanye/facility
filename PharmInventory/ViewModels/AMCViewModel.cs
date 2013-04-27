@@ -25,16 +25,19 @@ namespace PharmInventory.ViewModels
         public double AmcWithDos { get; set; }
         public double AmcWithoutDos { get; set; }
         public double IssueWithDOS { get; set; }
+        public int UnitID { get; set; }
 
         public static AMCViewModel Create(int itemId, int storeId, int amcRange, DateTime endDate)
         {
             var vwGetAllItemsRepository =new vwGetAllItemsRepository();
             var amcrepo = new AmcReportRepository();
             var stockoutrepo = new StockoutRepository();
+            var unitrepository = new UnitRepository();
             var allItemIds = amcrepo.AllAmcReport().SingleOrDefault(m => m.ItemID == itemId && m.StoreID == storeId);
             var products = vwGetAllItemsRepository.AllItems().SingleOrDefault(m => m.ID == itemId);
             var startDate = endDate.Subtract(TimeSpan.FromDays(amcRange*30));
-
+            var unit = unitrepository.GetAll().First(m => allItemIds != null && m.ID == allItemIds.UnitID);
+            
             var viewModel = new AMCViewModel()
                                     {
                                         ItemID = itemId,
@@ -47,6 +50,8 @@ namespace PharmInventory.ViewModels
                                             Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,
                                                                                 CalculationOptions.Monthly),
                                         IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
+                                       UnitID = unit.ID
+                                    
                                     };
             var singleOrDefault = stockoutrepo.GetStockoutsByItemandStore(itemId, storeId).SingleOrDefault();
             if (singleOrDefault != null)
@@ -62,6 +67,8 @@ namespace PharmInventory.ViewModels
 
         private static void AddorUpdateAmc(int itemId, int storeId, int amcRange, DateTime endDate, AmcReportRepository amcrepo, AMCViewModel viewModel, AmcReport allItemIds, DateTime startDate)
         {
+            var unitrepository = new UnitRepository();
+            var unit = unitrepository.GetAll().First(m => allItemIds != null && m.ID == allItemIds.UnitID);
             if (allItemIds == null)
             {
                 var amcreport = new AmcReport
@@ -83,7 +90,8 @@ namespace PharmInventory.ViewModels
                                         AmcWithOutDOS =
                                             Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,
                                                                                         endDate)/
-                                            Convert.ToDouble(viewModel.AmcRange)
+                                            Convert.ToDouble(viewModel.AmcRange),
+                                       UnitID = unit.ID,
                                     };
                 amcrepo.Add(amcreport);
             }
@@ -97,6 +105,7 @@ namespace PharmInventory.ViewModels
                                            Convert.ToDouble(viewModel.AmcRange);
                 allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate);
                 allItemIds.LastIndexedTime = DateTime.Now;
+                allItemIds.UnitID = unit.ID;
                 amcrepo.Update(allItemIds);
             }
         }

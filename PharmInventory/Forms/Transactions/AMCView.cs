@@ -64,6 +64,7 @@ namespace PharmInventory.Forms.Transactions
             _datasource = new List<AMCViewModel>();
             double percentage = 20.0;
             var receiveDocs = _repository.AllItems().Where(m => itemsrecieved.Contains(m.ID)).ToList();
+            
             double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
         
            foreach (var item in receiveDocs)

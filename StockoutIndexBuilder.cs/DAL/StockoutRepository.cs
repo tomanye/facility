@@ -47,6 +47,7 @@ namespace StockoutIndexBuilder.DAL
         public IEnumerable<Stockout> GetStockoutsByItemandStore(int itemId,int storeID)
         {
             return Context.Stockouts.Where(m => m.ItemID == itemId && m.StoreID ==storeID).AsEnumerable();
+            
         }
 
         public void Delete(Stockout stockout)
