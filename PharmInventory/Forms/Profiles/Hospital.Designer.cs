@@ -154,6 +154,7 @@ namespace PharmInventory.Forms.Profiles
             this.lookUpEdit1.Properties.DataSource = this.settingbindingSource;
             this.lookUpEdit1.Properties.DisplayMember = "Name";
             this.lookUpEdit1.Properties.NullText = "Select Setting";
+            this.lookUpEdit1.Properties.ReadOnly = true;
             this.lookUpEdit1.Properties.ValueMember = "RecordId";
             this.lookUpEdit1.Size = new System.Drawing.Size(253, 20);
             this.lookUpEdit1.StyleController = this.groupBox1ConvertedLayout;
