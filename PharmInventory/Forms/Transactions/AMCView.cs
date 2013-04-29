@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using PharmInventory.HelperClasses;
 using PharmInventory.ViewModels;
 using StockoutIndexBuilder.DAL;
 using StockoutIndexBuilder.Models;
@@ -118,6 +120,23 @@ namespace PharmInventory.Forms.Transactions
         private void AMCView_Load(object sender, EventArgs e)
         {
             loadamc();
+            var unitcolumn = ((GridView)gridControl1.MainView).Columns[9];
+
+            if(VisibilitySetting.HandleUnits==1)
+            {
+                unitcolumn.Visible = false;
+
+            }
+            if (VisibilitySetting.HandleUnits == 2)
+            {
+                unitcolumn.Visible = true;
+
+            }
+            if (VisibilitySetting.HandleUnits == 3)
+            {
+                unitcolumn.Visible = true;
+
+            }
         }
 
         private void btnExportToEx_Click(object sender, EventArgs e)

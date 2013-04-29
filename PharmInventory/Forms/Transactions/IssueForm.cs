@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -14,6 +15,12 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraEditors;
 using PharmInventory.HelperClasses;
 using PharmInventory.Reports;
+using StockoutIndexBuilder;
+using StockoutIndexBuilder.DAL;
+using StockoutIndexBuilder.Models;
+using IssueDoc = BLL.IssueDoc;
+using ItemUnit = BLL.ItemUnit;
+using ReceiveDoc = BLL.ReceiveDoc;
 
 
 namespace PharmInventory.Forms.Transactions
@@ -710,6 +717,7 @@ namespace PharmInventory.Forms.Transactions
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
                             recDoc.QuantityLeft = recDoc.QuantityLeft - issDoc.Quantity;
                             var itemId = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
+                            var unitId = Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
                             recDoc.Out = (recDoc.QuantityLeft == 0) ? true : false;
                             if (confirmedItemsQuantity.ContainsKey(itemId))
                                 confirmedItemsQuantity[itemId] += recDoc.QuantityLeft;
@@ -723,6 +731,9 @@ namespace PharmInventory.Forms.Transactions
 
                             //var storeId = Convert.ToInt32(cboStores.EditValue);
                             //StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
+                            var storeId = Convert.ToInt32(cboStores.EditValue);
+
+                            Builder.RefreshAMCValues(storeId, confirmedItemsQuantity,unitId);
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -731,9 +742,7 @@ namespace PharmInventory.Forms.Transactions
                 // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
                 // Refresh AMC
 
-                var storeId = Convert.ToInt32(cboStores.EditValue);
-                StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
-
+               
             }
             else
             {
@@ -745,6 +754,7 @@ namespace PharmInventory.Forms.Transactions
             RefreshItems();
         }
 
+       
 
         /// <summary>
         /// The issue form is reset so that every input is cleared out.
