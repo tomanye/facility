@@ -314,16 +314,18 @@ namespace StockoutIndexBuilder
                       context.Stockouts.Add(stockOut);
                       context.SaveChanges();
                   }
-                  var lastissued = context.IssueDocs.OrderByDescending(m => m.ID).First();
-                  var issuedoc = context.IssueDocs.First(m => m.ItemID == row.Key && m.StoreID == storeId&& m.ID==lastissued.ID);
+                  //var lastissued = context.IssueDocs.OrderByDescending(m => m.ID).First();
+                  //var issuedoc = context.IssueDocs.First(m => m.ItemID == row.Key && m.StoreID == storeId && m.ID == lastissued.ID);
                  
-                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID==storeId && m.UnitID ==issuedoc.UnitID);
+                  
+                  //var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID==storeId && m.UnitID ==issuedoc.UnitID);
 
-                    // Add AMC value
+                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID == storeId);
+
+                  // Add AMC value
                   if(allItemIds==null)
                   {
-                      if (issuedoc != null)
-                      {
+                     
                           var amcreport = new AmcReport
                                               {
                                                   ItemID = row.Key,
@@ -339,11 +341,10 @@ namespace StockoutIndexBuilder
                                                   AmcWithOutDOS = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate) / Convert.ToDouble(genaralinfo.AMCRange),
                                                   LastIndexedTime = DateTime.Now,
                                                   IssueWithDOS =Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now),
-                                                  UnitID =issuedoc.UnitID
+                                                  //UnitID =issuedoc.UnitID
                                               };
                           context.AmcReports.Add(amcreport);
-                      }
-                  }
+      }
                   // Update AMC value
                   else
                   {
@@ -357,7 +358,7 @@ namespace StockoutIndexBuilder
                           Convert.ToDouble(genaralinfo.AMCRange);
                       allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now);
                       allItemIds.LastIndexedTime = DateTime.Now;
-                      if (issuedoc != null) allItemIds.UnitID = issuedoc.UnitID;
+                      //if (issuedoc != null) allItemIds.UnitID = issuedoc.UnitID;
                   }
 
                   context.SaveChanges();

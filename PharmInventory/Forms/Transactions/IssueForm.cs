@@ -720,6 +720,9 @@ namespace PharmInventory.Forms.Transactions
                             recDoc.Save();
                             //Log Activity
                             dtIssueDate.Value = xx;
+
+                            //var storeId = Convert.ToInt32(cboStores.EditValue);
+                            //StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -727,10 +730,9 @@ namespace PharmInventory.Forms.Transactions
 
                 // if SOH == 0 (record stockout with startdate == datetime.today && enddate == null)
                 // Refresh AMC
-                var storeId = Convert.ToInt32(cboStores.EditValue);
 
+                var storeId = Convert.ToInt32(cboStores.EditValue);
                 StockoutIndexBuilder.Builder.RefreshAMCValues(storeId, confirmedItemsQuantity);
-                
 
             }
             else

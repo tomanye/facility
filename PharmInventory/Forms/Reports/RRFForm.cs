@@ -8,6 +8,7 @@ using System.Linq;
 using DevExpress.XtraEditors;
 using CommCtrl;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
 using PharmInventory.RRFLookUpService;
 using PharmInventory.RRFTransactionService;
@@ -49,6 +50,32 @@ namespace PharmInventory.Forms.Reports
 
         private void RRFForm_Load(object sender, EventArgs e)
         {
+            var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[2];
+            var unitcolumn1 = ((GridView)gridItemsChoice.MainView).Columns[13];
+            //var unitcolumn3 = ((GridView)grdViewInPacks).Columns[2];
+            //var unitcolumn4 = ((GridView)grdViewInPacks).Columns[13];
+            
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 3:
+                    unitcolumn.Visible = false;
+                    unitcolumn1.Visible = true;
+                    //unitcolumn3.Visible = false;
+                    //unitcolumn4.Visible = true;
+                   break;
+                case 2:
+                    unitcolumn.Visible = false;
+                    unitcolumn1.Visible = true;
+                    //unitcolumn3.Visible = false;
+                    //unitcolumn4.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    unitcolumn1.Visible = false;
+                    //unitcolumn3.Visible = true;
+                    //unitcolumn4.Visible = false;
+                    break;
+            }
 
             var unit = new ItemUnit();
             var units = unit.GetAllUnits();
@@ -147,9 +174,19 @@ namespace PharmInventory.Forms.Reports
             _toYear = int.Parse(cboToYear.EditValue.ToString());
             _fromYear = int.Parse(cboFromYear.EditValue.ToString());
 
-            if (_standardRRF)
+            if (_standardRRF && VisibilitySetting.HandleUnits ==1)
             {
-                tblRRF = itm.GetRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+                tblRRF = itm.GetRRFReportWithOutUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+            }
+
+            else if (_standardRRF && VisibilitySetting.HandleUnits == 2)
+            {
+                tblRRF = itm.GetRRFReportByUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+            }
+
+            else if (_standardRRF && VisibilitySetting.HandleUnits == 3)
+            {
+                tblRRF = itm.GetRRFReportByUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
             else
             {
