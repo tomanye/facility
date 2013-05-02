@@ -729,6 +729,8 @@
     <Content Include="Scripts\79_AlterBalanceTable.sql" />
     <Content Include="Scripts\80_Rpt_BinCardByUnit.sql" />
     <Content Include="Scripts\81_AlterSOHAgain.sql" />
+    <Content Include="Scripts\82_AlterBbincard.sql" />
+    <Content Include="Scripts\83_AlterIssueDocDeletedInsert.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
