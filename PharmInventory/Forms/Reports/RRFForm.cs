@@ -266,11 +266,11 @@ namespace PharmInventory.Forms.Reports
             GeneralInfo ginfo = new GeneralInfo();
             ginfo.LoadAll();
 
-            EthiopianDate.EthiopianDate ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth, 1);
-            EthiopianDate.EthiopianDate ethioDateTo = new EthiopianDate.EthiopianDate(_toYear, _toMonth, 30);
+            var ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth, 1);
+            var ethioDateTo = new EthiopianDate.EthiopianDate(_toYear, _toMonth, 30);
 
 
-            RRFReport rrfReport = new RRFReport
+            var rrfReport = new RRFReport
                                       {
                                           FacilityName = {Text = ginfo.HospitalName},
                                           Period =
@@ -281,7 +281,7 @@ namespace PharmInventory.Forms.Reports
                                               }
                                       };
             //rrfReport.Year.Text = dtFrom.Text.Substring(dtFrom.Text.LastIndexOf('/') + 1);
-            Items itm = new Items();
+            var itm = new Items();
             //DataTable dtbl = itm.GetRRFReportInPacks(_storeID,_fromYear,_fromMonth,_toYear,_toMonth); //  gridItemsChoice.DataSource;
             //DataTable tbl = (DataTable)gridItemsChoice.DataSource;
             tblRRF.TableName = "DataTable1";

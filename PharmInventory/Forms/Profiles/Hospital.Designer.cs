@@ -32,7 +32,6 @@ namespace PharmInventory.Forms.Profiles
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chkNormal = new DevExpress.XtraEditors.CheckEdit();
             this.cboHCTSFirstUpdate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboHCTSUpdateFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -70,10 +69,10 @@ namespace PharmInventory.Forms.Profiles
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
+            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).BeginInit();
@@ -107,6 +106,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -159,10 +159,6 @@ namespace PharmInventory.Forms.Profiles
             this.lookUpEdit1.Size = new System.Drawing.Size(253, 20);
             this.lookUpEdit1.StyleController = this.groupBox1ConvertedLayout;
             this.lookUpEdit1.TabIndex = 18;
-            // 
-            // settingbindingSource
-            // 
-            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
             // 
             // chkNormal
             // 
@@ -574,6 +570,10 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // settingbindingSource
+            // 
+            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
+            // 
             // Hospital
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -587,7 +587,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).EndInit();
             this.groupBox1ConvertedLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).EndInit();
@@ -621,6 +620,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

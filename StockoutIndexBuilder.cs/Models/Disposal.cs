@@ -19,5 +19,6 @@ namespace StockoutIndexBuilder.Models
         public int StoreID { get; set; }
         [Column("Losses")]
         public bool? IsLoss { get; set; }
+        public int UnitID { get; set; }
     }
 }

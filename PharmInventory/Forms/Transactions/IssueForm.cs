@@ -324,7 +324,7 @@ namespace PharmInventory.Forms.Transactions
                     }
                     else if (expAmount == soh || expAmount != 0)
                     {
-                        string output = String.Format("{0} is Expired!", itemName);
+                        var output = String.Format("{0} is Expired!", itemName);
                         XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         tabControl1.TabIndex = 0;
                         break;
@@ -332,7 +332,7 @@ namespace PharmInventory.Forms.Transactions
                     else
                     {
                         ResetValues();
-                        XtraMessageBox.Show("You are tring to issue an Expired item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        XtraMessageBox.Show("You are trying to issue an Expired item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         tabControl1.TabIndex = 0;
                         break;
                     }

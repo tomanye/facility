@@ -694,14 +694,17 @@ namespace BLL
         public DataTable GetExpiredItemsByID(int storeId, int itemId)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND StoreId = {0} AND ID = {1} ORDER BY ID", storeId, itemId));
+            var query = string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND StoreId = {0} AND ItemID = {1} ORDER BY ID", storeId, itemId);
+            this.LoadFromRawSql(query);
             return this.DataTable;
         }
 
         public Int64 GetExpiredQtyItemsByID(int itemId, int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND QuantityLeft > 0 AND StoreId = {0} AND ID = {1} ", storeId, itemId));
+            this.LoadFromRawSql(string.Format("SELECT * FROM " +
+                                              "vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND " +
+                                              "QuantityLeft > 0 AND StoreId = {0} AND ItemID = {1} ", storeId, itemId));
             Int64 qunatity = 0;
             foreach (DataRowView dv in this.DataTable.DefaultView)
             {
