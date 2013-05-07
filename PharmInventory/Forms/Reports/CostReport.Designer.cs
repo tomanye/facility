@@ -106,18 +106,19 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // dtDate
             // 
             this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtDate.BackColor = System.Drawing.Color.LightBlue;
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 7.75F);
+            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 8.75F);
             this.dtDate.DayOfWeekCharacters = 1;
-            this.dtDate.Location = new System.Drawing.Point(568, 29);
+            this.dtDate.Location = new System.Drawing.Point(567, 29);
             this.dtDate.Name = "dtDate";
             this.dtDate.PopUpFontSize = 9.75F;
-            this.dtDate.Size = new System.Drawing.Size(100, 45);
+            this.dtDate.Size = new System.Drawing.Size(101, 45);
             this.dtDate.TabIndex = 12;
             this.dtDate.Value = new System.DateTime(2011, 11, 10, 0, 0, 0, 0);
             this.dtDate.Visible = false;
@@ -168,9 +169,9 @@ namespace PharmInventory.Forms.Reports
             this.dtFrom.CalendarForeColor = System.Drawing.Color.Black;
             this.dtFrom.DayOfWeekCharacters = 2;
             this.dtFrom.ForeColor = System.Drawing.Color.Black;
-            this.dtFrom.Location = new System.Drawing.Point(995, 29);
+            this.dtFrom.Location = new System.Drawing.Point(994, 29);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(129, 20);
+            this.dtFrom.Size = new System.Drawing.Size(130, 20);
             this.dtFrom.TabIndex = 33;
             this.dtFrom.Value = new System.DateTime(2011, 11, 10, 0, 0, 0, 0);
             this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
@@ -182,10 +183,10 @@ namespace PharmInventory.Forms.Reports
             this.dtTo.CalendarForeColor = System.Drawing.Color.Black;
             this.dtTo.DayOfWeekCharacters = 2;
             this.dtTo.ForeColor = System.Drawing.Color.Black;
-            this.dtTo.Location = new System.Drawing.Point(995, 53);
+            this.dtTo.Location = new System.Drawing.Point(994, 53);
             this.dtTo.Name = "dtTo";
             this.dtTo.PopUpFontSize = 10F;
-            this.dtTo.Size = new System.Drawing.Size(129, 21);
+            this.dtTo.Size = new System.Drawing.Size(130, 21);
             this.dtTo.TabIndex = 33;
             this.dtTo.Value = new System.DateTime(2011, 11, 10, 0, 0, 0, 0);
             this.dtTo.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
@@ -229,9 +230,9 @@ namespace PharmInventory.Forms.Reports
             // 
             this.cboSubProgram.DisplayMember = "Name";
             this.cboSubProgram.FormattingEnabled = true;
-            this.cboSubProgram.Location = new System.Drawing.Point(728, 29);
+            this.cboSubProgram.Location = new System.Drawing.Point(727, 29);
             this.cboSubProgram.Name = "cboSubProgram";
-            this.cboSubProgram.Size = new System.Drawing.Size(20, 21);
+            this.cboSubProgram.Size = new System.Drawing.Size(21, 21);
             this.cboSubProgram.TabIndex = 51;
             this.cboSubProgram.Text = "Select Program";
             this.cboSubProgram.ValueMember = "ID";
@@ -278,18 +279,18 @@ namespace PharmInventory.Forms.Reports
             this.cboStores.DisplayMember = "StoreName";
             this.cboStores.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStores.FormattingEnabled = true;
-            this.cboStores.Location = new System.Drawing.Point(94, 29);
+            this.cboStores.Location = new System.Drawing.Point(93, 29);
             this.cboStores.Name = "cboStores";
-            this.cboStores.Size = new System.Drawing.Size(231, 21);
+            this.cboStores.Size = new System.Drawing.Size(232, 21);
             this.cboStores.TabIndex = 0;
             this.cboStores.ValueMember = "ID";
             this.cboStores.SelectedValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // txtItemName
             // 
-            this.txtItemName.Location = new System.Drawing.Point(94, 54);
+            this.txtItemName.Location = new System.Drawing.Point(93, 54);
             this.txtItemName.Name = "txtItemName";
-            this.txtItemName.Size = new System.Drawing.Size(231, 20);
+            this.txtItemName.Size = new System.Drawing.Size(232, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 50;
             this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
@@ -401,7 +402,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Received Amount In Birr";
-            this.gridColumn6.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn6.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "ReceivedPrice";
             this.gridColumn6.Name = "gridColumn6";
@@ -410,7 +411,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn6.OptionsColumn.AllowMove = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReceivedPrice", "{0:n2}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
             this.gridColumn6.Width = 137;
@@ -433,13 +434,13 @@ namespace PharmInventory.Forms.Reports
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Issued Amount In Birr";
-            this.gridColumn1.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn1.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn1.FieldName = "IssuedPrice";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "IssuedPrice", "{0:n2}")});
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 4;
             this.gridColumn1.Width = 131;
@@ -464,12 +465,12 @@ namespace PharmInventory.Forms.Reports
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Balance Amount In Birr";
-            this.gridColumn8.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn8.FieldName = "ReceivedPrice";
+            this.gridColumn8.FieldName = "QuantityLeftPrice";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum)});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityLeftPrice", "{0:n2}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
             this.gridColumn8.Width = 153;
@@ -713,7 +714,6 @@ namespace PharmInventory.Forms.Reports
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
-           // this.printableComponentLink1.Owner = null;
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(null, new DevExpress.XtraPrinting.PageFooterArea(new string[] {
                 "",
                 "[Date Printed]",
@@ -769,6 +769,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }

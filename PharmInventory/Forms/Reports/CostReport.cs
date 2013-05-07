@@ -35,15 +35,7 @@ namespace PharmInventory.Forms.Reports
         {
             PopulateCatTree(_selectedType);
 
-            //Programs prog = new Programs();
-            //DataTable dtProg = prog.GetSubPrograms();
-            //object[] objProg = { 0, "All Programs", "", 0, "" };
-            //dtProg.Rows.Add(objProg);
-            //cboSubProgram.DataSource = dtProg;
-            //cboSubProgram.SelectedIndex = -1;
-            //cboSubProgram.Text = "Select Program";
-
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.DataSource = stor.DefaultView;
             dtDate.Value = DateTime.Now;
@@ -52,38 +44,10 @@ namespace PharmInventory.Forms.Reports
             dtTo.Value = DateTime.Now;
            // int yearFrom = ((_dtCur.Month == 11 && _dtCur.Month == 12) ? _dtCur.Year : _dtCur.Year - 1 );
             dtFrom.Value = DateTime.Now;
-            //int year = _dtCur.Year;
-            //DataTable dtyears = Items.AllYears();
-            //cboYear.DataSource = dtyears;
-            //cboYear.SelectedValue = year;
-            //cboQuarter.DataSource = getQuarter();
-
+       
             this._isReady = true;
             PopulateItemList();
         }
-
-        //private DataTable getQuarter()
-        //{
-        //    DataTable dt = new DataTable();
-        //    dt.Columns.Add("Quarter");
-        //    dt.Columns.Add("Quarterv");
-        //    dt.Rows.Add("");
-        //    object[] q1 = { "Hamle - Meskerem", 1 };
-        //    dt.Rows.Add(q1);
-        //    object[] q2 = { "Tikmet - Tahsas", 2 };
-        //    dt.Rows.Add(q2);
-        //    object[] q3 = { "Tir - Megabit", 3 };
-        //    dt.Rows.Add(q3);
-        //    object[] q4 = { "Miyzia - Sene", 4 };
-        //    dt.Rows.Add(q4);
-        //    //for(int i = 1; i <= 4; i++)
-        //    //{
-        //    //    object[] obj = {"Q" + i, i};
-        //    //    dt.Rows.Add(obj);
-        //    //}
-        //    return dt;
-        //}
-
         /// <summary>
         /// Populates the category tree with drugs or supply categories based on the supplied parameter
         /// </summary>
@@ -107,8 +71,6 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void PopulateItemList()
         {
-            //Balance bal = new Balance();
-            //int storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             DateTime dtCurrent = ConvertDate.DateConverter(dtDate.Text);
@@ -123,22 +85,7 @@ namespace PharmInventory.Forms.Reports
 
             int storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
             int month = dtCurrent.Month;
-            //int year = ((cboYear.SelectedValue != "" )?Convert.ToInt32(cboYear.SelectedValue) : dtCurrent.Year);
-            //int quarter = ((cboQuarter.SelectedValue != DBNull.Value )? Convert.ToInt32(cboQuarter.SelectedValue) : 0);
-
-            //translate the month selection to the appropriate month values
-            //CALENDAR:
-            //if (month > 2)
-            //{
-            //    month -= 2;
-            //}
-            //else
-            //{
-            //    month += 10;
-            //}
-
-            // different criteria for different options like suply and drug
-            //int programID = ((cboSubProgram.EditValue != null) ? Convert.ToInt32(cboSubProgram.EditValue) : 0);
+            
             dtFrom.CustomFormat = "MM/dd/yyyy";
             DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
             dtTo.CustomFormat = "MM/dd/yyyy";
@@ -158,7 +105,6 @@ namespace PharmInventory.Forms.Reports
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             gridItemsList.DataSource = (DataTable)e.Result;
-            //cboStatus.EditValue = _filter;
             if (ckExclude.Checked)
                 gridItemListView.ActiveFilterString = "[Received] != '0'";
         }
@@ -170,7 +116,7 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            Balance bal = new Balance();
+            var bal = new Balance();
 
             int[] arr = (int[])e.Argument;
 
@@ -188,7 +134,7 @@ namespace PharmInventory.Forms.Reports
                 //dRange = "For Year " + dt1.Year.ToString();
             }
             
-            DataTable dtBal = bal.TransactionReport(storeId, dt1,dt2, _selectedType, bw);
+            var dtBal = bal.TransactionReport(storeId, dt1,dt2, _selectedType, bw);
             e.Result = dtBal;
         }
 
@@ -252,19 +198,47 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void gridItemListView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = sender as GridView;
-            if (view != null)
+            var view = sender as GridView;
+            DataRow dr = view.GetFocusedDataRow();
+            if (view != null && VisibilitySetting.HandleUnits==1)
             {
-                DataRow dr = view.GetFocusedDataRow();
                 if (dr != null)
                 {
                     dtDate.Value = DateTime.Now;
                     dtDate.CustomFormat = "MM/dd/yyyy";
                     DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
-                    int month = dtCur.Month;
-                    int year = (month < 11) ? dtCur.Year : dtCur.Year + 1;
-                    int itemId = Convert.ToInt32(dr["ID"]);
-                    ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.SelectedValue), year, 0);
+                    var month = dtCur.Month;
+                    var year = (month < 11) ? dtCur.Year : dtCur.Year + 1;
+                    var itemId = Convert.ToInt32(dr["ID"]);
+                    var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.SelectedValue), year, 0);
+                    con.ShowDialog();
+                }
+            }
+            else if(view != null && VisibilitySetting.HandleUnits==2)
+            {
+                if (dr != null)
+                {
+                    dtDate.Value = DateTime.Now;
+                    dtDate.CustomFormat = "MM/dd/yyyy";
+                    DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
+                    var month = dtCur.Month;
+                    var year = (month < 11) ? dtCur.Year : dtCur.Year + 1;
+                    var itemId = Convert.ToInt32(dr["ID"]);
+                    var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.SelectedValue), year, 0, Convert.ToInt32(dr["ID"]));
+                    con.ShowDialog();
+                }
+            }
+            else if (view != null && VisibilitySetting.HandleUnits == 3)
+            {
+               if (dr != null)
+                {
+                    dtDate.Value = DateTime.Now;
+                    dtDate.CustomFormat = "MM/dd/yyyy";
+                    DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
+                    var month = dtCur.Month;
+                    var year = (month < 11) ? dtCur.Year : dtCur.Year + 1;
+                    var itemId = Convert.ToInt32(dr["ID"]);
+                    var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.SelectedValue), year, 0, Convert.ToInt32(dr["ID"]));
                     con.ShowDialog();
                 }
             }

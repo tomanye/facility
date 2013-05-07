@@ -732,6 +732,7 @@
     <Content Include="Scripts\82_AlterBbincard.sql" />
     <Content Include="Scripts\83_AlterIssueDocDeletedInsert.sql" />
     <Content Include="Scripts\84_UpdateInventory.sql" />
+    <Content Include="Scripts\85_AlterGetTransactionDetails.sql" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
