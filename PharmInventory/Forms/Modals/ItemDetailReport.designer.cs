@@ -130,6 +130,9 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.txtBBalance = new DevExpress.XtraEditors.TextEdit();
             this.label28 = new System.Windows.Forms.Label();
@@ -224,6 +227,8 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.cboFiscalYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBBalance.Properties)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -399,7 +404,7 @@ namespace PharmInventory.Forms.Modals
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.PageVisible = false;
-            this.tabPage11.Size = new System.Drawing.Size(902, 531);
+            this.tabPage11.Size = new System.Drawing.Size(902, 532);
             this.tabPage11.Text = "Dispensery Unit Balances";
             // 
             // gridDispensaryView
@@ -408,7 +413,7 @@ namespace PharmInventory.Forms.Modals
             this.gridDispensaryView.Location = new System.Drawing.Point(3, 3);
             this.gridDispensaryView.MainView = this.gridView1;
             this.gridDispensaryView.Name = "gridDispensaryView";
-            this.gridDispensaryView.Size = new System.Drawing.Size(896, 525);
+            this.gridDispensaryView.Size = new System.Drawing.Size(896, 526);
             this.gridDispensaryView.TabIndex = 0;
             this.gridDispensaryView.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -877,7 +882,8 @@ namespace PharmInventory.Forms.Modals
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
             this.gridItemsList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemLookUpEdit1});
             this.gridItemsList.Size = new System.Drawing.Size(883, 449);
             this.gridItemsList.TabIndex = 32;
             this.gridItemsList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -896,7 +902,8 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn13,
             this.gridColumn9,
             this.gridColumn5,
-            this.gridColumn14});
+            this.gridColumn14,
+            this.gridColumn15});
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Honeydew;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
             styleFormatCondition1.ApplyToRow = true;
@@ -974,7 +981,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 6;
+            this.gridColumn10.VisibleIndex = 7;
             this.gridColumn10.Width = 59;
             // 
             // gridColumn11
@@ -992,7 +999,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn11.OptionsColumn.ReadOnly = true;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 7;
+            this.gridColumn11.VisibleIndex = 8;
             this.gridColumn11.Width = 69;
             // 
             // gridColumn12
@@ -1006,7 +1013,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn12.OptionsColumn.ReadOnly = true;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 8;
+            this.gridColumn12.VisibleIndex = 9;
             this.gridColumn12.Width = 86;
             // 
             // gridColumn13
@@ -1022,7 +1029,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn13.OptionsColumn.ReadOnly = true;
             this.gridColumn13.OptionsFilter.AllowFilter = false;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 9;
+            this.gridColumn13.VisibleIndex = 10;
             this.gridColumn13.Width = 94;
             // 
             // gridColumn9
@@ -1037,7 +1044,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn9.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 10;
+            this.gridColumn9.VisibleIndex = 11;
             this.gridColumn9.Width = 139;
             // 
             // gridColumn5
@@ -1047,7 +1054,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 6;
             // 
             // gridColumn14
             // 
@@ -1056,7 +1063,31 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 4;
+            this.gridColumn14.VisibleIndex = 5;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Unit";
+            this.gridColumn15.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.gridColumn15.FieldName = "UnitID";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.OptionsColumn.AllowEdit = false;
+            this.gridColumn15.OptionsColumn.ReadOnly = true;
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 4;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Text", 32, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEdit1.DataSource = this.unitBindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Text";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.NullText = "No Unit";
+            this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -1424,7 +1455,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -1984,6 +2015,8 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.cboFiscalYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBBalance.Properties)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -2196,6 +2229,9 @@ namespace PharmInventory.Forms.Modals
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private System.Windows.Forms.BindingSource unitBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
 
 
 

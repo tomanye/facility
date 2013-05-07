@@ -6,6 +6,7 @@ using BLL;
 using DevExpress.XtraCharts;
 using System.Drawing.Printing;
 using System.IO;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
 using StockoutIndexBuilder;
@@ -158,6 +159,23 @@ namespace PharmInventory.Forms.Modals
             }
             cboYear.SelectedItem = _year;
 
+            var itemunit = new ItemUnit();
+            var allunits = itemunit.GetAllUnits();
+            unitBindingSource.DataSource = allunits.DefaultView;
+
+            var unitcolumn = ((GridView)gridItemsList.MainView).Columns[11];
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    unitcolumn.Visible = false;
+                    break;
+                case 2:
+                    unitcolumn.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    break;
+            }
 
             PopulateBinCardYearCombo();
             cboFiscalYear.SelectedItem = _year;
@@ -169,6 +187,7 @@ namespace PharmInventory.Forms.Modals
             toolTip1.SetToolTip(txtitmName, itemName);
             lblBUnit.Text = dtItm.Rows[0]["Unit"].ToString();
             this.Text = itemName + " Detail Report";
+
 
             ReceivingUnits dus = new ReceivingUnits();
             DataTable dtDU = dus.GetApplicableDUs(_itemId, _storeId);
@@ -190,6 +209,9 @@ namespace PharmInventory.Forms.Modals
             catch
             {
             }
+
+         
+
             int du = ((cboDU.SelectedValue != null) ? Convert.ToInt32(cboDU.SelectedValue) : 0);
             GenerateCharts(0);
             ItemStockStatus();

@@ -46,26 +46,7 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
-            var amc = ((GridView)gridItemsChoice.MainView).Columns[3];
-            var mos = ((GridView)gridItemsChoice.MainView).Columns[4];
-            var min = ((GridView)gridItemsChoice.MainView).Columns[5];
-            var max = ((GridView)gridItemsChoice.MainView).Columns[6];
-
-            //if(VisibilitySetting.HandleUnits)
-            //{
-            //    amc.Visible = false;
-            //    mos.Visible = false;
-            //    min.Visible = false;
-            //    max.Visible = false;
-            //}
-            //else if(VisibilitySetting.HandleUnits ==false)
-            //{
-            //    amc.Visible = true;
-            //    mos.Visible = true;
-            //    min.Visible = true;
-            //    max.Visible = true;
-            //}
-            //CALENDAR:
+        CALENDAR:
             PopulateCatTree(_selectedType);
 
             Stores stor = new Stores();
@@ -76,6 +57,10 @@ namespace PharmInventory.Forms.Reports
 
             string[] arr = new string[] { "All", "Stock Out", "Below EOP", "Near EOP", "Normal", "Over Stocked" };
             cboStatus.Properties.DataSource = arr;
+
+            var itemunit = new ItemUnit();
+            var allunits = itemunit.GetAllUnits();
+            unitBindingSource.DataSource = allunits.DefaultView;
 
             DataTable dtMonths = new DataTable();
             dtMonths.Columns.Add("Value");
@@ -92,6 +77,19 @@ namespace PharmInventory.Forms.Reports
             //    currentMont -= 11;
             //}
 
+            var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[17];
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    unitcolumn.Visible = false;
+                    break;
+                case 2:
+                    unitcolumn.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    break;
+            }
 
             DataTable dtyears = Items.AllYears();
             //if (year == _dtCur.Year + 1)
@@ -438,26 +436,31 @@ namespace PharmInventory.Forms.Reports
             int year = Convert.ToInt32(cboYear.EditValue);
             var ethioDate = new EthiopianDate.EthiopianDate(year, month, 30);
 
-            if (VisibilitySetting.HandleUnits == 2)
+            switch (VisibilitySetting.HandleUnits)
             {
-                unitID = Convert.ToInt32(dr["UnitID"]);
-                var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
-                con1.ShowDialog();
-            }
-            else if (VisibilitySetting.HandleUnits == 3)
-            {
-                unitID = Convert.ToInt32(dr["UnitID"]);
-                var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
-                con1.ShowDialog();
-            }
+                case 2:
+                    {
+                        unitID = Convert.ToInt32(dr["UnitID"]);
+                        var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
+                        con1.ShowDialog();
+                    }
+                    break;
+                case 3:
+                    {
+                        unitID = Convert.ToInt32(dr["UnitID"]);
+                        var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0, unitID);//ethioDate.FiscalYear
+                        con1.ShowDialog();
+                    }
+                    break;
+                default:
+                    {
 
-            else
-            {
-
-                //ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-                ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-                //ethioDate.FiscalYear
-                con.ShowDialog();
+                        //ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                        ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                        //ethioDate.FiscalYear
+                        con.ShowDialog();
+                    }
+                    break;
             }
         }
 
