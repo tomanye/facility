@@ -1242,8 +1242,8 @@ namespace PharmInventory.Forms.Transactions
             styleFormatCondition6.Appearance.Options.UseBackColor = true;
             styleFormatCondition6.ApplyToRow = true;
             styleFormatCondition6.Column = this.gridColumn15;
-            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition6.Expression = "[SOH] ==  [Expired]";
+            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition6.Expression = "[SOH] ==  [Expired] && [Expired]!=0";
             styleFormatCondition6.Value1 = "Expired";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
             styleFormatCondition1,
