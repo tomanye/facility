@@ -166,6 +166,11 @@ namespace PharmInventory
                     frm = new ChangePassword(UserId);
                     AddTab("Change Password", frm);
                     break;
+                    break;
+                case "Transfer Log":
+                    frm = new LogTransfer();
+                    AddTab("Transfer Log", frm);
+                    break;
                 case "Losses/Adjustment":
                     frm = new LossesAdjustment();
                     AddTab("Losses and Adjustment", frm);

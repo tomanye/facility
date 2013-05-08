@@ -81,6 +81,12 @@ namespace PharmInventory
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
+            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.lbiLogReceives = new DevExpress.XtraNavBar.NavBarItem();
+            this.lbiIssueLog = new DevExpress.XtraNavBar.NavBarItem();
+            this.lbiLossAdjustLog = new DevExpress.XtraNavBar.NavBarItem();
+            this.lbiInventoryLog = new DevExpress.XtraNavBar.NavBarItem();
+            this.btnTransferLog = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiReceive = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
@@ -107,11 +113,6 @@ namespace PharmInventory
             this.lbiSummaryChart = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiStockExpiryStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiCostSummary = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.lbiLogReceives = new DevExpress.XtraNavBar.NavBarItem();
-            this.lbiIssueLog = new DevExpress.XtraNavBar.NavBarItem();
-            this.lbiLossAdjustLog = new DevExpress.XtraNavBar.NavBarItem();
-            this.lbiInventoryLog = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarFacilitySettings = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -672,7 +673,8 @@ namespace PharmInventory
             this.navBarItem1,
             this.navBarItem5,
             this.navBarItem6,
-            this.LbTransfer});
+            this.LbTransfer,
+            this.btnTransferLog});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -684,6 +686,53 @@ namespace PharmInventory
             this.navBarControl1.TabIndex = 19;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
+            // 
+            // navBarGroup4
+            // 
+            this.navBarGroup4.Caption = "Activity Logs";
+            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLogReceives),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiIssueLog),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLossAdjustLog),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiInventoryLog),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.btnTransferLog)});
+            this.navBarGroup4.Name = "navBarGroup4";
+            this.navBarGroup4.SelectedLinkIndex = 4;
+            // 
+            // lbiLogReceives
+            // 
+            this.lbiLogReceives.Caption = "Receive Log";
+            this.lbiLogReceives.Name = "lbiLogReceives";
+            this.lbiLogReceives.SmallImage = global::PharmInventory.Properties.Resources._1287390769_toggle_log;
+            this.lbiLogReceives.Tag = "Receive Log";
+            // 
+            // lbiIssueLog
+            // 
+            this.lbiIssueLog.Caption = "Issue Log";
+            this.lbiIssueLog.Name = "lbiIssueLog";
+            this.lbiIssueLog.SmallImage = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
+            this.lbiIssueLog.Tag = "Issue Log";
+            // 
+            // lbiLossAdjustLog
+            // 
+            this.lbiLossAdjustLog.Caption = "Loss and Adjustment";
+            this.lbiLossAdjustLog.Name = "lbiLossAdjustLog";
+            this.lbiLossAdjustLog.SmallImage = global::PharmInventory.Properties.Resources._1287387920_stock_summary;
+            this.lbiLossAdjustLog.Tag = "Adjustment Log";
+            // 
+            // lbiInventoryLog
+            // 
+            this.lbiInventoryLog.Caption = "Inventory Log";
+            this.lbiInventoryLog.Name = "lbiInventoryLog";
+            this.lbiInventoryLog.SmallImage = global::PharmInventory.Properties.Resources._1286957665_File_Receive;
+            this.lbiInventoryLog.Tag = "Inventory Log";
+            // 
+            // btnTransferLog
+            // 
+            this.btnTransferLog.Caption = "Transfer Log";
+            this.btnTransferLog.Name = "btnTransferLog";
+            this.btnTransferLog.SmallImage = global::PharmInventory.Properties.Resources.navigate_48;
+            this.btnTransferLog.Tag = "Transfer Log";
             // 
             // navBarGroup1
             // 
@@ -749,7 +798,7 @@ namespace PharmInventory
             // 
             // LbTransfer
             // 
-            this.LbTransfer.Caption = "Item Transfer";
+            this.LbTransfer.Caption = "Transfer";
             this.LbTransfer.Name = "LbTransfer";
             this.LbTransfer.SmallImage = global::PharmInventory.Properties.Resources.Excel;
             this.LbTransfer.Tag = "Transfers";
@@ -896,44 +945,6 @@ namespace PharmInventory
             this.lbiCostSummary.Name = "lbiCostSummary";
             this.lbiCostSummary.SmallImage = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
             this.lbiCostSummary.Tag = "Cost Summary";
-            // 
-            // navBarGroup4
-            // 
-            this.navBarGroup4.Caption = "Activity Logs";
-            this.navBarGroup4.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLogReceives),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiIssueLog),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiLossAdjustLog),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiInventoryLog)});
-            this.navBarGroup4.Name = "navBarGroup4";
-            // 
-            // lbiLogReceives
-            // 
-            this.lbiLogReceives.Caption = "Receive Log";
-            this.lbiLogReceives.Name = "lbiLogReceives";
-            this.lbiLogReceives.SmallImage = global::PharmInventory.Properties.Resources._1287390769_toggle_log;
-            this.lbiLogReceives.Tag = "Receive Log";
-            // 
-            // lbiIssueLog
-            // 
-            this.lbiIssueLog.Caption = "Issue Log";
-            this.lbiIssueLog.Name = "lbiIssueLog";
-            this.lbiIssueLog.SmallImage = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
-            this.lbiIssueLog.Tag = "Issue Log";
-            // 
-            // lbiLossAdjustLog
-            // 
-            this.lbiLossAdjustLog.Caption = "Loss and Adjustment";
-            this.lbiLossAdjustLog.Name = "lbiLossAdjustLog";
-            this.lbiLossAdjustLog.SmallImage = global::PharmInventory.Properties.Resources._1287387920_stock_summary;
-            this.lbiLossAdjustLog.Tag = "Adjustment Log";
-            // 
-            // lbiInventoryLog
-            // 
-            this.lbiInventoryLog.Caption = "Inventory Log";
-            this.lbiInventoryLog.Name = "lbiInventoryLog";
-            this.lbiInventoryLog.SmallImage = global::PharmInventory.Properties.Resources._1286957665_File_Receive;
-            this.lbiInventoryLog.Tag = "Inventory Log";
             // 
             // navBarGroup6
             // 
@@ -1160,6 +1171,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem5;
         private DevExpress.XtraNavBar.NavBarItem navBarItem6;
         private DevExpress.XtraNavBar.NavBarItem LbTransfer;
+        private DevExpress.XtraNavBar.NavBarItem btnTransferLog;
     }
 }
 

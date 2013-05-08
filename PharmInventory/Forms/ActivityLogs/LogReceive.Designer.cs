@@ -28,6 +28,7 @@ namespace PharmInventory.Forms.ActivityLogs
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogReceive));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -35,11 +36,11 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
             this.colRefNo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnEditRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cboSupplier = new DevExpress.XtraEditors.LookUpEdit();
@@ -66,7 +67,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.unitsbindingSource = new System.Windows.Forms.BindingSource();
+            this.unitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
