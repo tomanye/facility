@@ -227,6 +227,7 @@
             this.gridItemsListView.GridControl = this.gridControl1;
             this.gridItemsListView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridItemsListView.Name = "gridItemsListView";
+            this.gridItemsListView.OptionsBehavior.Editable = false;
             this.gridItemsListView.OptionsView.ShowGroupedColumns = true;
             this.gridItemsListView.OptionsView.ShowGroupPanel = false;
             // 
@@ -235,6 +236,7 @@
             this.gridColumn1.Caption = "No.";
             this.gridColumn1.FieldName = "RowNo";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 36;
@@ -244,6 +246,7 @@
             this.gridColumn2.Caption = "Item Name";
             this.gridColumn2.FieldName = "FullItemName";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 256;
@@ -253,6 +256,7 @@
             this.gridColumn3.Caption = "Batch No";
             this.gridColumn3.FieldName = "BatchNo";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 95;
@@ -262,6 +266,7 @@
             this.gridColumn4.Caption = "Pack";
             this.gridColumn4.FieldName = "NoOfPack";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 65;
@@ -271,6 +276,7 @@
             this.gridColumn5.Caption = "Qty/ Pack";
             this.gridColumn5.FieldName = "QtyPerPack";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
             this.gridColumn5.Width = 79;
@@ -280,6 +286,7 @@
             this.gridColumn6.Caption = "Quantity";
             this.gridColumn6.FieldName = "Quantity";
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
             this.gridColumn6.Width = 84;
@@ -289,6 +296,7 @@
             this.gridColumn7.Caption = "Price/Pack";
             this.gridColumn7.FieldName = "PackPrice";
             this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 7;
             this.gridColumn7.Width = 89;
@@ -298,6 +306,7 @@
             this.gridColumn8.Caption = "Total Price";
             this.gridColumn8.FieldName = "TotalPrice";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 8;
             this.gridColumn8.Width = 82;
@@ -307,6 +316,7 @@
             this.gridColumn9.Caption = "Expiry Date";
             this.gridColumn9.FieldName = "ExpDate";
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 98;
@@ -316,6 +326,7 @@
             this.gridColumn10.Caption = "SOH";
             this.gridColumn10.FieldName = "QuantityLeft";
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 10;
             this.gridColumn10.Width = 78;

@@ -1185,30 +1185,14 @@ namespace BLL
 
         public object BalanceOfAllItemsUsingUnit(int storeId, int year, int month, string _selectedType, int programID, int commodityTypeID, DateTime _dtCur, BackgroundWorker bw)
         {
-            DataTable dtBal = new DataTable();
-            GeneralInfo pipline = new GeneralInfo();
-
             // Dont Iterate
             var dtbl = new DataTable();
-            if (programID == 0) //We don't filter by program ID.
-            {
-                dtbl = GetSOHByUnit(storeId, month, year);
-            }
-            else //We filter by program ID.
-            {
-                //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
-                dtbl = GetSOHByPrograms(storeId, programID, month, year);
-            }
-
-
+            dtbl = programID == 0 ? GetSOHByUnit(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
             dtbl.Columns.Add("MOS", typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
-            // dtbl.Columns.Add("DaysStockedOut", typeof(int));
-            //dtbl.Columns.Add("amc", typeof(double));
-            int amc;
             foreach (DataRow dr in dtbl.Rows)
             {
-                amc = Convert.ToInt32(dr["AMC"]);
+                var amc = Convert.ToInt32(dr["AMC"]);
                 if (amc > 0)
                 {
                     dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;

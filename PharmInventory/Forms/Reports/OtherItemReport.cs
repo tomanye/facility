@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
@@ -27,6 +28,7 @@ namespace PharmInventory.Forms.Reports
 
         string filter = "All";
         int catID = 0;
+        private int unitID = 0;
         DateTime dtCur = new DateTime();
         String SelectedType = "Drug";
         bool IsReady = false;
@@ -38,7 +40,11 @@ namespace PharmInventory.Forms.Reports
             lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
             lkCommodityTypes.ItemIndex = 0;
 
-            Stores stor = new Stores();
+            var itemunit = new ItemUnit();
+            var allunits = itemunit.GetAllUnits();
+            unitBindingSource.DataSource = allunits.DefaultView;
+
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
 
@@ -67,14 +73,14 @@ namespace PharmInventory.Forms.Reports
 
 
 
-            DataTable dtyears = Items.AllYears();
+            var dtyears = Items.AllYears();
 
             cboYear.Properties.DataSource = dtyears;
             cboYear.EditValue = year;
             if (cboYear.Properties.Columns.Count > 0)
                 cboYear.Properties.Columns[0].Alignment = DevExpress.Utils.HorzAlignment.Near;
-            Programs prog = new Programs();
-            DataTable dtProg = new DataTable();
+            var prog = new Programs();
+            var dtProg = new DataTable();
             dtProg = prog.GetSubPrograms();
             object[] objProg = { 0, "All Programs", "", 0, "" };
             dtProg.Rows.Add(objProg);
@@ -82,13 +88,29 @@ namespace PharmInventory.Forms.Reports
             cboSubProgram.ItemIndex = -1;
             cboSubProgram.Text = "Select Program";
 
-            ReceivingUnits rec = new ReceivingUnits();
-            DataTable drRec = rec.GetAllApplicableDU();
+            var rec = new ReceivingUnits();
+            var drRec = rec.GetAllApplicableDU();
             cboIssuedTo.Properties.DataSource = drRec;
             cboIssuedTo.ItemIndex = -1;
             cboIssuedTo.Text = "Select Issue Location";
             IsReady = true;
+
+            var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[15];
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    unitcolumn.Visible = false;
+                    break;
+                case 2:
+                    unitcolumn.Visible = true;
+                    break;
+                default:
+                    unitcolumn.Visible = true;
+                    break;
+            }
             PopulateGrid();
+
+
         }
 
 
@@ -272,18 +294,39 @@ namespace PharmInventory.Forms.Reports
         private void gridItemsChoice_DoubleClick(object sender, EventArgs e)
         {
             DataRow dr = gridItemChoiceView.GetFocusedDataRow();
-            if (dr != null)
-            {
-                int itemId = Convert.ToInt32(dr["ID"]);
-                dtDate.Value = DateTime.Now;
-                dtDate.CustomFormat = "MM/dd/yyyy";
-                dtCur = ConvertDate.DateConverter(dtDate.Text);
-                int month = Convert.ToInt32(cboMonth.EditValue);
-                int year = (month < 11) ? Convert.ToInt32(cboYear.EditValue) : Convert.ToInt32(cboYear.EditValue);
+            if (dr == null) return;
+            int itemId = Convert.ToInt32(dr["ID"]);
+            dtDate.Value = DateTime.Now;
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            dtCur = ConvertDate.DateConverter(dtDate.Text);
+            int month = Convert.ToInt32(cboMonth.EditValue);
+            int year = (month < 11) ? Convert.ToInt32(cboYear.EditValue) : Convert.ToInt32(cboYear.EditValue);
 
-                //    int itemId = Convert.ToInt32(lstItem.SelectedItems[0].Tag);
-                ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-                con.ShowDialog();
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 2:
+                    {
+                        unitID = Convert.ToInt32(dr["UnitID"]);
+                        var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0,
+                                                        unitID); //ethioDate.FiscalYear
+                        con1.ShowDialog();
+                    }
+                    break;
+                case 3:
+                    {
+                        unitID = Convert.ToInt32(dr["UnitID"]);
+                        var con1 = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0,
+                                                        unitID); //ethioDate.FiscalYear
+                        con1.ShowDialog();
+                    }
+                    break;
+                default:
+                    {
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue),
+                                                                    year, 0);
+                        con.ShowDialog();
+                    }
+                    break;
             }
         }
 
