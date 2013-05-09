@@ -39,6 +39,7 @@ namespace PharmInventory.Forms.ActivityLogs
             var rec = new DisposalReasons();
             var dtDis = rec.GetAvailableReasons();
             cboReasons.Properties.DataSource = dtDis.DefaultView;
+            reasonBindingSource.DataSource = dtDis.DefaultView;
            // cboReasons.ItemIndex = 0;
 
             var itemunit = new ItemUnit();
