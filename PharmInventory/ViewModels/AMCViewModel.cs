@@ -73,8 +73,6 @@ namespace PharmInventory.ViewModels
             var unit = unitrepository.GetAll().FirstOrDefault(m => allItemIds != null && m.ID == allItemIds.UnitID);
             if (allItemIds == null)
             {
-                if (unit != null)
-                {
                     var amcreport = new AmcReport
                                         {
                                             ItemID = itemId,
@@ -95,11 +93,13 @@ namespace PharmInventory.ViewModels
                                                 Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,
                                                                                             endDate)/
                                                 Convert.ToDouble(viewModel.AmcRange),
-                                            UnitID = unit.ID,
+                                            
                                         };
-                    amcrepo.Add(amcreport);
+                if(unit==null)
+                    amcreport.UnitID = 0;
+                if (unit != null) amcreport.UnitID = unit.ID;
+                amcrepo.Add(amcreport);
                 }
-            }
             else
             {
                 allItemIds.IssueInAmcRange = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate);
