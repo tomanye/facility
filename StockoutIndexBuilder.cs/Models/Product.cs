@@ -13,5 +13,9 @@ namespace StockoutIndexBuilder.Models
       [Key]
       public int ID { get; set; }
       public string IIN { get; set; }
+      public string ATC { get; set; }
+      public string Description { get; set; }
+      public int TypeID { get; set; }
+      public int? DSID { get; set; }
     }
 }

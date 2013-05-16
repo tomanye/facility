@@ -7,7 +7,7 @@ using StockoutIndexBuilder.Models;
 
 namespace StockoutIndexBuilder.DAL
 {
-    internal class StockoutEntities : DbContext
+    public class StockoutEntities : DbContext
     {
         public StockoutEntities() : base(Settings.ConnectionString)
         {
@@ -25,5 +25,7 @@ namespace StockoutIndexBuilder.DAL
         public DbSet<vwGetAllItems>VwGetAllItemses { get; set; }
         public DbSet<AmcReport> AmcReports { get; set; }
         public DbSet<ItemUnit> Units { get; set; }
+        public DbSet<DosageForm> DosageForms { get; set; }
+        public DbSet<Unit> Unit { get; set; }
     }
 }

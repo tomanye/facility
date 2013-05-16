@@ -8,7 +8,7 @@ namespace StockoutIndexBuilder.DAL
 {
    public class ItemsRepository
     {
-        StockoutEntities Context = new StockoutEntities();
+       readonly StockoutEntities Context = new StockoutEntities();
 
         public List<Item> AllItems()
         {

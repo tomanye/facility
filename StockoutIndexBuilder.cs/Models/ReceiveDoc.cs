@@ -22,7 +22,7 @@ namespace StockoutIndexBuilder.Models
         [NotMapped]
         public string FullItemName { get; set; }
 
-        public int UnitID { get; set; }
+        public int? UnitID { get; set; }
         public virtual Item Item{ get; set; }
         
 
