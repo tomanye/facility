@@ -125,7 +125,8 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>FEPharmaInventory_Key.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
@@ -765,7 +766,9 @@
     <Content Include="Scripts\84_UpdateInventory.sql" />
     <Content Include="Scripts\85_AlterGetTransactionDetails.sql" />
     <Content Include="Scripts\86_AlterBinCard.sql" />
-    <None Include="FEPharmaInventory_Key.pfx" />
+    <Content Include="Scripts\87_AlterUnitTable.sql" />
+    <Content Include="Scripts\88_AlterDosageForm.sql" />
+    <Content Include="Scripts\89_AlterProductTable.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">

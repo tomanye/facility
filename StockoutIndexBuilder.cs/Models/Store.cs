@@ -14,7 +14,5 @@ namespace StockoutIndexBuilder.Models
         public int ID { get; set; }
         public string StoreName { get; set; }
         public bool IsActive { get; set; }
-
-
     }
 }
