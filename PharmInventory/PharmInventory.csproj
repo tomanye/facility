@@ -770,6 +770,7 @@
     <Content Include="Scripts\88_AlterDosageForm.sql" />
     <Content Include="Scripts\89_AlterProductTable.sql" />
     <Content Include="Scripts\90_AlterPediatricType.sql" />
+    <Content Include="Scripts\91_CreateBinCard.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">
