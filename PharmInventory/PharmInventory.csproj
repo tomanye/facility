@@ -477,11 +477,11 @@
     <Compile Include="Forms\UtilitiesAndForms\UnitConsolidator.Designer.cs">
       <DependentUpon>UnitConsolidator.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\VENConsolidator.cs">
+    <Compile Include="Forms\UtilitiesAndForms\ItemConsolidator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\VENConsolidator.Designer.cs">
-      <DependentUpon>VENConsolidator.cs</DependentUpon>
+    <Compile Include="Forms\UtilitiesAndForms\ItemConsolidator.Designer.cs">
+      <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\Cell.cs" />
     <Compile Include="Forms\UtilitiesAndForms\ChangePassword.cs">
@@ -769,6 +769,7 @@
     <Content Include="Scripts\87_AlterUnitTable.sql" />
     <Content Include="Scripts\88_AlterDosageForm.sql" />
     <Content Include="Scripts\89_AlterProductTable.sql" />
+    <Content Include="Scripts\90_AlterPediatricType.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">
@@ -944,8 +945,8 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\UnitConsolidator.resx">
       <DependentUpon>UnitConsolidator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UtilitiesAndForms\VENConsolidator.resx">
-      <DependentUpon>VENConsolidator.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\UtilitiesAndForms\ItemConsolidator.resx">
+      <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\RRFReport.resx">

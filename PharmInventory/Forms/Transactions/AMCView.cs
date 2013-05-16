@@ -38,8 +38,10 @@ namespace PharmInventory.Forms.Transactions
             var allstores = _storerepository.AllStores();
              storebindingSource.DataSource = allstores;
              lookUpEdit1.ItemIndex = 0;
+
              var allamcs = _amcReportRepository.AllAmcReport();
               amcbindingSource.DataSource = allamcs.Distinct().Where(m => m.StoreID == Convert.ToInt32(lookUpEdit1.EditValue)).OrderBy(m=>m.FullItemName);
+
               var allunits = _unitRepository.GetAll();
               unitsBindingSource.DataSource = allunits;
         }

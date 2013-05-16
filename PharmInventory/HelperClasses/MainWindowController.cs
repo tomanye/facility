@@ -147,6 +147,11 @@ namespace PharmInventory
                     frm = new ProductConsolidator();
                     AddTab("Update Product List From The Directory Service", frm);
                     break;
+                case "Item Consolidator":
+                    //frm = new ManageItems();
+                    frm = new ItemConsolidator();
+                    AddTab("Update Items List From The Directory Service", frm);
+                    break;
                 case "Unit Compare":
                     //frm = new ManageItems();
                     frm = new UnitConsolidator();

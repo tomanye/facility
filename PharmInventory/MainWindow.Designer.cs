@@ -87,6 +87,7 @@ namespace PharmInventory
             this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem10 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiReceive = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
@@ -627,7 +628,7 @@ namespace PharmInventory
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup1;
+            this.navBarControl1.ActiveGroup = this.navBarGroup5;
             this.navBarControl1.AllowSelectedLink = true;
             this.navBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
@@ -680,7 +681,8 @@ namespace PharmInventory
             this.btnTransferLog,
             this.navBarItem7,
             this.navBarItem8,
-            this.navBarItem9});
+            this.navBarItem9,
+            this.navBarItem10});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -696,14 +698,16 @@ namespace PharmInventory
             // navBarGroup5
             // 
             this.navBarGroup5.Caption = "Utilities";
+            this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem7),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem8),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem9)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem9),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem10)});
             this.navBarGroup5.Name = "navBarGroup5";
-            this.navBarGroup5.SelectedLinkIndex = 4;
+            this.navBarGroup5.SelectedLinkIndex = 5;
             // 
             // navBarItem4
             // 
@@ -724,23 +728,32 @@ namespace PharmInventory
             this.navBarItem7.Caption = "Product Consolidator";
             this.navBarItem7.Name = "navBarItem7";
             this.navBarItem7.Tag = "Product Compare";
+            this.navBarItem7.Visible = false;
             // 
             // navBarItem8
             // 
             this.navBarItem8.Caption = "Dosage Form Consolidator";
             this.navBarItem8.Name = "navBarItem8";
             this.navBarItem8.Tag = "Dosage Form";
+            this.navBarItem8.Visible = false;
             // 
             // navBarItem9
             // 
             this.navBarItem9.Caption = "Unit Consolidator";
             this.navBarItem9.Name = "navBarItem9";
             this.navBarItem9.Tag = "Unit Compare";
+            this.navBarItem9.Visible = false;
+            // 
+            // navBarItem10
+            // 
+            this.navBarItem10.Caption = "Item Consolidator";
+            this.navBarItem10.Name = "navBarItem10";
+            this.navBarItem10.Tag = "Item Consolidator";
+            this.navBarItem10.Visible = false;
             // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "Transactions";
-            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Small;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.SmallIconsText;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
@@ -1202,6 +1215,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem7;
         private DevExpress.XtraNavBar.NavBarItem navBarItem8;
         private DevExpress.XtraNavBar.NavBarItem navBarItem9;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem10;
     }
 }
 
