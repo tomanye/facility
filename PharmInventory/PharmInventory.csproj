@@ -32,23 +32,23 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\STORAGE\Dropbox\FE Labs\</PublishUrl>
+    <PublishUrl>C:\Users\Tedy\Desktop\FEPublish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://fe.hcmisonline.org/labs/</UpdateUrl>
     <ProductName>HCMIS Facility Edition</ProductName>
     <PublisherName>USAID DELIVER PROJECT</PublisherName>
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>205</ApplicationRevision>
     <ApplicationVersion>2.5.0.205</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -532,6 +532,7 @@
       <DependentUpon>RRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
+    <Content Include="Scripts\97_AlterItemUpdateStoredProcedure.sql" />
     <Content Include="Scripts\01_HCMIS Queries.sql" />
     <Content Include="Scripts\03_GetConsumptionTrendByMonth.sql" />
     <Content Include="Scripts\04_GetMonthlyConsumptionByUnits.sql" />
@@ -769,8 +770,13 @@
     <Content Include="Scripts\87_AlterUnitTable.sql" />
     <Content Include="Scripts\88_AlterDosageForm.sql" />
     <Content Include="Scripts\89_AlterProductTable.sql" />
-    <Content Include="Scripts\90_AlterPediatricType.sql" />
+    <Content Include="Scripts\90_AlterAddDSItemIDColumn.sql" />
     <Content Include="Scripts\91_CreateBinCard.sql" />
+    <Content Include="Scripts\92_AlterVwGetAllItems.sql" />
+    <Content Include="Scripts\93_AlterItemInserProcedure.sql" />
+    <Content Include="Scripts\94_AlterItemsLoadAll.sql" />
+    <Content Include="Scripts\95_AlterItemsLoadByPrimaryKey.sql" />
+    <Content Include="Scripts\96_SOHFOROLDSITE.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">

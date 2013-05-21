@@ -78,6 +78,7 @@ namespace PharmInventory.Forms.Transactions
                 backgroundWorker1.ReportProgress((int) percentage);
             }
         }
+
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
            progressBar1.Value = e.ProgressPercentage;

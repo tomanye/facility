@@ -18,7 +18,7 @@ namespace StockoutIndexBuilder.Models
         public int? DosageFormId { get; set; }
         [ForeignKey("Product")]
         public int? IINID { get; set; }
-        public int? Pediatric { get; set; }
+        public int? DSItemID { get; set; }
 
         [NotMapped]
         public string FullItemName { get; set; }

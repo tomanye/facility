@@ -1208,5 +1208,18 @@ namespace BLL
             }
             return dtbl;
         }
+
+        public DataTable GetSOHForRRF(int storeId, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHForRRF", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
     }
 }

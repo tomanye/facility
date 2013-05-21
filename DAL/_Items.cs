@@ -258,6 +258,14 @@ namespace DAL
 					return new SqlParameter("@StorageTypeID", SqlDbType.Int, 0);
 				}
 			}
+
+            public static SqlParameter DSItemID
+            {
+                get
+                {
+                    return new SqlParameter("@DSItemID", SqlDbType.Int, 0);
+                }
+            }
 			
 		}
 		#endregion		
@@ -285,6 +293,7 @@ namespace DAL
             public const string StockCodeDACA = "StockCodeDACA";
             public const string NearExpiryTrigger = "NearExpiryTrigger";
             public const string StorageTypeID = "StorageTypeID";
+            public const string DSItemID = "DSItemID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -312,6 +321,7 @@ namespace DAL
 					ht[StockCodeDACA] = _Items.PropertyNames.StockCodeDACA;
 					ht[NearExpiryTrigger] = _Items.PropertyNames.NearExpiryTrigger;
 					ht[StorageTypeID] = _Items.PropertyNames.StorageTypeID;
+				    ht[DSItemID] = _Items.PropertyNames.DSItemID;
 
 				}
 				return (string)ht[columnName];
@@ -344,6 +354,7 @@ namespace DAL
             public const string StockCodeDACA = "StockCodeDACA";
             public const string NearExpiryTrigger = "NearExpiryTrigger";
             public const string StorageTypeID = "StorageTypeID";
+            public const string DSItemID = "DSItemID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -371,6 +382,7 @@ namespace DAL
 					ht[StockCodeDACA] = _Items.ColumnNames.StockCodeDACA;
 					ht[NearExpiryTrigger] = _Items.ColumnNames.NearExpiryTrigger;
 					ht[StorageTypeID] = _Items.ColumnNames.StorageTypeID;
+                    ht[DSItemID] = _Items.ColumnNames.DSItemID;
 
 				}
 				return (string)ht[propertyName];
@@ -403,6 +415,7 @@ namespace DAL
             public const string StockCodeDACA = "s_StockCodeDACA";
             public const string NearExpiryTrigger = "s_NearExpiryTrigger";
             public const string StorageTypeID = "s_StorageTypeID";
+            public const string DSItemID = "s_DSItemID";
 
 		}
 		#endregion		
@@ -648,6 +661,18 @@ namespace DAL
 				base.Setint(ColumnNames.StorageTypeID, value);
 			}
 		}
+
+        public virtual int DSItemID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.DSItemID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.DSItemID, value);
+            }
+        }
 
 
 		#endregion
@@ -954,6 +979,21 @@ namespace DAL
 			}
 		}
 
+        public virtual string s_DSItemID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.DSItemID) ? string.Empty : base.GetintAsString(ColumnNames.DSItemID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.DSItemID);
+                else
+                    this.StorageTypeID = base.SetintAsString(ColumnNames.DSItemID, value);
+            }
+        }
+
 
 		#endregion		
 	
@@ -1186,6 +1226,16 @@ namespace DAL
 							return where;
 					}
 				}
+
+                public WhereParameter DSItemID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.DSItemID, Parameters.DSItemID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
 
 
 				private WhereClause _clause;
@@ -1432,6 +1482,19 @@ namespace DAL
 				}
 			}
 
+
+            public WhereParameter DSItemID
+            {
+                get
+                {
+                    if (_DSItemID_W == null)
+                    {
+                        _DSItemID_W = TearOff.DSItemID;
+                    }
+                    return _DSItemID_W;
+                }
+            }
+
 			private WhereParameter _ID_W = null;
 			private WhereParameter _StockCode_W = null;
 			private WhereParameter _Strength_W = null;
@@ -1452,6 +1515,7 @@ namespace DAL
 			private WhereParameter _StockCodeDACA_W = null;
 			private WhereParameter _NearExpiryTrigger_W = null;
 			private WhereParameter _StorageTypeID_W = null;
+            private WhereParameter _DSItemID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -1475,6 +1539,7 @@ namespace DAL
 				_StockCodeDACA_W = null;
 				_NearExpiryTrigger_W = null;
 				_StorageTypeID_W = null;
+			    _DSItemID_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -1731,6 +1796,15 @@ namespace DAL
 					}
 				}
 
+                public AggregateParameter DSItemID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.DSItemID, Parameters.DSItemID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
 
 				private AggregateClause _clause;
 			}
@@ -1976,6 +2050,18 @@ namespace DAL
 				}
 			}
 
+            public AggregateParameter DSItemID
+            {
+                get
+                {
+                    if (_DSItemID_W == null)
+                    {
+                        _DSItemID_W = TearOff.DSItemID;
+                    }
+                    return _DSItemID_W;
+                }
+            }
+
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _StockCode_W = null;
 			private AggregateParameter _Strength_W = null;
@@ -1996,6 +2082,7 @@ namespace DAL
 			private AggregateParameter _StockCodeDACA_W = null;
 			private AggregateParameter _NearExpiryTrigger_W = null;
 			private AggregateParameter _StorageTypeID_W = null;
+            private AggregateParameter _DSItemID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2019,7 +2106,7 @@ namespace DAL
 				_StockCodeDACA_W = null;
 				_NearExpiryTrigger_W = null;
 				_StorageTypeID_W = null;
-
+			    _DSItemID_W = null;
 				this._entity.Query.FlushAggregateParameters();
 
 			}
@@ -2172,6 +2259,10 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.StorageTypeID);
 			p.SourceColumn = ColumnNames.StorageTypeID;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.DSItemID);
+            p.SourceColumn = ColumnNames.DSItemID;
+            p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;

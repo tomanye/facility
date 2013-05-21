@@ -842,7 +842,6 @@
             // 
             // btnEmergency
             // 
-            this.btnEmergency.Enabled = false;
             this.btnEmergency.Location = new System.Drawing.Point(210, 43);
             this.btnEmergency.Name = "btnEmergency";
             this.btnEmergency.Size = new System.Drawing.Size(111, 22);
@@ -1381,7 +1380,6 @@
             // 
             // btnAutoPushToPFSA
             // 
-            this.btnAutoPushToPFSA.Enabled = false;
             this.btnAutoPushToPFSA.Location = new System.Drawing.Point(870, 696);
             this.btnAutoPushToPFSA.Name = "btnAutoPushToPFSA";
             this.btnAutoPushToPFSA.Size = new System.Drawing.Size(100, 22);
