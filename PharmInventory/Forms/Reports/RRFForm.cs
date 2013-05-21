@@ -20,6 +20,7 @@ using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraReports.UI;
 using EthiopianDate;
 using PharmInventory.ViewModels;
+using Order = PharmInventory.RRFTransactionService.Order;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -40,6 +41,7 @@ namespace PharmInventory.Forms.Reports
         private const string password = "123!@#abc";
         private const int facilityID = 865;
         public const int ExpiryTreshHold = 4;
+
         private const int STANDARD_ORDER = 1; //PLITS ID
         private const int EMERGENCY_ORDER = 2; //PLITS ID
 
@@ -298,13 +300,15 @@ namespace PharmInventory.Forms.Reports
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
         {
-
+            btnSendEmergencyOrder.Enabled = false;
+          
             var orders = GetOrders();
             var ginf = new GeneralInfo();
             ginf.LoadAll();
             var serviceModel = CompileOrder(ginf.FacilityID, orders);
             Send(serviceModel);
 
+            btnSendEmergencyOrder.Enabled = true;
             // You are done
 
             //contextMenuStrip1.Show(btnAutoPushToPFSA, 0, 0);
@@ -315,6 +319,421 @@ namespace PharmInventory.Forms.Reports
             //int rrf = SaveRRF();
             //SendRRF(rrf);
             //bwRRFSubmit.RunWorkerAsync(rrf);
+        }
+
+        private List<Order> GetEmergencyOrders()
+        {
+            var client = new ServiceRRFLookupClient();
+            var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
+            var orders = new List<RRFTransactionService.Order>();
+            var dataView = gridItemChoiceView.DataSource as DataView;
+            if (dataView != null)
+                tblRRF = dataView.ToTable();
+
+            var periods = client.GetCurrentReportingPeriod(facilityID, userName, password);
+            var form = client.GetForms(facilityID, userName, password);
+
+            var rrfs = client.GetFacilityRRForm(facilityID, form[0].Id, periods[0].Id, 1, userName, password);
+            var formCategories = rrfs.First().FormCategories;
+            var chosenCategoryBody = formCategories.First(x => x.Id == 90); //Hard coding to be removed.
+            var items = chosenCategoryBody.Pharmaceuticals; //Let's just store the items here (May not be required)
+
+            var user = new User();
+            user.LoadByPrimaryKey(MainWindow.LoggedinId);
+
+            var order = new RRFTransactionService.Order
+            {
+                RequestCompletedDate = DateTime.Now, //Convert.ToDateTime(rrf["DateOfSubmissionEth"]),
+                OrderCompletedBy = user.FullName,
+                RequestVerifiedDate = DateTime.Now,
+                OrderTypeId = _standardRRF ? STANDARD_ORDER : EMERGENCY_ORDER,
+                SubmittedBy = user.FullName,
+                SubmittedDate = DateTime.Now,
+                SupplyChainUnitId = facilityID,
+                OrderStatus = 2, //TODO: hardcoding
+                FormId = form[0].Id, //TODO: hardcoding
+                ReportingPeriodId = periods[0].Id //TODO: hardcoding
+            };
+
+            var details = new List<RRFTransactionService.OrderDetail>();
+
+            foreach (DataRow rrfLine in tblRRF.Rows)
+            {
+                var detail = new RRFTransactionService.OrderDetail();
+                var hcmisItemID = Convert.ToInt32(rrfLine["DSItemID"]);
+                var rrFormPharmaceutical = items.SingleOrDefault(x => x.PharmaceuticalId == hcmisItemID);
+                if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Below EOP")
+                {
+                    {
+                        detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
+                        detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
+                        detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
+                        detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
+                        detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            var exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            if (exp.ExpiryDate > (periods[0].EndDate.AddMonths(ExpiryTreshHold)))
+                                exp.ExpiryDate = periods[0].EndDate.AddMonths(ExpiryTreshHold - 1);
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            detail.Expiries[j] = exp;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = adj;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = dos;
+                        }
+                    }
+                }
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Normal")
+                {
+                    {
+                        detail.BeginningBalance = null;
+                        detail.EndingBalance = null;
+                        detail.QuantityReceived = null;
+                        detail.QuantityOrdered = null;
+                        detail.LossAdjustment = null;
+
+
+                        if (rrFormPharmaceutical != null)
+                            detail.ItemId = rrFormPharmaceutical.ItemId;
+
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            Expiry exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            detail.Expiries[j] = null;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = null;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = null;
+                        }
+                    }
+                }
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Over Stocked")
+                {
+                    {
+                        detail.BeginningBalance = null;
+                        detail.EndingBalance = null;
+                        detail.QuantityReceived = null;
+                        detail.QuantityOrdered = null;
+                        detail.LossAdjustment = null;
+
+
+                        if (rrFormPharmaceutical != null)
+                            detail.ItemId = rrFormPharmaceutical.ItemId;
+
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        //  detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            Expiry exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            detail.Expiries[j] = null;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = null;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = null;
+                        }
+                    }
+                }
+
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Stock Out")
+                {
+                    {
+                        detail.BeginningBalance = null;
+                        detail.EndingBalance = null;
+                        detail.QuantityReceived = null;
+                        detail.QuantityOrdered = null;
+                        detail.LossAdjustment = null;
+
+
+                        if (rrFormPharmaceutical != null)
+                            detail.ItemId = rrFormPharmaceutical.ItemId;
+
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        //  detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            Expiry exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            detail.Expiries[j] = null;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = null;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = null;
+                        }
+                    }
+                }
+
+                else
+                {
+                    {
+                        detail.BeginningBalance = null;
+                        detail.EndingBalance = null;
+                        detail.QuantityReceived = null;
+                        detail.QuantityOrdered = null;
+                        detail.LossAdjustment = null;
+
+
+                        if (rrFormPharmaceutical != null)
+                            detail.ItemId = rrFormPharmaceutical.ItemId;
+
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                         detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            Expiry exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            detail.Expiries[j] = null;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                                                 {
+                                                     Amount = Convert.ToInt32(disposal.Quantity),
+                                                     TypeId = 11,
+                                                     ReasonId = 39
+                                                 };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = null;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = null;
+                        }
+                    }
+                }
+                details.Add(detail);
+            }
+            order.OrderDetails = details.ToArray();
+            orders.Add(order);
+            // loop through each record and create order & order details objects
+            return orders;
         }
 
         private int SaveRRF()
@@ -332,7 +751,7 @@ namespace PharmInventory.Forms.Reports
             if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
-                int itemID = Convert.ToInt32(dr["ID"]);
+                int itemID = Convert.ToInt32(dr["DSItemID"]);
                 int requestedqty = Convert.ToInt32(dr["Quantity"]);
                 int storeID = int.Parse(cboStores.EditValue.ToString());
                 var rrfDetail = new RRFDetail();
@@ -385,7 +804,7 @@ namespace PharmInventory.Forms.Reports
                 var detail = new RRFTransactionService.OrderDetail();
                 var hcmisItemID = Convert.ToInt32(rrfLine["DSItemID"]);
                 var rrFormPharmaceutical = items.SingleOrDefault(x => x.PharmaceuticalId == hcmisItemID);
-                if (rrFormPharmaceutical != null)
+                if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Normal")
                 {
                     {
                         detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
@@ -431,11 +850,11 @@ namespace PharmInventory.Forms.Reports
                         for (int j = 0; j < disposalEntries; j++)
                         {
                             Adjustment adj = new Adjustment
-                                                 {
-                                                     Amount = Convert.ToInt32(disposal.Quantity),
-                                                     TypeId = 11,
-                                                     ReasonId = 39
-                                                 };
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
                             lossadjamt += adj.Amount;
 
                             if (lossadjamt >= detail.LossAdjustment)
@@ -454,6 +873,297 @@ namespace PharmInventory.Forms.Reports
                             dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
                             dos.StockOutReasonId = 5; //TODO: Dear Teddy
                             detail.DaysOutOfStocks[j] = dos;
+                        }
+                    }
+                }
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Over Stocked")
+                {
+                    {
+                        detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
+                        detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
+                        detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
+                        detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
+                        detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            var exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            if (exp.ExpiryDate > (periods[0].EndDate.AddMonths(ExpiryTreshHold)))
+                                exp.ExpiryDate = periods[0].EndDate.AddMonths(ExpiryTreshHold - 1);
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            detail.Expiries[j] = exp;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = adj;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = dos;
+                        }
+                    }
+                }
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Near EOP")
+                {
+                    {
+                        detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
+                        detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
+                        detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
+                        detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
+                        detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            var exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            if (exp.ExpiryDate > (periods[0].EndDate.AddMonths(ExpiryTreshHold)))
+                                exp.ExpiryDate = periods[0].EndDate.AddMonths(ExpiryTreshHold - 1);
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            detail.Expiries[j] = exp;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = adj;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = dos;
+                        }
+                    }
+                }
+
+                else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Stock Out")
+                {
+                    {
+                        detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
+                        detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
+                        detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
+                        detail.QuantityOrdered = Convert.ToInt32(rrfLine["Quantity"]);
+                        detail.LossAdjustment = Convert.ToInt32(rrfLine["LossAdj"]);
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            var exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            if (exp.ExpiryDate > (periods[0].EndDate.AddMonths(ExpiryTreshHold)))
+                                exp.ExpiryDate = periods[0].EndDate.AddMonths(ExpiryTreshHold - 1);
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            detail.Expiries[j] = exp;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = adj;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = dos;
+                        }
+                    }
+                }
+
+                else
+                {
+                    {
+                        detail.BeginningBalance = null;
+                        detail.EndingBalance = null;
+                        detail.QuantityReceived = null;
+                        detail.QuantityOrdered = null;
+                        detail.LossAdjustment = null;
+
+
+                        if (rrFormPharmaceutical != null)
+                            detail.ItemId = rrFormPharmaceutical.ItemId;
+
+                        var rdDoc = new ReceiveDoc();
+                        var disposal = new Disposal();
+                        rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID, _programID);
+                        disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, _programID,
+                                                                    periods[0].StartDate,
+                                                                    periods[0].EndDate);
+                        int receiveDocEntries = rdDoc.RowCount;
+                        int disposalEntries = disposal.RowCount;
+
+                        detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Adjustments = new Adjustment[disposalEntries];
+
+                        rdDoc.Rewind();
+                        int expiryAmountTotal = 0;
+                        for (int j = 0; j < receiveDocEntries; j++)
+                        {
+                            Expiry exp = new Expiry();
+                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            expiryAmountTotal += exp.Amount;
+
+                            exp.BatchNo = rdDoc.BatchNo;
+                            exp.ExpiryDate = rdDoc.ExpDate;
+                            if (expiryAmountTotal >= detail.EndingBalance)
+                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                            detail.Expiries[j] = null;
+                            rdDoc.MoveNext();
+                        }
+
+                        disposal.Rewind();
+
+                        int lossadjamt = 0;
+                        for (int j = 0; j < disposalEntries; j++)
+                        {
+                            Adjustment adj = new Adjustment
+                            {
+                                Amount = Convert.ToInt32(disposal.Quantity),
+                                TypeId = 11,
+                                ReasonId = 39
+                            };
+                            lossadjamt += adj.Amount;
+
+                            if (lossadjamt >= detail.LossAdjustment)
+                                detail.LossAdjustment = lossadjamt;
+
+                            detail.Adjustments[j] = null;
+                            disposal.MoveNext();
+                        }
+
+                        var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+
+                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        {
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
+                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            detail.DaysOutOfStocks[j] = null;
                         }
                     }
                 }
@@ -864,6 +1574,20 @@ namespace PharmInventory.Forms.Reports
             cboStores.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
+        }
+
+        private void btnSendEmergencyOrder_Click(object sender, EventArgs e)
+        {
+            btnAutoPushToPFSA.Enabled = false;
+
+            var orders = GetEmergencyOrders();
+            var ginInfo = new GeneralInfo();
+            ginInfo.LoadAll();
+            var serviceModel = CompileOrder(ginInfo.FacilityID, orders);
+            Send(serviceModel);
+
+            btnAutoPushToPFSA.Enabled = true;
+
         }
 
     }

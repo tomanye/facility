@@ -68,7 +68,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnEmergency = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picSync = new System.Windows.Forms.PictureBox();
             this.btnNewRRF = new DevExpress.XtraEditors.SimpleButton();
@@ -126,7 +125,6 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lcCheckingProgress = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
@@ -136,6 +134,9 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnSendEmergencyOrder = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -178,10 +179,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcCheckingProgress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             this.SuspendLayout();
             // 
             // grdViewInPacks
@@ -556,7 +557,8 @@
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn40,
-            this.gridColumn42});
+            this.gridColumn42,
+            this.gridColumn43});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
@@ -813,7 +815,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.btnEmergency);
+            this.layoutControl1.Controls.Add(this.btnSendEmergencyOrder);
             this.layoutControl1.Controls.Add(this.pictureBox1);
             this.layoutControl1.Controls.Add(this.picSync);
             this.layoutControl1.Controls.Add(this.btnNewRRF);
@@ -840,20 +842,10 @@
             this.layoutControl1.TabIndex = 38;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // btnEmergency
-            // 
-            this.btnEmergency.Location = new System.Drawing.Point(210, 43);
-            this.btnEmergency.Name = "btnEmergency";
-            this.btnEmergency.Size = new System.Drawing.Size(111, 22);
-            this.btnEmergency.StyleController = this.layoutControl1;
-            this.btnEmergency.TabIndex = 48;
-            this.btnEmergency.Text = "Emergency RRF";
-            this.btnEmergency.Click += new System.EventHandler(this.btnEmergency_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PharmInventory.Properties.Resources.Loading;
-            this.pictureBox1.Location = new System.Drawing.Point(669, 696);
+            this.pictureBox1.Location = new System.Drawing.Point(530, 696);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 22);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -863,7 +855,7 @@
             // picSync
             // 
             this.picSync.Image = global::PharmInventory.Properties.Resources.Loading;
-            this.picSync.Location = new System.Drawing.Point(325, 43);
+            this.picSync.Location = new System.Drawing.Point(210, 43);
             this.picSync.Name = "picSync";
             this.picSync.Size = new System.Drawing.Size(34, 22);
             this.picSync.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -882,7 +874,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(766, 696);
+            this.btnBack.Location = new System.Drawing.Point(627, 696);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(100, 22);
             this.btnBack.StyleController = this.layoutControl1;
@@ -925,7 +917,7 @@
             // 
             this.lblRRFStatus.Location = new System.Drawing.Point(24, 696);
             this.lblRRFStatus.Name = "lblRRFStatus";
-            this.lblRRFStatus.Size = new System.Drawing.Size(641, 13);
+            this.lblRRFStatus.Size = new System.Drawing.Size(502, 13);
             this.lblRRFStatus.StyleController = this.layoutControl1;
             this.lblRRFStatus.TabIndex = 40;
             // 
@@ -1380,12 +1372,12 @@
             // 
             // btnAutoPushToPFSA
             // 
-            this.btnAutoPushToPFSA.Location = new System.Drawing.Point(870, 696);
+            this.btnAutoPushToPFSA.Location = new System.Drawing.Point(731, 696);
             this.btnAutoPushToPFSA.Name = "btnAutoPushToPFSA";
-            this.btnAutoPushToPFSA.Size = new System.Drawing.Size(100, 22);
+            this.btnAutoPushToPFSA.Size = new System.Drawing.Size(113, 22);
             this.btnAutoPushToPFSA.StyleController = this.layoutControl1;
             this.btnAutoPushToPFSA.TabIndex = 37;
-            this.btnAutoPushToPFSA.Text = "Send To PFSA";
+            this.btnAutoPushToPFSA.Text = "Send Standard RRF";
             this.btnAutoPushToPFSA.Click += new System.EventHandler(this.btnAutoPushToPFSA_Click);
             // 
             // cboFromMonth
@@ -1446,7 +1438,8 @@
             this.layoutControlItem16,
             this.emptySpaceItem1,
             this.layoutControlItem11,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem17});
             this.lcRRFInformation.Location = new System.Drawing.Point(0, 511);
             this.lcRRFInformation.Name = "lcRRFInformation";
             this.lcRRFInformation.Size = new System.Drawing.Size(1078, 211);
@@ -1471,11 +1464,11 @@
             // 
             this.layoutControlItem6.Control = this.btnAutoPushToPFSA;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(846, 142);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(104, 26);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(104, 26);
+            this.layoutControlItem6.Location = new System.Drawing.Point(707, 142);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(117, 26);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(117, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(104, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(117, 26);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "layoutControlItem6";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -1488,7 +1481,7 @@
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 142);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(645, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(506, 26);
             this.layoutControlItem9.Text = "layoutControlItem9";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextToControlDistance = 0;
@@ -1547,7 +1540,7 @@
             // 
             this.layoutControlItem14.Control = this.btnBack;
             this.layoutControlItem14.CustomizationFormText = "layoutControlItem14";
-            this.layoutControlItem14.Location = new System.Drawing.Point(742, 142);
+            this.layoutControlItem14.Location = new System.Drawing.Point(603, 142);
             this.layoutControlItem14.MaxSize = new System.Drawing.Size(104, 26);
             this.layoutControlItem14.MinSize = new System.Drawing.Size(104, 26);
             this.layoutControlItem14.Name = "layoutControlItem14";
@@ -1562,7 +1555,7 @@
             // 
             this.lcSendingProgress.Control = this.pictureBox1;
             this.lcSendingProgress.CustomizationFormText = "Working...";
-            this.lcSendingProgress.Location = new System.Drawing.Point(645, 142);
+            this.lcSendingProgress.Location = new System.Drawing.Point(506, 142);
             this.lcSendingProgress.MaxSize = new System.Drawing.Size(97, 0);
             this.lcSendingProgress.MinSize = new System.Drawing.Size(97, 24);
             this.lcSendingProgress.Name = "lcSendingProgress";
@@ -1642,8 +1635,7 @@
             this.layoutControlItem8,
             this.emptySpaceItem2,
             this.layoutControlItem15,
-            this.lcCheckingProgress,
-            this.layoutControlItem13});
+            this.lcCheckingProgress});
             this.lcRRFList.Location = new System.Drawing.Point(0, 0);
             this.lcRRFList.Name = "lcRRFList";
             this.lcRRFList.Size = new System.Drawing.Size(1078, 511);
@@ -1680,10 +1672,10 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(393, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(278, 0);
             this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(661, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(776, 26);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -1707,7 +1699,7 @@
             // 
             this.lcCheckingProgress.Control = this.picSync;
             this.lcCheckingProgress.CustomizationFormText = "Working...";
-            this.lcCheckingProgress.Location = new System.Drawing.Point(301, 0);
+            this.lcCheckingProgress.Location = new System.Drawing.Point(186, 0);
             this.lcCheckingProgress.MaxSize = new System.Drawing.Size(92, 0);
             this.lcCheckingProgress.MinSize = new System.Drawing.Size(92, 24);
             this.lcCheckingProgress.Name = "lcCheckingProgress";
@@ -1717,18 +1709,6 @@
             this.lcCheckingProgress.TextLocation = DevExpress.Utils.Locations.Right;
             this.lcCheckingProgress.TextSize = new System.Drawing.Size(51, 13);
             this.lcCheckingProgress.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.btnEmergency;
-            this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem13.Location = new System.Drawing.Point(186, 0);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(115, 26);
-            this.layoutControlItem13.Text = "layoutControlItem13";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem13.TextToControlDistance = 0;
-            this.layoutControlItem13.TextVisible = false;
             // 
             // simpleButton2
             // 
@@ -1798,6 +1778,37 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Status";
+            this.gridColumn43.FieldName = "Status";
+            this.gridColumn43.Name = "gridColumn43";
+            // 
+            // btnSendEmergencyOrder
+            // 
+            this.btnSendEmergencyOrder.Location = new System.Drawing.Point(848, 696);
+            this.btnSendEmergencyOrder.Name = "btnSendEmergencyOrder";
+            this.btnSendEmergencyOrder.Size = new System.Drawing.Size(122, 22);
+            this.btnSendEmergencyOrder.StyleController = this.layoutControl1;
+            this.btnSendEmergencyOrder.TabIndex = 49;
+            this.btnSendEmergencyOrder.Text = "Send Emergency RRF";
+            this.btnSendEmergencyOrder.Click += new System.EventHandler(this.btnSendEmergencyOrder_Click);
+            // 
+            // layoutControlItem17
+            // 
+            this.layoutControlItem17.Control = this.btnSendEmergencyOrder;
+            this.layoutControlItem17.CustomizationFormText = "layoutControlItem17";
+            this.layoutControlItem17.Location = new System.Drawing.Point(824, 142);
+            this.layoutControlItem17.MaxSize = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.MinSize = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem17.Text = "layoutControlItem17";
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextToControlDistance = 0;
+            this.layoutControlItem17.TextVisible = false;
+            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1851,10 +1862,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcCheckingProgress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1961,10 +1972,11 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
-        private DevExpress.XtraEditors.SimpleButton btnEmergency;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private System.Windows.Forms.BindingSource unitsBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraEditors.SimpleButton btnSendEmergencyOrder;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
     }
 }
