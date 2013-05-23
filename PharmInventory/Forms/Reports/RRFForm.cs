@@ -346,7 +346,7 @@ namespace PharmInventory.Forms.Reports
                 RequestCompletedDate = DateTime.Now, //Convert.ToDateTime(rrf["DateOfSubmissionEth"]),
                 OrderCompletedBy = user.FullName,
                 RequestVerifiedDate = DateTime.Now,
-                OrderTypeId = _standardRRF ? STANDARD_ORDER : EMERGENCY_ORDER,
+                OrderTypeId = EMERGENCY_ORDER,
                 SubmittedBy = user.FullName,
                 SubmittedDate = DateTime.Now,
                 SupplyChainUnitId = facilityID,
@@ -407,7 +407,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -427,9 +427,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
                     }
@@ -443,9 +441,7 @@ namespace PharmInventory.Forms.Reports
                         detail.QuantityOrdered = null;
                         detail.LossAdjustment = null;
 
-
-                        if (rrFormPharmaceutical != null)
-                            detail.ItemId = rrFormPharmaceutical.ItemId;
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
 
                         var rdDoc = new ReceiveDoc();
                         var disposal = new Disposal();
@@ -463,14 +459,14 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            Expiry exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                                if (detail.EndingBalance != null)
+                                    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();
                         }
@@ -480,7 +476,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -517,8 +513,7 @@ namespace PharmInventory.Forms.Reports
                         detail.LossAdjustment = null;
 
 
-                        if (rrFormPharmaceutical != null)
-                            detail.ItemId = rrFormPharmaceutical.ItemId;
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
 
                         var rdDoc = new ReceiveDoc();
                         var disposal = new Disposal();
@@ -529,21 +524,21 @@ namespace PharmInventory.Forms.Reports
                         int receiveDocEntries = rdDoc.RowCount;
                         int disposalEntries = disposal.RowCount;
 
-                        //  detail.Expiries = new Expiry[receiveDocEntries];
+                        detail.Expiries = new Expiry[receiveDocEntries];
                         detail.Adjustments = new Adjustment[disposalEntries];
 
                         rdDoc.Rewind();
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            Expiry exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                                if (detail.EndingBalance != null)
+                                    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();
                         }
@@ -553,7 +548,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -573,9 +568,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = null;
                         }
                     }
@@ -589,10 +582,7 @@ namespace PharmInventory.Forms.Reports
                         detail.QuantityReceived = null;
                         detail.QuantityOrdered = null;
                         detail.LossAdjustment = null;
-
-
-                        if (rrFormPharmaceutical != null)
-                            detail.ItemId = rrFormPharmaceutical.ItemId;
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
 
                         var rdDoc = new ReceiveDoc();
                         var disposal = new Disposal();
@@ -610,14 +600,14 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            Expiry exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                                if (detail.EndingBalance != null)
+                                    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();
                         }
@@ -627,7 +617,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -647,9 +637,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = null;
                         }
                     }
@@ -663,10 +651,7 @@ namespace PharmInventory.Forms.Reports
                         detail.QuantityReceived = null;
                         detail.QuantityOrdered = null;
                         detail.LossAdjustment = null;
-
-
-                        if (rrFormPharmaceutical != null)
-                            detail.ItemId = rrFormPharmaceutical.ItemId;
+                        if (rrFormPharmaceutical != null) detail.ItemId = rrFormPharmaceutical.ItemId;
 
                         var rdDoc = new ReceiveDoc();
                         var disposal = new Disposal();
@@ -684,14 +669,14 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            Expiry exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                                if (detail.EndingBalance != null)
+                                    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();
                         }
@@ -701,7 +686,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                                                  {
                                                      Amount = Convert.ToInt32(disposal.Quantity),
                                                      TypeId = 11,
@@ -751,7 +736,7 @@ namespace PharmInventory.Forms.Reports
             if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
-                int itemID = Convert.ToInt32(dr["DSItemID"]);
+                int itemID = Convert.ToInt32(dr["ID"]);
                 int requestedqty = Convert.ToInt32(dr["Quantity"]);
                 int storeID = int.Parse(cboStores.EditValue.ToString());
                 var rrfDetail = new RRFDetail();
@@ -762,7 +747,7 @@ namespace PharmInventory.Forms.Reports
         }
 
 
-        public List<RRFTransactionService.Order> GetOrders()
+        public List<Order> GetOrders()
         {
             var client = new ServiceRRFLookupClient();
             var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
@@ -787,7 +772,7 @@ namespace PharmInventory.Forms.Reports
                                 RequestCompletedDate = DateTime.Now, //Convert.ToDateTime(rrf["DateOfSubmissionEth"]),
                                 OrderCompletedBy = user.FullName,
                                 RequestVerifiedDate = DateTime.Now,
-                                OrderTypeId = _standardRRF ? STANDARD_ORDER : EMERGENCY_ORDER,
+                                OrderTypeId = STANDARD_ORDER,
                                 SubmittedBy = user.FullName,
                                 SubmittedDate = DateTime.Now,
                                 SupplyChainUnitId = facilityID,
@@ -829,8 +814,7 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            var exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
@@ -849,7 +833,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -869,9 +853,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
                     }
@@ -901,8 +883,7 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            var exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
@@ -921,7 +902,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -941,9 +922,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
                     }
@@ -973,8 +952,7 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            var exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
@@ -993,7 +971,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -1013,9 +991,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
                     }
@@ -1046,8 +1022,7 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            var exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
@@ -1066,7 +1041,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -1086,9 +1061,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
                     }
@@ -1123,14 +1096,14 @@ namespace PharmInventory.Forms.Reports
                         int expiryAmountTotal = 0;
                         for (int j = 0; j < receiveDocEntries; j++)
                         {
-                            Expiry exp = new Expiry();
-                            exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
+                            var exp = new Expiry {Amount = Convert.ToInt32(rdDoc.QuantityLeft)};
                             expiryAmountTotal += exp.Amount;
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
+                                if (detail.EndingBalance != null)
+                                    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();
                         }
@@ -1140,7 +1113,7 @@ namespace PharmInventory.Forms.Reports
                         int lossadjamt = 0;
                         for (int j = 0; j < disposalEntries; j++)
                         {
-                            Adjustment adj = new Adjustment
+                            var adj = new Adjustment
                             {
                                 Amount = Convert.ToInt32(disposal.Quantity),
                                 TypeId = 11,
@@ -1160,9 +1133,7 @@ namespace PharmInventory.Forms.Reports
 
                         for (int j = 0; j < stockoutIndexedLists.Count; j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = null;
                         }
                     }
