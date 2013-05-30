@@ -773,11 +773,11 @@
     <Content Include="Scripts\89_AlterProductTable.sql" />
     <Content Include="Scripts\90_AlterAddDSItemIDColumn.sql" />
     <Content Include="Scripts\91_CreateBinCard.sql" />
-    <Content Include="Scripts\92_AlterVwGetAllItems.sql" />
     <Content Include="Scripts\93_AlterItemInserProcedure.sql" />
     <Content Include="Scripts\94_AlterItemsLoadAll.sql" />
     <Content Include="Scripts\95_AlterItemsLoadByPrimaryKey.sql" />
-    <Content Include="Scripts\96_SOHFOROLDSITE.sql" />
+    <Content Include="Scripts\98_CreateViewGetAllItems.sql" />
+    <Content Include="Scripts\99_SohForRRF OldSite.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />
     <None Include="Reports\DataSet1.xsc">

@@ -64,10 +64,12 @@
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnSendEmergencyOrder = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picSync = new System.Windows.Forms.PictureBox();
             this.btnNewRRF = new DevExpress.XtraEditors.SimpleButton();
@@ -119,6 +121,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lcRRFList = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -134,9 +137,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
-            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnSendEmergencyOrder = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -173,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
@@ -182,7 +183,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             this.SuspendLayout();
             // 
             // grdViewInPacks
@@ -783,6 +783,12 @@
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
+            // gridColumn43
+            // 
+            this.gridColumn43.Caption = "Status";
+            this.gridColumn43.FieldName = "Status";
+            this.gridColumn43.Name = "gridColumn43";
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -841,6 +847,16 @@
             this.layoutControl1.Size = new System.Drawing.Size(1098, 742);
             this.layoutControl1.TabIndex = 38;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnSendEmergencyOrder
+            // 
+            this.btnSendEmergencyOrder.Location = new System.Drawing.Point(848, 696);
+            this.btnSendEmergencyOrder.Name = "btnSendEmergencyOrder";
+            this.btnSendEmergencyOrder.Size = new System.Drawing.Size(122, 22);
+            this.btnSendEmergencyOrder.StyleController = this.layoutControl1;
+            this.btnSendEmergencyOrder.TabIndex = 49;
+            this.btnSendEmergencyOrder.Text = "Send Emergency RRF";
+            this.btnSendEmergencyOrder.Click += new System.EventHandler(this.btnSendEmergencyOrder_Click);
             // 
             // pictureBox1
             // 
@@ -1627,6 +1643,21 @@
             this.layoutControlItem2.TextToControlDistance = 0;
             this.layoutControlItem2.TextVisible = false;
             // 
+            // layoutControlItem17
+            // 
+            this.layoutControlItem17.Control = this.btnSendEmergencyOrder;
+            this.layoutControlItem17.CustomizationFormText = "layoutControlItem17";
+            this.layoutControlItem17.Location = new System.Drawing.Point(824, 142);
+            this.layoutControlItem17.MaxSize = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.MinSize = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(126, 26);
+            this.layoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem17.Text = "layoutControlItem17";
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextToControlDistance = 0;
+            this.layoutControlItem17.TextVisible = false;
+            // 
             // lcRRFList
             // 
             this.lcRRFList.CustomizationFormText = "RRF List";
@@ -1778,37 +1809,6 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
-            // gridColumn43
-            // 
-            this.gridColumn43.Caption = "Status";
-            this.gridColumn43.FieldName = "Status";
-            this.gridColumn43.Name = "gridColumn43";
-            // 
-            // btnSendEmergencyOrder
-            // 
-            this.btnSendEmergencyOrder.Location = new System.Drawing.Point(848, 696);
-            this.btnSendEmergencyOrder.Name = "btnSendEmergencyOrder";
-            this.btnSendEmergencyOrder.Size = new System.Drawing.Size(122, 22);
-            this.btnSendEmergencyOrder.StyleController = this.layoutControl1;
-            this.btnSendEmergencyOrder.TabIndex = 49;
-            this.btnSendEmergencyOrder.Text = "Send Emergency RRF";
-            this.btnSendEmergencyOrder.Click += new System.EventHandler(this.btnSendEmergencyOrder_Click);
-            // 
-            // layoutControlItem17
-            // 
-            this.layoutControlItem17.Control = this.btnSendEmergencyOrder;
-            this.layoutControlItem17.CustomizationFormText = "layoutControlItem17";
-            this.layoutControlItem17.Location = new System.Drawing.Point(824, 142);
-            this.layoutControlItem17.MaxSize = new System.Drawing.Size(126, 26);
-            this.layoutControlItem17.MinSize = new System.Drawing.Size(126, 26);
-            this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(126, 26);
-            this.layoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem17.Text = "layoutControlItem17";
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem17.TextToControlDistance = 0;
-            this.layoutControlItem17.TextVisible = false;
-            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1856,6 +1856,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
@@ -1865,7 +1866,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

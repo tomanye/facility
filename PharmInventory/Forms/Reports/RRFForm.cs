@@ -265,7 +265,7 @@ namespace PharmInventory.Forms.Reports
                 return;
             SaveRRF();
 
-            GeneralInfo ginfo = new GeneralInfo();
+            var ginfo = new GeneralInfo();
             ginfo.LoadAll();
 
             var ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth, 1);
@@ -285,10 +285,16 @@ namespace PharmInventory.Forms.Reports
             //rrfReport.Year.Text = dtFrom.Text.Substring(dtFrom.Text.LastIndexOf('/') + 1);
             var itm = new Items();
             //DataTable dtbl = itm.GetRRFReportInPacks(_storeID,_fromYear,_fromMonth,_toYear,_toMonth); //  gridItemsChoice.DataSource;
-            //DataTable tbl = (DataTable)gridItemsChoice.DataSource;
-            tblRRF.TableName = "DataTable1";
+            DataTable tbl = ((DataView)gridItemChoiceView.DataSource).Table;
+            //tblRRF.TableName = "DataTable1";
+            //var dtset = new DataSet();
+            //dtset.Tables.Add(tblRRF.Copy());
+            //rrfReport.DataSource = dtset;
+            //rrfReport.ShowPreviewDialog();
+
+            tbl.TableName = "DataTable1";
             var dtset = new DataSet();
-            dtset.Tables.Add(tblRRF.Copy());
+            dtset.Tables.Add(tbl.Copy());
             rrfReport.DataSource = dtset;
             rrfReport.ShowPreviewDialog();
 
@@ -675,7 +681,7 @@ namespace PharmInventory.Forms.Reports
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
                             if (expiryAmountTotal >= detail.EndingBalance)
-                                if (detail.EndingBalance != null)
+                            if (detail.EndingBalance != null)
                                     exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
                             detail.Expiries[j] = null;
                             rdDoc.MoveNext();

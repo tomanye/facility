@@ -1849,7 +1849,8 @@ namespace BLL
                          SOH = Convert.ToDouble(z["SOH"]),
                          Max = Convert.ToInt32(z["Max"]),
                          QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
-                         StockCodeDACA = p["StockCodeDACA"]
+                         StockCodeDACA = p["StockCodeDACA"],
+                         Status = y["Status"]
                      }).Distinct().ToArray();
 
             var m = (from n in x
@@ -1868,6 +1869,7 @@ namespace BLL
                          StockCodeDACA = n.StockCodeDACA,
                          ProgramID = n.ProgramID,
                          Received = z["Quantity"],
+                         Status = n.Status
                      }).ToArray();
 
             var l = (from n in m
@@ -1888,6 +1890,7 @@ namespace BLL
                              Received = n.Received,
                              ProgramID = n.ProgramID,
                              Issued = Convert.ToInt32(z["Quantity"]),
+                             Status = n.Status,
 
                          }).ToArray();
 
@@ -1910,6 +1913,7 @@ namespace BLL
                          Issued = n.Issued,
                          LossAdj = z["Quantity"],
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                         Status=n.Status
                      }).ToArray();
 
             var t1 = (from n in t
@@ -1932,6 +1936,7 @@ namespace BLL
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                              Status=n.Status,
                               DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.DSItemID), storeId, startDate, endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                           }).ToArray();
 
@@ -1952,6 +1957,7 @@ namespace BLL
                               Issued = n.Issued,
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
+                              Status =n.Status,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                               DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.DSItemID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                               //TODO: This is a quick fix.  We need to take stock status from the last three months.
@@ -1979,6 +1985,7 @@ namespace BLL
             value.Columns.Add("MaxStockQty", typeof(double));
             value.Columns.Add("ProgramID", typeof(int));
             value.Columns.Add("UnitID", typeof(int));
+            value.Columns.Add("Status", typeof(string));
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1998,6 +2005,7 @@ namespace BLL
                 drv["ProgramID"] = v.ProgramID;
                 drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["DSItemID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
+                drv["Status"] = v.Status;
 
             }
 

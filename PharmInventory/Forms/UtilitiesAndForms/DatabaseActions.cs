@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using System.IO;
@@ -13,6 +14,7 @@ using Microsoft.Win32;
 using PharmInventory.DirectoryService;
 using PharmInventory.Forms.Tools;
 using PharmInventory.HelperClasses;
+using StockoutIndexBuilder.DAL;
 using ABC = BLL.ABC;
 using DosageForm = BLL.DosageForm;
 using Items = BLL.Items;
@@ -40,6 +42,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
         public const  string keyvalue2 ="\\192.168.2.62";
         public const string keyvalue3 = @"C:\Tools\PsExec.exe";
 
+        GeneralInfoRepository genralInfo =new GeneralInfoRepository();
         public DatabaseActions()
         {
             InitializeComponent();
@@ -230,21 +233,19 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnRunSSIS_Click(object sender, EventArgs e)
         {
-            var geninfo = new GeneralInfo();
-            geninfo.LoadAll();
+            var geninfo = genralInfo.AllGeneralInfos().Single();
             var facilityID = geninfo.FacilityID;
-           // const string remoteComputer = @"\\192.168.2.62";
+            var fileName = VisibilitySetting.PSConfig;
             var remoteComputer = VisibilitySetting.RemoteServerAddressConfig;
-          //  const string usernameAndPassword = "-u \"Administrator\" -p \"lucky@bole2005\"";
             var usernameAndPassword =VisibilitySetting.UserNameAndPasswordConfig;
             const string ssisCommand = @"C:\SSIS\ExecutePackages.exe";
-            string ssisCommandParameters = string.Format("-pull {0}", facilityID);
-            var fileName = VisibilitySetting.PSConfig;
+            var ssisCommandParameters = string.Format("-pull {0}", facilityID);
+           
             string arguments = String.Format("{0} {1} \"{2}\" {3}", remoteComputer, usernameAndPassword, ssisCommand,
                                              ssisCommandParameters);
             if (!File.Exists(fileName))
             {
-                XtraMessageBox.Show("PsTools Not Installed. Please contact the administrator","Warning");
+                XtraMessageBox.Show("PsTools Not Installed. Please contact the administrator Or Install PsTools","Warning");
                 return;
             }
             Process.Start(fileName, arguments).WaitForExit();
