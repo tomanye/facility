@@ -995,6 +995,7 @@ namespace PharmInventory
             // navBarGroup5
             // 
             this.navBarGroup5.Caption = "Utilities";
+            this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
@@ -1046,6 +1047,7 @@ namespace PharmInventory
             this.navBarItem10.Name = "navBarItem10";
             this.navBarItem10.SmallImage = global::PharmInventory.Properties.Resources.GridLayouts;
             this.navBarItem10.Tag = "Item Consolidator";
+            this.navBarItem10.Visible = false;
             // 
             // lbiRRF
             // 

@@ -137,6 +137,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
+            this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -183,6 +184,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProgramsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // grdViewInPacks
@@ -1416,7 +1418,7 @@
             this.cboProgram.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
             this.cboProgram.Properties.DisplayMember = "Name";
-            this.cboProgram.Properties.NullText = "";
+            this.cboProgram.Properties.NullText = "All Programs";
             this.cboProgram.Properties.ValueMember = "ID";
             this.cboProgram.Size = new System.Drawing.Size(249, 20);
             this.cboProgram.StyleController = this.layoutControl1;
@@ -1866,6 +1868,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProgramsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1978,5 +1981,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
         private DevExpress.XtraEditors.SimpleButton btnSendEmergencyOrder;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private System.Windows.Forms.BindingSource ProgramsBindingSource;
     }
 }

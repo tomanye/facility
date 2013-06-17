@@ -16,14 +16,7 @@ using PharmInventory.Forms.Tools;
 using PharmInventory.HelperClasses;
 using StockoutIndexBuilder.DAL;
 using ABC = BLL.ABC;
-using DosageForm = BLL.DosageForm;
-using Items = BLL.Items;
-using Product = BLL.Product;
-using Region = BLL.Region;
-using Supplier = BLL.Supplier;
-using Unit = BLL.Unit;
-using Woreda = BLL.Woreda;
-using Zone = BLL.Zone;
+
 
 namespace PharmInventory.Forms.UtilitiesAndForms
 {
@@ -233,8 +226,9 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnRunSSIS_Click(object sender, EventArgs e)
         {
-            var geninfo = genralInfo.AllGeneralInfos().Single();
+            var geninfo = genralInfo.AllGeneralInfos().SingleOrDefault();
             var facilityID = geninfo.FacilityID;
+
             var fileName = VisibilitySetting.PSConfig;
             var remoteComputer = VisibilitySetting.RemoteServerAddressConfig;
             var usernameAndPassword =VisibilitySetting.UserNameAndPasswordConfig;

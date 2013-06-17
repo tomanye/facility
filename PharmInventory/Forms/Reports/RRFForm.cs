@@ -83,6 +83,12 @@ namespace PharmInventory.Forms.Reports
             var units = unit.GetAllUnits();
             unitsBindingSource.DataSource = units.DefaultView;
 
+            var program = new Programs();
+
+            var programs = program.GetAllPrograms();
+            ProgramsBindingSource.DataSource = programs.DefaultView;
+            
+
             PopulateTheMonthCombos(cboFromMonth);
             PopulateTheMonthCombos(cboToMonth);
             PopulateTheYearCombo(cboFromYear);
@@ -280,28 +286,26 @@ namespace PharmInventory.Forms.Reports
                                                   Text = string.Format("{0}, {1} - {2}, {3}",
                                                                        ethioDateFrom.GetMonthName(), ethioDateFrom.Year,
                                                                        ethioDateTo.GetMonthName(), ethioDateTo.Year)
-                                              }
+                                              },
+                                          ProgramName={Text =cboProgram.Text}
                                       };
-            //rrfReport.Year.Text = dtFrom.Text.Substring(dtFrom.Text.LastIndexOf('/') + 1);
-            var itm = new Items();
-            //DataTable dtbl = itm.GetRRFReportInPacks(_storeID,_fromYear,_fromMonth,_toYear,_toMonth); //  gridItemsChoice.DataSource;
-            DataTable tbl = ((DataView)gridItemChoiceView.DataSource).Table;
-            //tblRRF.TableName = "DataTable1";
-            //var dtset = new DataSet();
-            //dtset.Tables.Add(tblRRF.Copy());
-            //rrfReport.DataSource = dtset;
-            //rrfReport.ShowPreviewDialog();
 
-            tbl.TableName = "DataTable1";
+            var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
+            tbl.TableName="DataTable1";
+            
             var dtset = new DataSet();
             dtset.Tables.Add(tbl.Copy());
             rrfReport.DataSource = dtset;
-            rrfReport.ShowPreviewDialog();
+            if (Convert.ToInt32(cboProgram.EditValue) == 0)
+            {
+                rrfReport.ShowPreviewDialog();
+            }
+            else
+            {
+                rrfReport.FilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
+                rrfReport.ShowPreviewDialog();
+            }
 
-
-            //printableComponentLink1.PrintingSystem = new DevExpress.XtraPrinting.PrintingSystem();
-            //printableComponentLink1.Component = gridItemsChoice;
-            //printableComponentLink1.ShowPreview();
         }
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
@@ -729,26 +733,29 @@ namespace PharmInventory.Forms.Reports
 
         private int SaveRRF()
         {
-            RRF rrf = new RRF();
-            if (rrf.RRFExists(_storeID, _fromYear, _fromMonth, _toYear, _toMonth))
+            var rrf = new RRF();
+            if (!rrf.RRFExists(_storeID, _fromYear, _fromMonth, _toYear, _toMonth))
             {
                 if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save",
                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return -1;
             }
-            int rrfID = rrf.AddNewRRF(_storeID, _fromYear, _fromMonth, _toYear, _toMonth, true);
-            BLL.Items itm = new BLL.Items();
-            DataTable dtbl1 = new DataTable();
-            if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
-            foreach (DataRow dr in dtbl1.Rows)
+            else
             {
-                int itemID = Convert.ToInt32(dr["ID"]);
-                int requestedqty = Convert.ToInt32(dr["Quantity"]);
-                int storeID = int.Parse(cboStores.EditValue.ToString());
-                var rrfDetail = new RRFDetail();
-                rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
+                var rrfID = rrf.AddNewRRF(_storeID, _fromYear, _fromMonth, _toYear, _toMonth, true);
+                var dtbl1 = new DataTable();
+                if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView)gridItemChoiceView.DataSource).Table;
+                foreach (DataRow dr in dtbl1.Rows)
+                {
+                    var itemID = Convert.ToInt32(dr["ID"]);
+                    var requestedqty = Convert.ToInt32(dr["Quantity"]);
+                    var storeID = int.Parse(cboStores.EditValue.ToString());
+                    var rrfDetail = new RRFDetail();
+                    rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
 
+                }
             }
+           
             return rrf.ID;
         }
 
@@ -1367,12 +1374,13 @@ namespace PharmInventory.Forms.Reports
         private void ChooseGridView()
         {
 
-            if (chkCalculateInPacks.Checked)
+            if (chkCalculateInPacks.Checked && cboProgram == null)
             {
                 gridItemsChoice.MainView = grdViewInPacks;
             }
             else if (chkCalculateInPacks.Checked && cboProgram != null)
             {
+                gridItemsChoice.MainView = grdViewInPacks; 
                 grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
             }
             else gridItemsChoice.MainView = gridItemChoiceView;
