@@ -549,5 +549,13 @@ namespace BLL
             string query = string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and SubProgramID={2}", itemID, storeID, programID);
             this.LoadFromRawSql(query);
         }
+
+        public DataTable GetBatchToIssueByUnit(int storeId, int itemId, DateTime dtIss, int unitid)
+        {
+            FlushData();
+            string query = String.Format("SELECT * FROM ReceiveDoc WHERE (ExpDate > GETDATE()) AND (ItemID = {1}) AND (Out = 0) AND (QuantityLeft != 0) AND (StoreID = {0} AND (Date <= '{2}') AND (UnitID= {3})) ORDER BY ExpDate", storeId, itemId, dtIss.ToString(),unitid);
+            LoadFromRawSql(query);
+            return DataTable;
+        }
     }
 }

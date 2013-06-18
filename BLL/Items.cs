@@ -842,19 +842,20 @@ namespace BLL
         public DataTable GetExpiredItemsByBatchBySubcat(int subCatId, int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND StoreId = {0} AND ID IN (Select ItemID from ProductsCategory Where SubCategoryID = {1}) ORDER BY ID", storeId, subCatId));
+            this.LoadFromRawSql(string.Format("SELECT * FROM vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 1) AND StoreId = {0} AND ID IN (Select ItemID from ProductsCategory Where SubCategoryID = {1}) ORDER BY ID", storeId, subCatId));
             return this.DataTable;
         }
 
         public DataTable GetNearlyExpiredItemsByBatch(int storeId, int commodityType , DateTime dtCurrent)
         {
             this.FlushData();
-            string query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
+            var query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib " +
+                                       "WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
             this.LoadFromRawSql(query);
             this.DataTable.Columns.Add("MOS");
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {
-                this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), dtCurrent);
+                this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), dtCurrent);
             }
             return this.DataTable;
         }
@@ -863,21 +864,21 @@ namespace BLL
         {
             GeneralInfo pipline = new GeneralInfo();
             pipline.LoadAll();
-            int min = pipline.Min;
-            int max = pipline.Max;
-            double eop = pipline.EOP;
-            Items itmB = new Items();
-            Balance bal = new Balance();
+            //int min = pipline.Min;
+            //int max = pipline.Max;
+            //double eop = pipline.EOP;
+            //Items itmB = new Items();
+           // Balance bal = new Balance();
             //Int64 AMC = bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
             double AMC = Builder.CalculateAverageConsumption(itemId,storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)), dtCurrent,CalculationOptions.Monthly);
                 //bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
-            double MinCon = AMC * min;
-            double maxCon = AMC * max;
-            double eopCon = AMC * (eop + 0.25);
+            //double MinCon = AMC * min;
+            //double maxCon = AMC * max;
+            //double eopCon = AMC * (eop + 0.25);
 
             //Int64 SOH = bal.GetSOH(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
 
-            decimal MOS = (AMC != 0) ? (qty / Convert.ToDecimal(AMC)) : 0;
+            var MOS = (AMC != 0) ? (qty / Convert.ToDecimal(AMC)) : 0;
             MOS = Decimal.Round(MOS, 1);
             return MOS;
         }
@@ -892,9 +893,7 @@ namespace BLL
             Items itmB = new Items();
             Balance bal = new Balance();
            //Int64 AMC= bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
-            double AMC = Builder.CalculateAverageConsumption(itemId,storeId,
-                                                                                 DateTime.Today.Subtract(
-                                                                                     TimeSpan.FromDays(180)), dtCurrent, CalculationOptions.Monthly);
+            double AMC = Builder.CalculateAverageConsumption(itemId,storeId,DateTime.Today.Subtract(TimeSpan.FromDays(180)), dtCurrent, CalculationOptions.Monthly);
                 //bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
             double MinCon = AMC * min;
             double maxCon = AMC * max;

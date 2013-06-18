@@ -32,8 +32,8 @@ namespace PharmInventory.Forms.Reports
         {
             PopulateCatTree(_selectedType);
 
-            DisposalReasons rec = new DisposalReasons();
-            DataTable dtDis = rec.GetAvailableReasons();
+            var rec = new DisposalReasons();
+            var dtDis = rec.GetAvailableReasons();
             //object[] objRec = { 0, "All Reasons", "" };
             //dtDis.Rows.Add(objRec);
             cboReasons.Properties.DataSource = dtDis;

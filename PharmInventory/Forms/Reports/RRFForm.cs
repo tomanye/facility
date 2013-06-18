@@ -105,13 +105,6 @@ namespace PharmInventory.Forms.Reports
             prog.GetAllPrograms();
             cboProgram.Properties.DataSource = prog.DefaultView;
 
-
-            //DataTable dtProg = prog.GetSubPrograms();
-            //object[] objProg = { 0, "All Programs", "", 0, "" };
-            //dtProg.Rows.Add(objProg);
-            //cboProgram.Properties.DataSource = dtProg;
-            //cboStores.ItemIndex = 0;
-            //cboProgram.ItemIndex = 0;
         }
 
         private void PopulateRRFs()
@@ -265,10 +258,10 @@ namespace PharmInventory.Forms.Reports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (
-                XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",
+            if (XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
+           
             SaveRRF();
 
             var ginfo = new GeneralInfo();
@@ -734,14 +727,12 @@ namespace PharmInventory.Forms.Reports
         private int SaveRRF()
         {
             var rrf = new RRF();
-            if (!rrf.RRFExists(_storeID, _fromYear, _fromMonth, _toYear, _toMonth))
+            if (rrf.RRFExists(_storeID, _fromYear, _fromMonth, _toYear, _toMonth))
             {
                 if (XtraMessageBox.Show("RRF Exists on disk, are you sure you want to replace it?", "RRF Save",
                                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     return -1;
             }
-            else
-            {
                 var rrfID = rrf.AddNewRRF(_storeID, _fromYear, _fromMonth, _toYear, _toMonth, true);
                 var dtbl1 = new DataTable();
                 if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView)gridItemChoiceView.DataSource).Table;
@@ -752,9 +743,7 @@ namespace PharmInventory.Forms.Reports
                     var storeID = int.Parse(cboStores.EditValue.ToString());
                     var rrfDetail = new RRFDetail();
                     rrfDetail.AddNewRRFDetail(rrfID, storeID, itemID, requestedqty);
-
-                }
-            }
+                 }
            
             return rrf.ID;
         }

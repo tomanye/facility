@@ -441,9 +441,21 @@ namespace PharmInventory.Forms.Transactions
                             itm.NeedExpiryBatch = true;
                             itm.Save();
                         }
-                        if (itm.NeedExpiryBatch)
+                        if (itm.NeedExpiryBatch && VisibilitySetting.HandleUnits == 1)
+                        {
                             _dtRec = rec.GetBatchToIssue(Convert.ToInt32(cboStores.EditValue),
                                                          Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss);
+                        }
+                        else if (itm.NeedExpiryBatch && VisibilitySetting.HandleUnits == 2)
+                        {
+                            _dtRec = rec.GetBatchToIssueByUnit(Convert.ToInt32(cboStores.EditValue),
+                                                        Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss ,unitid);
+                        }
+                        else if (itm.NeedExpiryBatch && VisibilitySetting.HandleUnits == 3)
+                        {
+                            _dtRec = rec.GetBatchToIssueByUnit(Convert.ToInt32(cboStores.EditValue),
+                                                        Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), dtIss, unitid);
+                        }
                         else
                             _dtRec = rec.GetSupplyToIssueWithOutBatch(Convert.ToInt32(cboStores.EditValue),
                                                                       Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]),
@@ -478,7 +490,7 @@ namespace PharmInventory.Forms.Transactions
 
                             while (quantity > 0 && rec.RowCount > j)
                             {
-                                string batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
+                                var batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
 
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
