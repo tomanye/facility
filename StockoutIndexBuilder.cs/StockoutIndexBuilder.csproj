@@ -57,7 +57,6 @@
     <Compile Include="DAL\AmcReportRepository.cs" />
     <Compile Include="DAL\DosageFormRepository.cs" />
     <Compile Include="DAL\GeneralInfoRepository.cs" />
-    <Compile Include="DAL\IssueDocRepository.cs" />
     <Compile Include="DAL\ItemsRepository.cs" />
     <Compile Include="DAL\ProductRepository.cs" />
     <Compile Include="DAL\ReceiveDocRepository.cs" />
