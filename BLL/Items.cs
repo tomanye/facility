@@ -629,9 +629,7 @@ namespace BLL
         public DataTable GetExpiredItems(int storeId, int commodityType)
         {
             this.FlushData();
-               string query =
-                    string.Format(
-                        "SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0}",
+            var query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate < GETDATE()) AND (ib.Out = 1) AND ib.StoreId = {0}",
                         storeId, commodityType);
                 this.LoadFromRawSql(query);
                 return this.DataTable;
@@ -662,8 +660,8 @@ namespace BLL
         public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId)
         {
             this.FlushData();
-            string whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
-            string query = string.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo,(Cost * Quantity) AS Price, CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE StoreId = {0} AND year(Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
+            var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
+            var query = string.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo,(Disposal.Cost * Quantity) AS Price, CASE Losses WHEN 1 then cast(0-Quantity as nvarchar) else '+' + cast(Quantity as nvarchar) end as QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE StoreId = {0} AND year(Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
 
             this.LoadFromRawSql(query);
             return this.DataTable;

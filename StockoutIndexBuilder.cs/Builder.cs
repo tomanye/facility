@@ -269,10 +269,11 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var stockoutDays = CalculateStockoutDays(itemId,storeId, startDate, endDate);
-            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId&& m.StoreID ==storeId).Where(issue => issue.Date >= startDate && issue.Date < endDate);
-            if (!allIssues.Any())
+            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId  && m.StoreID ==storeId).Where(m => m.Date >= startDate && m.Date < endDate);
+
+           if (!allIssues.Any())
                 return 0;
-            var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity);
+            var totalConsumption = Enumerable.Sum(allIssues,issue => issue.Quantity);
             if (stockoutDays == 0)
                 return totalConsumption;                
             return totalConsumption + CalculateTotalConsumption(itemId,storeId, startDate.Subtract(TimeSpan.FromDays(stockoutDays)), startDate); ; 
