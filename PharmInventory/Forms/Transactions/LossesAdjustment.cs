@@ -237,10 +237,20 @@ namespace PharmInventory
         private string ValidateFields()
         {
             string valid = "true";
+            dtAdjustDate.Value = DateTime.Now;
+            DateTime dtCurent = new DateTime();
+            dtAdjustDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtAdjustDate.Text);
+
             if (!dxValidation.Validate())
             {
                 valid = "All * marked fields are required!";
                 return valid;
+            }
+
+            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            {
+                valid = "You can not perform loss and adjustment on an item because it is an inventory period!";
             }
 
             if (Convert.ToDateTime(dtAdjustDate.Value) > DateTime.Now)

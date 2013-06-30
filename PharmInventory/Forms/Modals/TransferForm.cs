@@ -251,6 +251,12 @@ namespace PharmInventory.Forms.Modals
         }
         private string ValidateFields()
         {
+            dtRecDate.Value = DateTime.Now;
+            DateTime dtCurent = new DateTime();
+            dtRecDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtRecDate.Text);
+
+
             string valid = "true";
 
             if (Convert.ToDateTime(dtRecDate.Value) > DateTime.Now)
@@ -258,6 +264,12 @@ namespace PharmInventory.Forms.Modals
                 valid = "You cannot pick a Date in a future!";
                 return valid;
             }
+
+            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            {
+                valid = "You can not transfer an item because it is an inventory period!";
+            }
+
             if (lkFromStore != null && Convert.ToInt32(lkFromStore.EditValue) == Convert.ToInt32(cboStores.EditValue))
             {
                 valid = "You cannot transfer an item to the same store.";

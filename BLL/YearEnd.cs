@@ -154,7 +154,7 @@ namespace BLL
 
         public void GenerateAutomaticInventory()
         {
-            EthiopianDate.EthiopianDate ethDate = new EthiopianDate.EthiopianDate();
+            var ethDate = new EthiopianDate.EthiopianDate();
             if (InventoryRequired(false))
             {
                 Stores stores = new Stores();
@@ -185,8 +185,7 @@ namespace BLL
                             yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
                             yearEnd.PhysicalInventory = yearEnd.EBalance;
                             yearEnd.AutomaticallyEntered = true;
-                            //yearEnd.UnitID = itm.UnitID;
-                            //yearEnd.QtyperPack = itm.QtyPerPack;
+                            yearEnd.UnitID = itm.UnitID;
                             yearEnd.Save();
                             itm.MoveNext();
                         }

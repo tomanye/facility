@@ -113,7 +113,8 @@ namespace PharmInventory.Forms.Transactions
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)));
+              // btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)));
+                btnSave.Enabled =true;
                 month = 10;
              
             }
@@ -157,7 +158,7 @@ namespace PharmInventory.Forms.Transactions
                 drv["Item Name"] = itemName;
                 drv["Beginning Balance"] = BB;
                 drv["Ending Balance(SOH)"] = EB;
-                drv["UnitID"] = unitid;
+               // drv["UnitID"] = unitid;
 
                 if (Phy != "")
                 {
@@ -272,9 +273,8 @@ namespace PharmInventory.Forms.Transactions
                         }
                         else//There is no entry in the yearend table under this item name that has been entered manually.
                         {
-                            DataRow cRow = dtBB.Rows[i];
-                            if (cRow["Physical Inventory"] != DBNull.Value && cRow["ItemID"] != DBNull.Value)
-                            //if(cRow["ItemID"]!=DBNull.Value)
+                           DataRow cRow = dtBB.Rows[i];
+                           if (!ReferenceEquals(cRow["Physical Inventory"], string.Empty) && cRow["ItemID"] != DBNull.Value)
                             {
                                 int itemID = Convert.ToInt32(cRow["ItemID"]);
                                 YearEnd.PurgeAutomaticallyEnteredInventory(itemID, storeID, year);
@@ -288,9 +288,11 @@ namespace PharmInventory.Forms.Transactions
                                 Int64 endBal = Convert.ToInt64(cRow["Ending Balance(SOH)"]);
                                 //yEnd.BatchNo = cRow["Batch No."].ToString();
                                 yEnd.EBalance = endBal;// Convert.ToInt64(yearEndTable.Rows[i].Cells[5].Value);
-                                yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
+
+                               if (cRow["Physical Inventory"]!=DBNull.Value)
+                                    yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
                                 //yEnd.PhysicalInventory = physicalInventoryTotal;
-                                yEnd.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(cRow["UnitID"]);
+                                yEnd.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
                                 yEnd.Remark = cRow["Remark"].ToString();
                                 yEnd.AutomaticallyEntered = false;
                                 yEnd.Save();

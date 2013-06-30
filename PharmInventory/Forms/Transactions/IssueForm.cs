@@ -62,6 +62,8 @@ namespace PharmInventory.Forms.Transactions
         /// <param name="e"></param>
         private void IssuingForm_Load(object sender, EventArgs e)
         {
+
+
             var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[4];
             var amc = ((GridView)gridItemsChoice.MainView).Columns[8];
             var unitid = ((GridView)issueGrid.MainView).Columns[14];
@@ -606,11 +608,24 @@ namespace PharmInventory.Forms.Transactions
         /// </returns>
         private string ValidateFields()
         {
+            dtIssueDate.Value = DateTime.Now;
+            DateTime dtCurent = new DateTime();
+            dtIssueDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtIssueDate.Text);
+
+           //  CALENDAR:
+           
+
             string valid = "true";
 
             if (!dxValidationProvider1.Validate())
             {
                 valid = "All * marked fields are required!";
+            }
+
+            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            {
+                valid = "You can not issue or receive an item because it is an inventory period!";
             }
 
             if (Convert.ToDateTime(dtIssueDate.Value).Date > DateTime.Now.Date)

@@ -985,8 +985,7 @@ namespace BLL
             }
             else
             {
-                var query =
-                    String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",
+                var query =String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",
                         storeId, commodityTypeID);
                 this.LoadFromRawSql(query);
             }
@@ -1002,7 +1001,8 @@ namespace BLL
             }
             else
             {
-                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)  ORDER BY ItemName", storeId));
+                var query = String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)  ORDER BY ItemName", storeId);
+                this.LoadFromRawSql(query);
             }
             return this.DataTable;
         }
