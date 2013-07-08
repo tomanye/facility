@@ -3,7 +3,9 @@ using System.Data;
 using System.Drawing;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
+using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.ActivityLogs
 {
@@ -24,7 +26,15 @@ namespace PharmInventory.Forms.ActivityLogs
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
-            Stores stor = new Stores();
+
+            var unitcolumn = ((GridView) gridInventory.MainView).Columns[7];
+            unitcolumn.Visible = VisibilitySetting.HandleUnits != 1;
+            var stor = new Stores();
+
+            var unit = new ItemUnit();
+            var allunit = unit.GetAllUnits();
+            unitbindingSource.DataSource = allunit.DefaultView;
+
             stor.GetActiveStores();
             cboStores.DataSource = stor.DefaultView;
         }

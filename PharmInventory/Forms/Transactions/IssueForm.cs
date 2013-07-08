@@ -623,10 +623,10 @@ namespace PharmInventory.Forms.Transactions
                 valid = "All * marked fields are required!";
             }
 
-            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
-            {
-                valid = "You can not issue or receive an item because it is an inventory period!";
-            }
+            //if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            //{
+            //    valid = "You can not issue or receive an item because it is an inventory period!";
+            //}
 
             if (Convert.ToDateTime(dtIssueDate.Value).Date > DateTime.Now.Date)
             {

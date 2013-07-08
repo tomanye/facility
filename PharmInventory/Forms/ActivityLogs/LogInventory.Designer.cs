@@ -50,6 +50,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtEmpty = new DevExpress.XtraEditors.TextEdit();
             this.lblAdjDate = new System.Windows.Forms.Label();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -74,6 +77,8 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmpty.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -89,6 +94,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -97,21 +103,21 @@ namespace PharmInventory.Forms.ActivityLogs
             this.detailToolStripMenuItem,
             this.detailToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(105, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(107, 48);
             this.contextMenuStrip1.Text = "conTran";
             // 
             // detailToolStripMenuItem
             // 
             this.detailToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.report;
             this.detailToolStripMenuItem.Name = "detailToolStripMenuItem";
-            this.detailToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.detailToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.detailToolStripMenuItem.Text = "detail";
             // 
             // detailToolStripMenuItem1
             // 
             this.detailToolStripMenuItem1.Image = global::PharmInventory.Properties.Resources.cross;
             this.detailToolStripMenuItem1.Name = "detailToolStripMenuItem1";
-            this.detailToolStripMenuItem1.Size = new System.Drawing.Size(104, 22);
+            this.detailToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
             this.detailToolStripMenuItem1.Text = "delete";
             // 
             // groupBox1
@@ -130,9 +136,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.cboStores.DisplayMember = "StoreName";
             this.cboStores.FormattingEnabled = true;
-            this.cboStores.Location = new System.Drawing.Point(378, 33);
+            this.cboStores.Location = new System.Drawing.Point(377, 33);
             this.cboStores.Name = "cboStores";
-            this.cboStores.Size = new System.Drawing.Size(221, 21);
+            this.cboStores.Size = new System.Drawing.Size(222, 21);
             this.cboStores.TabIndex = 0;
             this.cboStores.Text = "Select Store";
             this.cboStores.ValueMember = "ID";
@@ -214,6 +220,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridInventory.Location = new System.Drawing.Point(276, 58);
             this.gridInventory.MainView = this.gridView1;
             this.gridInventory.Name = "gridInventory";
+            this.gridInventory.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1});
             this.gridInventory.Size = new System.Drawing.Size(811, 644);
             this.gridInventory.TabIndex = 35;
             this.gridInventory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -228,7 +236,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
-            this.gridColumn7});
+            this.gridColumn7,
+            this.gridColumn9});
             this.gridView1.GridControl = this.gridInventory;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -300,8 +309,30 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn7.FieldName = "Remark";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             this.gridColumn7.Width = 155;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Unit";
+            this.gridColumn9.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.gridColumn9.FieldName = "UnitID";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 6;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Text", 32, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
+            this.repositoryItemLookUpEdit1.DataSource = this.unitbindingSource;
+            this.repositoryItemLookUpEdit1.DisplayMember = "Text";
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.repositoryItemLookUpEdit1.NullText = "Null";
+            this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
             // txtEmpty
             // 
@@ -522,6 +553,8 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmpty.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -537,6 +570,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -580,5 +614,8 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private System.Windows.Forms.BindingSource unitbindingSource;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
     }
 }

@@ -265,10 +265,10 @@ namespace PharmInventory.Forms.Modals
                 return valid;
             }
 
-            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
-            {
-                valid = "You can not transfer an item because it is an inventory period!";
-            }
+            //if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            //{
+            //    valid = "You can not transfer an item because it is an inventory period!";
+            //}
 
             if (lkFromStore != null && Convert.ToInt32(lkFromStore.EditValue) == Convert.ToInt32(cboStores.EditValue))
             {
