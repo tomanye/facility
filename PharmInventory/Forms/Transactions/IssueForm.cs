@@ -474,25 +474,28 @@ namespace PharmInventory.Forms.Transactions
                             int j = 0;
                             Int64 quantity = 0;
                             double sohbalance = 0;
-                            if (VisibilitySetting.HandleUnits == 1)
+                            switch (VisibilitySetting.HandleUnits)
                             {
-                                quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]);
-                                sohbalance = sohQty - quantity;
-                            }
-                            else if (VisibilitySetting.HandleUnits == 2)
-                            {
-                                quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]);
-                                sohbalance = sohQty - quantity;
-                            }
-                            else
-                            {
-                                quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]);
-                                sohbalance = sohQty - quantity;
+                                case 1:
+                                    quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]);
+                                    sohbalance = sohQty - quantity;
+                                    break;
+                                case 2:
+                                    quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]);
+                                    sohbalance = sohQty - quantity;
+                                    break;
+                                default:
+                                    quantity = Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]);
+                                    sohbalance = sohQty - quantity;
+                                    break;
                             }
 
                             while (quantity > 0 && rec.RowCount > j)
                             {
-                                var batch = ((itm.NeedExpiryBatch) ? _dtRec.Rows[j]["BatchNo"].ToString() : "");
+                                string batch;
+                                if (itm.NeedExpiryBatch) 
+                                    batch = _dtRec.Rows[j]["BatchNo"].ToString();
+                                else batch = "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
 
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);

@@ -269,7 +269,7 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var stockoutDays = CalculateStockoutDays(itemId,storeId, startDate, endDate);
-            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId  && m.StoreID ==storeId).Where(m => m.Date >= startDate && m.Date < endDate);
+            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId || m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
 
            if (!allIssues.Any())
                 return 0;
