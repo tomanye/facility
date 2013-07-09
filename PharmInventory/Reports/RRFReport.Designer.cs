@@ -46,6 +46,8 @@
             this.xrTableCell38 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell43 = new DevExpress.XtraReports.UI.XRTableCell();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.categoryName = new DevExpress.XtraReports.UI.XRLabel();
             this.ProgramName = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPictureBox1 = new DevExpress.XtraReports.UI.XRPictureBox();
@@ -368,6 +370,8 @@
             // TopMargin
             // 
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel5,
+            this.categoryName,
             this.ProgramName,
             this.xrLabel4,
             this.xrPictureBox1,
@@ -381,6 +385,25 @@
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // xrLabel5
+            // 
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(416.2596F, 161.5833F);
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(88.70192F, 20.83334F);
+            this.xrLabel5.StylePriority.UseTextAlignment = false;
+            this.xrLabel5.Text = "Category ";
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // categoryName
+            // 
+            this.categoryName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.categoryName.LocationFloat = new DevExpress.Utils.PointFloat(515.3782F, 161.5833F);
+            this.categoryName.Name = "categoryName";
+            this.categoryName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.categoryName.SizeF = new System.Drawing.SizeF(275.9456F, 23F);
+            this.categoryName.StylePriority.UseFont = false;
             // 
             // ProgramName
             // 
@@ -462,7 +485,7 @@
             this.Period.LocationFloat = new DevExpress.Utils.PointFloat(488.2949F, 134.478F);
             this.Period.Name = "Period";
             this.Period.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.Period.SizeF = new System.Drawing.SizeF(241.6348F, 20.83334F);
+            this.Period.SizeF = new System.Drawing.SizeF(303.0289F, 20.83334F);
             this.Period.StylePriority.UseFont = false;
             this.Period.StylePriority.UseTextAlignment = false;
             this.Period.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -1065,5 +1088,7 @@
         private DevExpress.XtraReports.UI.CalculatedField calculatedField9;
         public DevExpress.XtraReports.UI.XRLabel ProgramName;
         private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel5;
+        public DevExpress.XtraReports.UI.XRLabel categoryName;
     }
 }

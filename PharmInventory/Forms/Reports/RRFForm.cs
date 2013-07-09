@@ -83,8 +83,11 @@ namespace PharmInventory.Forms.Reports
             var units = unit.GetAllUnits();
             unitsBindingSource.DataSource = units.DefaultView;
 
-            var program = new Programs();
+            var type = new BLL.Type();
+            var alltypes = type.GetAllCategory();
+            categorybindingSource.DataSource = alltypes.DefaultView;
 
+            var program = new Programs();
             var programs = program.GetAllPrograms();
             ProgramsBindingSource.DataSource = programs.DefaultView;
             
@@ -280,7 +283,8 @@ namespace PharmInventory.Forms.Reports
                                                                        ethioDateFrom.GetMonthName(), ethioDateFrom.Year,
                                                                        ethioDateTo.GetMonthName(), ethioDateTo.Year)
                                               },
-                                          ProgramName={Text =cboProgram.Text}
+                                          ProgramName={Text =cboProgram.Text},
+                                          categoryName= {Text =lkCategory.Text}
                                       };
             var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
             tbl.TableName="DataTable1";
@@ -1561,6 +1565,11 @@ namespace PharmInventory.Forms.Reports
 
             btnAutoPushToPFSA.Enabled = true;
 
+        }
+
+        private void lkCategory_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategory.EditValue));
         }
 
     }

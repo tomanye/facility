@@ -49,6 +49,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>205</ApplicationRevision>
     <ApplicationVersion>2.5.0.205</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>

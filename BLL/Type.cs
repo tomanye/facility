@@ -27,5 +27,12 @@ namespace BLL
             type.LoadAll();
             return type.DataTable;
         }
+
+        public DataTable GetAllCategory()
+        {
+            BLL.Type type = new Type();
+            type.LoadAll();
+            return type.DataTable;
+        }
 	}
 }
