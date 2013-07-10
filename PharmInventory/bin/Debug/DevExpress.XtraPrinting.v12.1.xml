@@ -2217,7 +2217,7 @@
         </member>
         <member name="M:DevExpress.XtraPrinting.Control.BrickEventHandler.Invoke(System.Object,DevExpress.XtraPrinting.Control.BrickEventArgs)">
             <summary>
-                <para>Represents a method that will handle all brick events within the <b>XtraPrinting Library</b>.
+                <para>A method that will handle all brick events within the <b>XtraPrinting Library</b>.
 </para>
             </summary>
             <param name="sender">
@@ -2870,21 +2870,24 @@
         </member>
         <member name="E:DevExpress.XtraPrinting.Control.PrintControl.BrickMouseDown">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Occurs when pressing the mouse button over a brick's region within the <see cref="T:DevExpress.XtraPrinting.Control.PrintControl"/>.
+</para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraPrinting.Control.PrintControl.BrickMouseMove">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Occurs when moving the mouse over a brick's region within the <see cref="T:DevExpress.XtraPrinting.Control.PrintControl"/>.
+</para>
             </summary>
 
 
         </member>
         <member name="E:DevExpress.XtraPrinting.Control.PrintControl.BrickMouseUp">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Occurs when releasing the mouse button over a brick's region within the <see cref="T:DevExpress.XtraPrinting.Control.PrintControl"/>.
+</para>
             </summary>
 
 

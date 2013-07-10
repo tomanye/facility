@@ -89,6 +89,8 @@ namespace PharmInventory.ViewModels
                                                                             CalculationOptions.Monthly);
                 allItemIds.AmcWithOutDOS = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate) /
                 Convert.ToDouble(viewModel.AmcRange);
+                allItemIds.LastIndexedTime = DateTime.Now;
+                amcrepo.Update(allItemIds);
             }
         }
     }

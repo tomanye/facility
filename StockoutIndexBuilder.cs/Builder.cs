@@ -291,7 +291,9 @@ namespace StockoutIndexBuilder
                                               AmcWithOutDOS =
                                                   CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
                                                                                               endDate)/
-                                                  Convert.ToDouble(genaralinfo.AMCRange)
+                                                  Convert.ToDouble(genaralinfo.AMCRange),
+                                                  LastIndexedTime = DateTime.Now
+
 
 
                                           };
@@ -308,6 +310,7 @@ namespace StockoutIndexBuilder
                       allItemIds.AmcWithOutDOS =
                           CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate)/
                           Convert.ToDouble(genaralinfo.AMCRange);
+                      allItemIds.LastIndexedTime = DateTime.Now;
                   }
 
                   context.SaveChanges();

@@ -672,6 +672,7 @@ namespace PharmInventory.Forms.Transactions
                         const int lstSOH = 0;
                         //issGrid.Rows[i]["DU Remaining SOH"] = lstSOH;
                         issGrid.Rows[i]["DU Remaining SOH"] = 0;
+                        //issGrid.Rows[i]["DU Remaining SOH"] = 0;
                         int yer = (dtCurrent.Month < 11) ? dtCurrent.Year : dtCurrent.Year - 1;
                         Int64 duAmc = bal.CalculateDUAMC(itmId, receivingUnit, dtCurrent.Month, dtCurrent.Year, lstSOH);
                         issGrid.Rows[i]["DU AMC"] = duAmc;

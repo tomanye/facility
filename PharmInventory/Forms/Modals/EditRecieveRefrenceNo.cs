@@ -29,9 +29,9 @@ namespace PharmInventory.Forms.Modals
 
         private void EditRecieveRefrenceNo_Load(object sender, EventArgs e)
         {
+            var rec = new ReceiveDoc();
             if(_refno!=null)
             {
-                var rec = new ReceiveDoc();
                 rec.GetTransactionByRefNo(_refno);
                 refnotextEdit.Text = rec.RefNo;
                 dateEdit2.EditValue = rec.EurDate;
@@ -54,7 +54,7 @@ namespace PharmInventory.Forms.Modals
 
             else
             {
-                XtraMessageBox.Show("There is no refrence no to edit");
+                XtraMessageBox.Show("There is no refrence to edit");
                 return;
             }
             this.Close();

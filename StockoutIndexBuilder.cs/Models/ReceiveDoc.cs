@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
@@ -19,7 +18,8 @@ namespace StockoutIndexBuilder.Models
         public DateTime? Date { get; set; }
         public long Quantity { get; set; }
         public int StoreID { get; set; }
-
+        [NotMapped]
+        public string FullItemName { get; set; }
         public virtual Item Item{ get; set; }
         
 

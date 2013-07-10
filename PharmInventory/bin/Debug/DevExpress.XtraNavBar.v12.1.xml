@@ -1034,30 +1034,6 @@ The following image demonstrates a group painted using the "NavigationPane" view
 
 
         </member>
-        <member name="T:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventHandler">
-
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawBackground"/>, <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientBackground"/> and <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientForeground"/> events.
-</para>
-            </summary>
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventHandler.Invoke(System.Object,DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventArgs)">
-            <summary>
-                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawBackground"/>, <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientBackground"/> and <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientForeground"/> events.
-</para>
-            </summary>
-            <param name="sender">
-		An object representing the source of the event (typically the <see cref="T:DevExpress.XtraNavBar.NavBarControl"/>).
-
-            </param>
-            <param name="e">
-		A <see cref="T:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventArgs"/> object that contains event data.
-
-            </param>
-
-
-        </member>
         <member name="T:DevExpress.XtraNavBar.ViewInfo.NavBarSelectedLinkChangedEventHandler">
 
             <summary>
@@ -1218,324 +1194,27 @@ The following image demonstrates a group painted using the "NavigationPane" view
 
 
         </member>
-        <member name="T:DevExpress.XtraNavBar.NavBarGroup">
+        <member name="T:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventHandler">
 
             <summary>
-                <para>Represents a group within a <see cref="T:DevExpress.XtraNavBar.NavBarControl"/> control.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawBackground"/>, <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientBackground"/> and <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientForeground"/> events.
 </para>
             </summary>
 
         </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.#ctor">
+        <member name="M:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventHandler.Invoke(System.Object,DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventArgs)">
             <summary>
-                <para>Creates an instance of the <see cref="T:DevExpress.XtraNavBar.NavBarGroup"/> class.
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawBackground"/>, <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientBackground"/> and <see cref="E:DevExpress.XtraNavBar.NavBarControl.CustomDrawGroupClientForeground"/> events.
 </para>
             </summary>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.#ctor(System.String)">
-            <summary>
-                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraNavBar.NavBarGroup"/> class, with the specified caption.
-</para>
-            </summary>
-            <param name="caption">
-		A string representing the NavBar group's caption.
+            <param name="sender">
+		An object representing the source of the event (typically the <see cref="T:DevExpress.XtraNavBar.NavBarControl"/>).
 
             </param>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.AddItem">
-            <summary>
-                <para>Creates a new item in a NavBarControl and creates a link to this item in the current group.
-</para>
-            </summary>
-            <returns>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the link to the item being created.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.AppearanceBackground">
-            <summary>
-                <para>Gets the appearance settings used to paint the group's background.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object which provides the appearance settings used to paint the group's background.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.BackgroundImage">
-            <summary>
-                <para>Gets or sets the group's background image.
-</para>
-            </summary>
-            <value>A <b>System.Drawing.Image</b> descendant representing the group's background image.
-</value>
-
-
-        </member>
-        <member name="E:DevExpress.XtraNavBar.NavBarGroup.CalcGroupClientHeight">
-            <summary>
-                <para>Fires when the group's client height is calculated.
-</para>
-            </summary>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.Collection">
-            <summary>
-                <para>Gets a collection of groups to which the group belongs.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavGroupCollection"/> object that owns the group.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ControlContainer">
-            <summary>
-                <para>Gets or sets the control container displayed by the group when its <see cref="P:DevExpress.XtraNavBar.NavBarGroup.GroupStyle"/> property is set to <see cref="F:DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer"/>.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarGroupControlContainer"/> object representing the container displayed by the group when the <see cref="F:DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer"/> style  is applied. <b>null</b> if this style is not applied.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ControlContainerName">
-            <summary>
-                <para>Gets or sets the control container's name for the current group.
-</para>
-            </summary>
-            <value>A string representing the name of the group's control container. An empty string if the control container is not available. 
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.DragDropFlags">
-            <summary>
-                <para>Gets or sets a set of flags controlling the group's behavior as it relates to link drag and drop operations.
-</para>
-            </summary>
-            <value>A set of <see cref="T:DevExpress.XtraNavBar.NavBarDragDrop"/> enumeration values specifying a link's drag-and-drop options.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.Expanded">
-            <summary>
-                <para>Gets or sets a value specifying whether the group is expanded.
-</para>
-            </summary>
-            <value><b>true</b> if the group is expanded, otherwise <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetDragDropFlags">
-            <summary>
-                <para>Returns a set of flags which unambiguously specify the group's drag-and-drop behavior. 
-</para>
-            </summary>
-            <returns>A set of <see cref="T:DevExpress.XtraNavBar.NavBarDragDrop"/> enumeration values specifying the group's drag-and-drop behavior. 
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetImage">
-            <summary>
-                <para>Returns the image to display within the group caption.
-</para>
-            </summary>
-            <returns>A <see cref="T:System.Drawing.Image"/> object specifying the image to display within the group caption. <b>null</b> if no image is assigned to the group.
-
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetImageSize">
-            <summary>
-                <para>Returns the width and height of the image displayed within the group caption.
-</para>
-            </summary>
-            <returns>A System.Drawing.Size structure specifying the width and height of the image displayed within the group caption.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetLinksUseSmallImage">
-            <summary>
-                <para>Gets whether the links belonging to the group use small images.
-</para>
-            </summary>
-            <returns><b>true</b> if the group's links are painted using small images; otherwise, <b>false</b>.
-</returns>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetShowAsIconsView">
-            <summary>
-                <para>Gets whether the group's links are displayed using only images and without captions.
-</para>
-            </summary>
-            <returns><b>true</b> if the group's links are displayed without captions; otherwise, <b>false</b>.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupCaptionUseImage">
-            <summary>
-                <para>Gets or sets whether a big or small image is displayed within the group caption.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarImage"/> value representing the fixed image size to use within the group caption.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupClientHeight">
-            <summary>
-                <para>Gets or sets the height of the group's client area.
-</para>
-            </summary>
-            <value>The height of the group's client area, in pixels.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupStyle">
-            <summary>
-                <para>Gets or sets the style for presenting the group's contents.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarGroupStyle"/> value specifying how the group's contents is presented.
-</value>
-
-
-        </member>
-        <member name="M:DevExpress.XtraNavBar.NavBarGroup.InsertItem(System.Int32)">
-            <summary>
-                <para>Creates a new item in a NavBarControl and creates a link to this item at the specified position in the current group.
-</para>
-            </summary>
-            <param name="position">
-		The position to insert the link into.
+            <param name="e">
+		A <see cref="T:DevExpress.XtraNavBar.ViewInfo.CustomDrawObjectEventArgs"/> object that contains event data.
 
             </param>
-            <returns>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the link to the item being created.
-</returns>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ItemLinks">
-            <summary>
-                <para>Gets an object containing the collection of links which belong to the group.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavLinkCollection"/> object containing the collection of group links.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.LinksUseSmallImage">
-            <summary>
-                <para>Gets or sets a value specifying whether group links use small or large images.
-</para>
-            </summary>
-            <value><b>true</b> if the contained links use small images, otherwise <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.NavigationPaneVisible">
-            <summary>
-                <para>Gets or sets whether the group's button is displayed at the bottom of the NavBarControl when the "NavigationPane" view is applied.
-</para>
-            </summary>
-            <value><b>true</b> if the  group's button is displayed at the bottom of the NavBarControl; otherwise, <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.SelectedLink">
-            <summary>
-                <para>Gets or sets an object representing the group's selected link.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the group's selected link. <b>null</b> (<b>Nothing</b> in Visual Basic) if none of group items are selected.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.SelectedLinkIndex">
-            <summary>
-                <para>Gets or sets a value specifying the index of the group's selected link.
-</para>
-            </summary>
-            <value>An integer value specifying the zero-based index of the selected link within the group. <b>-1</b> if none of the group's links are curretly selected.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ShowAsIconsView">
-            <summary>
-                <para>Gets or sets a value specifying whether links are displayed as a set of icons.
-</para>
-            </summary>
-            <value><b>true</b> if contained links are displayed as a set of icons; otherwise <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.State">
-            <summary>
-                <para>Returns the NavBar group's state.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.Utils.Drawing.ObjectState"/> value specifying the group's state.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.TextureBackgroundBrush">
-            <summary>
-                <para>Gets an object representing the brush used to fill the group client area.
-</para>
-            </summary>
-            <value>A <b>System.Drawing.Brush</b> descendant representing the brush used to fill the group's client area.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.TopVisibleLinkIndex">
-            <summary>
-                <para>Gets or sets the index of the link which is displayed at the top of the current group.
-</para>
-            </summary>
-            <value>An integer value specifying the top visible link's zero-based index.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.UseSmallImage">
-            <summary>
-                <para>Gets or sets a value specifying whether a large or small image is displayed within the group caption.
-</para>
-            </summary>
-            <value><b>true</b> if a small image is displayed within the group caption; otherwise <b>false</b>.
-</value>
-
-
-        </member>
-        <member name="P:DevExpress.XtraNavBar.NavBarGroup.VisibleItemLinks">
-            <summary>
-                <para>Gets the collection of currently visible links within the group.
-</para>
-            </summary>
-            <value>A <see cref="T:DevExpress.XtraNavBar.NavReadOnlyLinkCollection"/> object containing the collection of group visible links.
-</value>
 
 
         </member>
@@ -2803,6 +2482,327 @@ The following image demonstrates a group painted using the "NavigationPane" view
 </para>
             </summary>
             <value>A <see cref="T:DevExpress.XtraNavBar.NavBarGroup"/> object representing the group for which the event is raised.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraNavBar.NavBarGroup">
+
+            <summary>
+                <para>Represents a group within a <see cref="T:DevExpress.XtraNavBar.NavBarControl"/> control.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.#ctor">
+            <summary>
+                <para>Creates an instance of the <see cref="T:DevExpress.XtraNavBar.NavBarGroup"/> class.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.#ctor(System.String)">
+            <summary>
+                <para>Initializes a new instance of the <see cref="T:DevExpress.XtraNavBar.NavBarGroup"/> class, with the specified caption.
+</para>
+            </summary>
+            <param name="caption">
+		A string representing the NavBar group's caption.
+
+            </param>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.AddItem">
+            <summary>
+                <para>Creates a new item in a NavBarControl and creates a link to this item in the current group.
+</para>
+            </summary>
+            <returns>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the link to the item being created.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.AppearanceBackground">
+            <summary>
+                <para>Gets the appearance settings used to paint the group's background.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.AppearanceObject"/> object which provides the appearance settings used to paint the group's background.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.BackgroundImage">
+            <summary>
+                <para>Gets or sets the group's background image.
+</para>
+            </summary>
+            <value>A <b>System.Drawing.Image</b> descendant representing the group's background image.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraNavBar.NavBarGroup.CalcGroupClientHeight">
+            <summary>
+                <para>Fires when the group's client height is calculated.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.Collection">
+            <summary>
+                <para>Gets a collection of groups to which the group belongs.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavGroupCollection"/> object that owns the group.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ControlContainer">
+            <summary>
+                <para>Gets or sets the control container displayed by the group when its <see cref="P:DevExpress.XtraNavBar.NavBarGroup.GroupStyle"/> property is set to <see cref="F:DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer"/>.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarGroupControlContainer"/> object representing the container displayed by the group when the <see cref="F:DevExpress.XtraNavBar.NavBarGroupStyle.ControlContainer"/> style  is applied. <b>null</b> if this style is not applied.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ControlContainerName">
+            <summary>
+                <para>Gets or sets the control container's name for the current group.
+</para>
+            </summary>
+            <value>A string representing the name of the group's control container. An empty string if the control container is not available. 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.DragDropFlags">
+            <summary>
+                <para>Gets or sets a set of flags controlling the group's behavior as it relates to link drag and drop operations.
+</para>
+            </summary>
+            <value>A set of <see cref="T:DevExpress.XtraNavBar.NavBarDragDrop"/> enumeration values specifying a link's drag-and-drop options.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.Expanded">
+            <summary>
+                <para>Gets or sets a value specifying whether the group is expanded.
+</para>
+            </summary>
+            <value><b>true</b> if the group is expanded, otherwise <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetDragDropFlags">
+            <summary>
+                <para>Returns a set of flags which unambiguously specify the group's drag-and-drop behavior. 
+</para>
+            </summary>
+            <returns>A set of <see cref="T:DevExpress.XtraNavBar.NavBarDragDrop"/> enumeration values specifying the group's drag-and-drop behavior. 
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetImage">
+            <summary>
+                <para>Returns the image to display within the group caption.
+</para>
+            </summary>
+            <returns>A <see cref="T:System.Drawing.Image"/> object specifying the image to display within the group caption. <b>null</b> if no image is assigned to the group.
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetImageSize">
+            <summary>
+                <para>Returns the width and height of the image displayed within the group caption.
+</para>
+            </summary>
+            <returns>A System.Drawing.Size structure specifying the width and height of the image displayed within the group caption.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetLinksUseSmallImage">
+            <summary>
+                <para>Gets whether the links belonging to the group use small images.
+</para>
+            </summary>
+            <returns><b>true</b> if the group's links are painted using small images; otherwise, <b>false</b>.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.GetShowAsIconsView">
+            <summary>
+                <para>Gets whether the group's links are displayed using only images and without captions.
+</para>
+            </summary>
+            <returns><b>true</b> if the group's links are displayed without captions; otherwise, <b>false</b>.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupCaptionUseImage">
+            <summary>
+                <para>Gets or sets whether a big or small image is displayed within the group caption.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarImage"/> value representing the fixed image size to use within the group caption.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupClientHeight">
+            <summary>
+                <para>Gets or sets the height of the group's client area.
+</para>
+            </summary>
+            <value>The height of the group's client area, in pixels.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.GroupStyle">
+            <summary>
+                <para>Gets or sets the style for presenting the group's contents.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarGroupStyle"/> value specifying how the group's contents is presented.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraNavBar.NavBarGroup.InsertItem(System.Int32)">
+            <summary>
+                <para>Creates a new item in a NavBarControl and creates a link to this item at the specified position in the current group.
+</para>
+            </summary>
+            <param name="position">
+		The position to insert the link into.
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the link to the item being created.
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ItemLinks">
+            <summary>
+                <para>Gets an object containing the collection of links which belong to the group.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavLinkCollection"/> object containing the collection of group links.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.LinksUseSmallImage">
+            <summary>
+                <para>Gets or sets a value specifying whether group links use small or large images.
+</para>
+            </summary>
+            <value><b>true</b> if the contained links use small images, otherwise <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.NavigationPaneVisible">
+            <summary>
+                <para>Gets or sets whether the group's button is displayed at the bottom of the NavBarControl when the "NavigationPane" view is applied.
+</para>
+            </summary>
+            <value><b>true</b> if the  group's button is displayed at the bottom of the NavBarControl; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.SelectedLink">
+            <summary>
+                <para>Gets or sets an object representing the group's selected link.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavBarItemLink"/> object representing the group's selected link. <b>null</b> (<b>Nothing</b> in Visual Basic) if none of group items are selected.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.SelectedLinkIndex">
+            <summary>
+                <para>Gets or sets a value specifying the index of the group's selected link.
+</para>
+            </summary>
+            <value>An integer value specifying the zero-based index of the selected link within the group. <b>-1</b> if none of the group's links are curretly selected.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.ShowAsIconsView">
+            <summary>
+                <para>Gets or sets a value specifying whether links are displayed as a set of icons.
+</para>
+            </summary>
+            <value><b>true</b> if contained links are displayed as a set of icons; otherwise <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.State">
+            <summary>
+                <para>Returns the NavBar group's state.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Utils.Drawing.ObjectState"/> value specifying the group's state.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.TextureBackgroundBrush">
+            <summary>
+                <para>Gets an object representing the brush used to fill the group client area.
+</para>
+            </summary>
+            <value>A <b>System.Drawing.Brush</b> descendant representing the brush used to fill the group's client area.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.TopVisibleLinkIndex">
+            <summary>
+                <para>Gets or sets the index of the link which is displayed at the top of the current group.
+</para>
+            </summary>
+            <value>An integer value specifying the top visible link's zero-based index.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.UseSmallImage">
+            <summary>
+                <para>Gets or sets a value specifying whether a large or small image is displayed within the group caption.
+</para>
+            </summary>
+            <value><b>true</b> if a small image is displayed within the group caption; otherwise <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraNavBar.NavBarGroup.VisibleItemLinks">
+            <summary>
+                <para>Gets the collection of currently visible links within the group.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraNavBar.NavReadOnlyLinkCollection"/> object containing the collection of group visible links.
 </value>
 
 

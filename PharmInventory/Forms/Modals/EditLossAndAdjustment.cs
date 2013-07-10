@@ -54,12 +54,12 @@ namespace PharmInventory.Forms.Modals
 
         private void EditLossAndAdjustment_Load(object sender, EventArgs e)
         {
+            var dis = new Disposal();
             if(_refno!=null)
             {
-                var dis = new Disposal();
                 dis.GetTransactionByRefNo(_refno);
                 refNotextEdit.Text = dis.RefNo;
-                dateEdit1.EditValue = dis.EurDate;
+                if (dateEdit1 != null) dateEdit1.EditValue = dis.EurDate;
             }
         }
 

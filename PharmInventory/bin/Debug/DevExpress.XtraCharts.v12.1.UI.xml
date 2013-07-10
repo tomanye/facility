@@ -188,44 +188,58 @@
         </member>
         <member name="M:DevExpress.XtraCharts.ChartControl.BindToData(DevExpress.XtraCharts.ViewType,System.Object,System.String,System.String,System.String[])">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Binds a chart to data.
+</para>
             </summary>
             <param name="viewType">
-		 [To be supplied] 
+		A <see cref="T:DevExpress.XtraCharts.ViewType"/> enumeration value specifying the view type of the series to be generated.
+
+
             </param>
             <param name="dataSource">
-		 [To be supplied] 
+		A <see cref="T:System.Object"/> that is the datasource for a chart. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.DataSource"/> property.
+
             </param>
             <param name="seriesDataMember">
-		 [To be supplied] 
+		A <see cref="T:System.String"/> that is the name of the data field whose values are used to automatically generate and populate series. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesDataMember"/> property.
+
             </param>
             <param name="argumentDataMember">
-		 [To be supplied] 
+		A <see cref="T:System.String"/> that is the name of the data field that contains arguments for series points. This value is assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ArgumentDataMember"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
             </param>
             <param name="valueDataMembers">
-		 [To be supplied] 
+		An array of <see cref="T:System.String"/> values that are the names of data fields that contain information on data values of series points. These values are assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ValueDataMembers"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
             </param>
 
 
         </member>
         <member name="M:DevExpress.XtraCharts.ChartControl.BindToData(DevExpress.XtraCharts.SeriesViewBase,System.Object,System.String,System.String,System.String[])">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Binds a chart to data.
+</para>
             </summary>
             <param name="view">
-		 [To be supplied] 
+		A <see cref="T:DevExpress.XtraCharts.SeriesViewBase"/> class descendant that contains initial settings for series that will be generated when binding a chart to data.
+
+
             </param>
             <param name="dataSource">
-		 [To be supplied] 
+		A <see cref="T:System.Object"/> that is the datasource for a chart. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.DataSource"/> property.
+
             </param>
             <param name="seriesDataMember">
-		 [To be supplied] 
+		A <see cref="T:System.String"/> that is the name of the data field whose values are used to automatically generate and populate series. This value is assigned to the <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesDataMember"/> property.
+
             </param>
             <param name="argumentDataMember">
-		 [To be supplied] 
+		A <see cref="T:System.String"/> that is the name of the data field that contains arguments for series points. This value is assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ArgumentDataMember"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
             </param>
             <param name="valueDataMembers">
-		 [To be supplied] 
+		An array of <see cref="T:System.String"/> values that are the names of data fields that contain information on data values of series points. These values are assigned to the <see cref="P:DevExpress.XtraCharts.SeriesBase.ValueDataMembers"/> property of a <see cref="P:DevExpress.XtraCharts.ChartControl.SeriesTemplate"/> object.
+
             </param>
 
 
@@ -351,17 +365,21 @@
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.CrosshairEnabled">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets or sets a value that specifies whether or not a crosshair cursor is enabled for a chart. 
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value><b>Default</b> - a crosshair cursor's state (enabled/disabled) is automatically determined according to the type of a diagram currently displayed on a chart; <b>True</b> - a crosshair cursor is enabled for a chart; <b>False</b> - a crosshair cursor is disabled.
+</value>
 
 
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.CrosshairOptions">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets the settings for a crosshair cursor allowing you to specify its position and appearance on a diagram. 
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <see cref="T:DevExpress.XtraCharts.CrosshairOptions"/> object which represents crosshair cursor options on a diagram.
+</value>
 
 
         </member>
@@ -1459,7 +1477,7 @@
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.RuntimeHitTesting">
             <summary>
-                <para>Specifies whether the hit testing features are enabled at runtime. 
+                <para>Specifies whether or not hit-testing is enabled for a Chart control. 
 </para>
             </summary>
             <value><b>true</b> if a chart provides hit information at runtime; otherwise, <b>false</b>.
@@ -1725,25 +1743,31 @@
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipController">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Specifies the tooltip controller component that controls the appearance, position and other settings of tooltips displayed for the Chart control. 
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <see cref="T:DevExpress.Utils.ToolTipController"/> object. 
+</value>
 
 
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipEnabled">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets or sets a value that specifies whether or not a tooltip is enabled for a chart. 
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value><b>Default</b> - a tooltip's state (enabled/disabled) is automatically determined according to the type of a diagram currently displayed on a chart; <b>True</b> - a tooltip is enabled in a chart; <b>False</b> - a tooltip is disabled.
+</value>
 
 
         </member>
         <member name="P:DevExpress.XtraCharts.ChartControl.ToolTipOptions">
             <summary>
-                <para> [To be supplied] </para>
+                <para>Gets the tooltip settings allowing you to specify its position and appearance on a diagram. 
+</para>
             </summary>
-            <value> [To be supplied] </value>
+            <value>A <see cref="T:DevExpress.XtraCharts.ToolTipOptions"/> object descendant which represents tooltip options on a diagram.
+</value>
 
 
         </member>
