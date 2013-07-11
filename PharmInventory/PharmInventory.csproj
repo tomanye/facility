@@ -324,6 +324,12 @@
     <Compile Include="Forms\Modals\ItemDetailReport.designer.cs">
       <DependentUpon>ItemDetailReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Modals\NewBatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Modals\NewBatch.Designer.cs">
+      <DependentUpon>NewBatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Modals\TransferForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -879,6 +885,9 @@
     <EmbeddedResource Include="Forms\Modals\ItemDetailReport.resx">
       <DependentUpon>ItemDetailReport.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Modals\NewBatch.resx">
+      <DependentUpon>NewBatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>

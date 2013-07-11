@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
+using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 
 
@@ -19,6 +20,8 @@ namespace PharmInventory.Forms.Transactions
     /// </summary\>
     public partial class YearEndProcess : XtraForm
     {
+        private DataTable dtRecGrid = new DataTable();
+       // private int storeId = 0;
         public YearEndProcess()
         {
             InitializeComponent();
@@ -80,19 +83,26 @@ namespace PharmInventory.Forms.Transactions
         {
             dtBB = new DataTable();
             var storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
-            BuildStoreInventoryList(year, storeId, dtItm);
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    BuildStoreInventoryList(year, storeId, dtItm);
+                    break;
+                default:
+                    BuildStoreInventoryListForHandleUnit(year, storeId, dtItm);
+                    break;
+            }
         }
 
-
-        private void BuildStoreInventoryList(int year, int storeId, DataTable dtItm)
+        private void BuildStoreInventoryListForHandleUnit(int year, int storeId, DataTable dtItm)
         {
             string[] str = { "Item Name", "Batch No.", "Remark" };
             foreach (string co in str)
             {
                 dtBB.Columns.Add(co);
             }
-            str = new string[] { "ItemId", "No.", "Beginning Balance", "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID","UnitID"};//, "Change Since Sene 30" };
-            
+            str = new string[] { "ItemId", "No.", "Beginning Balance", "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID", "UnitID" };//, "Change Since Sene 30" };
+
             foreach (string co in str)
             {
                 dtBB.Columns.Add(co, typeof(int));
@@ -115,7 +125,7 @@ namespace PharmInventory.Forms.Transactions
                 btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
                 //btnSave.Enabled =true;
                 month = 10;
-             
+
             }
             else
                 btnSave.Enabled = false;
@@ -136,7 +146,7 @@ namespace PharmInventory.Forms.Transactions
 
                 Int64 soh = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
                 Int64 bbal = yEnd.GetBBalance(year, storeId, Convert.ToInt32(dr["ID"]), month);
-                
+
                 yProcess.GetBalanceByItemId(year, storeId, Convert.ToInt32(dr["ID"]));
 
                 Int64 BB = (yProcess.RowCount > 0) ? yProcess.BBalance : bbal;
@@ -180,6 +190,117 @@ namespace PharmInventory.Forms.Transactions
 
                         drv["Item Name"] = ">>";
                         drv["UnitID"] = drBatch["UnitID"];
+                        drv["Batch No."] = drBatch["BatchNo"];
+                        drv["Ending Balance(SOH)"] = Convert.ToInt64(drBatch["QuantityLeft"]);
+                        //Now if the physical inventory is chosen to be default value, we set it to the ending balance of last year.
+                        if (_defaultValueToPhysicalInventory)
+                            drv["Physical Inventory"] = drBatch["QuantityLeft"].ToString();
+
+                        theLastBalance += Convert.ToInt32(drBatch["QuantityLeft"]);
+                        drv["RecID"] = drBatch["ID"];
+                    }
+                }
+                //}
+            }
+
+            grdYearEnd.DataSource = dtBB;
+            dtDate.CustomFormat = "MMMM dd, yyyy"; //throw new NotImplementedException();
+        }
+
+
+        private void BuildStoreInventoryList(int year, int storeId, DataTable dtItm)
+        {
+            string[] str = { "Item Name", "Batch No.", "Remark" };
+            foreach (string co in str)
+            {
+                dtBB.Columns.Add(co);
+            }
+            str = new string[] { "ItemId", "No.", "Beginning Balance", "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID"};//, "Change Since Sene 30" };
+            
+            foreach (string co in str)
+            {
+                dtBB.Columns.Add(co, typeof(int));
+            }
+            int count = 1;
+            var yProcess = new YearEnd();
+            var bal = new Balance();
+
+            dtDate.Value = DateTime.Now;
+            DateTime dtCurent = new DateTime();
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtDate.Text);
+
+            var recDoc = new ReceiveDoc();
+            int month = dtCurent.Month;
+            //btnSave.Enabled = true;
+            //CALENDAR:
+            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            {
+                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                //btnSave.Enabled =true;
+                month = 10;
+             
+            }
+            else
+                btnSave.Enabled = false;
+
+            var yEnd = new YearEnd();
+
+
+            foreach (DataRow dr in dtItm.Rows)//For each item
+            {
+                string itemName = dr["ItemName"].ToString() + " - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
+                int itemID = Convert.ToInt32(dr["ID"]);
+                bool BalanceExists = (yProcess.DoesBalanceExist(year, storeId, itemID, false));
+
+                //We don't want to display those items whose inventory has already been done.
+                if (BalanceExists)
+                    continue;
+
+                Int64 soh = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
+                Int64 bbal = yEnd.GetBBalance(year, storeId, Convert.ToInt32(dr["ID"]), month);
+                
+                yProcess.GetBalanceByItemId(year, storeId, Convert.ToInt32(dr["ID"]));
+
+                Int64 BB = (yProcess.RowCount > 0) ? yProcess.BBalance : bbal;
+                Int64 EB = ((yProcess.RowCount > 0 && yProcess.EBalance != 0) ? yProcess.EBalance : soh);
+                //Now if the physical inventory is chosen to be default value, we set it to the ending balance of last year.
+                string Phy = (yProcess.RowCount > 0) ? yProcess.PhysicalInventory.ToString() : (_defaultValueToPhysicalInventory ? EB.ToString() : "");
+                int id = (yProcess.RowCount > 0) ? yProcess.ID : 0;
+                string remark = (yProcess.RowCount > 0) ? yProcess.Remark : "";
+                //object[] obj = {Convert.ToInt32(dr["ID"]),count,itemName,"",BB,((EB != 0)?EB.ToString("#,###"):"0"),Phy,remark,id,-1};
+                //dtBB.Rows.Add(obj);
+                DataRowView drv = dtBB.DefaultView.AddNew();
+                if (yProcess.RowCount > 0)
+                {
+                    drv["ID"] = yProcess.ID;
+                }
+                drv["ItemId"] = dr["ID"];
+                drv["No."] = count;
+                drv["Item Name"] = itemName;
+                drv["Beginning Balance"] = BB;
+                drv["Ending Balance(SOH)"] = EB;
+               
+                if (Phy != "")
+                {
+                    drv["Physical Inventory"] = Phy;
+                }
+                drv["RecID"] = -1;
+                drv["Remark"] = remark;
+                var ethioDate = new EthiopianDate.EthiopianDate(year, 1, 1);
+                //drv["Change Since Sene 30"] = BLL.Balance.GetChangeAfterDate(itemID, storeId, ethioDate.EndOfFiscalYear.ToGregorianDate());
+                count++;
+                //if (!BalanceExists)
+                //{
+                int theLastBalance = 0;
+                DataTable dtBatchs = recDoc.GetBatchWithValue(storeId, Convert.ToInt32(dr["ID"]), dtCurent);
+                foreach (DataRow drBatch in dtBatchs.Rows) //For each batch
+                {
+                    if (drBatch["QuantityLeft"] != DBNull.Value && Convert.ToInt64(drBatch["QuantityLeft"]) != 0)
+                    {
+                        drv = dtBB.DefaultView.AddNew();
+
+                        drv["Item Name"] = ">>";
                         drv["Batch No."] = drBatch["BatchNo"];
                         drv["Ending Balance(SOH)"] = Convert.ToInt64(drBatch["QuantityLeft"]);
                         //Now if the physical inventory is chosen to be default value, we set it to the ending balance of last year.
@@ -265,7 +386,8 @@ namespace PharmInventory.Forms.Transactions
                             yEnd.EBalance = Int64.Parse(FilterNumbers(yearEndTable.Rows[i]["Ending Balance(SOH)"].ToString()), NumberStyles.AllowThousands);
                             yEnd.PhysicalInventory = Convert.ToInt64(FilterNumbers(yearEndTable.Rows[i]["Physical Inventory"].ToString()));
                             //yEnd.BatchNo = yearEndTable.Rows[i]["Batch No."].ToString();
-                            yEnd.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
+                            if (VisibilitySetting.HandleUnits == 1) yEnd.UnitID = 0;
+                            else yEnd.UnitID = Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
                             yEnd.Remark = yearEndTable.Rows[i]["Remark"].ToString();
                             yEnd.AutomaticallyEntered = false;
                             yEnd.Save();
@@ -290,11 +412,14 @@ namespace PharmInventory.Forms.Transactions
 
                                 if (cRow["Physical Inventory"] !=DBNull.Value)
                                     yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
+                               
+                               
                                 //yEnd.PhysicalInventory = physicalInventoryTotal;
                                if (VisibilitySetting.HandleUnits == 1) yEnd.UnitID = 0;
                                else yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
                                yEnd.Remark = cRow["Remark"].ToString();
-                                yEnd.AutomaticallyEntered = false;
+
+                               yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
                                 yEnd.Save();
                                 //}
 
@@ -439,6 +564,7 @@ namespace PharmInventory.Forms.Transactions
                                                               Convert.ToInt32(lkCommodityTypes.EditValue));
                     else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));
                     PopulateItemList(dtItm, year);
+                    dtDate.CustomFormat = "MMMM dd, yyyy";
                     break;
                 case 2:
                      if (ckExclude == null || (!ckExclude.Checked))
@@ -446,6 +572,7 @@ namespace PharmInventory.Forms.Transactions
                                                               Convert.ToInt32(lkCommodityTypes.EditValue));
                     else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));
                     PopulateItemList(dtItm, year);
+                    dtDate.CustomFormat = "MMMM dd, yyyy";
                     break;
                 case 3:
                     if (ckExclude == null || (!ckExclude.Checked))
@@ -555,5 +682,39 @@ namespace PharmInventory.Forms.Transactions
                 }
             }
         }
+
+        private void repositoryItemButtonEdit2_Click(object sender, EventArgs e)
+        {
+            dtDate.Value = DateTime.Now.Subtract(TimeSpan.FromDays(35));
+            DateTime dtCurent = new DateTime();
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtDate.Text);
+
+            DataRow dr = grdViewYearEnd.GetDataRow(grdViewYearEnd.GetSelectedRows()[0]);
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    {
+                        var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]), (int)cboStores.EditValue, dtCurent);
+                        addbatch.ShowDialog();
+                        grdViewYearEnd.RefreshData();
+              
+                    }
+                    break;
+                default:
+                    {
+                        var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]),
+                                                    Convert.ToInt32(dr["UnitID"]), (int)cboStores.EditValue, dtCurent);
+                        addbatch.ShowDialog();
+                        grdViewYearEnd.RefreshData();
+                    }
+                    break;
+            }
+
+
+        }
+
+        }
+
+    
     }
-}

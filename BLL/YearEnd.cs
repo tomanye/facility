@@ -304,7 +304,7 @@ namespace BLL
                     storeId, itemId, fiscalYear - 1);
             this.LoadFromRawSql(query);
             
-            if (this.DataTable.Rows.Count > 0)
+            if (this.DataTable.Rows.Count > 0  )
             {
                 bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
             }
@@ -349,7 +349,7 @@ namespace BLL
                     "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}  and (AutomaticallyEntered = 0 or AutomaticallyEntered is null) order by PhysicalInventory desc",
                     storeId, itemId, bYear);
             this.LoadFromRawSql(query);
-            if (this.DataTable.Rows.Count > 0)
+            if (this.DataTable.Rows.Count > 0 && this.DataTable.Rows[0]["PhysicalInventory"] !=DBNull.Value)
             {
                 bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
             }

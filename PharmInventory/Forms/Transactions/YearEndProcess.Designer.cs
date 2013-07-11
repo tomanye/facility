@@ -51,6 +51,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.ckExclude = new DevExpress.XtraEditors.CheckEdit();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
@@ -81,6 +83,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -118,15 +121,16 @@ namespace PharmInventory.Forms.Transactions
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(229, 20);
             this.dtDate.TabIndex = 17;
+            this.dtDate.Value = new System.DateTime(2013, 7, 11, 0, 0, 0, 0);
             this.dtDate.Visible = false;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnCancel.Location = new System.Drawing.Point(708, 494);
+            this.btnCancel.Location = new System.Drawing.Point(774, 494);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(84, 22);
+            this.btnCancel.Size = new System.Drawing.Size(62, 22);
             this.btnCancel.StyleController = this.layoutControl1;
             this.btnCancel.TabIndex = 22;
             this.btnCancel.Text = "Cancel";
@@ -194,7 +198,8 @@ namespace PharmInventory.Forms.Transactions
             this.grdYearEnd.Name = "grdYearEnd";
             this.grdYearEnd.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemButtonEdit2});
             this.grdYearEnd.Size = new System.Drawing.Size(946, 376);
             this.grdYearEnd.TabIndex = 29;
             this.grdYearEnd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -212,7 +217,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn7,
             this.gridColumn8,
             this.RecID,
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn10});
             this.grdViewYearEnd.GridControl = this.grdYearEnd;
             this.grdViewYearEnd.Name = "grdViewYearEnd";
             this.grdViewYearEnd.OptionsCustomization.AllowGroup = false;
@@ -240,7 +246,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn2.OptionsColumn.AllowFocus = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 303;
+            this.gridColumn2.Width = 317;
             // 
             // gridColumn3
             // 
@@ -251,7 +257,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn3.OptionsColumn.AllowFocus = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 102;
+            this.gridColumn3.Width = 106;
             // 
             // gridColumn4
             // 
@@ -264,7 +270,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn4.OptionsColumn.AllowFocus = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 102;
+            this.gridColumn4.Width = 106;
             // 
             // gridColumn5
             // 
@@ -277,7 +283,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn5.OptionsColumn.AllowFocus = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 97;
+            this.gridColumn5.Width = 100;
             // 
             // gridColumn6
             // 
@@ -286,7 +292,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 162;
+            this.gridColumn6.Width = 258;
             // 
             // gridColumn7
             // 
@@ -298,7 +304,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 100;
+            this.gridColumn7.Width = 103;
             // 
             // gridColumn8
             // 
@@ -307,7 +313,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn8.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 8;
-            this.gridColumn8.Width = 28;
+            this.gridColumn8.Width = 31;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -334,6 +340,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 5;
+            this.gridColumn9.Width = 77;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -348,13 +355,30 @@ namespace PharmInventory.Forms.Transactions
             this.repositoryItemLookUpEdit1.NullText = "";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
+            // gridColumn10
+            // 
+            this.gridColumn10.ColumnEdit = this.repositoryItemButtonEdit2;
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.Width = 32;
+            // 
+            // repositoryItemButtonEdit2
+            // 
+            this.repositoryItemButtonEdit2.AutoHeight = false;
+            this.repositoryItemButtonEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Plus)});
+            this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
+            this.repositoryItemButtonEdit2.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.repositoryItemButtonEdit2.Click += new System.EventHandler(this.repositoryItemButtonEdit2_Click);
+            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.Image = global::PharmInventory.Properties.Resources.MS_Excel;
-            this.btnExport.Location = new System.Drawing.Point(796, 494);
+            this.btnExport.Location = new System.Drawing.Point(840, 494);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(84, 22);
+            this.btnExport.Size = new System.Drawing.Size(62, 22);
             this.btnExport.StyleController = this.layoutControl1;
             this.btnExport.TabIndex = 24;
             this.btnExport.Text = "Export";
@@ -375,9 +399,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Image = global::PharmInventory.Properties.Resources.printer;
-            this.btnPrint.Location = new System.Drawing.Point(884, 494);
+            this.btnPrint.Location = new System.Drawing.Point(906, 494);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(86, 22);
+            this.btnPrint.Size = new System.Drawing.Size(64, 22);
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 23;
             this.btnPrint.Text = "Print";
@@ -387,9 +411,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::PharmInventory.Properties.Resources.disk;
-            this.btnSave.Location = new System.Drawing.Point(621, 494);
+            this.btnSave.Location = new System.Drawing.Point(688, 494);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 22);
+            this.btnSave.Size = new System.Drawing.Size(82, 22);
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
@@ -479,7 +503,7 @@ namespace PharmInventory.Forms.Transactions
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 451);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(597, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(664, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -487,9 +511,12 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem5.Control = this.btnSave;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(597, 451);
+            this.layoutControlItem5.Location = new System.Drawing.Point(664, 451);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(86, 26);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(86, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(87, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(86, 26);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.Text = "layoutControlItem5";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextToControlDistance = 0;
@@ -499,9 +526,12 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem6.Control = this.btnCancel;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(684, 451);
+            this.layoutControlItem6.Location = new System.Drawing.Point(750, 451);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(66, 26);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(66, 26);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "layoutControlItem6";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextToControlDistance = 0;
@@ -521,9 +551,12 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem8.Control = this.btnExport;
             this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem8.Location = new System.Drawing.Point(772, 451);
+            this.layoutControlItem8.Location = new System.Drawing.Point(816, 451);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(66, 26);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(66, 26);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(88, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(66, 26);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.Text = "layoutControlItem8";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextToControlDistance = 0;
@@ -533,9 +566,12 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem7.Control = this.btnPrint;
             this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
-            this.layoutControlItem7.Location = new System.Drawing.Point(860, 451);
+            this.layoutControlItem7.Location = new System.Drawing.Point(882, 451);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(68, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(68, 26);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(90, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(68, 26);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.Text = "layoutControlItem7";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextToControlDistance = 0;
@@ -595,6 +631,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -661,5 +698,7 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }
