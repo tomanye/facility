@@ -532,6 +532,15 @@
       <DependentUpon>RRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
+    <Content Include="Scripts\87_Update 1.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\88_Update 2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\89_Update 3.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\97_AlterItemUpdateStoredProcedure.sql" />
     <Content Include="Scripts\01_HCMIS Queries.sql" />
     <Content Include="Scripts\03_GetConsumptionTrendByMonth.sql" />
@@ -767,15 +776,24 @@
     <Content Include="Scripts\84_UpdateInventory.sql" />
     <Content Include="Scripts\85_AlterGetTransactionDetails.sql" />
     <Content Include="Scripts\86_AlterBinCard.sql" />
-    <Content Include="Scripts\87_AlterUnitTable.sql" />
-    <Content Include="Scripts\88_AlterDosageForm.sql" />
-    <Content Include="Scripts\89_AlterProductTable.sql" />
     <Content Include="Scripts\90_AlterAddDSItemIDColumn.sql" />
     <Content Include="Scripts\91_CreateBinCard.sql" />
     <Content Include="Scripts\93_AlterItemInserProcedure.sql" />
     <Content Include="Scripts\94_AlterItemsLoadAll.sql" />
     <Content Include="Scripts\95_AlterItemsLoadByPrimaryKey.sql" />
     <Content Include="Scripts\98_CreateViewGetAllItems.sql" />
+    <Content Include="Scripts\991_AlterYearEndInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\992_AlterYearEndLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\993_AlterYearEndLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\994_AlterYearEndUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\99_SohForRRF OldSite.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />

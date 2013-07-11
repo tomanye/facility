@@ -218,6 +218,14 @@ namespace DAL
                 }
             }
 
+            public static SqlParameter QtyPerPack
+            {
+                get
+                {
+                    return new SqlParameter("@QtyPerPack", SqlDbType.Int, 0);
+                }
+            }
+
         }
         #endregion
 
@@ -239,6 +247,8 @@ namespace DAL
             public const string BatchNo = "BatchNo";
             public const string AutomaticallyEntered = "AutomaticallyEntered";
             public const string UnitID = "UnitID";
+            public const string QtyPerPack = "QtyPerPack";
+
 
             static public string ToPropertyName(string columnName)
             {
@@ -261,6 +271,7 @@ namespace DAL
                     ht[BatchNo] = _YearEnd.PropertyNames.BatchNo;
                     ht[AutomaticallyEntered] = _YearEnd.PropertyNames.AutomaticallyEntered;
                     ht[UnitID] = _YearEnd.PropertyNames.UnitID;
+                    ht[UnitID] = _YearEnd.PropertyNames.QtyPerPack;
 
                 }
                 return (string)ht[columnName];
@@ -288,6 +299,7 @@ namespace DAL
             public const string BatchNo = "BatchNo";
             public const string AutomaticallyEntered = "AutomaticallyEntered";
             public const string UnitID = "UnitID";
+            public const string QtyPerPack = "QtyPerPack";
 
             static public string ToColumnName(string propertyName)
             {
@@ -310,6 +322,7 @@ namespace DAL
                     ht[BatchNo] = _YearEnd.ColumnNames.BatchNo;
                     ht[AutomaticallyEntered] = _YearEnd.ColumnNames.AutomaticallyEntered;
                     ht[UnitID] = _YearEnd.ColumnNames.UnitID;
+                    ht[UnitID] = _YearEnd.ColumnNames.QtyPerPack;
 
                 }
                 return (string)ht[propertyName];
@@ -337,6 +350,7 @@ namespace DAL
             public const string BatchNo = "s_BatchNo";
             public const string AutomaticallyEntered = "s_AutomaticallyEntered";
             public const string UnitID = "UnitID";
+            public const string QtyPerPack = "QtyPerPack";
 
         }
         #endregion
@@ -520,6 +534,18 @@ namespace DAL
             set
             {
                 base.Setint(ColumnNames.UnitID, value);
+            }
+        }
+
+        public virtual int QtyperPack
+        {
+            get
+            {
+                return base.Getint(ColumnNames.QtyPerPack);
+            }
+            set
+            {
+                base.Setint(ColumnNames.QtyPerPack, value);
             }
         }
 
@@ -753,6 +779,21 @@ namespace DAL
             }
         }
 
+        public virtual string s_QtyPerPack
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.QtyPerPack) ? string.Empty : base.GetintAsString(ColumnNames.QtyPerPack);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.QtyPerPack);
+                else
+                    this.QtyperPack = base.SetintAsString(ColumnNames.QtyPerPack, value);
+            }
+        }
+
 
         #endregion
 
@@ -931,6 +972,16 @@ namespace DAL
                     get
                     {
                         WhereParameter where = new WhereParameter(ColumnNames.UnitID, Parameters.UnitID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter QtyPerPack
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.QtyPerPack, Parameters.QtyPerPack);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1121,6 +1172,19 @@ namespace DAL
                 }
             }
 
+            public WhereParameter QtyPerPack
+            {
+                get
+                {
+                    if (_QtyPerPack_W == null)
+                    {
+                        _QtyPerPack_W = TearOff.QtyPerPack;
+                    }
+                    return _QtyPerPack_W;
+                }
+            }
+            
+
             private WhereParameter _ID_W = null;
             private WhereParameter _ItemID_W = null;
             private WhereParameter _StoreID_W = null;
@@ -1136,6 +1200,7 @@ namespace DAL
             private WhereParameter _BatchNo_W = null;
             private WhereParameter _AutomaticallyEntered_W = null;
             private WhereParameter _UnitID_W = null;
+            private WhereParameter _QtyPerPack_W = null;
 
             public void WhereClauseReset()
             {
@@ -1154,6 +1219,7 @@ namespace DAL
                 _BatchNo_W = null;
                 _AutomaticallyEntered_W = null;
                 _UnitID_W = null;
+                _QtyPerPack_W = null;
 
                 this._entity.Query.FlushWhereParameters();
 
@@ -1360,6 +1426,16 @@ namespace DAL
                     }
                 }
 
+                public AggregateParameter QtyPerPack
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.QtyPerPack, Parameters.QtyPerPack);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
                 private AggregateClause _clause;
             }
             #endregion
@@ -1544,6 +1620,18 @@ namespace DAL
                 }
             }
 
+            public AggregateParameter QtyPerPack
+            {
+                get
+                {
+                    if (_QtyPerPack_W == null)
+                    {
+                        _QtyPerPack_W = TearOff.QtyPerPack;
+                    }
+                    return _QtyPerPack_W;
+                }
+            }
+
             private AggregateParameter _ID_W = null;
             private AggregateParameter _ItemID_W = null;
             private AggregateParameter _StoreID_W = null;
@@ -1559,6 +1647,7 @@ namespace DAL
             private AggregateParameter _BatchNo_W = null;
             private AggregateParameter _AutomaticallyEntered_W = null;
             private AggregateParameter _UnitID_W = null;
+            private AggregateParameter _QtyPerPack_W = null;
 
             public void AggregateClauseReset()
             {
@@ -1577,6 +1666,7 @@ namespace DAL
                 _BatchNo_W = null;
                 _AutomaticallyEntered_W = null;
                 _UnitID_W = null;
+                _QtyPerPack_W = null;
 
 
                 this._entity.Query.FlushAggregateParameters();
@@ -1710,6 +1800,10 @@ namespace DAL
 
             p = cmd.Parameters.Add(Parameters.UnitID);
             p.SourceColumn = ColumnNames.UnitID;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.QtyPerPack);
+            p.SourceColumn = ColumnNames.QtyPerPack;
             p.SourceVersion = DataRowVersion.Current;
 
 

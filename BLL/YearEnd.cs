@@ -124,10 +124,10 @@ namespace BLL
 
         public bool InventoryRequired(bool ignoreAutomatic)
         {
-            EthiopianDate.EthiopianDate ethDate = new EthiopianDate.EthiopianDate();
+            var ethDate = new EthiopianDate.EthiopianDate();
             if ((ethDate.Month == 10 && ethDate.Day == 30) || ethDate.Month == 11)
             {
-                Stores stores = new Stores();
+                var stores = new Stores();
                 stores.GetActiveStores();
                 while (!stores.EOF)
                 {
@@ -185,6 +185,8 @@ namespace BLL
                             yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
                             yearEnd.PhysicalInventory = yearEnd.EBalance;
                             yearEnd.AutomaticallyEntered = true;
+                            //yearEnd.UnitID = itm.UnitID;
+                            //yearEnd.QtyperPack = itm.QtyPerPack;
                             yearEnd.Save();
                             itm.MoveNext();
                         }

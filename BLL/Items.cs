@@ -277,7 +277,8 @@ namespace BLL
         public DataTable GetAllItem()
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No,*, ( ItemName + ' - ' + DosageForm + ' - ' + Strength) as DrugName FROM vwGetAllItems ORDER BY ItemName"));
+            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No,*, " +
+                                              "( ItemName + ' - ' + DosageForm + ' - ' + Strength) as DrugName FROM vwGetAllItems ORDER BY ItemName"));
             return this.DataTable;
         }
 
@@ -864,7 +865,7 @@ namespace BLL
 
         public decimal GetMOS(int itemId, int storeId, int qty, DateTime dtCurrent)
         {
-            GeneralInfo pipline = new GeneralInfo();
+            var pipline = new GeneralInfo();
             pipline.LoadAll();
             //int min = pipline.Min;
             //int max = pipline.Max;
@@ -984,7 +985,10 @@ namespace BLL
             }
             else
             {
-                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName", storeId,commodityTypeID));
+                var query =
+                    String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",
+                        storeId, commodityTypeID);
+                this.LoadFromRawSql(query);
             }
             return this.DataTable;
         }
