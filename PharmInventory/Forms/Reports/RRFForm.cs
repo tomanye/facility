@@ -282,7 +282,6 @@ namespace PharmInventory.Forms.Reports
                                               },
                                           ProgramName={Text =cboProgram.Text}
                                       };
-
             var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
             tbl.TableName="DataTable1";
             
@@ -1363,11 +1362,11 @@ namespace PharmInventory.Forms.Reports
         private void ChooseGridView()
         {
 
-            if (chkCalculateInPacks.Checked && cboProgram == null)
+            if (chkCalculateInPacks.Checked && cboProgram.Text == "All Programs")
             {
                 gridItemsChoice.MainView = grdViewInPacks;
             }
-            else if (chkCalculateInPacks.Checked && cboProgram != null)
+            else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value)
             {
                 gridItemsChoice.MainView = grdViewInPacks; 
                 grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
