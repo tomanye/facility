@@ -695,6 +695,11 @@ namespace PharmInventory.Forms.Transactions
             {
                 case 1:
                     {
+                        if(Convert.ToString(dr["Item Name"]) ==">>")
+                        {
+                            XtraMessageBox.Show("Please add batch with only full item name not with >> !", "Validation");
+                            return;
+                        }
                         var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]), (int)cboStores.EditValue, dtCurent);
                         addbatch.ShowDialog();
                         grdViewYearEnd.RefreshData();
@@ -703,10 +708,18 @@ namespace PharmInventory.Forms.Transactions
                     break;
                 default:
                     {
-                        var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]),
-                                                    Convert.ToInt32(dr["UnitID"]), (int)cboStores.EditValue, dtCurent);
-                        addbatch.ShowDialog();
-                        grdViewYearEnd.RefreshData();
+                        if (Convert.ToString(dr["Item Name"]) == ">>")
+                        {
+                            XtraMessageBox.Show("Please add batch with only full item name not with >> !", "Validation");
+                            return;
+                        }
+                        if (Convert.ToInt32(dr["UnitID"]) != null)
+                        {
+                            var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]),Convert.ToInt32(dr["UnitID"]), storeid: (int) cboStores.EditValue, _dtcurrent: dtCurent);
+                            addbatch.ShowDialog();
+                            grdViewYearEnd.RefreshData();
+                        }
+                          
                     }
                     break;
             }

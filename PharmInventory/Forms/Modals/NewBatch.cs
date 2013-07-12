@@ -52,6 +52,7 @@ namespace PharmInventory.Forms.Modals
 
         private void BtnAddBatchClick(object sender, EventArgs e)
         {
+            if (!dxValidationProvider1.Validate()) return;
             var rec = new ReceiveDoc();
             var yEnd = new YearEnd();
 
@@ -72,7 +73,7 @@ namespace PharmInventory.Forms.Modals
                         rec.NoOfPack = Convert.ToInt32(txtPackQty.Text);
                         rec.QtyPerPack = Convert.ToInt32(txtQtyPerPack.Text);
                         rec.Quantity = (Convert.ToInt32(txtPackQty.Text))*(Convert.ToInt32(txtQtyPerPack.Text));
-                        rec.QuantityLeft = (Convert.ToInt32(txtPackQty.Text)) * (Convert.ToInt32(txtQtyPerPack.Text));
+                        rec.QuantityLeft = (Convert.ToInt32(txtPackQty.Text))*(Convert.ToInt32(txtQtyPerPack.Text));
                         rec.Cost = Convert.ToInt32(txtPrice.Text);
                         rec.Save();
 
@@ -85,7 +86,7 @@ namespace PharmInventory.Forms.Modals
                         yEnd.EBalance = 0;
                         yEnd.Save();
 
-                        
+
                     }
                     break;
                 default:
@@ -95,11 +96,11 @@ namespace PharmInventory.Forms.Modals
                         rec.BatchNo = txtBatchNo.Text;
                         rec.StoreID = _storeid;
                         rec.UnitID = _unitid;
-                        rec.ExpDate = (DateTime)dateEditExpiryDate.EditValue;
+                        rec.ExpDate = (DateTime) dateEditExpiryDate.EditValue;
                         rec.NoOfPack = Convert.ToInt32(txtPackQty.Text);
-                        rec.Quantity = Convert.ToInt32(txtPackQty.Text); 
+                        rec.Quantity = Convert.ToInt32(txtPackQty.Text);
                         rec.QuantityLeft = Convert.ToInt32(txtPackQty.Text);
-                        rec.QtyPerPack =Convert.ToInt32(txtQtyPerPack.Text);
+                        rec.QtyPerPack = Convert.ToInt32(txtQtyPerPack.Text);
                         rec.Date = _date;
                         rec.RefNo = txtRefNo.Text;
                         rec.Out = false;
@@ -109,7 +110,6 @@ namespace PharmInventory.Forms.Modals
 
                         yEnd.AddNew();
                         yEnd.ItemID = _itemid;
-                        yEnd.BatchNo = txtBatchNo.Text;
                         yEnd.StoreID = _storeid;
                         yEnd.UnitID = _unitid;
                         yEnd.AutomaticallyEntered = true;
@@ -121,7 +121,6 @@ namespace PharmInventory.Forms.Modals
             }
             XtraMessageBox.Show("New Batch successfully added.", "Success");
             Close();
-          
         }
 
         private void txtPackQty_TextChanged(object sender, EventArgs e)
