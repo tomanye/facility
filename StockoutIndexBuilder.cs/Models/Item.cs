@@ -26,5 +26,6 @@ namespace StockoutIndexBuilder.Models
         public virtual ICollection<Stockout> Stockouts { get; set; }
         public virtual Product  Product { get; set; }
        
+        
     }
 }

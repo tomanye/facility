@@ -15,5 +15,7 @@ namespace StockoutIndexBuilder.Models
         public int ItemID { get; set; }
         public int QtyPerUnit { get; set; }
         public string Text { get; set; }
+
+       
     }
 }

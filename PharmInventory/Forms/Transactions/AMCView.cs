@@ -63,19 +63,30 @@ namespace PharmInventory.Forms.Transactions
             backgroundWorker1.ReportProgress(5);
             var generalinfo = _generalInfoRepository.AllGeneralInfos().First();
             backgroundWorker1.ReportProgress(10);
+
             var itemsrecieved =_receiveDocRepository.RecievedItems().Where(m => m.StoreID == storeId).Select(m => m.ItemID).Distinct();
             backgroundWorker1.ReportProgress(20);
+
             _datasource = new List<AMCViewModel>();
-            double percentage = 20.0;
+
+            var percentage = 20.0;
+
             var receiveDocs = _repository.AllItems().Where(m => itemsrecieved.Contains(m.ID)).ToList();
-            
+
+
+
             double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
-        
-           foreach (var item in receiveDocs)
-            {
-                _datasource.Add(AMCViewModel.Create(item.ID, storeId, generalinfo.AMCRange, DateTime.Today));
-                percentage += increment;
-                backgroundWorker1.ReportProgress((int) percentage);
+
+            IEnumerable<int?> unitid;
+            foreach (var item in receiveDocs)
+           {
+               unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m=>m.UnitID).Distinct();
+                foreach (var i in unitid)
+                {
+                    _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.Value, generalinfo.AMCRange, DateTime.Today));
+                }
+               percentage += increment;
+               backgroundWorker1.ReportProgress((int) percentage);
             }
         }
 

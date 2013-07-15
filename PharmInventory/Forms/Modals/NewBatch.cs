@@ -74,7 +74,7 @@ namespace PharmInventory.Forms.Modals
                         rec.QtyPerPack = Convert.ToInt32(txtQtyPerPack.Text);
                         rec.Quantity = (Convert.ToInt32(txtPackQty.Text))*(Convert.ToInt32(txtQtyPerPack.Text));
                         rec.QuantityLeft = (Convert.ToInt32(txtPackQty.Text))*(Convert.ToInt32(txtQtyPerPack.Text));
-                        rec.Cost = Convert.ToInt32(txtPrice.Text);
+                        rec.Cost = Convert.ToDouble(txtPrice.Text);
                         rec.Save();
 
                         yEnd.AddNew();
@@ -105,7 +105,7 @@ namespace PharmInventory.Forms.Modals
                         rec.RefNo = txtRefNo.Text;
                         rec.Out = false;
                         rec.EurDate = DateTime.Now.Subtract(TimeSpan.FromDays(35));
-                        rec.Cost = Convert.ToInt32(txtPrice.Text);
+                        rec.Cost = Convert.ToDouble(txtPrice.Text);
                         rec.Save();
 
                         yEnd.AddNew();
