@@ -111,7 +111,7 @@ namespace PharmInventory.Forms.Transactions
             }
 
             PopulateCatTree(_selectedType);
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             storebindingSource.DataSource = stor.DefaultView;
             cboStores.Properties.DataSource = storebindingSource.DataSource;
@@ -289,26 +289,25 @@ namespace PharmInventory.Forms.Transactions
 
                     object[] obj;
                     string itemName = lst["FullItemName"].ToString();
-                    if (VisibilitySetting.HandleUnits == 1)
+                    switch (VisibilitySetting.HandleUnits)
                     {
-                        soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
-                        obj = new object[] {itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                             soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-                    }
-                    else if (VisibilitySetting.HandleUnits == 2)
-                    {
-                       
-                        soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
-                        obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
-                                       itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
-                    }
-                    else
-                    {
-                       soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
-                        obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
-                                       itemName, dtItm.Rows[0]["Unit"].ToString(), 
-                                   soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
+                        case 1:
+                            soh = bal.GetSOH(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year);
+                            obj = new object[] {itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), itemName, dtItm.Rows[0]["Unit"].ToString(), 
+                                                soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                            break;
+                        case 2:
+                            soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
+                            obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
+                                                itemName, dtItm.Rows[0]["Unit"].ToString(), 
+                                                soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
+                            break;
+                        default:
+                            soh = bal.GetSOHByUnit(itmID, Convert.ToInt32(cboStores.EditValue), dtCurrent.Month, dtCurrent.Year, Convert.ToInt32(lst["UnitID"]));
+                            obj = new object[]{ itmID.ToString(), dtItm.Rows[0]["StockCode"].ToString(), 
+                                                itemName, dtItm.Rows[0]["Unit"].ToString(), 
+                                                soh, dispatchable, 0, 0, 0, 0, 0, 0, 0, 0, Convert.ToInt32(lst["UnitID"])};
+                            break;
                     }
 
 
@@ -319,17 +318,20 @@ namespace PharmInventory.Forms.Transactions
                     }
                     else if (soh == 0)
                     {
-                        string output = String.Format("{0} is stocked out!", itemName);
-                        XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
+                      XtraMessageBox.Show(String.Format("{0} is stocked out!", itemName), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         break;
                     }
-                    else if (expAmount == soh || expAmount != 0)
+                    else if (expAmount == soh && expAmount != 0)
                     {
-                        var output = String.Format("{0} is Expired!", itemName);
-                        XtraMessageBox.Show(output, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        XtraMessageBox.Show(String.Format("{0} Is Expired!",itemName), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        ResetValues();
                         tabControl1.TabIndex = 0;
                         break;
+                    }
+                    else if( dispatchable>0 )
+                    {
+                        _dtRecGrid.Rows.Add(obj);
+                        count++;
                     }
                     else
                     {

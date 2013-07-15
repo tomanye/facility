@@ -164,6 +164,7 @@ namespace BLL
                     if (!DoesBalanceExist(ethDate.Year, stores.ID, true)) //If Inventory information hasn't already been filled for this store
                     {
                         Items itm = new Items();
+                        ReceiveDoc rec =new ReceiveDoc();
                         itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
                         while (!itm.EOF) //For each time
                         {
@@ -185,7 +186,7 @@ namespace BLL
                             yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
                             yearEnd.PhysicalInventory = yearEnd.EBalance;
                             yearEnd.AutomaticallyEntered = true;
-                            yearEnd.UnitID = itm.UnitID;
+                           // yearEnd.UnitID = itm.UnitID;
                             yearEnd.Save();
                             itm.MoveNext();
                         }
