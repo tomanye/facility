@@ -91,9 +91,8 @@ namespace PharmInventory.Forms.Transactions
             {
                 dtBB.Columns.Add(co);
             }
-            str = new string[] { "ItemId", "No.", "Beginning Balance", 
-                "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID","UnitID"};//, "Change Since Sene 30" };
-
+            str = new string[] { "ItemId", "No.", "Beginning Balance", "Ending Balance(SOH)", "Physical Inventory", "ID", "RecID","UnitID"};//, "Change Since Sene 30" };
+            
             foreach (string co in str)
             {
                 dtBB.Columns.Add(co, typeof(int));
@@ -113,8 +112,8 @@ namespace PharmInventory.Forms.Transactions
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-              // btnSave.Enabled = ((yProcess.IsInventoryComplete(year, storeId)));
-                btnSave.Enabled =true;
+                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                //btnSave.Enabled =true;
                 month = 10;
              
             }
@@ -158,7 +157,7 @@ namespace PharmInventory.Forms.Transactions
                 drv["Item Name"] = itemName;
                 drv["Beginning Balance"] = BB;
                 drv["Ending Balance(SOH)"] = EB;
-               // drv["UnitID"] = unitid;
+                drv["UnitID"] = unitid;
 
                 if (Phy != "")
                 {
@@ -275,7 +274,7 @@ namespace PharmInventory.Forms.Transactions
                         {
                            DataRow cRow = dtBB.Rows[i];
                            if (!ReferenceEquals(cRow["Physical Inventory"], string.Empty) && cRow["ItemID"] != DBNull.Value)
-                            {
+                           {
                                 int itemID = Convert.ToInt32(cRow["ItemID"]);
                                 YearEnd.PurgeAutomaticallyEnteredInventory(itemID, storeID, year);
                                 //if (areAllBatchesPhyInventoryNullValue == false) //We want to add an inventory record if at least one of the batches has a non empty value.
@@ -289,11 +288,12 @@ namespace PharmInventory.Forms.Transactions
                                 //yEnd.BatchNo = cRow["Batch No."].ToString();
                                 yEnd.EBalance = endBal;// Convert.ToInt64(yearEndTable.Rows[i].Cells[5].Value);
 
-                               if (cRow["Physical Inventory"]!=DBNull.Value)
+                                if (cRow["Physical Inventory"] !=DBNull.Value)
                                     yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
                                 //yEnd.PhysicalInventory = physicalInventoryTotal;
-                                yEnd.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
-                                yEnd.Remark = cRow["Remark"].ToString();
+                               if (VisibilitySetting.HandleUnits == 1) yEnd.UnitID = 0;
+                               else yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
+                               yEnd.Remark = cRow["Remark"].ToString();
                                 yEnd.AutomaticallyEntered = false;
                                 yEnd.Save();
                                 //}
@@ -429,10 +429,33 @@ namespace PharmInventory.Forms.Transactions
             dtCurent = ConvertDate.DateConverter(dtDate.Text);
 
             int year = dtCurent.Year;
-            Items itm = new Items();
-            DataTable dtItm = (ckExclude == null || (!ckExclude.Checked)? itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue)) : itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue)));
-            PopulateItemList(dtItm, year);
-            dtDate.CustomFormat = "MMMM dd, yyyy";
+            var itm = new Items();
+            DataTable dtItm;
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    if (ckExclude == null || (!ckExclude.Checked))
+                        dtItm = itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));
+                    PopulateItemList(dtItm, year);
+                    break;
+                case 2:
+                     if (ckExclude == null || (!ckExclude.Checked))
+                        dtItm = itm.ExcludeNeverReceivedItemsForHandlingUnit(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));
+                    PopulateItemList(dtItm, year);
+                    break;
+                case 3:
+                    if (ckExclude == null || (!ckExclude.Checked))
+                        dtItm = itm.ExcludeNeverReceivedItemsForHandlingUnit(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));
+                    PopulateItemList(dtItm, year);
+                    dtDate.CustomFormat = "MMMM dd, yyyy";
+                    break;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

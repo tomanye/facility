@@ -183,7 +183,11 @@ namespace BLL
         public DataTable GetAllItems(int inList,int commodityTypeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND TypeID = {1} ORDER BY ItemName", inList, commodityTypeID));
+            var query =
+                String.Format(
+                    "SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No, case when ID IN (SELECT ItemID FROM  dbo.ReceiveDoc) Then 'Yes' Else 'No' END AS BeenReceived, * FROM vwGetAllItems WHERE IsInHospitalList = {0} AND TypeID = {1} ORDER BY ItemName",
+                    inList, commodityTypeID);
+            this.LoadFromRawSql(query);
             return this.DataTable;
         }
 
@@ -992,6 +996,21 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable ExcludeNeverReceivedItemsForHandlingUnit(int storeId, int commodityTypeID)
+        {
+            this.FlushData();
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1) AND TypeID = {0} ORDER BY ItemName", commodityTypeID));
+            }
+            else
+            {
+                var query = String.Format(" select vw.ID,vw.FullItemName,vw.ItemName,vw.DosageForm,vw.Strength,vw.IsInHospitalList,Vw.Name, vw.TypeID ,rd.UnitID ,rd.ItemID ,rd.BatchNo from vwGetAllItems vw join ReceiveDoc  rd on rd.ItemID =vw.ID join ItemUnit iu on rd.UnitID =iu.ID where StoreID={0} and IsInHospitalList=1 and TypeID = {1} ORDER BY ItemName",
+                        storeId, commodityTypeID);
+                this.LoadFromRawSql(query);
+            }
+            return this.DataTable;
+        }
         public DataTable ExcludeNeverReceivedItemsNoCategory(int storeId)
         {
             this.FlushData();
