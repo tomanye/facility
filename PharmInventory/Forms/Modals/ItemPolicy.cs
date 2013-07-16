@@ -48,7 +48,7 @@ namespace PharmInventory.Forms.Modals
 
             DataTable dtItem = itm.GetItemById(_itemId);
             txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["DosageForm"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
-            ckExculed.Checked = itm.IsInHospitalList;
+            ckExculed.Checked =itm.IsInHospitalList;
             txtText.Text = itm.StockCodeDACA ?? string.Empty;
             txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
            

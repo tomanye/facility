@@ -379,7 +379,7 @@ namespace PharmInventory.Forms.Transactions
                             int itemID = Convert.ToInt32(dtBB.Rows[i]["ItemID"]);
                             id = yEnd.LoadByItemIDStoreAndYear(itemID, storeID, year, false);
                         }
-                        if (id != 0)//There is already a manual entry in the yearend table.
+                        if (id != 0 && !ReferenceEquals(yearEndTable.Rows[i]["Physical Inventory"], string.Empty))//There is already a manual entry in the yearend table.
                         {
                             //yEnd.LoadByPrimaryKey(id);
                             yEnd.BBalance = Convert.ToInt64(FilterNumbers(yearEndTable.Rows[i]["Beginning Balance"].ToString()));

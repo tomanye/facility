@@ -83,7 +83,7 @@ namespace PharmInventory.Forms.Transactions
                unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m=>m.UnitID).Distinct();
                 foreach (var i in unitid)
                 {
-                    _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.Value, generalinfo.AMCRange, DateTime.Today));
+                    _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.GetValueOrDefault(), generalinfo.AMCRange, DateTime.Today));
                 }
                percentage += increment;
                backgroundWorker1.ReportProgress((int) percentage);

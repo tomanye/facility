@@ -805,7 +805,6 @@ namespace PharmInventory.Forms.Transactions
             this.unitrepositoryItemLookUpEdit.Name = "unitrepositoryItemLookUpEdit";
             this.unitrepositoryItemLookUpEdit.NullText = "Select Unit";
             this.unitrepositoryItemLookUpEdit.ValueMember = "ID";
-            this.unitrepositoryItemLookUpEdit.Enter += new System.EventHandler(this.unitrepositoryItemLookUpEdit_Enter);
             // 
             // bandedGridColumn12
             // 
