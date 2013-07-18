@@ -9,6 +9,7 @@ using PharmInventory.Forms.Transactions;
 using PharmInventory.Forms.Trends;
 using PharmInventory.Forms.UtilitiesAndForms;
 using System;
+using PharmInventory.HelperClasses;
 
 
 namespace PharmInventory
@@ -105,8 +106,18 @@ namespace PharmInventory
                 //    tag = "Year End Process";
                 //else
                 //{
-                    yEnd.GenerateAutomaticInventory();
-                //}
+                switch (VisibilitySetting.HandleUnits)
+                {
+                    case 1:
+                        yEnd.GenerateAutomaticInventory();
+                        break;
+                    case 2:
+                        yEnd.GenerateAutomaticInventoryByUnit();
+                        break;
+                    case 3:
+                        yEnd.GenerateAutomaticInventoryByUnit();
+                        break;
+                }
             }
            
             

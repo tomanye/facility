@@ -148,6 +148,18 @@ namespace BLL
 			return quant;
 		}
 
+        public Int64 GetIssuedQuantityTillMonthByUnit(int itemId, int storeId, int month, int year,int unitId)
+        {
+            //There should be a date range for the last month or some thing
+            this.FlushData();
+            int yr = (month < 11) ? year - 1 : year;
+            DateTime dt1 = new DateTime(yr, 11, 1);
+            DateTime dt2 = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+            this.LoadFromRawSql(String.Format("SELECT SUM(Quantity) AS IssuedQuantity FROM  IssueDoc WHERE (IsApproved = 1) AND (UnitID={4})AND (ItemID = {0} AND StoreId = {1} AND (Date between '{2}' AND '{3}'))", itemId, storeId, dt1.ToString(), dt2.ToString(),unitId));
+            Int64 quant = 0;
+            quant = (this.DataTable.Rows[0]["IssuedQuantity"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["IssuedQuantity"]) : 0;
+            return quant;
+        }
 		public Int64 GetIssuedQuantityTillMonthAll(int itemId, int month, int year)
 		{
 			//There should be a date range for the last month or some thing

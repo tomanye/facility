@@ -42,12 +42,12 @@ namespace BLL
             this.Where.Year.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
             this.Where.Year.Value = year;
 
-            if(includeAutomatic==false)
+            if (includeAutomatic == false)
             {
                 this.Where.AutomaticallyEntered.Conjuction = WhereParameter.Conj.And;
                 this.Where.AutomaticallyEntered.Value = includeAutomatic;
             }
-            
+
             this.Query.Load();
 
             if (this.DataTable.Rows.Count > 0)
@@ -75,6 +75,19 @@ namespace BLL
             return this.RowCount > 0 ? this.ID : 0;
         }
 
+        public int LoadByItemIDStoreAndYearAndUnit(int itemID, int storeID, int year, bool includeAutomatic, int unitId)
+        {
+            this.FlushData();
+            this.Where.WhereClauseReset();
+            this.Where.ItemID.Value = itemID;
+            this.Where.StoreID.Value = storeID;
+            this.Where.Year.Value = year;
+            this.Where.AutomaticallyEntered.Value = includeAutomatic;
+            this.Where.UnitID.Value = unitId;
+            this.Query.Load();
+            return this.RowCount > 0 ? this.ID : 0;
+        }
+
         public bool IsInventoryComplete(int year, int storeId)
         {
             this.FlushData();
@@ -87,8 +100,8 @@ namespace BLL
             this.Query.Load();
 
             if (this.DataTable.Rows.Count > 0)
-                 return false;
-                
+                return false;
+
             return true;
         }
 
@@ -97,9 +110,9 @@ namespace BLL
             string query = string.Format("Select");
             this.Where.AutomaticallyEntered.Value = true;
             this.Query.Load();
-            while(!this.EOF)
+            while (!this.EOF)
             {
-                
+
             }
         }
 
@@ -114,6 +127,23 @@ namespace BLL
             this.Where.AutomaticallyEntered.Value = includeAutomatic;
             this.Where.ItemID.Conjuction = WhereParameter.Conj.And;
             this.Where.ItemID.Value = itemID;
+            this.Query.Load();
+
+            if (this.DataTable.Rows.Count > 0)
+                return true;
+
+            return false;
+        }
+
+        public bool DoesBalanceExistByUnit(int year, int storeId, bool includeAutomatic)
+        {
+            this.FlushData();
+            this.Where.WhereClauseReset();
+            this.Where.StoreID.Value = storeId;
+            this.Where.Year.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
+            this.Where.Year.Value = year;
+            this.Where.AutomaticallyEntered.Conjuction = WhereParameter.Conj.And;
+            this.Where.AutomaticallyEntered.Value = includeAutomatic;
             this.Query.Load();
 
             if (this.DataTable.Rows.Count > 0)
@@ -144,10 +174,52 @@ namespace BLL
             return false;
         }
 
+        public bool InventoryRequiredForHandlingUnit(bool ignoreAutomatic)
+        {
+            var ethDate = new EthiopianDate.EthiopianDate();
+            if ((ethDate.Month == 10 && ethDate.Day == 30) || ethDate.Month == 11)
+            {
+                var stores = new Stores();
+                var rec = new ReceiveDoc();
+                stores.GetActiveStores();
+                while (!stores.EOF)
+                {
+                    var itm = new Items();
+                    itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(stores.ID);
+                    var receivedoc = rec.GetDistinctUnitIDFromReceivedDoc(itm.ID);
+                    foreach (DataRow dr in receivedoc.Rows)
+                    {
+                        if (
+                            !this.DoesBalanceExistByUnit(ethDate.Year, stores.ID, !ignoreAutomatic
+                                                         ) && itm.RowCount > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    stores.MoveNext();
+                }
+            }
+            return false;
+        }
+
         public DataTable GetBalanceByItemId(int year, int storeId, int itemId)
         {
             this.FlushData();
-            string query = string.Format("select * from YearEnd where ItemID = {0} and [Year] = {1} and StoreID = {2} and AutomaticallyEntered = 0", itemId, year, storeId);
+            string query =
+                string.Format(
+                    "select * from YearEnd where ItemID = {0} and [Year] = {1} and StoreID = {2} and AutomaticallyEntered = 0",
+                    itemId, year, storeId);
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
+
+        public DataTable GetBalanceByItemIdByUnitID(int year, int storeId, int itemId, int unitId)
+        {
+            this.FlushData();
+            string query =
+                string.Format(
+                    "select * from YearEnd where ItemID = {0} and [Year] = {1} and StoreID = {2} and UnitID= {3} and AutomaticallyEntered = 0",
+                    itemId, year, storeId, unitId);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -161,19 +233,19 @@ namespace BLL
                 stores.GetActiveStores();
                 while (!stores.EOF) //This needs to be done for each store
                 {
-                    if (!DoesBalanceExist(ethDate.Year, stores.ID, true)) //If Inventory information hasn't already been filled for this store
+                  if (!DoesBalanceExist(ethDate.Year, stores.ID, true))
+                        //If Inventory information hasn't already been filled for this store
                     {
-                        Items itm = new Items();
-                        ReceiveDoc rec =new ReceiveDoc();
+                        var itm = new Items();
                         itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
                         while (!itm.EOF) //For each time
                         {
-                            YearEnd yearEnd = new YearEnd();
-                            Balance balance = new Balance();
+                            var yearEnd = new YearEnd();
+                            var balance = new Balance();
 
-                            yearEnd.LoadByItemIDStoreAndYear(itm.ID, stores.ID,ethDate.Year, true);
-                            
-                            if(yearEnd.RowCount>0)
+                            yearEnd.LoadByItemIDStoreAndYear(itm.ID, stores.ID, ethDate.Year, true);
+
+                            if (yearEnd.RowCount > 0)
                             {
                                 return;
                             }
@@ -186,7 +258,7 @@ namespace BLL
                             yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
                             yearEnd.PhysicalInventory = yearEnd.EBalance;
                             yearEnd.AutomaticallyEntered = true;
-                           // yearEnd.UnitID = itm.UnitID;
+                            yearEnd.UnitID = 0;
                             yearEnd.Save();
                             itm.MoveNext();
                         }
@@ -227,21 +299,29 @@ namespace BLL
             EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(year, month, 30);
             //int bYear = ((month > 10) ? year : year - 1);
             int bYear = ethioDate.StartOfFiscalYear.Year;
-            string query = String.Format("Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}", storeId, itemId, bYear);
+            string query = String.Format("Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}",
+                                         storeId, itemId, bYear);
             this.LoadFromRawSql(query);
             if (this.DataTable.Rows.Count > 0)
             {
-                bb = ((this.DataTable.Rows[0]["PhysicalInventoryPrice"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventoryPrice"]) : 0);
+                bb = ((this.DataTable.Rows[0]["PhysicalInventoryPrice"].ToString() != "")
+                          ? Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventoryPrice"])
+                          : 0);
             }
             else
             {
-                string queryString = String.Format("Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}", storeId, itemId, year - 1);
+                string queryString =
+                    String.Format("Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}", storeId,
+                                  itemId, year - 1);
                 this.LoadFromRawSql(queryString);
                 if (this.DataTable.Rows.Count > 0)
                 {
-                    bb = ((this.DataTable.Rows[0]["PhysicalInventoryPrice"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventoryPrice"]) : 0);
+                    bb = ((this.DataTable.Rows[0]["PhysicalInventoryPrice"].ToString() != "")
+                              ? Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventoryPrice"])
+                              : 0);
                 }
-                else if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year)) // to check if it is different year from current
+                else if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year))
+                    // to check if it is different year from current
                 {
                     double cons = 0;
                     IssueDoc iss = new IssueDoc();
@@ -298,20 +378,21 @@ namespace BLL
             this.FlushData();
             Int64 bb = 0;
             int year = fiscalYear;
-            int month=10;
+            int month = 10;
             string query =
                 String.Format(
                     "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2} order by PhysicalInventory desc",
                     storeId, itemId, fiscalYear - 1);
             this.LoadFromRawSql(query);
-            
-            if (this.DataTable.Rows.Count > 0  )
+
+            if (this.DataTable.Rows.Count > 0)
             {
                 bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
             }
             else
             {
-                if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year)) // to check if it is different year from current
+                if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year))
+                    // to check if it is different year from current
                 {
                     Int64 cons = 0;
                     IssueDoc iss = new IssueDoc();
@@ -350,18 +431,22 @@ namespace BLL
                     "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}  and (AutomaticallyEntered = 0 or AutomaticallyEntered is null) order by PhysicalInventory desc",
                     storeId, itemId, bYear);
             this.LoadFromRawSql(query);
-            if (this.DataTable.Rows.Count > 0 && this.DataTable.Rows[0]["PhysicalInventory"] !=DBNull.Value)
+            if (this.DataTable.Rows.Count > 0 && this.DataTable.Rows[0]["PhysicalInventory"] != DBNull.Value)
             {
                 bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
             }
             else
             {
-                this.LoadFromRawSql(String.Format("Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2} and (AutomaticallyEntered = 0  or AutomaticallyEntered is null)", storeId, itemId, year - 1));
+                this.LoadFromRawSql(
+                    String.Format(
+                        "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2} and (AutomaticallyEntered = 0  or AutomaticallyEntered is null)",
+                        storeId, itemId, year - 1));
                 if (this.DataTable.Rows.Count > 0)
                 {
                     bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
                 }
-                else if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year)) // to check if it is different year from current
+                else if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year))
+                    // to check if it is different year from current
                 {
                     Int64 cons = 0;
                     IssueDoc iss = new IssueDoc();
@@ -376,6 +461,63 @@ namespace BLL
                     long AdjustedQuantity = dis.GetAdjustedQuantityTillMonth(itemId, storeId, month, year);
                     long IssuedQuantity = iss.GetIssuedQuantityTillMonth(itemId, storeId, month, year);
                     long LossQuantity = dis.GetLossesQuantityTillMonth(itemId, storeId, month, year);
+                    // long BalanceQuantity = yEnd.GetBBalance(year, storeId, itemId, month);
+                    cons = (RecievedQuantity + AdjustedQuantity - IssuedQuantity - LossQuantity);
+
+                    //cons = (rec.GetReceivedQuantityTillMonth(itemId, storeId, month, year) + dis.GetAdjustedQuantityTillMonth(itemId, storeId, month, year) - iss.GetIssuedQuantityTillMonth(itemId, storeId, month, year) - dis.GetLossesQuantityTillMonth(itemId, storeId, month, year));
+                    bb = cons;
+                }
+            }
+
+            return bb;
+        }
+
+
+        public Int64 GetBBalanceByUnit(int year, int storeId, int itemId, int month, int unitId)
+        {
+            //CALENDAR:
+            this.FlushData();
+            Int64 bb = 0;
+            //int bYear = ((month > 10) ? year : year - 1);
+            EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(year, month, 30);
+            int bYear = ethioDate.FiscalYear;
+            string query =
+                String.Format(
+                    "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2}  and UnitID={3} and (AutomaticallyEntered = 0 or AutomaticallyEntered is null) order by PhysicalInventory desc",
+                    storeId, itemId, bYear, unitId);
+            this.LoadFromRawSql(query);
+            if (this.DataTable.Rows.Count > 0 && this.DataTable.Rows[0]["PhysicalInventory"] != DBNull.Value)
+            {
+                bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
+            }
+            else
+            {
+                this.LoadFromRawSql(
+                    String.Format(
+                        "Select * from YearEnd where StoreID = {0} AND ItemID = {1} AND Year = {2} and UnitID={3} and (AutomaticallyEntered = 0  or AutomaticallyEntered is null)",
+                        storeId, itemId, year - 1, unitId));
+                if (this.DataTable.Rows.Count > 0)
+                {
+                    bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
+                }
+                else if (((year + 8) > DateTime.Now.Year) || (month > 10 && (year + 8) == DateTime.Now.Year))
+                    // to check if it is different year from current
+                {
+                    Int64 cons = 0;
+                    IssueDoc iss = new IssueDoc();
+                    ReceiveDoc rec = new ReceiveDoc();
+                    Disposal dis = new Disposal();
+                    if ((year + 8) > DateTime.Now.Year) // to check if it is hamle and Nehase
+                        year = year - 1;
+                    month = 10;
+                    //}
+
+                    long RecievedQuantity = rec.GetReceivedQuantityTillMonthByUnit(itemId, storeId, month, year,
+                                                                                   unitId);
+                    long AdjustedQuantity = dis.GetAdjustedQuantityTillMonthByUnit(itemId, storeId, month, year,
+                                                                                   unitId);
+                    long IssuedQuantity = iss.GetIssuedQuantityTillMonthByUnit(itemId, storeId, month, year, unitId);
+                    long LossQuantity = dis.GetLossesQuantityTillMonthByUnit(itemId, storeId, month, year, unitId);
                     // long BalanceQuantity = yEnd.GetBBalance(year, storeId, itemId, month);
                     cons = (RecievedQuantity + AdjustedQuantity - IssuedQuantity - LossQuantity);
 
@@ -419,7 +561,8 @@ namespace BLL
             }
             else
             {
-                this.LoadFromRawSql(String.Format("Select * from YearEnd where ItemID = {0} AND Year = {1}", itemId, year - 1));
+                this.LoadFromRawSql(String.Format("Select * from YearEnd where ItemID = {0} AND Year = {1}", itemId,
+                                                  year - 1));
                 if (this.DataTable.Rows.Count > 0)
                 {
                     bb = Convert.ToInt64(this.DataTable.Rows[0]["PhysicalInventory"]);
@@ -434,7 +577,10 @@ namespace BLL
                     if ((year + 8) > DateTime.Now.Year) // to check if it is hamle and Nehase
                         year = year - 1;
                     int month = 10;
-                    cons = (rec.GetReceivedQuantityTillMonthAll(itemId, month, year) + dis.GetAdjustedQuantityTillMonthAll(itemId, month, year) - iss.GetIssuedQuantityTillMonthAll(itemId, month, year) - dis.GetLossesQuantityTillMonthAll(itemId, month, year));
+                    cons = (rec.GetReceivedQuantityTillMonthAll(itemId, month, year) +
+                            dis.GetAdjustedQuantityTillMonthAll(itemId, month, year) -
+                            iss.GetIssuedQuantityTillMonthAll(itemId, month, year) -
+                            dis.GetLossesQuantityTillMonthAll(itemId, month, year));
                     bb = cons;
                 }
             }
@@ -444,22 +590,85 @@ namespace BLL
         public DataTable GetDocumentByYear(int storeID, int year)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("Select *, ROW_NUMBER() OVER (ORDER BY Year DESC) as RowNo from YearEnd ye JOIN vwGetAllItems vw on vw.ID = ye.ItemID where StoreID = {0} AND Year = {1} AND (ye.AutomaticallyEntered=0  or AutomaticallyEntered is null)", storeID, year));
+            this.LoadFromRawSql(
+                String.Format(
+                    "Select *, ROW_NUMBER() OVER (ORDER BY Year DESC) as RowNo from YearEnd ye JOIN vwGetAllItems vw on vw.ID = ye.ItemID where StoreID = {0} AND Year = {1} AND (ye.AutomaticallyEntered=0  or AutomaticallyEntered is null)",
+                    storeID, year));
             return this.DataTable;
         }
 
         public DataTable GetDistinctYear(int storeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("Select DISTINCT Year FROM YearEnd WHERE StoreID = {0} AND (AutomaticallyEntered=0 or AutomaticallyEntered is null)", storeID));
+            this.LoadFromRawSql(
+                String.Format(
+                    "Select DISTINCT Year FROM YearEnd WHERE StoreID = {0} AND (AutomaticallyEntered=0 or AutomaticallyEntered is null)",
+                    storeID));
             return this.DataTable;
         }
 
         public DataTable GetDocumentAll(int storeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("Select *,ROW_NUMBER() OVER (ORDER BY Year DESC) as RowNo from YearEnd ye JOIN vwGetAllItems vw on vw.ID = ye.ItemID where StoreID = {0}  AND (ye.AutomaticallyEntered=0  or ye.AutomaticallyEntered is null) ORDER BY Year DESC", storeID));
+            this.LoadFromRawSql(
+                String.Format(
+                    "Select *,ROW_NUMBER() OVER (ORDER BY Year DESC) as RowNo from YearEnd ye JOIN vwGetAllItems vw on vw.ID = ye.ItemID where StoreID = {0}  AND (ye.AutomaticallyEntered=0  or ye.AutomaticallyEntered is null) ORDER BY Year DESC",
+                    storeID));
             return this.DataTable;
+        }
+
+        public void GenerateAutomaticInventoryByUnit()
+        {
+            var ethDate = new EthiopianDate.EthiopianDate();
+            if (InventoryRequiredForHandlingUnit(false))
+            {
+                var stores = new Stores();
+                stores.GetActiveStores();
+                var rec = new ReceiveDoc();
+                var itm = new Items();
+                itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(stores.ID);
+                    while (!stores.EOF) //This needs to be done for each store and for each item
+                    {
+                        if (!DoesBalanceExistByUnit(ethDate.Year, stores.ID, true))
+                        //If Inventory information hasn't already been filled for this store
+                        {
+                        while (!itm.EOF) //For each time
+                        {
+                            var receivedoc = rec.GetDistinctUnitIDFromReceivedDoc(itm.ID);
+                            foreach (DataRow dr in receivedoc.Rows)
+                            {
+                                var yearEnd = new YearEnd();
+                                var balance = new Balance();
+
+                                yearEnd.LoadByItemIDStoreAndYearAndUnit(itm.ID, stores.ID, ethDate.Year, true,Convert.ToInt32(dr["UnitID"]));
+
+                                if (yearEnd.RowCount > 0 && Convert.ToInt32(dr["UnitID"])==null)
+                                {
+                                   continue;
+                                }
+                                //YearEnd.PurgeAutomaticallyEnteredInventory(itm.ID, stores.ID, ethDate.Year);
+                                    yearEnd.AddNew();
+                                    yearEnd.ItemID = itm.ID;
+                                    yearEnd.StoreID = stores.ID;
+                                    yearEnd.Year = ethDate.Year;
+                                    yearEnd.EBalance = balance.GetSOHByUnit(itm.ID, stores.ID, 10, ethDate.Year,
+                                                                            Convert.ToInt32(dr["UnitID"]));
+                                    yearEnd.PhysicalInventory = yearEnd.EBalance;
+                                    yearEnd.AutomaticallyEntered = true;
+                                    yearEnd.UnitID = Convert.ToInt32(dr["UnitID"]);
+                                    yearEnd.Save();
+                                    itm.MoveNext();
+                                }
+                        }
+
+                    }
+                    stores.MoveNext();
+                }
+
+            }
+
+
         }
     }
 }
+

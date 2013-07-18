@@ -989,8 +989,24 @@ namespace BLL
             }
             else
             {
-                var query =String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",
-                        storeId, commodityTypeID);
+               //Previously written var query =String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",
+                        //storeId, commodityTypeID);
+                var query = String.Format(" select * from vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc rd  WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName",storeId, commodityTypeID);
+                this.LoadFromRawSql(query);
+            }
+            return this.DataTable;
+        }
+
+        public DataTable ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(int storeId)
+        {
+            this.FlushData();
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1) AND TypeID = {0} ORDER BY ItemName"));
+            }
+            else
+            {
+                var query = String.Format("select Distinct(vw.ID),vw.FullItemName,vw.StockCode,vw.DosageForm,vw.StockCode,vw.Strength ,rd.UnitID,vw.ItemName  from vwGetAllItems vw left join ReceiveDoc rd on vw.ID =rd.ItemID where (rd.StoreID = {0}) AND (IsInHospitalList = 1) AND TypeID = 7 ORDER BY ItemName", storeId);
                 this.LoadFromRawSql(query);
             }
             return this.DataTable;
@@ -1005,8 +1021,7 @@ namespace BLL
             }
             else
             {
-                var query = String.Format(" select vw.ID,vw.FullItemName,vw.ItemName,vw.DosageForm,vw.Strength,vw.IsInHospitalList,Vw.Name, vw.TypeID ,rd.UnitID ,rd.ItemID ,rd.BatchNo from vwGetAllItems vw join ReceiveDoc  rd on rd.ItemID =vw.ID join ItemUnit iu on rd.UnitID =iu.ID where StoreID={0} and IsInHospitalList=1 and TypeID = {1} ORDER BY ItemName",
-                        storeId, commodityTypeID);
+                var query = String.Format(" select Distinct(vw.ID),vw.FullItemName,vw.StockCode,vw.DosageForm,vw.StockCode,vw.Strength ,rd.UnitID ,vw.ItemName from vwGetAllItems vw left join ReceiveDoc rd on vw.ID =rd.ItemID where (rd.StoreID = {0}) AND (IsInHospitalList = 1) AND TypeID = {1} ORDER BY ItemName", storeId, commodityTypeID);
                 this.LoadFromRawSql(query);
             }
             return this.DataTable;
