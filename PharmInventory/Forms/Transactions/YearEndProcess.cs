@@ -370,14 +370,11 @@ namespace PharmInventory.Forms.Transactions
                     {
                         int id = 0;
                         int storeID = Convert.ToInt32(cboStores.EditValue);
-                        //if (dtBB.Rows[i]["ID"] != DBNull.Value)
-                        //{
-                        //    id = Convert.ToInt32(dtBB.Rows[i]["ID"]);
-                        //}
                         if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
                         {
-                            int itemID = Convert.ToInt32(dtBB.Rows[i]["ItemID"]);
-                            id = yEnd.LoadByItemIDStoreAndYear(itemID, storeID, year, false);
+                            var itemID = Convert.ToInt32(dtBB.Rows[i]["ItemID"]);
+                            var unitID = Convert.ToInt32(dtBB.Rows[i]["UnitID"]);
+                            id = yEnd.LoadByItemIDStoreAndYearAndUnit(itemID, storeID, year, false,unitID);
                         }
                         if (id != 0 && !ReferenceEquals(yearEndTable.Rows[i]["Physical Inventory"], string.Empty))//There is already a manual entry in the yearend table.
                         {
@@ -396,8 +393,9 @@ namespace PharmInventory.Forms.Transactions
                            DataRow cRow = dtBB.Rows[i];
                            if (!ReferenceEquals(cRow["Physical Inventory"], string.Empty) && cRow["ItemID"] != DBNull.Value)
                            {
-                                int itemID = Convert.ToInt32(cRow["ItemID"]);
-                                YearEnd.PurgeAutomaticallyEnteredInventory(itemID, storeID, year);
+                                var itemID = Convert.ToInt32(cRow["ItemID"]);
+                                var unitID = Convert.ToInt32(cRow["UnitID"]);
+                                YearEnd.PurgeAutomaticallyEnteredInventoryForUnit(itemID, storeID, year,unitID);
                                 //if (areAllBatchesPhyInventoryNullValue == false) //We want to add an inventory record if at least one of the batches has a non empty value.
                                 //{
                                 yEnd.AddNew();
@@ -684,7 +682,7 @@ namespace PharmInventory.Forms.Transactions
         private void repositoryItemButtonEdit2_Click(object sender, EventArgs e)
         {
             dtDate.Value = DateTime.Now.Subtract(TimeSpan.FromDays(35));
-            DateTime dtCurent = new DateTime();
+            var dtCurent = new DateTime();
             dtDate.CustomFormat = "MM/dd/yyyy";
             dtCurent = ConvertDate.DateConverter(dtDate.Text);
 
@@ -713,7 +711,7 @@ namespace PharmInventory.Forms.Transactions
                         }
                         if (Convert.ToInt32(dr["UnitID"]) != null)
                         {
-                            var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]),Convert.ToInt32(dr["UnitID"]), storeid: (int) cboStores.EditValue, _dtcurrent: dtCurent);
+                            var addbatch = new NewBatch(Convert.ToInt32(dr["ItemID"]), Convert.ToString(dr["Item Name"]), Convert.ToInt32(dr["UnitID"]), (int)cboStores.EditValue, dtCurent);
                             addbatch.ShowDialog();
                             grdViewYearEnd.RefreshData();
                         }

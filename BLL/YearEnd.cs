@@ -281,6 +281,18 @@ namespace BLL
             yearEnd.Save();
         }
 
+        public static void PurgeAutomaticallyEnteredInventoryForUnit(int itemID, int storeID, int year,int unitID)
+        {
+            YearEnd yearEnd = new YearEnd();
+            yearEnd.Where.ItemID.Value = itemID;
+            yearEnd.Where.StoreID.Value = storeID;
+            yearEnd.Where.Year.Value = year;
+            yearEnd.Where.AutomaticallyEntered.Value = true;
+            yearEnd.Where.UnitID.Value = unitID;
+            yearEnd.Query.Load();
+            yearEnd.DeleteAll();
+            yearEnd.Save();
+        }
         /* public Int64 GetBBalance(int year, int storeId, int itemId)
         {
             this.FlushData();
