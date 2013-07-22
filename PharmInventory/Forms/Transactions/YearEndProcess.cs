@@ -139,9 +139,9 @@ namespace PharmInventory.Forms.Transactions
             foreach (DataRow dr in dtItm.Rows)//For each item
             {
                 var itemName = dr["ItemName"].ToString() + " - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
-                int itemID = Convert.ToInt32(dr["ID"]);
+                int itemId= Convert.ToInt32(dr["ID"]);
                 var unitid = Convert.ToInt32(dr["UnitID"]);
-                var BalanceExists = (yProcess.DoesBalanceExist(year, storeId, itemID, false));
+                var BalanceExists = (yProcess.DoesBalanceExistByUnit(year, itemId,storeId, false,unitid));
 
                 //We don't want to display those items whose inventory has already been done.
                 if (BalanceExists)
@@ -345,14 +345,146 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(SaveInventory())
-                LoadInventoryItems();
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    if (SaveInventoryWithOutUnit())
+                        LoadInventoryItems();
+                    break;
+                case 2:
+                    if (SaveInventory())
+                        LoadInventoryItems();
+                    break;
+                case 3:
+                    if (SaveInventory())
+                        LoadInventoryItems();
+                    break;
+            }
+        }
+
+        private bool SaveInventoryWithOutUnit()
+        {
+            var yEnd = new YearEnd();
+            var rec = new ReceiveDoc();
+
+            if (IsValid())
+            {
+                dtDate.Value = DateTime.Now;
+                DateTime dtCurent = new DateTime();
+                dtDate.CustomFormat = "MM/dd/yyyy";
+                dtCurent = ConvertDate.DateConverter(dtDate.Text);
+
+                int year = dtCurent.Year;
+                if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
+
+                    for (int i = 0; i < dtBB.Rows.Count; i++)
+                    {
+                        int id = 0;
+                        int storeID = Convert.ToInt32(cboStores.EditValue);
+                        if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
+                        {
+                            var itemID = Convert.ToInt32(dtBB.Rows[i]["ItemID"]);
+                            //var unitID = Convert.ToInt32(dtBB.Rows[i]["UnitID"]);
+                            id = yEnd.LoadByItemIDStoreAndYear(itemID, storeID, year, false);
+                        }
+                        if (id != 0 && !ReferenceEquals(yearEndTable.Rows[i]["Physical Inventory"], string.Empty))//There is already a manual entry in the yearend table.
+                        {
+                            //yEnd.LoadByPrimaryKey(id);
+                            yEnd.BBalance = Convert.ToInt64(FilterNumbers(yearEndTable.Rows[i]["Beginning Balance"].ToString()));
+                            yEnd.EBalance = Int64.Parse(FilterNumbers(yearEndTable.Rows[i]["Ending Balance(SOH)"].ToString()), NumberStyles.AllowThousands);
+                            yEnd.PhysicalInventory = Convert.ToInt64(FilterNumbers(yearEndTable.Rows[i]["Physical Inventory"].ToString()));
+                            //yEnd.BatchNo = yearEndTable.Rows[i]["Batch No."].ToString();
+                            yEnd.UnitID = 0;
+                            yEnd.Remark = yearEndTable.Rows[i]["Remark"].ToString();
+                            yEnd.AutomaticallyEntered = false;
+                            yEnd.Save();
+                        }
+                        else//There is no entry in the yearend table under this item name that has been entered manually.
+                        {
+                            DataRow cRow = dtBB.Rows[i];
+                            if (!ReferenceEquals(cRow["Physical Inventory"], string.Empty) && cRow["ItemID"] != DBNull.Value)
+                            {
+                                var itemID = Convert.ToInt32(cRow["ItemID"]);
+                                var unitID = 0;
+                                YearEnd.PurgeAutomaticallyEnteredInventoryForUnit(itemID, storeID, year, unitID);
+                                //if (areAllBatchesPhyInventoryNullValue == false) //We want to add an inventory record if at least one of the batches has a non empty value.
+                                //{
+                                yEnd.AddNew();
+                                yEnd.ItemID = itemID;
+                                yEnd.StoreID = storeID;
+                                yEnd.Year = year;
+                                yEnd.BBalance = Convert.ToInt64(cRow["Beginning Balance"]);
+                                Int64 endBal = Convert.ToInt64(cRow["Ending Balance(SOH)"]);
+                                //yEnd.BatchNo = cRow["Batch No."].ToString();
+                                yEnd.EBalance = endBal;// Convert.ToInt64(yearEndTable.Rows[i].Cells[5].Value);
+
+                                if (cRow["Physical Inventory"] != DBNull.Value)
+                                    yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
+
+
+                                //yEnd.PhysicalInventory = physicalInventoryTotal;
+                                yEnd.UnitID = 0;
+                                 yEnd.Remark = cRow["Remark"].ToString();
+
+                                yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
+                                yEnd.Save();
+                                //}
+
+
+                                //long physicalInventoryTotal = 0;
+                                //bool areAllBatchesPhyInventoryNullValue = true;
+                                //if (endBal != yEnd.PhysicalInventory)
+                                if (true)
+                                {
+                                    int k = i + 1;
+
+                                    if (k < dtBB.Rows.Count)
+                                    {
+                                        while (Convert.ToInt32(dtBB.Rows[k]["RecID"]) != -1)
+                                        {
+                                            if (dtBB.Rows[k]["Physical Inventory"] != DBNull.Value)
+                                            {
+                                                //areAllBatchesPhyInventoryNullValue = false;
+                                                long batchPhysicalInventory =
+                                                    Convert.ToInt64(dtBB.Rows[k]["Physical Inventory"]);
+                                                //physicalInventoryTotal += batchPhysicalInventory;
+                                                rec.LoadByPrimaryKey(Convert.ToInt32(dtBB.Rows[k]["RecID"]));
+                                                rec.QuantityLeft = Convert.ToInt64(batchPhysicalInventory);
+                                                rec.Remark = "Physical Inventory";
+                                                rec.UnitID = 0;
+                                                rec.Out = rec.QuantityLeft == 0;
+                                                rec.Save();
+                                            }
+                                            k++;
+                                            if (k >= yearEndTable.Rows.Count)
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private bool SaveInventory()
         {
-            YearEnd yEnd = new YearEnd();
-            ReceiveDoc rec = new ReceiveDoc();
+            var yEnd = new YearEnd();
+            var rec = new ReceiveDoc();
             
             if (IsValid())
             {
