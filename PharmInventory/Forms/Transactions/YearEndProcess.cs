@@ -515,7 +515,7 @@ namespace PharmInventory.Forms.Transactions
                             yEnd.EBalance = Int64.Parse(FilterNumbers(yearEndTable.Rows[i]["Ending Balance(SOH)"].ToString()), NumberStyles.AllowThousands);
                             yEnd.PhysicalInventory = Convert.ToInt64(FilterNumbers(yearEndTable.Rows[i]["Physical Inventory"].ToString()));
                             //yEnd.BatchNo = yearEndTable.Rows[i]["Batch No."].ToString();
-                            yEnd.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
+                            yEnd.UnitID =  Convert.ToInt32(yearEndTable.Rows[i]["UnitID"]);
                             yEnd.Remark = yearEndTable.Rows[i]["Remark"].ToString();
                             yEnd.AutomaticallyEntered = false;
                             yEnd.Save();
@@ -544,8 +544,7 @@ namespace PharmInventory.Forms.Transactions
                                
                                
                                 //yEnd.PhysicalInventory = physicalInventoryTotal;
-                               if (VisibilitySetting.HandleUnits == 1) yEnd.UnitID = 0;
-                               else yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
+                               yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
                                yEnd.Remark = cRow["Remark"].ToString();
 
                                yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
@@ -573,7 +572,7 @@ namespace PharmInventory.Forms.Transactions
                                                 rec.LoadByPrimaryKey(Convert.ToInt32(dtBB.Rows[k]["RecID"]));
                                                 rec.QuantityLeft = Convert.ToInt64(batchPhysicalInventory);
                                                 rec.Remark = "Physical Inventory";
-                                                rec.UnitID = VisibilitySetting.HandleUnits!=1 ? Convert.ToInt32(dtBB.Rows[k]["UnitID"]) : 0;
+                                                rec.UnitID = Convert.ToInt32(dtBB.Rows[k]["UnitID"]);
                                                 rec.Out = rec.QuantityLeft == 0;
                                                 rec.Save();
                                             }
