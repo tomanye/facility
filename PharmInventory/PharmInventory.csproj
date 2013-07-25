@@ -539,6 +539,7 @@
       <DependentUpon>RRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
+    <None Include="Resources\LoginScreenFacilityEdition7.png" />
     <Content Include="Scripts\87_Update 1.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1567,7 +1568,6 @@
     <None Include="Resources\Help.gif" />
     <None Include="Resources\expired.png" />
     <None Include="Resources\Near-Expiry.png" />
-    <None Include="Resources\LoginScreenFacilityEdition7.png" />
     <None Include="Resources\excel.png" />
     <None Include="Resources\Loading1.gif" />
     <Content Include="Resources\New database.gif" />
