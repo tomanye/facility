@@ -90,6 +90,7 @@ namespace PharmInventory.Forms.Transactions
                     BuildStoreInventoryList(year, storeId, dtItm);
                     break;
                 case 2:
+
                     BuildStoreInventoryListForHandleUnit(year, storeId, dtItm);
                     break;
                 case 3:
@@ -97,6 +98,7 @@ namespace PharmInventory.Forms.Transactions
                     break;
             }
         }
+
 
         private void BuildStoreInventoryListForHandleUnit(int year, int storeId, DataTable dtItm)
         {
@@ -122,16 +124,15 @@ namespace PharmInventory.Forms.Transactions
 
             var recDoc = new ReceiveDoc();
             int month = dtCurent.Month;
-            //btnSave.Enabled = true;
-            //CALENDAR:
+
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
+                
                 btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
-                //btnSave.Enabled =true;
                 month = 10;
 
             }
-            else
+           else
                 btnSave.Enabled = false;
 
 
@@ -652,9 +653,7 @@ namespace PharmInventory.Forms.Transactions
                         }
                         if (phyInv != physicalInventoryTotal)
                         {
-                            XtraMessageBox.Show("Validation has failed for item: " + itemName, "Error",
-                                                MessageBoxButtons.OK,
-                                                MessageBoxIcon.Error);
+                            XtraMessageBox.Show("Validation has failed for item: " + itemName, "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                             return false;
                         }
                         //}

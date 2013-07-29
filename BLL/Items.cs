@@ -1006,7 +1006,7 @@ namespace BLL
             }
             else
             {
-                var query = String.Format("select Distinct(vw.ID),vw.FullItemName,vw.StockCode,vw.DosageForm,vw.StockCode,vw.Strength ,rd.UnitID,vw.ItemName  from vwGetAllItems vw left join ReceiveDoc rd on vw.ID =rd.ItemID where (rd.StoreID = {0}) AND (IsInHospitalList = 1) AND TypeID = 7 ORDER BY ItemName", storeId);
+                var query = String.Format("select Distinct(vw.ID),vw.FullItemName,vw.StockCode,vw.DosageForm,vw.StockCode,vw.Strength ,rd.UnitID,vw.ItemName  from vwGetAllItems vw left join ReceiveDoc rd on vw.ID =rd.ItemID where (rd.StoreID = {0}) AND (IsInHospitalList = 1) ORDER BY ItemName", storeId);
                 this.LoadFromRawSql(query);
             }
             return this.DataTable;
