@@ -138,7 +138,6 @@ namespace BLL
 
         public bool DoesBalanceExistByUnit(int year, int itemId,int storeId, bool includeAutomatic,int unitId)
         {
- 
             this.FlushData();
             this.Where.WhereClauseReset();
             this.Where.StoreID.Value = storeId;
@@ -186,19 +185,14 @@ namespace BLL
             if ((ethDate.Month == 10 && ethDate.Day == 30) || ethDate.Month == 11)
             {
                 var stores = new Stores();
-                var rec = new ReceiveDoc();
                 stores.GetActiveStores();
                 while (!stores.EOF)
                 {
                     var itm = new Items();
                     itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(stores.ID);
-                    var receivedoc = rec.GetDistinctUnitIDFromReceivedDoc(itm.ID);
-                    foreach (DataRow dr in receivedoc.Rows)
+                    if (!this.DoesBalanceExist(ethDate.Year,stores.ID, !ignoreAutomatic) && itm.RowCount > 0)
                     {
-                        if (!this.DoesBalanceExistByUnit(ethDate.Year,itm.ID, stores.ID, !ignoreAutomatic ,Convert.ToInt32(dr["UnitID"])) && itm.RowCount > 0)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                     stores.MoveNext();
                 }
@@ -650,17 +644,15 @@ namespace BLL
                 while (!itm.EOF) //For each item
                 {
                     var receivedoc = rec.GetDistinctUnitIDFromReceivedDoc(itm.ID);
-                    foreach (DataRow dr in receivedoc.Rows.Cast<DataRow>().Where(dr =>!DoesBalanceExistByUnit(ethDate.Year, itm.ID, stores.ID, true,Convert.ToInt32(dr["UnitID"]))))
+                    foreach (var dr in receivedoc.Rows.Cast<DataRow>().Where(dr =>!DoesBalanceExistByUnit(ethDate.Year, itm.ID, stores.ID, true,Convert.ToInt32(dr["UnitID"]))))
                     {
                         yearEnd.LoadByItemIDStoreAndYearAndUnit(itm.ID, stores.ID, ethDate.Year, true,Convert.ToInt32(dr["UnitID"]));
                         if (yearEnd.RowCount > 0) continue;
-
                         yearEnd.AddNew();
                         yearEnd.ItemID = itm.ID;
                         yearEnd.StoreID = stores.ID;
                         yearEnd.Year = ethDate.Year;
-                        yearEnd.EBalance = balance.GetSOHByUnit(itm.ID, stores.ID, 10, ethDate.Year,
-                                                                Convert.ToInt32(dr["UnitID"]));
+                        yearEnd.EBalance = balance.GetSOHByUnit(itm.ID, stores.ID, ethDate.Month, ethDate.Year,Convert.ToInt32(dr["UnitID"]));
                         yearEnd.PhysicalInventory = yearEnd.EBalance;
                         yearEnd.AutomaticallyEntered = true;
                         yearEnd.UnitID = Convert.ToInt32(dr["UnitID"]);
@@ -670,7 +662,6 @@ namespace BLL
                 }
                 stores.MoveNext();
             }
-            
         }
 
 

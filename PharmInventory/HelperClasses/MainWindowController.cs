@@ -98,19 +98,22 @@ namespace PharmInventory
         /// <param name="tag">The tag of the button - Here is stored what type of form is supposed to be opened</param>
         private void LoadForm(string tag)
         {
-               var yEnd = new YearEnd();
-                if (yEnd.InventoryRequired(false) && VisibilitySetting.HandleUnits==1)
+            var yEnd = new YearEnd();
+            if (yEnd.InventoryRequired(false))
+            {
+                switch (VisibilitySetting.HandleUnits)
                 {
+                    case 1:
                         yEnd.GenerateAutomaticInventory();
+                        break;
+                    case 2:
+                        yEnd.GenerateAutomaticInventoryByUnit();
+                        break;
+                    case 3:
+                        yEnd.GenerateAutomaticInventoryByUnit();
+                        break;
                 }
-                else if(yEnd.InventoryRequiredForHandlingUnit(false) && VisibilitySetting.HandleUnits==2)
-                {
-                    yEnd.GenerateAutomaticInventoryByUnit();
-                }
-                else if (yEnd.InventoryRequiredForHandlingUnit(false) && VisibilitySetting.HandleUnits == 3)
-                {
-                    yEnd.GenerateAutomaticInventoryByUnit();
-                }
+            }
             
             Form frm;
             switch (tag)

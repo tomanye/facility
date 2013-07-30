@@ -127,12 +127,11 @@ namespace PharmInventory.Forms.Transactions
 
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                
-                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+               // btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                btnSave.Enabled = true;
                 month = 10;
-
             }
-           else
+            else
                 btnSave.Enabled = false;
 
 
