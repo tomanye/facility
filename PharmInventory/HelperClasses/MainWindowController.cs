@@ -98,28 +98,19 @@ namespace PharmInventory
         /// <param name="tag">The tag of the button - Here is stored what type of form is supposed to be opened</param>
         private void LoadForm(string tag)
         {
-            YearEnd yEnd = new YearEnd();
-            if (yEnd.InventoryRequired(false))
-            {
-                //if (XtraMessageBox.Show("Inventory information needs to be filled for the last fiscal year.  \n Choose 'Yes' to make ending balance of the previous year the beginning balance for this year. \n Choose 'No' to enter inventory data yourself.",
-                //                    "Inventory required", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
-                //    tag = "Year End Process";
-                //else
-                //{
-                switch (VisibilitySetting.HandleUnits)
+               var yEnd = new YearEnd();
+                if (yEnd.InventoryRequired(false) && VisibilitySetting.HandleUnits==1)
                 {
-                    case 1:
                         yEnd.GenerateAutomaticInventory();
-                        break;
-                    case 2:
-                        yEnd.GenerateAutomaticInventoryByUnit();
-                        break;
-                    case 3:
-                        yEnd.GenerateAutomaticInventoryByUnit();
-                        break;
                 }
-            }
-           
+                else if(yEnd.InventoryRequiredForHandlingUnit(false) && VisibilitySetting.HandleUnits==2)
+                {
+                    yEnd.GenerateAutomaticInventoryByUnit();
+                }
+                else if (yEnd.InventoryRequiredForHandlingUnit(false) && VisibilitySetting.HandleUnits == 3)
+                {
+                    yEnd.GenerateAutomaticInventoryByUnit();
+                }
             
             Form frm;
             switch (tag)
