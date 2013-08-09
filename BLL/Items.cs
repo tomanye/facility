@@ -877,7 +877,7 @@ namespace BLL
             //Items itmB = new Items();
            // Balance bal = new Balance();
             //Int64 AMC = bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);
-            double AMC = Builder.CalculateAverageConsumption(itemId,storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)), dtCurrent,CalculationOptions.Monthly);
+            double AMC = Builder.CalculateAverageConsumptionForMOS(itemId,storeId,dtCurrent.Subtract(TimeSpan.FromDays(180)), dtCurrent,CalculationOptions.Monthly);
                 //bal.CalculateAMC(itemId, storeId, dtCurrent.Month, dtCurrent.Year);//dtBal.Rows.Count <= 0) ? 0 : ((dtBal.Rows[0]["AMC"].ToString() != "") ? Convert.ToInt64(dtBal.Rows[0]["AMC"]) : 0);
             //double MinCon = AMC * min;
             //double maxCon = AMC * max;

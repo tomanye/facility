@@ -238,6 +238,32 @@ namespace StockoutIndexBuilder
            return amc;
        }
 
+       public static double CalculateAverageConsumptionForMOS(int itemId, int storeId, DateTime startDate, DateTime endDate, CalculationOptions option)
+       {
+           var numberOfDays = endDate.Subtract(startDate).TotalDays;
+           var totalCosumption =CalculateTotalConsumptionForMOS(itemId, storeId, startDate, endDate) * 1.0;
+           switch (option)
+           {
+               case CalculationOptions.Daily:
+                   return totalCosumption / numberOfDays;
+                   break;
+               case CalculationOptions.Weekly:
+                   return totalCosumption / (numberOfDays / 7);
+                   break;
+               case CalculationOptions.Monthly:
+                   return totalCosumption / (numberOfDays / 30);
+                   break;
+               case CalculationOptions.Quarterly:
+                   return totalCosumption / (numberOfDays / 123);
+                   break;
+               case CalculationOptions.Annual:
+                   return totalCosumption / (numberOfDays / 365);
+                   break;
+               default:
+                   break;
+           }
+           return 0;
+       }
        public static double CalculateAverageConsumption(int itemId,int storeId, DateTime startDate, DateTime endDate, CalculationOptions option)
         {
             var numberOfDays = endDate.Subtract(startDate).TotalDays;
@@ -265,12 +291,26 @@ namespace StockoutIndexBuilder
             return 0;
         }
 
+       public static long CalculateTotalConsumptionForMOS(int itemId, int storeId, DateTime startDate, DateTime endDate)
+       {
+           var db = new StockoutEntities();
+           var stockoutDays = CalculateStockoutDays(itemId, storeId, startDate, endDate);
+           var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId || m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
+           //var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId && m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
+           if (!allIssues.Any())
+               return 0;
+           var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity);
+           if (stockoutDays == 0)
+               return totalConsumption;
+           return totalConsumption + CalculateTotalConsumption(itemId, storeId, startDate.Subtract(TimeSpan.FromDays(stockoutDays)), startDate); ;
+       }
+
         public static long CalculateTotalConsumption(int itemId,int storeId, DateTime startDate, DateTime endDate)
         {
             var db = new StockoutEntities();
             var stockoutDays = CalculateStockoutDays(itemId,storeId, startDate, endDate);
-            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId || m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
-
+           // var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId || m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
+            var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId && m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
            if (!allIssues.Any())
                 return 0;
             var totalConsumption = Enumerable.Sum(allIssues,issue => issue.Quantity);
