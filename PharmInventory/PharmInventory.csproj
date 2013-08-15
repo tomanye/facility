@@ -737,7 +737,6 @@
     <Content Include="Scripts\36_alterunit.sql" />
     <Content Include="Scripts\37_GetReceivedItems.sql" />
     <Content Include="Scripts\38_NeedExpiryBatchForPahramaceuticals.sql" />
-    <Content Include="Scripts\39_SetNeedExpiryBatchForSupplies.sql" />
     <Content Include="Scripts\40_ItemUnit.sql" />
     <Content Include="Scripts\42_CreateItemUnitInsert.sql" />
     <Content Include="Scripts\43_CreateItemUnitLoadAll.sql" />
@@ -766,8 +765,6 @@
     <Content Include="Scripts\66_AlterIssueDocUpdate.sql" />
     <Content Include="Scripts\67_CreateItemUnitLoadByPrimaryKey.sql" />
     <Content Include="Scripts\68_ItemUnitUpdate.sql" />
-    <Content Include="Scripts\69_UpdateChemaicalEquipments.sql" />
-    <Content Include="Scripts\70_UpdateNeedExpiry Batch.sql" />
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
     <Content Include="Scripts\72_AlterAmcReport.sql" />
     <Content Include="Scripts\73_AlterYearEnd.sql" />

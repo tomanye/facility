@@ -477,7 +477,9 @@ namespace PharmInventory.Forms.Transactions
                             while (quantity > 0 && rec.RowCount > j)
                             {
                                 string batch;
-                                batch = itm.NeedExpiryBatch ? _dtRec.Rows[j]["BatchNo"].ToString() : "";
+                                if (itm.NeedExpiryBatch) 
+                                    batch = _dtRec.Rows[j]["BatchNo"].ToString();
+                                else batch = "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
                                 double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);

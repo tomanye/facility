@@ -49,6 +49,7 @@ namespace PharmInventory.Forms.Modals
             DataTable dtItem = itm.GetItemById(_itemId);
             txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["DosageForm"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
             ckExculed.Checked =itm.IsInHospitalList;
+            chkNeedExpiryBatch.Checked = itm.NeedExpiryBatch;
             txtText.Text = itm.StockCodeDACA ?? string.Empty;
             txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
            
@@ -231,11 +232,12 @@ namespace PharmInventory.Forms.Modals
                 itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
           
                 itm.IsInHospitalList = ckExculed.Checked;
-                
+                //itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
             
             string valid = ValidateFields();
             if (valid == "true")
             {
+                itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
                 itm.StockCodeDACA = txtText.Text;
                 itm.Cost = txtQuantityPerPack.Text;
                 itm.Save();

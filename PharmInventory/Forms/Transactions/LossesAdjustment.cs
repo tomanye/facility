@@ -474,21 +474,14 @@ namespace PharmInventory
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
+            var rDoc = new ReceiveDoc();
             if (cboStores.EditValue != null)
             {
-                //dtAdjustDate.Value = DateTime.Now;
-                //dtAdjustDate.CustomFormat = "MM/dd/yyyy";
-                //DateTime dtCurrent = ConvertDate.DateConverter(dtAdjustDate.Text);
-                //Items itm = new Items();
-                ////DataTable dtItem = ((selectedType == "Drug")?itm.GetItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue),dtCurrent.Year): itm.GetCommoditiesReceivedByBatch(Convert.ToInt32(cboStores.EditValue)));
-
-                BLL.ReceiveDoc rDoc = new ReceiveDoc();
-                DataTable dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue), (int)lkCategories.EditValue);  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
+                var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue), (int)lkCategories.EditValue);  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
                 PopulateItemList(dtItem);
             }
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
-            // lkCategories_EditValueChanged(null, null);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -507,7 +500,7 @@ namespace PharmInventory
             else if (!ckExpired.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = "";
-                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] >= #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
                 gridItemChoiceView.RefreshData();
             }
 
@@ -639,14 +632,15 @@ namespace PharmInventory
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
+
             if (!ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] >= #{0}# && [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
                 //gridItemChoiceView.RefreshData();
             }
             else if (ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# && [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
             }
 
         }
