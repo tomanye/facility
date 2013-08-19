@@ -1568,8 +1568,8 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCategory_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue == null) return;
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}",Convert.ToInt32(lkCategory.EditValue));
+            if (cboStores.EditValue == null && cboProgram.EditValue==null) return;
+            gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={0} and TypeID={1}", Convert.ToInt32(cboProgram.EditValue), Convert.ToInt32(lkCategory.EditValue));
         }
 
     }
