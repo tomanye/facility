@@ -1614,25 +1614,25 @@ namespace BLL
             var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
 
             var query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from" +
-                                         " Items left join (select ItemID,UnitID, sum(Quantity) as Quantity from ReceiveDoc rd " +
-                                         "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID,UnitID) as" +
-                                         " A on Items.ID = A.ItemID left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                         " Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd " +
+                                         "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID) as" +
+                                         " A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
-                                  "from Items left join (select ItemID, UnitID,sum(Quantity) Quantity " +
+                                  "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
-                                  "StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID " 
+                                  , dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from " +
-                                  "Items left join (select ItemID, UnitID,sum(case when Losses = 1 then - Quantity else " +
+                                  "Items left join (select ItemID,sum(case when Losses = 1 then - Quantity else " +
                                   "Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' " +
-                                  "and StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID " 
+                                 , dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
@@ -1660,7 +1660,6 @@ namespace BLL
                          StockCode = y["StockCode"],
                          BeginingBalance = Convert.ToDouble(y["SOH"]),
                          ProgramID = y["ProgramID"],
-                        // UnitID = y["UnitID"],
                          SOH = Convert.ToDouble(z["SOH"]),
                          Max = Convert.ToInt32(z["Max"]),
                          QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
@@ -1804,7 +1803,6 @@ namespace BLL
             value.Columns.Add("DaysOutOfStock", typeof(int));
             value.Columns.Add("MaxStockQty", typeof(double));
             value.Columns.Add("ProgramID", typeof(int));
-            value.Columns.Add("UnitID", typeof(int));
             value.Columns.Add("Status", typeof(string));
             value.Columns.Add("TypeID", typeof(int));
             foreach (var v in t2)
@@ -1853,25 +1851,22 @@ namespace BLL
             var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
 
             var query = string.Format("select distinct Items.DSItemID, isnull(Quantity,0) as Quantity from Items left join " +
-                                      "(select ItemID,UnitID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '" +
-                                      "{0}'and '{1}' and StoreID = '{2}' group by ItemID,UnitID) as A on Items.DSItemID = A.ItemID left " +
-                                      "join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                      "(select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd where [Date] between '" +
+                                      "{0}'and '{1}' and StoreID = '{2}' group by ItemID) as A on Items.DSItemID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
             query = string.Format("select distinct Items.DSItemID, isnull(Quantity,0) as Quantity " +
-                                  "from Items left join (select ItemID, UnitID,sum(Quantity) Quantity " +
+                                  "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
-                                  "StoreID = {2} group by ItemID,UnitID) as A on Items.DSItemID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "StoreID = {2} group by ItemID) as A on Items.DSItemID = A.ItemID ", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
             query = string.Format("select distinct Items.DSItemID, isnull(Quantity,0) as Quantity from " +
-                                  "Items left join (select ItemID, UnitID,sum(case when Losses = 1 then - Quantity else " +
+                                  "Items left join (select ItemID,sum(case when Losses = 1 then - Quantity else " +
                                   "Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' " +
-                                  "and StoreID = {2} group by ItemID,UnitID) as A on Items.DSItemID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "and StoreID = {2} group by ItemID) as A on Items.DSItemID = A.ItemID ", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
@@ -1881,7 +1876,7 @@ namespace BLL
             var preferredPackSizetbl = DataTable;
 
             var itm = new Items();
-            var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate1();
+            var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
 
             //query=string.Format("select ")
 
