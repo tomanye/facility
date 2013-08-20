@@ -182,13 +182,10 @@ namespace PharmInventory.Forms.Reports
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
-            {
-                Items itm = new Items();
-                DataTable dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
-                PopulateItemList(dtItem);
-            }
-
+            if (cboStores.EditValue == null || lkCommodityTypes.EditValue == null) return;
+            var itm = new Items();
+            var dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
+            PopulateItemList(dtItem);
         }
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)

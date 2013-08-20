@@ -783,7 +783,7 @@ namespace BLL
         public object[] CountNearlyExpiredQtyAmount(int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT Count(*) AS Qty,Sum(QuantityLeft * Cost) AS Price FROM vwGetReceivedItemsByBatch WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) ", storeId));
+            this.LoadFromRawSql(String.Format("SELECT Count(*) AS Qty,Sum(QuantityLeft * Cost) AS Price FROM vwGetReceivedItems WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) ", storeId));
             Int64 qunatity = 0;
             double price = 0;
             qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
@@ -820,7 +820,11 @@ namespace BLL
         public object[] GetAllSOHQtyAmount(int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("select Count( Distinct ItemID) As Qty, Sum(QuantityLeft * Cost)As SOHPrice from ReceiveDoc where StoreID = {0} AND QuantityLeft > 0", storeId));
+            var query =
+                String.Format(
+                    "select Count( Distinct ItemID) As Qty, Sum(QuantityLeft * Cost)As SOHPrice from ReceiveDoc where StoreID = {0} AND QuantityLeft > 0",
+                    storeId);
+            this.LoadFromRawSql(query);
             Int64 soh = 0;
             double sohPrice = 0;
             if (this.DataTable.Rows.Count > 0)
