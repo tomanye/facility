@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -15,8 +16,6 @@ namespace PharmInventory.Forms.Modals
 {
     public partial class TransferForm : DevExpress.XtraEditors.XtraForm
     {
-        private readonly ReceiveDoc receive = new ReceiveDoc();
-
         public TransferForm()
         {
             InitializeComponent();
@@ -24,11 +23,11 @@ namespace PharmInventory.Forms.Modals
 
         #region Members
 
-        private int tabPage;
-        private string selectedType = "Drug";
-        private DataTable dtSelectedTable = null;
-        private int itemID;
-        private DataTable dtRecGrid = new DataTable();
+        int _tabPage=0;
+        string _selectedType = "Drug";
+        DataTable _dtSelectedTable;
+        private int _itemID;
+        DataTable _dtRecGrid = new DataTable();
 
         #endregion
 
@@ -37,101 +36,69 @@ namespace PharmInventory.Forms.Modals
             var store = new Stores();
             store.GetActiveStores();
             lkFromStore.Properties.DataSource = store.DefaultView;
-
-
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes().DefaultView;
-            lkCategories.ItemIndex = 0;
-
+            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
 
             var units = new ItemUnit();
             var allunits = units.GetAllUnits();
             unitBindingSource.DataSource = allunits.DefaultView;
 
-            cboStores.Properties.DataSource = store.DefaultView;
-
-            var prog = new Programs();
-            var dtProg = prog.GetSubPrograms();
-            object[] objProg = { 0, "All Programs", "", 0, "" };
-            dtProg.Rows.Add(objProg);
-            cboProgram.Properties.DataSource = dtProg;
-            cboProgram.ItemIndex = -1;
-            cboProgram.Text = "Select Program";
-            cboProgram.Properties.DisplayMember = "Name";
-            cboProgram.Properties.ValueMember = "ID";
-
-            var sup = new Supplier();
-            var dtSup = new DataTable();
-            sup.GetActiveSuppliers();
-            dtSup = sup.DefaultView.ToTable();
-            cboSuppliers.DataSource = dtSup;
-            cboSupplier.Properties.DataSource = sup.DefaultView;
-           // cboSuppliers.Text = "Select Supplier";
-            cboSuppliers.ValueMember = "ID";
-            cboSuppliers.DisplayMember = "CompanyName";
-
-            // Bind the grid with only active items
-
-            var dtItem = BLL.Items.GetActiveItemsByCommodityType(0);
-            PopulateItemList(dtItem);
-
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
-            lkCategories.ItemIndex = 0;
-
-            var unitcolumn = ((GridView) receivingGrid.MainView).Columns[9];
-            var unitcolumns = ((GridView)receivingGrid.MainView).Columns[4];
-            var unitcolumns2 = ((GridView)gridItemsChoice.MainView).Columns[2];
+            lkToStore.Properties.DataSource = store.DefaultView;
+            var unitcolumn0 = ((GridView)gridItemsChoice.MainView).Columns[7];
+            var unitcolumn1 = ((GridView)gridItemsChoice.MainView).Columns[2];
+            var unitcolumn2 = ((GridView)receivingGrid.MainView).Columns[4];
+           
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
-                    unitcolumn.Visible = false;
-                    unitcolumns.Visible = true;
-                    unitcolumns2.Visible = true;
+                    unitcolumn0.Visible = false;
+                    unitcolumn1.Visible = true;
+                    unitcolumn2.Visible = false;
                     break;
                 case 2:
-                    unitcolumn.Visible = true;
-                    unitcolumns.Visible = false;
-                    unitcolumns2.Visible = false;
+                    unitcolumn0.Visible = true;
+                    unitcolumn1.Visible = false;
+                    unitcolumn2.Visible = true;
                     break;
                 default:
-                    unitcolumn.Visible = true;
-                    unitcolumns.Visible = false;
-                    unitcolumns2.Visible = false;
+                    unitcolumn0.Visible = true;
+                    unitcolumn1.Visible = false;
+                    unitcolumn2.Visible = true;
                     break;
             }
 
-            //PopulateItemList(dtItem);
-            selectedType = radioGroup1.EditValue.ToString();
-           // PopulateCatTree(selectedType);
+            lkCategories.ItemIndex = 0;
+            lkFromStore.ItemIndex = 0;
 
-            int userID = MainWindow.LoggedinId;
-            User us = new User();
+            var userID = MainWindow.LoggedinId;
+            var us = new User();
             us.LoadByPrimaryKey(userID);
+            txtApprovedBy.Text = us.FullName;
            
 
             // bind the current date as the datetime field
             dtRecDate.Value = DateTime.Now;
-        }
+            gridItemsView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# ", DateTime.Now);
+       }
 
-
-        private void lkCategories_EditValueChanged(object sender, EventArgs e)
-        {
-            gridItemsView.ActiveFilterString = string.Format("TypeID={0}", (int) lkCategories.EditValue);
-        }
 
         private void PopulateItemList(DataTable dtItem)
         {
-           // gridItemsChoice.DataSource = dtItem;
-            if (dtSelectedTable == null)
+            if (_dtSelectedTable == null)
             {
-                dtSelectedTable = dtItem.Clone();
-                dtSelectedTable.PrimaryKey = new DataColumn[] { dtSelectedTable.Columns["ID"] };
+                _dtSelectedTable = dtItem.Clone();
+                _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ReceiveID"] };
             }
             gridItemsChoice.DataSource = dtItem;
+          
             try
             {
                 dtItem.Columns.Add("IsSelected", typeof(bool));
             }
-            catch { }
+          
+            catch (Exception exception)
+            {
+                throw new InvalidDataException(exception.Message);
+            }
 
         }
 
@@ -148,86 +115,51 @@ namespace PharmInventory.Forms.Modals
                 try
                     {
                       var dtRecGrid = (DataTable)receivingGrid.DataSource;
-
                         for (int i = 0; i < dtRecGrid.Rows.Count; i++)
                         {
-                            if (dtRecGrid.Rows[i]["Expiry Date"] != DBNull.Value)
-                            {
-                                if (Convert.ToDateTime(dtRecGrid.Rows[i]["Expiry Date"]) <= DateTime.Now)
-                                {
-                                    var dialog =
-                                        XtraMessageBox.Show(
-                                            "The item " + dtRecGrid.Rows[i]["Item Name"].ToString() +
-                                            " has already expired.  Are you sure you want to transfer it?", "Warning",
-                                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                                    if (dialog == DialogResult.No)
-                                    {
-                                        return;
-                                    }
-
-                                }
-                            }
                             transfer.AddNew();
+                            var receiveid = Convert.ToInt32(dtRecGrid.Rows[i]["RecID"]);
+                            transfer.ItemID = _itemID = Convert.ToInt32(dtRecGrid.Rows[i]["ID"]);
+                            transfer.RecID = receiveid;
+                            transfer.BatchNo = dtRecGrid.Rows[i]["Batch No"].ToString();
                             transfer.FromStoreID = Convert.ToInt32(lkFromStore.EditValue);
-                            transfer.ToStoreID = Convert.ToInt32(cboStores.EditValue);
-                            transfer.RefNo = txtRefNo.Text.Trim();
+                            transfer.ToStoreID = Convert.ToInt32(lkToStore.EditValue);
+                            transfer.Quantity = Convert.ToInt64(dtRecGrid.Rows[i]["Qty To Transfer"]);
+                            transfer.RefNo = txtRefNo.Text;
+                            transfer.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
+
                             DateTime xx = dtRecDate.Value;
                             dtRecDate.CustomFormat = "MM/dd/yyyy";
-                            var dtRec = new DateTime();
+                            new DateTime();
                             transfer.Date = ConvertDate.DateConverter(dtRecDate.Text);
-                            dtRec = ConvertDate.DateConverter(dtRecDate.Text);
+                            ConvertDate.DateConverter(dtRecDate.Text);
                             dtRecDate.IsGregorianCurrentCalendar = true;
 
                             transfer.EurDate = dtRecDate.Value;
                             dtRecDate.IsGregorianCurrentCalendar = false;
-                            transfer.ItemID = itemID = Convert.ToInt32(dtRecGrid.Rows[i][0]);
-                            transfer.NoOfPack = Convert.ToInt32(dtRecGrid.Rows[i]["Pack Qty"]);
-                            transfer.QtyPerPack = Convert.ToInt32(dtRecGrid.Rows[i]["Qty/Pack"]);
-                            transfer.Quantity = transfer.NoOfPack * transfer.QtyPerPack;
-                            transfer.QuantityLeft = transfer.Quantity;
-                            transfer.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(dtRecGrid.Rows[i]["UnitID"]);
-
-                            if (dtRecGrid.Rows[i]["Price/Pack"] != null &&
-                                dtRecGrid.Rows[i]["Price/Pack"].ToString() != "")
-                            {
-                                double pre = Convert.ToDouble(dtRecGrid.Rows[i]["Price/Pack"]) / transfer.QtyPerPack;
-                                transfer.Cost = Convert.ToDouble(pre);
-                            }
-                            else
-                            {
-                                transfer.Cost = 0;
-                            }
                             
-                            itm.LoadByPrimaryKey(Convert.ToInt32(dtRecGrid.Rows[i]["ID"]));
-                            transfer.BatchNo = dtRecGrid.Rows[i][8].ToString();
-                            if (dtRecGrid.Rows[i]["Expiry Date"] != DBNull.Value)
-                            {
-                                transfer.ExpDate = Convert.ToDateTime(dtRecGrid.Rows[i]["Expiry Date"]);
-                            }
-                            transfer.SupplierID = Convert.ToInt32(cboSupplier.EditValue);
-                            transfer.SubProgramID = Convert.ToInt32(cboProgram.EditValue);
-                            string batch = DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() +
-                                           DateTime.Now.Minute.ToString() + transfer.ItemID.ToString();
-                            transfer.LocalBatchNo = batch;
+                          
+                           
+                            transfer.TransferReason = txtTransferReason.Text;
+                            transfer.ApprovedBy = txtApprovedBy.Text;
+                            transfer.TransferRequestedBy = txtRequestedBy.Text;
                             transfer.Save();
-                            dtRecDate.Value = xx;
 
+                          
+                            transfer.GetTransfered(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
+                           
+                            receiveDoc.GetReceivedItems(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
+                            receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - transfer.Quantity;
 
-                            transfer.GetTransfered(itemID, Convert.ToInt32(lkFromStore.EditValue));
-                            receiveDoc.GetReceivedItems(itemID, Convert.ToInt32(lkFromStore.EditValue));
-                            receiveDoc.NoOfPack = (receiveDoc.NoOfPack - transfer.NoOfPack);
-                            receiveDoc.QtyPerPack = receiveDoc.QtyPerPack - transfer.QtyPerPack;
-                            receiveDoc.Quantity = (receiveDoc.NoOfPack * receiveDoc.QtyPerPack) - (transfer.NoOfPack * transfer.QtyPerPack);
-                            receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - transfer.QuantityLeft;
+                            //receiveDoc.GetReceivedItems(receiveid, _itemID, Convert.ToInt32(lkToStore.EditValue));
+                            //receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + transfer.Quantity;
+
                             receiveDoc.Save();
 
                         }
                         
-                        XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK,
-                                            MessageBoxIcon.Information);
 
-
+                        XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ResetFields();
                         
                     }
@@ -265,12 +197,7 @@ namespace PharmInventory.Forms.Modals
                 return valid;
             }
 
-            //if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
-            //{
-            //    valid = "You can not transfer an item because it is an inventory period!";
-            //}
-
-            if (lkFromStore != null && Convert.ToInt32(lkFromStore.EditValue) == Convert.ToInt32(cboStores.EditValue))
+            if (lkFromStore != null && Convert.ToInt32(lkFromStore.EditValue) == Convert.ToInt32(lkToStore.EditValue))
             {
                 valid = "You cannot transfer an item to the same store.";
                 return valid;
@@ -280,45 +207,21 @@ namespace PharmInventory.Forms.Modals
                 valid = "Please correct the highlighted filed!";
             }
 
-            Items itm = new Items();
+            var itm = new Items();
             for (int i = 0; i < gridRecieveView.DataRowCount; i++)
             {
                 DataRow dr = gridRecieveView.GetDataRow(i);
                 dr.ClearErrors();
-                if (dr["Qty/Pack"] == null || dr["Qty/Pack"].ToString() == "" || Convert.ToInt64(dr["Qty/Pack"]) == 0)
+
+                if (dr["Qty To Transfer"] == null || dr["Qty To Transfer"].ToString() == "" || Convert.ToInt64(dr["Qty To Transfer"]) == 0)
                 {
-                    dr.SetColumnError("Qty/Pack", "This field cannot be left blank.");
+                    dr.SetColumnError("Qty To Transfer", "This field cannot be left blank.");
                     valid = "Please fill the requested feild!";
                 }
 
-                if (dr["Pack Qty"] == null || dr["Pack Qty"].ToString() == "" || Convert.ToInt64(dr["Pack Qty"]) == 0)
-                {
-                    dr.SetColumnError("Pack Qty", "This field cannot be left blank.");
-                    valid = "Please fill the requested feild!";
-                }
+                itm.LoadByPrimaryKey(Convert.ToInt32(_dtRecGrid.Rows[i]["ID"]));
 
-                itm.LoadByPrimaryKey(Convert.ToInt32(dtRecGrid.Rows[i]["ID"]));
-
-                if (!itm.IsColumnNull("NeedExpiryBatch"))
-                {
-                    if (itm.NeedExpiryBatch)
-                    {
-
-                        if (dr["Expiry Date"].ToString() == "")
-                        {
-                            dr.SetColumnError("Expiry Date", "This field cannot be left blank.");
-                            valid = "Please fill the requested feild!";
-                        }
-
-                        if (dr["Batch No"].ToString() == "")
-                        {
-                            dr.SetColumnError("Batch No", "This field cannot be left blank.");
-                            valid = "Please fill the requested feild!";
-                        }
-                    }
-                }
-            }
-
+              }
             return valid;
 
         }
@@ -329,12 +232,12 @@ namespace PharmInventory.Forms.Modals
         private void ResetFields()
         {
             tabControl1.SelectedTabPageIndex = 0;
-            cboStores.ItemIndex = 0;
-            //txtReceivedBy.Text = "";
-            //txtRemark.Text = "";
+            lkToStore.ItemIndex = 0;
             dtRecDate.Value = DateTime.Now;
+            txtRequestedBy.Text = "";
+            txtTransferReason.Text = "";
             txtItemName.Text = "";
-            dtSelectedTable.Rows.Clear();
+            _dtSelectedTable.Rows.Clear();
             foreach (DataRowView dr in ((DataView)gridItemsView.DataSource))
             {
                 dr["IsSelected"] = false;
@@ -342,137 +245,115 @@ namespace PharmInventory.Forms.Modals
         }
         private void gridItemsView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            DataRow dr = gridItemsView.GetFocusedDataRow();
-            bool b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
-            dr["IsSelected"] = !b;
-            dr.EndEdit();
+            var view = sender as GridView;
+            if (view != null)
+            {
+                var dr = view.GetFocusedDataRow();
+                dr["IsSelected"] = ((dr["IsSelected"] == DBNull.Value) || !Convert.ToBoolean(dr["IsSelected"])); // true;
+                dr.EndEdit();
+            }
             OnItemCheckedChanged(new object(), new EventArgs());
         }
 
         private void OnItemCheckedChanged(object o, EventArgs eventArgs)
         {
-            DataRow dr = gridItemsView.GetFocusedDataRow();
+            var dr = gridItemsView.GetFocusedDataRow();
 
-            bool b = (dr["IsSelected"] != DBNull.Value) ? Convert.ToBoolean(dr["IsSelected"]) : false;
+            var b = (dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]);
 
             if (b)
             {
                 try
                 {
-                    dtSelectedTable.ImportRow(dr);
+                    _dtSelectedTable.ImportRow(dr);
                 }
                 catch
                 {
+                    
                 }
             }
             else
             {
-                int id = Convert.ToInt32(dr["ID"]);
-                DataRow rw = dtSelectedTable.Rows.Find(id);
+                int id = Convert.ToInt32(dr["ReceiveID"]);
+                DataRow rw = _dtSelectedTable.Rows.Find(id);
                 if (rw != null)
                 {
-                    dtSelectedTable.Rows.Remove(rw);
+                    _dtSelectedTable.Rows.Remove(rw);
                     try
                     {
-                        DataRow[] dataRows = dtRecGrid.Select(String.Format("ID = {0}", dr["ID"]));
-                            // dtRecGrid.Rows.Remove(dtRecGrid.Rows.Find(dr["ID"]));
+                        DataRow[] dataRows = _dtRecGrid.Select(String.Format("ReceiveID = {0}", dr["ReceiveID"]));
                         foreach (DataRow r in dataRows)
                         {
                             r.Delete();
                         }
                     }
-                    catch
-                    {
-                    }
+                    catch { }
                 }
             }
         }
 
         private void PopulateListToGrid()
         {
-            if (receivingGrid.DataSource != null)
-            {
-                DataTable dt = new DataTable();
-                receivingGrid.DataSource = dt;
-                dtRecGrid = new DataTable();
-            }
-            Items itm = new Items();
-            tabPage = 1;
+            _dtRecGrid = new DataTable();
+            var itm = new Items();
+            var rec = new ReceiveDoc();
+            _tabPage = 1;
             tabControl1.SelectedTabPageIndex = 1;
-
-
-            receivingGrid.DataSource = new DataTable();
-
-            // No reason really to populate the grid columns like this.
-            if (dtRecGrid.Columns.Count == 0)
+            if (_dtRecGrid.Columns.Count == 0)
             {
-                string[] str = { "ID", "Stock Code", "Item Name", "Pack Qty", "Qty/pack", "BU Qty", "Unit", "Price/Pack", "Batch No", "Expiry Date", "Total Price" };
+                string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Qty To Transfer", "RecID", "UnitID"};
                 foreach (string col in str)
                 {
-                    if (col == "Expiry Date")
-                    {
-                        dtRecGrid.Columns.Add(col, typeof(DateTime));
-                    }
-                    else
-                    {
-                        dtRecGrid.Columns.Add(col);
-                    }
+                    _dtRecGrid.Columns.Add(col);
                 }
             }
             int count = 1;
-
-            // this could get better
-            foreach (DataRow lst in dtSelectedTable.Rows)
+            foreach (DataRow dr in _dtSelectedTable.Rows)
             {
-                string itemName = lst["FullItemName"].ToString();
-                object[] obj = { lst["ID"].ToString(), lst["StockCode"].ToString(), itemName, 1, 1, 1, lst["Unit"].ToString(), "", "" };
-                dtRecGrid.Rows.Add(obj);
+                rec.LoadByPrimaryKey(Convert.ToInt32(dr["ReceiveID"]));
+
+                int id = Convert.ToInt32(dr["ItemID"]);
+                double price = 0;
+                if (!rec.IsColumnNull("Cost"))
+                {
+                    price = (rec.RowCount > 0) ? Convert.ToDouble(rec.Cost) * rec.QuantityLeft : 0;
+                }
+                DataTable dtItm = itm.GetItemById(id);
+                string itemName = dtItm.Rows[0]["FullItemName"].ToString();
+                object[] obj;
+                switch (VisibilitySetting.HandleUnits)
+                {
+                    case 1:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),rec.QuantityLeft, price, "",Convert.ToInt32(dr["ReceiveID"]),0};
+                        break;
+                    case 2:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),rec.QuantityLeft, price, "",Convert.ToInt32(dr["ReceiveID"]),rec.UnitID
+                                 };
+                        break;
+                    default:
+                        obj = new object[]
+                                 {
+                                     id, dtItm.Rows[0]["StockCode"].ToString(),itemName, rec.BatchNo, dtItm.Rows[0]["Unit"].ToString(),rec.QuantityLeft, price, "",Convert.ToInt32(dr["ReceiveID"]),rec.UnitID
+                                 };
+                        break;
+                }
+                _dtRecGrid.Rows.Add(obj);
                 count++;
             }
-            receivingGrid.DataSource = dtRecGrid;
-            dtRecGrid.DefaultView.Sort = "Stock Code";
-            dtRecDate.CustomFormat = "MMM dd,yyyy";
+            receivingGrid.DataSource =_dtRecGrid;
+            txtTranferFrom.Text = lkFromStore.Text;
         }
 
-        private void tabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (tabPage == 0)
-            {
-                if (dtSelectedTable.Rows.Count > 0)
-                {
-                    PopulateListToGrid();
-                }
-                else
-                {
-                    if (tabControl1.SelectedTabPageIndex != 0)
-                    {
-                        tabControl1.SelectedTabPageIndex = 0;
-                        XtraMessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-                    }
-                }
-            }
-            else if (tabPage == 1)
-            {
-                if (tabControl1.SelectedTabPageIndex != 1)
-                    tabPage = 0;
-            }
-        }
-
-        private void txtItemName_TextChanged(object sender, EventArgs e)
+        private void TxtItemNameTextChanged(object sender, EventArgs e)
         {
             gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '%{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
         }
 
-        private void repositoryItemButtonEdit2_Click(object sender, EventArgs e)
-        {
-            DataRow dr = gridRecieveView.GetDataRow(gridRecieveView.GetSelectedRows()[0]);
-
-            dtRecGrid.ImportRow(dr);
-            dtRecGrid.DefaultView.Sort = "Stock Code";
-        }
-
-        private void repositoryItemLookUpEdit1_Enter(object sender, EventArgs e)
+        private void RepositoryItemLookUpEdit1Enter(object sender, EventArgs e)
         {
             var edit = sender as LookUpEdit;
             if (edit == null) return;
@@ -486,7 +367,68 @@ namespace PharmInventory.Forms.Modals
             edit.Properties.DisplayMember = "Text";
             edit.Properties.ValueMember = "ID";
         }
-        
+
+        private void LkFromStoreEditValueChanged(object sender, EventArgs e)
+        {
+            var rDoc = new ReceiveDoc();
+            if (lkFromStore.EditValue == null) return;
+            var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);  
+            PopulateItemList(dtItem);
+        }
+
+
+        private bool Validate()
+        {
+            switch (_tabPage)
+            {
+                case 0:
+                    if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
+                    {
+                        PopulateListToGrid();
+                    }
+                    else
+                    {
+                        tabControl1.SelectedTabPageIndex = 0;
+                        XtraMessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return false;
+                    }
+                    break;
+                case 1:
+                    if (tabControl1.SelectedTabPageIndex != 1)
+                        _tabPage = 0;
+                    break;
+            }
+            return true;
+        }
+
+        private void TabControl1SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
+        {
+            if (e.Page != tabPage2) return;
+            if (!Validate())
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void BtnPickClick(object sender, EventArgs e)
+        {
+            if (_tabPage == 0)
+            {
+                if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
+                {
+                    PopulateListToGrid();
+                }
+                else
+                {
+                    XtraMessageBox.Show("You must select a drug to populate.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+            }
+            else if (_tabPage == 1)
+            {
+                if (tabControl1.SelectedTabPageIndex != 1)
+                    _tabPage = 0;
+            }
+        }
 
     }
 }

@@ -60,14 +60,6 @@ namespace DAL
                }
            }
 
-           public static SqlParameter BatchNo
-           {
-               get
-               {
-                   return new SqlParameter("@BatchNo", SqlDbType.VarChar, 50);
-               }
-           }
-
            public static SqlParameter ItemID
            {
                get
@@ -76,11 +68,11 @@ namespace DAL
                }
            }
 
-           public static SqlParameter SupplierID
+           public static SqlParameter BatchNo
            {
                get
                {
-                   return new SqlParameter("@SupplierID", SqlDbType.Int, 0);
+                   return new SqlParameter("@BatchNo", SqlDbType.VarChar, 50);
                }
            }
 
@@ -92,51 +84,11 @@ namespace DAL
                }
            }
 
-           public static SqlParameter Date
+           public static SqlParameter UnitID
            {
                get
                {
-                   return new SqlParameter("@Date", SqlDbType.DateTime, 0);
-               }
-           }
-
-           public static SqlParameter ExpDate
-           {
-               get
-               {
-                   return new SqlParameter("@ExpDate", SqlDbType.DateTime, 0);
-               }
-           }
-
-           public static SqlParameter Out
-           {
-               get
-               {
-                   return new SqlParameter("@Out", SqlDbType.Bit, 0);
-               }
-           }
-
-           public static SqlParameter ReceivedStatus
-           {
-               get
-               {
-                   return new SqlParameter("@ReceivedStatus", SqlDbType.Int, 0);
-               }
-           }
-
-           public static SqlParameter ReceivedBy
-           {
-               get
-               {
-                   return new SqlParameter("@ReceivedBy", SqlDbType.VarChar, 50);
-               }
-           }
-
-           public static SqlParameter Remark
-           {
-               get
-               {
-                   return new SqlParameter("@Remark", SqlDbType.Text, 2147483647);
+                   return new SqlParameter("@UnitID", SqlDbType.Int, 0);
                }
            }
 
@@ -156,14 +108,6 @@ namespace DAL
                }
            }
 
-           public static SqlParameter LocalBatchNo
-           {
-               get
-               {
-                   return new SqlParameter("@LocalBatchNo", SqlDbType.VarChar, 50);
-               }
-           }
-
            public static SqlParameter RefNo
            {
                get
@@ -172,44 +116,11 @@ namespace DAL
                }
            }
 
-           public static SqlParameter Cost
+           public static SqlParameter Date
            {
                get
                {
-                   return new SqlParameter("@Cost", SqlDbType.Float, 0);
-               }
-           }
-
-           public static SqlParameter IsApproved
-           {
-               get
-               {
-                   return new SqlParameter("@IsApproved", SqlDbType.Bit, 0);
-               }
-           }
-
-         
-           public static SqlParameter QuantityLeft
-           {
-               get
-               {
-                   return new SqlParameter("@QuantityLeft", SqlDbType.BigInt, 0);
-               }
-           }
-
-           public static SqlParameter NoOfPack
-           {
-               get
-               {
-                   return new SqlParameter("@NoOfPack", SqlDbType.Int, 0);
-               }
-           }
-
-           public static SqlParameter QtyPerPack
-           {
-               get
-               {
-                   return new SqlParameter("@QtyPerPack", SqlDbType.Int, 0);
+                   return new SqlParameter("@Date", SqlDbType.DateTime, 0);
                }
            }
 
@@ -221,28 +132,38 @@ namespace DAL
                }
            }
 
-           public static SqlParameter BoxLevel
+           public static SqlParameter TransferRequestedBy
            {
                get
                {
-                   return new SqlParameter("@BoxLevel", SqlDbType.Int, 0);
+                   return new SqlParameter("@TransferRequestedBy", SqlDbType.NVarChar, 100);
                }
            }
 
-           public static SqlParameter SubProgramID
+           public static SqlParameter TransferReason
            {
                get
                {
-                   return new SqlParameter("@SubProgramID", SqlDbType.Int, 0);
+                   return new SqlParameter("@TransferReason", SqlDbType.Text, 2147483647);
                }
            }
-           public static SqlParameter UnitID
+
+           public static SqlParameter ApprovedBy
            {
                get
                {
-                   return new SqlParameter("@UnitID", SqlDbType.Int, 0);
+                   return new SqlParameter("@ApprovedBy", SqlDbType.NVarChar, 100);
                }
            }
+
+           public static SqlParameter RecID
+           {
+               get
+               {
+                   return new SqlParameter("@RecID", SqlDbType.Int, 0);
+               }
+           }
+            
        }
        #endregion
 
@@ -250,29 +171,19 @@ namespace DAL
        public class ColumnNames
        {
            public const string ID = "ID";
-           public const string BatchNo = "BatchNo";
            public const string ItemID = "ItemID";
-           public const string SupplierID = "SupplierID";
+           public const string BatchNo = "BatchNo";
            public const string Quantity = "Quantity";
-           public const string Date = "Date";
-           public const string ExpDate = "ExpDate";
-           public const string Out = "Out";
-           public const string ReceivedStatus = "ReceivedStatus";
-           public const string ReceivedBy = "ReceivedBy";
-           public const string Remark = "Remark";
+           public const string UnitID = "UnitID";
            public const string FromStoreID = "FromStoreID";
            public const string ToStoreID = "ToStoreID";
-           public const string LocalBatchNo = "LocalBatchNo";
            public const string RefNo = "RefNo";
-           public const string Cost = "Cost";
-           public const string IsApproved = "IsApproved";
-           public const string QuantityLeft = "QuantityLeft";
-           public const string NoOfPack = "NoOfPack";
-           public const string QtyPerPack = "QtyPerPack";
+           public const string Date = "Date";
            public const string EurDate = "EurDate";
-           public const string BoxLevel = "BoxLevel";
-           public const string SubProgramID = "SubProgramID";
-           public const string UnitID = "UnitID";
+           public const string TransferRequestedBy = "TransferRequestedBy";
+           public const string TransferReason = "TransferReason";
+           public const string ApprovedBy = "ApprovedBy";
+           public const string RecID = "RecID";
 
            static public string ToPropertyName(string columnName)
            {
@@ -283,26 +194,17 @@ namespace DAL
                    ht[ID] = _Transfer.PropertyNames.ID;
                    ht[BatchNo] = _Transfer.PropertyNames.BatchNo;
                    ht[ItemID] = _Transfer.PropertyNames.ItemID;
-                   ht[SupplierID] = _Transfer.PropertyNames.SupplierID;
                    ht[Quantity] = _Transfer.PropertyNames.Quantity;
+                   ht[UnitID] = _Transfer.PropertyNames.UnitID;
                    ht[Date] = _Transfer.PropertyNames.Date;
-                   ht[ExpDate] = _Transfer.PropertyNames.ExpDate;
-                   ht[Out] = _Transfer.PropertyNames.Out;
-                   ht[ReceivedStatus] = _Transfer.PropertyNames.ReceivedStatus;
-                   ht[ReceivedBy] = _Transfer.PropertyNames.ReceivedBy;
-                   ht[Remark] = _Transfer.PropertyNames.Remark;
                    ht[FromStoreID] = _Transfer.PropertyNames.FromStoreID;
                    ht[ToStoreID] = _Transfer.PropertyNames.ToStoreID;
-                   ht[LocalBatchNo] = _Transfer.PropertyNames.LocalBatchNo;
                    ht[RefNo] = _Transfer.PropertyNames.RefNo;
-                   ht[Cost] = _Transfer.PropertyNames.Cost;
-                   ht[IsApproved] = _Transfer.PropertyNames.IsApproved;
-                   ht[QuantityLeft] = _Transfer.PropertyNames.QuantityLeft;
-                   ht[NoOfPack] = _Transfer.PropertyNames.NoOfPack;
-                   ht[QtyPerPack] = _Transfer.PropertyNames.QtyPerPack;
                    ht[EurDate] = _Transfer.PropertyNames.EurDate;
-                   ht[BoxLevel] = _Transfer.PropertyNames.BoxLevel;
-                   ht[SubProgramID] = _Transfer.PropertyNames.SubProgramID;
+                   ht[TransferReason] = _Transfer.PropertyNames.TransferReason;
+                   ht[TransferRequestedBy] = _Transfer.PropertyNames.TransferRequestedBy;
+                   ht[ApprovedBy] = _Transfer.PropertyNames.ApprovedBy;
+                   ht[RecID] = _Transfer.PropertyNames.RecID;
 
                }
                return (string)ht[columnName];
@@ -318,27 +220,17 @@ namespace DAL
            public const string ID = "ID";
            public const string BatchNo = "BatchNo";
            public const string ItemID = "ItemID";
-           public const string SupplierID = "SupplierID";
            public const string Quantity = "Quantity";
            public const string Date = "Date";
-           public const string ExpDate = "ExpDate";
-           public const string Out = "Out";
-           public const string ReceivedStatus = "ReceivedStatus";
-           public const string ReceivedBy = "ReceivedBy";
-           public const string Remark = "Remark";
            public const string FromStoreID = "FromStoreID";
            public const string ToStoreID = "ToStoreID";
-           public const string LocalBatchNo = "LocalBatchNo";
            public const string RefNo = "RefNo";
-           public const string Cost = "Cost";
-           public const string IsApproved = "IsApproved";
-           public const string QuantityLeft = "QuantityLeft";
-           public const string NoOfPack = "NoOfPack";
-           public const string QtyPerPack = "QtyPerPack";
            public const string EurDate = "EurDate";
-           public const string BoxLevel = "BoxLevel";
-           public const string SubProgramID = "SubProgramID";
            public const string UnitID = "UnitID";
+           public const string TransferRequestedBy = "TransferRequestedBy";
+           public const string TransferReason = "TransferReason";
+           public const string ApprovedBy = "ApprovedBy";
+           public const string RecID = "RecID";
 
            static public string ToColumnName(string propertyName)
            {
@@ -349,27 +241,17 @@ namespace DAL
                    ht[ID] = _Transfer.ColumnNames.ID;
                    ht[BatchNo] = _Transfer.ColumnNames.BatchNo;
                    ht[ItemID] = _Transfer.ColumnNames.ItemID;
-                   ht[SupplierID] = _Transfer.ColumnNames.SupplierID;
                    ht[Quantity] = _Transfer.ColumnNames.Quantity;
                    ht[Date] = _Transfer.ColumnNames.Date;
-                   ht[ExpDate] = _Transfer.ColumnNames.ExpDate;
-                   ht[Out] = _Transfer.ColumnNames.Out;
-                   ht[ReceivedStatus] = _Transfer.ColumnNames.ReceivedStatus;
-                   ht[ReceivedBy] = _Transfer.ColumnNames.ReceivedBy;
-                   ht[Remark] = _Transfer.ColumnNames.Remark;
                    ht[FromStoreID] = _Transfer.ColumnNames.FromStoreID;
                    ht[ToStoreID] = _Transfer.ColumnNames.ToStoreID;
-                   ht[LocalBatchNo] = _Transfer.ColumnNames.LocalBatchNo;
+                   ht[TransferReason] = _Transfer.ColumnNames.TransferReason;
                    ht[RefNo] = _Transfer.ColumnNames.RefNo;
-                   ht[Cost] = _Transfer.ColumnNames.Cost;
-                   ht[IsApproved] = _Transfer.ColumnNames.IsApproved;
-                   ht[QuantityLeft] = _Transfer.ColumnNames.QuantityLeft;
-                   ht[NoOfPack] = _Transfer.ColumnNames.NoOfPack;
-                   ht[QtyPerPack] = _Transfer.ColumnNames.QtyPerPack;
+                   ht[TransferRequestedBy] = _Transfer.ColumnNames.TransferRequestedBy;
+                   ht[ApprovedBy] = _Transfer.ColumnNames.ApprovedBy;
                    ht[EurDate] = _Transfer.ColumnNames.EurDate;
-                   ht[BoxLevel] = _Transfer.ColumnNames.BoxLevel;
-                   ht[SubProgramID] = _Transfer.ColumnNames.SubProgramID;
                    ht[UnitID] = _Transfer.ColumnNames.UnitID;
+                   ht[RecID] = _Transfer.ColumnNames.RecID;
                }
                return (string)ht[propertyName];
            }
@@ -384,27 +266,17 @@ namespace DAL
            public const string ID = "s_ID";
            public const string BatchNo = "s_BatchNo";
            public const string ItemID = "s_ItemID";
-           public const string SupplierID = "s_SupplierID";
            public const string Quantity = "s_Quantity";
            public const string Date = "s_Date";
-           public const string ExpDate = "s_ExpDate";
-           public const string Out = "s_Out";
-           public const string ReceivedStatus = "s_ReceivedStatus";
-           public const string ReceivedBy = "s_ReceivedBy";
-           public const string Remark = "s_Remark";
            public const string FromStoreID = "s_FromStoreID";
            public const string ToStoreID = "s_ToStoreID";
-           public const string LocalBatchNo = "s_LocalBatchNo";
            public const string RefNo = "s_RefNo";
-           public const string Cost = "s_Cost";
-           public const string IsApproved = "s_IsApproved";
-           public const string QuantityLeft = "s_QuantityLeft";
-           public const string NoOfPack = "s_NoOfPack";
-           public const string QtyPerPack = "s_QtyPerPack";
+           public const string TransferReason = "s_TransferReason";
+           public const string ApprovedBy = "s_ApprovedBy";
+           public const string TransferRequestedBy = "s_TransferRequestedBy";
            public const string EurDate = "s_EurDate";
-           public const string BoxLevel = "s_BoxLevel";
-           public const string SubProgramID = "s_SubProgramID";
            public const string UnitID = "s_UnitID";
+           public const string RecID = "s_RecID";
        }
        #endregion
 
@@ -446,15 +318,15 @@ namespace DAL
            }
        }
 
-       public virtual int SupplierID
+       public virtual string TransferRequestedBy
        {
            get
            {
-               return base.Getint(_Transfer.ColumnNames.SupplierID);
+               return base.Getstring(_Transfer.ColumnNames.TransferRequestedBy);
            }
            set
            {
-               base.Setint(_Transfer.ColumnNames.SupplierID, value);
+               base.Setstring(_Transfer.ColumnNames.TransferRequestedBy, value);
            }
        }
 
@@ -482,63 +354,27 @@ namespace DAL
            }
        }
 
-       public virtual DateTime ExpDate
+       public virtual string ApprovedBy
        {
            get
            {
-               return base.GetDateTime(_Transfer.ColumnNames.ExpDate);
+               return base.Getstring(_Transfer.ColumnNames.ApprovedBy);
            }
            set
            {
-               base.SetDateTime(_Transfer.ColumnNames.ExpDate, value);
+               base.Setstring(_Transfer.ColumnNames.ApprovedBy, value);
            }
        }
 
-       public virtual bool Out
+       public virtual string TransferReason
        {
            get
            {
-               return base.Getbool(_Transfer.ColumnNames.Out);
+               return base.Getstring(_Transfer.ColumnNames.TransferReason);
            }
            set
            {
-               base.Setbool(_Transfer.ColumnNames.Out, value);
-           }
-       }
-
-       public virtual int ReceivedStatus
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.ReceivedStatus);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.ReceivedStatus, value);
-           }
-       }
-
-       public virtual string ReceivedBy
-       {
-           get
-           {
-               return base.Getstring(_Transfer.ColumnNames.ReceivedBy);
-           }
-           set
-           {
-               base.Setstring(_Transfer.ColumnNames.ReceivedBy, value);
-           }
-       }
-
-       public virtual string Remark
-       {
-           get
-           {
-               return base.Getstring(_Transfer.ColumnNames.Remark);
-           }
-           set
-           {
-               base.Setstring(_Transfer.ColumnNames.Remark, value);
+               base.Setstring(_Transfer.ColumnNames.TransferReason, value);
            }
        }
 
@@ -566,18 +402,6 @@ namespace DAL
            }
        }
 
-       public virtual string LocalBatchNo
-       {
-           get
-           {
-               return base.Getstring(_Transfer.ColumnNames.LocalBatchNo);
-           }
-           set
-           {
-               base.Setstring(_Transfer.ColumnNames.LocalBatchNo, value);
-           }
-       }
-
        public virtual string RefNo
        {
            get
@@ -587,68 +411,6 @@ namespace DAL
            set
            {
                base.Setstring(_Transfer.ColumnNames.RefNo, value);
-           }
-       }
-
-       public virtual double Cost
-       {
-           get
-           {
-               return base.Getdouble(_Transfer.ColumnNames.Cost);
-           }
-           set
-           {
-               base.Setdouble(_Transfer.ColumnNames.Cost, value);
-           }
-       }
-
-       public virtual bool IsApproved
-       {
-           get
-           {
-               return base.Getbool(_Transfer.ColumnNames.IsApproved);
-           }
-           set
-           {
-               base.Setbool(_Transfer.ColumnNames.IsApproved, value);
-           }
-       }
-
-      
-
-       public virtual long QuantityLeft
-       {
-           get
-           {
-               return base.Getlong(_Transfer.ColumnNames.QuantityLeft);
-           }
-           set
-           {
-               base.Setlong(_Transfer.ColumnNames.QuantityLeft, value);
-           }
-       }
-
-       public virtual int NoOfPack
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.NoOfPack);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.NoOfPack, value);
-           }
-       }
-
-       public virtual int QtyPerPack
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.QtyPerPack);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.QtyPerPack, value);
            }
        }
 
@@ -664,30 +426,6 @@ namespace DAL
            }
        }
 
-       public virtual int BoxLevel
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.BoxLevel);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.BoxLevel, value);
-           }
-       }
-
-       public virtual int SubProgramID
-       {
-           get
-           {
-               return base.Getint(_Transfer.ColumnNames.SubProgramID);
-           }
-           set
-           {
-               base.Setint(_Transfer.ColumnNames.SubProgramID, value);
-           }
-       }
-
        public virtual int UnitID
        {
            get
@@ -697,6 +435,18 @@ namespace DAL
            set
            {
                base.Setint(_Transfer.ColumnNames.UnitID, value);
+           }
+       }
+
+       public virtual int RecID
+       {
+           get
+           {
+               return base.Getint(_Transfer.ColumnNames.RecID);
+           }
+           set
+           {
+               base.Setint(_Transfer.ColumnNames.RecID, value);
            }
        }
 
@@ -749,18 +499,18 @@ namespace DAL
            }
        }
 
-       public virtual string s_SupplierID
+       public virtual string s_TransferReason
        {
            get
            {
-               return this.IsColumnNull(_Transfer.ColumnNames.SupplierID) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.SupplierID);
+               return this.IsColumnNull(_Transfer.ColumnNames.TransferReason) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.TransferReason);
            }
            set
            {
                if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.SupplierID);
+                   this.SetColumnNull(_Transfer.ColumnNames.TransferReason);
                else
-                   this.SupplierID = base.SetintAsString(_Transfer.ColumnNames.SupplierID, value);
+                   this.TransferReason = base.SetstringAsString(_Transfer.ColumnNames.TransferReason, value);
            }
        }
 
@@ -794,78 +544,33 @@ namespace DAL
            }
        }
 
-       public virtual string s_ExpDate
+       public virtual string s_TransferRequestedBy
        {
            get
            {
-               return this.IsColumnNull(_Transfer.ColumnNames.ExpDate) ? string.Empty : base.GetDateTimeAsString(_Transfer.ColumnNames.ExpDate);
+               return this.IsColumnNull(_Transfer.ColumnNames.TransferRequestedBy) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.TransferRequestedBy);
            }
            set
            {
                if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.ExpDate);
+                   this.SetColumnNull(_Transfer.ColumnNames.TransferRequestedBy);
                else
-                   this.ExpDate = base.SetDateTimeAsString(_Transfer.ColumnNames.ExpDate, value);
+                   this.TransferRequestedBy = base.SetstringAsString(_Transfer.ColumnNames.TransferRequestedBy, value);
            }
        }
-
-       public virtual string s_Out
+    
+       public virtual string s_ApprovedBy
        {
            get
            {
-               return this.IsColumnNull(_Transfer.ColumnNames.Out) ? string.Empty : base.GetboolAsString(_Transfer.ColumnNames.Out);
+               return this.IsColumnNull(_Transfer.ColumnNames.ApprovedBy) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.ApprovedBy);
            }
            set
            {
                if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.Out);
+                   this.SetColumnNull(_Transfer.ColumnNames.ApprovedBy);
                else
-                   this.Out = base.SetboolAsString(_Transfer.ColumnNames.Out, value);
-           }
-       }
-
-       public virtual string s_ReceivedStatus
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.ReceivedStatus) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.ReceivedStatus);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.ReceivedStatus);
-               else
-                   this.ReceivedStatus = base.SetintAsString(_Transfer.ColumnNames.ReceivedStatus, value);
-           }
-       }
-
-       public virtual string s_ReceivedBy
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.ReceivedBy) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.ReceivedBy);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.ReceivedBy);
-               else
-                   this.ReceivedBy = base.SetstringAsString(_Transfer.ColumnNames.ReceivedBy, value);
-           }
-       }
-
-       public virtual string s_Remark
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.Remark) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.Remark);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.Remark);
-               else
-                   this.Remark = base.SetstringAsString(_Transfer.ColumnNames.Remark, value);
+                   this.ApprovedBy = base.SetstringAsString(_Transfer.ColumnNames.ApprovedBy, value);
            }
        }
 
@@ -899,21 +604,6 @@ namespace DAL
            }
        }
 
-       public virtual string s_LocalBatchNo
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.LocalBatchNo) ? string.Empty : base.GetstringAsString(_Transfer.ColumnNames.LocalBatchNo);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.LocalBatchNo);
-               else
-                   this.LocalBatchNo = base.SetstringAsString(_Transfer.ColumnNames.LocalBatchNo, value);
-           }
-       }
-
        public virtual string s_RefNo
        {
            get
@@ -926,83 +616,6 @@ namespace DAL
                    this.SetColumnNull(_Transfer.ColumnNames.RefNo);
                else
                    this.RefNo = base.SetstringAsString(_Transfer.ColumnNames.RefNo, value);
-           }
-       }
-
-       public virtual string s_Cost
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.Cost) ? string.Empty : base.GetdoubleAsString(_Transfer.ColumnNames.Cost);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.Cost);
-               else
-                   this.Cost = base.SetdoubleAsString(_Transfer.ColumnNames.Cost, value);
-           }
-       }
-
-       public virtual string s_IsApproved
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.IsApproved) ? string.Empty : base.GetboolAsString(_Transfer.ColumnNames.IsApproved);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.IsApproved);
-               else
-                   this.IsApproved = base.SetboolAsString(_Transfer.ColumnNames.IsApproved, value);
-           }
-       }
-
-       
-
-       public virtual string s_QuantityLeft
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.QuantityLeft) ? string.Empty : base.GetlongAsString(_Transfer.ColumnNames.QuantityLeft);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.QuantityLeft);
-               else
-                   this.QuantityLeft = base.SetlongAsString(_Transfer.ColumnNames.QuantityLeft, value);
-           }
-       }
-
-       public virtual string s_NoOfPack
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.NoOfPack) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.NoOfPack);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.NoOfPack);
-               else
-                   this.NoOfPack = base.SetintAsString(_Transfer.ColumnNames.NoOfPack, value);
-           }
-       }
-
-       public virtual string s_QtyPerPack
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.QtyPerPack) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.QtyPerPack);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.QtyPerPack);
-               else
-                   this.QtyPerPack = base.SetintAsString(_Transfer.ColumnNames.QtyPerPack, value);
            }
        }
 
@@ -1021,36 +634,6 @@ namespace DAL
            }
        }
 
-       public virtual string s_BoxLevel
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.BoxLevel) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.BoxLevel);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.BoxLevel);
-               else
-                   this.BoxLevel = base.SetintAsString(_Transfer.ColumnNames.BoxLevel, value);
-           }
-       }
-
-       public virtual string s_SubProgramID
-       {
-           get
-           {
-               return this.IsColumnNull(_Transfer.ColumnNames.SubProgramID) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.SubProgramID);
-           }
-           set
-           {
-               if (string.Empty == value)
-                   this.SetColumnNull(_Transfer.ColumnNames.SubProgramID);
-               else
-                   this.BoxLevel = base.SetintAsString(_Transfer.ColumnNames.SubProgramID, value);
-           }
-       }
-
        public virtual string s_UnitID
        {
            get
@@ -1063,6 +646,21 @@ namespace DAL
                    this.SetColumnNull(_Transfer.ColumnNames.UnitID);
                else
                    this.UnitID = base.SetintAsString(_Transfer.ColumnNames.UnitID, value);
+           }
+       }
+
+       public virtual string s_RecID
+       {
+           get
+           {
+               return this.IsColumnNull(_Transfer.ColumnNames.RecID) ? string.Empty : base.GetintAsString(_Transfer.ColumnNames.RecID);
+           }
+           set
+           {
+               if (string.Empty == value)
+                   this.SetColumnNull(_Transfer.ColumnNames.RecID);
+               else
+                   this.RecID = base.SetintAsString(_Transfer.ColumnNames.RecID, value);
            }
        }
 
@@ -1128,16 +726,6 @@ namespace DAL
                    }
                }
 
-               public WhereParameter SupplierID
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.SupplierID, _Transfer.Parameters.SupplierID);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
                public WhereParameter Quantity
                {
                    get
@@ -1158,51 +746,21 @@ namespace DAL
                    }
                }
 
-               public WhereParameter ExpDate
+               public WhereParameter ApprovedBy
                {
                    get
                    {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.ExpDate, _Transfer.Parameters.ExpDate);
+                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.ApprovedBy, _Transfer.Parameters.ApprovedBy);
                        this._clause._entity.Query.AddWhereParameter(where);
                        return where;
                    }
                }
 
-               public WhereParameter Out
+               public WhereParameter TransferRequestedBy    
                {
                    get
                    {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.Out, _Transfer.Parameters.Out);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter ReceivedStatus
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.ReceivedStatus, _Transfer.Parameters.ReceivedStatus);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter ReceivedBy
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.ReceivedBy, _Transfer.Parameters.ReceivedBy);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter Remark
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.Remark, _Transfer.Parameters.Remark);
+                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.TransferRequestedBy, _Transfer.Parameters.TransferRequestedBy);
                        this._clause._entity.Query.AddWhereParameter(where);
                        return where;
                    }
@@ -1228,16 +786,6 @@ namespace DAL
                    }
                }
 
-               public WhereParameter LocalBatchNo
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.LocalBatchNo, _Transfer.Parameters.LocalBatchNo);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
                public WhereParameter RefNo
                {
                    get
@@ -1248,52 +796,11 @@ namespace DAL
                    }
                }
 
-               public WhereParameter Cost
+               public WhereParameter TransferReason
                {
                    get
                    {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.Cost, _Transfer.Parameters.Cost);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter IsApproved
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.IsApproved, _Transfer.Parameters.IsApproved);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-              
-               public WhereParameter QuantityLeft
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.QuantityLeft, _Transfer.Parameters.QuantityLeft);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter NoOfPack
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.NoOfPack, _Transfer.Parameters.NoOfPack);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter QtyPerPack
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.QtyPerPack, _Transfer.Parameters.QtyPerPack);
+                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.TransferReason, _Transfer.Parameters.TransferReason);
                        this._clause._entity.Query.AddWhereParameter(where);
                        return where;
                    }
@@ -1309,26 +816,6 @@ namespace DAL
                    }
                }
 
-               public WhereParameter BoxLevel
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.BoxLevel, _Transfer.Parameters.BoxLevel);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
-               public WhereParameter SubProgramID
-               {
-                   get
-                   {
-                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.SubProgramID, _Transfer.Parameters.SubProgramID);
-                       this._clause._entity.Query.AddWhereParameter(where);
-                       return where;
-                   }
-               }
-
                public WhereParameter UnitID
                {
                    get
@@ -1338,6 +825,17 @@ namespace DAL
                        return where;
                    }
                }
+
+               public WhereParameter RecID
+               {
+                   get
+                   {
+                       WhereParameter where = new WhereParameter(_Transfer.ColumnNames.RecID, _Transfer.Parameters.RecID);
+                       this._clause._entity.Query.AddWhereParameter(where);
+                       return where;
+                   }
+               }
+
 
 
                private _Transfer.WhereClause _clause;
@@ -1380,19 +878,7 @@ namespace DAL
                }
            }
 
-           public WhereParameter SupplierID
-           {
-               get
-               {
-                   if (_SupplierID_W == null)
-                   {
-                       _SupplierID_W = TearOff.SupplierID;
-                   }
-                   return _SupplierID_W;
-               }
-           }
-
-           public WhereParameter Quantity
+          public WhereParameter Quantity
            {
                get
                {
@@ -1416,63 +902,39 @@ namespace DAL
                }
            }
 
-           public WhereParameter ExpDate
+           public WhereParameter ApprovedBy
            {
                get
                {
-                   if (_ExpDate_W == null)
+                   if (_ApprovedBy_W == null)
                    {
-                       _ExpDate_W = TearOff.ExpDate;
+                       _ApprovedBy_W = TearOff.ApprovedBy;
                    }
-                   return _ExpDate_W;
+                   return _ApprovedBy_W;
                }
            }
 
-           public WhereParameter Out
+           public WhereParameter TransferRequestedBy
            {
                get
                {
-                   if (_Out_W == null)
+                   if (_TransferRequestedBy_W == null)
                    {
-                       _Out_W = TearOff.Out;
+                       _TransferRequestedBy_W = TearOff.TransferRequestedBy;
                    }
-                   return _Out_W;
+                   return _TransferRequestedBy_W;
                }
            }
 
-           public WhereParameter ReceivedStatus
+           public WhereParameter TransferReason
            {
                get
                {
-                   if (_ReceivedStatus_W == null)
+                   if (_TransferReason_W == null)
                    {
-                       _ReceivedStatus_W = TearOff.ReceivedStatus;
+                       _TransferReason_W = TearOff.TransferReason;
                    }
-                   return _ReceivedStatus_W;
-               }
-           }
-
-           public WhereParameter ReceivedBy
-           {
-               get
-               {
-                   if (_ReceivedBy_W == null)
-                   {
-                       _ReceivedBy_W = TearOff.ReceivedBy;
-                   }
-                   return _ReceivedBy_W;
-               }
-           }
-
-           public WhereParameter Remark
-           {
-               get
-               {
-                   if (_Remark_W == null)
-                   {
-                       _Remark_W = TearOff.Remark;
-                   }
-                   return _Remark_W;
+                   return _TransferReason_W;
                }
            }
 
@@ -1500,18 +962,6 @@ namespace DAL
                }
            }
 
-           public WhereParameter LocalBatchNo
-           {
-               get
-               {
-                   if (_LocalBatchNo_W == null)
-                   {
-                       _LocalBatchNo_W = TearOff.LocalBatchNo;
-                   }
-                   return _LocalBatchNo_W;
-               }
-           }
-
            public WhereParameter RefNo
            {
                get
@@ -1523,31 +973,7 @@ namespace DAL
                    return _RefNo_W;
                }
            }
-
-           public WhereParameter Cost
-           {
-               get
-               {
-                   if (_Cost_W == null)
-                   {
-                       _Cost_W = TearOff.Cost;
-                   }
-                   return _Cost_W;
-               }
-           }
-
-           public WhereParameter IsApproved
-           {
-               get
-               {
-                   if (_IsApproved_W == null)
-                   {
-                       _IsApproved_W = TearOff.IsApproved;
-                   }
-                   return _IsApproved_W;
-               }
-           }
-
+  
            public WhereParameter UnitID
            {
                get
@@ -1557,42 +983,6 @@ namespace DAL
                        _UnitID_W = TearOff.UnitID;
                    }
                    return _UnitID_W;
-               }
-           }
-
-           public WhereParameter QuantityLeft
-           {
-               get
-               {
-                   if (_QuantityLeft_W == null)
-                   {
-                       _QuantityLeft_W = TearOff.QuantityLeft;
-                   }
-                   return _QuantityLeft_W;
-               }
-           }
-
-           public WhereParameter NoOfPack
-           {
-               get
-               {
-                   if (_NoOfPack_W == null)
-                   {
-                       _NoOfPack_W = TearOff.NoOfPack;
-                   }
-                   return _NoOfPack_W;
-               }
-           }
-
-           public WhereParameter QtyPerPack
-           {
-               get
-               {
-                   if (_QtyPerPack_W == null)
-                   {
-                       _QtyPerPack_W = TearOff.QtyPerPack;
-                   }
-                   return _QtyPerPack_W;
                }
            }
 
@@ -1608,81 +998,51 @@ namespace DAL
                }
            }
 
-           public WhereParameter BoxLevel
+           public WhereParameter RecID
            {
                get
                {
-                   if (_BoxLevel_W == null)
+                   if (_RecID_W == null)
                    {
-                       _BoxLevel_W = TearOff.BoxLevel;
+                       _RecID_W = TearOff.RecID;
                    }
-                   return _BoxLevel_W;
+                   return _RecID_W;
                }
            }
 
-           public WhereParameter SubProgramID
-           {
-               get
-               {
-                   if (_SubProgramID_W == null)
-                   {
-                       _SubProgramID_W = TearOff.SubProgramID;
-                   }
-                   return _SubProgramID_W;
-               }
-           }
-
+          
+         
            private WhereParameter _ID_W = null;
            private WhereParameter _BatchNo_W = null;
            private WhereParameter _ItemID_W = null;
-           private WhereParameter _SupplierID_W = null;
            private WhereParameter _Quantity_W = null;
            private WhereParameter _Date_W = null;
-           private WhereParameter _ExpDate_W = null;
-           private WhereParameter _Out_W = null;
-           private WhereParameter _ReceivedStatus_W = null;
-           private WhereParameter _ReceivedBy_W = null;
-           private WhereParameter _Remark_W = null;
+           private WhereParameter _TransferReason_W = null;
+           private WhereParameter _TransferRequestedBy_W = null;
            private WhereParameter _FromStoreID_W = null;
            private WhereParameter _ToStoreID_W = null;
-           private WhereParameter _LocalBatchNo_W = null;
            private WhereParameter _RefNo_W = null;
-           private WhereParameter _Cost_W = null;
-           private WhereParameter _IsApproved_W = null;
-           private WhereParameter _QuantityLeft_W = null;
-           private WhereParameter _NoOfPack_W = null;
-           private WhereParameter _QtyPerPack_W = null;
            private WhereParameter _EurDate_W = null;
-           private WhereParameter _BoxLevel_W = null;
-           private WhereParameter _SubProgramID_W = null;
+           private WhereParameter _ApprovedBy_W = null;
            private WhereParameter _UnitID_W = null;
+           private WhereParameter _RecID_W = null;
 
            public void WhereClauseReset()
            {
                _ID_W = null;
                _BatchNo_W = null;
                _ItemID_W = null;
-               _SupplierID_W = null;
                _Quantity_W = null;
                _Date_W = null;
-               _ExpDate_W = null;
-               _Out_W = null;
-               _ReceivedStatus_W = null;
-               _ReceivedBy_W = null;
-               _Remark_W = null;
                _FromStoreID_W = null;
                _ToStoreID_W = null;
-               _LocalBatchNo_W = null;
+               _TransferReason_W = null;
                _RefNo_W = null;
-               _Cost_W = null;
-               _IsApproved_W = null;
-               _QuantityLeft_W = null;
-               _NoOfPack_W = null;
-               _QtyPerPack_W = null;
+               _TransferRequestedBy_W = null;
                _EurDate_W = null;
-               _BoxLevel_W = null;
-               _SubProgramID_W = null;
+               _ApprovedBy_W = null;
                _UnitID_W = null;
+               _RecID_W= null;
 
                this._entity.Query.FlushWhereParameters();
 
@@ -1769,11 +1129,11 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter SupplierID
+               public AggregateParameter TransferRequestedBy
                {
                    get
                    {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.SupplierID, _Transfer.Parameters.SupplierID);
+                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.TransferRequestedBy, _Transfer.Parameters.TransferRequestedBy);
                        this._clause._entity.Query.AddAggregateParameter(aggregate);
                        return aggregate;
                    }
@@ -1799,56 +1159,27 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter ExpDate
+               public AggregateParameter TransferReason
                {
                    get
                    {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.ExpDate, _Transfer.Parameters.ExpDate);
+                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.TransferReason, _Transfer.Parameters.TransferReason);
                        this._clause._entity.Query.AddAggregateParameter(aggregate);
                        return aggregate;
                    }
                }
 
-               public AggregateParameter Out
+               public AggregateParameter ApprovedBy
                {
                    get
                    {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.Out, _Transfer.Parameters.Out);
+                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.ApprovedBy, _Transfer.Parameters.ApprovedBy);
                        this._clause._entity.Query.AddAggregateParameter(aggregate);
                        return aggregate;
                    }
                }
 
-               public AggregateParameter ReceivedStatus
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.ReceivedStatus, _Transfer.Parameters.ReceivedStatus);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter ReceivedBy
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.ReceivedBy, _Transfer.Parameters.ReceivedBy);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter Remark
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.Remark, _Transfer.Parameters.Remark);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
+               
                public AggregateParameter FromStoreID
                {
                    get
@@ -1869,17 +1200,7 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter LocalBatchNo
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.LocalBatchNo, _Transfer.Parameters.LocalBatchNo);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter RefNo
+             public AggregateParameter RefNo
                {
                    get
                    {
@@ -1889,58 +1210,8 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter Cost
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.Cost, _Transfer.Parameters.Cost);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter IsApproved
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.IsApproved, _Transfer.Parameters.IsApproved);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
+             
               
-
-               public AggregateParameter QuantityLeft
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.QuantityLeft, _Transfer.Parameters.QuantityLeft);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter NoOfPack
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.NoOfPack, _Transfer.Parameters.NoOfPack);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter QtyPerPack
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.QtyPerPack, _Transfer.Parameters.QtyPerPack);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
                public AggregateParameter EurDate
                {
                    get
@@ -1951,31 +1222,22 @@ namespace DAL
                    }
                }
 
-               public AggregateParameter BoxLevel
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.BoxLevel, _Transfer.Parameters.BoxLevel);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
-
-               public AggregateParameter SubProgramID
-               {
-                   get
-                   {
-                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.SubProgramID, _Transfer.Parameters.SubProgramID);
-                       this._clause._entity.Query.AddAggregateParameter(aggregate);
-                       return aggregate;
-                   }
-               }
 
                public AggregateParameter UnitID
                {
                    get
                    {
                        AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.UnitID, _Transfer.Parameters.UnitID);
+                       this._clause._entity.Query.AddAggregateParameter(aggregate);
+                       return aggregate;
+                   }
+               }
+
+               public AggregateParameter RecID
+               {
+                   get
+                   {
+                       AggregateParameter aggregate = new AggregateParameter(_Transfer.ColumnNames.RecID, _Transfer.Parameters.RecID);
                        this._clause._entity.Query.AddAggregateParameter(aggregate);
                        return aggregate;
                    }
@@ -2021,18 +1283,6 @@ namespace DAL
                }
            }
 
-           public AggregateParameter SupplierID
-           {
-               get
-               {
-                   if (_SupplierID_W == null)
-                   {
-                       _SupplierID_W = TearOff.SupplierID;
-                   }
-                   return _SupplierID_W;
-               }
-           }
-
            public AggregateParameter Quantity
            {
                get
@@ -2057,63 +1307,39 @@ namespace DAL
                }
            }
 
-           public AggregateParameter ExpDate
+           public AggregateParameter TransferReason
            {
                get
                {
-                   if (_ExpDate_W == null)
+                   if (_TransferReason_W == null)
                    {
-                       _ExpDate_W = TearOff.ExpDate;
+                       _TransferReason_W = TearOff.TransferReason;
                    }
-                   return _ExpDate_W;
+                   return _TransferReason_W;
                }
            }
 
-           public AggregateParameter Out
+           public AggregateParameter ApprovedBy
            {
                get
                {
-                   if (_Out_W == null)
+                   if (_ApprovedBy_W == null)
                    {
-                       _Out_W = TearOff.Out;
+                       _ApprovedBy_W = TearOff.ApprovedBy;
                    }
-                   return _Out_W;
+                   return _ApprovedBy_W;
                }
            }
 
-           public AggregateParameter ReceivedStatus
+           public AggregateParameter TransferRequestedBy
            {
                get
                {
-                   if (_ReceivedStatus_W == null)
+                   if (_TransferRequestedBy_W == null)
                    {
-                       _ReceivedStatus_W = TearOff.ReceivedStatus;
+                       _TransferRequestedBy_W = TearOff.TransferRequestedBy;
                    }
-                   return _ReceivedStatus_W;
-               }
-           }
-
-           public AggregateParameter ReceivedBy
-           {
-               get
-               {
-                   if (_ReceivedBy_W == null)
-                   {
-                       _ReceivedBy_W = TearOff.ReceivedBy;
-                   }
-                   return _ReceivedBy_W;
-               }
-           }
-
-           public AggregateParameter Remark
-           {
-               get
-               {
-                   if (_Remark_W == null)
-                   {
-                       _Remark_W = TearOff.Remark;
-                   }
-                   return _Remark_W;
+                   return _TransferRequestedBy_W;
                }
            }
 
@@ -2141,18 +1367,6 @@ namespace DAL
                }
            }
 
-           public AggregateParameter LocalBatchNo
-           {
-               get
-               {
-                   if (_LocalBatchNo_W == null)
-                   {
-                       _LocalBatchNo_W = TearOff.LocalBatchNo;
-                   }
-                   return _LocalBatchNo_W;
-               }
-           }
-
            public AggregateParameter RefNo
            {
                get
@@ -2162,30 +1376,6 @@ namespace DAL
                        _RefNo_W = TearOff.RefNo;
                    }
                    return _RefNo_W;
-               }
-           }
-
-           public AggregateParameter Cost
-           {
-               get
-               {
-                   if (_Cost_W == null)
-                   {
-                       _Cost_W = TearOff.Cost;
-                   }
-                   return _Cost_W;
-               }
-           }
-
-           public AggregateParameter IsApproved
-           {
-               get
-               {
-                   if (_IsApproved_W == null)
-                   {
-                       _IsApproved_W = TearOff.IsApproved;
-                   }
-                   return _IsApproved_W;
                }
            }
 
@@ -2201,42 +1391,6 @@ namespace DAL
                }
            }
 
-           public AggregateParameter QuantityLeft
-           {
-               get
-               {
-                   if (_QuantityLeft_W == null)
-                   {
-                       _QuantityLeft_W = TearOff.QuantityLeft;
-                   }
-                   return _QuantityLeft_W;
-               }
-           }
-
-           public AggregateParameter NoOfPack
-           {
-               get
-               {
-                   if (_NoOfPack_W == null)
-                   {
-                       _NoOfPack_W = TearOff.NoOfPack;
-                   }
-                   return _NoOfPack_W;
-               }
-           }
-
-           public AggregateParameter QtyPerPack
-           {
-               get
-               {
-                   if (_QtyPerPack_W == null)
-                   {
-                       _QtyPerPack_W = TearOff.QtyPerPack;
-                   }
-                   return _QtyPerPack_W;
-               }
-           }
-
            public AggregateParameter EurDate
            {
                get
@@ -2249,80 +1403,49 @@ namespace DAL
                }
            }
 
-           public AggregateParameter BoxLevel
+           public AggregateParameter RecID
            {
                get
                {
-                   if (_BoxLevel_W == null)
+                   if (_RecID_W == null)
                    {
-                       _BoxLevel_W = TearOff.BoxLevel;
+                       _RecID_W = TearOff.RecID;
                    }
-                   return _BoxLevel_W;
+                   return _RecID_W;
                }
            }
 
-           public AggregateParameter SubProgramID
-           {
-               get
-               {
-                   if (_SubProgramID_W == null)
-                   {
-                       _SubProgramID_W = TearOff.SubProgramID;
-                   }
-                   return _SubProgramID_W;
-               }
-           }
-
+       
            private AggregateParameter _ID_W = null;
            private AggregateParameter _BatchNo_W = null;
            private AggregateParameter _ItemID_W = null;
-           private AggregateParameter _SupplierID_W = null;
            private AggregateParameter _Quantity_W = null;
            private AggregateParameter _Date_W = null;
-           private AggregateParameter _ExpDate_W = null;
-           private AggregateParameter _Out_W = null;
-           private AggregateParameter _ReceivedStatus_W = null;
-           private AggregateParameter _ReceivedBy_W = null;
-           private AggregateParameter _Remark_W = null;
+           private AggregateParameter _TransferRequestedBy_W = null;
+           private AggregateParameter _TransferReason_W = null;
+           private AggregateParameter _ApprovedBy_W = null;
            private AggregateParameter _FromStoreID_W = null;
            private AggregateParameter _ToStoreID_W = null;
-           private AggregateParameter _LocalBatchNo_W = null;
            private AggregateParameter _RefNo_W = null;
-           private AggregateParameter _Cost_W = null;
-           private AggregateParameter _IsApproved_W = null;
-           private AggregateParameter _QuantityLeft_W = null;
-           private AggregateParameter _NoOfPack_W = null;
-           private AggregateParameter _QtyPerPack_W = null;
            private AggregateParameter _EurDate_W = null;
-           private AggregateParameter _BoxLevel_W = null;
-           private AggregateParameter _SubProgramID_W = null;
            private AggregateParameter _UnitID_W = null;
+           private AggregateParameter _RecID_W = null;
            public void AggregateClauseReset()
            {
                _ID_W = null;
                _BatchNo_W = null;
                _ItemID_W = null;
-               _SupplierID_W = null;
+               _TransferReason_W = null;
                _Quantity_W = null;
                _Date_W = null;
-               _ExpDate_W = null;
-               _Out_W = null;
-               _ReceivedStatus_W = null;
-               _ReceivedBy_W = null;
-               _Remark_W = null;
+               _TransferRequestedBy_W = null;
+               _ApprovedBy_W = null;
                _FromStoreID_W = null;
                _ToStoreID_W = null;
-               _LocalBatchNo_W = null;
                _RefNo_W = null;
-               _Cost_W = null;
-               _IsApproved_W = null;
-               _QuantityLeft_W = null;
-               _NoOfPack_W = null;
-               _QtyPerPack_W = null;
                _EurDate_W = null;
-               _BoxLevel_W = null;
-               _SubProgramID_W = null;
                _UnitID_W = null;
+               _RecID_W = null;
                this._entity.Query.FlushAggregateParameters();
 
            }
@@ -2408,8 +1531,8 @@ namespace DAL
            p.SourceColumn = ColumnNames.ItemID;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.SupplierID);
-           p.SourceColumn = ColumnNames.SupplierID;
+           p = cmd.Parameters.Add(Parameters.TransferReason);
+           p.SourceColumn = ColumnNames.TransferReason;
            p.SourceVersion = DataRowVersion.Current;
 
            p = cmd.Parameters.Add(Parameters.Quantity);
@@ -2420,27 +1543,15 @@ namespace DAL
            p.SourceColumn = ColumnNames.Date;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.ExpDate);
-           p.SourceColumn = ColumnNames.ExpDate;
+           p = cmd.Parameters.Add(Parameters.ApprovedBy);
+           p.SourceColumn = ColumnNames.ApprovedBy;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.Out);
-           p.SourceColumn = ColumnNames.Out;
+           p = cmd.Parameters.Add(Parameters.TransferRequestedBy);
+           p.SourceColumn = ColumnNames.TransferRequestedBy;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.ReceivedStatus);
-           p.SourceColumn = ColumnNames.ReceivedStatus;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.ReceivedBy);
-           p.SourceColumn = ColumnNames.ReceivedBy;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.Remark);
-           p.SourceColumn = ColumnNames.Remark;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.FromStoreID);
+          p = cmd.Parameters.Add(Parameters.FromStoreID);
            p.SourceColumn = ColumnNames.FromStoreID;
            p.SourceVersion = DataRowVersion.Current;
 
@@ -2448,50 +1559,23 @@ namespace DAL
            p.SourceColumn = ColumnNames.ToStoreID;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.LocalBatchNo);
-           p.SourceColumn = ColumnNames.LocalBatchNo;
-           p.SourceVersion = DataRowVersion.Current;
-
            p = cmd.Parameters.Add(Parameters.RefNo);
            p.SourceColumn = ColumnNames.RefNo;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.Cost);
-           p.SourceColumn = ColumnNames.Cost;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.IsApproved);
-           p.SourceColumn = ColumnNames.IsApproved;
            p.SourceVersion = DataRowVersion.Current;
 
            p = cmd.Parameters.Add(Parameters.UnitID);
            p.SourceColumn = ColumnNames.UnitID;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.QuantityLeft);
-           p.SourceColumn = _Transfer.ColumnNames.QuantityLeft;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.NoOfPack);
-           p.SourceColumn = ColumnNames.NoOfPack;
-           p.SourceVersion = DataRowVersion.Current;
-
-           p = cmd.Parameters.Add(Parameters.QtyPerPack);
-           p.SourceColumn = ColumnNames.QtyPerPack;
-           p.SourceVersion = DataRowVersion.Current;
-
            p = cmd.Parameters.Add(Parameters.EurDate);
            p.SourceColumn = ColumnNames.EurDate;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.BoxLevel);
-           p.SourceColumn = _Transfer.ColumnNames.BoxLevel;
+           p = cmd.Parameters.Add(Parameters.RecID);
+           p.SourceColumn = ColumnNames.RecID;
            p.SourceVersion = DataRowVersion.Current;
 
-           p = cmd.Parameters.Add(Parameters.SubProgramID);
-           p.SourceColumn = _Transfer.ColumnNames.SubProgramID;
-           p.SourceVersion = DataRowVersion.Current;
-           return cmd;
+          return cmd;
        }
     }
 }

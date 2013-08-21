@@ -14,11 +14,11 @@ namespace BLL
 
         }
 
-        public DataTable GetTransfered(int itemId, int storeId)
+        public DataTable GetTransfered( int recid,int itemId, int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("select * from Transfer where ItemID ={0} And FromStoreID={1}", itemId,
-                                              storeId));
+            this.LoadFromRawSql(String.Format("select * from Transfer where ItemID ={0} And FromStoreID={1} and RecID={2}", itemId,
+                                              storeId,recid));
             return this.DataTable;
 
         }
@@ -41,7 +41,7 @@ namespace BLL
             this.FlushData();
             string query =
                 String.Format(
-                    "SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice , datediff(day, EurDate, ExpDate) as DBER FROM Transfer rd join vwGetAllItems vw on rd.ItemID = vw.ID  WHERE (RefNo = '{0}' AND Date = '{2}') AND ToStoreID = {1} ORDER BY Date DESC",
+                    "SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo  FROM Transfer rd join vwGetAllItems vw on rd.ItemID = vw.ID  WHERE (RefNo = '{0}' AND Date = '{2}') AND ToStoreID = {1} ORDER BY Date DESC",
                     refNo, storeId, dt);
             this.LoadFromRawSql(query);
             return this.DataTable;

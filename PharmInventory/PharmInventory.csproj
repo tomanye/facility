@@ -808,6 +808,12 @@
     <Content Include="Scripts\997_InsertDisposalReasons.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\998_AlterTransfer.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\999_AlterTranferInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\99_SohForRRF OldSite.sql" />
     <None Include="PharmInventory_TemporaryKey.pfx" />
     <None Include="Properties\DataSources\PharmInventory.HelperClasses.FeSetting.datasource" />

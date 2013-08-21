@@ -26,8 +26,6 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             var stor = new Stores();
             stor.GetActiveStores();
-            lkToStore.Properties.DataSource = stor.DefaultView;
-            lkToStore.ItemIndex = 0;
            // lkFromStore.ItemIndex = 0;
             storeBindingSource.DataSource = stor.DefaultView;
 
@@ -40,7 +38,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             // bind the supplier lookup for the grid.
             
-            var unitcolumn = ((GridView)gridControl1.MainView).Columns[10];
+            var unitcolumn = ((GridView)gridControl1.MainView).Columns[4];
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
@@ -54,6 +52,9 @@ namespace PharmInventory.Forms.ActivityLogs
                     break;
             }
 
+
+            lkToStore.Properties.DataSource = stor.DefaultView;
+            lkToStore.ItemIndex = 0;
             // bind the current dates
 
             try

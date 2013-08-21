@@ -413,10 +413,10 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetReceivedItems(int itemId, int storeId)
+        public DataTable GetReceivedItems(int recid,int itemId, int storeId)
         {
             this.FlushData();
-            this.LoadFromRawSql("select * from ReceiveDoc where ItemID ={0} And StoreID={1}", itemId, storeId);
+            this.LoadFromRawSql("select * from ReceiveDoc where ItemID ={0} And StoreID={1} and ID={2}", itemId, storeId,recid);
             return this.DataTable;
 
         }
