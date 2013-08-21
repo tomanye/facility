@@ -183,7 +183,8 @@ namespace PharmInventory.Forms.Reports
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName + " Balance Report Items", "Date: " + dtDate.Text, " Store: " + cboStores.Text };
+            string[] header = { info.HospitalName , "Date: " + dtDate.Text, "Store: " + cboStores.Text };
+            printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);

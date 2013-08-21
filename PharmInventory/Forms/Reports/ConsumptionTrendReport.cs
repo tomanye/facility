@@ -376,9 +376,10 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
-            GeneralInfo info = new GeneralInfo();
+            var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName + " Stock Status Report", "Date: " + dtDate.Text, " Store: " + cboStores.Text };
+            string[] header = { info.HospitalName,"Date: " + dtDate.Text, "Store: " + cboStores.Text };
+            pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);

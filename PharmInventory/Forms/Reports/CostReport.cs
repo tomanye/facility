@@ -341,14 +341,15 @@ namespace PharmInventory.Forms.Reports
 
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
-            GeneralInfo info = new GeneralInfo();
+            var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName + " Stock Balance Report", "Date:" + dtDate.Text, "Store: " + cboStores.Text };
+            string[] header = { info.HospitalName, "Date:" + dtDate.Text, "Store: " + cboStores.Text };
+            printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 35, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 50, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
         }
 
       
