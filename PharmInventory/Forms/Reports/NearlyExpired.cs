@@ -33,11 +33,11 @@ namespace PharmInventory.Forms.Reports
             lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
             // Select the very first commodity type.
             lkCommodityTypes.ItemIndex = 0;
-            DateTime xx = dtDate.Value;
+            //DateTime xx = dtDate.Value;
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-            dtDate.Value = xx;
+           // dtDate.Value = xx;
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
@@ -140,7 +140,7 @@ namespace PharmInventory.Forms.Reports
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName +  " Near Expiry Items" , "Date: " + dtDate.Text, " Store: " + cboStores.Text };
+            string[] header = { info.HospitalName, "Date: " + dtDate.Text, "Store: " + cboStores.Text };
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);

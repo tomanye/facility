@@ -192,7 +192,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Reason", "Reason")});
             this.cboReasons.Properties.DisplayMember = "Reason";
             this.cboReasons.Properties.DropDownRows = 8;
-            this.cboReasons.Properties.NullText = "All";
+            this.cboReasons.Properties.NullText = "All Reasons";
             this.cboReasons.Properties.ValueMember = "ID";
             this.cboReasons.Size = new System.Drawing.Size(210, 20);
             this.cboReasons.StyleController = this.layoutControl1;
@@ -720,6 +720,15 @@ namespace PharmInventory.Forms.Reports
             // 
             // 
             this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
+            this.printableComponentLink1.Landscape = true;
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
+                "",
+                " Loss and Adjustment  Report",
+                ""}, new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near), new DevExpress.XtraPrinting.PageFooterArea(new string[] {
+                "[Page # of Pages #]",
+                "",
+                "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
