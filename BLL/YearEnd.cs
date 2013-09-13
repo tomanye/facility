@@ -76,6 +76,19 @@ namespace BLL
             return this.RowCount > 0 ? this.ID : 0;
         }
 
+        public int LoadByItemIDStoreUnitAndYear(int itemID, int storeID, int year, bool includeAutomatic,int unitid)
+        {
+            this.FlushData();
+            this.Where.WhereClauseReset();
+            this.Where.ItemID.Value = itemID;
+            this.Where.StoreID.Value = storeID;
+            this.Where.Year.Value = year;
+            this.Where.AutomaticallyEntered.Value = includeAutomatic;
+            this.Where.UnitID.Value = unitid;
+            this.Query.Load();
+            return this.RowCount > 0 ? this.ID : 0;
+        }
+
         public int LoadByItemIDStoreAndYearAndUnit(int itemID, int storeID, int year, bool includeAutomatic, int unitId)
         {
             this.FlushData();

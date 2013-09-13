@@ -1108,24 +1108,22 @@ namespace PharmInventory.Forms.Modals
         private void GenerateBinCardNew()
         {
             //Get the bin card.
-            Balance balance = new Balance();
-            txtBBalance.Text = balance.GetBeginningBalance(Convert.ToInt32(cboFiscalYear.EditValue), _itemId, _storeId).ToString();
-            if (VisibilitySetting.HandleUnits == 1)
+            var balance = new Balance();
+            switch (VisibilitySetting.HandleUnits)
             {
-                gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId,
-                                                              Convert.ToInt32(cboFiscalYear.EditValue));
+                case 1:
+                    txtBBalance.Text = balance.GetBeginningBalance(Convert.ToInt32(cboFiscalYear.EditValue), _itemId, _storeId).ToString();
+                    gridItemsList.DataSource = balance.GetBinCard(_storeId, _itemId,Convert.ToInt32(cboFiscalYear.EditValue));
+                    break;
+                case 2:
+                    txtBBalance.Text = balance.GetBeginningBalanceByUnit(Convert.ToInt32(cboFiscalYear.EditValue), _itemId, _storeId,_unitID).ToString();
+                    gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
+                    break;
+                case 3:
+                    txtBBalance.Text = balance.GetBeginningBalanceByUnit(Convert.ToInt32(cboFiscalYear.EditValue), _itemId, _storeId,_unitID).ToString();
+                    gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
+                    break;
             }
-            else if (VisibilitySetting.HandleUnits == 2)
-            {
-                gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,
-                                                             Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
-            }
-            else if (VisibilitySetting.HandleUnits == 3)
-            {
-                gridItemsList.DataSource = balance.GetBinCard2(_storeId, _itemId,
-                                                             Convert.ToInt32(cboFiscalYear.EditValue), _unitID);
-            }
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

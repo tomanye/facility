@@ -1183,6 +1183,17 @@ namespace BLL
             return 0;
         }
 
+        public long GetBeginningBalanceByUnit(int year, int item, int storeID,int unitID)
+        {
+            var yearEnd = new YearEnd();
+            yearEnd.LoadByItemIDStoreAndYearAndUnit(item, storeID, year - 1, false,unitID);
+            if (yearEnd.RowCount > 0)
+            {
+                return yearEnd.PhysicalInventory;
+            }
+            return 0;
+        }
+
         public object BalanceOfAllItemsUsingUnit(int storeId, int year, int month, string _selectedType, int programID, int commodityTypeID, DateTime _dtCur, BackgroundWorker bw)
         {
             // Dont Iterate

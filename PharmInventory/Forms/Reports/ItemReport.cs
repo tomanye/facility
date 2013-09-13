@@ -62,7 +62,7 @@ namespace PharmInventory.Forms.Reports
             var allunits = itemunit.GetAllUnits();
             unitBindingSource.DataSource = allunits.DefaultView;
 
-            DataTable dtMonths = new DataTable();
+            var dtMonths = new DataTable();
             dtMonths.Columns.Add("Value");
             dtMonths.Columns.Add("Month");
             dtDate.Value = DateTime.Now;

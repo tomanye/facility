@@ -209,7 +209,7 @@ namespace BLL
         public int CountAllItems()
         {
             this.FlushData();
-            this.LoadFromRawSql("SELECT * FROM vwGetAllItems WHERE IsInHospitalList = 1 AND Name = 'Drug'");
+            this.LoadFromRawSql("SELECT * FROM vwGetAllItems WHERE IsInHospitalList = 1 AND Name = 'DrugRRF'");
             return this.DataTable.Rows.Count;
         }
 

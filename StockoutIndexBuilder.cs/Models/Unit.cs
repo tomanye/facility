@@ -14,6 +14,6 @@ namespace StockoutIndexBuilder.Models
        public int ID { get; set; }
        [Column("Unit")]
        public string UnitName { get; set; }
-       public int? DSID { get; set; }
+     
     }
 }
