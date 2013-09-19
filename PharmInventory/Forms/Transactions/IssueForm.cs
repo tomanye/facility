@@ -230,7 +230,7 @@ namespace PharmInventory.Forms.Transactions
         {
             if (issueGrid.DataSource != null)
             {
-                DataTable dt = new DataTable();
+                var dt = new DataTable();
                 issueGrid.DataSource = dt;
                 _dtRecGrid.Rows.Clear();
                 _dtRecGrid.Columns.Clear();

@@ -150,6 +150,7 @@ namespace PharmInventory.Forms.Modals
                            
                             receiveDoc.GetReceivedItems(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
                             receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - transfer.Quantity;
+                         //   receiveDoc.Out = true;
 
                             //receiveDoc.GetReceivedItems(receiveid, _itemID, Convert.ToInt32(lkToStore.EditValue));
                             //receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + transfer.Quantity;
