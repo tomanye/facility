@@ -787,6 +787,15 @@
     <Content Include="Scripts\94_AlterItemsLoadAll.sql" />
     <Content Include="Scripts\95_AlterItemsLoadByPrimaryKey.sql" />
     <Content Include="Scripts\98_CreateViewGetAllItems.sql" />
+    <Content Include="Scripts\9901_InsertSupplier.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9902_InsertReceivingUnit.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\990_AlterTableStores.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\991_AlterYearEndInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

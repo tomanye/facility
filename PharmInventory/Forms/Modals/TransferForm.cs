@@ -105,15 +105,15 @@ namespace PharmInventory.Forms.Modals
         private void btnSave_Click(object sender, EventArgs e)
         {
             var transfer = new Transfer();
+            var newreceiveDoc = new ReceiveDoc();
             var receiveDoc = new ReceiveDoc();
-            var itm = new Items();
+            var issuedoc = new IssueDoc();
             var valid = ValidateFields();
             if (valid == "true")
             {
                 if (XtraMessageBox.Show("Are you sure you want to save this transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                try
-                    {
+                try{
                       var dtRecGrid = (DataTable)receivingGrid.DataSource;
                         for (int i = 0; i < dtRecGrid.Rows.Count; i++)
                         {
@@ -137,28 +137,59 @@ namespace PharmInventory.Forms.Modals
 
                             transfer.EurDate = dtRecDate.Value;
                             dtRecDate.IsGregorianCurrentCalendar = false;
-                            
-                          
+
+                           
+                           
                            
                             transfer.TransferReason = txtTransferReason.Text;
                             transfer.ApprovedBy = txtApprovedBy.Text;
                             transfer.TransferRequestedBy = txtRequestedBy.Text;
                             transfer.Save();
 
-                          
-                            transfer.GetTransfered(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
-                           
+                           transfer.GetTransfered(receiveid, _itemID, Convert.ToInt32(lkFromStore.EditValue));
+                           issuedoc.AddNew();
+                           issuedoc.StoreId = transfer.FromStoreID;
+                           issuedoc.ItemID = transfer.ItemID;
+                           issuedoc.Quantity = transfer.Quantity;
+                           issuedoc.Date = transfer.Date;
+                           issuedoc.BatchNo = transfer.BatchNo;
+                           issuedoc.UnitID = transfer.UnitID;
+                           issuedoc.RecievDocID = transfer.RecID;
+                           issuedoc.IsTransfer = true;
+                           issuedoc.RefNo = transfer.RefNo;
+                           var allstores = new Stores();
+                           allstores.LoadByPrimaryKey(transfer.ToStoreID);
+                           //allstores.AddNew();
+                           issuedoc.ReceivingUnitID = Convert.ToInt32(allstores.ReceivingUnitID);
+                           issuedoc.Save();
+
                             receiveDoc.GetReceivedItems(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
                             receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - transfer.Quantity;
+
+
+                            newreceiveDoc.AddNew();
+                            newreceiveDoc.StoreID = transfer.ToStoreID;
+                            newreceiveDoc.RefNo = transfer.RefNo;
+                            newreceiveDoc.BatchNo = transfer.BatchNo;
+                            newreceiveDoc.ItemID = transfer.ItemID;
+                            newreceiveDoc.Quantity = receiveDoc.QuantityLeft = transfer.Quantity;
+                            newreceiveDoc.Date = transfer.Date;
+                            newreceiveDoc.UnitID = transfer.UnitID;
+                            newreceiveDoc.Out = false;
+                            newreceiveDoc.ReceivedBy = transfer.ApprovedBy;
+                            newreceiveDoc.ExpDate = receiveDoc.ExpDate;
+
+                            allstores.LoadByPrimaryKey(transfer.FromStoreID);
+                            newreceiveDoc.SupplierID = (int) allstores.GetColumn("SupplierID");
+                            newreceiveDoc.Save();
+                            receiveDoc.Save();
+                            
+
                          //   receiveDoc.Out = true;
 
                             //receiveDoc.GetReceivedItems(receiveid, _itemID, Convert.ToInt32(lkToStore.EditValue));
                             //receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + transfer.Quantity;
-
-                            receiveDoc.Save();
-
                         }
-                        
 
                         XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ResetFields();

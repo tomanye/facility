@@ -22,6 +22,8 @@ namespace BLL
             
         }
 
+        
+
         public DataTable GetActiveStores()
         {
             this.Where.IsActive.Value = true;

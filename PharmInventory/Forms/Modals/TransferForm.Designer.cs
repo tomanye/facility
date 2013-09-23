@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -78,6 +78,7 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemunitLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -86,7 +87,6 @@
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.editManufacturer = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.EditRecivingBoxLevels = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemSpinEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -157,12 +157,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRequestedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemunitLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditRecivingBoxLevels)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -645,9 +645,9 @@
             this.txtRequestedBy.Size = new System.Drawing.Size(358, 20);
             this.txtRequestedBy.StyleController = this.layoutControl3;
             this.txtRequestedBy.TabIndex = 14;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Requested by can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtRequestedBy, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Requested by can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtRequestedBy, conditionValidationRule1);
             // 
             // dtRecDate
             // 
@@ -761,6 +761,18 @@
             this.gridColumn17.VisibleIndex = 5;
             this.gridColumn17.Width = 161;
             // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Mask.EditMask = "n0";
+            this.repositoryItemSpinEdit1.Mask.UseMaskAsDisplayFormat = true;
+            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            // 
             // gridColumn15
             // 
             this.gridColumn15.Caption = "BU Qty(Remaining)";
@@ -858,18 +870,6 @@
             this.editManufacturer.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             this.editManufacturer.ShowHeader = false;
             this.editManufacturer.ValueMember = "ID";
-            // 
-            // repositoryItemSpinEdit1
-            // 
-            this.repositoryItemSpinEdit1.AutoHeight = false;
-            this.repositoryItemSpinEdit1.Mask.EditMask = "n0";
-            this.repositoryItemSpinEdit1.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemSpinEdit1.MaxValue = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
             // 
             // EditRecivingBoxLevels
             // 
@@ -1068,9 +1068,9 @@
             this.lkToStore.Size = new System.Drawing.Size(360, 20);
             this.lkToStore.StyleController = this.layoutControl3;
             this.lkToStore.TabIndex = 13;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "To Store can not be empty.";
-            this.dxValidationProvider1.SetValidationRule(this.lkToStore, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "To Store can not be empty.";
+            this.dxValidationProvider1.SetValidationRule(this.lkToStore, conditionValidationRule2);
             // 
             // txtRefNo
             // 
@@ -1080,9 +1080,9 @@
             this.txtRefNo.Size = new System.Drawing.Size(358, 20);
             this.txtRefNo.StyleController = this.layoutControl3;
             this.txtRefNo.TabIndex = 0;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "Reference Number can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule4);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Reference Number can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule3);
             // 
             // txtTransferReason
             // 
@@ -1091,9 +1091,9 @@
             this.txtTransferReason.Size = new System.Drawing.Size(834, 20);
             this.txtTransferReason.StyleController = this.layoutControl3;
             this.txtTransferReason.TabIndex = 16;
-            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule5.ErrorText = "Transfer reason can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtTransferReason, conditionValidationRule5);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule4.ErrorText = "Transfer reason can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtTransferReason, conditionValidationRule4);
             // 
             // layoutControlGroup5
             // 
@@ -1323,12 +1323,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRequestedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receivingGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemunitLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditRecivingBoxLevels)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();

@@ -130,6 +130,24 @@ namespace DAL
 					return new SqlParameter("@IsActive", SqlDbType.Bit, 0);
 				}
 			}
+
+
+            public static SqlParameter SupplierID
+            {
+                get
+                {
+                    return new SqlParameter("@SupplierID", SqlDbType.Int, 0);
+                }
+            }
+
+
+            public static SqlParameter ReceivingUnitID
+            {
+                get
+                {
+                    return new SqlParameter("@ReceivingUnitID", SqlDbType.Int, 0);
+                }
+            }
 			
 		}
 		#endregion		
@@ -141,6 +159,8 @@ namespace DAL
             public const string HospitalID = "HospitalID";
             public const string StoreName = "StoreName";
             public const string IsActive = "IsActive";
+            public const string SupplierID = "SupplierID";
+            public const string ReceivingUnitID = "ReceivingUnitID";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -152,7 +172,8 @@ namespace DAL
 					ht[HospitalID] = _Stores.PropertyNames.HospitalID;
 					ht[StoreName] = _Stores.PropertyNames.StoreName;
 					ht[IsActive] = _Stores.PropertyNames.IsActive;
-
+                    ht[SupplierID] = _Stores.PropertyNames.SupplierID;
+                    ht[ReceivingUnitID] = _Stores.PropertyNames.ReceivingUnitID;
 				}
 				return (string)ht[columnName];
 			}
@@ -168,6 +189,8 @@ namespace DAL
             public const string HospitalID = "HospitalID";
             public const string StoreName = "StoreName";
             public const string IsActive = "IsActive";
+            public const string SupplierID = "SupplierID";
+            public const string ReceivingUnitID = "ReceivingUnitID";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -179,7 +202,8 @@ namespace DAL
 					ht[HospitalID] = _Stores.ColumnNames.HospitalID;
 					ht[StoreName] = _Stores.ColumnNames.StoreName;
 					ht[IsActive] = _Stores.ColumnNames.IsActive;
-
+                    ht[SupplierID] = _Stores.PropertyNames.SupplierID;
+                    ht[ReceivingUnitID] = _Stores.PropertyNames.ReceivingUnitID;
 				}
 				return (string)ht[propertyName];
 			}
@@ -194,8 +218,8 @@ namespace DAL
             public const string ID = "s_ID";
             public const string HospitalID = "s_HospitalID";
             public const string StoreName = "s_StoreName";
-            public const string IsActive = "s_IsActive";
-
+            public const string SupplierID = "s_SupplierID";
+            public const string ReceivingUnitID = "s_ReceivingUnitID";
 		}
 		#endregion		
 		
@@ -249,6 +273,29 @@ namespace DAL
 			}
 		}
 
+        public virtual int SupplierID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.SupplierID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.SupplierID, value);
+            }
+        }
+
+        public virtual int ReceivingUnitID
+        {
+            get
+            {
+                return base.Getint(ColumnNames.ReceivingUnitID);
+            }
+            set
+            {
+                base.Setint(ColumnNames.ReceivingUnitID, value);
+            }
+        }
 
 		#endregion
 		
@@ -313,6 +360,36 @@ namespace DAL
 					this.IsActive = base.SetboolAsString(ColumnNames.IsActive, value);
 			}
 		}
+
+        public virtual string s_SupplierID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.SupplierID) ? string.Empty : base.GetintAsString(ColumnNames.SupplierID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.SupplierID);
+                else
+                    this.SupplierID = base.SetintAsString(ColumnNames.SupplierID, value);
+            }
+        }
+
+        public virtual string s_ReceivingUnitID
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.ReceivingUnitID) ? string.Empty : base.GetintAsString(ColumnNames.ReceivingUnitID);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.ReceivingUnitID);
+                else
+                    this.ReceivingUnitID = base.SetintAsString(ColumnNames.ReceivingUnitID, value);
+            }
+        }
 
 
 		#endregion		
@@ -387,6 +464,27 @@ namespace DAL
 					}
 				}
 
+                public WhereParameter SupplierID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.SupplierID, Parameters.SupplierID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter ReceivingUnitID
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.ReceivingUnitID, Parameters.ReceivingUnitID);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+
 
 				private WhereClause _clause;
 			}
@@ -439,11 +537,35 @@ namespace DAL
 					return _IsActive_W;
 				}
 			}
+            public WhereParameter SupplierID
+            {
+                get
+                {
+                    if (_SupplierID_W == null)
+                    {
+                        _SupplierID_W = TearOff.SupplierID;
+                    }
+                    return _SupplierID_W;
+                }
+            }
 
+            public WhereParameter ReceivingUnitID
+            {
+                get
+                {
+                    if (_ReceivingUnitID_W == null)
+                    {
+                        _ReceivingUnitID_W = TearOff.ReceivingUnitID;
+                    }
+                    return _ReceivingUnitID_W;
+                }
+            }
 			private WhereParameter _ID_W = null;
 			private WhereParameter _HospitalID_W = null;
 			private WhereParameter _StoreName_W = null;
 			private WhereParameter _IsActive_W = null;
+            private WhereParameter _SupplierID_W = null;
+            private WhereParameter _ReceivingUnitID_W = null;
 
 			public void WhereClauseReset()
 			{
@@ -451,6 +573,9 @@ namespace DAL
 				_HospitalID_W = null;
 				_StoreName_W = null;
 				_IsActive_W = null;
+                _SupplierID_W = null;
+			    _ReceivingUnitID_W = null;
+			   
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -547,6 +672,26 @@ namespace DAL
 					}
 				}
 
+                public AggregateParameter SupplierID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.SupplierID, Parameters.SupplierID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter ReceivingUnitID
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.ReceivingUnitID, Parameters.ReceivingUnitID);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
 
 				private AggregateClause _clause;
 			}
@@ -600,10 +745,36 @@ namespace DAL
 				}
 			}
 
+            public AggregateParameter SupplierID
+            {
+                get
+                {
+                    if (_SupplierID_W == null)
+                    {
+                        _SupplierID_W = TearOff.SupplierID;
+                    }
+                    return _SupplierID_W;
+                }
+            }
+
+            public AggregateParameter ReceivingUnitID
+            {
+                get
+                {
+                    if (_ReceivingUnitID_W == null)
+                    {
+                        _ReceivingUnitID_W = TearOff.ReceivingUnitID;
+                    }
+                    return _ReceivingUnitID_W;
+                }
+            }
+
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _HospitalID_W = null;
 			private AggregateParameter _StoreName_W = null;
 			private AggregateParameter _IsActive_W = null;
+            private AggregateParameter _SupplierID_W = null;
+            private AggregateParameter _ReceivingUnitID_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -611,6 +782,8 @@ namespace DAL
 				_HospitalID_W = null;
 				_StoreName_W = null;
 				_IsActive_W = null;
+                _SupplierID_W = null;
+                _ReceivingUnitID_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -700,6 +873,14 @@ namespace DAL
 			p = cmd.Parameters.Add(Parameters.IsActive);
 			p.SourceColumn = ColumnNames.IsActive;
 			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.SupplierID);
+            p.SourceColumn = ColumnNames.SupplierID;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.ReceivingUnitID);
+            p.SourceColumn = ColumnNames.ReceivingUnitID;
+            p.SourceVersion = DataRowVersion.Current;
 
 
 			return cmd;
