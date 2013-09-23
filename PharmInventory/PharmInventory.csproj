@@ -793,6 +793,9 @@
     <Content Include="Scripts\9902_InsertReceivingUnit.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9903_UpdateStoreTable.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\990_AlterTableStores.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
