@@ -708,7 +708,11 @@ namespace PharmInventory.Forms.Transactions
                             recDoc.QuantityLeft = recDoc.QuantityLeft - issDoc.Quantity;
                             var itemId = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
                             var unitId = Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
-                            recDoc.Out = (recDoc.QuantityLeft == 0) ? true : false;
+                            if (recDoc.QuantityLeft != 0)
+                                recDoc.Out = false;
+                            else
+                                recDoc.Out = true;
+
                             if (confirmedItemsQuantity.ContainsKey(itemId))
                                 confirmedItemsQuantity[itemId] += recDoc.QuantityLeft;
                             else
@@ -968,7 +972,7 @@ namespace PharmInventory.Forms.Transactions
                 dtIssueDate.Value = xx;
 
                 var bal = new Balance();
-                int receivingUnit = Convert.ToInt32(cboReceivingUnits.EditValue);
+                var receivingUnit = Convert.ToInt32(cboReceivingUnits.EditValue);
 
                 Int64 duAmc = 0;
                 int itmId = Convert.ToInt32(dr["ID"]);

@@ -138,14 +138,23 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DataRow dr = gridView1.GetFocusedDataRow();
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+            var dr = gridView1.GetFocusedDataRow();
 
             if (dr == null) return;
 
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
+                return;
+            }
+
             int tranId = Convert.ToInt32(dr["ID"]);
             var rec = new ReceiveDoc();
-            IssueDoc iss = new IssueDoc();
-            Disposal dis = new Disposal();
+            var iss = new IssueDoc();
+            var dis = new Disposal();
             rec.LoadByPrimaryKey(tranId);
             iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
             _dtDate.Value = DateTime.Now;
@@ -169,14 +178,24 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            DataRow dr = gridView1.GetFocusedDataRow();
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+
+            var dr = gridView1.GetFocusedDataRow();
 
             if (dr == null) return;
 
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
+                return;
+            }
+
             int tranId = Convert.ToInt32(dr["ID"]);
-            ReceiveDoc rec = new ReceiveDoc();
+            var rec = new ReceiveDoc();
             rec.LoadByPrimaryKey(tranId);
-            IssueDoc iss = new IssueDoc();
+            var iss = new IssueDoc();
             iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
             _dtDate.CustomFormat = "MM/dd/yyyy";
             DateTime dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
@@ -420,7 +439,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (dr == null) return;
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             var edtloss = new EditRecieveRefrenceNo((string) dr["RefNo"]);
@@ -437,7 +456,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             var rec = new ReceiveDoc();

@@ -222,14 +222,24 @@ namespace PharmInventory.Forms.ActivityLogs
         /// <param name="e"></param>
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRow dataRow = gridView1.GetFocusedDataRow();
+
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+
+            var dataRow = gridView1.GetFocusedDataRow();
             if (dataRow == null) return;
 
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
+                return;
+            }
             //get the primary key of the row
-            int ID = Convert.ToInt32(dataRow["ID"]);
+            var ID = Convert.ToInt32(dataRow["ID"]);
 
-            Disposal disposal = new Disposal();
-            ReceiveDoc receiveDoc = new ReceiveDoc();
+            var disposal = new Disposal();
+            var receiveDoc = new ReceiveDoc();
 
             //Retrieve the adjustment with the value of the primary key(id)
             disposal.LoadByPrimaryKey(ID);
@@ -314,7 +324,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (dr == null) return;
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             var edtloss = new EditLossAndAdjustment((string)dr["RefNo"]);
@@ -331,7 +341,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (dr == null) return;
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,

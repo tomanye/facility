@@ -135,13 +135,24 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
+
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+
             DataRow dr = gridView1.GetFocusedDataRow();
 
             if (dr == null) return;
 
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the priviledge to update reference number!", "Caution");
+                return;
+            }
+
             int tranId = Convert.ToInt32(dr["ID"]);
-            ReceiveDoc rec = new ReceiveDoc();
-            IssueDoc iss = new IssueDoc();
+            var rec = new ReceiveDoc();
+            var iss = new IssueDoc();
             iss.LoadByPrimaryKey(tranId);
 
             string batchNo = iss.BatchNo;
@@ -322,7 +333,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (dr == null) return;
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             var iss = new EditIssueDocRefrenceNo((string)dr["RefNo"]);
@@ -338,7 +349,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if(dr==null)return;
             if (us.UserName != "admin")
             {
-                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
                 return;
             }
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,

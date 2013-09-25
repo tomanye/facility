@@ -28,7 +28,9 @@ namespace BLL
         public DataTable GetBatchToIssue(int storeId, int itemId, DateTime dt)
         {
             FlushData();
-            string query = String.Format("SELECT * FROM ReceiveDoc WHERE (ExpDate > GETDATE()) AND (ItemID = {1}) AND (Out = 0) AND (QuantityLeft != 0) AND (StoreID = {0} AND (Date <= '{2}')) ORDER BY ExpDate", storeId, itemId, dt.ToString());
+            var query = String.Format("SELECT * FROM ReceiveDoc WHERE (ExpDate > GETDATE()) AND (ItemID = {1}) " +
+                                      "AND (Out = 0) AND (QuantityLeft != 0) AND (StoreID = {0} AND (Date <= '{2}')) " +
+                                      "ORDER BY ExpDate", storeId, itemId, dt.ToString());
             LoadFromRawSql(query);
             return DataTable;
         }
