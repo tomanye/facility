@@ -413,16 +413,33 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+            var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
             if (dr == null) return;
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                return;
+            }
             var edtloss = new EditRecieveRefrenceNo((string) dr["RefNo"]);
             edtloss.ShowDialog();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRowView dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID);
+            var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
             if (dr == null) return;
+
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the previledge to update reference number!", "Caution");
+                return;
+            }
             var rec = new ReceiveDoc();
             if (XtraMessageBox.Show("Are You Sure, You want to delete this?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {

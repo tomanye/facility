@@ -268,9 +268,13 @@ namespace PharmInventory.Forms.Modals
                 itmSup.Save();
             }
 
-            ProgramProduct progItm = new ProgramProduct();
+            var progItm = new ProgramProduct();
             progItm.DeleteAllProgramsForItem(_itemId);
-            Programs prog = new Programs();
+
+            var prog = new Programs();
+            //prog.AddNew();
+            //prog.Name = cboPrograms.Text;
+            //prog.Save();
 
             foreach (object t in lstPrograms.CheckedItems)
             {
@@ -281,8 +285,8 @@ namespace PharmInventory.Forms.Modals
                 progItm.Save();
             }
 
-            DUsItemList duItem = new DUsItemList();
-            ReceivingUnits dus = new ReceivingUnits();
+            var duItem = new DUsItemList();
+            var dus = new ReceivingUnits();
 
             foreach (object t in lstDUs.CheckedItems)
             {

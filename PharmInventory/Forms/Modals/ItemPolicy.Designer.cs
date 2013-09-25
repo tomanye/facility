@@ -33,6 +33,7 @@ namespace PharmInventory.Forms.Modals
             this.lstDUs = new System.Windows.Forms.CheckedListBox();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.layout = new DevExpress.XtraLayout.LayoutControl();
+            this.chkNeedExpiryBatch = new System.Windows.Forms.CheckBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.itemunitbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtQuantityPerPack = new DevExpress.XtraEditors.TextEdit();
@@ -76,11 +77,10 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.z = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.chkNeedExpiryBatch = new System.Windows.Forms.CheckBox();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layout)).BeginInit();
             this.layout.SuspendLayout();
@@ -114,10 +114,10 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.SuspendLayout();
             // 
             // lstDUs
@@ -170,6 +170,15 @@ namespace PharmInventory.Forms.Modals
             this.layout.Root = this.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;
             this.layout.Size = new System.Drawing.Size(788, 544);
             this.layout.TabIndex = 2;
+            // 
+            // chkNeedExpiryBatch
+            // 
+            this.chkNeedExpiryBatch.Location = new System.Drawing.Point(24, 115);
+            this.chkNeedExpiryBatch.Name = "chkNeedExpiryBatch";
+            this.chkNeedExpiryBatch.Size = new System.Drawing.Size(355, 20);
+            this.chkNeedExpiryBatch.TabIndex = 23;
+            this.chkNeedExpiryBatch.Text = "Need Expiry Batch";
+            this.chkNeedExpiryBatch.UseVisualStyleBackColor = true;
             // 
             // listBox1
             // 
@@ -658,6 +667,18 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlItem17.Text = "Prefered Qty Per Pack: e.g,1000";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(165, 13);
             // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.chkNeedExpiryBatch;
+            this.layoutControlItem18.CustomizationFormText = "layoutControlItem18";
+            this.layoutControlItem18.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(359, 24);
+            this.layoutControlItem18.Text = "layoutControlItem18";
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem18.TextToControlDistance = 0;
+            this.layoutControlItem18.TextVisible = false;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "Unit";
@@ -691,27 +712,6 @@ namespace PharmInventory.Forms.Modals
             this.emptySpaceItem3.Size = new System.Drawing.Size(571, 130);
             this.emptySpaceItem3.Text = "emptySpaceItem3";
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // chkNeedExpiryBatch
-            // 
-            this.chkNeedExpiryBatch.Location = new System.Drawing.Point(24, 115);
-            this.chkNeedExpiryBatch.Name = "chkNeedExpiryBatch";
-            this.chkNeedExpiryBatch.Size = new System.Drawing.Size(355, 20);
-            this.chkNeedExpiryBatch.TabIndex = 23;
-            this.chkNeedExpiryBatch.Text = "Need Expiry Batch";
-            this.chkNeedExpiryBatch.UseVisualStyleBackColor = true;
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.chkNeedExpiryBatch;
-            this.layoutControlItem18.CustomizationFormText = "layoutControlItem18";
-            this.layoutControlItem18.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(359, 24);
-            this.layoutControlItem18.Text = "layoutControlItem18";
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem18.TextToControlDistance = 0;
-            this.layoutControlItem18.TextVisible = false;
             // 
             // ItemPolicy
             // 
@@ -762,10 +762,10 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.z)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ResumeLayout(false);
 
         }
