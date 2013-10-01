@@ -36,19 +36,27 @@ namespace PharmInventory
         {
             if (txtPassword.Text == txtConfirm.Text)
             {
-                User us = new User();
+                var us = new User();
                 if (userId != 0)
                 {
                     us.LoadByPrimaryKey(userId);
+                    if (us.UserName != "admin")
+                    {
+                        XtraMessageBox.Show("You have no administative privilage to change password!", "Warning");
+                        return;
+                    }
                     if (us.Password == txtOldPass.Text)
-                    {
-                        us.Password = txtPassword.Text;
-                        us.Save();
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Old Password is not correct!", "Invaild Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        {
+                            us.Password = txtPassword.Text;
+                            us.Save();
+                            XtraMessageBox.Show("The password have been changed!", "Succcess");
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Old Password is not correct!", "Invaild Password", MessageBoxButtons.OK,
+                                                MessageBoxIcon.Error);
+                        }
+                    
                 }
             }
             else

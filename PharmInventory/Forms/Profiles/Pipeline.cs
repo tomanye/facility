@@ -106,6 +106,8 @@ namespace PharmInventory.Forms.Profiles
             DataTable dtAmcRange = new DataTable();
             dtAmcRange.Columns.Add("Value");
             dtAmcRange.Columns.Add("Month");
+            object[] objamcR00 = { 1, (1 + " Month") };
+            dtAmcRange.Rows.Add(objamcR00);
             object[] objamcR01 = { 3, (3 + " Month") };
             dtAmcRange.Rows.Add(objamcR01);
             object[] objamcR010 = { 6, (6 + " Month") };

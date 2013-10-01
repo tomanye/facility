@@ -309,7 +309,6 @@ namespace StockoutIndexBuilder
         {
             var db = new StockoutEntities();
             var stockoutDays = CalculateStockoutDays(itemId,storeId, startDate, endDate);
-           // var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId || m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
             var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId && m.Date >= startDate && m.Date < endDate);//.Where(m => m.Date >= startDate && m.Date < endDate);
            if (!allIssues.Any())
                 return 0;
@@ -334,15 +333,12 @@ namespace StockoutIndexBuilder
             var context = new StockoutEntities();
             var genaralinfo = context.GenralInfos.First();
             var endDate = DateTime.Now;
-            var unitrepository = new UnitRepository();
-            var stockoutrepo = new StockoutRepository();
             var startDate = endDate.Subtract(TimeSpan.FromDays(genaralinfo.AMCRange * 30));
             
             try
             {
               foreach (var row in items)
               {
-                  // Check if there's a stockout
                   if (row.Value == 0)
                   {
                       var stockOut = new Stockout()
@@ -356,17 +352,8 @@ namespace StockoutIndexBuilder
                       context.Stockouts.Add(stockOut);
                       context.SaveChanges();
                   }
-
-                  //var lastissued = context.IssueDocs.OrderByDescending(m => m.ID).First();
-                  //var issuedoc = context.IssueDocs.First(m => m.ItemID == row.Key && m.StoreID == storeId && m.ID == lastissued.ID);
-
-                 // var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID == storeId && m.UnitID == issuedoc.UnitID);
-                   var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID == storeId && m.UnitID ==unitId);
-               //   var singleOrDefault = stockoutrepo.GetStockoutsByItemandStore(row.Key, storeId).SingleOrDefault();
-                
-                 
-
-                  // Add AMC value
+                  
+                  var allItemIds = context.AmcReports.SingleOrDefault(m => m.ItemID == row.Key && m.StoreID == storeId && m.UnitID ==unitId);
                   if(allItemIds==null)
                   {
                      
@@ -395,15 +382,11 @@ namespace StockoutIndexBuilder
                       allItemIds.IssueInAmcRange = CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate,
                                                                              DateTime.Now);
                       allItemIds.DaysOutOfStock = CalculateStockoutDays(row.Key, storeId, startDate, DateTime.Now);
-                      allItemIds.AmcWithDOS = CalculateAverageConsumption(row.Key, storeId, startDate, endDate,
-                                                                          CalculationOptions.Monthly);
-                      allItemIds.AmcWithOutDOS =
-                          CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate)/
-                          Convert.ToDouble(genaralinfo.AMCRange);
+                      allItemIds.AmcWithDOS = CalculateAverageConsumption(row.Key, storeId, startDate, endDate,CalculationOptions.Monthly);
+                      allItemIds.AmcWithOutDOS =CalculateTotalConsumptionWithoutDOS(row.Key, storeId, startDate, endDate)/Convert.ToDouble(genaralinfo.AMCRange);
                       allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(row.Key, storeId, startDate, DateTime.Now);
                       allItemIds.LastIndexedTime = DateTime.Now;
                       allItemIds.UnitID = unitId;
-                      //if (issuedoc != null) allItemIds.UnitID = issuedoc.UnitID;
                   }
 
                   context.SaveChanges();

@@ -88,6 +88,7 @@ namespace PharmInventory.Forms.Modals
                     txtPack.Text = rec.NoOfPack.ToString();
                     txtQtyPack.Text =rec.QtyPerPack.ToString();
                     txtPrice.Text = (rec.Cost * rec.QtyPerPack).ToString();
+                    txtQuantityLeft.Text = rec.QuantityLeft.ToString();
                 }
                 catch
                 {
@@ -96,6 +97,7 @@ namespace PharmInventory.Forms.Modals
                     txtPrice.Text = (rec.Cost * 1).ToString();
                 }
                 txtQuantity.Text = rec.Quantity.ToString();
+                txtQuantityLeft.Text = rec.QuantityLeft.ToString();
                 DateTime dtDate = Convert.ToDateTime(rec.Date.ToString("MM/dd/yyyy"));
                 txtDate.Text = dtDate.ToShortDateString();
                 dtRecDate.Value = DateTime.Now;
@@ -132,6 +134,7 @@ namespace PharmInventory.Forms.Modals
                 try
                 {
                     txtQuantity.Text = (Convert.ToInt32(txtPack.Text) * Convert.ToInt32(txtQtyPack.Text)).ToString();
+                    txtQuantityLeft.Text = (Convert.ToInt32(txtPack.Text)*Convert.ToInt32(txtQtyPack.Text)).ToString();
                 }
                 catch
                 {
