@@ -1156,7 +1156,7 @@ namespace BLL
             var query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity from" +
                                          " Items left join (select ItemID,UnitID, sum(Quantity) as Quantity from ReceiveDoc rd " +
                                          "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID,UnitID) as" +
-                                         " A on Items.ID = A.ItemID left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                         " A on Items.ID = A.ItemID left join ItemUnit as iu on A.ItemID =iu.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
@@ -1164,7 +1164,7 @@ namespace BLL
                                   "from Items left join (select ItemID, UnitID,sum(Quantity) Quantity " +
                                   "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
                                   "StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "left join ItemUnit as iu on A.ItemID =iu.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
@@ -1172,7 +1172,7 @@ namespace BLL
                                   "Items left join (select ItemID, UnitID,sum(case when Losses = 1 then - Quantity else " +
                                   "Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' " +
                                   "and StoreID = {2} group by ItemID,UnitID) as A on Items.ID = A.ItemID " +
-                                  "left join ItemUnit as iu on A.UnitID =iu.ID", dt1, dt2, storeId);
+                                  "left join ItemUnit as iu on A.ItemID =iu.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
