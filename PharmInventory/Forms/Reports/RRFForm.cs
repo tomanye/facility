@@ -201,23 +201,7 @@ namespace PharmInventory.Forms.Reports
             ChooseGridView();
         }
 
-        private void PopulateListByProgram()
-        {
-            _storeID = Convert.ToInt32(cboStores.EditValue);
-            _programID = Convert.ToInt32(cboProgram.EditValue);
-            Items itm = new Items();
-
-            _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
-            _toMonth = int.Parse(cboToMonth.EditValue.ToString());
-            _toYear = int.Parse(cboToYear.EditValue.ToString());
-            _fromYear = int.Parse(cboFromYear.EditValue.ToString());
-
-            tblRRF = itm.GetRRFReportByProgram(_storeID, _programID, _fromMonth, _toYear);
-            gridItemsChoice.DataSource = tblRRF;
-
-            ChooseGridView();
-        }
-
+        
         private static void PopulateTheYearCombo(ComboBoxEdit combo)
         {
             int[] years = new int[25];

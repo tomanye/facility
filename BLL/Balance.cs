@@ -800,6 +800,19 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetSOHForProgramRRF(int storeId, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHByProgram", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
         public Int64 GetSOH(int itemID, int storeId, int month, int year)
         {
             GetSOH(storeId, month, year);

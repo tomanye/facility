@@ -60,22 +60,22 @@ namespace PharmInventory.HelperClasses
             RefreshDosageForms(soapClient, previousVersion);
 
             RefreshTypes(soapClient, previousVersion);
-            RefreshDrugCategory(soapClient, previousVersion);
-            RefreshSupplyCategory(soapClient, previousVersion);
-            RefreshDrugSubCategory(soapClient, previousVersion);
+            //RefreshDrugCategory(soapClient, previousVersion);
+            //RefreshSupplyCategory(soapClient, previousVersion);
+            //RefreshDrugSubCategory(soapClient, previousVersion);
 
             //// RefreshPrograms(soapClient,previousVersion);
             RefreshProducts(soapClient, previousVersion);
             // //SaveItemList(soapClient.GetSupplyItems(userName, password, previousVersion, null));
-           
+
             RefreshItems(soapClient, previousVersion, 1);
             RefreshItems(soapClient, previousVersion, 2);
 
-            RefreshItemUnits(soapClient, 0);
+            //RefreshItemUnits(soapClient, 0);
 
-            RefreshDrugItemCategory(soapClient, previousVersion);
+                //RefreshDrugItemCategory(soapClient, previousVersion);
 
-            RefreshItemSupplyCategory(soapClient, previousVersion);
+                //RefreshItemSupplyCategory(soapClient, previousVersion);
 
           
 
@@ -96,15 +96,19 @@ namespace PharmInventory.HelperClasses
                 }
                 if(v.ID != 0)
                 iu.ID = v.ID;
-                if (v.ItemID != null)
+                if (v.ItemID != null && v.Text!=null)
                 {
 
-                    Items itm = new Items(); 
+                    var itm = new Items(); 
                     iu.ItemID = itm.LoadByMappingID(v.ItemID.Value);
+                }
+                else
+                {
+                    continue;
                 }
                     iu.QtyPerUnit = v.QtyPerUnit;
                     iu.Text = v.Text;
-                iu.Save();
+                    iu.Save();
             }
 
         }
@@ -930,13 +934,13 @@ namespace PharmInventory.HelperClasses
             int different;
             int exactNameNotFound;
             int notFound;
-            List<DirectoryService.Units> dsUnitsList = soapClient.GetUnits(userName, password, lastVersionNumber, null);
+            List<DirectoryService.UnitTbl> dsUnitsList = soapClient.GetUnits(userName, password, lastVersionNumber, null);
             BLL.Unit localUnit = new Unit();
             similar = 0; different = 0; exactNameNotFound = 0; notFound = 0;
             foreach (var dsUnit in dsUnitsList)
             {
                 Console.WriteLine(dsUnit.Name);
-                localUnit.LoadByPrimaryKey(int.Parse(dsUnit.ID.Value.ToString()));
+                localUnit.LoadByPrimaryKey(int.Parse(dsUnit.ID.ToString()));
                 if (localUnit.RowCount > 0)
                 {
                     Console.Write(localUnit.Unit);
@@ -963,7 +967,7 @@ namespace PharmInventory.HelperClasses
             //XtraMessageBox.Show("Units\nSimilar: " + similar + "\nDifferent: " + different + "\nExact Name not found:" + exactNameNotFound + "\nNot Found:" + notFound);
         }
 
-        private static int HandleDifferentUnits(DirectoryService.Units dsUnit, Unit localUnit, int different, int exactNameNotFound, int notFound)
+        private static int HandleDifferentUnits(DirectoryService.UnitTbl dsUnit, Unit localUnit, int different, int exactNameNotFound, int notFound)
         {
             Console.WriteLine("Not Found!");
             different++;

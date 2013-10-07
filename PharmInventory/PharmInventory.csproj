@@ -796,6 +796,12 @@
     <Content Include="Scripts\9903_UpdateStoreTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9904_AlterSOH.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9905_CreateSOHByProgram.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\990_AlterTableStores.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -841,6 +847,9 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.ItemSubCategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.UnitTbl.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
@@ -1249,9 +1258,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.SupplyCategory.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.Unit.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.VEN.datasource">
