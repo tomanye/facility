@@ -796,12 +796,6 @@
     <Content Include="Scripts\9903_UpdateStoreTable.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9904_AlterSOH.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9905_CreateSOHByProgram.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\990_AlterTableStores.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
