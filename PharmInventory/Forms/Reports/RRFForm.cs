@@ -1511,11 +1511,15 @@ namespace PharmInventory.Forms.Reports
         {
             if (e.Column.FieldName == "gridColumn40")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+            if (e.Column.FieldName == "BeginingBalance")
+                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
 
         private void grdViewInPacks_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "gridColumn41")
+                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+            if (e.Column.FieldName == "gridColumn13")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
 
