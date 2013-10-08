@@ -1018,9 +1018,30 @@ namespace PharmInventory.Forms.Transactions
             DateTime dtCur = ConvertDate.DateConverter(dtIssueDate.Text);
             int year = ((dtCur.Month < 11) ? dtCur.Year : dtCur.Year + 1);
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
-            int itemId = Convert.ToInt32(dr["ID"]);
-            var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
-            con.ShowDialog();
+            var itemId = Convert.ToInt32(dr["ID"]);
+            var unitId = Convert.ToInt32(dr["UnitID"]);
+
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    {
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0);
+                        con.ShowDialog();
+                    }
+                    break;
+                case 2:
+                    {
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year,0,unitId);
+                        con.ShowDialog();
+                    }
+                    break;
+                case 3:
+                    {
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0,unitId);
+                        con.ShowDialog();
+                    }
+                    break;
+            }
         }
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
