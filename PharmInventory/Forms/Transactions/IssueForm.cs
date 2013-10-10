@@ -1019,7 +1019,7 @@ namespace PharmInventory.Forms.Transactions
             int year = ((dtCur.Month < 11) ? dtCur.Year : dtCur.Year + 1);
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
             var itemId = Convert.ToInt32(dr["ID"]);
-            var unitId = Convert.ToInt32(dr["UnitID"]);
+            
 
             switch (VisibilitySetting.HandleUnits)
             {
@@ -1031,12 +1031,14 @@ namespace PharmInventory.Forms.Transactions
                     break;
                 case 2:
                     {
+                        var unitId = Convert.ToInt32(dr["UnitID"]);
                         var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year,0,unitId);
                         con.ShowDialog();
                     }
                     break;
                 case 3:
                     {
+                        var unitId = Convert.ToInt32(dr["UnitID"]);
                         var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), year, 0,unitId);
                         con.ShowDialog();
                     }

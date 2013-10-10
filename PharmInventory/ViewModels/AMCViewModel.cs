@@ -60,10 +60,10 @@ namespace PharmInventory.ViewModels
             if (allItemIds != null)
             {
                 allItemIds.IssueInAmcRange = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,endDate);
-                allItemIds.DaysOutOfStock = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
+                allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate);
                 allItemIds.AmcWithDOS = Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,CalculationOptions.Monthly);
                 allItemIds.AmcWithOutDOS =Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate)/Convert.ToDouble(viewModel.AmcRange);
-                allItemIds.IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate);
+                allItemIds.DaysOutOfStock = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
                 allItemIds.LastIndexedTime = DateTime.Now;
                 allItemIds.UnitID = unitid;
                 amcrepo.Update(allItemIds);
@@ -75,13 +75,13 @@ namespace PharmInventory.ViewModels
                                         ItemID = itemId,
                                         StoreID = storeId,
                                         AmcRange = amcRange,
+                                        IssueWithDOS = Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
                                         IssueInAmcRange =Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,endDate),
                                         DaysOutOfStock =Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
                                         AmcWithDOS = Builder.CalculateAverageConsumption(itemId, storeId, startDate,endDate,CalculationOptions.Monthly),
+                                        AmcWithOutDOS = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate) / Convert.ToDouble(viewModel.AmcRange),
                                         LastIndexedTime = DateTime.Now,
-                                        IssueWithDOS =Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
-                                        AmcWithOutDOS =Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,endDate)/Convert.ToDouble(viewModel.AmcRange),
-                                        UnitID = unitid,
+                                        UnitID = unitid
                                     };
                 amcrepo.Add(amcreport);
             }
