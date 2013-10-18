@@ -54,28 +54,20 @@ namespace PharmInventory.Forms.Reports
         {
             var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[2];
             var unitcolumn1 = ((GridView)gridItemsChoice.MainView).Columns[13];
-            //var unitcolumn3 = ((GridView)grdViewInPacks).Columns[2];
-            //var unitcolumn4 = ((GridView)grdViewInPacks).Columns[13];
-            
+           
             switch (VisibilitySetting.HandleUnits)
             {
                 case 3:
                     unitcolumn.Visible = false;
                     unitcolumn1.Visible = true;
-                    //unitcolumn3.Visible = false;
-                    //unitcolumn4.Visible = true;
                    break;
                 case 2:
                     unitcolumn.Visible = false;
                     unitcolumn1.Visible = true;
-                    //unitcolumn3.Visible = false;
-                    //unitcolumn4.Visible = true;
                     break;
                 default:
                     unitcolumn.Visible = true;
                     unitcolumn1.Visible = false;
-                    //unitcolumn3.Visible = true;
-                    //unitcolumn4.Visible = false;
                     break;
             }
 
@@ -88,7 +80,7 @@ namespace PharmInventory.Forms.Reports
             categorybindingSource.DataSource = alltypes.DefaultView;
 
             var program = new Programs();
-            var programs = program.GetAllPrograms();
+            var programs = program.GetSubPrograms();
             ProgramsBindingSource.DataSource = programs.DefaultView;
             
 
@@ -96,16 +88,18 @@ namespace PharmInventory.Forms.Reports
             PopulateTheMonthCombos(cboToMonth);
             PopulateTheYearCombo(cboFromYear);
             PopulateTheYearCombo(cboToYear);
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
-            ReceivingUnits ru = new ReceivingUnits();
+           
+            var ru = new ReceivingUnits();
             PopulateRRFs();
 
             WindowVisibility(false);
             EnableDisableStatusCheck();
-            Programs prog = new Programs();
-            prog.GetAllPrograms();
+           
+            var prog = new Programs();
+            prog.GetSubPrograms();
             cboProgram.Properties.DataSource = prog.DefaultView;
 
         }
@@ -158,14 +152,6 @@ namespace PharmInventory.Forms.Reports
             return currentYear;
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender,
-                                                      DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-        }
 
         private void PopulateList()
         {
@@ -245,46 +231,40 @@ namespace PharmInventory.Forms.Reports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",
-                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-           
+            if (XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;         
             SaveRRF();
-
             var ginfo = new GeneralInfo();
             ginfo.LoadAll();
-
             var ethioDateFrom = new EthiopianDate.EthiopianDate(_fromYear, _fromMonth, 1);
             var ethioDateTo = new EthiopianDate.EthiopianDate(_toYear, _toMonth, 30);
-
-
             var rrfReport = new RRFReport
                                       {
                                           FacilityName = {Text = ginfo.HospitalName},
                                           Period =
                                               {
-                                                  Text = string.Format("{0}, {1} - {2}, {3}",
-                                                                       ethioDateFrom.GetMonthName(), ethioDateFrom.Year,
-                                                                       ethioDateTo.GetMonthName(), ethioDateTo.Year)
+                                                  Text = string.Format("{0}, {1} - {2}, {3}",ethioDateFrom.GetMonthName(), ethioDateFrom.Year,ethioDateTo.GetMonthName(), ethioDateTo.Year)
                                               },
                                           ProgramName={Text =cboProgram.Text},
                                           categoryName= {Text =lkCategory.Text}
                                       };
-            var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
-            tbl.TableName="DataTable1";
-            
-            var dtset = new DataSet();
-            dtset.Tables.Add(tbl.Copy());
-            rrfReport.DataSource = dtset;
-            if (Convert.ToInt32(cboProgram.EditValue) == 0)
-            {
-                rrfReport.ShowPreviewDialog();
+
+                var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
+                tbl.TableName = "DataTable1";
+                var dtset = new DataSet();
+                dtset.Tables.Add(tbl.Copy());
+                rrfReport.DataSource = dtset;
+                if (Convert.ToInt32(cboProgram.EditValue) == 0)
+                {
+                    rrfReport.ShowPreviewDialog();
+                }
+                else
+                {
+                    rrfReport.FilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
+                    rrfReport.ShowPreviewDialog();
             }
-            else
-            {
-                rrfReport.FilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
-                rrfReport.ShowPreviewDialog();
-            }
+
+
 
         }
 
@@ -1349,15 +1329,26 @@ namespace PharmInventory.Forms.Reports
 
         private void ChooseGridView()
         {
-
-            if (chkCalculateInPacks.Checked && cboProgram.Text == "All Programs")
+                        if (chkCalculateInPacks.Checked && lkCategory.EditValue ==null && cboProgram.EditValue ==null )
             {
                 gridItemsChoice.MainView = grdViewInPacks;
             }
-            else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value)
+
+            else if (chkCalculateInPacks.Checked && lkCategory.EditValue != DBNull.Value && cboProgram.EditValue ==null )
+            {
+                gridItemsChoice.MainView = grdViewInPacks;
+                grdViewInPacks.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategory.EditValue));
+            }
+            else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value && lkCategory.EditValue ==null)
             {
                 gridItemsChoice.MainView = grdViewInPacks; 
                 grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
+            }
+
+            else if (chkCalculateInPacks.Checked  && lkCategory.EditValue != null && cboProgram.EditValue !=null )
+            {
+                gridItemsChoice.MainView = grdViewInPacks;
+                grdViewInPacks.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}", Convert.ToInt32(lkCategory.EditValue),Convert.ToInt32(cboProgram.EditValue));
             }
             else gridItemsChoice.MainView = gridItemChoiceView;
         }
@@ -1444,7 +1435,6 @@ namespace PharmInventory.Forms.Reports
             cboFromYear.EditValue = startingYear;
             SetEndingMonthAndYear(startingMonth, startingYear);
             cboStores.ItemIndex = 0;
-            //cboProgram.ItemIndex = 0;
             WindowVisibility(true);
             Cursor = Cursors.Default;
 
@@ -1502,8 +1492,15 @@ namespace PharmInventory.Forms.Reports
 
         private void cboProgram_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue == null) return;
-            gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
+            if (lkCategory.EditValue == null)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={0}",
+                                                                      Convert.ToInt32(cboProgram.EditValue));
+            }
+            else if(lkCategory.EditValue !=null)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}", Convert.ToInt32(lkCategory.EditValue),Convert.ToInt32(cboProgram.EditValue));
+            }
         }
 
 
@@ -1523,22 +1520,6 @@ namespace PharmInventory.Forms.Reports
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
 
-        private void btnEmergency_Click(object sender, EventArgs e)
-        {
-            _standardRRF = false;
-            Cursor = Cursors.WaitCursor;
-            var ethiopianDate = new EthiopianDate.EthiopianDate();
-            int currentMonth = ethiopianDate.Month;
-            int currentYear = ethiopianDate.Year;
-            int startingMonth = GetStartingMonth(currentMonth);
-            int startingYear = GetStartingYear(currentMonth, currentYear);
-            cboFromMonth.EditValue = startingMonth;
-            cboFromYear.EditValue = startingYear;
-            SetEndingMonthAndYear(startingMonth, startingYear);
-            cboStores.ItemIndex = 0;
-            WindowVisibility(true);
-            Cursor = Cursors.Default;
-        }
 
         private void btnSendEmergencyOrder_Click(object sender, EventArgs e)
         {
@@ -1556,8 +1537,14 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCategory_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue == null && cboProgram.EditValue==null) return;
-            gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={0} and TypeID={1}", Convert.ToInt32(cboProgram.EditValue), Convert.ToInt32(lkCategory.EditValue));
+            if (cboProgram.EditValue == null)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}",Convert.ToInt32(lkCategory.EditValue));
+            }
+            else if (cboProgram.EditValue != null)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={1} and TypeID={0}",Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboProgram.EditValue));
+            }
         }
 
     }

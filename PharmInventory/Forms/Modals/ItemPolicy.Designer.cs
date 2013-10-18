@@ -233,6 +233,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdN
             // 
+            this.rdN.Enabled = false;
             this.rdN.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdN.Location = new System.Drawing.Point(401, 202);
             this.rdN.Margin = new System.Windows.Forms.Padding(0);
@@ -244,6 +245,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdC
             // 
+            this.rdC.Enabled = false;
             this.rdC.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdC.Location = new System.Drawing.Point(398, 116);
             this.rdC.Name = "rdC";
@@ -254,6 +256,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdE
             // 
+            this.rdE.Enabled = false;
             this.rdE.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdE.Location = new System.Drawing.Point(587, 173);
             this.rdE.Margin = new System.Windows.Forms.Padding(0);
@@ -265,6 +268,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdV
             // 
+            this.rdV.Enabled = false;
             this.rdV.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdV.Location = new System.Drawing.Point(401, 173);
             this.rdV.Margin = new System.Windows.Forms.Padding(0);
@@ -285,6 +289,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdA
             // 
+            this.rdA.Enabled = false;
             this.rdA.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdA.Location = new System.Drawing.Point(398, 58);
             this.rdA.Name = "rdA";
@@ -307,6 +312,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // rdB
             // 
+            this.rdB.Enabled = false;
             this.rdB.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdB.Location = new System.Drawing.Point(398, 87);
             this.rdB.Name = "rdB";

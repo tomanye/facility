@@ -3,6 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using PharmInventory.HelperClasses;
 
 namespace PharmInventory.Forms.Modals
 {
@@ -55,6 +56,7 @@ namespace PharmInventory.Forms.Modals
         /// <param name="e"></param>
         private void EditReceive_Load(object sender, EventArgs e)
         {
+            lkItemUnit.Enabled = VisibilitySetting.HandleUnits != 1;
             var str = new Stores();
             str.LoadAll();
             cboStores.DataSource = str.DefaultView;
@@ -230,7 +232,7 @@ namespace PharmInventory.Forms.Modals
                             rec.Remark = txtRemark.Text;
                             rec.ReceivedBy = txtReceivedBy.Text;
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
-                            rec.UnitID = Convert.ToInt32(lkItemUnit.EditValue);
+                            rec.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                             rec.Out = false;
                             rec.Save();
@@ -250,7 +252,7 @@ namespace PharmInventory.Forms.Modals
                         rec.Out = false;
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
-                        rec.UnitID = Convert.ToInt32(lkItemUnit.EditValue);
+                        rec.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                         rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
                         rec.Save();
                         XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

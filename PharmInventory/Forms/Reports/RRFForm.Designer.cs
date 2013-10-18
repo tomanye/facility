@@ -125,7 +125,6 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.lcRRFList = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -182,7 +181,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
@@ -861,7 +859,7 @@
             // 
             // lkCategory
             // 
-            this.lkCategory.Location = new System.Drawing.Point(78, 602);
+            this.lkCategory.Location = new System.Drawing.Point(78, 578);
             this.lkCategory.Name = "lkCategory";
             this.lkCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1437,7 +1435,7 @@
             // 
             // cboProgram
             // 
-            this.cboProgram.Location = new System.Drawing.Point(78, 578);
+            this.cboProgram.Location = new System.Drawing.Point(78, 602);
             this.cboProgram.Name = "cboProgram";
             this.cboProgram.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
@@ -1484,8 +1482,7 @@
             this.layoutControlItem11,
             this.layoutControlItem2,
             this.layoutControlItem17,
-            this.layoutControlItem13,
-            this.emptySpaceItem3});
+            this.layoutControlItem13});
             this.lcRRFInformation.Location = new System.Drawing.Point(0, 511);
             this.lcRRFInformation.Name = "lcRRFInformation";
             this.lcRRFInformation.Size = new System.Drawing.Size(1078, 211);
@@ -1632,7 +1629,7 @@
             // 
             this.layoutControlItem16.Control = this.cboProgram;
             this.layoutControlItem16.CustomizationFormText = "Program";
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem16.MaxSize = new System.Drawing.Size(306, 24);
             this.layoutControlItem16.MinSize = new System.Drawing.Size(306, 24);
             this.layoutControlItem16.Name = "layoutControlItem16";
@@ -1647,7 +1644,7 @@
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(306, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(748, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(748, 48);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -1698,26 +1695,14 @@
             // 
             this.layoutControlItem13.Control = this.lkCategory;
             this.layoutControlItem13.CustomizationFormText = "Category";
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem13.MaxSize = new System.Drawing.Size(305, 24);
             this.layoutControlItem13.MinSize = new System.Drawing.Size(305, 24);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(305, 24);
+            this.layoutControlItem13.Size = new System.Drawing.Size(306, 24);
             this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem13.Text = "Category";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(51, 13);
-            // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.CustomizationFormText = "emptySpaceItem3";
-            this.emptySpaceItem3.Location = new System.Drawing.Point(305, 48);
-            this.emptySpaceItem3.MinSize = new System.Drawing.Size(104, 24);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(749, 24);
-            this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.emptySpaceItem3.Text = "emptySpaceItem3";
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // lcRRFList
             // 
@@ -1921,7 +1906,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
@@ -2047,7 +2031,6 @@
         private System.Windows.Forms.BindingSource ProgramsBindingSource;
         private DevExpress.XtraEditors.LookUpEdit lkCategory;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private System.Windows.Forms.BindingSource categorybindingSource;
     }
 }

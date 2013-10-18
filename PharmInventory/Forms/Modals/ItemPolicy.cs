@@ -225,11 +225,11 @@ namespace PharmInventory.Forms.Modals
                 prodCate.SubCategoryID = Convert.ToInt32(_categoryId);
                 prodCate.Save();
             }
-            if (rdA.Checked || rdB.Checked || rdC.Checked)
-                itm.ABC = ((rdA.Checked) ? 1 : (rdB.Checked) ? 2 : 3);
+            //if (rdA.Checked || rdB.Checked || rdC.Checked)
+            //    itm.ABC = ((rdA.Checked) ? 1 : (rdB.Checked) ? 2 : 3);
 
-            if (rdV.Checked || rdE.Checked || rdN.Checked)
-                itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
+            //if (rdV.Checked || rdE.Checked || rdN.Checked)
+            //    itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
           
                 itm.IsInHospitalList = ckExculed.Checked;
                 //itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;

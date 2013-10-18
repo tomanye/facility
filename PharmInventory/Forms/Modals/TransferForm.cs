@@ -159,8 +159,7 @@ namespace PharmInventory.Forms.Modals
                            issuedoc.RefNo = transfer.RefNo;
                            var allstores = new Stores();
                            allstores.LoadByPrimaryKey(transfer.ToStoreID);
-                           //allstores.AddNew();
-                           issuedoc.ReceivingUnitID = Convert.ToInt32(allstores.ReceivingUnitID);
+                           issuedoc.ReceivingUnitID = (int) allstores.GetColumn("ReceivingUnitID");
                            issuedoc.Save();
 
                             receiveDoc.GetReceivedItems(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));

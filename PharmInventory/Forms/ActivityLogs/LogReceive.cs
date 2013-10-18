@@ -437,11 +437,11 @@ namespace PharmInventory.Forms.ActivityLogs
             us.LoadByPrimaryKey(userID);
             var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.FocusedNode);
             if (dr == null) return;
-            //if (us.UserName != "admin")
-            //{
-            //    XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
-            //    return;
-            //}
+            if (us.UserName != "admin")
+            {
+                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
+                return;
+            }
             var edtloss = new EditRecieveRefrenceNo((string) dr["RefNo"]);
             edtloss.ShowDialog();
         }
