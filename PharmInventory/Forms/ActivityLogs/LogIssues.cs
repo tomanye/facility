@@ -291,8 +291,29 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
             int itemId = Convert.ToInt32(dr["ItemID"]);
             int yr = ((dtCur.Month < 11) ? dtCur.Year : dtCur.Year + 1);
-            var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0);
-            con.ShowDialog();
+            switch (VisibilitySetting.HandleUnits)
+            {
+                case 1:
+                    {
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0);
+                        con.ShowDialog();
+                    }
+                    break;
+                case 2:
+                    {
+                        int unitId = Convert.ToInt32(dr["UnitID"]);
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0,unitId);
+                        con.ShowDialog();
+                    }
+                    break;
+                case 3:
+                    {
+                        int unitId = Convert.ToInt32(dr["UnitID"]);
+                        var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0,unitId);
+                        con.ShowDialog();
+                    }
+                    break;
+            }
         }
         
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
