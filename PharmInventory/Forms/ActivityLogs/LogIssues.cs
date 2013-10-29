@@ -144,13 +144,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             if (dr == null) return;
 
-            if (us.UserName != "admin")
-            {
-                XtraMessageBox.Show("You don't have the priviledge to update reference number!", "Caution");
-                return;
-            }
-
-            int tranId = Convert.ToInt32(dr["ID"]);
+             int tranId = Convert.ToInt32(dr["ID"]);
             var rec = new ReceiveDoc();
             var iss = new IssueDoc();
             iss.LoadByPrimaryKey(tranId);
@@ -283,13 +277,13 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void detailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataRow dr = gridView1.GetFocusedDataRow();
+            var dr = gridView1.GetFocusedDataRow();
 
             if (dr == null) return;
 
             int tranId = Convert.ToInt32(dr["ID"]);
 
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            var dtDate = new CalendarLib.DateTimePickerEx
                                                       {
                                                           Value = DateTime.Now,
                                                           CustomFormat = "MM/dd/yyyy"
@@ -297,16 +291,16 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
             int itemId = Convert.ToInt32(dr["ItemID"]);
             int yr = ((dtCur.Month < 11) ? dtCur.Year : dtCur.Year + 1);
-            ItemDetailReport con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0);
+            var con = new ItemDetailReport(itemId, Convert.ToInt32(cboStores.EditValue), yr, 0);
             con.ShowDialog();
         }
         
         private void lstTree_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
             if (dr == null) return;
             //lstTransactions.Items.Clear();                
-            IssueDoc iss = new IssueDoc();
+            var iss = new IssueDoc();
             DataTable dtRec;
             if (dr["ParentID"] == DBNull.Value)
             {

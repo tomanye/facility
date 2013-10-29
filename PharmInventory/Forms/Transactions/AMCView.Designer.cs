@@ -129,7 +129,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.lookUpEdit1.Properties.DataSource = this.storebindingSource;
             this.lookUpEdit1.Properties.DisplayMember = "StoreName";
-            this.lookUpEdit1.Properties.NullText = "[Select Store]";
+            this.lookUpEdit1.Properties.NullText = "Select Store";
             this.lookUpEdit1.Properties.ValueMember = "ID";
             this.lookUpEdit1.Size = new System.Drawing.Size(168, 20);
             this.lookUpEdit1.StyleController = this.layoutControl1;

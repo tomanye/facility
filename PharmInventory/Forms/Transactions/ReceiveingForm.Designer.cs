@@ -714,7 +714,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboSupplier.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CompanyName", "Name")});
             this.cboSupplier.Properties.DisplayMember = "CompanyName";
-            this.cboSupplier.Properties.NullText = "";
+            this.cboSupplier.Properties.NullText = "Select Supplier";
             this.cboSupplier.Properties.ValueMember = "ID";
             this.cboSupplier.Size = new System.Drawing.Size(258, 20);
             this.cboSupplier.StyleController = this.layoutControl2;
@@ -1111,7 +1111,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboStores.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Name")});
             this.cboStores.Properties.DisplayMember = "StoreName";
-            this.cboStores.Properties.NullText = "";
+            this.cboStores.Properties.NullText = "Select Store";
             this.cboStores.Properties.ValueMember = "ID";
             this.cboStores.Size = new System.Drawing.Size(258, 20);
             this.cboStores.StyleController = this.layoutControl2;

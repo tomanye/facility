@@ -1155,6 +1155,28 @@ namespace PharmInventory.Forms.Transactions
             edit.Properties.ValueMember = "ID";
         }
 
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "Dispatchable")
+                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+          
+        }
+
+        private void gridItemChoiceView_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            var view = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                if (view.GetRowCellValue(e.RowHandle, view.Columns["gridColumn15"]).Equals("Expired"))
+                {
+                    e.Appearance.BackColor = Color.Green;
+                }
+            }
+
+        }
+
+       
+       
 
 
 
