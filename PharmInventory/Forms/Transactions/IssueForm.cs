@@ -296,11 +296,23 @@ namespace PharmInventory.Forms.Transactions
                             break;
                     }
 
+                    //if (expAmount < soh && quantity < soh || dispatchable > 0)
+                    //{
+                    //    _dtRecGrid.Rows.Add(obj);
+                    //    count++;
+                    //}
 
-                    if (expAmount < soh && quantity < soh)
+                    if (expAmount < soh && dispatchable > 0)
                     {
                         _dtRecGrid.Rows.Add(obj);
                         count++;
+                    }
+                    else if(soh >0 && dispatchable==0)
+                    {
+                        XtraMessageBox.Show(String.Format("{0} Is Expired!", itemName), "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        ResetValues();
+                        tabControl1.TabIndex = 0;
+                        break;
                     }
                     else if (soh == 0)
                     {
@@ -392,13 +404,15 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueGrid = (DataTable)issueGrid.DataSource;
                 for (int i = 0; i < dtIssueGrid.Rows.Count; i++)
                 {
-                    int unitid = Convert.ToInt32(dtIssueGrid.Rows[i]["UnitID"]);
+                    var unitid = Convert.ToInt32(dtIssueGrid.Rows[i]["UnitID"]);
                     Int64 expAmount = itmB.GetExpiredQtyItemsByID(Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(cboStores.EditValue));
                     Int64 sohQty = 0;
                     try
                     {
+                       
                         switch (VisibilitySetting.HandleUnits)
                         {
+
                             case 1:
                                 sohQty = bal.GetSOH(Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(cboStores.EditValue), dtIss.Month, dtIss.Year) - expAmount;
                                 break;
@@ -476,10 +490,7 @@ namespace PharmInventory.Forms.Transactions
 
                             while (quantity > 0 && rec.RowCount > j)
                             {
-                                string batch;
-                                if (itm.NeedExpiryBatch) 
-                                    batch = _dtRec.Rows[j]["BatchNo"].ToString();
-                                else batch = "";
+                                var batch = itm.NeedExpiryBatch ? _dtRec.Rows[j]["BatchNo"].ToString() : "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
                                 double qtyPerPack = Convert.ToDouble(_dtRec.Rows[j]["QtyPerPack"]);
                                 double unitPrice = Convert.ToDouble(_dtRec.Rows[j]["Cost"]);
@@ -623,12 +634,16 @@ namespace PharmInventory.Forms.Transactions
                         dtIssueGrid.Rows[i].SetColumnError("Pack Qty", "Cannot be 0");
                         valid = "All * marked fields are required!";
                     }
-
-                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) > Convert.ToInt64(dtIssueGrid.Rows[i]["Dispatchable"]))
-                    //{
-                    //    dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Requested quantity cannot be greater than the usable stock!");
-                    //    valid = "Requested quantity cannot be greater than the usable stock!";
-                    //}
+                    if (VisibilitySetting.HandleUnits == 1)
+                    {
+                        if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) >
+                            Convert.ToInt64(dtIssueGrid.Rows[i]["Dispatchable"]))
+                        {
+                            dtIssueGrid.Rows[i].SetColumnError("Requested Qty",
+                                                               "Requested quantity cannot be greater than the usable stock!");
+                            valid = "Requested quantity cannot be greater than the usable stock!";
+                        }
+                    }
                 }
 
             return valid;
@@ -673,7 +688,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.EurDate = dtIssueDate.Value;
                             dtIssueDate.IsGregorianCurrentCalendar = false;
                             issDoc.RecievDocID =Convert.ToInt32(dtConfirm.Rows[i]["RecId"]); // Used to have 8 as an index
-
+                            recDoc.LoadByPrimaryKey(receivedocid);
                             issDoc.IsApproved = true;
                             issDoc.IsTransfer = false;
 
@@ -683,8 +698,13 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.DUSOH = Convert.ToInt32(dtConfirm.Rows[i]["DUSOH"]);
                             issDoc.ItemID = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
                             issDoc.Quantity = Convert.ToInt64(dtConfirm.Rows[i]["Quantity"]);
+                            //recDoc.LoadByPrimaryKey(receivedocid);
+                           // issDoc.NoOfPack = recDoc.NoOfPack;
+                            
                             issDoc.NoOfPack = Convert.ToInt32(dtConfirm.Rows[i]["No Of Pack"]);
                             issDoc.QtyPerPack = Convert.ToInt32(dtConfirm.Rows[i]["Qty Per Pack"]);
+
+                            issDoc.QtyPerPack = recDoc.QtyPerPack;
                             switch (VisibilitySetting.HandleUnits)
                             {
                                 case 1:
@@ -699,7 +719,6 @@ namespace PharmInventory.Forms.Transactions
                             }
                             issDoc.BatchNo = dtConfirm.Rows[i]["BatchNo"].ToString();
                             issDoc.Cost = Convert.ToDouble(dtConfirm.Rows[i]["Unit Price"]);
-
                             issDoc.RecomendedQty = Convert.ToInt32(dtConfirm.Rows[i]["DURecomended"]);// ((recQty > 0) ? Convert.ToInt64(recQty) : 0);
                             //End DU
                             issDoc.Save();
