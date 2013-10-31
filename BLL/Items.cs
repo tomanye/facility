@@ -720,11 +720,12 @@ namespace BLL
         {
             this.FlushData();
             this.LoadFromRawSql(string.Format("SELECT * FROM " +
-                                              "vwGetReceivedItemsByBatch WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND " +
+                                              "ReceiveDoc WHERE (ExpDate <= GETDATE()) AND (Out = 0) AND " +
                                               "QuantityLeft > 0 AND StoreId = {0} AND ID = {1} ", storeId, itemId));
             Int64 qunatity = 0;
             foreach (DataRowView dv in this.DataTable.DefaultView)
             {
+                //qunatity---lmao
                 qunatity = qunatity + Convert.ToInt64(dv["QuantityLeft"]);
             }
             return qunatity;

@@ -363,7 +363,7 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void PopulatePickList()
         {
-            string valid = ValidateFields();
+            var valid = ValidateFields();
 
             if (valid == "true")
             {
