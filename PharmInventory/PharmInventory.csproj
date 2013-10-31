@@ -805,6 +805,12 @@
     <Content Include="Scripts\9906_AlterTransferloadbyprimarykey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9907_StoreInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9908_StoreUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\990_AlterTableStores.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
