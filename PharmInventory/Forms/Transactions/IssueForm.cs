@@ -698,13 +698,9 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.DUSOH = Convert.ToInt32(dtConfirm.Rows[i]["DUSOH"]);
                             issDoc.ItemID = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
                             issDoc.Quantity = Convert.ToInt64(dtConfirm.Rows[i]["Quantity"]);
-                            //recDoc.LoadByPrimaryKey(receivedocid);
-                           // issDoc.NoOfPack = recDoc.NoOfPack;
                             
                             issDoc.NoOfPack = Convert.ToInt32(dtConfirm.Rows[i]["No Of Pack"]);
                             issDoc.QtyPerPack = Convert.ToInt32(dtConfirm.Rows[i]["Qty Per Pack"]);
-
-                            issDoc.QtyPerPack = recDoc.QtyPerPack;
                             switch (VisibilitySetting.HandleUnits)
                             {
                                 case 1:

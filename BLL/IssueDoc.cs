@@ -17,7 +17,7 @@ namespace BLL
 		public DataTable GetTransactionByRefNo(string refNo, System.DateTime date)
 		{
 			this.FlushData();
-		    string query =
+		    var query =
 		        String.Format(
 		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI " +
 		            "FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID " +

@@ -88,6 +88,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 }
                 gridIssues.DataSource = dtRec;
             }
+
             catch (Exception ex)
             {
                 // do nothing

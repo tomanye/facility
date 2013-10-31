@@ -379,7 +379,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5.Caption = "Pack";
             this.gridColumn5.DisplayFormat.FormatString = "#,##0";
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn5.FieldName = "NoOfPack";
+            this.gridColumn5.FieldName = "gridColumn5";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.UnboundExpression = "[Quantity]/[QtyPerPack]";
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
