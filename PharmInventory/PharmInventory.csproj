@@ -540,6 +540,10 @@
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
     <None Include="Resources\LoginScreenFacilityEdition7.png" />
+    <Content Include="Resources\PFSALogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\PFSALogo1.png" />
     <Content Include="Scripts\87_Update 1.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

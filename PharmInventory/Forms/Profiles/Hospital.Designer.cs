@@ -111,7 +111,8 @@ namespace PharmInventory.Forms.Profiles
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(307, 115);
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(307, 121);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 22);
             this.button1.StyleController = this.groupBox1ConvertedLayout;
@@ -145,7 +146,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(24, 413);
+            this.lookUpEdit1.Location = new System.Drawing.Point(24, 419);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -162,7 +163,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // chkNormal
             // 
-            this.chkNormal.Location = new System.Drawing.Point(24, 141);
+            this.chkNormal.Location = new System.Drawing.Point(24, 147);
             this.chkNormal.Name = "chkNormal";
             this.chkNormal.Properties.Caption = "Normal Facility";
             this.chkNormal.Size = new System.Drawing.Size(411, 19);
@@ -171,7 +172,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboHCTSFirstUpdate
             // 
-            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(150, 346);
+            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(150, 352);
             this.cboHCTSFirstUpdate.Name = "cboHCTSFirstUpdate";
             this.cboHCTSFirstUpdate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -186,7 +187,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboHCTSUpdateFrequency
             // 
-            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(150, 322);
+            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(150, 328);
             this.cboHCTSUpdateFrequency.Name = "cboHCTSUpdateFrequency";
             this.cboHCTSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -201,7 +202,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(150, 231);
+            this.txtPassword.Location = new System.Drawing.Point(150, 237);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(285, 20);
@@ -210,7 +211,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(150, 207);
+            this.txtUserName.Location = new System.Drawing.Point(150, 213);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(285, 20);
             this.txtUserName.StyleController = this.groupBox1ConvertedLayout;
@@ -218,7 +219,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtFacilityID
             // 
-            this.txtFacilityID.Location = new System.Drawing.Point(150, 67);
+            this.txtFacilityID.Location = new System.Drawing.Point(150, 73);
             this.txtFacilityID.Name = "txtFacilityID";
             this.txtFacilityID.Properties.Mask.EditMask = "n0";
             this.txtFacilityID.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -228,7 +229,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(150, 91);
+            this.txtPhone.Location = new System.Drawing.Point(150, 97);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Properties.Appearance.Options.UseFont = true;
@@ -238,7 +239,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtHospitalName
             // 
-            this.txtHospitalName.Location = new System.Drawing.Point(150, 43);
+            this.txtHospitalName.Location = new System.Drawing.Point(150, 49);
             this.txtHospitalName.Name = "txtHospitalName";
             this.txtHospitalName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHospitalName.Properties.Appearance.Options.UseFont = true;
@@ -274,7 +275,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboDSUpdateFrequency
             // 
-            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(150, 255);
+            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(150, 261);
             this.cboDSUpdateFrequency.Name = "cboDSUpdateFrequency";
             this.cboDSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -289,7 +290,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtLogo
             // 
-            this.txtLogo.Location = new System.Drawing.Point(24, 115);
+            this.txtLogo.Location = new System.Drawing.Point(24, 121);
             this.txtLogo.Name = "txtLogo";
             this.txtLogo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogo.Properties.Appearance.Options.UseFont = true;

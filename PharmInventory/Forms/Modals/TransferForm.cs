@@ -171,7 +171,8 @@ namespace PharmInventory.Forms.Modals
                             newreceiveDoc.RefNo = transfer.RefNo;
                             newreceiveDoc.BatchNo = transfer.BatchNo;
                             newreceiveDoc.ItemID = transfer.ItemID;
-                            newreceiveDoc.Quantity = receiveDoc.QuantityLeft = transfer.Quantity;
+                            newreceiveDoc.Quantity = transfer.Quantity;
+                            newreceiveDoc.QuantityLeft = transfer.Quantity;
                             newreceiveDoc.Date = transfer.Date;
                             newreceiveDoc.UnitID = transfer.UnitID;
                             newreceiveDoc.Out = false;

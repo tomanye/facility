@@ -128,7 +128,7 @@ namespace PharmInventory
             GeneralInfo hos = new GeneralInfo();
             hos.LoadAll();
             this.Text = hos.HospitalName + @" - Health Commodity Management Information System (HCMIS)";
-            picLogo.ImageLocation = ReadApp.GetValue("logoPath", typeof(string)).ToString() + hos.Logo;
+           // picLogo.ImageLocation = ReadApp.GetValue("logoPath", typeof(string)).ToString() + hos.Logo;
         }
 
         private void Login()
