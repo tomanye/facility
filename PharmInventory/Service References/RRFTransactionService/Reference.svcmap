@@ -18,15 +18,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://213.55.76.188:40301/Order/ServiceOrder.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://213.55.76.188/testservices/Order/ServiceOrder.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceOrder.xsd" MetadataType="Schema" ID="a7b9740e-fe0a-42b7-a091-dc69d76d0b4a" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?xsd=xsd3" />
-    <MetadataFile FileName="ServiceOrder1.xsd" MetadataType="Schema" ID="784a2948-ecf3-4d41-9e7a-6d34869c1f83" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?xsd=xsd2" />
-    <MetadataFile FileName="ServiceOrder2.xsd" MetadataType="Schema" ID="288dc1dc-92c5-4a42-b09d-a01de05e1df2" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceOrder3.xsd" MetadataType="Schema" ID="90850eba-18f6-42a2-81a9-7a453451a3c3" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServiceOrder.disco" MetadataType="Disco" ID="48471ffe-d240-4b64-b2d6-f26f500ae3a4" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?disco" />
-    <MetadataFile FileName="ServiceOrder.wsdl" MetadataType="Wsdl" ID="cf783edd-5b25-42d3-9e6e-652a816805ab" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceOrder.svc?wsdl" />
+    <MetadataFile FileName="ServiceOrder44.xsd" MetadataType="Schema" ID="26a8efe1-325b-4e8b-aabe-2ffc7552dbdd" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceOrder11.disco" MetadataType="Disco" ID="db329b46-aa85-46a6-971f-b13b43cd59a2" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?disco" />
+    <MetadataFile FileName="ServiceOrder45.xsd" MetadataType="Schema" ID="f1c36820-3403-46ce-842f-f47531aafe90" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceOrder11.wsdl" MetadataType="Wsdl" ID="eecc0051-99e6-4fbb-88f0-d44f94bf43af" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?wsdl" />
+    <MetadataFile FileName="ServiceOrder46.xsd" MetadataType="Schema" ID="13df64b6-688a-4cf7-bb08-4acd6eadf71c" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceOrder47.xsd" MetadataType="Schema" ID="fdc7d330-c1fa-457f-b043-710beda8df9d" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceOrder.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

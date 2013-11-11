@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://213.55.76.188/testservices/Order/ServiceRRFLookup.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ServiceRRFLookup.disco" MetadataType="Disco" ID="7b80beb4-767d-4a04-819b-862959d35627" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc?disco" />
-    <MetadataFile FileName="ServiceRRFLookup.xsd" MetadataType="Schema" ID="9fb93d50-a9ac-4df0-99e1-e19ce9d4b53c" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc?xsd=xsd1" />
-    <MetadataFile FileName="ServiceRRFLookup1.xsd" MetadataType="Schema" ID="be192ac9-b47f-4f07-8822-c073c1dc61bb" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc?xsd=xsd0" />
-    <MetadataFile FileName="ServiceRRFLookup.wsdl" MetadataType="Wsdl" ID="95841e2f-dd1c-46ce-bc8f-0e74c6839af6" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc?wsdl" />
-    <MetadataFile FileName="ServiceRRFLookup2.xsd" MetadataType="Schema" ID="117fa53a-7e72-4b60-9c5e-627472d23e1a" SourceId="1" SourceUrl="http://213.55.76.188:40301/Order/ServiceRRFLookup.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceRRFLookup11.wsdl" MetadataType="Wsdl" ID="9b5dc20d-27b3-4247-8d2f-e3343c8212e9" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceRRFLookup.svc?wsdl" />
+    <MetadataFile FileName="ServiceRRFLookup33.xsd" MetadataType="Schema" ID="8e3804ec-d2be-47fb-8cdb-9811efbc4fb5" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceRRFLookup.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceRRFLookup34.xsd" MetadataType="Schema" ID="e3358db8-41c2-4a15-bb2f-d773dc2bad47" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceRRFLookup.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceRRFLookup11.disco" MetadataType="Disco" ID="0139f13f-6893-41c2-b4cd-cb817930eda6" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceRRFLookup.svc?disco" />
+    <MetadataFile FileName="ServiceRRFLookup35.xsd" MetadataType="Schema" ID="2321fe2f-963f-426e-9cd0-c678fd79c6ba" SourceId="1" SourceUrl="http://213.55.76.188/TestServices/Order/ServiceRRFLookup.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

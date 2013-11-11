@@ -99,8 +99,8 @@ namespace PharmInventory.Forms.ActivityLogs
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             if (cboStores.EditValue == null) return;
-            IssueDoc iss = new IssueDoc();
-            DataTable dtRec = iss.GetDistinctIssueDocments(Convert.ToInt32(cboStores.EditValue));
+            var iss = new IssueDoc();
+            var dtRec = iss.GetDistinctIssueDocments(Convert.ToInt32(cboStores.EditValue));
             lstTree.DataSource = dtRec;
 
             DateTime dt1 = EthiopianDate.EthiopianDate.Now.StartOfFiscalYear.ToGregorianDate();

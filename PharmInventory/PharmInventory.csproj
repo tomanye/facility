@@ -539,6 +539,8 @@
       <DependentUpon>RRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
+    <None Include="Service References\RRFTransactionService\ServiceOrder11.disco" />
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup11.disco" />
     <None Include="Resources\LoginScreenFacilityEdition7.png" />
     <Content Include="Resources\PFSALogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -865,6 +867,16 @@
     <None Include="Service References\DirectoryService\PharmInventory.DirectoryService.UnitTbl.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup11.wsdl" />
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup34.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RRFLookUpService\ServiceRRFLookup35.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RRFTransactionService\PharmInventory.RRFTransactionService.ApprovedOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -880,7 +892,6 @@
     </None>
     <None Include="Service References\RRFTransactionService\configuration.svcinfo" />
     <None Include="Service References\RRFTransactionService\configuration91.svcinfo" />
-    <None Include="Service References\RRFTransactionService\ServiceOrder.disco" />
     <None Include="Service References\RRFLookUpService\PharmInventory.RRFLookUpService.AdjustmentReason.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -908,7 +919,6 @@
     </None>
     <None Include="Service References\RRFLookUpService\configuration.svcinfo" />
     <None Include="Service References\RRFLookUpService\configuration91.svcinfo" />
-    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.disco" />
     <EmbeddedResource Include="Forms\ActivityLogs\LogTransfer.resx">
       <DependentUpon>LogTransfer.cs</DependentUpon>
     </EmbeddedResource>
@@ -1281,31 +1291,21 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\HCMISRegistrations\Registrations.wsdl" />
-    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.wsdl" />
-    <None Include="Service References\RRFLookUpService\ServiceRRFLookup.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RRFLookUpService\ServiceRRFLookup1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RRFLookUpService\ServiceRRFLookup2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\RRFService\PharmInventory.RRFService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RRFService\Service.wsdl" />
-    <None Include="Service References\RRFTransactionService\ServiceOrder.wsdl" />
-    <None Include="Service References\RRFTransactionService\ServiceOrder.xsd">
+    <None Include="Service References\RRFTransactionService\ServiceOrder11.wsdl" />
+    <None Include="Service References\RRFTransactionService\ServiceOrder44.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RRFTransactionService\ServiceOrder1.xsd">
+    <None Include="Service References\RRFTransactionService\ServiceOrder45.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RRFTransactionService\ServiceOrder2.xsd">
+    <None Include="Service References\RRFTransactionService\ServiceOrder46.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RRFTransactionService\ServiceOrder3.xsd">
+    <None Include="Service References\RRFTransactionService\ServiceOrder47.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

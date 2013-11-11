@@ -231,6 +231,7 @@ namespace PharmInventory.Forms.Reports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            chkCalculateInPacks.Checked = false;
             if (XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;         
             SaveRRF();
@@ -719,7 +720,7 @@ namespace PharmInventory.Forms.Reports
         public List<Order> GetOrders()
         {
             var client = new ServiceRRFLookupClient();
-            var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
+           // var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
             var orders = new List<RRFTransactionService.Order>();
             var dataView = gridItemChoiceView.DataSource as DataView;
             if (dataView != null)

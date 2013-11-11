@@ -1097,7 +1097,7 @@ namespace PharmInventory.Forms.Transactions
                 _dtSelectedTable = dtList.Clone();
             }
             gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue)); ;
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and EverReceived= {1}", Convert.ToInt32(lkCategories.EditValue) ,1); ;
         }
 
         private void tabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)

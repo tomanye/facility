@@ -21,7 +21,7 @@ namespace BLL
 		        String.Format(
 		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI " +
 		            "FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID " +
-                    "join vwGetAllItems vw on id.ItemID =vw.ID WHERE id.RefNo = '{0}' and id.Date = '{1}'",
+                    "join vwGetAllItems vw on id.ItemID =vw.ID WHERE (id.IsTransfer = 0) and id.RefNo = '{0}' and id.Date = '{1}'",
 		            refNo, date.ToShortDateString());
 
             this.LoadFromRawSql(query);
@@ -251,9 +251,10 @@ namespace BLL
 		public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
 		{
 			this.FlushData();
-		    string query =
+		    var query =
 		        String.Format(
-		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID   WHERE id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
+                    "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id " +
+                    "Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID  WHERE (id.IsTransfer = 0) and id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
 		            storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
 			this.LoadFromRawSql(query);
 			return this.DataTable;
@@ -269,9 +270,9 @@ namespace BLL
 		public DataTable GetDistinctIssueDocments(int storeId)
 		{
 			this.FlushData();
-			this.LoadFromRawSql(String.Format("SELECT DISTINCT RefNo, StoreId, Date,  cast (Year(Date) as varchar) as ParentID, RefNo + cast(Date as varchar) as ID FROM IssueDoc  WHERE StoreId = {0} ORDER BY Date DESC", storeId));
+			this.LoadFromRawSql(String.Format("SELECT DISTINCT RefNo, StoreId, Date,  cast (Year(Date) as varchar) as ParentID, RefNo + cast(Date as varchar) as ID FROM IssueDoc  WHERE  (IsTransfer=0) and StoreId = {0} ORDER BY Date DESC", storeId));
 			DataTable dtbl = this.DataTable;
-			this.LoadFromRawSql("select distinct Year(Date) as Year from IssueDoc order by year(Date) DESC");
+			this.LoadFromRawSql("select distinct Year(Date) as Year from IssueDoc where (IsTransfer=0) order by year(Date) DESC");
 			while (!this.EOF)//The following is added for the benefit of tree control and having parents there.
 			{
 				DataRowView drv = dtbl.DefaultView.AddNew();
