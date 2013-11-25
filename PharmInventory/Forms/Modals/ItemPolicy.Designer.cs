@@ -281,6 +281,7 @@ namespace PharmInventory.Forms.Modals
             // lstPrograms
             // 
             this.lstPrograms.CheckOnClick = true;
+            this.lstPrograms.Enabled = false;
             this.lstPrograms.FormattingEnabled = true;
             this.lstPrograms.Location = new System.Drawing.Point(18, 291);
             this.lstPrograms.Name = "lstPrograms";
@@ -301,6 +302,7 @@ namespace PharmInventory.Forms.Modals
             // cboPrograms
             // 
             this.cboPrograms.DisplayMember = "Name";
+            this.cboPrograms.Enabled = false;
             this.cboPrograms.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPrograms.FormattingEnabled = true;
             this.cboPrograms.Location = new System.Drawing.Point(188, 233);
