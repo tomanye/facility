@@ -99,7 +99,7 @@ namespace PharmInventory.Forms.Transactions
         {
             progressBar1.Value = 0;
             
-            XtraMessageBox.Show("AMC report done successfully");
+            XtraMessageBox.Show("AMC report done successfully","Success");
             if(lookUpEdit1.EditValue == null)
                 loadamc();
             else

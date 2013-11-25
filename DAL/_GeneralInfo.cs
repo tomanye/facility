@@ -307,11 +307,19 @@ namespace DAL
 				}
 			}
 
-            public static SqlParameter NormalFacility
+            public static SqlParameter ScmsWSUserName
             {
                 get
                 {
-                    return new SqlParameter("@NormalFacility", SqlDbType.Bit, 1);
+                    return new SqlParameter("@ScmsWSUserName", SqlDbType.NVarChar, 100);
+                }
+            }
+
+            public static SqlParameter ScmsWSPassword
+            {
+                get
+                {
+                    return new SqlParameter("@ScmsWSPassword", SqlDbType.NVarChar, 100);
                 }
             }
 			
@@ -347,7 +355,8 @@ namespace DAL
             public const string DSUpdateFrequency = "DSUpdateFrequency";
             public const string RRFStatusUpdateFrequency = "RRFStatusUpdateFrequency";
             public const string RRFStatusFirstUpdateAfter = "RRFStatusFirstUpdateAfter";
-		    public const string NormalFacility = "NormalFacility";
+            public const string ScmsWSUserName = "ScmsWSUserName";
+            public const string ScmsWSPassword = "ScmsWSPassword";
 
 			static public string ToPropertyName(string columnName)
 			{
@@ -381,7 +390,8 @@ namespace DAL
 					ht[DSUpdateFrequency] = _GeneralInfo.PropertyNames.DSUpdateFrequency;
 					ht[RRFStatusUpdateFrequency] = _GeneralInfo.PropertyNames.RRFStatusUpdateFrequency;
 					ht[RRFStatusFirstUpdateAfter] = _GeneralInfo.PropertyNames.RRFStatusFirstUpdateAfter;
-				    ht[NormalFacility] = _GeneralInfo.PropertyNames.NormalFacility;
+                    ht[ScmsWSUserName] = _GeneralInfo.PropertyNames.ScmsWSUserName;
+                    ht[ScmsWSPassword] = _GeneralInfo.PropertyNames.ScmsWSPassword;
 
 				}
 				return (string)ht[columnName];
@@ -421,6 +431,8 @@ namespace DAL
             public const string RRFStatusUpdateFrequency = "RRFStatusUpdateFrequency";
             public const string RRFStatusFirstUpdateAfter = "RRFStatusFirstUpdateAfter";
 		    public const string NormalFacility = "NormalFacility";
+            public const string ScmsWSUserName = "ScmsWSUserName";
+            public const string ScmsWSPassword = "ScmsWSPassword";
 
 			static public string ToColumnName(string propertyName)
 			{
@@ -454,7 +466,8 @@ namespace DAL
 					ht[DSUpdateFrequency] = _GeneralInfo.ColumnNames.DSUpdateFrequency;
 					ht[RRFStatusUpdateFrequency] = _GeneralInfo.ColumnNames.RRFStatusUpdateFrequency;
 					ht[RRFStatusFirstUpdateAfter] = _GeneralInfo.ColumnNames.RRFStatusFirstUpdateAfter;
-				    ht[NormalFacility] = _GeneralInfo.ColumnNames.NormalFacility;
+                    ht[ScmsWSUserName] = _GeneralInfo.PropertyNames.ScmsWSUserName;
+                    ht[ScmsWSPassword] = _GeneralInfo.PropertyNames.ScmsWSPassword;
 
 				}
 				return (string)ht[propertyName];
@@ -812,17 +825,29 @@ namespace DAL
 			}
 		}
 
-        //public virtual bool NormalFacility
-        //{
-        //    get
-        //    {
-        //        return base.Getbool(ColumnNames.NormalFacility);
-        //    }
-        //    set
-        //    {
-        //        base.Setbool(ColumnNames.NormalFacility, value);
-        //    }
-        //}
+        public virtual string ScmsWSUserName
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.ScmsWSUserName);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.ScmsWSUserName, value);
+            }
+        }
+
+        public virtual string ScmsWSPassword
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.ScmsWSPassword);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.ScmsWSPassword, value);
+            }
+        }
 
 
 		#endregion
@@ -1219,21 +1244,35 @@ namespace DAL
 			}
 		}
 
-        //public virtual string s_NormalFacility
-        //{
-        //    get
-        //    {
-        //        return this.IsColumnNull(ColumnNames.NormalFacility) ? string.Empty : base.GetstringAsString(ColumnNames.NormalFacility);
-        //    }
-        //    set
-        //    {
-        //        if (string.Empty == value)
-        //            this.SetColumnNull(ColumnNames.NormalFacility);
-        //        else
-        //            this.NormalFacility = base.SetboolAsString(ColumnNames.NormalFacility, value);
-        //    }
-        //}
+        public virtual string s_ScmsWSUserName
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.ScmsWSUserName) ? string.Empty : base.GetstringAsString(ColumnNames.ScmsWSUserName);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.ScmsWSUserName);
+                else
+                    this.ScmsWSUserName = base.SetstringAsString(ColumnNames.ScmsWSUserName, value);
+            }
+        }
 
+        public virtual string s_ScmsWSPassword
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.ScmsWSPassword) ? string.Empty : base.GetstringAsString(ColumnNames.ScmsWSPassword);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.ScmsWSPassword);
+                else
+                    this.ScmsWSPassword = base.SetstringAsString(ColumnNames.ScmsWSPassword, value);
+            }
+        }
 
 		#endregion		
 	
@@ -1527,6 +1566,25 @@ namespace DAL
 					}
 				}
 
+                public WhereParameter ScmsWSUserName
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.ScmsWSUserName, Parameters.ScmsWSUserName);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter ScmsWSPassword
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.ScmsWSPassword, Parameters.ScmsWSPassword);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
 
 				private WhereClause _clause;
 			}
@@ -1844,6 +1902,30 @@ namespace DAL
 				}
 			}
 
+            public WhereParameter ScmsWSUserName
+            {
+                get
+                {
+                    if (_ScmsWSUserName_W == null)
+                    {
+                        _ScmsWSUserName_W = TearOff.ScmsWSUserName;
+                    }
+                    return _ScmsWSUserName_W;
+                }
+            }
+
+            public WhereParameter ScmsWSPassword
+            {
+                get
+                {
+                    if (_ScmsWSPassword_W == null)
+                    {
+                        _ScmsWSPassword_W = TearOff.ScmsWSPassword;
+                    }
+                    return _ScmsWSPassword_W;
+                }
+            }
+
 			private WhereParameter _ID_W = null;
 			private WhereParameter _HospitalName_W = null;
 			private WhereParameter _Woreda_W = null;
@@ -1870,6 +1952,8 @@ namespace DAL
 			private WhereParameter _DSUpdateFrequency_W = null;
 			private WhereParameter _RRFStatusUpdateFrequency_W = null;
 			private WhereParameter _RRFStatusFirstUpdateAfter_W = null;
+		    private WhereParameter _ScmsWSUserName_W = null;
+		    private WhereParameter _ScmsWSPassword_W= null;
 
 			public void WhereClauseReset()
 			{
@@ -1899,6 +1983,8 @@ namespace DAL
 				_DSUpdateFrequency_W = null;
 				_RRFStatusUpdateFrequency_W = null;
 				_RRFStatusFirstUpdateAfter_W = null;
+			    _ScmsWSUserName_W = null;
+			    _ScmsWSPassword_W = null;
 
 				this._entity.Query.FlushWhereParameters();
 
@@ -2215,6 +2301,25 @@ namespace DAL
 					}
 				}
 
+                public AggregateParameter ScmsWSUserName
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.ScmsWSUserName, Parameters.ScmsWSUserName);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter ScmsWSPassword
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.ScmsWSPassword, Parameters.ScmsWSPassword);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
 
 				private AggregateClause _clause;
 			}
@@ -2532,6 +2637,30 @@ namespace DAL
 				}
 			}
 
+            public AggregateParameter ScmsWSUserName
+            {
+                get
+                {
+                    if (_ScmsWSUserName_W == null)
+                    {
+                        _ScmsWSUserName_W = TearOff.ScmsWSUserName;
+                    }
+                    return _ScmsWSUserName_W;
+                }
+            }
+
+            public AggregateParameter ScmsWSPassword
+            {
+                get
+                {
+                    if (_ScmsWSPassword_W == null)
+                    {
+                        _ScmsWSPassword_W = TearOff.ScmsWSPassword;
+                    }
+                    return _ScmsWSPassword_W;
+                }
+            }
+
 			private AggregateParameter _ID_W = null;
 			private AggregateParameter _HospitalName_W = null;
 			private AggregateParameter _Woreda_W = null;
@@ -2558,6 +2687,8 @@ namespace DAL
 			private AggregateParameter _DSUpdateFrequency_W = null;
 			private AggregateParameter _RRFStatusUpdateFrequency_W = null;
 			private AggregateParameter _RRFStatusFirstUpdateAfter_W = null;
+		    private AggregateParameter _ScmsWSUserName_W = null;
+            private AggregateParameter _ScmsWSPassword_W = null;
 
 			public void AggregateClauseReset()
 			{
@@ -2587,6 +2718,8 @@ namespace DAL
 				_DSUpdateFrequency_W = null;
 				_RRFStatusUpdateFrequency_W = null;
 				_RRFStatusFirstUpdateAfter_W = null;
+			    _ScmsWSUserName_W = null;
+			    _ScmsWSPassword_W = null;
 
 				this._entity.Query.FlushAggregateParameters();
 
@@ -2765,10 +2898,13 @@ namespace DAL
 			p.SourceColumn = ColumnNames.RRFStatusFirstUpdateAfter;
 			p.SourceVersion = DataRowVersion.Current;
 
-            //p = cmd.Parameters.Add(Parameters.NormalFacility);
-            //p.SourceColumn = ColumnNames.NormalFacility;
-            //p.SourceVersion = DataRowVersion.Current;
+            p = cmd.Parameters.Add(Parameters.ScmsWSUserName);
+            p.SourceColumn = ColumnNames.ScmsWSUserName;
+            p.SourceVersion = DataRowVersion.Current;
 
+            p = cmd.Parameters.Add(Parameters.ScmsWSPassword);
+            p.SourceColumn = ColumnNames.ScmsWSPassword;
+            p.SourceVersion = DataRowVersion.Current;
 
 			return cmd;
 		}

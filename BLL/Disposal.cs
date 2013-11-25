@@ -429,13 +429,13 @@ namespace BLL
                                                   storetwo));
         }
 
-        public DataTable GetLossAdjustmentsForLastRrfPeriod(int itemID, int storeID, int ProgramID, DateTime startDate, DateTime endDate)
+        public DataTable GetLossAdjustmentsForLastRrfPeriod(int itemID, int storeID, DateTime startDate, DateTime endDate)
         {
             this.FlushData();
             string query =
                 string.Format(
-                    "select * from disposal d join ReceiveDoc rd on d.RecID=rd.ID where  d.EurDate>cast('{0}' as datetime) and d.EurDate<=cast('{1}' as datetime) and rd.ItemID={2} and rd.StoreID={3} and rd.SubProgramID={4}",
-                    startDate, endDate, itemID, storeID, ProgramID);
+                    "select * from disposal d join ReceiveDoc rd on d.RecID=rd.ID where  d.EurDate>=cast('{0}' as datetime) and d.EurDate<=cast('{1}' as datetime) and rd.ItemID={2} and rd.StoreID={3}",
+                    startDate, endDate, itemID, storeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

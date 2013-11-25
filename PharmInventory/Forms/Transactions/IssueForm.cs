@@ -1097,7 +1097,7 @@ namespace PharmInventory.Forms.Transactions
                 _dtSelectedTable = dtList.Clone();
             }
             gridItemChoiceView.ActiveFilterString = "";
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and EverReceived= {1}", Convert.ToInt32(lkCategories.EditValue) ,1); ;
+            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue)); ;
         }
 
         private void tabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
@@ -1130,9 +1130,9 @@ namespace PharmInventory.Forms.Transactions
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
             if (chkExcludeStockedOut.Checked)
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] =='Stock Out' and TypeID={0} and EverReceived={1}", Convert.ToInt32(lkCategories.EditValue),1);
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] =='Stock Out' and TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             else
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and EverReceived={1}", Convert.ToInt32(lkCategories.EditValue),1);
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
 
         }
 
@@ -1140,11 +1140,11 @@ namespace PharmInventory.Forms.Transactions
         {
             if (!chkExcludeStockedOut.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and EverReceived={1}", Convert.ToInt32(lkCategories.EditValue),1);
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
             }
             else if (chkExcludeStockedOut.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status] !='Stock Out' and EverReceived={1}", Convert.ToInt32(lkCategories.EditValue),1);
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status] !='Stock Out'", Convert.ToInt32(lkCategories.EditValue));
             }
         }
 

@@ -1652,8 +1652,7 @@ namespace BLL
             var itm = new Items();
             var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
 
-            //query=string.Format("select ")
-
+           
             var x = (from y in dtbl.AsEnumerable()
                      join z in dtbl2.AsEnumerable()
                      on y["DSItemID"] equals z["DSItemID"]
@@ -1668,13 +1667,13 @@ namespace BLL
                          StockCode = y["StockCode"],
                          BeginingBalance = Convert.ToDouble(y["SOH"]),
                          ProgramID = y["ProgramID"],
-                         // UnitID = y["UnitID"],
                          SOH = Convert.ToDouble(z["SOH"]),
                          Max = Convert.ToInt32(z["Max"]),
                          QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
                          StockCodeDACA = p["StockCodeDACA"],
                          Status = y["Status"],
-                         TypeID = y["TypeID"]
+                         TypeID = y["TypeID"],
+                         EverReceived =y["EverReceived"]
                      }).Distinct().ToArray();
 
             var m = (from n in x
@@ -1694,7 +1693,8 @@ namespace BLL
                          ProgramID = n.ProgramID,
                          Received = z["Quantity"],
                          Status = n.Status,
-                         TypeID=n.TypeID
+                         TypeID=n.TypeID,
+                         EverReceived =n.EverReceived
                      }).ToArray();
 
             var l = (from n in m
@@ -1716,7 +1716,9 @@ namespace BLL
                              ProgramID = n.ProgramID,
                              Issued = Convert.ToInt32(z["Quantity"]),
                              Status = n.Status,
-                             TypeID = n.TypeID
+                             TypeID = n.TypeID,
+                             EverReceived =n.EverReceived
+                             
 
                          }).ToArray();
 
@@ -1740,7 +1742,8 @@ namespace BLL
                          LossAdj = z["Quantity"],
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                          Status=n.Status,
-                         TypeID = n.TypeID
+                         TypeID = n.TypeID,
+                         EverReceived =n.EverReceived
                      }).ToArray();
 
             var t1 = (from n in t
@@ -1765,6 +1768,7 @@ namespace BLL
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                               Status=n.Status,
                               TypeID=n.TypeID,
+                              EverReceived =n.EverReceived,
                               DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.DSItemID), storeId, startDate, endDate)//Builder.CalculateStockoutDays(Convert.ToInt32(ID), storeId, startDate,endDate) DBNull.Value ? 0 : (Convert.ToInt32(z["DaysOutOfStock"]) < 60 ? z["DaysOutOfStock"] : 0)
                           }).ToArray();
 
@@ -1786,7 +1790,8 @@ namespace BLL
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Status =n.Status,
-                               TypeID=n.TypeID,
+                              TypeID=n.TypeID,
+                              EverReceived =n.EverReceived,
                               Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                               DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.DSItemID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                               //TODO: This is a quick fix.  We need to take stock status from the last three months.
@@ -1816,6 +1821,7 @@ namespace BLL
             value.Columns.Add("UnitID", typeof(int));
             value.Columns.Add("Status", typeof(string));
             value.Columns.Add("TypeID", typeof(int));
+            value.Columns.Add("EverReceived", typeof(bool));
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1837,6 +1843,7 @@ namespace BLL
                 drv["MaxStockQty"] = v.MaxStockQty;
                 drv["Status"] = v.Status;
                 drv["TypeID"] = v.TypeID;
+                drv["EverReceived"] = v.EverReceived;
 
             }
 

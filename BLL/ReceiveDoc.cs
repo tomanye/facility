@@ -577,10 +577,10 @@ namespace BLL
         }
 
 
-        public void GetAllWithQuantityLeft(int itemID, int storeID, int programID)
+        public void GetAllWithQuantityLeft(int itemID, int storeID)
         {
             this.FlushData();
-            string query = string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and SubProgramID={2}", itemID, storeID, programID);
+            string query = string.Format("select * from receivedoc where quantityleft>0 and itemid={0} and storeID={1} and ExpDate < GetDate()", itemID, storeID);
             this.LoadFromRawSql(query);
         }
 

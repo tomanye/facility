@@ -745,31 +745,15 @@ namespace BLL
 
 
         public DataTable BalanceOfAllItems(int storeId, int year, int month, string selectedType, int programID, int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
-        {
-            var dtBal = new DataTable();
-            var pipline = new GeneralInfo();
-
+        {  
             // Dont Iterate
             var dtbl = new DataTable();
-            if (programID == 0) //We don't filter by program ID.
-            {
-                dtbl = GetSOH(storeId, month, year);
-            }
-            else //We filter by program ID.
-            {
-                //  dtbl = GetSOHByPrograms(storeId,commodityTypeID, programID, month, year);
-                dtbl = GetSOHByPrograms(storeId, programID, month, year);
-            }
-
-
+            dtbl = programID == 0 ? GetSOH(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
             dtbl.Columns.Add("MOS", typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
-            // dtbl.Columns.Add("DaysStockedOut", typeof(int));
-            //dtbl.Columns.Add("amc", typeof(double));
-            int amc;
             foreach (DataRow dr in dtbl.Rows)
             {
-                amc = Convert.ToInt32(dr["AMC"]);
+                int amc = Convert.ToInt32(dr["AMC"]);
                 if (amc > 0)
                 {
                     dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
@@ -778,7 +762,6 @@ namespace BLL
                 {
                     dr["MOS"] = 0;
                 }
-                // 
                 int reorder = Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
                 dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
 
@@ -1155,7 +1138,6 @@ namespace BLL
         {
             var pipline = new GeneralInfo();
             pipline.LoadAll();
-            // string query = string.Format("SOH  {0}, '{1}', '{2}', {3}, {4}, {5}, {6} ", storeId,dtCurrent.Subtract(new TimeSpan(360,0,0,0,0)),dtCurrent,pipline.AMCRange,pipline.Min,pipline.Max,pipline.EOP);
             var ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@month", dtCurrent.Month);

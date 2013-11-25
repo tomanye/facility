@@ -10,36 +10,37 @@ namespace PharmInventory.HelperClasses
 {
    public class RRFHelper
     {
-       private const string UserName = "HCMISTest";
-       private const string Password = "123!@#abc";
-       private const int facilityID = 866;
+        private const string userName = "HCMISFE1";
+        private const string password = "HcmisFe1";
        public static int GetRrfCategoryId(string programName)
        {
+           var ginfo = new GeneralInfo();
+           ginfo.LoadAll();
            var client1 = new ServiceRRFLookupClient();
-           var periods = client1.GetCurrentReportingPeriod(facilityID, UserName, Password);
+           var periods = client1.GetCurrentReportingPeriod(ginfo.FacilityID, userName, password);
            var period = periods[0].Id;
-           var forms = client1.GetForms(facilityID, UserName, Password);
+           var forms = client1.GetForms(ginfo.FacilityID, userName, password);
            var formid = forms[0].Id;
-           var formcategories = client1.GetFacilityRRForm(facilityID, formid, period, 1, UserName, Password).First().FormCategories.ToList();
+           var formcategories = client1.GetFacilityRRForm(ginfo.FacilityID, formid, period, 1, userName, password).First().FormCategories.ToList();
           
                switch (programName)
                {
                    case "Malaria Prevention & Control":
-                       return 89;
+                       return 14;
                    case "TB / Leprosy Prevention & Control":
-                       return 89;
-                   //case "HIV/AIDS ans STIs and OIs":
-                   //    return formcategories[2].Id;
-                   //case "Curative care and emergency care":
-                   //    return formcategories[3].Id;
-                   //case "Family Planning":
-                   //    return formcategories[4].Id;
-                   //case "Disease Prevention and Control":
-                   //    return formcategories[5].Id;
-                   //case "Adolescent Reproductive Health":
-                   //    return formcategories[6].Id;
+                       return 13;
+                   case "HIV/AIDS ans STIs and OIs":
+                       return 15;
+                   case "Curative care and emergency care":
+                      return 15;
+                   case "Family Planning":
+                       return 13;
+                   case "Disease Prevention and Control":
+                       return 14;
+                   case "Adolescent Reproductive Health":
+                       return 13;
                }
-           return 0;
+           return 11;
        }
 
        

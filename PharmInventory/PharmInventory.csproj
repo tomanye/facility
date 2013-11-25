@@ -409,6 +409,12 @@
     <Compile Include="Forms\Reports\OtherItemReport.Designer.cs">
       <DependentUpon>OtherItemReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\RRF Send Result.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\RRF Send Result.Designer.cs">
+      <DependentUpon>RRF Send Result.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reports\RRFForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -521,6 +527,7 @@
     <Compile Include="HelperClasses\RRFHelper.cs" />
     <Compile Include="HelperClasses\SchemaHelpers.cs" />
     <Compile Include="HelperClasses\UpdateManager.cs" />
+    <Compile Include="HelperClasses\Validation.cs" />
     <Compile Include="HelperClasses\VisibilitySetting.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -817,7 +824,20 @@
     <Content Include="Scripts\9908_StoreUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9909_AddColumnInGeneralInfo.sql" />
     <Content Include="Scripts\990_AlterTableStores.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9910_AlterGeneralInfoInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9911_AlterGeneralInfoUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9912_AlterGeneralInfoLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9912_AlterGeneralInfoLoadByPrimaryKey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\991_AlterYearEndInsert.sql">
@@ -988,6 +1008,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\OtherItemReport.resx">
       <DependentUpon>OtherItemReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\RRF Send Result.resx">
+      <DependentUpon>RRF Send Result.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\RRFForm.resx">
       <DependentUpon>RRFForm.cs</DependentUpon>

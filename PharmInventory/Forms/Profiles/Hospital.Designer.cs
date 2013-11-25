@@ -69,6 +69,11 @@ namespace PharmInventory.Forms.Profiles
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
+            this.txtScmsUserName = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.txtScmsPassword = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
@@ -106,13 +111,18 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtScmsUserName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtScmsPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(307, 121);
+            this.button1.Location = new System.Drawing.Point(307, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(128, 22);
             this.button1.StyleController = this.groupBox1ConvertedLayout;
@@ -122,6 +132,8 @@ namespace PharmInventory.Forms.Profiles
             // 
             // groupBox1ConvertedLayout
             // 
+            this.groupBox1ConvertedLayout.Controls.Add(this.txtScmsPassword);
+            this.groupBox1ConvertedLayout.Controls.Add(this.txtScmsUserName);
             this.groupBox1ConvertedLayout.Controls.Add(this.lookUpEdit1);
             this.groupBox1ConvertedLayout.Controls.Add(this.chkNormal);
             this.groupBox1ConvertedLayout.Controls.Add(this.cboHCTSFirstUpdate);
@@ -146,7 +158,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // lookUpEdit1
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(24, 419);
+            this.lookUpEdit1.Location = new System.Drawing.Point(24, 413);
             this.lookUpEdit1.Name = "lookUpEdit1";
             this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -163,7 +175,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // chkNormal
             // 
-            this.chkNormal.Location = new System.Drawing.Point(24, 147);
+            this.chkNormal.Location = new System.Drawing.Point(24, 141);
             this.chkNormal.Name = "chkNormal";
             this.chkNormal.Properties.Caption = "Normal Facility";
             this.chkNormal.Size = new System.Drawing.Size(411, 19);
@@ -172,7 +184,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboHCTSFirstUpdate
             // 
-            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(150, 352);
+            this.cboHCTSFirstUpdate.Location = new System.Drawing.Point(150, 346);
             this.cboHCTSFirstUpdate.Name = "cboHCTSFirstUpdate";
             this.cboHCTSFirstUpdate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -187,7 +199,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboHCTSUpdateFrequency
             // 
-            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(150, 328);
+            this.cboHCTSUpdateFrequency.Location = new System.Drawing.Point(150, 322);
             this.cboHCTSUpdateFrequency.Name = "cboHCTSUpdateFrequency";
             this.cboHCTSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -202,7 +214,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(150, 237);
+            this.txtPassword.Location = new System.Drawing.Point(150, 231);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(285, 20);
@@ -211,7 +223,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(150, 213);
+            this.txtUserName.Location = new System.Drawing.Point(150, 207);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(285, 20);
             this.txtUserName.StyleController = this.groupBox1ConvertedLayout;
@@ -219,7 +231,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtFacilityID
             // 
-            this.txtFacilityID.Location = new System.Drawing.Point(150, 73);
+            this.txtFacilityID.Location = new System.Drawing.Point(150, 67);
             this.txtFacilityID.Name = "txtFacilityID";
             this.txtFacilityID.Properties.Mask.EditMask = "n0";
             this.txtFacilityID.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -229,7 +241,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(150, 97);
+            this.txtPhone.Location = new System.Drawing.Point(150, 91);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Properties.Appearance.Options.UseFont = true;
@@ -239,7 +251,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtHospitalName
             // 
-            this.txtHospitalName.Location = new System.Drawing.Point(150, 49);
+            this.txtHospitalName.Location = new System.Drawing.Point(150, 43);
             this.txtHospitalName.Name = "txtHospitalName";
             this.txtHospitalName.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHospitalName.Properties.Appearance.Options.UseFont = true;
@@ -275,7 +287,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // cboDSUpdateFrequency
             // 
-            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(150, 261);
+            this.cboDSUpdateFrequency.Location = new System.Drawing.Point(150, 255);
             this.cboDSUpdateFrequency.Name = "cboDSUpdateFrequency";
             this.cboDSUpdateFrequency.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -290,7 +302,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             // txtLogo
             // 
-            this.txtLogo.Location = new System.Drawing.Point(24, 121);
+            this.txtLogo.Location = new System.Drawing.Point(24, 115);
             this.txtLogo.Name = "txtLogo";
             this.txtLogo.Properties.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogo.Properties.Appearance.Options.UseFont = true;
@@ -312,7 +324,8 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlGroup3,
             this.layoutControlGroup4,
             this.layoutControlGroup5,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlGroup6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(887, 548);
@@ -362,9 +375,9 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.CustomizationFormText = "emptySpaceItem3";
-            this.emptySpaceItem3.Location = new System.Drawing.Point(439, 0);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(439, 91);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(428, 528);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(428, 437);
             this.emptySpaceItem3.Text = "emptySpaceItem3";
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -571,6 +584,54 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // txtScmsUserName
+            // 
+            this.txtScmsUserName.Location = new System.Drawing.Point(589, 43);
+            this.txtScmsUserName.Name = "txtScmsUserName";
+            this.txtScmsUserName.Size = new System.Drawing.Size(274, 20);
+            this.txtScmsUserName.StyleController = this.groupBox1ConvertedLayout;
+            this.txtScmsUserName.TabIndex = 19;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.txtScmsUserName;
+            this.layoutControlItem6.CustomizationFormText = "User Name";
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(404, 24);
+            this.layoutControlItem6.Text = "User Name";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(123, 13);
+            // 
+            // txtScmsPassword
+            // 
+            this.txtScmsPassword.Location = new System.Drawing.Point(589, 67);
+            this.txtScmsPassword.Name = "txtScmsPassword";
+            this.txtScmsPassword.Properties.PasswordChar = '*';
+            this.txtScmsPassword.Size = new System.Drawing.Size(274, 20);
+            this.txtScmsPassword.StyleController = this.groupBox1ConvertedLayout;
+            this.txtScmsPassword.TabIndex = 20;
+            // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.txtScmsPassword;
+            this.layoutControlItem15.CustomizationFormText = "Password";
+            this.layoutControlItem15.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(404, 24);
+            this.layoutControlItem15.Text = "Password";
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(123, 13);
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.CustomizationFormText = "SCMS (For RRF Sending)";
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem6,
+            this.layoutControlItem15});
+            this.layoutControlGroup6.Location = new System.Drawing.Point(439, 0);
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(428, 91);
+            this.layoutControlGroup6.Text = "SCMS (For RRF Sending)";
+            // 
             // settingbindingSource
             // 
             this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
@@ -621,6 +682,11 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtScmsUserName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtScmsPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -669,5 +735,10 @@ namespace PharmInventory.Forms.Profiles
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private System.Windows.Forms.BindingSource settingbindingSource;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        private DevExpress.XtraEditors.TextEdit txtScmsPassword;
+        private DevExpress.XtraEditors.TextEdit txtScmsUserName;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
     }
 }

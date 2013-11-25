@@ -58,6 +58,8 @@ namespace PharmInventory.Forms.Profiles
             //cboZone.SelectedValue = _hospInfo.Zone;
             string [] userPass = _hospInfo.Description.Split(';');
             txtUserName.Text = userPass[0];
+            txtScmsUserName.Text = _hospInfo.ScmsWSUserName;
+            txtScmsPassword.Text = _hospInfo.ScmsWSPassword;
             txtPassword.Text = (userPass.Length == 1) ? "" : userPass[1];
             cboDSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("DSUpdateFrequency")?"": _hospInfo.DSUpdateFrequency;
             cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
@@ -167,6 +169,8 @@ namespace PharmInventory.Forms.Profiles
             if (txtFacilityID.Text != "")
             {
                 _hospInfo.FacilityID = Convert.ToInt32(txtFacilityID.EditValue);
+                _hospInfo.ScmsWSUserName = txtScmsUserName.Text;
+                _hospInfo.ScmsWSPassword = txtScmsPassword.Text;
             }
             if (txtLogo.Text != "")
             {
