@@ -347,36 +347,46 @@ namespace PharmInventory.Forms.Reports
 
             int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[4];
 
-            if (VisibilitySetting.HandleUnits == 1)
+            switch (VisibilitySetting.HandleUnits)
             {
-                dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
-                e.Result = dtBal;
-            }
-            else if (VisibilitySetting.HandleUnits == 2)
-            {
-                dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
-                e.Result = dtBal;
-            }
-            else
-            {
-                dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
-                e.Result = dtBal;
+                case 1:
+                    dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    e.Result = dtBal;
+                    gridItemsChoice.DataSource = (DataTable)e.Result;
+                    break;
+                case 2:
+                    dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    e.Result = dtBal;
+                    gridItemsChoice.DataSource = (DataTable)e.Result;
+                    break;
+                default:
+                    dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    e.Result = dtBal;
+                    gridItemsChoice.DataSource = (DataTable)e.Result;
+                    break;
             }
             //  e.Result = dtBal;
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            gridItemsChoice.DataSource = (DataTable)e.Result;
-            cboStatus.EditValue = filter;
-            //if (ckExclude.Checked)
-            //    gridItemChoiceView.ActiveFilterString = "[Received] != '0' or SOH != '0'";
+            //gridItemsChoice.DataSource = (DataTable)e.Result;
+            //cboStatus.EditValue = filter;
+            if (filter == "Stock Out")
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out'");
+            }
+            else if (filter == "Over Stocked")
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked'");
+            }
         }
 
         private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
 
         }
+     
 
 
         private void btnExport_Click(object sender, EventArgs e)
