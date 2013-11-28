@@ -352,24 +352,22 @@ namespace PharmInventory.Forms.Reports
                 case 1:
                     dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     e.Result = dtBal;
-                    gridItemsChoice.DataSource = (DataTable)e.Result;
                     break;
                 case 2:
                     dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     e.Result = dtBal;
-                    gridItemsChoice.DataSource = (DataTable)e.Result;
-                    break;
+                   break;
                 default:
                     dtBal = (DataTable)bal.BalanceOfAllItemsUsingUnit(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     e.Result = dtBal;
-                    gridItemsChoice.DataSource = (DataTable)e.Result;
-                    break;
+                   break;
             }
             //  e.Result = dtBal;
         }
 
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            gridItemsChoice.DataSource = (DataTable)e.Result;
             //gridItemsChoice.DataSource = (DataTable)e.Result;
             //cboStatus.EditValue = filter;
             if (filter == "Stock Out")
