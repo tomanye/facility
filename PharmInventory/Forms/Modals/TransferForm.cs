@@ -234,6 +234,7 @@ namespace PharmInventory.Forms.Modals
                 valid = "You cannot transfer an item to the same store.";
                 return valid;
             }
+
             if (!dxValidationProvider1.Validate())
             {
                 valid = "Please correct the highlighted filed!";
@@ -251,6 +252,11 @@ namespace PharmInventory.Forms.Modals
                     valid = "Please fill the requested feild!";
                 }
 
+                if (Convert.ToInt32(dr["Qty To Transfer"]) > Convert.ToInt32(dr["BU Qty"]))
+                {
+                    dr.SetColumnError("Qty To Transfer", "Qty To Transfer should be less than BU Qty(Remaining).");
+                    valid = "Qty To Transfer should be less than BU Qty(Remaining)";
+                }
                 itm.LoadByPrimaryKey(Convert.ToInt32(_dtRecGrid.Rows[i]["ID"]));
 
               }

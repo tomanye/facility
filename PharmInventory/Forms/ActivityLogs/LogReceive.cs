@@ -186,12 +186,6 @@ namespace PharmInventory.Forms.ActivityLogs
 
             if (dr == null) return;
 
-            if (us.UserName != "admin")
-            {
-                XtraMessageBox.Show("You don't have the privilege to update reference number!", "Caution");
-                return;
-            }
-
             int tranId = Convert.ToInt32(dr["ID"]);
             var rec = new ReceiveDoc();
             rec.LoadByPrimaryKey(tranId);
