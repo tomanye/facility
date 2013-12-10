@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.summrybindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -40,7 +39,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.summrybindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -59,7 +57,6 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.DataSource = this.summrybindingSource;
             this.gridControl1.Location = new System.Drawing.Point(12, 12);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
@@ -136,7 +133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.summrybindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -153,7 +149,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private System.Windows.Forms.BindingSource summrybindingSource;
 
     }
 }

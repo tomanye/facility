@@ -120,11 +120,14 @@
   <metadata name="unitsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>576, 17</value>
   </metadata>
+  <metadata name="orderbindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 0</value>
+  </metadata>
   <metadata name="categorybindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>916, 17</value>
+    <value>438, 75</value>
   </metadata>
   <metadata name="printingSystem1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>659, 73</value>
   </metadata>
   <assembly alias="DevExpress.Utils.v12.1" name="DevExpress.Utils.v12.1, Version=12.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="printableComponentLink1.ImageCollection.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v12.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -687,9 +690,9 @@
     <value>449, 17</value>
   </metadata>
   <metadata name="ProgramsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>733, 17</value>
+    <value>159, 72</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>39</value>
+    <value>64</value>
   </metadata>
 </root>

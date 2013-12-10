@@ -164,15 +164,20 @@ namespace PharmInventory.Forms.Modals
 
                             receiveDoc.GetReceivedItems(receiveid,_itemID, Convert.ToInt32(lkFromStore.EditValue));
                             receiveDoc.QuantityLeft = receiveDoc.QuantityLeft - transfer.Quantity;
-
+                            
 
                             newreceiveDoc.AddNew();
+
                             newreceiveDoc.StoreID = transfer.ToStoreID;
                             newreceiveDoc.RefNo = transfer.RefNo;
                             newreceiveDoc.BatchNo = transfer.BatchNo;
                             newreceiveDoc.ItemID = transfer.ItemID;
                             newreceiveDoc.Quantity = transfer.Quantity;
                             newreceiveDoc.QuantityLeft = transfer.Quantity;
+                            newreceiveDoc.NoOfPack =  Convert.ToInt32(transfer.Quantity) / receiveDoc.QtyPerPack;
+                            newreceiveDoc.QtyPerPack = receiveDoc.QtyPerPack;
+                            newreceiveDoc.Cost = receiveDoc.Cost;
+
                             newreceiveDoc.Date = transfer.Date;
                             newreceiveDoc.UnitID = transfer.UnitID;
                             newreceiveDoc.Out = false;

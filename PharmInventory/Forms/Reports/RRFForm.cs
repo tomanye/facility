@@ -49,6 +49,8 @@ namespace PharmInventory.Forms.Reports
 
         private void RRFForm_Load(object sender, EventArgs e)
         {
+            btnAutoPushToPFSA.Enabled = false;
+            btnSendEmergencyOrder.Enabled = false;
             var unitcolumn = ((GridView) gridItemsChoice.MainView).Columns[2];
             var unitcolumn1 = ((GridView) gridItemsChoice.MainView).Columns[13];
 
@@ -80,6 +82,11 @@ namespace PharmInventory.Forms.Reports
             var programs = program.GetSubPrograms();
             ProgramsBindingSource.DataSource = programs.DefaultView;
 
+            var orderstatus = new PharmInventory.HelperClasses.OrderStatus();
+            orderbindingSource.DataSource = orderstatus.GetRRFOrders();
+            lkorderstatus.Properties.DataSource = orderbindingSource;
+            lkorderstatus.Properties.ValueMember = "RecordId";
+            lkorderstatus.Properties.DisplayMember = "Name";
 
             PopulateTheMonthCombos(cboFromMonth);
             PopulateTheMonthCombos(cboToMonth);
@@ -163,6 +170,7 @@ namespace PharmInventory.Forms.Reports
 
             if (_standardRRF && VisibilitySetting.HandleUnits == 1)
             {
+              //  tblRRF = itm.GetRRFReportForOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 tblRRF = itm.GetRRFReportWithOutUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
 
@@ -273,21 +281,16 @@ namespace PharmInventory.Forms.Reports
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
         {
-            btnSendEmergencyOrder.Enabled = false;
-
             var orders = GetStandardRRFOrders();
             var serviceModel = CompileOrder(orders);
             Send(serviceModel);
 
-            btnSendEmergencyOrder.Enabled = true;
-            
         }
 
         private List<Order> GetEmergencyRRFOrders()
         {
             var client = new ServiceRRFLookupClient();
-            //var chosenCatId = RRFHelper.GetRrfCategoryId(cboProgram.Text);
-            var orders = new List<RRFTransactionService.Order>();
+            var orders = new List<Order>();
             var ginfo = new GeneralInfo();
             ginfo.LoadAll();
             var dataView = gridItemChoiceView.DataSource as DataView;
@@ -300,7 +303,7 @@ namespace PharmInventory.Forms.Reports
             var form = client.GetForms(ginfo.FacilityID, ginfo.ScmsWSUserName, ginfo.ScmsWSPassword);
             var rrfs = client.GetFacilityRRForm(ginfo.FacilityID, form[0].Id, periods[0].Id, 2, ginfo.ScmsWSUserName, ginfo.ScmsWSPassword);
             var formCategories = rrfs.First().FormCategories;
-            var chosenCategoryBody = formCategories.First(x => x.Id == 9); //Hard coding to be removed.
+            var chosenCategoryBody = formCategories.First(x => x.Id == 1); //Hard coding to be removed.
             var items = chosenCategoryBody.Pharmaceuticals; //Let's just store the items here (May not be required)
 
             var user = new User();
@@ -329,7 +332,6 @@ namespace PharmInventory.Forms.Reports
                 var rrFormPharmaceutical = items.SingleOrDefault(x => x.PharmaceuticalId == hcmisItemID);
                 if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Below EOP")
                 {
-                    {
                         detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
                         detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
                         detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
@@ -374,6 +376,7 @@ namespace PharmInventory.Forms.Reports
                             //    exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
                             //    exp.ExpiryDate = rdDoc.ExpDate;
                             //}
+
                             if (exp.ExpiryDate > periods[0].EndDate.AddDays(ExpiryTreshHold))
                                 exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
                             exp.ExpiryDate = periods[0].EndDate;
@@ -402,22 +405,17 @@ namespace PharmInventory.Forms.Reports
                         }
 
                         var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
-                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+                        var DOSPerStockOut = stockoutIndexedLists.Count();
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count()];
 
-                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        for (int j = 0; j < stockoutIndexedLists.Count(); j++)
                         {
-                            var dos = new DaysOutOfStock
-                            {
-                                NumberOfDaysOutOfStock = 16,
-                                StockOutReasonId = 5
-                            };
+                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 5, StockOutReasonId = 5};
                             detail.DaysOutOfStocks[j] = dos;
                         }
-                    }
-                }
+                 }
                 else if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) != "Below EOP")
                 {
-                    {
                         detail.BeginningBalance = null;
                         detail.EndingBalance = null;
                         detail.QuantityReceived = null;
@@ -493,17 +491,19 @@ namespace PharmInventory.Forms.Reports
                         }
 
                         var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
-                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+                        var DOSPerStockOut = stockoutIndexedLists.Count();
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count()];
 
-                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        for (int j = 0; j < stockoutIndexedLists.Count(); j++)
                         {
-                            var dos = new DaysOutOfStock();
-                            dos.NumberOfDaysOutOfStock = 16; // stockoutIndexedLists[j].NumberOfDays;
-                            dos.StockOutReasonId = 5; //TODO: Dear Teddy
+                            var dos = new DaysOutOfStock
+                                          {
+                                              NumberOfDaysOutOfStock = 5,
+                                              StockOutReasonId = 5
+                                          };
                             detail.DaysOutOfStocks[j] = null;
                         }
                     }
-                }
                 details.Add(detail);
             }
             order.OrderDetails = details.ToArray();
@@ -526,7 +526,7 @@ namespace PharmInventory.Forms.Reports
             if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
-                var itemID = Convert.ToInt32(dr["ID"]);
+                var itemID = Convert.ToInt32(dr["DSItemID"]);
                 var requestedqty = Convert.ToInt32(dr["Quantity"]);
                 var storeID = int.Parse(cboStores.EditValue.ToString());
                 var rrfDetail = new RRFDetail();
@@ -540,7 +540,7 @@ namespace PharmInventory.Forms.Reports
         public List<Order> GetStandardRRFOrders()
         {
             var client = new ServiceRRFLookupClient();
-            var orders = new List<RRFTransactionService.Order>();
+            var orders = new List<Order>();
             var ginfo = new GeneralInfo();
             ginfo.LoadAll();
 
@@ -556,8 +556,8 @@ namespace PharmInventory.Forms.Reports
 
             var rrfs = client.GetFacilityRRForm(ginfo.FacilityID, form[0].Id, periods[0].Id, 1, ginfo.ScmsWSUserName, ginfo.ScmsWSPassword);
             var formCategories = rrfs.First().FormCategories;
-            var chosenCategoryBody = formCategories.First(x => x.Id == 9); //TODO:Erd coding to be removed.
-            var items = chosenCategoryBody.Pharmaceuticals; 
+            var chosenCategoryBody = formCategories.First(x => x.Id == 1); //TODO:Erd coding to be removed.
+            var items = chosenCategoryBody.Pharmaceuticals;
 
             var user = new User();
             user.LoadByPrimaryKey(MainWindow.LoggedinId);
@@ -586,7 +586,6 @@ namespace PharmInventory.Forms.Reports
                 var rrFormPharmaceutical = items.SingleOrDefault(x => x.PharmaceuticalId == hcmisItemID);
                 if (rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) != "Below EOP")
                 {
-                    {
                         detail.BeginningBalance = Convert.ToInt32(rrfLine["BeginingBalance"]);
                         detail.EndingBalance = Convert.ToInt32(rrfLine["SOH"]);
                         detail.QuantityReceived = Convert.ToInt32(rrfLine["Received"]);
@@ -621,18 +620,6 @@ namespace PharmInventory.Forms.Reports
 
                             exp.BatchNo = rdDoc.BatchNo;
                             exp.ExpiryDate = rdDoc.ExpDate;
-                            //if (expiryAmountTotal >= detail.EndingBalance)//ToDo:By Heny
-                            //    exp.Amount = exp.Amount - (expiryAmountTotal - detail.EndingBalance.Value);
-                            //if (exp.ExpiryDate > (periods[0].EndDate.AddMonths(ExpiryTreshHold)))
-                            //    exp.ExpiryDate = periods[0].EndDate.AddMonths(ExpiryTreshHold - 1);
-                            //exp.ExpiryDate = rdDoc.ExpDate;
-                            //detail.Expiries[j] = exp;`
-                            //rdDoc.MoveNext();
-                            //if (exp.ExpiryDate < DateTime.Today)
-                            //{
-                            //    exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
-                            //    exp.ExpiryDate = rdDoc.ExpDate;
-                            //}
                             if(exp.ExpiryDate > periods[0].EndDate.AddDays(ExpiryTreshHold))
                                 exp.Amount = Convert.ToInt32(rdDoc.QuantityLeft);
                                 exp.ExpiryDate = periods[0].EndDate;
@@ -661,37 +648,38 @@ namespace PharmInventory.Forms.Reports
                         }
 
                         var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
-                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+                        var DOSPerStockOut = stockoutIndexedLists.Count();
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count()];
 
-                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        for (int j = 0; j < stockoutIndexedLists.Count(); j++)
                         {
                             var dos = new DaysOutOfStock
                                           {
-                                              NumberOfDaysOutOfStock = 16, 
+                                              NumberOfDaysOutOfStock = 5,
                                               StockOutReasonId = 5
                                           };
                             detail.DaysOutOfStocks[j] = dos;
                         }
-                    }
                 }
                 else if(rrFormPharmaceutical != null && Convert.ToString(rrfLine["Status"]) == "Below EOP")
                 {
-                    {
                         detail.BeginningBalance = null;
                         detail.EndingBalance = null;
                         detail.QuantityReceived = null;
                         detail.QuantityOrdered = null;
                         detail.LossAdjustment = null;
-
-                        if (rrFormPharmaceutical != null)
-                            detail.ItemId = rrFormPharmaceutical.ItemId;
+                        detail.ItemId = rrFormPharmaceutical.ItemId;
 
                         var rdDoc = new ReceiveDoc();
                         var disposal = new Disposal();
                         rdDoc.GetAllWithQuantityLeft(hcmisItemID, _storeID);
                         disposal.GetLossAdjustmentsForLastRrfPeriod(hcmisItemID, _storeID, periods[0].StartDate,periods[0].EndDate);
+                       
                         int receiveDocEntries = rdDoc.RowCount;
                         int disposalEntries = disposal.RowCount;
+
+                        if (rdDoc.RowCount == 0 && detail.EndingBalance == 0)
+                            detail.Expiries = null;
 
                         detail.Expiries = new Expiry[receiveDocEntries];
                         detail.Adjustments = new Adjustment[disposalEntries];
@@ -733,15 +721,17 @@ namespace PharmInventory.Forms.Reports
                         }
 
                         var stockoutIndexedLists = StockoutIndexBuilder.Builder.GetStockOutHistory(hcmisItemID, _storeID);
-                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count];
+                        var DOSPerStockOut = stockoutIndexedLists.Count();
+                        detail.DaysOutOfStocks = new DaysOutOfStock[stockoutIndexedLists.Count()];
 
-                        for (int j = 0; j < stockoutIndexedLists.Count; j++)
+                        for (int j = 0; j < stockoutIndexedLists.Count(); j++)
                         {
-                            var dos = new DaysOutOfStock {NumberOfDaysOutOfStock = 16, StockOutReasonId = 5};
+                            var dos = new DaysOutOfStock();
+                            dos.NumberOfDaysOutOfStock = 5;
+                            dos.StockOutReasonId = 5;
                             detail.DaysOutOfStocks[j] = null;
                         }
-                    }
-                }
+                 }
                 details.Add(detail);
             }
             order.OrderDetails = details.ToArray();
@@ -772,30 +762,22 @@ namespace PharmInventory.Forms.Reports
             var client = new ServiceOrderClient();
             var ginfo = new GeneralInfo();
             ginfo.LoadAll();
-
             var result = client.SubmitFacilityOrders(ginfo.FacilityID, fOrder.Orders, ginfo.ScmsWSUserName, ginfo.ScmsWSPassword);
             var submitResult = result.FirstOrDefault();
-            var summary = new RRF_Send_Result();
-            if (submitResult != null)
-            {
-                for(int i=0;i < submitResult.ValidationMessages.Count(); i++)
-                {
-                    var items = new Validation
-                                    {
-                                        ItemId = submitResult.ValidationMessages[i].ItemId,
-                                        ValidationMessage = submitResult.ValidationMessages[i].Message
-                                    };
-                    summary.gridControl1.DataSource = items;
-                }
-                summary.ShowDialog();
-            }
-            else
+
+            if (submitResult != null && submitResult.OrderIsValid)
             {
                 XtraMessageBox.Show("RRF's Sent Successfully", "Confirmation");
             }
-            //var firstOrDefault = result.FirstOrDefault();
-            //XtraMessageBox.Show(firstOrDefault != null && firstOrDefault.OrderIsValid? "RRFs Sent Successfully.": "RRF Not Sent Successfuly.","Confirmation");
-
+            else
+            {
+                if (submitResult != null && submitResult.OrderIsValid ==false)
+                {
+                    var summary = new RRF_Send_Result { gridControl1 = { DataSource = submitResult.ValidationMessages } };
+                    summary.ShowDialog();
+                }
+            }
+            
         }
 
         /// <summary>
@@ -1034,17 +1016,13 @@ namespace PharmInventory.Forms.Reports
             cboStores.EditValue = rrf.RRFType;
             PopulateList();
             //Handle Edits here (Populate exact values from the database)
-            if (!rrf.IsColumnNull("LastRRFStatus"))
-            {
-                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
-                    btnAutoPushToPFSA.Enabled = true;
-                else
-                {
-                    btnAutoPushToPFSA.Enabled = false;
-                }
-            }
-            else
-                btnAutoPushToPFSA.Enabled = true;
+            //if (!rrf.IsColumnNull("LastRRFStatus"))
+            //{
+            //    if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
+            //        //btnAutoPushToPFSA.Enabled = true;
+            //    }
+            //else
+            //    //btnAutoPushToPFSA.Enabled = true;
             Cursor = Cursors.Default;
         }
 
@@ -1168,13 +1146,9 @@ namespace PharmInventory.Forms.Reports
 
         private void btnSendEmergencyOrder_Click(object sender, EventArgs e)
         {
-            btnAutoPushToPFSA.Enabled = false;
-
             var orders = GetEmergencyRRFOrders();
             var serviceModel = CompileOrder(orders);
             Send(serviceModel);
-
-            btnAutoPushToPFSA.Enabled = true;
 
         }
 
@@ -1187,6 +1161,20 @@ namespace PharmInventory.Forms.Reports
             else if (cboProgram.EditValue != null)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("ProgramID={1} and TypeID={0}",Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboProgram.EditValue));
+            }
+        }
+
+        private void lkorderstatus_EditValueChanged(object sender, EventArgs e)
+        {
+            if((int)lkorderstatus.EditValue==1)
+            {
+                btnAutoPushToPFSA.Enabled = true;
+                btnSendEmergencyOrder.Enabled = false;
+            }
+            else if ((int)lkorderstatus.EditValue == 2)
+            {
+                btnSendEmergencyOrder.Enabled = true;
+                btnAutoPushToPFSA.Enabled = false;
             }
         }
 
