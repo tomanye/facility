@@ -32,25 +32,26 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\Tedy\Desktop\FE Databases\HCMIS FE v.210 For PLITS Sites\</PublishUrl>
+    <PublishUrl>C:\STORAGE\Dropbox\FE Labs\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://fe.hcmisonline.org/labs/</UpdateUrl>
     <ProductName>HCMIS Facility Edition</ProductName>
     <PublisherName>USAID DELIVER PROJECT</PublisherName>
-    <MinimumRequiredVersion>2.5.0.210</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>210</ApplicationRevision>
-    <ApplicationVersion>2.5.0.210</ApplicationVersion>
+    <ApplicationRevision>205</ApplicationRevision>
+    <ApplicationVersion>2.5.0.205</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
