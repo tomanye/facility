@@ -526,7 +526,7 @@ namespace PharmInventory.Forms.Reports
             if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView) gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
-                var itemID = Convert.ToInt32(dr["DSItemID"]);
+                var itemID = Convert.ToInt32(dr["ID"]);
                 var requestedqty = Convert.ToInt32(dr["Quantity"]);
                 var storeID = int.Parse(cboStores.EditValue.ToString());
                 var rrfDetail = new RRFDetail();
