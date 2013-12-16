@@ -170,7 +170,7 @@ namespace PharmInventory.Forms.Reports
 
             if (_standardRRF && VisibilitySetting.HandleUnits == 1)
             {
-              //  tblRRF = itm.GetRRFReportForOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
+               // tblRRF = itm.GetRRFReportForOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 tblRRF = itm.GetRRFReportWithOutUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
 
@@ -185,6 +185,7 @@ namespace PharmInventory.Forms.Reports
             }
             else
             {
+                //tblRRF = itm.GetEmergencyRRFReportOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 tblRRF = itm.GetEmergencyRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
             gridItemsChoice.DataSource = tblRRF;
@@ -556,7 +557,7 @@ namespace PharmInventory.Forms.Reports
 
             var rrfs = client.GetFacilityRRForm(ginfo.FacilityID, form[0].Id, periods[0].Id, 1, ginfo.ScmsWSUserName, ginfo.ScmsWSPassword);
             var formCategories = rrfs.First().FormCategories;
-            var chosenCategoryBody = formCategories.First(x => x.Id == 1); //TODO:Erd coding to be removed.
+            var chosenCategoryBody = formCategories.First(x => x.Id == 1); //TODO:Hard coding to be removed.
             var items = chosenCategoryBody.Pharmaceuticals;
 
             var user = new User();
@@ -1015,14 +1016,14 @@ namespace PharmInventory.Forms.Reports
             cboToYear.EditValue = rrf.ToYear;
             cboStores.EditValue = rrf.RRFType;
             PopulateList();
-            //Handle Edits here (Populate exact values from the database)
-            //if (!rrf.IsColumnNull("LastRRFStatus"))
-            //{
-            //    if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
-            //        //btnAutoPushToPFSA.Enabled = true;
-            //    }
-            //else
-            //    //btnAutoPushToPFSA.Enabled = true;
+           // Handle Edits here (Populate exact values from the database)
+            if (!rrf.IsColumnNull("LastRRFStatus"))
+            {
+                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
+                    btnAutoPushToPFSA.Enabled = false;
+                }
+            else
+                btnAutoPushToPFSA.Enabled = false;
             Cursor = Cursors.Default;
         }
 

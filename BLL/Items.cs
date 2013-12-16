@@ -1397,7 +1397,7 @@ namespace BLL
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
                                   "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
-                                  "StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID " 
+                                  "StoreID = {2} and IsTransfer = 0 group by ItemID) as A on Items.ID = A.ItemID " 
                                   , dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;

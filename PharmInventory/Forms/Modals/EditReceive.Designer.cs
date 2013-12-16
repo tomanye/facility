@@ -73,8 +73,6 @@ namespace PharmInventory.Forms.Modals
             this.label23 = new System.Windows.Forms.Label();
             this.lkItemUnit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtQuantityLeft = new DevExpress.XtraEditors.TextEdit();
-            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPack.Properties)).BeginInit();
@@ -87,7 +85,6 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkItemUnit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantityLeft.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -234,7 +231,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnCancel.Location = new System.Drawing.Point(399, 540);
+            this.btnCancel.Location = new System.Drawing.Point(400, 502);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 22);
             this.btnCancel.TabIndex = 8;
@@ -245,7 +242,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = global::PharmInventory.Properties.Resources.disk;
-            this.btnSave.Location = new System.Drawing.Point(291, 540);
+            this.btnSave.Location = new System.Drawing.Point(292, 502);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 22);
             this.btnSave.TabIndex = 7;
@@ -296,7 +293,7 @@ namespace PharmInventory.Forms.Modals
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(172, 425);
+            this.label11.Location = new System.Drawing.Point(172, 399);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 0;
@@ -304,7 +301,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(291, 421);
+            this.txtPrice.Location = new System.Drawing.Point(291, 395);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(184, 20);
             this.txtPrice.TabIndex = 1;
@@ -313,7 +310,7 @@ namespace PharmInventory.Forms.Modals
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(172, 461);
+            this.label12.Location = new System.Drawing.Point(172, 435);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 0;
@@ -321,7 +318,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtReceivedBy
             // 
-            this.txtReceivedBy.Location = new System.Drawing.Point(291, 457);
+            this.txtReceivedBy.Location = new System.Drawing.Point(291, 431);
             this.txtReceivedBy.Name = "txtReceivedBy";
             this.txtReceivedBy.Size = new System.Drawing.Size(184, 20);
             this.txtReceivedBy.TabIndex = 1;
@@ -330,7 +327,7 @@ namespace PharmInventory.Forms.Modals
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(172, 497);
+            this.label13.Location = new System.Drawing.Point(172, 471);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 0;
@@ -338,7 +335,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(291, 493);
+            this.txtRemark.Location = new System.Drawing.Point(291, 467);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(305, 20);
             this.txtRemark.TabIndex = 1;
@@ -480,7 +477,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.Red;
-            this.label23.Location = new System.Drawing.Point(475, 421);
+            this.label23.Location = new System.Drawing.Point(475, 395);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(14, 13);
             this.label23.TabIndex = 17;
@@ -506,32 +503,12 @@ namespace PharmInventory.Forms.Modals
             this.labelControl1.TabIndex = 19;
             this.labelControl1.Text = "Unit";
             // 
-            // txtQuantityLeft
-            // 
-            this.txtQuantityLeft.Location = new System.Drawing.Point(291, 395);
-            this.txtQuantityLeft.Name = "txtQuantityLeft";
-            this.txtQuantityLeft.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
-            this.txtQuantityLeft.Properties.Appearance.Options.UseBackColor = true;
-            this.txtQuantityLeft.Size = new System.Drawing.Size(184, 20);
-            this.txtQuantityLeft.TabIndex = 20;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(172, 398);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(80, 13);
-            this.label24.TabIndex = 21;
-            this.label24.Text = "Quantity Left";
-            // 
             // EditReceive
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            this.ClientSize = new System.Drawing.Size(711, 585);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.txtQuantityLeft);
+            this.ClientSize = new System.Drawing.Size(709, 585);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.lkItemUnit);
             this.Controls.Add(this.label23);
@@ -591,7 +568,6 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.txtDate.Properties)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkItemUnit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantityLeft.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -643,7 +619,5 @@ namespace PharmInventory.Forms.Modals
         private System.Windows.Forms.Label label23;
         private DevExpress.XtraEditors.LookUpEdit lkItemUnit;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txtQuantityLeft;
-        private System.Windows.Forms.Label label24;
     }
 }
