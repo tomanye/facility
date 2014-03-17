@@ -81,6 +81,12 @@ namespace PharmInventory.Forms.Modals
                 lkItemUnit.Properties.DisplayMember = "Text";
                 lkItemUnit.Properties.ValueMember = "ID";
 
+                var programs = new Programs();
+                var allprograms = programs.GetSubPrograms();
+                lkPrograms.Properties.DataSource = allprograms;
+                lkPrograms.Properties.ValueMember = "ID";
+                lkPrograms.Properties.DisplayMember = "Name";
+
                 string itemName = dtItm.Rows[0]["ItemName"].ToString() + " - " + dtItm.Rows[0]["DosageForm"].ToString() + " - " + dtItm.Rows[0]["Strength"].ToString();
 
                 txtRefNo.Text = rec.RefNo;
@@ -99,17 +105,11 @@ namespace PharmInventory.Forms.Modals
                     txtPrice.Text = (rec.Cost * 1).ToString();
                 }
                 txtQuantity.Text = rec.Quantity.ToString();
-                //txtQuantityLeft.Text = rec.QuantityLeft.ToString();
+                lkPrograms.EditValue = rec.SubProgramID;
                 DateTime dtDate = Convert.ToDateTime(rec.Date.ToString("MM/dd/yyyy"));
                 txtDate.Text = dtDate.ToShortDateString();
                 dtRecDate.Value = DateTime.Now;
                 dtRecDate.CustomFormat = "MM/dd/yyyy";
-                //DateTime dtCurrent = Convert.ToDateTime(dtRecDate.Text);
-               
-                //long tic = (DateTime.Now.Ticks - dtCurrent.Ticks);
-                //DateTime dtRecG = dtDate.AddTicks(tic);
-                //// for tikmet were it adds two days it has to stop
-                //dtRecDate.Value = dtRecG;
                 if (!rec.IsColumnNull("ExpDate"))
                     dtExpiryDate.Value = rec.ExpDate;
                 cboStores.SelectedValue = rec.StoreID;
@@ -234,6 +234,7 @@ namespace PharmInventory.Forms.Modals
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                             rec.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
+                            rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
                             rec.Out = false;
                             rec.Save();
                             XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -253,6 +254,7 @@ namespace PharmInventory.Forms.Modals
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                         rec.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
+                        rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
                         rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
                         rec.Save();
                         XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

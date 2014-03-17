@@ -77,10 +77,13 @@ namespace PharmInventory.Forms.Reports
             var type = new BLL.Type();
             var alltypes = type.GetAllCategory();
             categorybindingSource.DataSource = alltypes.DefaultView;
-
+            
             var program = new Programs();
             var programs = program.GetSubPrograms();
-            ProgramsBindingSource.DataSource = programs.DefaultView;
+            cboProgram.Properties.DataSource = programs;
+            cboProgram.Properties.DisplayMember = "Name";
+            cboProgram.Properties.ValueMember = "ID";
+
 
             var orderstatus = new PharmInventory.HelperClasses.OrderStatus();
             orderbindingSource.DataSource = orderstatus.GetRRFOrders();

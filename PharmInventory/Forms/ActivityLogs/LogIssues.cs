@@ -151,7 +151,6 @@ namespace PharmInventory.Forms.ActivityLogs
             iss.LoadByPrimaryKey(tranId);
 
             string batchNo = iss.BatchNo;
-            Int64 qty = iss.Quantity;
             try
             {
                 if (iss.RecievDocID.ToString() != "")
@@ -164,12 +163,12 @@ namespace PharmInventory.Forms.ActivityLogs
                 rec.GetTransactionByBatch(iss.ItemID, iss.BatchNo, iss.StoreId);
             }
 
-            if (batchNo != rec.BatchNo)
+            if ( batchNo != rec.BatchNo && batchNo !=string.Empty)
             {
                 XtraMessageBox.Show("Unable to Delete, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Delete", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
             }
-            else
+            else if (batchNo == string.Empty || batchNo ==rec.BatchNo)
             {
                 if (XtraMessageBox.Show("Are You Sure, You want to delete this Transaction? You will not be able to restore this data.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {

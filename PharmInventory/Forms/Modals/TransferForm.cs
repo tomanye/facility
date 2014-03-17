@@ -188,12 +188,6 @@ namespace PharmInventory.Forms.Modals
                             newreceiveDoc.SupplierID = (int) allstores.GetColumn("SupplierID");
                             newreceiveDoc.Save();
                             receiveDoc.Save();
-                            
-
-                         //   receiveDoc.Out = true;
-
-                            //receiveDoc.GetReceivedItems(receiveid, _itemID, Convert.ToInt32(lkToStore.EditValue));
-                            //receiveDoc.QuantityLeft = receiveDoc.QuantityLeft + transfer.Quantity;
                         }
 
                         XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -202,13 +196,7 @@ namespace PharmInventory.Forms.Modals
                     }
                     catch (Exception exp)
                     {
-                        //mgr.RollbackTransaction();
-                        var user = new User();
-                        user.LoadByPrimaryKey(MainWindow.LoggedinId);
-                        if (user.UserType == UserType.Constants.SYSTEM_ADMIN)
-                            XtraMessageBox.Show(exp.Message);
-                        else
-                            XtraMessageBox.Show("Saving Error!", "Error", MessageBoxButtons.OK);
+                       XtraMessageBox.Show(exp.InnerException.Message ,"Error");
                     }
                 }
 

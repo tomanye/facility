@@ -16,7 +16,7 @@ select @todate = cast(('10/30/' +  cast((@year) as varchar) )  as datetime)
 select * into #tmp from 
 (
 -- select the received item
-select rd.ID, rd.ItemID, ISNULL(rd.RefNo,'') as RefNo , ISNULL(rd.Date,'') as [Date], ISNULL(rd.BatchNo,'')as [BatchNo], (rd.Quantity - isnull((SELECT SUM(d.Quantity) from Disposal d where d.RecID = rd.ID and Losses = 0) ,0)) as Received, Issued = 0, ISNULL(rd.Cost,0) UnitPrice, ISNULL(rd.Cost * rd.Quantity, 0) as TotalPrice, Balance = 0 , ISNULL(ExpDate,'') ExpDate,Precedance = 1,ToFrom = (SELECT CompanyName from Supplier where ID = rd.SupplierID) from ReceiveDoc rd where ItemID = @ItemID and StoreID=@StoreID and rd.[Date] between @fromdate and @todate
+select rd.ID, rd.ItemID, ISNULL(rd.RefNo,'') as RefNo , ISNULL(rd.Date,'') as [Date], ISNULL(rd.BatchNo,'')as [BatchNo], rd.Quantity  Received, Issued = 0, ISNULL(rd.Cost,0) UnitPrice, ISNULL(rd.Cost * rd.Quantity, 0) as TotalPrice, Balance = 0 , ISNULL(ExpDate,'') ExpDate,Precedance = 1,ToFrom = (SELECT CompanyName from Supplier where ID = rd.SupplierID) from ReceiveDoc rd where ItemID = @ItemID and StoreID=@StoreID and rd.[Date] between @fromdate and @todate
 Union
 -- select the issued item
 select id.ID, rd.ItemID, ISNULL(id.RefNo,'') , ISNULL(id.Date,''), ISNULL(rd.BatchNo,''), Received = 0, ISNULL(id.Quantity,'') as Issued, ISNULL(rd.Cost,0) UnitPrice, ISNULL(rd.Cost * id.Quantity, 0) as TotalPrice, Balance = 0 , ISNULL(ExpDate,''), Precedance = 3 ,ToFrom = (SELECT Name from ReceivingUnits where ID = id.ReceivingUnitID) from IssueDoc id join ReceiveDoc rd on id.RecievDocID = rd.ID where id.ItemID = @ItemID  and id.StoreID=@StoreID and rd.StoreID=@StoreID  and id.[Date] between @fromdate and @todate
