@@ -368,13 +368,19 @@ namespace PharmInventory.Forms.Reports
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             gridItemsChoice.DataSource = (DataTable)e.Result;
-            //gridItemsChoice.DataSource = (DataTable)e.Result;
-            //cboStatus.EditValue = filter;
-            if (filter == "Stock Out")
+            if (filter == "Stock Out" && ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out' && [EverReceived] = 1");
+            }
+            else if (filter == "Stock Out" && !ckExclude.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out'");
             }
-            else if (filter == "Over Stocked")
+            else if (filter == "Over Stocked" && ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked' && [EverReceived] == 1");
+            }
+            else if (filter == "Over Stocked" && !ckExclude.Checked)
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked'");
             }
@@ -459,17 +465,50 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            if (filter == "Stock Out" && cboStores.EditValue !=null)
+            if (filter == "Stock Out" && cboStores.EditValue !=null && ckExclude.Checked)
+            {
+                PopulateGrid();
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Stock Out'and [EverReceived]==1",
+                                                                      Convert.ToInt32(lkCommodityTypes.EditValue));
+            }
+
+            else if (filter == "Stock Out" && cboStores.EditValue != null && !ckExclude.Checked)
             {
                 PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Stock Out'",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
             }
-            else if (filter == "Over Stocked" && cboStores.EditValue != null)
+            else if (filter == "Over Stocked" && cboStores.EditValue != null && ckExclude.Checked)
+            {
+                PopulateGrid();
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'and [EverReceived]==1",
+                                                                      Convert.ToInt32(lkCommodityTypes.EditValue));
+            }
+            else if (filter == "Over Stocked" && cboStores.EditValue != null && !ckExclude.Checked)
             {
                 PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
+            }
+        }
+
+        private void ckExclude_CheckedChanged(object sender, EventArgs e)
+        {
+            if (filter == "Stock Out" && ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out' && [EverReceived] = 1");
+            }
+            else if (filter == "Stock Out" && !ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out'");
+            }
+            else if (filter == "Over Stocked" && ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked' && [EverReceived] == 1");
+            }
+            else if (filter == "Over Stocked" && !ckExclude.Checked)
+            {
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked'");
             }
         }
 
