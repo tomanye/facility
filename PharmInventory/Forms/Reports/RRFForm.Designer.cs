@@ -600,8 +600,6 @@
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
             this.gridItemChoiceView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
-            this.gridItemChoiceView.OptionsCustomization.AllowColumnMoving = false;
-            this.gridItemChoiceView.OptionsCustomization.AllowColumnResizing = false;
             this.gridItemChoiceView.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridItemChoiceView.OptionsDetail.EnableDetailToolTip = true;
             this.gridItemChoiceView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
@@ -705,14 +703,12 @@
             this.gridColumn4.Caption = "Ending Balance ";
             this.gridColumn4.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "gridColumn4";
+            this.gridColumn4.FieldName = "SOH";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
-            this.gridColumn4.UnboundExpression = "[BeginingBalance] - [Expired]";
-            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
+            this.gridColumn4.VisibleIndex = 8;
             this.gridColumn4.Width = 62;
             // 
             // gridColumn5
@@ -727,7 +723,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 8;
+            this.gridColumn5.VisibleIndex = 9;
             this.gridColumn5.Width = 77;
             // 
             // gridColumn6
@@ -742,7 +738,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.VisibleIndex = 10;
             this.gridColumn6.Width = 53;
             // 
             // gridColumn7
@@ -759,7 +755,7 @@
             this.gridColumn7.UnboundExpression = "(120 * [Issued]) / (60-[DaysOutOfStock])";
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 10;
+            this.gridColumn7.VisibleIndex = 11;
             this.gridColumn7.Width = 83;
             // 
             // gridColumn8
@@ -772,7 +768,7 @@
             this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 12;
+            this.gridColumn8.VisibleIndex = 13;
             this.gridColumn8.Width = 81;
             // 
             // gridColumn9
@@ -792,7 +788,7 @@
             this.gridColumn40.UnboundExpression = "[gridColumn7]-[SOH]";
             this.gridColumn40.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 11;
+            this.gridColumn40.VisibleIndex = 12;
             this.gridColumn40.Width = 71;
             // 
             // gridColumn42
@@ -836,6 +832,8 @@
             this.gridColumn45.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn45.FieldName = "Expired";
             this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.Visible = true;
+            this.gridColumn45.VisibleIndex = 7;
             this.gridColumn45.Width = 76;
             // 
             // repositoryItemCheckEdit1

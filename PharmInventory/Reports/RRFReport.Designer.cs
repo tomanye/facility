@@ -953,7 +953,7 @@
             // calculatedField6
             // 
             this.calculatedField6.DataMember = "DataTable1";
-            this.calculatedField6.Expression = "[SOH] - [Expired]";
+            this.calculatedField6.Expression = "[SOH] / [QtyPerPack]";
             this.calculatedField6.Name = "calculatedField6";
             // 
             // calculatedField7
