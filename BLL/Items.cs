@@ -1433,6 +1433,7 @@ namespace BLL
                          Unit = y["Unit"],
                          StockCode = y["StockCode"],
                          BeginingBalance = Convert.ToDouble(y["SOH"]),
+                         Expired = Convert.ToDouble(y["Expired"]),
                          ProgramID = y["ProgramID"],
                          SOH = Convert.ToDouble(z["SOH"]),
                          Max = Convert.ToInt32(z["Max"]),
@@ -1452,6 +1453,7 @@ namespace BLL
                          Unit = n.Unit,
                          StockCode = n.StockCode,
                          BeginingBalance = n.BeginingBalance,
+                         Expired = n.Expired ,
                          SOH = n.SOH,
                          Max = n.Max,
                          QtyPerPack = n.QtyPerPack,
@@ -1473,6 +1475,7 @@ namespace BLL
                              Unit = n.Unit,
                              StockCode = n.StockCode,
                              BeginingBalance = n.BeginingBalance,
+                             Expired = n.Expired ,
                              SOH = n.SOH,
                              Max = Convert.ToInt32(z["Quantity"]) * 2,
                              StockCodeDACA = n.StockCodeDACA,
@@ -1494,6 +1497,7 @@ namespace BLL
                          Unit = n.Unit,
                          StockCode = n.StockCode,
                          BeginingBalance = n.BeginingBalance,
+                         Expired = n.Expired ,
                          SOH = n.SOH,
                          Max = n.Max,
                          StockCodeDACA = n.StockCodeDACA,
@@ -1518,6 +1522,7 @@ namespace BLL
                               Unit = n.Unit,
                               StockCode = n.StockCode,
                               BeginingBalance = n.BeginingBalance,
+                              Expired =n.Expired ,
                               SOH = n.SOH,
                               Max = n.Max,
                               StockCodeDACA = n.StockCodeDACA,
@@ -1541,6 +1546,7 @@ namespace BLL
                               Unit = n.Unit,
                               StockCode = n.StockCode,
                               BeginingBalance = n.BeginingBalance,
+                              Expired = n.Expired ,
                               SOH = n.SOH,
                               Max = n.Max,
                               StockCodeDACA = n.StockCodeDACA,
@@ -1566,6 +1572,7 @@ namespace BLL
             value.Columns.Add("Unit");
             value.Columns.Add("StockCode");
             value.Columns.Add("BeginingBalance", typeof(double));
+            value.Columns.Add("Expired", typeof(double));
             value.Columns.Add("SOH", typeof(double));
             value.Columns.Add("Max", typeof(double));
             value.Columns.Add("StockCodeDACA", typeof(string));
@@ -1587,6 +1594,7 @@ namespace BLL
                 drv["Unit"] = v.Unit;
                 drv["StockCode"] = v.StockCode;
                 drv["BeginingBalance"] = v.BeginingBalance;
+                drv["Expired"] = v.Expired;
                 drv["SOH"] = v.SOH;
                 drv["Max"] = v.Max;
                 drv["StockCodeDACA"] = v.StockCodeDACA;

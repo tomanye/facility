@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,6 +67,7 @@
             this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -578,19 +580,28 @@
             this.gridColumn40,
             this.gridColumn42,
             this.gridColumn43,
-            this.gridColumn44});
+            this.gridColumn44,
+            this.gridColumn45});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
             styleFormatCondition1.Column = this.gridColumn40;
             styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
             styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.Column = this.gridColumn45;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.NotEqual;
+            styleFormatCondition2.Value1 = "0";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
+            styleFormatCondition1,
+            styleFormatCondition2});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
             this.gridItemChoiceView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridItemChoiceView.OptionsCustomization.AllowColumnMoving = false;
+            this.gridItemChoiceView.OptionsCustomization.AllowColumnResizing = false;
             this.gridItemChoiceView.OptionsDetail.AllowExpandEmptyDetails = true;
             this.gridItemChoiceView.OptionsDetail.EnableDetailToolTip = true;
             this.gridItemChoiceView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled;
@@ -614,7 +625,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 74;
+            this.gridColumn10.Width = 73;
             // 
             // colItemName
             // 
@@ -626,7 +637,7 @@
             this.colItemName.OptionsColumn.AllowEdit = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
-            this.colItemName.Width = 308;
+            this.colItemName.Width = 272;
             // 
             // gridColumn29
             // 
@@ -694,10 +705,12 @@
             this.gridColumn4.Caption = "Ending Balance ";
             this.gridColumn4.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "SOH";
+            this.gridColumn4.FieldName = "gridColumn4";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
+            this.gridColumn4.UnboundExpression = "[BeginingBalance] - [Expired]";
+            this.gridColumn4.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 7;
             this.gridColumn4.Width = 62;
@@ -715,7 +728,7 @@
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
-            this.gridColumn5.Width = 76;
+            this.gridColumn5.Width = 77;
             // 
             // gridColumn6
             // 
@@ -747,7 +760,7 @@
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 10;
-            this.gridColumn7.Width = 82;
+            this.gridColumn7.Width = 83;
             // 
             // gridColumn8
             // 
@@ -760,7 +773,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 12;
-            this.gridColumn8.Width = 50;
+            this.gridColumn8.Width = 81;
             // 
             // gridColumn9
             // 
@@ -792,6 +805,7 @@
             this.gridColumn42.OptionsColumn.ReadOnly = true;
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 3;
+            this.gridColumn42.Width = 76;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -814,6 +828,15 @@
             this.gridColumn44.Caption = "DSItemID";
             this.gridColumn44.FieldName = "DSItemID";
             this.gridColumn44.Name = "gridColumn44";
+            // 
+            // gridColumn45
+            // 
+            this.gridColumn45.Caption = "Expired";
+            this.gridColumn45.DisplayFormat.FormatString = "#,##0";
+            this.gridColumn45.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn45.FieldName = "Expired";
+            this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.Width = 76;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -2118,5 +2141,6 @@
         private System.Windows.Forms.BindingSource orderbindingSource;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
     }
 }
