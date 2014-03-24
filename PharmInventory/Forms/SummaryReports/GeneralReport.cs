@@ -32,6 +32,13 @@ namespace PharmInventory
             stor.GetActiveStores();
             cboStores.DataSource = stor.DefaultView;
 
+            var type = new BLL.Type();
+            var alltypes = type.GetAllCategory();
+            lkCategory.Properties.DataSource = alltypes;
+            lkCategory.Properties.DisplayMember = "Name";
+            lkCategory.Properties.ValueMember = "ID";
+            lkCategory.ItemIndex = 0;
+
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             dtCurrent = ConvertDate.DateConverter(dtDate.Text);
@@ -90,7 +97,7 @@ namespace PharmInventory
                 lblNoECLS.Text = totalECLS.ToString();
                 int neverRec = rec.CountNeverReceivedItems(storeId);
                 int stockin = (from m in dtbl.AsEnumerable()
-                               where m["Status"].ToString() == "Normal"
+                               where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                select m).Count();
                 if (stockin == 0)
@@ -104,7 +111,7 @@ namespace PharmInventory
                 
                 //progressBar1.PerformStep();
                 int stockout = (from m in dtbl.AsEnumerable()
-                                where m["Status"].ToString() == "Stock Out"
+                                where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                 select m).Count();
                 if (stockout == 0)
@@ -118,7 +125,7 @@ namespace PharmInventory
                 //((ckExclude.Checked)? (bal.CountStockOut(storeId, curMont, curYear)- neverRec) : bal.CountStockOut(storeId, curMont, curYear));
                 //progressBar1.PerformStep();
                 int overstock = (from m in dtbl.AsEnumerable()
-                                 where m["Status"].ToString() == "Over Stocked"
+                                 where m["Status"].ToString() == "Over Stocked" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                  && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                  select m).Count();
                 if (overstock == 0)
@@ -131,7 +138,7 @@ namespace PharmInventory
                 }
                 // progressBar1.PerformStep();
                 int nearEOP = (from m in dtbl.AsEnumerable()
-                               where m["Status"].ToString() == "Near EOP"
+                               where m["Status"].ToString() == "Near EOP" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                select m).Count();
                 if (nearEOP == 0)
@@ -144,7 +151,7 @@ namespace PharmInventory
                 }
                 //progressBar1.PerformStep();
                 int belowEOP = (from m in dtbl.AsEnumerable()
-                                where m["Status"].ToString() == "Below EOP"
+                                where m["Status"].ToString() == "Below EOP" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                 select m).Count();
                 if (belowEOP == 0)
@@ -159,7 +166,7 @@ namespace PharmInventory
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 int freeStockOut = (from m in dtbl.AsEnumerable()
-                                    where m["Status"].ToString() == "Stock Out"
+                                    where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                     && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                     select m).Count();
                 if (freeStockOut == 0)
@@ -441,6 +448,7 @@ namespace PharmInventory
         private void PopulateList(DataTable dtItm,GridControl lst)
         {
             lst.DataSource = dtItm;
+            gridView2.ActiveFilterString = String.Format("TypeID ={0}", Convert.ToInt32(lkCategory.EditValue));
             //progressBar1.Visible = true;
             //progressBar1.Maximum = dtItm.Rows.Count;
             //progressBar2.Visible = true;
@@ -485,7 +493,7 @@ namespace PharmInventory
             //    }
             //    lst.Items.Add(listItem);
             //    count++;
-           // }
+            // }
             //progressBar1.Visible = false;
             //progressBar2.Visible = false;
             //progressBar3.Visible = false;
@@ -541,10 +549,10 @@ namespace PharmInventory
         private void listInStock_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Balance bal = new Balance();
-            DataTable stockout = bal.GetStockIn(storeId, curMont, curYear);
+            DataTable stockout = bal.GetStockIn(storeId, curMont, curYear , Convert.ToInt32(lkCategory.EditValue));
             //StatusGroup.Text = "Stocked In Items";
             DataTable dtStockout = (from m in stockout.AsEnumerable()
-                                    where  ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                    where  ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true )
                                     select m).CopyToDataTable();
             PopulateList(dtStockout, listStatused);
         }
@@ -552,7 +560,7 @@ namespace PharmInventory
         private void listStockOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Balance bal = new Balance();
-            DataTable stockout = bal.GetStockOut(storeId, curMont, curYear);
+            DataTable stockout = bal.GetStockOut(storeId, curMont, curYear, Convert.ToInt32(lkCategory.EditValue));
             DataTable dtStockout = (from m in stockout.AsEnumerable()
                                     where  ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                     select m).CopyToDataTable();
@@ -565,7 +573,7 @@ namespace PharmInventory
         {
             //if (lblNearEOP.Text)
             Balance bal = new Balance();
-            DataTable stockout = bal.GetNearEOP(storeId, curMont, curYear);
+            DataTable stockout = bal.GetNearEOP(storeId, curMont, curYear, Convert.ToInt32(lkCategory.EditValue));
            // StatusGroup.Text = "Near EOP Items";
             DataTable dtStockout = (from m in stockout.AsEnumerable()
                                     where ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
@@ -576,7 +584,7 @@ namespace PharmInventory
         private void listOverstock_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Balance bal = new Balance();
-            DataTable stockout = bal.GetOverStock(storeId, curMont, curYear);
+            DataTable stockout = bal.GetOverStock(storeId, curMont, curYear, Convert.ToInt32(lkCategory.EditValue));
             //StatusGroup.Text = "Over Stocked Items";
             DataTable dtStockout = (from m in stockout.AsEnumerable()
                                     where  ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
@@ -615,7 +623,7 @@ namespace PharmInventory
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Balance bal = new Balance();
-            DataTable dtFreeStockOut =  bal.GetFreeItemsStockOut(storeId,curMont,curYear);
+            DataTable dtFreeStockOut =  bal.GetFreeItemsStockOut(storeId,curMont,curYear ,Convert.ToInt32(lkCategory.EditValue));
            // groupStatusTrend.Text = "Stocked out Free Items ";
             PopulateList(dtFreeStockOut, listStatusTrend);
         }
@@ -801,9 +809,10 @@ namespace PharmInventory
         private void linkLabel23_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Balance bal = new Balance();
-            DataTable stockout = bal.GetBelowEOP(storeId, curMont, curYear);
+            DataTable stockout = bal.GetBelowEOP(storeId, curMont, curYear ,Convert.ToInt32(lkCategory.EditValue));
             //StatusGroup.Text = "Below EOP Items";
             PopulateList(stockout, listStatused);
+
         }
 
         private void linkLabel24_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

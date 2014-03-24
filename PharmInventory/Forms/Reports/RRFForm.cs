@@ -98,8 +98,6 @@ namespace PharmInventory.Forms.Reports
             var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
-
-            var ru = new ReceivingUnits();
             PopulateRRFs();
 
             WindowVisibility(false);

@@ -326,11 +326,11 @@ namespace BLL
             return count;
         }
 
-        public DataTable GetStockIn(int storeId, int month, int year)
+        public DataTable GetStockIn(int storeId, int month, int year ,int typeId)
         {
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Normal"
+                               where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) ==typeId
                                select m).CopyToDataTable();
             return items;
             //Items itm = new Items();
@@ -422,21 +422,21 @@ namespace BLL
 
         }
 
-        public DataTable GetNearEOP(int storeId, int month, int year)
+        public DataTable GetNearEOP(int storeId, int month, int year, int typeId)
         {
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Near EOP"
+                               where m["Status"].ToString() == "Near EOP" && Convert.ToInt32(m["TypeID"]) == typeId
                                select m).CopyToDataTable();
             return items;
 
         }
 
-        public DataTable GetBelowEOP(int storeId, int month, int year)
+        public DataTable GetBelowEOP(int storeId, int month, int year, int typeId)
         {
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Below EOP"
+                               where m["Status"].ToString() == "Below EOP" && Convert.ToInt32(m["TypeID"]) == typeId
                                select m).CopyToDataTable();
             return items;
         }
@@ -451,11 +451,11 @@ namespace BLL
 
         }
 
-        public DataTable GetStockOut(int storeId, int month, int year)
+        public DataTable GetStockOut(int storeId, int month, int year, int typeId)
         {
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Stock Out"
+                               where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == typeId
                                select m).CopyToDataTable();
             return items;
 
@@ -482,7 +482,7 @@ namespace BLL
 
         }
 
-        public DataTable GetOverStock(int storeId, int month, int year)
+        public DataTable GetOverStock(int storeId, int month, int year, int typeId)
         {
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
@@ -502,12 +502,12 @@ namespace BLL
 
         }
 
-        public DataTable GetFreeItemsStockOut(int storeId, int month, int year)
+        public DataTable GetFreeItemsStockOut(int storeId, int month, int year ,int typeId)
         {
 
             GetSOH(storeId, month, year);
             DataTable items = (from m in this.DataTable.AsEnumerable()
-                               where m["Status"].ToString() == "Stock Out"
+                               where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == typeId
                                select m).CopyToDataTable();
             return items;
 

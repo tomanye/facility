@@ -61,21 +61,18 @@ namespace BLL
         public DataTable GetSavedRRFForDisplay()
         {
             this.FlushData();
-            const string query = "select ID,DateOfSubmission, LastRRFStatus, RRFType, cast(FromMonth as varchar) + ',' + cast(FromYear as varchar) + ' - ' + cast(ToMonth as varchar) + ',' + cast(ToYear as varchar) Period from RRF";
+            string query = "select ID,DateOfSubmission, LastRRFStatus, RRFType, cast(FromMonth as varchar) + ',' + cast(FromYear as varchar) + ' - ' + cast(ToMonth as varchar) + ',' + cast(ToYear as varchar) Period from RRF";
             this.LoadFromRawSql(query);
             this.AddColumn("DateOfSubmissionEth", typeof (string));
             this.AddColumn("RRFTypeText", typeof(string));
             
             while(!this.EOF)
             {
-                string ethDate = this.IsColumnNull("DateOfSubmission")
-                                     ? ""
-                                     : EthiopianDate.EthiopianDate.GregorianToEthiopian(this.DateOfSubmission);
+                string ethDate = this.IsColumnNull("DateOfSubmission")? "": EthiopianDate.EthiopianDate.GregorianToEthiopian(this.DateOfSubmission);
                 this.SetColumn("DateOfSubmissionEth",ethDate);
-                
-                Stores str=new Stores();
-                str.LoadByPrimaryKey(this.RRFType);
-                this.SetColumn("RRFTypeText", str.StoreName);
+                var str = new Stores();
+                str.LoadByStoreID(this.RRFType);
+                this.SetColumn("RRFTypeText", str.RowCount > 0 ? str.StoreName : "Unknown Store");
                 this.MoveNext();
             }
             return this.DataTable;

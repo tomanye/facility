@@ -475,13 +475,23 @@ namespace PharmInventory
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             var rDoc = new ReceiveDoc();
-            if (cboStores.EditValue != null)
+            if (ckExpired.Checked && cboStores.EditValue !=null && lkCategories.EditValue !=null)
             {
-                var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue), (int)lkCategories.EditValue);  //itm.GetAllItemsReceivedByBatchForAdj(Convert.ToInt32(cboStores.EditValue), dtCurrent.Year);
+                var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
+                                                                      (int) lkCategories.EditValue);
                 PopulateItemList(dtItem);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}",
+                                                                      DateTime.Now, (int) lkCategories.EditValue);
             }
-            if (ckExpired.Checked)
-                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
+            if (!ckExpired.Checked && cboStores.EditValue != null && lkCategories.EditValue != null)
+            {
+                var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
+                                                                      (int) lkCategories.EditValue);
+                PopulateItemList(dtItem);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}",
+                                                                      DateTime.Now, (int) lkCategories.EditValue);
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -499,9 +509,9 @@ namespace PharmInventory
             }
             else if (!ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = "";
+                //gridItemChoiceView.ActiveFilterString = "";
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] >= #{0}# and [TypeID]={1}", DateTime.Now, (int)lkCategories.EditValue);
-                gridItemChoiceView.RefreshData();
+              //  gridItemChoiceView.RefreshData();
             }
 
 

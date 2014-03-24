@@ -31,5 +31,12 @@ namespace BLL
             return this.DataTable;
         }
 
+
+        public DataTable LoadByStoreID(int storeID)
+        {
+            var query = string.Format("Select * from Stores where ID ={0}", storeID);
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
     }
 }
