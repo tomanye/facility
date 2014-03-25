@@ -32,10 +32,10 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\Tedy\Desktop\HCMIS Facility V.212\</PublishUrl>
+    <PublishUrl>C:\STORAGE\Dropbox\FE Labs\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
@@ -45,13 +45,13 @@
     <UpdateUrl>http://fe.hcmisonline.org/labs/</UpdateUrl>
     <ProductName>HCMIS Facility Edition</ProductName>
     <PublisherName>USAID DELIVER PROJECT</PublisherName>
-    <MinimumRequiredVersion>2.5.0.212</MinimumRequiredVersion>
+    <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>212</ApplicationRevision>
-    <ApplicationVersion>2.5.0.212</ApplicationVersion>
+    <ApplicationRevision>205</ApplicationRevision>
+    <ApplicationVersion>2.5.0.205</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
