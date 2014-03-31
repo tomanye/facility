@@ -488,7 +488,7 @@ namespace PharmInventory.Forms.Transactions
                                     break;
                             }
 
-                            while (quantity > 0 && rec.RowCount > j)
+                            while (quantity >=0 && rec.RowCount > j)
                             {
                                 var batch = itm.NeedExpiryBatch ? _dtRec.Rows[j]["BatchNo"].ToString() : "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
@@ -617,23 +617,23 @@ namespace PharmInventory.Forms.Transactions
             if (dtIssueGrid != null)
                 for (int i = 0; i < dtIssueGrid.Rows.Count; i++)
                 {
-                    if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) == 0)
-                    {
-                        dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Cannot be 0");
-                        valid = "All * marked fields are required!";
-                    }
+                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) == 0)
+                    //{
+                    //    dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Cannot be 0");
+                    //    valid = "All * marked fields are required!";
+                    //}
 
-                    if (Convert.ToInt64(dtIssueGrid.Rows[i]["Qty Per Pack"]) == 0)
-                    {
-                        dtIssueGrid.Rows[i].SetColumnError("Qty Per Pack", "Cannot be 0");
-                        valid = "All * marked fields are required!";
-                    }
+                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Qty Per Pack"]) == 0)
+                    //{
+                    //    dtIssueGrid.Rows[i].SetColumnError("Qty Per Pack", "Cannot be 0");
+                    //    valid = "All * marked fields are required!";
+                    //}
 
-                    if (Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]) == 0)
-                    {
-                        dtIssueGrid.Rows[i].SetColumnError("Pack Qty", "Cannot be 0");
-                        valid = "All * marked fields are required!";
-                    }
+                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]) == 0)
+                    //{
+                    //    dtIssueGrid.Rows[i].SetColumnError("Pack Qty", "Cannot be 0");
+                    //    valid = "All * marked fields are required!";
+                    //}
                     if (VisibilitySetting.HandleUnits == 1)
                     {
                         if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) >

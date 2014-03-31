@@ -327,26 +327,29 @@ namespace BLL
 
 		public DataTable GetDULastIssue(int itemId, int receivingUnit)
 		{
-		   
-			this.FlushData();
-			this.LoadFromRawSql(String.Format("select * from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by Date DESC", itemId, receivingUnit));
+		    var query = String.Format("select * from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by Date DESC", itemId,receivingUnit);
+			this.LoadFromRawSql(query);
 			return this.DataTable;
 		}
 
 		public int GetDULastIssueQty(int itemId, int receivingUnit)
 		{
-			int qty = 0;
-			this.FlushData();
-			this.LoadFromRawSql(String.Format("select Sum(Quantity) AS Quantity from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Group By Date Order by Date DESC", itemId, receivingUnit));
-			qty = ((this.DataTable.Rows.Count > 0)? Convert.ToInt32(this.DataTable.Rows[0]["Quantity"]): 0);
-			return qty;
+		    var query =
+		        String.Format(
+		            "select top (1) Quantity from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by ID DESC",
+		            itemId, receivingUnit);
+			this.LoadFromRawSql(query);
+            if (this.RowCount > 0 && !this.IsColumnNull("Quantity"))
+            {
+                return (int)this.Quantity;
+            }
+            return 0;
 		}
 
-		public int GetDULastSOH(int itemId, int receivingUnit)
+     	public int GetDULastSOH(int itemId, int receivingUnit)
 		{
-  
 			this.FlushData();
-			this.LoadFromRawSql(String.Format("select DUSOH from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by Date DESC", itemId, receivingUnit));
+			this.LoadFromRawSql(String.Format("select top (1) DUSOH from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by ID DESC", itemId, receivingUnit));
 			if (this.RowCount > 0 && ! this.IsColumnNull("DUSOH"))
 			{
 				return (int)this.DUSOH;
