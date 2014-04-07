@@ -53,7 +53,7 @@ namespace PharmInventory.Forms.Reports
             btnSendEmergencyOrder.Enabled = false;
             var unitcolumn = ((GridView) gridItemsChoice.MainView).Columns[2];
             var unitcolumn1 = ((GridView) gridItemsChoice.MainView).Columns[13];
-
+            layoutControlItem18.Visibility =LayoutVisibility.Never;
             switch (VisibilitySetting.HandleUnits)
             {
                 case 3:
