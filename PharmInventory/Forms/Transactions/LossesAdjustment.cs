@@ -504,7 +504,7 @@ namespace PharmInventory
         {
             if (ckExpired.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1} ", DateTime.Now, (int)lkCategories.EditValue);
+                gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1} and [QuantityLeft] > 0 ", DateTime.Now, (int)lkCategories.EditValue);
 
             }
             else if (!ckExpired.Checked)
