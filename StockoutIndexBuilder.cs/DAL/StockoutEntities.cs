@@ -11,7 +11,7 @@ namespace StockoutIndexBuilder.DAL
     {
         public StockoutEntities() : base(Settings.ConnectionString)
         {
-            Database.SetInitializer<StockoutEntities>(new CreateDatabaseIfNotExists<StockoutEntities>());
+            Database.SetInitializer<StockoutEntities>(null);
         }
 
         public DbSet<Stockout> Stockouts { get; set; }
