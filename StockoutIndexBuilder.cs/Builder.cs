@@ -30,7 +30,6 @@ namespace StockoutIndexBuilder
 
         public static void BuildIndex(int itemID, int storeId)
         {
-            var db = new StockoutEntities();
             var repository = new StockoutRepository();
             var stockouts = GetStockOutHistory(itemID, storeId).ToList();
             if (stockouts.Count > 0)

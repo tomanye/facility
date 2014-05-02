@@ -779,7 +779,7 @@ namespace BLL
                              {"@year", year},
                              {"@days", DateTime.DaysInMonth(year, month)}
                          };
-            this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
+            this.LoadFromSql("SOHForStockOut", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
 
