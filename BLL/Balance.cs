@@ -286,6 +286,16 @@ namespace BLL
             return items;
         }
 
+        public int CountStockInByCategory(int storeId, int month, int year ,int typeID)
+        {
+
+            GetSOH(storeId, month, year);
+            int items = (from m in this.DataTable.AsEnumerable()
+                         where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["ID"]) ==typeID
+                         select m).AsDataView().Count;
+            return items;
+        }
+
         public int CountBelowMin(int storeId, int month, int year)
         {
             Items itm = new Items();
@@ -412,11 +422,31 @@ namespace BLL
             return items;
         }
 
+        public int CountNearEOPByCategory(int storeId, int month, int year ,int typeID)
+        {
+            GetSOH(storeId, month, year);
+            int items = (from m in this.DataTable.AsEnumerable()
+                         where m["Status"].ToString() == "Near EOP" && Convert.ToInt32(m["TypeID"])==typeID
+                         select m).AsDataView().Count;
+            return items;
+        }
+
         public int CountBelowEOP(int storeId, int month, int year)
         {
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
                          where m["Status"].ToString() == "Below EOP"
+                         select m).AsDataView().Count;
+            return items;
+
+        }
+
+
+        public int CountBelowEOPByCategory(int storeId, int month, int year ,int typeID)
+        {
+            GetSOH(storeId, month, year);
+            int items = (from m in this.DataTable.AsEnumerable()
+                         where m["Status"].ToString() == "Below EOP" && Convert.ToInt32(m["ID"]) == typeID
                          select m).AsDataView().Count;
             return items;
 
@@ -451,6 +481,18 @@ namespace BLL
 
         }
 
+        public int CountStockOutByCategory(int storeId, int month, int year ,int typeID)
+        {
+            GetSOH(storeId, month, year);
+            int items = (from m in this.DataTable.AsEnumerable()
+                         where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == typeID
+                         select m).AsDataView().Count;
+            return items;
+
+        }
+
+
+
         public DataTable GetStockOut(int storeId, int month, int year, int typeId)
         {
             GetSOH(storeId, month, year);
@@ -476,6 +518,17 @@ namespace BLL
             GetSOH(storeId, month, year);
             int items = (from m in this.DataTable.AsEnumerable()
                          where m["Status"].ToString() == "Over Stocked"
+                         select m).AsDataView().Count;
+            return items;
+
+
+        }
+
+        public int CountOverStockByCategory(int storeId, int month, int year ,int typeID)
+        {
+            GetSOH(storeId, month, year);
+            int items = (from m in this.DataTable.AsEnumerable()
+                         where m["Status"].ToString() == "Over Stocked" && Convert.ToInt32(m["TypeID"]) == typeID
                          select m).AsDataView().Count;
             return items;
 

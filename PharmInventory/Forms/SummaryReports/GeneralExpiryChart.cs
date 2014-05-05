@@ -45,6 +45,12 @@ namespace PharmInventory
 
         private void GeneralReport_Load(object sender, EventArgs e)
         {
+            var type = new BLL.Type();
+            var alltypes = type.GetAllCategory();
+            lkCategory.Properties.DataSource = alltypes;
+            lkCategory.Properties.DisplayMember = "Name";
+            lkCategory.Properties.ValueMember = "ID";
+            lkCategory.ItemIndex = 0;
 
             Stores stor = new Stores();
             stor.GetActiveStores();
@@ -57,7 +63,8 @@ namespace PharmInventory
             dtCurrent = ConvertDate.DateConverter(dtDate.Text);
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
-        }
+
+          }
 
         DateTime dtCurrent = new DateTime();
         int curMont = 0;
@@ -72,16 +79,21 @@ namespace PharmInventory
             chartPie.Series.Clear();
             lstExpStatus.Items.Clear();
             Items itm = new Items();
+
             int storeId = Convert.ToInt32(cboStores.EditValue);
-            object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
+            int typeID = Convert.ToInt32(lkCategory.EditValue);
+            //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
+            object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID);
             Int64 expAmount = Convert.ToInt64(objExp[0]);
             Double expCost = Convert.ToDouble(objExp[1]);
 
-            object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
+           // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
+            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
-            object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
+           // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
+            object[] sohObj = itm.GetAllSOHQtyAmountByCategory(storeId ,typeID);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 

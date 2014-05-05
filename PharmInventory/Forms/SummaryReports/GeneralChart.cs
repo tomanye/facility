@@ -40,6 +40,13 @@ namespace PharmInventory
             if (stor.RowCount > 1)
                 cboStores.ItemIndex = 0;
 
+            var type = new BLL.Type();
+            var alltypes = type.GetAllCategory();
+            lkCategory.Properties.DataSource = alltypes;
+            lkCategory.Properties.DisplayMember = "Name";
+            lkCategory.Properties.ValueMember = "ID";
+            lkCategory.ItemIndex = 0;
+
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             dtCurrent = ConvertDate.DateConverter(dtDate.Text);
@@ -71,18 +78,19 @@ namespace PharmInventory
             //int neverRec = rec.CountNeverReceivedItems(storeId);
 
             curYear = Convert.ToInt32(cboYear.EditValue);
+            var category = Convert.ToInt32(lkCategory.EditValue);
             curMont = (curYear == dtCurrent.Year) ? dtCurrent.Month : 12;
             //progressBar1.PerformStep();
             Balance bal = new Balance();
-            Int64 stockin = bal.CountStockIn(storeId, curMont, curYear);
+            Int64 stockin = bal.CountStockInByCategory(storeId, curMont, curYear ,category );
             // progressBar1.PerformStep();
-            Int64 stockout = bal.CountStockOut(storeId, curMont, curYear);
+            Int64 stockout = bal.CountStockOutByCategory(storeId, curMont, curYear, category);
             // progressBar1.PerformStep();
-            Int64 overstock = bal.CountOverStock(storeId, curMont, curYear);
+            Int64 overstock = bal.CountOverStockByCategory(storeId, curMont, curYear, category);
             // progressBar1.PerformStep();
-            Int64 nearEOP = bal.CountNearEOP(storeId, curMont, curYear);
+            Int64 nearEOP = bal.CountNearEOPByCategory(storeId, curMont, curYear, category);
             // progressBar1.PerformStep();
-            Int64 BelowEOP = bal.CountBelowEOP(storeId, curMont, curYear);
+            Int64 BelowEOP = bal.CountBelowEOPByCategory(storeId, curMont, curYear, category);
             // progressBar1.PerformStep();
             //Int64 belowMin = bal.CountBelowMin(storeId,curMont,curYear);
             // progressBar1.PerformStep();
@@ -159,7 +167,7 @@ namespace PharmInventory
 
         private void cboStores_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && cboYear.EditValue != null)
+            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null)
                 GenerateStockStatusPieChart();
         }
 
