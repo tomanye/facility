@@ -1372,6 +1372,7 @@ namespace BLL
         public DataTable GetRRFReportWithOutUnit(int storeId, int fromYear, int fromMonth, int toYear, int toMonth)
         {
             var balance = new Balance();
+            var issue = new IssueDoc();
             var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, fromMonth, fromYear));
             var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, toMonth, toYear));
             if (fromMonth != 1)
@@ -1394,10 +1395,11 @@ namespace BLL
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
-                                  "from Items left join (select ItemID,sum(Quantity) Quantity " +
-                                  "from IssueDoc rd where [Date] between '{0}' and '{1}' and " +
-                                  "StoreID = {2} and IsTransfer = 0 group by ItemID) as A on Items.ID = A.ItemID " 
+            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity ,isnull(ReceivingUnitID,0) as ReceivingUnitID " +
+                                  "from Items left join (select ItemID,sum(Quantity) Quantity ,ReceivingUnitID " +
+                                  "from IssueDoc rd Join ReceivingUnits ru on rd.ReceivingUnitID = ru.ID " +
+                                  "where [Date] between '{0}' and '{1}' and StoreID = {2} and IsTransfer = 0 " +
+                                  "group by ItemID ,ReceivingUnitID) as A on Items.ID = A.ItemID " 
                                   , dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
@@ -1484,6 +1486,7 @@ namespace BLL
                              ProgramID = n.ProgramID,
                              Status=n.Status,
                              Issued = Convert.ToInt32(z["Quantity"]),
+                             ReceivingUnitID = Convert.ToInt32(z["ReceivingUnitID"]),
                              TypeID=n.TypeID
                              }).ToArray();
 
@@ -1505,6 +1508,7 @@ namespace BLL
                          Received = n.Received,
                          ProgramID = n.ProgramID,
                          Issued = n.Issued,
+                         ReceivingUnitID = n.ReceivingUnitID,
                          Status =n.Status,
                          LossAdj = z["Quantity"],
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
@@ -1529,6 +1533,7 @@ namespace BLL
                               QtyPerPack = n.QtyPerPack,
                               Received = n.Received,
                               Issued = n.Issued,
+                              ReceivingUnitID =n.ReceivingUnitID,
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Status= n.Status,
@@ -1553,6 +1558,7 @@ namespace BLL
                               QtyPerPack = n.QtyPerPack,
                               Received = n.Received,
                               Issued = n.Issued,
+                              ReceivingUnitID =n.ReceivingUnitID,
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Status =n.Status,
@@ -1560,7 +1566,7 @@ namespace BLL
                               DaysOutOfStock = Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),//TODO: This is a quick fix.  We need to take stock status from the last three months.
                               //TODO: This is a quick fix.  We need to take stock status from the last three months.
                               MaxStockQty = ((120 * n.Issued) / (60 - Convert.ToInt32(n.DaysOutOfStock))),
-                            TypeID=n.TypeID
+                              TypeID=n.TypeID
                           }).ToArray();
 
             //return t;
@@ -1586,6 +1592,8 @@ namespace BLL
             value.Columns.Add("ProgramID", typeof(int));
             value.Columns.Add("Status", typeof(string));
             value.Columns.Add("TypeID", typeof(int));
+            value.Columns.Add("ReceivingUnitID", typeof(int));
+            value.Columns.Add("LastDUSoh", typeof(decimal));
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1604,10 +1612,12 @@ namespace BLL
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
                 drv["ProgramID"] = v.ProgramID;
-                drv["DaysOutOfStock"] = Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
+                drv["DaysOutOfStock"] = v.DaysOutOfStock;//Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
                 drv["MaxStockQty"] = v.MaxStockQty;
                 drv["Status"] = v.Status;
                 drv["TypeID"] = v.TypeID;
+                drv["ReceivingUnitID"] = v.ReceivingUnitID;
+                drv["LastDUSoh"] = issue.GetDULastSOH(Convert.ToInt32(v.ID), Convert.ToInt32(v.ReceivingUnitID));
             }
 
             return value;

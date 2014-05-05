@@ -100,6 +100,7 @@
             // 
             // lkStore
             // 
+            this.lkStore.Enabled = false;
             this.lkStore.Location = new System.Drawing.Point(46, 12);
             this.lkStore.Name = "lkStore";
             this.lkStore.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

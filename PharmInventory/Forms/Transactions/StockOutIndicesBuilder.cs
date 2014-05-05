@@ -28,7 +28,8 @@ namespace PharmInventory.Forms.Transactions
         void LoadAllItems()
         {
             var allstockouts = _repository.GetAll().LastOrDefault();
-            if (allstockouts != null) lbllastindexedtime.Text = allstockouts.LastIndexedTime.ToString();
+            if (allstockouts != null) 
+                lbllastindexedtime.Text = allstockouts.LastIndexedTime.ToString();
             var allItems = receiveDocRepository.RecievedItems().Select(m => m.Item).Distinct().ToList();
             itemsBindingSource.DataSource = ItemViewModelCollection.Create(allItems);
             var allstores = _storerepository.AllStores();
@@ -40,23 +41,23 @@ namespace PharmInventory.Forms.Transactions
             _repository.DeleteAll();
             _dataSource = itemsBindingSource.DataSource as List<ItemViewModel>;
             double percentage = 0;
-            foreach (var item in _dataSource)
-            {
-                if (lkStore.EditValue != null)
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId, (int)lkStore.EditValue);
+            if (_dataSource != null)
+                foreach (var item in _dataSource)
+                {
+                    if (lkStore.EditValue != null)
+                        StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId, (int)lkStore.EditValue);
 
-                else
-                    StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId);
+                    else
+                        StockoutIndexBuilder.Builder.BuildIndex(((ItemViewModel)item).ItemId);
 
-                item.Indexed = true;
+                    item.Indexed = true;
 
-                itemsBindingSource.DataSource = _dataSource;
-                var newValue = 100.0 / _dataSource.Count;
-                percentage += newValue;
-                backgroundIndexer.ReportProgress(Convert.ToInt32(percentage));
+                    itemsBindingSource.DataSource = _dataSource;
+                    var newValue = 100.0 / _dataSource.Count;
+                    percentage += newValue;
+                    backgroundIndexer.ReportProgress(Convert.ToInt32(percentage));
 
-            }
-
+                }
         }
 
 
@@ -79,16 +80,9 @@ namespace PharmInventory.Forms.Transactions
         {
             itemsBindingSource.DataSource = null;
             itemsBindingSource.DataSource = _dataSource;
-            XtraMessageBox.Show(String.Format("Indexing Completed for {0} items.", _dataSource.Count));
+            XtraMessageBox.Show(String.Format("Indexing Completed for all items."));
             progressIndex.Value = 0;
         }
-
-      
-
-
-
-
-
 
     }
 }
