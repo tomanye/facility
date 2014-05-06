@@ -823,6 +823,32 @@ namespace BLL
 
         }
 
+        public DataTable BalanceOfAllItemsForStockStatus(int storeId, int year, int month, string selectedType, int programID, int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
+        {
+            // Dont Iterate
+            var dtbl = new DataTable();
+            dtbl = programID == 0 ? GetSOH(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
+            dtbl.Columns.Add("MOS", typeof(float));
+            dtbl.Columns.Add("ReorderAmount", typeof(int));
+            foreach (DataRow dr in dtbl.Rows)
+            {
+                int amc = Convert.ToInt32(dr["AMC"]);
+                if (amc > 0)
+                {
+                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
+                }
+                else
+                {
+                    dr["MOS"] = 0;
+                }
+                int reorder = Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
+                dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
+
+            }
+            return dtbl;
+
+        }
+
         public DataTable GetSOH(int storeId, int month, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary

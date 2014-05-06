@@ -494,7 +494,7 @@ namespace PharmInventory.Forms.Reports
             {
                 case 1:
                     {
-                        var dtBal = bal.BalanceOfAllItems(storeId, year, month, _selectedType, programID, commodityTypeID,
+                        var dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, _selectedType, programID, commodityTypeID,
                                                           _dtCur, bw);
                         e.Result = dtBal;
                     }
