@@ -847,7 +847,7 @@
     <Content Include="Scripts\9914_AlterReceiveDocUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9915_SOHForStockOut.sql">
+    <Content Include="Scripts\9915_UpdateReceiveDoc.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\991_AlterYearEndInsert.sql">
