@@ -32,11 +32,11 @@ namespace PharmInventory.ViewModels
         {
             var vwGetAllItemsRepository =new vwGetAllItemsRepository();
             var amcrepo = new AmcReportRepository();
-            var unitrepository = new UnitRepository();
+            //var unitrepository = new UnitRepository();
             var allItemIdsonamc = amcrepo.AllAmcReport().SingleOrDefault(m => m.ItemID == itemId && m.StoreID == storeId && m.UnitID ==unitid);
             var products = vwGetAllItemsRepository.AllItems().SingleOrDefault(m => m.ID == itemId);
             var startDate = endDate.Subtract(TimeSpan.FromDays(amcRange*30));
-            var unit = unitrepository.GetAll().FirstOrDefault(m=> allItemIdsonamc != null && m.ID == allItemIdsonamc.UnitID);
+            //var unit = unitrepository.GetAll().FirstOrDefault(m=> allItemIdsonamc != null && m.ID == allItemIdsonamc.UnitID);
             var viewModel = new AMCViewModel
                                 {
                                     ItemID = itemId,

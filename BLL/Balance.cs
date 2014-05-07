@@ -801,7 +801,7 @@ namespace BLL
         {  
             // Dont Iterate
             var dtbl = new DataTable();
-            dtbl = programID == 0 ? GetSOHForStockOut(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
+            dtbl = programID == 0 ? GetSOH(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
             dtbl.Columns.Add("MOS", typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
             foreach (DataRow dr in dtbl.Rows)
