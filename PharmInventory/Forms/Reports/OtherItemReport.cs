@@ -496,7 +496,7 @@ namespace PharmInventory.Forms.Reports
         {
             if (filter == "Stock Out" && ckExclude.Checked)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out' && [EverReceived] = 1");
+                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out' && [EverReceived] == 1");
             }
             else if (filter == "Stock Out" && !ckExclude.Checked)
             {
