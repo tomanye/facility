@@ -467,26 +467,26 @@ namespace PharmInventory.Forms.Reports
         {
             if (filter == "Stock Out" && cboStores.EditValue !=null && ckExclude.Checked)
             {
-                PopulateGrid();
+               // PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Stock Out'and [EverReceived]==1",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
             }
 
             else if (filter == "Stock Out" && cboStores.EditValue != null && !ckExclude.Checked)
             {
-                PopulateGrid();
+                //PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Stock Out'",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
             }
             else if (filter == "Over Stocked" && cboStores.EditValue != null && ckExclude.Checked)
             {
-                PopulateGrid();
+                //PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'and [EverReceived]==1",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
             }
             else if (filter == "Over Stocked" && cboStores.EditValue != null && !ckExclude.Checked)
             {
-                PopulateGrid();
+               // PopulateGrid();
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'",
                                                                       Convert.ToInt32(lkCommodityTypes.EditValue));
             }
