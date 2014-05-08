@@ -105,9 +105,9 @@ namespace PharmInventory.Forms.Reports
                 int reasonId;
                 reasonId = cboReasons.EditValue == null ? 0 : Convert.ToInt32(cboReasons.EditValue);
                 var itm = new Items();
-                _selectedType = rdDrug.EditValue.ToString();
+               // _selectedType = rdDrug.EditValue.ToString();
                 //DataTable dtItem = ((_selectedType == "Drug") ? itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue)) : itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
-                DataTable dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), year, reasonId);
+                var dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), year, reasonId ,Convert.ToInt32(lkCommodityTypes.EditValue));
                // DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));
                // DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToInt32(cboReasons.EditValue));
                // DataTable dtItem = itm.GetExpiredItems(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));

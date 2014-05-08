@@ -662,7 +662,7 @@ namespace BLL
                 return this.DataTable;
             }
         }
-        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId)
+        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeID)
         {
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
@@ -670,7 +670,7 @@ namespace BLL
                                       "CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
                                       "ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      "AND year(Disposal.Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
+                                      "AND year(Disposal.Date) = {1} and vwGetAllItems.TypeID = {2} " + whereQ + " ORDER BY FullItemName", storeId, year ,typeID);
 
             this.LoadFromRawSql(query);
             return this.DataTable;
