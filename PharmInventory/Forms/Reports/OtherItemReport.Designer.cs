@@ -627,8 +627,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsFilter.AllowFilter = false;
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 10;
             this.gridColumn7.Width = 81;
             // 
             // gridColumn67
