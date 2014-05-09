@@ -151,12 +151,14 @@ namespace PharmInventory.Forms.Modals
         /// <returns>String value indicating the error is returned.  If the form items are all valid, a string value of "true" is returned.</returns>
         private string ValidateFields()
         {
+          
             string valid = "true";
             if (_tranId == 0)
                 valid = "This is not a valid Transaction!";
             else
             {
-                if (txtRefNo.Text != "" && cboStores.SelectedValue != null && cboSupplier.SelectedValue != null && txtDate.Text != "" && txtBatchNo.Text != "" && txtPack.Text != "" && txtQtyPack.Text != "")
+                //if (txtRefNo.Text != "" && cboStores.SelectedValue != null && cboSupplier.SelectedValue != null && txtDate.Text != "" && txtBatchNo.Text != "" && txtPack.Text != "" && txtQtyPack.Text != "")
+                if (txtRefNo.Text != "" && cboStores.SelectedValue != null && cboSupplier.SelectedValue != null  && txtPack.Text != "" && txtQtyPack.Text != "")
                     valid = "true";
                 else
                 {
