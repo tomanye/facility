@@ -350,7 +350,7 @@ namespace PharmInventory.Forms.Reports
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
-                    dtBal = bal.BalanceOfAllItems(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     e.Result = dtBal;
                     break;
                 case 2:
