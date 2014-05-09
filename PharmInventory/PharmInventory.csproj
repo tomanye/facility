@@ -853,6 +853,9 @@
     <Content Include="Scripts\9916_SOHForStockout.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9917_UpdateRifampicin.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\991_AlterYearEndInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
