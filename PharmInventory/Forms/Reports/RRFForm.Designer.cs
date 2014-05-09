@@ -349,7 +349,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
             this.gridColumn16.OptionsFilter.AllowFilter = false;
-            this.gridColumn16.UnboundExpression = "SOH/QtyPerPack";
+            this.gridColumn16.UnboundExpression = "USOH/QtyPerPack";
             this.gridColumn16.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 6;
@@ -705,7 +705,7 @@
             this.gridColumn4.Caption = "Ending Balance ";
             this.gridColumn4.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "SOH";
+            this.gridColumn4.FieldName = "USOH";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;

@@ -1479,6 +1479,7 @@ namespace BLL
                          Expired = Convert.ToDouble(y["Expired"]),
                          ProgramID = y["ProgramID"],
                          SOH = Convert.ToDouble(z["SOH"]),
+                         USOH = Convert.ToDouble(z["Dispatchable"]),
                          Max = Convert.ToInt32(z["Max"]),
                          QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
                          StockCodeDACA = p["StockCodeDACA"],
@@ -1498,6 +1499,7 @@ namespace BLL
                          BeginingBalance = n.BeginingBalance,
                          Expired = n.Expired ,
                          SOH = n.SOH,
+                         USOH = n.USOH,
                          Max = n.Max,
                          QtyPerPack = n.QtyPerPack,
                          StockCodeDACA = n.StockCodeDACA,
@@ -1520,6 +1522,7 @@ namespace BLL
                              BeginingBalance = n.BeginingBalance,
                              Expired = n.Expired ,
                              SOH = n.SOH,
+                             USOH = n.USOH ,
                              Max = Convert.ToInt32(z["Quantity"]) * 2,
                              StockCodeDACA = n.StockCodeDACA,
                              QtyPerPack = n.QtyPerPack,
@@ -1543,6 +1546,7 @@ namespace BLL
                          BeginingBalance = n.BeginingBalance,
                          Expired = n.Expired ,
                          SOH = n.SOH,
+                         USOH = n.USOH ,
                          Max = n.Max,
                          StockCodeDACA = n.StockCodeDACA,
                          QtyPerPack = n.QtyPerPack,
@@ -1569,6 +1573,7 @@ namespace BLL
                               BeginingBalance = n.BeginingBalance,
                               Expired =n.Expired ,
                               SOH = n.SOH,
+                              USOH = n.USOH ,
                               Max = n.Max,
                               StockCodeDACA = n.StockCodeDACA,
                               QtyPerPack = n.QtyPerPack,
@@ -1594,6 +1599,7 @@ namespace BLL
                               BeginingBalance = n.BeginingBalance,
                               Expired = n.Expired ,
                               SOH = n.SOH,
+                              USOH = n.USOH,
                               Max = n.Max,
                               StockCodeDACA = n.StockCodeDACA,
                               QtyPerPack = n.QtyPerPack,
@@ -1635,6 +1641,8 @@ namespace BLL
             value.Columns.Add("TypeID", typeof(int));
             value.Columns.Add("ReceivingUnitID", typeof(int));
             value.Columns.Add("LastDUSoh", typeof(decimal));
+            value.Columns.Add("USOH", typeof(decimal));
+
             foreach (var v in t2)
             {
                 DataRowView drv = value.DefaultView.AddNew();
@@ -1645,6 +1653,7 @@ namespace BLL
                 drv["BeginingBalance"] = v.BeginingBalance;
                 drv["Expired"] = v.Expired;
                 drv["SOH"] = v.SOH;
+                drv["USOH"] = v.USOH;
                 drv["Max"] = v.Max;
                 drv["StockCodeDACA"] = v.StockCodeDACA;
                 drv["QtyPerPack"] = v.QtyPerPack;
