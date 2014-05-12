@@ -21,7 +21,7 @@ namespace PharmInventory.ViewModels
         public string FullItemName { get; set; }
         public int AmcRange { get; set; }
         public string Store { get; set; }
-        public long IssueInAmcRange { get; set; }
+        public  long IssueInAmcRange { get; set; }
         public int DaysOutOfStock { get; set; }
         public double AmcWithDos { get; set; }
         public double AmcWithoutDos { get; set; }
@@ -32,11 +32,9 @@ namespace PharmInventory.ViewModels
         {
             var vwGetAllItemsRepository =new vwGetAllItemsRepository();
             var amcrepo = new AmcReportRepository();
-            //var unitrepository = new UnitRepository();
             var allItemIdsonamc = amcrepo.AllAmcReport().SingleOrDefault(m => m.ItemID == itemId && m.StoreID == storeId && m.UnitID ==unitid);
             var products = vwGetAllItemsRepository.AllItems().SingleOrDefault(m => m.ID == itemId);
             var startDate = endDate.Subtract(TimeSpan.FromDays(amcRange*30));
-            //var unit = unitrepository.GetAll().FirstOrDefault(m=> allItemIdsonamc != null && m.ID == allItemIdsonamc.UnitID);
             var viewModel = new AMCViewModel
                                 {
                                     ItemID = itemId,
@@ -45,7 +43,7 @@ namespace PharmInventory.ViewModels
                                     IssueInAmcRange =Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate),
                                     DaysOutOfStock =Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now),
                                     AmcWithDos =Builder.CalculateAverageConsumption(itemId, storeId, startDate, endDate,CalculationOptions.Monthly),
-                                    IssueWithDOS =Builder.CalculateTotalConsumption(itemId, storeId, startDate, endDate),
+                                    IssueWithDOS =Builder.CalculateTotalConsumptionAMC(itemId, storeId, startDate, endDate),
                                     UnitID = unitid,
                                 };
             AddorUpdateAmc(itemId, storeId, unitid,amcRange, endDate, amcrepo, viewModel, allItemIdsonamc, startDate);
