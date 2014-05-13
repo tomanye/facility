@@ -821,6 +821,7 @@ namespace PharmInventory.Forms.Transactions
             printableComponentLink2.CreateDocument();
             printableComponentLink2.Landscape = false;
             printableComponentLink2.ShowPreviewDialog();
+            PopulateItemList();
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)

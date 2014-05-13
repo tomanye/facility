@@ -1106,80 +1106,13 @@ namespace BLL
 
         public DataTable TransactionReport(int storeId, DateTime dt1, DateTime dt2, string selectedType, BackgroundWorker bw)
         {
-            //IssueDoc iss = new IssueDoc();
-            //ReceiveDoc rec = new ReceiveDoc();
-            //Disposal dis = new Disposal();
-            //YearEnd yEnd = new YearEnd();
-            //Items itm = new Items();
-            //DataTable dtResult = new DataTable();
-            //DateTime dt1;
-            //DateTime dt2;
-            //int yr;
-            //    //do quarter date range and all year if quarter is null
-            //    switch (quarter)
-            //    {
-            //        case 1:
-            //            yr = year - 1;
-            //            dt1 = new DateTime(yr, 11, 1);
-            //            dt2 = new DateTime(year, 1, 30);
-            //            break;
-            //       case 2:
-            //            dt1 = new DateTime(year, 2, 1);
-            //            dt2 = new DateTime(year, 4, 30);
-            //            break;
-            //       case 3:
-            //            dt1 = new DateTime(year, 5, 1);
-            //            dt2 = new DateTime(year, 7, 30);
-            //            break;
-            //       case 4:
-            //            dt1 = new DateTime(year, 8, 1);
-            //            dt2 = new DateTime(year, 10, 30);
-            //            break;
-            //        default :
-            //            yr = (month < 11) ? year - 1 : year; 
-            //            dt1 = new DateTime(yr, 11,1);
-            //            dt2 = new DateTime(year, 10, 30);
-            //         break;
-            //    }
-
-            //string[] col = { "FullItemName", "ReceivedQty", "ReceivedAmount", "IssuedQty", "IssuedAmount", "Received", "ID", "CategoryId", "SubCategoryID" };
-
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@fromdate", dt1);
             ld.Add("@todate", dt2);
-
-            ////this.LoadFromSqlNoExec("SOH", ld);
             this.LoadFromSql("GetTransactionDetails", ld, CommandType.StoredProcedure);
             return this.DataTable;
-            //int i = 0;
-            //foreach (string s in col)
-            //{
-            //    if (i > 0)
-            //    {
-            //        dtResult.Columns.Add(s, typeof(double));
-            //    }
-            //    else
-            //    {
-            //        dtResult.Columns.Add(s);
-            //    }
-            //    i++;
-            //}
-            //DataTable dtItem = ((selectedType == "Drug") ? itm.GetAllItems(1) : itm.GetAllSupply());
-            //foreach (DataRow dr in dtItem.Rows)
-            //{
-            //    string itemName = dr["FullItemName"].ToString();
-            //    int itemId = Convert.ToInt32(dr["ID"]);
-            //    Int64 recQuant = rec.GetReceivedQtyByDateRange(itemId, storeId, dt1, dt2);
-            //    double recPrice = rec.GetReceivedAmountByDateRange(itemId, storeId, dt1, dt2);
-            //    Int64 issuedQuant = iss.GetIssuedQuantityByDateRange(itemId, storeId, dt1, dt2);
-            //    double issPrice = iss.GetIssuedAmountByDateRange(itemId, storeId, dt1, dt2);
 
-            //    int Isrec = ((recQuant == 0) ? 0 : 1);
-            //    object[] obj = { itemName, recQuant, recPrice, issuedQuant, issPrice, Isrec, itemId, Convert.ToInt32(dr["CategoryId"]), Convert.ToInt32(dr["SubCategoryID"]) };
-            //    dtResult.Rows.Add(obj);
-            //}
-            //return dtResult;
         }
 
         //SupplyListToIssue
