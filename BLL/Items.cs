@@ -1421,10 +1421,11 @@ namespace BLL
             else
             {
                 fromYear--;
-                fromMonth = 12; //Because SOH returns stock until the end of the month
+                fromMonth = 12; 
             }
             var dtbl = balance.GetSOHForProgramRRF(storeId, fromMonth, fromYear);
             var dtbl2 = balance.GetSOHForProgramRRF(storeId, toMonth, toYear);
+
 
             var dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
             var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
@@ -1436,11 +1437,11 @@ namespace BLL
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
-            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity ,isnull(ReceivingUnitID,0) as ReceivingUnitID " +
-                                  "from Items left join (select ItemID,sum(Quantity) Quantity ,ReceivingUnitID " +
-                                  "from IssueDoc rd Join ReceivingUnits ru on rd.ReceivingUnitID = ru.ID " +
+            query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
+                                  "from Items left join (select ItemID,sum(Quantity) Quantity " +
+                                  "from IssueDoc " +
                                   "where [Date] between '{0}' and '{1}' and StoreID = {2} and IsTransfer = 0 " +
-                                  "group by ItemID ,ReceivingUnitID) as A on Items.ID = A.ItemID " 
+                                  "group by ItemID ) as A on Items.ID = A.ItemID " 
                                   , dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
@@ -1457,11 +1458,7 @@ namespace BLL
                                   "when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
             this.LoadFromRawSql(query);
             var preferredPackSizetbl = DataTable;
-
-            var itm = new Items();
             var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
-
-            //query=string.Format("select ")
 
             var x = (from y in dtbl.AsEnumerable()
                      join z in dtbl2.AsEnumerable()
@@ -1476,7 +1473,6 @@ namespace BLL
                          Unit = y["Unit"],
                          StockCode = y["StockCode"],
                          BeginingBalance = Convert.ToDouble(y["SOH"]),
-                         Expired = Convert.ToDouble(y["Expired"]),
                          ProgramID = y["ProgramID"],
                          SOH = Convert.ToDouble(z["SOH"]),
                          USOH = Convert.ToDouble(z["Dispatchable"]),
@@ -1497,7 +1493,6 @@ namespace BLL
                          Unit = n.Unit,
                          StockCode = n.StockCode,
                          BeginingBalance = n.BeginingBalance,
-                         Expired = n.Expired ,
                          SOH = n.SOH,
                          USOH = n.USOH,
                          Max = n.Max,
@@ -1520,7 +1515,6 @@ namespace BLL
                              Unit = n.Unit,
                              StockCode = n.StockCode,
                              BeginingBalance = n.BeginingBalance,
-                             Expired = n.Expired ,
                              SOH = n.SOH,
                              USOH = n.USOH ,
                              Max = Convert.ToInt32(z["Quantity"]) * 2,
@@ -1530,7 +1524,6 @@ namespace BLL
                              ProgramID = n.ProgramID,
                              Status=n.Status,
                              Issued = Convert.ToInt32(z["Quantity"]),
-                             ReceivingUnitID = Convert.ToInt32(z["ReceivingUnitID"]),
                              TypeID=n.TypeID
                              }).ToArray();
 
@@ -1544,7 +1537,6 @@ namespace BLL
                          Unit = n.Unit,
                          StockCode = n.StockCode,
                          BeginingBalance = n.BeginingBalance,
-                         Expired = n.Expired ,
                          SOH = n.SOH,
                          USOH = n.USOH ,
                          Max = n.Max,
@@ -1553,7 +1545,6 @@ namespace BLL
                          Received = n.Received,
                          ProgramID = n.ProgramID,
                          Issued = n.Issued,
-                         ReceivingUnitID = n.ReceivingUnitID,
                          Status =n.Status,
                          LossAdj = z["Quantity"],
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
@@ -1571,7 +1562,6 @@ namespace BLL
                               Unit = n.Unit,
                               StockCode = n.StockCode,
                               BeginingBalance = n.BeginingBalance,
-                              Expired =n.Expired ,
                               SOH = n.SOH,
                               USOH = n.USOH ,
                               Max = n.Max,
@@ -1579,7 +1569,6 @@ namespace BLL
                               QtyPerPack = n.QtyPerPack,
                               Received = n.Received,
                               Issued = n.Issued,
-                              ReceivingUnitID =n.ReceivingUnitID,
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Status= n.Status,
@@ -1597,7 +1586,6 @@ namespace BLL
                               Unit = n.Unit,
                               StockCode = n.StockCode,
                               BeginingBalance = n.BeginingBalance,
-                              Expired = n.Expired ,
                               SOH = n.SOH,
                               USOH = n.USOH,
                               Max = n.Max,
@@ -1605,7 +1593,6 @@ namespace BLL
                               QtyPerPack = n.QtyPerPack,
                               Received = n.Received,
                               Issued = n.Issued,
-                              ReceivingUnitID =n.ReceivingUnitID,
                               LossAdj = n.LossAdj,
                               ProgramID = n.ProgramID,
                               Status =n.Status,
@@ -1616,16 +1603,12 @@ namespace BLL
                               TypeID=n.TypeID
                           }).ToArray();
 
-            //return t;
-            // Converting shit into antoher shit.
-            // Just because i was not able to read the elemntes of the anonymus type in another method
             var value = new DataTable();
             value.Columns.Add("ID", typeof(int));
             value.Columns.Add("FullItemName");
             value.Columns.Add("Unit");
             value.Columns.Add("StockCode");
             value.Columns.Add("BeginingBalance", typeof(double));
-            value.Columns.Add("Expired", typeof(double));
             value.Columns.Add("SOH", typeof(double));
             value.Columns.Add("Max", typeof(double));
             value.Columns.Add("StockCodeDACA", typeof(string));
@@ -1639,9 +1622,9 @@ namespace BLL
             value.Columns.Add("ProgramID", typeof(int));
             value.Columns.Add("Status", typeof(string));
             value.Columns.Add("TypeID", typeof(int));
-            value.Columns.Add("ReceivingUnitID", typeof(int));
             value.Columns.Add("LastDUSoh", typeof(decimal));
             value.Columns.Add("USOH", typeof(decimal));
+            value.Columns.Add("TotalSOH", typeof(decimal));
 
             foreach (var v in t2)
             {
@@ -1651,7 +1634,6 @@ namespace BLL
                 drv["Unit"] = v.Unit;
                 drv["StockCode"] = v.StockCode;
                 drv["BeginingBalance"] = v.BeginingBalance;
-                drv["Expired"] = v.Expired;
                 drv["SOH"] = v.SOH;
                 drv["USOH"] = v.USOH;
                 drv["Max"] = v.Max;
@@ -1662,12 +1644,12 @@ namespace BLL
                 drv["LossAdj"] = v.LossAdj;
                 drv["Quantity"] = v.Quantity;
                 drv["ProgramID"] = v.ProgramID;
-                drv["DaysOutOfStock"] = v.DaysOutOfStock;//Builder.CalculateStockoutDays(Convert.ToInt32(drv["ID"]), storeId, startDate, endDate);
+                drv["DaysOutOfStock"] = v.DaysOutOfStock;
                 drv["MaxStockQty"] = v.MaxStockQty;
                 drv["Status"] = v.Status;
                 drv["TypeID"] = v.TypeID;
-                drv["ReceivingUnitID"] = v.ReceivingUnitID;
-                drv["LastDUSoh"] = issue.GetDULastSOH(Convert.ToInt32(v.ID), Convert.ToInt32(v.ReceivingUnitID));
+                drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                drv["TotalSOH"] = v.USOH + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
             }
 
             return value;

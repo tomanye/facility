@@ -349,13 +349,26 @@ namespace BLL
      	public int GetDULastSOH(int itemId, int receivingUnit)
 		{
 			this.FlushData();
-			this.LoadFromRawSql(String.Format("select top (1) DUSOH from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by ID DESC", itemId, receivingUnit));
+			this.LoadFromRawSql(String.Format("select top (1) DUSOH from IssueDoc where ItemID = {0} " +
+			                                  "AND ReceivingUnitID = {1} Order by ID DESC", itemId, receivingUnit));
 			if (this.RowCount > 0 && ! this.IsColumnNull("DUSOH"))
 			{
 				return (int)this.DUSOH;
 			}
 			return 0;
 		}
+
+        public int GetDULastSOH1(int itemId ,DateTime date1 ,DateTime date2)
+        {
+            this.FlushData();
+            var query = String.Format("select top (1) Sum(DUSOH) as DUSOH from IssueDoc where ItemID = {0} and [Date] between '{1}' and '{2}' group by ID order by ID desc", itemId ,date1 ,date2);
+            this.LoadFromRawSql(query);
+            if (this.RowCount > 0 && !this.IsColumnNull("DUSOH"))
+            {
+                return (int)this.DUSOH;
+            }
+            return 0;
+        }
 
 		public int GetAvailableNoOfMonthsDU(int itemId, int receivingUnit, DateTime dt1, DateTime dt2)
 		{
