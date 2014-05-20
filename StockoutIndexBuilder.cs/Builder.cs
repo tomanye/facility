@@ -330,7 +330,7 @@ namespace StockoutIndexBuilder
             if (!allIssues.Any())
                 return 0;
             var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity);
-            return (totalConsumption / (amcdays - stockoutDays));
+            return ((totalConsumption * amcdays) / (amcdays - stockoutDays));
         }
 
         public static long CalculateTotalConsumptionWithoutDOS(int itemId,int storeId, DateTime startDate, DateTime endDate)
