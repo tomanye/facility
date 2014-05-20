@@ -44,8 +44,22 @@ namespace PharmInventory.Forms.Reports
             dtTo.Value = DateTime.Now;
            // int yearFrom = ((_dtCur.Month == 11 && _dtCur.Month == 12) ? _dtCur.Year : _dtCur.Year - 1 );
             dtFrom.Value = DateTime.Now;
-       
+            
+            dtFrom.CustomFormat = "MM/dd/yyyy";
+            DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            dtTo.CustomFormat = "MM/dd/yyyy";
+            DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
+            //layoutControlGroup3.Text = "Cost Report " + dRange;
+            if (dt1 == dt2)
+            {
+                dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
+                //dRange = "For Year " + dt1.Year.ToString();
+            }
             this._isReady = true;
+
+            txtFromDate.Text = dt1.ToShortDateString();
+
             PopulateItemList();
         }
         /// <summary>
@@ -136,6 +150,7 @@ namespace PharmInventory.Forms.Reports
             
             var dtBal = bal.TransactionReport(storeId, dt1,dt2, _selectedType, bw);
             e.Result = dtBal;
+            //txtFromDate.Text = dt1.ToShortDateString();
         }
 
 
