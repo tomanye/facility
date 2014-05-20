@@ -617,23 +617,7 @@ namespace PharmInventory.Forms.Transactions
             if (dtIssueGrid != null)
                 for (int i = 0; i < dtIssueGrid.Rows.Count; i++)
                 {
-                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) == 0)
-                    //{
-                    //    dtIssueGrid.Rows[i].SetColumnError("Requested Qty", "Cannot be 0");
-                    //    valid = "All * marked fields are required!";
-                    //}
-
-                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Qty Per Pack"]) == 0)
-                    //{
-                    //    dtIssueGrid.Rows[i].SetColumnError("Qty Per Pack", "Cannot be 0");
-                    //    valid = "All * marked fields are required!";
-                    //}
-
-                    //if (Convert.ToInt64(dtIssueGrid.Rows[i]["Pack Qty"]) == 0)
-                    //{
-                    //    dtIssueGrid.Rows[i].SetColumnError("Pack Qty", "Cannot be 0");
-                    //    valid = "All * marked fields are required!";
-                    //}
+                   
                     if (VisibilitySetting.HandleUnits == 1)
                     {
                         if (Convert.ToInt64(dtIssueGrid.Rows[i]["Requested Qty"]) >
@@ -750,6 +734,8 @@ namespace PharmInventory.Forms.Transactions
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             xpButton2_Click(sender, e);
+            issueGrid.DataSource = null;
+            issueGridView.RefreshData();
             RefreshItems();
         }
 
