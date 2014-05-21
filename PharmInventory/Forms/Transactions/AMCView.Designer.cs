@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnBuild = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.storebindingSource = new System.Windows.Forms.BindingSource();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.amcbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.amcbindingSource = new System.Windows.Forms.BindingSource();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colFullItemName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAmcRange1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +47,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitsBindingSource = new System.Windows.Forms.BindingSource();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.btnExportToEx = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -261,6 +260,8 @@
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Issue Considering  DOS";
+            this.gridColumn4.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "IssueWithDOS";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;

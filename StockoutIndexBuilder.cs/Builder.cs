@@ -329,8 +329,10 @@ namespace StockoutIndexBuilder
             var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId).Where(issue => issue.Date >= startDate && issue.Date < endDate);
             if (!allIssues.Any())
                 return 0;
-            var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity);
-            return ((totalConsumption * amcdays) / (amcdays - stockoutDays));
+            var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity) * amcdays;
+            var daydiff = amcdays - stockoutDays;
+            return totalConsumption / daydiff;
+            //return 1;
         }
 
         public static long CalculateTotalConsumptionWithoutDOS(int itemId,int storeId, DateTime startDate, DateTime endDate)
