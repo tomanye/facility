@@ -291,6 +291,33 @@ namespace StockoutIndexBuilder
             return 0;
         }
 
+
+       public static double CalculateAverageConsumptionAMC(int itemId, int storeId, DateTime startDate, DateTime endDate, CalculationOptions option)
+       {
+           var numberOfDays = endDate.Subtract(startDate).TotalDays;
+           var totalCosumption = CalculateTotalConsumptionAMC(itemId, storeId, startDate, endDate) * 1.0;
+           switch (option)
+           {
+               case CalculationOptions.Daily:
+                   return totalCosumption / numberOfDays;
+                   break;
+               case CalculationOptions.Weekly:
+                   return totalCosumption / (numberOfDays / 7);
+                   break;
+               case CalculationOptions.Monthly:
+                   return totalCosumption / (numberOfDays / 30);
+                   break;
+               case CalculationOptions.Quarterly:
+                   return totalCosumption / (numberOfDays / 123);
+                   break;
+               case CalculationOptions.Annual:
+                   return totalCosumption / (numberOfDays / 365);
+                   break;
+               default:
+                   break;
+           }
+           return 0;
+       }
        public static long CalculateTotalConsumptionForMOS(int itemId, int storeId, DateTime startDate, DateTime endDate)
        {
            var db = new StockoutEntities();
