@@ -710,7 +710,12 @@ namespace BLL
         public object[] CountExpiredItemsAndAmountByCategory(int storeId ,int typeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(string.Format("Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1}" , storeId ,typeID));
+            string query =
+                string.Format(
+                    "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
+                    "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.Date between '11/1/2005' and '9/18/2006'",
+                    storeId, typeID);
+            this.LoadFromRawSql(query);
             object[] obj = new object[2];
             obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
@@ -807,7 +812,12 @@ namespace BLL
         public object[] CountNearlyExpiredQtyAmountByCategory(int storeId ,int typeID)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT Count(*) AS Qty,Sum(QuantityLeft * Cost) AS Price FROM vwGetReceivedItems WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {1}", storeId ,typeID));
+            string query =
+                string.Format(
+                    "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
+                    "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {1} and rd.Date between '11/1/2005' and '9/18/2006'",
+                    storeId, typeID);
+            this.LoadFromRawSql(query);
             Int64 qunatity = 0;
             double price = 0;
             qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
@@ -865,7 +875,7 @@ namespace BLL
             this.FlushData();
             var query =
                 String.Format(
-                    "select Count( Distinct rd.ItemID) As Qty, Sum(rd.QuantityLeft *rd.Cost)As SOHPrice from ReceiveDoc rd Join vwGetReceivedItems vw on rd.ItemID =vw.ItemID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1}",storeId ,typeID);
+                    "select Count( Distinct rd.ItemID) As Qty, Sum(rd.QuantityLeft *rd.Cost)As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.Date between '11/1/2005' and '9/18/2006'",storeId ,typeID);
             this.LoadFromRawSql(query);
             Int64 soh = 0;
             double sohPrice = 0;

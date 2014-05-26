@@ -1,3 +1,4 @@
+
 using System;
 using System.Data;
 using System.Drawing;
@@ -34,6 +35,13 @@ namespace PharmInventory.Forms.Reports
         private void ManageItems_Load(object sender, EventArgs e)
         {
             PopulateCatTree(_selectedType);
+
+            var type = new BLL.Type();
+            var alltypes = type.GetAllCategory();
+            lkCategory.Properties.DataSource = alltypes;
+            lkCategory.Properties.DisplayMember = "Name";
+            lkCategory.Properties.ValueMember = "ID";
+            lkCategory.ItemIndex = 0;
 
             var stor = new Stores();
             stor.GetActiveStores();
@@ -120,7 +128,7 @@ namespace PharmInventory.Forms.Reports
         {
             gridItemsList.DataSource = (DataTable)e.Result;
             if (ckExclude.Checked)
-                gridItemListView.ActiveFilterString = "[Received] != '0'";
+                gridItemListView.ActiveFilterString = string.Format("[Received] != '0'and [TypeID]={0}", Convert.ToInt32(lkCategory.EditValue));
         }
 
         /// <summary>

@@ -83,6 +83,8 @@ namespace PharmInventory
             int storeId = Convert.ToInt32(cboStores.EditValue);
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
+            
+            
             object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID);
             Int64 expAmount = Convert.ToInt64(objExp[0]);
             Double expCost = Convert.ToDouble(objExp[1]);
