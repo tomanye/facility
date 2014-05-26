@@ -21,7 +21,7 @@ namespace PharmInventory
     {
 
         // System.Runtime.InteropServices.DllImportAttribute("gdi32.dll");
-
+        private DateTime _dtCur;
         private System.IO.Stream streamToPrint;
         string streamType;
         [System.Runtime.InteropServices.DllImportAttribute("gdi32.dll")]
@@ -64,6 +64,14 @@ namespace PharmInventory
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
 
+
+            dtDate.Value = DateTime.Now;
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            _dtCur = ConvertDate.DateConverter(dtDate.Text);
+            dtTo.Value = DateTime.Now;
+            // int yearFrom = ((_dtCur.Month == 11 && _dtCur.Month == 12) ? _dtCur.Year : _dtCur.Year - 1 );
+            dtFrom.Value = DateTime.Now;
+
           }
 
         DateTime dtCurrent = new DateTime();
@@ -73,6 +81,18 @@ namespace PharmInventory
         public void GenerateExpiryChart()
         {
             // Generate the pie Chart for the Current SOH and EXpired Drugs
+            dtFrom.CustomFormat = "MM/dd/yyyy";
+            DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            dtTo.CustomFormat = "MM/dd/yyyy";
+            DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
+            //layoutControlGroup3.Text = "Cost Report " + dRange;
+            if (dt1 == dt2)
+            {
+                dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
+                //dRange = "For Year " + dt1.Year.ToString();
+            }
+
 
             ReceiveDoc rec = new ReceiveDoc();
             Balance bal = new Balance();
@@ -85,17 +105,17 @@ namespace PharmInventory
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
             
             
-            object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID);
+            object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID ,dt1 ,dt2);
             Int64 expAmount = Convert.ToInt64(objExp[0]);
             Double expCost = Convert.ToDouble(objExp[1]);
 
            // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
-            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID);
+            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID ,dt1 ,dt2);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
            // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
-            object[] sohObj = itm.GetAllSOHQtyAmountByCategory(storeId ,typeID);
+            object[] sohObj = itm.GetAllSOHQtyAmountByCategory(storeId ,typeID ,dt1 ,dt2);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 

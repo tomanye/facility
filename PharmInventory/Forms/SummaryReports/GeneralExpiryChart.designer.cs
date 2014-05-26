@@ -35,16 +35,18 @@ namespace PharmInventory
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.SimpleDiagram3D simpleDiagram3D3 = new DevExpress.XtraCharts.SimpleDiagram3D();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel5 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
-            DevExpress.XtraCharts.PiePointOptions piePointOptions3 = new DevExpress.XtraCharts.PiePointOptions();
-            DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView5 = new DevExpress.XtraCharts.Pie3DSeriesView();
-            DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel6 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
-            DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView6 = new DevExpress.XtraCharts.Pie3DSeriesView();
+            DevExpress.XtraCharts.SimpleDiagram3D simpleDiagram3D1 = new DevExpress.XtraCharts.SimpleDiagram3D();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel1 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
+            DevExpress.XtraCharts.PiePointOptions piePointOptions1 = new DevExpress.XtraCharts.PiePointOptions();
+            DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView1 = new DevExpress.XtraCharts.Pie3DSeriesView();
+            DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel2 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
+            DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView2 = new DevExpress.XtraCharts.Pie3DSeriesView();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralExpiryChart));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.dtFrom = new CalendarLib.DateTimePickerEx();
+            this.dtTo = new CalendarLib.DateTimePickerEx();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
@@ -86,6 +88,7 @@ namespace PharmInventory
             this.chartPie = new DevExpress.XtraCharts.ChartControl();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lkCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.dtDate = new CalendarLib.DateTimePickerEx();
@@ -96,6 +99,7 @@ namespace PharmInventory
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printDoc = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -106,20 +110,21 @@ namespace PharmInventory
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.lkCategory = new DevExpress.XtraEditors.LookUpEdit();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -127,11 +132,12 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -153,6 +159,28 @@ namespace PharmInventory
             this.linkLabel2.TabIndex = 2;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "list";
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.dtFrom.DayOfWeekCharacters = 2;
+            this.dtFrom.Location = new System.Drawing.Point(279, 14);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.PopUpFontSize = 11F;
+            this.dtFrom.Size = new System.Drawing.Size(150, 20);
+            this.dtFrom.TabIndex = 28;
+            this.dtFrom.Visible = false;
+            // 
+            // dtTo
+            // 
+            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.dtTo.DayOfWeekCharacters = 2;
+            this.dtTo.Location = new System.Drawing.Point(435, 16);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.PopUpFontSize = 11F;
+            this.dtTo.Size = new System.Drawing.Size(150, 20);
+            this.dtTo.TabIndex = 29;
+            this.dtTo.Visible = false;
             // 
             // linkLabel3
             // 
@@ -489,8 +517,8 @@ namespace PharmInventory
             // 
             this.chartPie.AppearanceNameSerializable = "Pastel Kit";
             this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            simpleDiagram3D3.RotationMatrixSerializable = "1;0;0;0;0;0.5;-0.866025403784439;0;0;0.866025403784439;0.5;0;0;0;0;1";
-            this.chartPie.Diagram = simpleDiagram3D3;
+            simpleDiagram3D1.RotationMatrixSerializable = "1;0;0;0;0;0.5;-0.866025403784439;0;0;0.866025403784439;0.5;0;0;0;0;1";
+            this.chartPie.Diagram = simpleDiagram3D1;
             this.chartPie.EmptyChartText.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartPie.EmptyChartText.Text = "Data is not available for the selected Store and Year. ";
             this.chartPie.EmptyChartText.TextColor = System.Drawing.Color.Black;
@@ -533,18 +561,18 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(172)))), ((int)(((byte)(104))))), System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(202)))), ((int)(((byte)(134)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
-            pie3DSeriesLabel5.LineVisible = true;
-            piePointOptions3.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            piePointOptions3.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pie3DSeriesLabel5.PointOptions = piePointOptions3;
-            series3.Label = pie3DSeriesLabel5;
-            series3.Name = "Series 1";
-            series3.View = pie3DSeriesView5;
+            pie3DSeriesLabel1.LineVisible = true;
+            piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
+            piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
+            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            series1.Label = pie3DSeriesLabel1;
+            series1.Name = "Series 1";
+            series1.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series3};
-            pie3DSeriesLabel6.LineVisible = true;
-            this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel6;
-            this.chartPie.SeriesTemplate.View = pie3DSeriesView6;
+        series1};
+            pie3DSeriesLabel2.LineVisible = true;
+            this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
+            this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
             this.chartPie.Size = new System.Drawing.Size(1037, 530);
             this.chartPie.TabIndex = 20;
             // 
@@ -573,6 +601,8 @@ namespace PharmInventory
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.dtDate);
             this.layoutControl1.Controls.Add(this.cboStores);
+            this.layoutControl1.Controls.Add(this.dtFrom);
+            this.layoutControl1.Controls.Add(this.dtTo);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem2});
@@ -584,12 +614,28 @@ namespace PharmInventory
             this.layoutControl1.TabIndex = 28;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // lkCategory
+            // 
+            this.lkCategory.Location = new System.Drawing.Point(606, 12);
+            this.lkCategory.Name = "lkCategory";
+            this.lkCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkCategory.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lkCategory.Properties.DisplayMember = "Name";
+            this.lkCategory.Properties.NullText = "";
+            this.lkCategory.Properties.ValueMember = "ID";
+            this.lkCategory.Size = new System.Drawing.Size(193, 20);
+            this.lkCategory.StyleController = this.layoutControl1;
+            this.lkCategory.TabIndex = 26;
+            this.lkCategory.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged_1);
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(303, 22);
+            this.label1.Size = new System.Drawing.Size(246, 22);
             this.label1.TabIndex = 25;
             this.label1.Text = "General Expiry Chart";
             // 
@@ -689,9 +735,9 @@ namespace PharmInventory
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(307, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(250, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(287, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(344, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -701,11 +747,23 @@ namespace PharmInventory
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(307, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(250, 26);
             this.layoutControlItem5.Text = "layoutControlItem5";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextToControlDistance = 0;
             this.layoutControlItem5.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.lkCategory;
+            this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
+            this.layoutControlItem6.Location = new System.Drawing.Point(594, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(197, 26);
+            this.layoutControlItem6.Text = "layoutControlItem6";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextToControlDistance = 0;
+            this.layoutControlItem6.TextVisible = false;
             // 
             // printDoc
             // 
@@ -792,33 +850,27 @@ namespace PharmInventory
             this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
-            // lkCategory
+            // layoutControlItem13
             // 
-            this.lkCategory.Location = new System.Drawing.Point(606, 12);
-            this.lkCategory.Name = "lkCategory";
-            this.lkCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkCategory.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lkCategory.Properties.DisplayMember = "Name";
-            this.lkCategory.Properties.NullText = "";
-            this.lkCategory.Properties.ValueMember = "ID";
-            this.lkCategory.Size = new System.Drawing.Size(193, 20);
-            this.lkCategory.StyleController = this.layoutControl1;
-            this.lkCategory.TabIndex = 26;
-            this.lkCategory.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged_1);
+            this.layoutControlItem13.CustomizationFormText = " From : ";
+            this.layoutControlItem13.Location = new System.Drawing.Point(884, 24);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(206, 24);
+            this.layoutControlItem13.Text = " From : ";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(52, 13);
+            this.layoutControlItem13.TextToControlDistance = 5;
+            this.layoutControlItem13.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
-            // layoutControlItem6
+            // layoutControlItem7
             // 
-            this.layoutControlItem6.Control = this.lkCategory;
-            this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(594, 0);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(197, 26);
-            this.layoutControlItem6.Text = "layoutControlItem6";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextToControlDistance = 0;
-            this.layoutControlItem6.TextVisible = false;
+            this.layoutControlItem7.CustomizationFormText = " From : ";
+            this.layoutControlItem7.Location = new System.Drawing.Point(884, 24);
+            this.layoutControlItem7.Name = "layoutControlItem13";
+            this.layoutControlItem7.Size = new System.Drawing.Size(206, 24);
+            this.layoutControlItem7.Text = " From : ";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(52, 13);
+            this.layoutControlItem7.TextToControlDistance = 5;
+            this.layoutControlItem7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // GeneralExpiryChart
             // 
@@ -834,16 +886,17 @@ namespace PharmInventory
             this.Load += new System.EventHandler(this.GeneralReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pie3DSeriesView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -851,11 +904,12 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -927,5 +981,10 @@ namespace PharmInventory
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private LookUpEdit lkCategory;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+
+        private CalendarLib.DateTimePickerEx dtTo;
+        private CalendarLib.DateTimePickerEx dtFrom;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }

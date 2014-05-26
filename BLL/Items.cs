@@ -721,6 +721,21 @@ namespace BLL
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
             return obj;
         }
+
+        public object[] CountExpiredItemsAndAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
+        {
+            this.FlushData();
+            string query =
+                string.Format(
+                    "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
+                    "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.Date between '{2}' and '{3}'",
+                    storeId, typeID ,dt1 ,dt2);
+            this.LoadFromRawSql(query);
+            object[] obj = new object[2];
+            obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
+            obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+            return obj;
+        }
         
 
         public DataTable GetExpiredItemsByID(int storeId, int itemId)
@@ -827,6 +842,24 @@ namespace BLL
             return obj;
         }
 
+        public object[] CountNearlyExpiredQtyAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
+        {
+            this.FlushData();
+            string query =
+                string.Format(
+                    "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
+                    "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {1} and rd.Date between '{2}' and '{3}'",
+                    storeId, typeID ,dt1 ,dt2);
+            this.LoadFromRawSql(query);
+            Int64 qunatity = 0;
+            double price = 0;
+            qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+            price = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+
+            object[] obj = { qunatity, price };
+            return obj;
+        }
+
         public object[] GetSOHQtyAmount(int itemId, int storeId)
         {
             //i think it needs a date for the physical inventory part
@@ -876,6 +909,24 @@ namespace BLL
             var query =
                 String.Format(
                     "select Count( Distinct rd.ItemID) As Qty, Sum(rd.QuantityLeft *rd.Cost)As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.Date between '11/1/2005' and '9/18/2006'",storeId ,typeID);
+            this.LoadFromRawSql(query);
+            Int64 soh = 0;
+            double sohPrice = 0;
+            if (this.DataTable.Rows.Count > 0)
+            {
+                soh = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+                sohPrice = ((this.DataTable.Rows.Count > 0) ? Convert.ToDouble(this.DataTable.Rows[0]["SOHPrice"]) : 0);
+            }
+            object[] obj = { soh, sohPrice };
+            return obj;
+        }
+
+        public object[] GetAllSOHQtyAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
+        {
+            this.FlushData();
+            var query =
+                String.Format(
+                    "select Count( Distinct rd.ItemID) As Qty, Sum(rd.QuantityLeft *rd.Cost)As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.Date between '{2}' and '{3}'", storeId, typeID ,dt1 ,dt2);
             this.LoadFromRawSql(query);
             Int64 soh = 0;
             double sohPrice = 0;

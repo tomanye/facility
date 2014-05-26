@@ -897,5 +897,7 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraEditors.LookUpEdit lkCategory;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+
+        
     }
 }
