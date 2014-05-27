@@ -223,7 +223,7 @@ namespace PharmInventory
                 var storeId = Convert.ToInt32(cboStores.EditValue);
 
                 Balance blnc = new Balance();
-                DataTable dtbl = blnc.GetSOH(storeId, curMont, curYear);
+                DataTable dtbl = blnc.GetSOH(storeId, curMont, Convert.ToInt32(cboYear.EditValue));
 
                 Items itm = new Items();
                 Balance bal = new Balance();
@@ -236,32 +236,32 @@ namespace PharmInventory
               
                 int stockin = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Normal"
-                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                select m).Count();
              
                 int stockout = (from m in dtbl.AsEnumerable()
                                 where m["Status"].ToString() == "Stock Out"
-                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                 select m).Count();
             
                 int overstock = (from m in dtbl.AsEnumerable()
                                  where m["Status"].ToString() == "Over Stocked"
-                                 && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                 && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                  select m).Count();
               
                 int nearEOP = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Near EOP"
-                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                select m).Count();
              
                 int belowEOP = (from m in dtbl.AsEnumerable()
                                 where m["Status"].ToString() == "Below EOP"
-                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                 select m).Count();
                
                 int freeStockOut = (from m in dtbl.AsEnumerable()
                                     where m["Status"].ToString() == "Stock Out"
-                                    && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                    && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
                                     select m).Count();
             
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
