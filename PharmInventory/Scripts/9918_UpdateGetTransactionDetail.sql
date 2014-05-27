@@ -1,15 +1,10 @@
 ALTER PROCEDURE [dbo].[GetTransactionDetails]
-	-- Add the parameters for the stored procedure here
 	  @storeid int,
 	  @todate datetime,
 	  @fromdate datetime
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-	
-	select t.*
+select t.*
 	from
 	(select 
 		case when vw.ID in (select distinct ItemID from ReceiveDoc where StoreID = @storeid) then 1 else 0 end as Received, 
@@ -32,6 +27,5 @@ BEGIN
 		from IssueDoc where StoreID = @storeid and (date between @fromdate and @todate) group by ItemID ) as id on id.ItemID = vw.ID 
 		where vw.IsInHospitalList = 1) t order by t.FullItemName
 END
-GO
 
 
