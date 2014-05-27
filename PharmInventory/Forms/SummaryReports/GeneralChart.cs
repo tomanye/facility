@@ -30,6 +30,8 @@ namespace PharmInventory
         private void GeneralReport_Load(object sender, EventArgs e)
         {
 
+            
+
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
@@ -167,14 +169,28 @@ namespace PharmInventory
 
         private void cboStores_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null)
+            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && ckExclude.Checked)
+            {
+                PopulateSStatus1();
+            }
+            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && !ckExclude.Checked)
+            {
                 GenerateStockStatusPieChart();
+            }
+                
         }
 
         private void cboYear_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && cboYear.EditValue != null)
+            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && ckExclude.Checked)
+            {
+                PopulateSStatus1();
+            }
+
+            if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && !ckExclude.Checked)
+            {
                 GenerateStockStatusPieChart();
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -191,7 +207,14 @@ namespace PharmInventory
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
-            PopulateSStatus1();
+            if (ckExclude.Checked)
+            {
+                PopulateSStatus1();
+            }
+            if (!ckExclude.Checked)
+            {
+                GenerateStockStatusPieChart();
+            }
         }
         private void PopulateSStatus1()
         {
