@@ -466,29 +466,11 @@
     <Compile Include="Forms\Tools\DatabaseCleaning.Designer.cs">
       <DependentUpon>DatabaseCleaning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\DosageFormConsolidator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\DosageFormConsolidator.Designer.cs">
-      <DependentUpon>DosageFormConsolidator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\ProductConsolidator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\ProductConsolidator.Designer.cs">
-      <DependentUpon>ProductConsolidator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\UtilitiesAndForms\Registrations.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UtilitiesAndForms\Registrations.Designer.cs">
       <DependentUpon>Registrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\UnitConsolidator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\UtilitiesAndForms\UnitConsolidator.Designer.cs">
-      <DependentUpon>UnitConsolidator.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UtilitiesAndForms\ItemConsolidator.cs">
       <SubType>Form</SubType>
@@ -1070,17 +1052,8 @@
       <DependentUpon>LogPickList.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UtilitiesAndForms\DosageFormConsolidator.resx">
-      <DependentUpon>DosageFormConsolidator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UtilitiesAndForms\ProductConsolidator.resx">
-      <DependentUpon>ProductConsolidator.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilitiesAndForms\Registrations.resx">
       <DependentUpon>Registrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UtilitiesAndForms\UnitConsolidator.resx">
-      <DependentUpon>UnitConsolidator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UtilitiesAndForms\ItemConsolidator.resx">
       <DependentUpon>ItemConsolidator.cs</DependentUpon>

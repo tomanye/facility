@@ -147,26 +147,12 @@ namespace PharmInventory
                     frm = new ManageSupplies();
                     AddTab("Manage Supplies List", frm);
                     break;
-                case "Product Compare":
-                    //frm = new ManageItems();
-                    frm = new ProductConsolidator();
-                    AddTab("Update Product List From The Directory Service", frm);
-                    break;
-                case "Item Consolidator":
+               case "Item Consolidator":
                     //frm = new ManageItems();
                     frm = new ItemConsolidator();
                     AddTab("Update Items List From The Directory Service", frm);
                     break;
-                case "Unit Compare":
-                    //frm = new ManageItems();
-                    frm = new UnitConsolidator();
-                    AddTab("Update Unit List From The Directory Service", frm);
-                    break;
-                case "Dosage Form":
-                    //frm = new ManageItems();
-                    frm = new DosageFormConsolidator();
-                    AddTab("Update Dosage Form List From The Directory Service", frm);
-                    break;
+              
                 case "Customize Druglist":
                     frm = new CustomDrugList();
                     AddTab("Customize Drug List", frm);
