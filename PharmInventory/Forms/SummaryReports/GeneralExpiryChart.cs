@@ -130,7 +130,7 @@ namespace PharmInventory
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expAmount);
+            double normalPrice = (sohPrice - nearExpCost - expCost);
 
             Int64 totItm = normal + nearExpiry + expired;
 

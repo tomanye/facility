@@ -15,13 +15,10 @@ select t.*
 		isnull(id.Quantity,0) as IssuedQty, 
 		isnull(id.Price,0) as IssuedPrice,
 		vw.ID, vw.FullItemName,vw.StockCode, 
-		vw.Unit,vw.Name ,vw.TypeID as TypeID, 
-		p.ID as ProgramID,
-	    p.Name as ProgramName 
-		from vwGetAllItems vw left join ProgramProduct pp on vw.ID = pp.ItemID 
-		left join Programs p on pp.ProgramID = p.ID left join 
-		(select ItemID , sum(Quantity) Quantity, sum(QuantityLeft) QuantityLeft, SUM(Quantity * Cost) Price ,Sum(QuantityLeft*Cost) price1
-		from ReceiveDoc where StoreID = @storeid and (date between @fromdate and @todate)  group by ItemID ) as rd on rd.ItemID = vw.ID 
+		vw.Unit,vw.Name ,vw.TypeID as TypeID
+		from vwGetAllItems vw  left join 
+		(select ItemID , sum(Quantity) Quantity, sum(QuantityLeft) QuantityLeft, SUM(Quantity * Cost) Price ,Sum(QuantityLeft*Cost) price1 
+		from ReceiveDoc where StoreID = @storeid and (date between @fromdate and @todate) group by ItemID ) as rd on rd.ItemID = vw.ID 
 		left join
 		(select ItemID , sum(Quantity) Quantity, SUM(Quantity * Cost) Price 
 		from IssueDoc where StoreID = @storeid and (date between @fromdate and @todate) group by ItemID ) as id on id.ItemID = vw.ID 
