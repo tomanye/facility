@@ -1487,7 +1487,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
             this.cboProgram.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.cboProgram.Properties.NullText = "All Programs";
+            this.cboProgram.Properties.NullText = "";
             this.cboProgram.Size = new System.Drawing.Size(248, 20);
             this.cboProgram.StyleController = this.layoutControl1;
             this.cboProgram.TabIndex = 39;

@@ -106,6 +106,7 @@ namespace PharmInventory.Forms.Reports
             var prog = new Programs();
             prog.GetSubPrograms();
             cboProgram.Properties.DataSource = prog.DefaultView;
+            cboProgram.EditValue = 1000;
 
         }
 
