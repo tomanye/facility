@@ -148,7 +148,7 @@ namespace PharmInventory.Forms.Reports
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "Date: " + dtDate.Text, "Store: " + cboStores.Text };
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text , "Printed Date: " + dtDate.Text };
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);

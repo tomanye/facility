@@ -366,7 +366,7 @@ namespace PharmInventory.Forms.Reports
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "From Date:" + dtFrom.Text ,"To Date:" + dtTo.Text , "Store: " + cboStores.Text };
+            string[] header = { info.HospitalName, "From Date:" + txtFromDate.Text, "To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
