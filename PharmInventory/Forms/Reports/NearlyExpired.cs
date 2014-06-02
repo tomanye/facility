@@ -38,10 +38,18 @@ namespace PharmInventory.Forms.Reports
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
            // dtDate.Value = xx;
-            Stores stor = new Stores();
+            var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
+
+            dtDate.Value = DateTime.Now;
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
+
+            DataTable dtYear = Items.AllYears();
+            cboYear.Properties.DataSource = dtYear;
+            cboYear.EditValue = _dtCurrent.Year;
         }
 
         private void PopulateCatTree(String type)
@@ -196,6 +204,11 @@ namespace PharmInventory.Forms.Reports
                 DataTable dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
                 PopulateItemList(dtItem);
             }
+        }
+
+        private void cboYear_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemListView.ActiveFilterString = string.Format("[Date] like '%{0}%'", Convert.ToInt32(cboYear.EditValue));
         }
     }
 }

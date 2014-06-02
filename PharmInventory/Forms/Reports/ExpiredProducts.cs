@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Windows.Documents;
 using BLL;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraEditors;
@@ -19,8 +20,9 @@ namespace PharmInventory.Forms.Reports
         {
             InitializeComponent();
         }
-        DateTime _dtCurrent = new DateTime();
-        String _selectedType = "Drug";
+
+        private DateTime _dtCurrent = new DateTime();
+        private String _selectedType = "Drug";
 
         /// <summary>
         /// Loads the lookups and the category tree
@@ -34,17 +36,19 @@ namespace PharmInventory.Forms.Reports
             lkCommodityTypes.ItemIndex = 0;
             PopulateCatTree(_selectedType);
 
-           
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
-            DateTime dtCur = ConvertDate.DateConverter(dtDate.Text);
-           
-         
+            _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
+          
             Stores stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
+
+            DataTable dtYear = Items.AllYears();
+            cboYear.Properties.DataSource = dtYear;
+            cboYear.EditValue = _dtCurrent.Year;
         }
 
         /// <summary>
@@ -85,7 +89,8 @@ namespace PharmInventory.Forms.Reports
             {
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));//: itm.GetExpiredSupplysByBatch(Convert.ToInt32(cboStores.EditValue)));
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
                 PopulateItemList(dtItem);
             }
         }
@@ -97,7 +102,8 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void xpButton1_Click(object sender, EventArgs e)
         {
-            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateMarginalHeaderArea +=
+                new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
         }
@@ -171,7 +177,8 @@ namespace PharmInventory.Forms.Reports
             {
                 Items itm = new Items();
                 _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(lkCommodityTypes.EditValue));//
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue)); //
 
                 PopulateItemList(dtItem);
                 PopulateCatTree(_selectedType);
@@ -204,7 +211,8 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        private void gridView1_CustomDrawRowIndicator(object sender,
+                                                      DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
             {
@@ -212,17 +220,27 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
-        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender,
+                                                                      DevExpress.XtraPrinting.CreateAreaEventArgs e)
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "Date:" + dtDate.Text, "Store: " + cboStores.Text };
+            string[] header = {info.HospitalName, "Date:" + dtDate.Text, "Store: " + cboStores.Text};
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100),
+                                                 BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100),
+                                                  BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100),
+                                                  BorderSide.None);
         }
+
+        private void cboYear_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemListView.ActiveFilterString = string.Format("[Date] like '%{0}%'",Convert.ToInt32(cboYear.EditValue));
+        }
+
     }
 }

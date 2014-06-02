@@ -85,7 +85,6 @@ namespace PharmInventory
             this.label50 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
-            this.dtDate = new CalendarLib.DateTimePickerEx();
             this.lblHeader = new System.Windows.Forms.Label();
             this.printDoc = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
@@ -94,6 +93,7 @@ namespace PharmInventory
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.cboYear = new DevExpress.XtraEditors.LookUpEdit();
+            this.dtDate = new CalendarLib.DateTimePickerEx();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
@@ -479,22 +479,6 @@ namespace PharmInventory
             this.cboStores.TabIndex = 21;
             this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
-            // dtDate
-            // 
-            this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtDate.CustomFormat = "MM/dd/ yy";
-            this.dtDate.DayOfWeekCharacters = 2;
-            this.dtDate.ForeColor = System.Drawing.Color.Black;
-            this.dtDate.Location = new System.Drawing.Point(320, 18);
-            this.dtDate.Name = "dtDate";
-            this.dtDate.PopUpFontSize = 9.75F;
-            this.dtDate.Size = new System.Drawing.Size(114, 20);
-            this.dtDate.TabIndex = 22;
-            this.dtDate.Value = new System.DateTime(2009, 1, 20, 0, 0, 0, 0);
-            this.dtDate.Visible = false;
-            // 
             // lblHeader
             // 
             this.lblHeader.AutoSize = true;
@@ -589,6 +573,22 @@ namespace PharmInventory
             this.cboYear.TabIndex = 26;
             this.cboYear.EditValueChanged += new System.EventHandler(this.cboYear_EditValueChanged);
             // 
+            // dtDate
+            // 
+            this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.dtDate.CustomFormat = "MM/dd/ yy";
+            this.dtDate.DayOfWeekCharacters = 2;
+            this.dtDate.ForeColor = System.Drawing.Color.Black;
+            this.dtDate.Location = new System.Drawing.Point(320, 18);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.PopUpFontSize = 9.75F;
+            this.dtDate.Size = new System.Drawing.Size(114, 20);
+            this.dtDate.TabIndex = 22;
+            this.dtDate.Value = new System.DateTime(2009, 1, 20, 0, 0, 0, 0);
+            this.dtDate.Visible = false;
+            // 
             // GeneralCostChart
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -669,7 +669,6 @@ namespace PharmInventory
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label51;
         private DevExpress.XtraEditors.LookUpEdit cboStores;
-        private CalendarLib.DateTimePickerEx dtDate;
         private System.Windows.Forms.Label lblHeader;
         private System.Drawing.Printing.PrintDocument printDoc;
         private System.Windows.Forms.PrintDialog printDialog1;
@@ -678,5 +677,6 @@ namespace PharmInventory
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
         private DevExpress.XtraEditors.LookUpEdit cboYear;
+        private CalendarLib.DateTimePickerEx dtDate;
     }
 }
