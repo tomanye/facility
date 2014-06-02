@@ -1,9 +1,11 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
 
 namespace PharmInventory
@@ -110,9 +112,23 @@ DateTime dtCurrent = new DateTime();
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //chartReceiveCost.ShowPrintPreview();
+            printableComponentLink1.CreateMarginalHeaderArea += printableComponentLink1_CreateMarginalHeaderArea;
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();     
+        }
+
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
+        {
+            var info = new GeneralInfo();
+            info.LoadAll();
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text, "Year: " + cboYear.Text, "Printed Date: " + dtCurrent.ToShortDateString() };
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.PageHeaderFooter = header;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
         }
 
        
