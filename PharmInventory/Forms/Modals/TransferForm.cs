@@ -186,6 +186,7 @@ namespace PharmInventory.Forms.Modals
 
                             allstores.LoadByPrimaryKey(transfer.FromStoreID);
                             newreceiveDoc.SupplierID = (int) allstores.GetColumn("SupplierID");
+                            newreceiveDoc.BoxLevel = 1;
                             newreceiveDoc.Save();
                             receiveDoc.Save();
                         }

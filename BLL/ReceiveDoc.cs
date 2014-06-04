@@ -163,7 +163,7 @@ namespace BLL
         public DataTable GetDistinctRecDocments(int storeId)
         {
             this.FlushData();
-            string query = String.Format("SELECT DISTINCT RefNo as RefNo, Date, StoreID,  cast (Year(Date) as varchar) as ParentID, rtrim(RefNo) + cast(Date as varchar) as ID FROM ReceiveDoc WHERE StoreId = {0} ORDER BY Date DESC", storeId);
+            string query = String.Format("SELECT DISTINCT RefNo as RefNo, Date, StoreID,  cast (Year(Date) as varchar) as ParentID, rtrim(RefNo) + cast(Date as varchar) as ID FROM ReceiveDoc WHERE StoreId = {0} and BoxLevel is null ORDER BY Date DESC", storeId);
             this.LoadFromRawSql(query);
             DataTable dtbl = this.DataTable;
             this.LoadFromRawSql("select distinct Year(Date) as Year from ReceiveDoc order by year(Date) DESC");
@@ -510,7 +510,7 @@ namespace BLL
         {
             var query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate," +
                                          " StoreID,QuantityLeft,RefNo,rd.UnitID, rd.Cost, EurDate from ReceiveDoc rd " +
-                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft >=0 order by FullItemName", storeID, typeID);
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft >0 order by FullItemName", storeID, typeID);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

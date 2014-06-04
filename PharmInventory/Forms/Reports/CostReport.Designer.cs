@@ -58,6 +58,10 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -82,10 +86,6 @@ namespace PharmInventory.Forms.Reports
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rdDrug.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -518,6 +518,38 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn8.VisibleIndex = 6;
             this.gridColumn8.Width = 153;
             // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Loss Quantity";
+            this.gridColumn9.FieldName = "LossQty";
+            this.gridColumn9.Name = "gridColumn9";
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "LossPrice";
+            this.gridColumn10.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn10.FieldName = "LossPrice";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LossPrice", "{0:n2}")});
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Adjusted Qty";
+            this.gridColumn11.FieldName = "AdjustedQty";
+            this.gridColumn11.Name = "gridColumn11";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Adjusted Price";
+            this.gridColumn12.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn12.FieldName = "AdjustedPrice";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AdjustedPrice", "{0:n2}")});
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -744,11 +776,13 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem13.Control = this.dtFrom;
             this.layoutControlItem13.CustomizationFormText = " From : ";
             this.layoutControlItem13.Location = new System.Drawing.Point(884, 24);
+            this.layoutControlItem13.MaxSize = new System.Drawing.Size(206, 24);
+            this.layoutControlItem13.MinSize = new System.Drawing.Size(206, 24);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(206, 24);
+            this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem13.Text = " From : ";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(52, 13);
-            this.layoutControlItem13.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem11
             // 
@@ -759,6 +793,7 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem11.Size = new System.Drawing.Size(206, 24);
             this.layoutControlItem11.Text = "From";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(52, 13);
+            this.layoutControlItem11.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem14
             // 
@@ -802,38 +837,6 @@ namespace PharmInventory.Forms.Reports
             this.bw.WorkerSupportsCancellation = true;
             this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
             this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Loss Quantity";
-            this.gridColumn9.FieldName = "LossQty";
-            this.gridColumn9.Name = "gridColumn9";
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "LossPrice";
-            this.gridColumn10.DisplayFormat.FormatString = "#,##0.00";
-            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn10.FieldName = "LossPrice";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LossPrice", "{0:n2}")});
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Adjusted Qty";
-            this.gridColumn11.FieldName = "AdjustedQty";
-            this.gridColumn11.Name = "gridColumn11";
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Adjusted Price";
-            this.gridColumn12.DisplayFormat.FormatString = "#,##0.00";
-            this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn12.FieldName = "AdjustedPrice";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AdjustedPrice", "{0:n2}")});
             // 
             // CostReport
             // 

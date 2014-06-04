@@ -420,6 +420,7 @@
             this.gridColumn23.Caption = "Batch No";
             this.gridColumn23.FieldName = "BatchNo";
             this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowEdit = false;
             this.gridColumn23.Visible = true;
             this.gridColumn23.VisibleIndex = 4;
             this.gridColumn23.Width = 117;
@@ -429,6 +430,7 @@
             this.gridColumn24.Caption = "Expiry Date";
             this.gridColumn24.FieldName = "ExpiryDate";
             this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowEdit = false;
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 5;
             this.gridColumn24.Width = 150;
@@ -450,6 +452,7 @@
             this.gridColumn14.ColumnEdit = this.repositoryunitsLookUpEdit1;
             this.gridColumn14.FieldName = "UnitID";
             this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 2;
             // 
