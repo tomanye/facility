@@ -331,10 +331,10 @@
     <Compile Include="Forms\Modals\NewBatch.Designer.cs">
       <DependentUpon>NewBatch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Modals\TransferForm.cs">
+    <Compile Include="Forms\Transactions\TransferForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Modals\TransferForm.Designer.cs">
+    <Compile Include="Forms\Transactions\TransferForm.Designer.cs">
       <DependentUpon>TransferForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Modals\EditRecieveRefrenceNo.cs">
@@ -971,7 +971,7 @@
     <EmbeddedResource Include="Forms\Modals\NewBatch.resx">
       <DependentUpon>NewBatch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Modals\TransferForm.resx">
+    <EmbeddedResource Include="Forms\Transactions\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Modals\EditRecieveRefrenceNo.resx">
