@@ -399,7 +399,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Expiry Date";
-            this.gridColumn10.FieldName = "Date";
+            this.gridColumn10.FieldName = "ExpDate";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 5;

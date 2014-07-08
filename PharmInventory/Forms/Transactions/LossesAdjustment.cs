@@ -491,6 +491,10 @@ namespace PharmInventory
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}",
                                                                       DateTime.Now, (int) lkCategories.EditValue);
             }
+            var inventory = new YearEnd();
+            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(cboStores.EditValue)) != false) return;
+            XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnSave.Enabled = false;
 
         }
 

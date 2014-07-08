@@ -399,8 +399,14 @@ namespace PharmInventory.Forms.Transactions
         {
             var rDoc = new ReceiveDoc();
             if (lkFromStore.EditValue == null) return;
-            var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);  
+            var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);
             PopulateItemList(dtItem);
+            var inventory = new YearEnd();
+            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
+            XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnSave.Enabled = false;
+
+
         }
 
 

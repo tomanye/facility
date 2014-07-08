@@ -57,6 +57,14 @@ namespace BLL
             return false;
         }
 
+
+        public bool IsInventoryEntered(int year)
+        {
+            string query = string.Format(@"SELECT * FROM dbo.YearEnd WHERE [Year]={0} AND AutomaticallyEntered =0", year);
+            this.LoadFromSql(query);
+            return this.DataTable.Rows.Count >= 100;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -119,6 +127,22 @@ namespace BLL
             return true;
         }
 
+        public bool IsInventoryCompleteToReceive(int year, int storeId)
+        {
+            this.FlushData();
+            this.Where.WhereClauseReset();
+            this.Where.StoreID.Value = storeId;
+            this.Where.Year.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
+            this.Where.Year.Value = year;
+            this.Where.AutomaticallyEntered.Conjuction = WhereParameter.Conj.And;
+            this.Where.AutomaticallyEntered.Value = false;
+            this.Query.Load();
+
+            if (this.DataTable.Rows.Count > 0)
+                return true;
+
+            return false;
+        }
         public void MarkInventoryAsComplete(int year, int storeID)
         {
             string query = string.Format("Select");

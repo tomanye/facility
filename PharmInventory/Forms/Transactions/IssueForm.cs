@@ -186,6 +186,7 @@ namespace PharmInventory.Forms.Transactions
         /// <returns>True - If input is valid, False - If input is invalid</returns>
         private bool Validation()
         {
+            var inventory = new YearEnd();
             if (_tabPage == 0)
             {
 
@@ -213,6 +214,11 @@ namespace PharmInventory.Forms.Transactions
             {
                 if (tabControl1.SelectedTabPageIndex != 2)
                     _tabPage = tabControl1.SelectedTabPageIndex;
+            }
+            else if(inventory.DoesBalanceExist(2006 ,10 ,false) ==false)
+            {
+                XtraMessageBox.Show("You must enter Inventory data before issue.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
             }
             return true;
         }
@@ -363,6 +369,7 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void PopulatePickList()
         {
+            
             var valid = ValidateFields();
 
             if (valid == "true")
@@ -1100,9 +1107,10 @@ namespace PharmInventory.Forms.Transactions
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            // StoreID = Convert.ToInt32(cboStores.EditValue);
-            //gridItemChoiceView_RowClick_1(object sender, RowClickEventArgs e)
-            // PopulateGridList();
+            var inventory = new YearEnd();
+            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(cboStores.EditValue)) != false) return;
+                XtraMessageBox.Show("Please First Finish All Inventory and come back!","Error", MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+                btnSave.Enabled = false;
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
