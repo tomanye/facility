@@ -359,6 +359,8 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.gridColumn10.ColumnEdit = this.repositoryItemButtonEdit2;
             this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 9;
             this.gridColumn10.Width = 32;
             // 
             // repositoryItemButtonEdit2

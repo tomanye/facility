@@ -127,8 +127,8 @@ namespace PharmInventory.Forms.Transactions
 
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                // btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
-                btnSave.Enabled = true;
+                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+               //btnSave.Enabled = true;
                 month = 10;
             }
             else
@@ -237,8 +237,8 @@ namespace PharmInventory.Forms.Transactions
             //CALENDAR:
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
-                //btnSave.Enabled =true;
+                //btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                btnSave.Enabled =true;
                 month = 10;
              
             }
@@ -363,6 +363,8 @@ namespace PharmInventory.Forms.Transactions
                         LoadInventoryItems();
                     break;
             }
+
+            ManageSaveButton();
         }
 
         private bool SaveInventoryWithOutUnit()
@@ -381,23 +383,9 @@ namespace PharmInventory.Forms.Transactions
                 if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
-
-                    //bereket
-                    //to filter the items with Physical Inventory is entered other than 0
-                    DataView vwYearEnd = yearEndTable.AsDataView();
-                    vwYearEnd.RowFilter = " [Physical Inventory] > 0";
-                    DataView vwBB = dtBB.AsDataView();
-
+                    
                     for (int i = 0; i < dtBB.Rows.Count; i++)
                     {
-                        //bereket
-                        //check if the current item is in the filtered list
-                        vwYearEnd.RowFilter = " itemId = " + dtBB.Rows[i]["ItemID"];
-                        if (vwYearEnd.Count <= 0)
-                        {
-                            continue;
-                        }
-
                         int id = 0;
                         int storeID = Convert.ToInt32(cboStores.EditValue);
                         if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
@@ -514,23 +502,9 @@ namespace PharmInventory.Forms.Transactions
                 if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
-
-                    //bereket
-                    //to filter the items with Physical Inventory is entered other than 0
-                    DataView vwYearEnd = yearEndTable.AsDataView();
-                    vwYearEnd.RowFilter = " [Physical Inventory] > 0";
-                    DataView vwBB = dtBB.AsDataView();
-
+                    
                     for (int i = 0; i < dtBB.Rows.Count; i++)
                     {
-                        //bereket
-                        //check if the current item is in the filtered list
-                        vwYearEnd.RowFilter = " itemId = " + dtBB.Rows[i]["ItemID"];
-                        if (vwYearEnd.Count <= 0)
-                        {
-                            continue;
-                        }
-
                         int id = 0;
                         int storeID = Convert.ToInt32(cboStores.EditValue);
                         if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
@@ -695,6 +669,28 @@ namespace PharmInventory.Forms.Transactions
             {
                 LoadInventoryItems();
                 //btnSave.Enabled = true;
+
+                ManageSaveButton();
+            }
+        }
+
+        private void ManageSaveButton()
+        {
+            if (grdYearEnd.DataSource != null)
+            {
+                DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
+                if (yearEndTable.Rows.Count > 0)
+                {
+                    btnSave.Enabled = true;
+                }
+                else
+                {
+                    btnSave.Enabled = false;
+                }
+            }
+            else
+            {
+                btnSave.Enabled = false;
             }
         }
 
