@@ -272,7 +272,10 @@ namespace BLL
                         //If Inventory information hasn't already been filled for this store
                     {
                         var itm = new Items();
-                        itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
+                      
+                      //bereket  
+                      //itm.ExcludeNeverReceivedItemsNoCategory(stores.ID);
+                        itm.ExcludeNeverReceivedItemsNoCategoryOptimized(stores.ID, ethDate.Year);
                         while (!itm.EOF) //For each time
                         {
                             var yearEnd = new YearEnd();
@@ -290,7 +293,10 @@ namespace BLL
                             yearEnd.ItemID = itm.ID;
                             yearEnd.StoreID = stores.ID;
                             yearEnd.Year = ethDate.Year;
-                            yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
+
+                            //bereket
+                            //yearEnd.EBalance = balance.GetSOH(itm.ID, stores.ID, 10, ethDate.Year);
+                            yearEnd.EBalance = balance.GetSOHOptimized(itm.ID, stores.ID, 10, ethDate.Year);
                             yearEnd.PhysicalInventory = yearEnd.EBalance;
                             yearEnd.AutomaticallyEntered = true;
                             yearEnd.UnitID = 0;
@@ -677,19 +683,30 @@ namespace BLL
             if (!InventoryRequiredForHandlingUnit(false)) return;
             while (!stores.EOF) //This needs to be done for each store and for each item
             {
-                itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(stores.ID);
+                //bereket
+                //itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnit(stores.ID);
+                itm.ExcludeNeverReceivedItemsNoCategoryForHandlingUnitOptimized(stores.ID, ethDate.Year);
                 while (!itm.EOF) //For each item
                 {
                     var receivedoc = rec.GetDistinctUnitIDFromReceivedDoc(itm.ID);
                     foreach (var dr in receivedoc.Rows.Cast<DataRow>().Where(dr =>!DoesBalanceExistByUnit(ethDate.Year, itm.ID, stores.ID, true,Convert.ToInt32(dr["UnitID"]))))
                     {
-                        yearEnd.LoadByItemIDStoreAndYearAndUnit(itm.ID, stores.ID, ethDate.Year, true,Convert.ToInt32(dr["UnitID"]));
+                        //need optimization
+                        //we can exclude the already calculated items when we exclude never recieved items
+                        yearEnd.LoadByItemIDStoreAndYearAndUnit(itm.ID, stores.ID, ethDate.Year, true, Convert.ToInt32(dr["UnitID"]));
+
                         if (yearEnd.RowCount > 0) continue;
+
                         yearEnd.AddNew();
                         yearEnd.ItemID = itm.ID;
                         yearEnd.StoreID = stores.ID;
                         yearEnd.Year = ethDate.Year;
-                        yearEnd.EBalance = balance.GetSOHByUnit(itm.ID, stores.ID, ethDate.Month, ethDate.Year,Convert.ToInt32(dr["UnitID"]));
+
+                        //need optimization
+                        //atleast we can get the value directly by filtering using storeid and itemid rather than
+                        //selecting all items in all stores and filter it by code
+                        //yearEnd.EBalance = balance.GetSOHByUnit(itm.ID, stores.ID, ethDate.Month, ethDate.Year, Convert.ToInt32(dr["UnitID"]));
+                        yearEnd.EBalance = balance.GetSOHByUnitOptimized(itm.ID, stores.ID, ethDate.Month, ethDate.Year, Convert.ToInt32(dr["UnitID"]));
                         yearEnd.PhysicalInventory = yearEnd.EBalance;
                         yearEnd.AutomaticallyEntered = true;
                         yearEnd.UnitID = Convert.ToInt32(dr["UnitID"]);

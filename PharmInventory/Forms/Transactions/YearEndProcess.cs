@@ -127,7 +127,7 @@ namespace PharmInventory.Forms.Transactions
 
             if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-               // btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+                // btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
                 btnSave.Enabled = true;
                 month = 10;
             }
@@ -148,7 +148,8 @@ namespace PharmInventory.Forms.Transactions
                     continue;
                  
 
-                Int64 soh = bal.GetSOHByUnit(Convert.ToInt32(dr["ID"]), storeId, month, year,unitid);
+               // Int64 soh = bal.GetSOHByUnit(Convert.ToInt32(dr["ID"]), storeId, month, year,unitid);
+                Int64 soh = bal.GetSOHByUnitOptimized(Convert.ToInt32(dr["ID"]), storeId, month, year, unitid);
                 Int64 bbal = yEnd.GetBBalanceByUnit(year, storeId, Convert.ToInt32(dr["ID"]), month,unitid);
 
                 yProcess.GetBalanceByItemIdByUnitID(year, storeId, Convert.ToInt32(dr["ID"]),unitid);
@@ -257,7 +258,9 @@ namespace PharmInventory.Forms.Transactions
                 if (BalanceExists)
                     continue;
 
-                Int64 soh = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
+                //bereket
+                //Int64 soh = bal.GetSOH(Convert.ToInt32(dr["ID"]), storeId, month, year);
+                Int64 soh = bal.GetSOHOptimized(Convert.ToInt32(dr["ID"]), storeId, month, year);
                 Int64 bbal = yEnd.GetBBalance(year, storeId, Convert.ToInt32(dr["ID"]), month);
                 
                 yProcess.GetBalanceByItemId(year, storeId, Convert.ToInt32(dr["ID"]));
@@ -379,8 +382,22 @@ namespace PharmInventory.Forms.Transactions
                 {
                     DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
 
+                    //bereket
+                    //to filter the items with Physical Inventory is entered other than 0
+                    DataView vwYearEnd = yearEndTable.AsDataView();
+                    vwYearEnd.RowFilter = " [Physical Inventory] > 0";
+                    DataView vwBB = dtBB.AsDataView();
+
                     for (int i = 0; i < dtBB.Rows.Count; i++)
                     {
+                        //bereket
+                        //check if the current item is in the filtered list
+                        vwYearEnd.RowFilter = " itemId = " + dtBB.Rows[i]["ItemID"];
+                        if (vwYearEnd.Count <= 0)
+                        {
+                            continue;
+                        }
+
                         int id = 0;
                         int storeID = Convert.ToInt32(cboStores.EditValue);
                         if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
@@ -498,8 +515,22 @@ namespace PharmInventory.Forms.Transactions
                 {
                     DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
 
+                    //bereket
+                    //to filter the items with Physical Inventory is entered other than 0
+                    DataView vwYearEnd = yearEndTable.AsDataView();
+                    vwYearEnd.RowFilter = " [Physical Inventory] > 0";
+                    DataView vwBB = dtBB.AsDataView();
+
                     for (int i = 0; i < dtBB.Rows.Count; i++)
                     {
+                        //bereket
+                        //check if the current item is in the filtered list
+                        vwYearEnd.RowFilter = " itemId = " + dtBB.Rows[i]["ItemID"];
+                        if (vwYearEnd.Count <= 0)
+                        {
+                            continue;
+                        }
+
                         int id = 0;
                         int storeID = Convert.ToInt32(cboStores.EditValue);
                         if (dtBB.Rows[i]["ItemID"] != DBNull.Value)
@@ -528,29 +559,23 @@ namespace PharmInventory.Forms.Transactions
                                 var itemID = Convert.ToInt32(cRow["ItemID"]);
                                 var unitID = Convert.ToInt32(cRow["UnitID"]);
                                 YearEnd.PurgeAutomaticallyEnteredInventoryForUnit(itemID, storeID, year,unitID);
-                                //if (areAllBatchesPhyInventoryNullValue == false) //We want to add an inventory record if at least one of the batches has a non empty value.
-                                //{
+                                
                                 yEnd.AddNew();
                                 yEnd.ItemID = itemID;
                                 yEnd.StoreID = storeID;
                                 yEnd.Year = year;
                                 yEnd.BBalance = Convert.ToInt64(cRow["Beginning Balance"]);
                                 Int64 endBal = Convert.ToInt64(cRow["Ending Balance(SOH)"]);
-                                //yEnd.BatchNo = cRow["Batch No."].ToString();
                                 yEnd.EBalance = endBal;// Convert.ToInt64(yearEndTable.Rows[i].Cells[5].Value);
 
                                 if (cRow["Physical Inventory"] !=DBNull.Value)
                                     yEnd.PhysicalInventory = Convert.ToInt64(cRow["Physical Inventory"]);
                                
-                               
-                                //yEnd.PhysicalInventory = physicalInventoryTotal;
-                               yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
-                               yEnd.Remark = cRow["Remark"].ToString();
+                                yEnd.UnitID = Convert.ToInt32(cRow["UnitID"]);
+                                yEnd.Remark = cRow["Remark"].ToString();
 
-                               yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
+                                yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
                                 yEnd.Save();
-                                //}
-
 
                                 //long physicalInventoryTotal = 0;
                                 //bool areAllBatchesPhyInventoryNullValue = true;
@@ -585,8 +610,8 @@ namespace PharmInventory.Forms.Transactions
                             }
                         }
                     }
-                   
-                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
