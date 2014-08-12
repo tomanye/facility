@@ -1250,8 +1250,8 @@ namespace BLL
                 fromYear--;
                 fromMonth = 12; //Because SOH returns stock until the end of the month
             }
-            var dtbl = balance.GetSOHByUnit(storeId,fromMonth, fromYear);
-            var dtbl2 = balance.GetSOHByUnit(storeId, toMonth, toYear);
+            var dtbl = balance.GetSOHByUnitForRRF(storeId,fromMonth, fromYear);
+            var dtbl2 = balance.GetSOHByUnitForRRF(storeId, toMonth, toYear);
 
             var dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
             var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));

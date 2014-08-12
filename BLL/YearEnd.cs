@@ -694,8 +694,9 @@ namespace BLL
                         yearEnd.AutomaticallyEntered = true;
                         yearEnd.UnitID = Convert.ToInt32(dr["UnitID"]);
                         yearEnd.Save();
-                        itm.MoveNext();
+                       
                     }
+                    itm.MoveNext();
                 }
                 stores.MoveNext();
             }

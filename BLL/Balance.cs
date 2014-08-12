@@ -927,6 +927,19 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetSOHByUnitForRRF(int storeId, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHByUnitByProgram", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
         public DataTable GetBinCard(int storeID, int itemID, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary();
