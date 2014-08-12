@@ -970,7 +970,19 @@ namespace BLL
             return this.DataTable;
         }
 
-        //bereket
+
+        public DataTable GetSOHByUnitForRRF(int storeId, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHByUnitByProgram", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
         public DataTable GetSOHByUnitOptimizedDB(int storeId, int itemid, int unitid, int month, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary
@@ -982,6 +994,7 @@ namespace BLL
                              {"@year", year},
                              {"@days", DateTime.DaysInMonth(year, month)}
                          };
+
             this.LoadFromSql("SOHByUnitOptimized", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
