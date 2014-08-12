@@ -862,6 +862,20 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetSOHOptimizedDB(int storeId, int itemid, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@itemid", itemid},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHOptimized", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
         public DataTable GetSOHForStockOut(int storeId, int month, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary
@@ -900,9 +914,38 @@ namespace BLL
             }
             return 0;
         }
+
+        public Int64 GetSOHOptimized(int itemID, int storeId, int month, int year)
+        {
+            GetSOHOptimizedDB(storeId, itemID, month, year);
+            while (!this.EOF)
+            {
+                if (this.ID == itemID)
+                {
+                    return this.SOH;
+                }
+                this.MoveNext();
+            }
+            return 0;
+        }
         public Int64 GetSOHByUnit(int itemID, int storeId, int month, int year, int unitID)
         {
             GetSOHByUnit(storeId, month, year);
+            while (!this.EOF)
+            {
+                if (this.ID == itemID && this.UnitID==unitID)
+                {
+                    return this.SOH;
+                }
+                this.MoveNext();
+            }
+            return 0;
+        }
+
+        public Int64 GetSOHByUnitOptimized(int itemID, int storeId, int month, int year, int unitID)
+        {
+            //bereket
+            GetSOHByUnitOptimizedDB(storeId, itemID, unitID, month, year);
             while (!this.EOF)
             {
                 if (this.ID == itemID && this.UnitID==unitID)
@@ -924,6 +967,22 @@ namespace BLL
                              {"@days", DateTime.DaysInMonth(year, month)}
                          };
             this.LoadFromSql("SOHByUnit", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
+        //bereket
+        public DataTable GetSOHByUnitOptimizedDB(int storeId, int itemid, int unitid, int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@itemid", itemid},
+                             {"@unitid", unitid},
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHByUnitOptimized", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
 

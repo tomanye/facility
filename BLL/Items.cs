@@ -1119,6 +1119,25 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable ExcludeNeverReceivedItemsNoCategoryForHandlingUnitOptimized(int storeId, int year)
+        {
+            this.FlushData();
+            //bereket
+            //the inline query has to be changed to stored procedure
+            //and also excluding the already existing items in yearEnd will be implemented
+            string sql = @"SELECT DISTINCT(vw.ID),vw.FullItemName,vw.StockCode,vw.DosageForm,vw.StockCode,
+                            vw.Strength ,rd.UnitID,vw.ItemName
+                        FROM vwGetAllItems vw left join ReceiveDoc rd on vw.ID =rd.ItemID
+                        WHERE (rd.StoreID = {0}) AND (IsInHospitalList = 1)
+                            AND (vw.ID NOT IN (SELECT ItemId FROM dbo.yearEnd WHERE Year = {1}))
+                        ORDER BY ItemName";
+
+            var query = String.Format(sql, storeId, year);
+            this.LoadFromRawSql(query);
+
+            return this.DataTable;
+        }
+
         public DataTable ExcludeNeverReceivedItemsForHandlingUnit(int storeId, int commodityTypeID)
         {
             this.FlushData();
@@ -1145,6 +1164,20 @@ namespace BLL
                 var query = String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)  ORDER BY ItemName", storeId);
                 this.LoadFromRawSql(query);
             }
+            return this.DataTable;
+        }
+
+        public DataTable ExcludeNeverReceivedItemsNoCategoryOptimized(int storeId, int year)
+        {
+            this.FlushData();
+
+            var query = String.Format(@"SELECT * FROM  dbo.vwGetAllItems vw
+                                        WHERE (vw.ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) 
+                                        AND (IsInHospitalList = 1)  
+                                        AND (vw.ID NOT IN (SELECT ItemId FROM dbo.yearEnd WHERE Year = {1}))
+                                        ORDER BY ItemName", storeId, year);
+            this.LoadFromRawSql(query);
+
             return this.DataTable;
         }
 
