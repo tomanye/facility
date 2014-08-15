@@ -202,6 +202,7 @@ namespace PharmInventory.Forms.Modals
                 {
                     ReceiveDoc rec = new ReceiveDoc();
                     IssueDoc iss =new IssueDoc();
+                    ProgramProduct pp = new ProgramProduct();
                     rec.LoadByPrimaryKey(_tranId);
                     iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
                     rec.RefNo = txtRefNo.Text;
@@ -236,7 +237,11 @@ namespace PharmInventory.Forms.Modals
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                             rec.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
-                            rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            pp.LoadByProgramIdAndItemId(Convert.ToInt32(pp.ItemID), Convert.ToInt32(lkPrograms.EditValue));
+                            if (pp.RowCount == 0)
+                            {
+                                rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            }
                             rec.Out = false;
                             rec.Save();
                             XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -256,7 +261,11 @@ namespace PharmInventory.Forms.Modals
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                         rec.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
-                        rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                        pp.LoadByProgramIdAndItemId(Convert.ToInt32(pp.ItemID), Convert.ToInt32(lkPrograms.EditValue));
+                        if (pp.RowCount == 0)
+                        {
+                            rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                        }
                         rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
                         rec.Save();
                         XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
