@@ -172,7 +172,6 @@ namespace PharmInventory.Forms.Reports
 
             if (_standardRRF && VisibilitySetting.HandleUnits == 1)
             {
-               // tblRRF = itm.GetRRFReportForOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 tblRRF = itm.GetRRFReportWithOutUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
 
@@ -187,7 +186,6 @@ namespace PharmInventory.Forms.Reports
             }
             else
             {
-                //tblRRF = itm.GetEmergencyRRFReportOldSite(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
                 tblRRF = itm.GetEmergencyRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
             gridItemsChoice.DataSource = tblRRF;

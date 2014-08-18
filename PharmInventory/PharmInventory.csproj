@@ -841,10 +841,11 @@
     <Content Include="Scripts\9918_UpdateGetTransactionDetail.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9919_SOHByUnitByProgram.sql">
+    <Content Include="Scripts\9919_SOHByUnitByProgram.sql" />
+    <Content Include="Scripts\991_AlterYearEndInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\991_AlterYearEndInsert.sql">
+    <Content Include="Scripts\9920_UpdateProgramIDOnReceive.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9921_CREATE SHOOptimized Procedure.sql">

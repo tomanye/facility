@@ -105,6 +105,43 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+
+        public DataTable GetItemsWithLastIssuedOrDisposedDateForUnitBased()
+        {
+            const string query = @"SELECT DISTINCT
+        *
+FROM    Items itm
+        LEFT JOIN ( SELECT  ItemID ,
+                            DATEDIFF(dd, MAX(Date), GETDATE()) AS DaysOutOfStock 
+                    FROM    ( SELECT    ItemID ,
+                                        Date
+                              FROM      ( SELECT    id.ItemID ItemID ,
+                                                    MAX(id.EurDate) Date 
+                                          FROM      IssueDoc id
+                                          WHERE     id.ItemID IN (
+                                                    SELECT  ItemID
+                                                    FROM    ReceiveDoc rd
+                                                    GROUP BY ItemID ,UnitID
+                                                    HAVING  SUM(rd.QuantityLeft) = 0 )
+                                          GROUP BY  id.ItemID ,id.UnitID
+                                        ) x
+                              UNION
+                              ( SELECT  d.ItemID ItemID ,
+                                        MAX(d.EurDate) Date 
+                                FROM    Disposal d
+                                WHERE   ItemID IN (
+                                        SELECT  ItemID
+                                        FROM    ReceiveDoc rd
+                                        GROUP BY ItemID ,UnitID
+                                        HAVING  SUM(rd.QuantityLeft) = 0 )
+                                GROUP BY d.ItemID ,d.UnitID
+                              )
+                            ) x
+                    GROUP BY x.ItemID
+                  ) AS y ON itm.ID = y.ItemID";
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public static DataTable AllYears()
         {
             var itm = new Items();
@@ -1318,7 +1355,7 @@ namespace BLL
             var preferredPackSizetbl = DataTable;
 
             var itm = new Items();
-            var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
+            var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDateForUnitBased();
 
             //query=string.Format("select ")
 

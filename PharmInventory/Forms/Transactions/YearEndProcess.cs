@@ -235,15 +235,16 @@ namespace PharmInventory.Forms.Transactions
             int month = dtCurent.Month;
             //btnSave.Enabled = true;
             //CALENDAR:
-            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
-            {
-                //btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
-                btnSave.Enabled =true;
-                month = 10;
+
+            //if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
+            //{
+            //    //btnSave.Enabled = ((!yProcess.IsInventoryComplete(year, storeId)));
+            //    btnSave.Enabled =true;
+            //    month = 10;
              
-            }
-            else
-                btnSave.Enabled = false;
+            //}
+            //else
+            //    btnSave.Enabled = false;
 
             var yEnd = new YearEnd();
 
@@ -676,22 +677,35 @@ namespace PharmInventory.Forms.Transactions
 
         private void ManageSaveButton()
         {
-            if (grdYearEnd.DataSource != null)
+            dtDate.Value = DateTime.Now;
+            DateTime dtCurent;
+            dtDate.CustomFormat = "MM/dd/yyyy";
+            dtCurent = ConvertDate.DateConverter(dtDate.Text);
+
+            if ((dtCurent.Month == 10 && dtCurent.Day == 30) || dtCurent.Month == 11)
             {
-                DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
-                if (yearEndTable.Rows.Count > 0)
+                if (grdYearEnd.DataSource != null)
                 {
-                    btnSave.Enabled = true;
+                    DataTable yearEndTable = (DataTable)grdYearEnd.DataSource;
+                    if (yearEndTable.Rows.Count > 0)
+                    {
+                        btnSave.Enabled = true;
+                    }
+                    else
+                    {
+                        btnSave.Enabled = false;
+                    }
                 }
                 else
                 {
                     btnSave.Enabled = false;
                 }
+
             }
             else
-            {
                 btnSave.Enabled = false;
-            }
+
+          
         }
 
         private void LoadInventoryItems()

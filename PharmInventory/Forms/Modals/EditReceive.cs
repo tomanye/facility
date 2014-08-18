@@ -206,6 +206,7 @@ namespace PharmInventory.Forms.Modals
                     rec.LoadByPrimaryKey(_tranId);
                     iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
                     rec.RefNo = txtRefNo.Text;
+                    int previousprogid = rec.SubProgramID;
                     dtRecDate.CustomFormat = "MM/dd/yyyy";
                      string dtValid  = "";
                     try
@@ -237,10 +238,22 @@ namespace PharmInventory.Forms.Modals
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                             rec.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
-                            pp.LoadByProgramIdAndItemId(Convert.ToInt32(pp.ItemID), Convert.ToInt32(lkPrograms.EditValue));
-                            if (pp.RowCount == 0)
+                            pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.ItemID), Convert.ToInt32(lkPrograms.EditValue));
+                            if (pp.RowCount == 1)
                             {
                                 rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                                pp.ProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                                pp.ItemID = Convert.ToInt32(rec.ItemID);
+                                pp.Save();
+
+                            }
+                            else if (pp.RowCount == 0)
+                            {
+                                rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                                pp.AddNew();
+                                pp.ProgramID = rec.SubProgramID;
+                                pp.ItemID = Convert.ToInt32(rec.ItemID);
+                                pp.Save();
                             }
                             rec.Out = false;
                             rec.Save();
@@ -261,10 +274,22 @@ namespace PharmInventory.Forms.Modals
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                         rec.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
-                        pp.LoadByProgramIdAndItemId(Convert.ToInt32(pp.ItemID), Convert.ToInt32(lkPrograms.EditValue));
-                        if (pp.RowCount == 0)
+                        pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.ItemID), previousprogid);
+                        if (pp.RowCount == 1)
                         {
                             rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            pp.ProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            pp.ItemID = Convert.ToInt32(rec.ItemID);
+                            pp.Save();
+
+                        }
+                        else if(pp.RowCount ==0)
+                        {
+                            rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            pp.AddNew();
+                            pp.ProgramID = rec.SubProgramID;
+                            pp.ItemID = Convert.ToInt32(rec.ItemID);
+                            pp.Save();
                         }
                         rec.Cost = Convert.ToDouble(txtPrice.Text) / Convert.ToDouble(txtQtyPack.Text);
                         rec.Save();
