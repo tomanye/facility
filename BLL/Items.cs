@@ -108,8 +108,7 @@ namespace BLL
 
         public DataTable GetItemsWithLastIssuedOrDisposedDateForUnitBased()
         {
-            const string query = @"SELECT DISTINCT
-        *
+            const string query = @"SELECT DISTINCT  *
 FROM    Items itm
         LEFT JOIN ( SELECT  ItemID ,
                             DATEDIFF(dd, MAX(Date), GETDATE()) AS DaysOutOfStock 
@@ -1349,8 +1348,16 @@ FROM    Items itm
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
-            query = string.Format("select distinct Items.ID,Items.StockCodeDACA,Items.Cost, case Items.Cost " +
-                                  "when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
+            query = string.Format(@"SELECT DISTINCT
+                                    Items.ID ,
+                                    Items.StockCodeDACA ,
+                                    Items.Cost ,
+                                    CASE Items.Cost
+                                      WHEN 0 THEN 1
+                                      ELSE ISNULL(Items.Cost, 1)
+                                    END AS QtyPerPack
+                            FROM    Items
+                            JOIN dbo.ItemUnit iu ON dbo.Items.ID = iu.ItemID");
             this.LoadFromRawSql(query);
             var preferredPackSizetbl = DataTable;
 
@@ -1361,10 +1368,10 @@ FROM    Items itm
 
             var x = (from y in dtbl.AsEnumerable()
                      join z in dtbl2.AsEnumerable()
-                     on y["ID"] equals z["ID"]
+                     on y["ID"] equals z["ID"] 
                      join p in preferredPackSizetbl.AsEnumerable()
                      on y["ID"] equals p["ID"]
-                     where Convert.ToInt32(y["EverReceived"]) == 1
+                     where Convert.ToInt32(y["EverReceived"]) == 1 && Convert.ToInt32(y["UnitID"]) == Convert.ToInt32(z["UnitID"]) 
                      select new { ID = y["ID"],
                          FullItemName = y["FullItemName"], 
                          Unit = y["Unit"],
@@ -1381,7 +1388,7 @@ FROM    Items itm
 
             var m = (from n in x
                      join z in received.AsEnumerable()
-                     on n.ID equals z["ID"]
+                     on n.ID equals z["ID"] 
                      select new { 
                          ID = n.ID, 
                          FullItemName = n.FullItemName,

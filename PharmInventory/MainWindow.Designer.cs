@@ -121,11 +121,10 @@ namespace PharmInventory
             this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.lbiRRF = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem10 = new DevExpress.XtraNavBar.NavBarItem();
-            this.lbiRRF = new DevExpress.XtraNavBar.NavBarItem();
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
@@ -682,8 +681,7 @@ namespace PharmInventory
             this.btnTransferLog,
             this.navBarItem7,
             this.navBarItem8,
-            this.navBarItem9,
-            this.navBarItem10});
+            this.navBarItem9});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -999,8 +997,7 @@ namespace PharmInventory
             this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem10)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
             this.navBarGroup5.Name = "navBarGroup5";
             this.navBarGroup5.SelectedLinkIndex = 5;
             // 
@@ -1017,6 +1014,11 @@ namespace PharmInventory
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
             this.navBarItem1.Tag = "stockoutindexer";
+            // 
+            // lbiRRF
+            // 
+            this.lbiRRF.Caption = "RRF";
+            this.lbiRRF.Name = "lbiRRF";
             // 
             // navBarItem7
             // 
@@ -1038,18 +1040,6 @@ namespace PharmInventory
             this.navBarItem9.Name = "navBarItem9";
             this.navBarItem9.Tag = "Unit Compare";
             this.navBarItem9.Visible = false;
-            // 
-            // navBarItem10
-            // 
-            this.navBarItem10.Caption = "Item Consolidator";
-            this.navBarItem10.Name = "navBarItem10";
-            this.navBarItem10.SmallImage = global::PharmInventory.Properties.Resources.GridLayouts;
-            this.navBarItem10.Tag = "Item Consolidator";
-            // 
-            // lbiRRF
-            // 
-            this.lbiRRF.Caption = "RRF";
-            this.lbiRRF.Name = "lbiRRF";
             // 
             // ttlBar
             // 
@@ -1213,7 +1203,6 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem7;
         private DevExpress.XtraNavBar.NavBarItem navBarItem8;
         private DevExpress.XtraNavBar.NavBarItem navBarItem9;
-        private DevExpress.XtraNavBar.NavBarItem navBarItem10;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

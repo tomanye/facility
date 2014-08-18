@@ -100,7 +100,6 @@
             // 
             // lkStore
             // 
-            this.lkStore.Enabled = false;
             this.lkStore.Location = new System.Drawing.Point(46, 12);
             this.lkStore.Name = "lkStore";
             this.lkStore.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -109,11 +108,12 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Store Name", 66, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near)});
             this.lkStore.Properties.DataSource = this.storebindingSource;
             this.lkStore.Properties.DisplayMember = "StoreName";
-            this.lkStore.Properties.NullText = "All Stores";
+            this.lkStore.Properties.NullText = "Select Store";
             this.lkStore.Properties.ValueMember = "ID";
             this.lkStore.Size = new System.Drawing.Size(144, 20);
             this.lkStore.StyleController = this.layoutControl1;
             this.lkStore.TabIndex = 8;
+            this.lkStore.EditValueChanged += new System.EventHandler(this.lkStore_EditValueChanged);
             // 
             // storebindingSource
             // 

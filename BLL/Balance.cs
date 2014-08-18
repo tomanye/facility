@@ -885,7 +885,7 @@ namespace BLL
                              {"@year", year},
                              {"@days", DateTime.DaysInMonth(year, month)}
                          };
-            this.LoadFromSql("SOHForStockOut", ld, CommandType.StoredProcedure);
+            this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
         public DataTable GetSOHForProgramRRF(int storeId, int month, int year)

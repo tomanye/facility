@@ -237,6 +237,7 @@ namespace PharmInventory.Forms.Reports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (VisibilitySetting.HandleUnits == 3) chkCalculateInPacks.Enabled = false;
             chkCalculateInPacks.Checked = false;
             if (
                 XtraMessageBox.Show("Are you sure you want to save and print the RRF?", "Confirm",
@@ -957,28 +958,36 @@ namespace PharmInventory.Forms.Reports
 
         private void ChooseGridView()
         {
-             if (chkCalculateInPacks.Checked && lkCategory.EditValue ==null && cboProgram.EditValue ==null )
-            {
-                gridItemsChoice.MainView = grdViewInPacks;
-            }
 
-            else if (chkCalculateInPacks.Checked && lkCategory.EditValue != DBNull.Value && cboProgram.EditValue ==null )
-            {
-                gridItemsChoice.MainView = grdViewInPacks;
-                grdViewInPacks.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategory.EditValue));
-            }
-            else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value && lkCategory.EditValue ==null)
-            {
-                gridItemsChoice.MainView = grdViewInPacks; 
-                grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
-            }
+                    if (chkCalculateInPacks.Checked && lkCategory.EditValue == null && cboProgram.EditValue == null)
+                    {
+                        gridItemsChoice.MainView = grdViewInPacks;
+                    }
 
-            else if (chkCalculateInPacks.Checked  && lkCategory.EditValue != null && cboProgram.EditValue !=null )
-            {
-                gridItemsChoice.MainView = grdViewInPacks;
-                grdViewInPacks.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}", Convert.ToInt32(lkCategory.EditValue),Convert.ToInt32(cboProgram.EditValue));
-            }
-            else gridItemsChoice.MainView = gridItemChoiceView;
+                    else if (chkCalculateInPacks.Checked && lkCategory.EditValue != DBNull.Value &&
+                             cboProgram.EditValue == null)
+                    {
+                        gridItemsChoice.MainView = grdViewInPacks;
+                        grdViewInPacks.ActiveFilterString = String.Format("TypeID={0}",
+                                                                          Convert.ToInt32(lkCategory.EditValue));
+                    }
+                    else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value &&
+                             lkCategory.EditValue == null)
+                    {
+                        gridItemsChoice.MainView = grdViewInPacks;
+                        grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}",
+                                                                          Convert.ToInt32(cboProgram.EditValue));
+                    }
+
+                    else if (chkCalculateInPacks.Checked && lkCategory.EditValue != null &&
+                             cboProgram.EditValue != null)
+                    {
+                        gridItemsChoice.MainView = grdViewInPacks;
+                        grdViewInPacks.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}",
+                                                                          Convert.ToInt32(lkCategory.EditValue),
+                                                                          Convert.ToInt32(cboProgram.EditValue));
+                    }
+                    else gridItemsChoice.MainView = gridItemChoiceView;
         }
 
         private void cboFromYear_SelectedIndexChanged(object sender, EventArgs e)

@@ -115,7 +115,7 @@ namespace StockoutIndexBuilder
                         if (allTransactions[i].TransactionType != issuesInnerJoin[i].TransactionType)
                             throw new Exception("Algorithm Error!");
                         balance -= issuesInnerJoin[i].Quantity;
-                        if (balance <= 0)
+                        if (balance <= 0 && stockOut.StartDate != DateTime.Parse("1/1/0001"))
                         {
                             stockOut.StartDate = allTransactions[i].Date.Value;
                             balance = 0;
