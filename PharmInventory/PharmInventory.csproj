@@ -841,7 +841,9 @@
     <Content Include="Scripts\9918_UpdateGetTransactionDetail.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9919_SOHByUnitByProgram.sql" />
+    <Content Include="Scripts\9919_SOHByUnitByProgram.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\991_AlterYearEndInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -852,6 +854,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9922_CREATE SOHByUnitOptimized Procedure.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9923_AlterProgramProduct.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9924_InsertIntoProgramProduct.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9925_DeleteDuplicateForProgramProduct.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\992_AlterYearEndLoadAll.sql">

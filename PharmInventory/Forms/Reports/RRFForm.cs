@@ -1132,7 +1132,7 @@ namespace PharmInventory.Forms.Reports
             }
             else if(lkCategory.EditValue !=null)
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}", Convert.ToInt32(lkCategory.EditValue),Convert.ToInt32(cboProgram.EditValue));
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and ProgramID ={1}", Convert.ToInt32(lkCategory.EditValue),Convert.ToInt32(cboProgram.EditValue));
             }
         }
 
