@@ -779,21 +779,11 @@ namespace BLL
         {
             // Dont Iterate
             DataTable dtbl = new DataTable();
-            //if (programID == 0) //We don't filter by program ID.
-            //{
             System.Collections.Specialized.ListDictionary ld = new System.Collections.Specialized.ListDictionary();
             ld.Add("@storeid", storeId);
             ld.Add("@year", year);
-
-            ////this.LoadFromSqlNoExec("SOH", ld);
             this.LoadFromSql("GetConsumptionTrendByMonth", ld, CommandType.StoredProcedure);
             return this.DataTable;
-            //}
-            //else //We filter by program ID.
-            //{
-            //    dtbl = GetSOHByPrograms(storeId, programID, month, year);
-            //}
-            // return dtbl;
         }
 
 

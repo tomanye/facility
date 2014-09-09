@@ -35,9 +35,6 @@ namespace PharmInventory
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
-            //object[] obj = {0,1,"All" };
-            //if(stor.RowCount > 1)
-            //    dtStor.Rows.Add(obj);
             cboStores.Properties.DataSource = dtStor;
             if (stor.RowCount > 1)
                 cboStores.ItemIndex = 0;
@@ -195,14 +192,9 @@ namespace PharmInventory
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-           // printableComponentLink1.CreateDocument();
-           // printableComponentLink1.ShowPreviewDialog();
-
-
             printableComponentLink1.CreateMarginalHeaderArea += printableComponentLink1_CreateMarginalHeaderArea;
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
-            //printableComponentLink1.ShowPreviewDialog();
         }
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
@@ -282,11 +274,6 @@ namespace PharmInventory
                 percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
                 totalFree = itm.CountVitalItems();
-               //totalFree = itm.CountVitalItems();
-                //percen = ((totalECLS != 0)?(Convert.ToDecimal(eclsStockout) / Convert.ToDecimal(totalECLS)) * 100:0);
-                //percen = Decimal.Round(percen, 0);
-                //lblEclsStock.Text = eclsStockout.ToString() + " (" + percen.ToString("#.0") + "%)"; 
-
                 GenerateStockStatusPieChart(obj);
             }
         }
@@ -304,9 +291,6 @@ namespace PharmInventory
 
             object[] oo2 = { "Stock Out", obj[1] };
             dtList.Rows.Add(oo2);
-
-            //object[] oo6 = { "Below Min", obj[5] };
-            //dtList.Rows.Add(oo6);
 
             object[] oo3 = { "OverStock", obj[2] };
             dtList.Rows.Add(oo3);

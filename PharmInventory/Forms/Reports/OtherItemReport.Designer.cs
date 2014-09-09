@@ -617,7 +617,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 8;
+            this.gridColumn5.VisibleIndex = 7;
             this.gridColumn5.Width = 62;
             // 
             // gridColumn7
@@ -666,7 +666,7 @@ namespace PharmInventory.Forms.Reports
             this.dos.Name = "dos";
             this.dos.OptionsColumn.AllowEdit = false;
             this.dos.Visible = true;
-            this.dos.VisibleIndex = 7;
+            this.dos.VisibleIndex = 8;
             // 
             // gridColumn6
             // 

@@ -72,9 +72,6 @@ namespace PharmInventory
             var disRes = new DisposalReasons();
             var allreasons = disRes.GetAllReasons();
             reasonBindingSource.DataSource = allreasons.DefaultView;
-            //ReasonLookup.DataSource = disRes.DefaultView;
-            //ReasonLookup.DisplayMember = "Reason";
-            //ReasonLookup.ValueMember = "ID";
 
             lkCategories.ItemIndex = 0;
             cboStores.ItemIndex = 0;
@@ -101,13 +98,6 @@ namespace PharmInventory
             {
 
             }
-
-            //string today = DateTime.Now.ToString("M/dd/yyyy");
-            //if (ckExpired.Checked)
-            //    gridItemChoiceView.ActiveFilterString = "[ExpiryDate] < " + today + "AND [QuantityLeft] != 0";
-            ////
-            //else
-            //    gridItemChoiceView.ActiveFilterString = "";
         }
 
         private void txtItemName_TextChanged_1(object sender, EventArgs e)
@@ -491,10 +481,6 @@ namespace PharmInventory
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}",
                                                                       DateTime.Now, (int) lkCategories.EditValue);
             }
-            var inventory = new YearEnd();
-            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(cboStores.EditValue)) != false) return;
-            XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btnSave.Enabled = false;
 
         }
 

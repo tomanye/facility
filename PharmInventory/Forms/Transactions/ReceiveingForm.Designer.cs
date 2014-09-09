@@ -1119,7 +1119,6 @@ namespace PharmInventory.Forms.Transactions
             conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule3.ErrorText = "Please Select a store";
             this.dxValidationProvider1.SetValidationRule(this.cboStores, conditionValidationRule3);
-            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
             // 
             // txtRefNo
             // 
