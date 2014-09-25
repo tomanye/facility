@@ -336,12 +336,23 @@ namespace BLL
 		{
 		    var query =
 		        String.Format(
-		            "select top (1) Quantity from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by ID DESC",
+                    "select Id, RefNo, Quantity from IssueDoc where ItemID = {0} AND ReceivingUnitID = {1} Order by ID DESC",
 		            itemId, receivingUnit);
 			this.LoadFromRawSql(query);
+
             if (this.RowCount > 0 && !this.IsColumnNull("Quantity"))
             {
-                return (int)this.Quantity;
+                string refNo = this.RefNo;
+                long totalIssued = 0;
+                for (int i = 0; i < this.RowCount; i++)
+                {
+                    if (refNo == this.RefNo)
+                    {
+                        totalIssued = totalIssued + this.Quantity;
+                    }
+                    this.MoveNext();
+                }
+                return (int)totalIssued;
             }
             return 0;
 		}
