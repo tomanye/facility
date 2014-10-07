@@ -880,6 +880,18 @@
     <Content Include="Scripts\992_AlterYearEndLoadAll.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9930_UpdateStockoutLog.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9931_LoadStockOutLogByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9932_DelelreStockoutLog.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9933_StockoutLogUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\993_AlterYearEndLoadByPrimaryKey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
