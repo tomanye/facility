@@ -868,14 +868,16 @@ namespace BLL
 
         public DataTable GetSOHForStockOut(int storeId, int month, int year)
         {
+            var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, month, year));
+            var endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, month, year));
+
             var ld = new System.Collections.Specialized.ListDictionary
                          {
                              {"@storeid", storeId},
-                             {"@month", month},
-                             {"@year", year},
-                             {"@days", DateTime.DaysInMonth(year, month)}
+                             {"@startDate", startDate},
+                             {"@endDate", endDate}
                          };
-            this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
+            this.LoadFromSql("SOHForDOSOnly", ld, CommandType.StoredProcedure);
             return this.DataTable;
         }
         public DataTable GetSOHForProgramRRF(int storeId, int month, int year)

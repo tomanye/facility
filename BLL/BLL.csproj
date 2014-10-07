@@ -164,6 +164,7 @@
     <Compile Include="Region.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Shelf.cs" />
+    <Compile Include="StockoutLog.cs" />
     <Compile Include="StorageType.cs" />
     <Compile Include="Stores.cs" />
     <Compile Include="SubCategory.cs" />

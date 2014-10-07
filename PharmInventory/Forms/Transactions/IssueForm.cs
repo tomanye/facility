@@ -653,6 +653,10 @@ namespace PharmInventory.Forms.Transactions
                     var issDoc = new IssueDoc();
                     var recDoc = new ReceiveDoc();
                     DataTable dtConfirm;
+                    long currentSOH = 0;
+                    var storeId = 0;
+                    var itemId = 0;
+
                     using (dtConfirm = (DataTable)gridConfirmation.DataSource)
                     {
                         for (int i = 0; i < dtConfirm.Rows.Count; i++)
@@ -711,8 +715,11 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.Save();
                             //updating the receiving doc
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
+                            //this line calculates the current SOH
                             recDoc.QuantityLeft = recDoc.QuantityLeft - issDoc.Quantity;
-                            var itemId = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
+                            currentSOH = currentSOH + recDoc.QuantityLeft;
+
+                            itemId = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
                             var unitId = Convert.ToInt32(dtConfirm.Rows[i]["UnitID"]);
                             if (recDoc.QuantityLeft != 0)
                                 recDoc.Out = false;
@@ -726,10 +733,24 @@ namespace PharmInventory.Forms.Transactions
                                 confirmedItemsQuantity.Add(itemId, recDoc.QuantityLeft);
                             }
                             recDoc.Save();
+
+                            storeId = Convert.ToInt32(cboStores.EditValue);
+
                             //Log Activity
                             dtIssueDate.Value = xx;
-                            var storeId = Convert.ToInt32(cboStores.EditValue);
                             Builder.RefreshAMCValues(storeId, confirmedItemsQuantity,unitId);
+                        }
+
+                        //save stockout information for the current item in current store
+                        //if current SOH after this issue is 0
+                        if (currentSOH == 0)
+                        {
+                            StockoutLog stockoutLog = new StockoutLog();
+                            stockoutLog.AddNew();
+                            stockoutLog.StoreID = storeId;
+                            stockoutLog.ItemID = itemId;
+                            stockoutLog.StartDate = DateTime.Today;
+                            stockoutLog.Save();
                         }
                     }
                     XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

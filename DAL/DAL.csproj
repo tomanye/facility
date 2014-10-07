@@ -145,6 +145,7 @@
     <Compile Include="_RRFDetail.cs" />
     <Compile Include="_Shelf.cs" />
     <Compile Include="_ShelfRowColumn.cs" />
+    <Compile Include="_StockoutLog.cs" />
     <Compile Include="_StorageType.cs" />
     <Compile Include="_Stores.cs" />
     <Compile Include="_SubCategory.cs" />
