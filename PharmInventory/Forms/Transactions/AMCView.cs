@@ -59,6 +59,8 @@ namespace PharmInventory.Forms.Transactions
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            var amcrepo = new AmcReportRepository();
+            amcrepo.DeleteAll();
             var storeId = (int)lookUpEdit1.EditValue;
             backgroundWorker1.ReportProgress(5);
             var generalinfo = _generalInfoRepository.AllGeneralInfos().First();
@@ -77,16 +79,28 @@ namespace PharmInventory.Forms.Transactions
 
             double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
 
-            IEnumerable<int?> unitid;
-            foreach (var item in receiveDocs)
-           {
-               unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m=>m.UnitID).Distinct();
-                foreach (var i in unitid)
+           
+            if (VisibilitySetting.HandleUnits == 1)
+            {
+                foreach (var item in receiveDocs)
                 {
-                    _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.GetValueOrDefault(), generalinfo.AMCRange, DateTime.Today));
+                   _datasource.Add(AMCViewModel.Create(item.ID, storeId, generalinfo.AMCRange, DateTime.Today));
+                    percentage += increment;
+                    backgroundWorker1.ReportProgress((int)percentage);
                 }
-               percentage += increment;
-               backgroundWorker1.ReportProgress((int) percentage);
+            }
+            if (VisibilitySetting.HandleUnits != 1)
+            {
+                foreach (var item in receiveDocs)
+                {
+                    IEnumerable<int?> unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m => m.UnitID).Distinct();
+                    foreach (var i in unitid)
+                    {
+                        _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.GetValueOrDefault(), generalinfo.AMCRange, DateTime.Today));
+                    }
+                    percentage += increment;
+                    backgroundWorker1.ReportProgress((int)percentage);
+                }
             }
         }
 
