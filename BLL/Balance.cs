@@ -817,7 +817,33 @@ namespace BLL
         {
             // Dont Iterate
             var dtbl = new DataTable();
-            dtbl = programID == 0 ? GetSOHForStockOut(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
+            dtbl = programID == 0 ? GetSOH(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
+            dtbl.Columns.Add("MOS", typeof(float));
+            dtbl.Columns.Add("ReorderAmount", typeof(int));
+            foreach (DataRow dr in dtbl.Rows)
+            {
+                int amc = Convert.ToInt32(dr["AMC"]);
+                if (amc > 0)
+                {
+                    dr["MOS"] = Convert.ToDouble(dr["SOH"]) / amc;
+                }
+                else
+                {
+                    dr["MOS"] = 0;
+                }
+                int reorder = Convert.ToInt32(dr["Max"]) - Convert.ToInt32(dr["SOH"]);
+                dr["ReorderAmount"] = (reorder < 0) ? 0 : reorder;
+
+            }
+            return dtbl;
+
+        }
+
+        public DataTable BalanceOfAllItemsForStockoutReport(int storeId, int year, int month, string selectedType, int programID, int commodityTypeID, DateTime dtCurrent, BackgroundWorker bw)
+        {
+            // Dont Iterate
+            var dtbl = new DataTable();
+            dtbl = programID == 0 ? GetSOHForStockOutReport(storeId, month, year) : GetSOHByPrograms(storeId, programID, month, year);
             dtbl.Columns.Add("MOS", typeof(float));
             dtbl.Columns.Add("ReorderAmount", typeof(int));
             foreach (DataRow dr in dtbl.Rows)
@@ -875,6 +901,31 @@ namespace BLL
                          {
                              {"@storeid", storeId},
                              {"@startDate", startDate},
+                             {"@endDate", endDate}
+                         };
+            this.LoadFromSql("SOHForDOSOnly", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
+        public DataTable GetSOHForStockOutReport(int storeId, int month, int year)
+        {
+            GeneralInfo generalInfo = new GeneralInfo();
+            generalInfo.LoadAll();            
+
+            var startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, month, year));
+            var endDate = DateTime.Today;//EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, month, year));
+            var diff = endDate.Subtract(startDate.AddMonths(-(generalInfo.AMCRange - 1)));
+            var balancer = 0;
+
+            if (diff.Days > (generalInfo.AMCRange * 30))
+            {
+                balancer = diff.Days - (generalInfo.AMCRange * 30);
+            }
+
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@storeid", storeId},
+                             {"@startDate", startDate.AddMonths(-(generalInfo.AMCRange-1)).AddDays(balancer)},
                              {"@endDate", endDate}
                          };
             this.LoadFromSql("SOHForDOSOnly", ld, CommandType.StoredProcedure);

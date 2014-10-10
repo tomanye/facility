@@ -138,17 +138,6 @@ namespace PharmInventory.Forms.Reports
             int month = Convert.ToInt32(cboMonth.EditValue);
             int year = Convert.ToInt32(cboYear.EditValue);
 
-            //translate the month selection to the appropriate month values
-            //CALENDAR:
-            //if (month > 2)
-            //{
-            //    month -= 2;
-            //}
-            //else
-            //{
-            //    month += 10;
-            //}
-
             // different criteria for different options like suply and drug
             int programID = ((cboSubProgram.EditValue != null) ? Convert.ToInt32(cboSubProgram.EditValue) : 0);
             int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
@@ -485,11 +474,6 @@ namespace PharmInventory.Forms.Reports
 
             int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[4];
 
-            //if (year == EthiopianDate.EthiopianDate.Now.Year + 1)
-            //{
-            //    month = 1; //When we're sending the month as 1 if the year has been incremented (Fiscal year = year + 1 if month > 10)
-            //}
-
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
@@ -579,8 +563,38 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
-            //gridItemChoiceView.ActiveFilterString = string.Format("ItemID={0}", Convert.ToInt32(lkCategories.EditValue));
+            string criteria = string.Empty;
+
+            if (lkCommodityTypes != null)
+            {
+                if (cboStatus.EditValue != null)
+                {
+                    if (cboStatus.EditValue.ToString() != "All")
+                    {
+                        if (cboStatus.EditValue.ToString() == "Stock Out")
+                        {
+                            criteria = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out' and [TypeID] = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                            gridItemChoiceView.ActiveFilterString = criteria;
+                            // gridItemChoiceView.Columns[14].Visible = true;
+                        }
+                        else
+                        {
+                            criteria = "[Status] Like '" + cboStatus.EditValue.ToString() + "' and [TypeID] = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                            gridItemChoiceView.ActiveFilterString = criteria;
+                        }
+                    }
+                    else
+                    {
+                        criteria = "[SOH] != '0' or [AMC] != '0' or [Received] != '0' and [TypeID] = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                        gridItemChoiceView.ActiveFilterString = criteria;
+                    }
+                }
+                else
+                {
+                    criteria = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+                    gridItemChoiceView.ActiveFilterString = criteria;
+                }
+            }
         }
     }
 }

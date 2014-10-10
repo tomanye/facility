@@ -350,7 +350,23 @@ namespace PharmInventory.Forms.Reports
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
-                    dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    if (filter == "Stock Out" && ckExclude.Checked)
+                    {                        
+                        dtBal = bal.BalanceOfAllItemsForStockoutReport(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    }
+                    else if (filter == "Stock Out" && !ckExclude.Checked)
+                    {
+                        dtBal = bal.BalanceOfAllItemsForStockoutReport(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    }
+                    else if (filter == "Over Stocked" && ckExclude.Checked)
+                    {
+                        dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    }
+                    else if (filter == "Over Stocked" && !ckExclude.Checked)
+                    {
+                        dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                    }
+
                     e.Result = dtBal;
                     break;
                 case 2:
@@ -378,6 +394,7 @@ namespace PharmInventory.Forms.Reports
             }
             else if (filter == "Over Stocked" && ckExclude.Checked)
             {
+                
                 gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked' && [EverReceived] == 1");
             }
             else if (filter == "Over Stocked" && !ckExclude.Checked)

@@ -358,7 +358,11 @@ namespace StockoutIndexBuilder
                 return 0;
             var totalConsumption = Enumerable.Sum(allIssues, issue => issue.Quantity) * amcdays;
             var daydiff = amcdays - stockoutDays;
-            return totalConsumption / daydiff;
+            if (daydiff != 0)
+            {
+                return totalConsumption / daydiff;
+            }
+            return 0;
             //return 1;
         }
 

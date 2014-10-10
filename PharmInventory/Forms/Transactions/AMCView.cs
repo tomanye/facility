@@ -58,35 +58,49 @@ namespace PharmInventory.Forms.Transactions
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var storeId = (int)lookUpEdit1.EditValue;
+        {            
             backgroundWorker1.ReportProgress(5);
             var generalinfo = _generalInfoRepository.AllGeneralInfos().First();
             backgroundWorker1.ReportProgress(10);
 
-            var itemsrecieved =_receiveDocRepository.RecievedItems().Where(m => m.StoreID == storeId).Select(m => m.ItemID).Distinct();
-            backgroundWorker1.ReportProgress(20);
+            var storeList = _storerepository.AllStores();
+            foreach (var store in storeList)
+            {
+                var storeId = store.ID;
+                var itemsrecieved = _receiveDocRepository.RecievedItems().Where(m => m.StoreID == storeId).Select(m => m.ItemID).Distinct();
+                backgroundWorker1.ReportProgress(20);
 
-            _datasource = new List<AMCViewModel>();
+                _datasource = new List<AMCViewModel>();
+                var percentage = 20.0;
+                var receiveDocs = _repository.AllItems().Where(m => itemsrecieved.Contains(m.ID)).ToList();
+                double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
 
-            var percentage = 20.0;
-
-            var receiveDocs = _repository.AllItems().Where(m => itemsrecieved.Contains(m.ID)).ToList();
-
-
-
-            double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
-
-            IEnumerable<int?> unitid;
-            foreach (var item in receiveDocs)
-           {
-               unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m=>m.UnitID).Distinct();
-                foreach (var i in unitid)
+                IEnumerable<int?> unitid;
+                //clear AMC table before another build
+                _amcReportRepository.DeleteAll();
+                if (VisibilitySetting.HandleUnits != 1)
                 {
-                    _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.GetValueOrDefault(), generalinfo.AMCRange, DateTime.Today));
+                    foreach (var item in receiveDocs)
+                    {
+                        unitid = _receiveDocRepository.RecievedItems().Where(m => m.ItemID == item.ID && m.StoreID == storeId).Select(m => m.UnitID).Distinct();
+                        foreach (var i in unitid)
+                        {
+                            _datasource.Add(AMCViewModel.Create(item.ID, storeId, i.GetValueOrDefault(), generalinfo.AMCRange, DateTime.Today));
+                        }
+                        percentage += increment;
+                        backgroundWorker1.ReportProgress((int)percentage);
+                    }
                 }
-               percentage += increment;
-               backgroundWorker1.ReportProgress((int) percentage);
+                else
+                {
+                    foreach (var item in receiveDocs)
+                    {
+                       _datasource.Add(AMCViewModel.Create(item.ID, storeId,generalinfo.AMCRange, DateTime.Today));
+                        percentage += increment;
+                        backgroundWorker1.ReportProgress((int)percentage);
+                    }
+                }
+
             }
         }
 
@@ -99,7 +113,7 @@ namespace PharmInventory.Forms.Transactions
         {
             progressBar1.Value = 0;
             
-            XtraMessageBox.Show("AMC report done successfully","Success");
+            XtraMessageBox.Show("AMC report done successfully", "HCMIS FE");
             if(lookUpEdit1.EditValue == null)
                 loadamc();
             else
@@ -112,23 +126,14 @@ namespace PharmInventory.Forms.Transactions
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "")
-
                 e.DisplayText = (e.RowHandle + 1).ToString();
-
-           
         }
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
-            if(lookUpEdit1.EditValue==null)
-            {
-                XtraMessageBox.Show("Please select the store you want to update AMC report.");
-            }
-            if (lookUpEdit1.EditValue != null)
-            {
+            var result = XtraMessageBox.Show("This will build AMC for all stores and might take some time. Do you want to continue?", "HCMIS FE", MessageBoxButtons.YesNo);
+            if(result == System.Windows.Forms.DialogResult.Yes)
                 backgroundWorker1.RunWorkerAsync();
-            }
-
         }
 
         private void AMCView_Load(object sender, EventArgs e)
