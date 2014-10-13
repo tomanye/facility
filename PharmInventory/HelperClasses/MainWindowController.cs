@@ -130,6 +130,10 @@ namespace PharmInventory
                     frm = new AMCView();
                     AddTab("AMC Report", frm);
                     break;
+                case "menuItemPriceOnlyReport":
+                    frm = new ItemPriceOnlyReport();
+                    AddTab("Item Price Only", frm);
+                    break;
                 case "stockoutindexer":
                     frm = new StockOutIndicesBuilder();
                     AddTab("Stockout Indices Builder",frm);

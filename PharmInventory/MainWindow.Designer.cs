@@ -127,6 +127,7 @@ namespace PharmInventory
             this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.menuItemPriceOnlyReport = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -174,7 +175,7 @@ namespace PharmInventory
             this.inventoryToolStripMenuItem});
             this.transactionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
-            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.transactionsToolStripMenuItem.Text = "Transactions";
             // 
             // receiveToolStripMenuItem
@@ -374,7 +375,7 @@ namespace PharmInventory
             // 
             this.receiveTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_48;
             this.receiveTransactionToolStripMenuItem.Name = "receiveTransactionToolStripMenuItem";
-            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.receiveTransactionToolStripMenuItem.Tag = "Receive Log";
             this.receiveTransactionToolStripMenuItem.Text = "Receive Transactions";
             this.receiveTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -383,7 +384,7 @@ namespace PharmInventory
             // 
             this.issueTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_green_48;
             this.issueTransactionToolStripMenuItem.Name = "issueTransactionToolStripMenuItem";
-            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.issueTransactionToolStripMenuItem.Tag = "Issue Log";
             this.issueTransactionToolStripMenuItem.Text = "Issue Transactions";
             this.issueTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -392,7 +393,7 @@ namespace PharmInventory
             // 
             this.lossAdjustmentToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.navigate_48;
             this.lossAdjustmentToolStripMenuItem.Name = "lossAdjustmentToolStripMenuItem";
-            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.lossAdjustmentToolStripMenuItem.Tag = "Adjustment Log";
             this.lossAdjustmentToolStripMenuItem.Text = "Loss / Adjustment";
             this.lossAdjustmentToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -401,7 +402,7 @@ namespace PharmInventory
             // 
             this.inventoryLogToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.Blue_cube1;
             this.inventoryLogToolStripMenuItem.Name = "inventoryLogToolStripMenuItem";
-            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.inventoryLogToolStripMenuItem.Tag = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Text = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -628,7 +629,7 @@ namespace PharmInventory
             // 
             // navBarControl1
             // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup1;
+            this.navBarControl1.ActiveGroup = this.navBarGroup2;
             this.navBarControl1.AllowSelectedLink = true;
             this.navBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
@@ -681,7 +682,8 @@ namespace PharmInventory
             this.btnTransferLog,
             this.navBarItem7,
             this.navBarItem8,
-            this.navBarItem9});
+            this.navBarItem9,
+            this.menuItemPriceOnlyReport});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.Location = new System.Drawing.Point(0, 24);
             this.navBarControl1.Name = "navBarControl1";
@@ -697,7 +699,6 @@ namespace PharmInventory
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "Transactions";
-            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupCaptionUseImage = DevExpress.XtraNavBar.NavBarImage.Small;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.SmallIconsText;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
@@ -766,6 +767,7 @@ namespace PharmInventory
             // navBarGroup2
             // 
             this.navBarGroup2.Caption = "Reports";
+            this.navBarGroup2.Expanded = true;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiStockStatusReport),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiOverStocked),
@@ -778,10 +780,11 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.CostReport),
             new DevExpress.XtraNavBar.NavBarItemLink(this.ConsumptionTrend),
             new DevExpress.XtraNavBar.NavBarItemLink(this.ConsumptionByUnit),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem6)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem6),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.menuItemPriceOnlyReport)});
             this.navBarGroup2.Name = "navBarGroup2";
-            this.navBarGroup2.SelectedLinkIndex = 10;
-            this.navBarGroup2.TopVisibleLinkIndex = 1;
+            this.navBarGroup2.SelectedLinkIndex = 11;
+            this.navBarGroup2.TopVisibleLinkIndex = 8;
             // 
             // lbiStockStatusReport
             // 
@@ -994,7 +997,6 @@ namespace PharmInventory
             // navBarGroup5
             // 
             this.navBarGroup5.Caption = "Utilities";
-            this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
@@ -1072,6 +1074,13 @@ namespace PharmInventory
             this.menuStrip2.Size = new System.Drawing.Size(1093, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
+            // 
+            // menuItemPriceOnlyReport
+            // 
+            this.menuItemPriceOnlyReport.Caption = "Price Only Report";
+            this.menuItemPriceOnlyReport.Name = "menuItemPriceOnlyReport";
+            this.menuItemPriceOnlyReport.SmallImage = global::PharmInventory.Properties.Resources.GridRowHeight;
+            this.menuItemPriceOnlyReport.Tag = "menuItemPriceOnlyReport";
             // 
             // MainWindow
             // 
@@ -1204,6 +1213,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem8;
         private DevExpress.XtraNavBar.NavBarItem navBarItem9;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraNavBar.NavBarItem menuItemPriceOnlyReport;
     }
 }
 

@@ -4,6 +4,8 @@
 using System;
 using DAL;
 using System.Data;
+using System.Data.SqlClient;
+using Microsoft.Win32;
 
 namespace BLL
 {
@@ -266,6 +268,7 @@ namespace BLL
             quant = (this.DataTable.Rows[0]["Quantity"].ToString() != "") ? Convert.ToInt64(this.DataTable.Rows[0]["Quantity"]) : 0;
             return quant;
         }
+
         public Int64 GetReceivedQuantityTillMonthAll(int itemId, int month, int year)
         {
 
@@ -590,6 +593,46 @@ namespace BLL
             string query = String.Format("SELECT * FROM ReceiveDoc WHERE (ExpDate > GETDATE()) AND (ItemID = {1}) AND (Out = 0) AND (QuantityLeft != 0) AND (StoreID = {0} AND (Date <= '{2}') AND (UnitID= {3})) ORDER BY ExpDate", storeId, itemId, dtIss.ToString(),unitid);
             LoadFromRawSql(query);
             return DataTable;
+        }
+
+        public static string GetConnectionString()
+        {
+            string RegKey = "Software\\JSI\\HCMIS\\Configuration";
+
+            RegistryKey connStringKey = Registry.CurrentUser.OpenSubKey(RegKey);
+            string connString = connStringKey.GetValue("ConnectionString").ToString();
+
+            return connString;
+        }
+
+        private static DataTable ExecuteSqlOnDatabase(string sqlQuery)
+        {
+            SqlConnection connection = new SqlConnection(GetConnectionString());
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            SqlCommand cmd = connection.CreateCommand();
+            DataTable tbl = new DataTable();
+
+            cmd.CommandText = sqlQuery;
+            cmd.CommandType = CommandType.Text;
+            tbl.Load(cmd.ExecuteReader());
+
+            return tbl;
+        }
+
+        public DataTable GetItemsWithPrice(int storeId, int year, int month, string selectedType)
+        {
+            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, month, year));
+            DateTime endDate = DateTime.Today;
+            string sqlQuery = String.Format(@"
+                                                SELECT FullItemName, BatchNo Batch, Quantity, rd.Cost [Price Per Pack], (Quantity * rd.Cost) [Total Cost] 
+                                                FROM ReceiveDoc rd INNER JOIN vwGetAllItems vw on rd.ItemID = vw.ID
+                                                WHERE StoreId= {0} AND EurDate BETWEEN '{1}' AND '{2}'
+                                                ORDER BY FullItemName ", storeId, startDate.ToShortDateString(), endDate.ToShortDateString());
+            return ExecuteSqlOnDatabase(sqlQuery);
         }
     }
 }
