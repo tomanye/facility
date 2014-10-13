@@ -253,7 +253,7 @@ namespace PharmInventory.Forms.Reports
 
             int[] arr = (int[])e.Argument;
 
-            int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[4];
+            int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[3];
 
             switch (VisibilitySetting.HandleUnits)
             {
