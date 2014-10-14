@@ -659,23 +659,27 @@ FROM    Items itm
             return qunatity;
         }
 
-        public DataTable GetExpiredItemsByBatch(int storeId, int commodityType)
+        public DataTable GetExpiredItemsByBatch(int storeId, int commodityType, string year)
         {
             this.FlushData();
-            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId, commodityType);
+            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} AND year([ExpDate]) = {2} ORDER BY Price DESC", storeId, commodityType, year);
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
+        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeID)
+        {
+            this.FlushData();
+            var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
+            var query = string.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
+                                      "CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
+                                      " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
+                                      "ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE quantityleft > 0 AND Disposal.StoreId = {0} " +
+                                      "AND year(Disposal.Date) = {1} and vwGetAllItems.TypeID = {2} " + whereQ + " ORDER BY FullItemName", storeId, year ,typeID);
+
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
 
-        public DataTable GetExpiredItems(int storeId, int commodityType)
-        {
-            this.FlushData();
-            var query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate < GETDATE()) AND (ib.Out = 1) AND ib.StoreId = {0}",
-                        storeId, commodityType);
-                this.LoadFromRawSql(query);
-                return this.DataTable;
-          
-        }
         public DataTable GetExpiredItemsByBatch(int storeId, int commodityType ,int reasonId)
         {
             this.FlushData();
@@ -698,18 +702,15 @@ FROM    Items itm
                 return this.DataTable;
             }
         }
-        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeID)
+
+        public DataTable GetExpiredItems(int storeId, int commodityType)
         {
             this.FlushData();
-            var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
-            var query = string.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
-                                      "CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
-                                      " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
-                                      "ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      "AND year(Disposal.Date) = {1} and vwGetAllItems.TypeID = {2} " + whereQ + " ORDER BY FullItemName", storeId, year ,typeID);
-
-            this.LoadFromRawSql(query);
-            return this.DataTable;
+            var query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItemsByBatch ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate < GETDATE()) AND (ib.Out = 1) AND ib.StoreId = {0}",
+                        storeId, commodityType);
+                this.LoadFromRawSql(query);
+                return this.DataTable;
+          
         }
 
         public DataTable GetExpiredItemsByBatchByKeyword(int storeId, string keyword)

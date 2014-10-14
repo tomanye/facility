@@ -85,12 +85,15 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
+            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null && cboYear.EditValue != null)
             {
+                int currentMonth = DateTime.Parse(EthiopianDate.EthiopianDate.GregorianToEthiopian(DateTime.Today)).Month;
+                var expDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+
                 Items itm = new Items();
-                _selectedType = rdDrug.EditValue.ToString();
                 DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
-                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue),
+                                                              Convert.ToString(expDate.Year));
                 PopulateItemList(dtItem);
             }
         }
@@ -167,25 +170,6 @@ namespace PharmInventory.Forms.Reports
         }
 
         /// <summary>
-        /// Handles the changed event of the radio group
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboStores.EditValue != null)
-            {
-                Items itm = new Items();
-                _selectedType = rdDrug.EditValue.ToString();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
-                                                              Convert.ToInt32(lkCommodityTypes.EditValue)); //
-
-                PopulateItemList(dtItem);
-                PopulateCatTree(_selectedType);
-            }
-        }
-
-        /// <summary>
         /// Opens detailed item information form for the chosen item.
         /// </summary>
         /// <param name="sender"></param>
@@ -239,8 +223,22 @@ namespace PharmInventory.Forms.Reports
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemListView.ActiveFilterString = string.Format("[Date] like '%{0}%'",Convert.ToInt32(cboYear.EditValue));
+            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null && cboYear.EditValue != null)
+            {
+                int currentMonth = DateTime.Parse(EthiopianDate.EthiopianDate.GregorianToEthiopian(DateTime.Today)).Month;
+                var expDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+
+                Items itm = new Items();
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
+                                                              Convert.ToInt32(lkCommodityTypes.EditValue),
+                                                              Convert.ToString(expDate.Year));
+                PopulateItemList(dtItem);
+            }
         }
 
+        private void txtItemName_EditValueChanged(object sender, EventArgs e)
+        {
+            gridItemListView.ActiveFilterString = "[FullItemName] like '" + txtItemName.Text + "%'";
+        }
     }
 }
