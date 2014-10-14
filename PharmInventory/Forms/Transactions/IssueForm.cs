@@ -648,7 +648,7 @@ namespace PharmInventory.Forms.Transactions
             var valid = ValidateFields();
             if (valid == "true")
             {
-                if (XtraMessageBox.Show("Are You Sure, You want to save this Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (XtraMessageBox.Show("Are You Sure, You Want To Save This Transaction?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     var issDoc = new IssueDoc();
                     var recDoc = new ReceiveDoc();
@@ -753,7 +753,7 @@ namespace PharmInventory.Forms.Transactions
                             stockoutLog.Save();
                         }
                     }
-                    XtraMessageBox.Show("Transaction Succsfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
               
             }
@@ -765,9 +765,7 @@ namespace PharmInventory.Forms.Transactions
             issueGrid.DataSource = null;
             issueGridView.RefreshData();
             RefreshItems();
-        }
-
-       
+        }       
 
         /// <summary>
         /// The issue form is reset so that every input is cleared out.
@@ -798,11 +796,20 @@ namespace PharmInventory.Forms.Transactions
 
         public void RefreshItems()
         {
-            PopulateItemList();
+            _dtSelectedTable = null;
             _tabPage = 0;
             tabControl1.SelectedTabPageIndex = 0;
-            //gridItemChoiceView.RefreshData();
+
+            for (int i = 0; i < gridItemChoiceView.DataRowCount; i++)
+            {
+                DataRow dr = gridItemChoiceView.GetDataRow(i);
+                if ((dr["IsSelected"] != DBNull.Value) && Convert.ToBoolean(dr["IsSelected"]))
+                {
+                    dr["IsSelected"] = 0;
+                }
+            }
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ResetValues();
@@ -835,7 +842,6 @@ namespace PharmInventory.Forms.Transactions
             printableComponentLink2.CreateDocument();
             printableComponentLink2.Landscape = false;
             printableComponentLink2.ShowPreviewDialog();
-            PopulateItemList();
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -920,7 +926,6 @@ namespace PharmInventory.Forms.Transactions
                 try
                 {
                     _dtSelectedTable.ImportRow(dr);
-
                 }
                 catch { }
             }
