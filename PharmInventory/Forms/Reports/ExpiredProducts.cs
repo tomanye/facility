@@ -85,15 +85,13 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null && cboYear.EditValue != null)
+            if (cboStores.EditValue != null)
             {
-                int currentMonth = DateTime.Parse(EthiopianDate.EthiopianDate.GregorianToEthiopian(DateTime.Today)).Month;
+                int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
                 var expDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
 
                 Items itm = new Items();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
-                                                              Convert.ToInt32(lkCommodityTypes.EditValue),
-                                                              Convert.ToString(expDate.Year));
+                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue));
                 PopulateItemList(dtItem);
             }
         }
@@ -223,22 +221,49 @@ namespace PharmInventory.Forms.Reports
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null && cboYear.EditValue != null)
+            try
             {
-                int currentMonth = DateTime.Parse(EthiopianDate.EthiopianDate.GregorianToEthiopian(DateTime.Today)).Month;
-                var expDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
+                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null))
+                {
+                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year;
+                }
+                else if (cboYear.EditValue != null)
+                {
+                    gridItemListView.ActiveFilterString = " Year = " + gregDate.Year;
+                }
+            }
+            catch (Exception)
+            {
 
-                Items itm = new Items();
-                DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue),
-                                                              Convert.ToInt32(lkCommodityTypes.EditValue),
-                                                              Convert.ToString(expDate.Year));
-                PopulateItemList(dtItem);
             }
         }
 
         private void txtItemName_EditValueChanged(object sender, EventArgs e)
         {
             gridItemListView.ActiveFilterString = "[FullItemName] like '" + txtItemName.Text + "%'";
+        }
+
+        private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
+                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null))
+                {
+                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year;
+                }
+                else if (cboYear.EditValue != null)
+                {
+                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

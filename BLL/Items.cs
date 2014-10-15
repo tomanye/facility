@@ -659,10 +659,10 @@ FROM    Items itm
             return qunatity;
         }
 
-        public DataTable GetExpiredItemsByBatch(int storeId, int commodityType, string year)
+        public DataTable GetExpiredItemsByBatch(int storeId)
         {
             this.FlushData();
-            string query = string.Format("SELECT ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE ( ib.TypeID = {1}) AND (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} AND year([ExpDate]) = {2} ORDER BY Price DESC", storeId, commodityType, year);
+            string query = string.Format("SELECT YEAR(ExpDate) Year, ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

@@ -29,11 +29,6 @@ namespace PharmInventory.Forms.Reports
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemPriceOnlyReport));
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -52,8 +47,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboYear = new DevExpress.XtraEditors.LookUpEdit();
             this.treeCategory = new DevExpress.XtraTreeList.TreeList();
@@ -83,7 +78,6 @@ namespace PharmInventory.Forms.Reports
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.label20 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bw = new System.ComponentModel.BackgroundWorker();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
@@ -96,8 +90,6 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).BeginInit();
@@ -129,19 +121,11 @@ namespace PharmInventory.Forms.Reports
             // 
             // radioGroup1
             // 
-            this.radioGroup1.EditValue = "Drug";
             this.radioGroup1.Location = new System.Drawing.Point(12, 12);
             this.radioGroup1.Name = "radioGroup1";
-            this.radioGroup1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.radioGroup1.Properties.Appearance.Options.UseBackColor = true;
-            this.radioGroup1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("Drug", "Drug"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("Supplies", "Supplies")});
             this.radioGroup1.Size = new System.Drawing.Size(251, 24);
             this.radioGroup1.StyleController = this.layoutControl1;
-            this.radioGroup1.TabIndex = 39;
-            this.radioGroup1.SelectedIndexChanged += new System.EventHandler(this.radioGroup1_SelectedIndexChanged);
+            this.radioGroup1.TabIndex = 44;
             // 
             // layoutControl1
             // 
@@ -280,9 +264,6 @@ namespace PharmInventory.Forms.Reports
             this.gridItemsChoice.Location = new System.Drawing.Point(40, 84);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
-            this.gridItemsChoice.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1,
-            this.repositoryItemLookUpEdit1});
             this.gridItemsChoice.Size = new System.Drawing.Size(1036, 370);
             this.gridItemsChoice.TabIndex = 32;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -407,39 +388,10 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn7});
             this.gridItemChoiceView.FixedLineWidth = 1;
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = "Stock Out";
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.ApplyToRow = true;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition2.Value1 = "Over Stocked";
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition3.Value1 = "Near EOP";
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition4.Value1 = "Below EOP";
-            styleFormatCondition5.Appearance.BackColor = System.Drawing.Color.White;
-            styleFormatCondition5.Appearance.Options.UseBackColor = true;
-            styleFormatCondition5.ApplyToRow = true;
-            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition5.Value1 = "Normal";
-            this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1,
-            styleFormatCondition2,
-            styleFormatCondition3,
-            styleFormatCondition4,
-            styleFormatCondition5});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Count", this.gridColumn1, "")});
@@ -489,6 +441,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2.Caption = "Batch";
             this.gridColumn2.FieldName = "Batch";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
@@ -497,6 +451,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.Caption = "Quantity";
             this.gridColumn3.FieldName = "Quantity";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
+            this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             // 
@@ -505,6 +461,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.Caption = "Price Per Pack";
             this.gridColumn4.FieldName = "Price Per Pack";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             // 
@@ -513,25 +471,26 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5.Caption = "Total Cost";
             this.gridColumn5.FieldName = "Total Cost";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
+            this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
-            // repositoryItemCheckEdit1
+            // gridColumn6
             // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.gridColumn6.Caption = "gridColumn6";
+            this.gridColumn6.FieldName = "Year";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.OptionsColumn.AllowEdit = false;
+            this.gridColumn6.OptionsFilter.AllowFilter = false;
             // 
-            // repositoryItemLookUpEdit1
+            // gridColumn7
             // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Name")});
-            this.repositoryItemLookUpEdit1.DataSource = this.unitBindingSource;
-            this.repositoryItemLookUpEdit1.DisplayMember = "Text";
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            this.repositoryItemLookUpEdit1.ValueMember = "ID";
+            this.gridColumn7.Caption = "gridColumn7";
+            this.gridColumn7.FieldName = "Month";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.OptionsFilter.AllowFilter = false;
             // 
             // cboYear
             // 
@@ -866,14 +825,6 @@ namespace PharmInventory.Forms.Reports
             this.label20.Text = "Normal";
             this.label20.Visible = false;
             // 
-            // bw
-            // 
-            this.bw.WorkerReportsProgress = true;
-            this.bw.WorkerSupportsCancellation = true;
-            this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
-            this.bw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bw_ProgressChanged);
-            this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
-            // 
             // printingSystem1
             // 
             this.printingSystem1.Links.AddRange(new object[] {
@@ -919,8 +870,6 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).EndInit();
@@ -969,11 +918,9 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraGrid.Views.Grid.GridView gridItemChoiceView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn colItemName;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraTreeList.TreeList treeCategory;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraEditors.RadioGroup radioGroup1;
-        private System.ComponentModel.BackgroundWorker bw;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
@@ -1001,10 +948,11 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraEditors.LookUpEdit lkCommodityTypes;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private System.Windows.Forms.BindingSource unitBindingSource;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

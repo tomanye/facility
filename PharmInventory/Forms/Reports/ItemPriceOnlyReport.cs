@@ -35,7 +35,6 @@ namespace PharmInventory.Forms.Reports
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
-
             PopulateCatTree(SelectedType);
 
             lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
@@ -65,6 +64,7 @@ namespace PharmInventory.Forms.Reports
 
             var dtyears = Items.AllYears();
 
+            cboStores.ItemIndex = 0;
             cboYear.Properties.DataSource = dtyears;
             cboYear.EditValue = year;
             if (cboYear.Properties.Columns.Count > 0)
@@ -78,28 +78,27 @@ namespace PharmInventory.Forms.Reports
         {
             if (IsReady)
             {
-                if ((cboYear.EditValue != null) && (cboMonth.EditValue != null) && (cboStores.EditValue != null))
+                if (cboStores.EditValue != null)
                 {
                     int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 1;
-                    int month = Convert.ToInt32(cboMonth.EditValue);
-                    int year = Convert.ToInt32(cboYear.EditValue);
 
-                    //translate the month selection to the appropriate month values
-                    if (month > 2)
+                    var recDoc = new ReceiveDoc();
+                    var dtBal = new DataTable();
+
+                    switch (VisibilitySetting.HandleUnits)
                     {
-                        month -= 2;
-                    }
-                    else
-                    {
-                        month += 10;
+                        case 1:
+                            dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, Convert.ToInt32(lkCommodityTypes.EditValue));
+                            break;
+                        case 2:
+                            dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, Convert.ToInt32(lkCommodityTypes.EditValue));
+                            break;
+                        default:
+                            dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, Convert.ToInt32(lkCommodityTypes.EditValue));
+                            break;
                     }
 
-                    // different criteri for different options like suply and drug
-                    int commodityType = Convert.ToInt32(lkCommodityTypes.EditValue);
-                    if (!bw.IsBusy)
-                    {
-                        bw.RunWorkerAsync(new int[] { storeId, month, year, commodityType });
-                    }
+                    gridItemsChoice.DataSource = dtBal;
                 }
             }
         }
@@ -130,9 +129,22 @@ namespace PharmInventory.Forms.Reports
 
         private void cboMonth_SelectedValueChanged(object sender, EventArgs e)
         {
-            // 
-            cboStores.ItemIndex = 0;
-            PopulateGrid();
+            try
+            {
+                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, Convert.ToInt32(cboMonth.EditValue), Convert.ToInt32(cboYear.EditValue)));
+                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null) && (cboMonth.EditValue != null))
+                {
+                    gridItemChoiceView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year + " AND Month = " + gregDate.Month;
+                }
+                else if ((cboYear.EditValue != null) && (cboMonth.EditValue != null))
+                {
+                    gridItemChoiceView.ActiveFilterString = " Year = " + gregDate.Year + " AND Month = " + gregDate.Month;
+                }                
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
@@ -160,7 +172,7 @@ namespace PharmInventory.Forms.Reports
                 currentMont += 2;
             }
             int[] val = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            string[] mon = { "Hamle", "Nehase", "Meskerem", "Tikemt", "Hedar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miziya", "Genbot", "Sene" };
+            string[] mon = { "Meskerem", "Tikemt", "Hedar", "Tahsas", "Tir", "Yekatit", "Megabit", "Miziya", "Genbot", "Sene", "Hamle", "Nehase"};
             int i = 0; //currentMont;
             if (Convert.ToInt32(cboYear.EditValue) == currentYear)
             {
@@ -182,21 +194,33 @@ namespace PharmInventory.Forms.Reports
                 dtMonths.Rows.Add(obj);
             }
             cboMonth.Properties.DataSource = dtMonths;
-            cboMonth.ItemIndex = 0;
-            //cboMonth_SelectedValueChanged(null, null);
-            PopulateGrid();
+            cboMonth.ItemIndex = -1;
+
+            try
+            {
+                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, Convert.ToInt32(cboMonth.EditValue), Convert.ToInt32(cboYear.EditValue)));
+                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null) && (cboMonth.EditValue != null))
+                {
+                    gridItemChoiceView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year + " AND Month = " + gregDate.Month;
+                }
+                else if ((cboYear.EditValue != null) && (cboMonth.EditValue != null))
+                {
+                    gridItemChoiceView.ActiveFilterString = " Year = " + gregDate.Year + " AND Month = " + gregDate.Month;
+                }
+                else if ((cboYear.EditValue != null))
+                {
+                    gridItemChoiceView.ActiveFilterString = " Year = " + gregDate.Year;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
-        }
-
-        private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SelectedType = radioGroup1.EditValue.ToString();
-            PopulateCatTree(SelectedType);
-            PopulateGrid();
         }
 
         private void gridItemsChoice_DoubleClick(object sender, EventArgs e)
@@ -244,43 +268,6 @@ namespace PharmInventory.Forms.Reports
             {
                 e.Info.DisplayText = (e.RowHandle + 1).ToString();
             }
-        }
-
-        private void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var recDoc = new ReceiveDoc();
-            var dtBal = new DataTable();
-
-            int[] arr = (int[])e.Argument;
-
-            int storeId = arr[0], month = arr[1], year = arr[2], programID = arr[3], commodityTypeID = arr[3];
-
-            switch (VisibilitySetting.HandleUnits)
-            {
-                case 1:
-                    dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, year, month, SelectedType);
-                    e.Result = dtBal;
-                    break;
-                case 2:
-                    dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, year, month, SelectedType);
-                    e.Result = dtBal;
-                   break;
-                default:
-                   dtBal = (DataTable)recDoc.GetItemsWithPrice(storeId, year, month, SelectedType);
-                    e.Result = dtBal;
-                   break;
-            }
-            //  e.Result = dtBal;
-        }
-
-        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            gridItemsChoice.DataSource = (DataTable)e.Result;
-        }
-
-        private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
         }
 
         private void btnExport_Click(object sender, EventArgs e)

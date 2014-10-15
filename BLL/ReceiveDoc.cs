@@ -623,15 +623,13 @@ namespace BLL
             return tbl;
         }
 
-        public DataTable GetItemsWithPrice(int storeId, int year, int month, string selectedType)
+        public DataTable GetItemsWithPrice(int storeId, int selectedType)
         {
-            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, month, year));
-            DateTime endDate = DateTime.Today;
             string sqlQuery = String.Format(@"
-                                                SELECT FullItemName, BatchNo Batch, Quantity, rd.Cost [Price Per Pack], (Quantity * rd.Cost) [Total Cost] 
+                                                SELECT vw.TypeId, YEAR(EurDate) Year, MONTH(EurDate) Month, FullItemName, BatchNo Batch, Quantity, rd.Cost [Price Per Pack], (Quantity * rd.Cost) [Total Cost] 
                                                 FROM ReceiveDoc rd INNER JOIN vwGetAllItems vw on rd.ItemID = vw.ID
-                                                WHERE StoreId= {0} AND EurDate BETWEEN '{1}' AND '{2}'
-                                                ORDER BY FullItemName ", storeId, startDate.ToShortDateString(), endDate.ToShortDateString());
+                                                WHERE StoreId= {0} AND vw.TypeId = {1}
+                                                ORDER BY FullItemName ", storeId, selectedType);
             return ExecuteSqlOnDatabase(sqlQuery);
         }
     }
