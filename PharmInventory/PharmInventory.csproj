@@ -898,6 +898,12 @@
     <Content Include="Scripts\9933_StockoutLogUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9934_AltyerRRFType.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9935_CreateUniqueReportingIndex.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\993_AlterYearEndLoadByPrimaryKey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
