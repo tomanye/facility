@@ -267,8 +267,13 @@ namespace PharmInventory.Forms.Reports
             var dtset = new DataSet();
             dtset.Tables.Add(tbl.Copy());
             rrfReport.DataSource = dtset;
-            if (Convert.ToInt32(cboProgram.EditValue) == 0)
+            if (Convert.ToInt32(cboProgram.EditValue) == 0 && Convert.ToInt32(lkCategory.EditValue) == 0)
             {
+                rrfReport.ShowPreviewDialog();
+            }
+            else if(Convert.ToInt32(lkCategory.EditValue) != 0)
+            {
+                rrfReport.FilterString = String.Format("ProgramID={0} and TypeID ={1}", Convert.ToInt32(cboProgram.EditValue) ,Convert.ToInt32(lkCategory.EditValue));
                 rrfReport.ShowPreviewDialog();
             }
             else
@@ -276,9 +281,7 @@ namespace PharmInventory.Forms.Reports
                 rrfReport.FilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
                 rrfReport.ShowPreviewDialog();
             }
-
-
-
+           
         }
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)
