@@ -153,6 +153,18 @@ FROM    Items itm
                                     order by year desc");
             return itm.DataTable;
         }
+        public static DataTable AllYearsReport()
+        {
+            var itm = new Items();
+            itm.FlushData();
+            itm.LoadFromRawSql(@"SELECT Distinct CAST(YEAR(Date)AS nvarchar)as year from ReceiveDoc
+                                    union 
+                                    select distinct CAST(YEAR(Date)AS nvarchar)as year from IssueDoc
+                                    union
+                                    select distinct CAST(YEAR(Date)AS nvarchar)as year from Disposal
+                                    order by year desc");
+            return itm.DataTable;
+        }
 
         public static DataTable AllFiscalYears()
         {
@@ -1007,6 +1019,20 @@ FROM    Items itm
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {
                 this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), dtCurrent);
+            }
+            return this.DataTable;
+        }
+
+        public DataTable GetNearlyExpiredItemsByBatchReport(int storeId)
+        {
+            this.FlushData();
+            var query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib " +
+                                       "WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId));
+            this.LoadFromRawSql(query);
+            this.DataTable.Columns.Add("MOS");
+            for (int i = 0; i < this.DataTable.Rows.Count; i++)
+            {
+                this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]));
             }
             return this.DataTable;
         }

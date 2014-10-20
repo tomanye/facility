@@ -32,8 +32,16 @@ namespace PharmInventory.Forms.Reports
         private void ManageItems_Load(object sender, EventArgs e)
         {
             PopulateCatTree(_selectedType);
-            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            DataTable table = new DataTable();
+            table = BLL.Type.GetAllTypes();
+            DataRow row = table.NewRow();
+            row["ID"] = "0";
+            row["Name"] = "All";
+            table.Rows.InsertAt(row, 0);
+
+            lkCommodityTypes.Properties.DataSource = table;
             lkCommodityTypes.ItemIndex = 0;
+
             PopulateCatTree(_selectedType);
 
             dtDate.Value = DateTime.Now;
@@ -46,9 +54,12 @@ namespace PharmInventory.Forms.Reports
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
 
-            DataTable dtYear = Items.AllYears();
+            DataTable dtYear = Items.AllYearsReport();
+            DataRow roww = dtYear.NewRow();
+            roww["year"] = "All";
+            dtYear.Rows.InsertAt(roww, 0);
             cboYear.Properties.DataSource = dtYear;
-            cboYear.EditValue = _dtCurrent.Year;
+            cboYear.ItemIndex = 0;
         }
 
         /// <summary>
@@ -193,8 +204,7 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender,
-                                                      DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
+        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
             if (e.Info.IsRowIndicator)
             {
@@ -202,8 +212,7 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
-        private void printableComponentLink1_CreateMarginalHeaderArea(object sender,
-                                                                      DevExpress.XtraPrinting.CreateAreaEventArgs e)
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
         {
             var info = new GeneralInfo();
             info.LoadAll();
@@ -219,27 +228,6 @@ namespace PharmInventory.Forms.Reports
                                                   BorderSide.None);
         }
 
-        private void cboYear_EditValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
-                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
-                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null))
-                {
-                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year;
-                }
-                else if (cboYear.EditValue != null)
-                {
-                    gridItemListView.ActiveFilterString = " Year = " + gregDate.Year;
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         private void txtItemName_EditValueChanged(object sender, EventArgs e)
         {
             gridItemListView.ActiveFilterString = "[FullItemName] like '" + txtItemName.Text + "%'";
@@ -250,14 +238,52 @@ namespace PharmInventory.Forms.Reports
             try
             {
                 int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
-                var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
-                if ((lkCommodityTypes.EditValue != null) && (cboYear.EditValue != null))
+                if (lkCommodityTypes.EditValue != null)
                 {
-                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year;
+                    if (cboYear.EditValue != null)
+                    {
+                        if ((lkCommodityTypes.EditValue.ToString() != "0") && (cboYear.EditValue.ToString() != "All"))
+                        {
+                            var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                            gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue) + " AND Year = " + gregDate.Year;
+                        }
+                        else if ((lkCommodityTypes.EditValue.ToString() == "0") && (cboYear.EditValue.ToString() != "All"))
+                        {
+                            var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                            gridItemListView.ActiveFilterString = " Year = " + gregDate.Year;
+                        }
+                        else if ((lkCommodityTypes.EditValue.ToString() != "0") && (cboYear.EditValue.ToString() == "All"))
+                        {
+                            gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                        }
+                        else
+                        {
+                            gridItemListView.ActiveFilterString = "";
+                        }
+                    }
+                    else
+                    {
+                        if (lkCommodityTypes.EditValue.ToString() != "0")
+                        {
+                            gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                        }
+                        else
+                        {
+                            gridItemListView.ActiveFilterString = "";
+                        }
+                    }
                 }
                 else if (cboYear.EditValue != null)
                 {
-                    gridItemListView.ActiveFilterString = " TypeID = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                    if (cboYear.EditValue.ToString() != "All")
+                    {
+                        var gregDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
+                        gridItemListView.ActiveFilterString = " Year = " + gregDate.Year;
+                    }
+                    else
+                    {
+                        gridItemListView.ActiveFilterString = "";
+                    }
                 }
             }
             catch (Exception)

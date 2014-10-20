@@ -30,7 +30,15 @@ namespace PharmInventory.Forms.Reports
         private void ManageItems_Load(object sender, EventArgs e)
         {
             PopulateCatTree(_selectedType);
-            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            DataTable table = new DataTable();
+            table = BLL.Type.GetAllTypes();
+            DataRow row = table.NewRow();
+            row["ID"] = "0";
+            row["Name"] = "All";
+            table.Rows.InsertAt(row, 0);
+
+            lkCommodityTypes.Properties.DataSource = table;
+            
             // Select the very first commodity type.
             lkCommodityTypes.ItemIndex = 0;
             //DateTime xx = dtDate.Value;
@@ -47,9 +55,12 @@ namespace PharmInventory.Forms.Reports
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCurrent = ConvertDate.DateConverter(dtDate.Text);
 
-            DataTable dtYear = Items.AllYears();
+            DataTable dtYear = Items.AllYearsReport();
+            DataRow roww = dtYear.NewRow();
+            roww["year"] = "All";
+            dtYear.Rows.InsertAt(roww, 0);
             cboYear.Properties.DataSource = dtYear;
-            cboYear.EditValue = _dtCurrent.Year;
+            cboYear.ItemIndex = 0;
         }
 
         private void PopulateCatTree(String type)
@@ -190,25 +201,47 @@ namespace PharmInventory.Forms.Reports
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue == null || lkCommodityTypes.EditValue == null) return;
             var itm = new Items();
-            var dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
+            DataTable dtItem;
+            if (cboStores.EditValue == null) return;
+            if (lkCommodityTypes.EditValue == null)
+            {
+                dtItem = itm.GetNearlyExpiredItemsByBatchReport((int)cboStores.EditValue);
+            }
+            if (lkCommodityTypes.EditValue.ToString() == "0")
+            {
+                dtItem = itm.GetNearlyExpiredItemsByBatchReport((int)cboStores.EditValue);
+            }
+            else
+            {
+                dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
+            }
+            
             PopulateItemList(dtItem);
         }
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && lkCommodityTypes.EditValue != null)
+            if ((lkCommodityTypes.EditValue != null) && (lkCommodityTypes.EditValue.ToString() != "0"))
             {
-                Items itm = new Items();
-                DataTable dtItem = itm.GetNearlyExpiredItemsByBatch((int)cboStores.EditValue, (int)lkCommodityTypes.EditValue, _dtCurrent);
-                PopulateItemList(dtItem);
+                gridItemListView.ActiveFilterString = string.Format("[TypeId] like '%{0}%'", (int)lkCommodityTypes.EditValue);
+            }
+            else
+            {
+                gridItemListView.ActiveFilterString = "";
             }
         }
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemListView.ActiveFilterString = string.Format("[Date] like '%{0}%'", Convert.ToInt32(cboYear.EditValue));
+            if ((cboYear.EditValue != null) && (cboYear.EditValue.ToString() != "All"))
+            {
+                gridItemListView.ActiveFilterString = string.Format("[Date] like '%{0}%'", Convert.ToInt32(cboYear.EditValue));
+            }
+            else
+            {
+                gridItemListView.ActiveFilterString = "";
+            }
         }
     }
 }

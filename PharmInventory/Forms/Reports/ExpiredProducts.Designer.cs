@@ -52,6 +52,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -76,7 +77,6 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.rdDrug.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -158,7 +158,7 @@ namespace PharmInventory.Forms.Reports
             this.cboYear.Size = new System.Drawing.Size(69, 20);
             this.cboYear.StyleController = this.layoutControl1;
             this.cboYear.TabIndex = 52;
-            this.cboYear.EditValueChanged += new System.EventHandler(this.cboYear_EditValueChanged);
+            this.cboYear.EditValueChanged += new System.EventHandler(this.lkCommodityTypes_EditValueChanged);
             // 
             // lkCommodityTypes
             // 
@@ -429,6 +429,12 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 153;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "gridColumn7";
+            this.gridColumn7.FieldName = "Year";
+            this.gridColumn7.Name = "gridColumn7";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -711,12 +717,6 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem13.Text = "Year";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(94, 13);
             this.layoutControlItem13.TextToControlDistance = 5;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "gridColumn7";
-            this.gridColumn7.FieldName = "Year";
-            this.gridColumn7.Name = "gridColumn7";
             // 
             // ExpiredProducts
             // 
