@@ -62,6 +62,8 @@ namespace PharmInventory.Forms.Transactions
             backgroundWorker1.ReportProgress(5);
             var generalinfo = _generalInfoRepository.AllGeneralInfos().First();
             backgroundWorker1.ReportProgress(10);
+            //clear AMC table before another build
+            _amcReportRepository.DeleteAll();
 
             var storeList = _storerepository.AllStores();
             foreach (var store in storeList)
@@ -76,8 +78,6 @@ namespace PharmInventory.Forms.Transactions
                 double increment = 80.0 / Convert.ToDouble(receiveDocs.Count());
 
                 IEnumerable<int?> unitid;
-                //clear AMC table before another build
-                _amcReportRepository.DeleteAll();
                 if (VisibilitySetting.HandleUnits != 1)
                 {
                     foreach (var item in receiveDocs)

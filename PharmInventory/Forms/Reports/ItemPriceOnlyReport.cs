@@ -139,7 +139,7 @@ namespace PharmInventory.Forms.Reports
                 else if ((cboYear.EditValue != null) && (cboMonth.EditValue != null))
                 {
                     gridItemChoiceView.ActiveFilterString = " Year = " + gregDate.Year + " AND Month = " + gregDate.Month;
-                }                
+                }
             }
             catch (Exception)
             {

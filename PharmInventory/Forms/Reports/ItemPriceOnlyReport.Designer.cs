@@ -28,7 +28,6 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemPriceOnlyReport));
             this.radioGroup1 = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -49,7 +48,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cboYear = new DevExpress.XtraEditors.LookUpEdit();
             this.treeCategory = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -75,11 +73,13 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource();
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.label20 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -90,7 +90,6 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMonth.Properties)).BeginInit();
@@ -115,6 +114,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
@@ -387,6 +387,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName,
             this.gridColumn2,
             this.gridColumn3,
+            this.gridColumn8,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
@@ -448,8 +449,8 @@ namespace PharmInventory.Forms.Reports
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Quantity";
-            this.gridColumn3.FieldName = "Quantity";
+            this.gridColumn3.Caption = "No Of Pack";
+            this.gridColumn3.FieldName = "NoOfPack";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
@@ -464,7 +465,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -473,8 +474,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
             // 
             // gridColumn6
             // 
@@ -847,6 +846,14 @@ namespace PharmInventory.Forms.Reports
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Qty Per Pack";
+            this.gridColumn8.FieldName = "QtyPerPack";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 3;
+            // 
             // ItemPriceOnlyReport
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -870,7 +877,6 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboMonth.Properties)).EndInit();
@@ -895,6 +901,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
@@ -954,5 +961,6 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }
