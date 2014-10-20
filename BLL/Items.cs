@@ -1678,7 +1678,7 @@ FROM    Items itm
                                   "group by ItemID ) as A on Items.ID = A.ItemID "
                                   , dt1, dt2, storeId);
 
-            query = string.Format(" SELECT ItemID ID ,SUM(Quantity) Quantity FROM IssueDoc WHERE   [Date] BETWEEN '{0}' AND '{1}' AND StoreID = {2} AND IsTransfer = 0 GROUP BY ItemID", dt1, dt2, storeId);
+            //query = string.Format(" SELECT ItemID ID ,SUM(Quantity) Quantity FROM IssueDoc WHERE   [Date] BETWEEN '{0}' AND '{1}' AND StoreID = {2} AND IsTransfer = 0 GROUP BY ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
