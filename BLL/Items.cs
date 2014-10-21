@@ -1835,15 +1835,11 @@ FROM    Items itm
                                       ProgramID = n.ProgramID,
                                       Status = n.Status,
                                       Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                      DaysOutOfStock =
-                              Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                                      DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                                      MaxStockQty =
-                              ((120*n.Issued)/
-                               (60 -
-                                Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
-                                                                              endDate)))),
+                                     // MaxStockQty =((120*n.Issued)/(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
+                                                                             // endDate)))),
                                       TypeID = n.TypeID
                                   }).ToArray();
 
@@ -1862,7 +1858,7 @@ FROM    Items itm
                 value.Columns.Add("LossAdj", typeof (double));
                 value.Columns.Add("Quantity", typeof (double));
                 value.Columns.Add("DaysOutOfStock", typeof (int));
-                value.Columns.Add("MaxStockQty", typeof (double));
+                //value.Columns.Add("MaxStockQty", typeof (double));
                 value.Columns.Add("ProgramID", typeof (int));
                 value.Columns.Add("Status", typeof (string));
                 value.Columns.Add("TypeID", typeof (int));
@@ -1889,7 +1885,7 @@ FROM    Items itm
                     drv["Quantity"] = v.Quantity;
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
-                    drv["MaxStockQty"] = v.MaxStockQty;
+                    //drv["MaxStockQty"] = v.MaxStockQty;
                     drv["Status"] = v.Status;
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
@@ -1920,15 +1916,10 @@ FROM    Items itm
                                   ProgramID = n.ProgramID,
                                   Status = n.Status,
                                   Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                  DaysOutOfStock =
-                          Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                                  DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                   //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                                  MaxStockQty =
-                          ((120 * n.Issued) /
-                           (60 -
-                            Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
-                                                                          endDate)))),
+                                  //MaxStockQty =((120 * n.Issued) /(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,endDate)))),
                                   TypeID = n.TypeID
                               }).ToArray();
 
@@ -1947,7 +1938,7 @@ FROM    Items itm
                 value.Columns.Add("LossAdj", typeof(double));
                 value.Columns.Add("Quantity", typeof(double));
                 value.Columns.Add("DaysOutOfStock", typeof(int));
-                value.Columns.Add("MaxStockQty", typeof(double));
+                //value.Columns.Add("MaxStockQty", typeof(double));
                 value.Columns.Add("ProgramID", typeof(int));
                 value.Columns.Add("Status", typeof(string));
                 value.Columns.Add("TypeID", typeof(int));
@@ -1974,7 +1965,7 @@ FROM    Items itm
                     drv["Quantity"] = v.Quantity;
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
-                    drv["MaxStockQty"] = v.MaxStockQty;
+                    //drv["MaxStockQty"] = v.MaxStockQty;
                     drv["Status"] = v.Status;
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
