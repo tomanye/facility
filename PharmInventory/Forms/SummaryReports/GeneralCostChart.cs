@@ -121,17 +121,32 @@ DateTime dtCurrent = new DateTime();
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "Store: " + cboStores.Text, "Year: " + cboYear.Text, "Printed Date: " + dtCurrent.ToShortDateString() };
+
+            int year = Convert.ToInt32(cboYear.EditValue);
+            int month = 10;
+            int day = 30;
+            if (year == dtCurrent.Year)
+            {
+                month = dtCurrent.Month;
+                day = dtCurrent.Day;
+            }
+
+            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year - 1));
+            DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+
+            string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
+            string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text, "Start Date: " + strStartDate, "End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
         }
-
-       
 
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {

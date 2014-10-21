@@ -365,6 +365,18 @@ namespace BLL
             return dt;
         }
 
+        public DateTime GetLastReceivedDateByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                                                 FROM ReceiveDoc 
+                                                 WHERE (StoreID = {0} AND YEAR(Date) = {1} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}) 
+                                                 ORDER BY Date DESC", storeId, year, categoryId));
+            DateTime dt = (this.DataTable.Rows.Count > 0) ? Convert.ToDateTime(this.DataTable.Rows[0]["Date"]) : new DateTime();
+
+            return dt;
+        }
+
         public bool ValidateReceiveDate(DateTime receiveDate)
         {
             string query = "select top(1) * from receiveDoc where EurDate is not null order by EurDate asc";
@@ -397,6 +409,17 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetTopReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT TOP 10 count(*)AS NoOfRec,ID, (ItemName + ' ' + DosageForm + ' ' + Strength) as FullItemName,Unit,StockCode 
+                                                 FROM vwGetReceivedItemsByBatch 
+                                                 WHERE storeId = {0} and year(Date) = {1} and typeId = {2}
+                                                 GROUP BY ID,ItemName,DosageForm,Strength,Unit,StockCode 
+                                                 ORDER BY NoOfRec DESC", storeId, year, categoryId));
+            return this.DataTable;
+        }
+
         public DataTable GetLeastReceivedItems(int storeId)
         {
             this.FlushData();
@@ -404,10 +427,32 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetLeastReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" select TOP 10 count(*)AS NoOfRec,vw.FullItemName,v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetReceivedItemsByBatch v join vwGetAllItems vw 
+                                                         on v.ID = vw.ID where v.StoreId = {0} and year(v.Date) = {1} and v.TypeId = {2}
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode, vw.FullItemName 
+                                                 order by NoOfRec ASC", storeId, year, categoryId));
+            return this.DataTable;
+        }
+
         public DataTable GetNeverReceivedItems(int storeId)
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT * FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)", storeId));
+            return this.DataTable;
+        }
+
+        public DataTable GetNeverReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}))) 
+                                                         AND (IsInHospitalList = 1)", storeId, year, categoryId));
             return this.DataTable;
         }
 
@@ -425,6 +470,7 @@ namespace BLL
             return this.DataTable;
 
         }
+        
         public int CountNeverReceivedItems(int storeId)
         {
             this.FlushData();
@@ -439,6 +485,25 @@ namespace BLL
 
             return this.Getint("Count");
         }
+        
+        public int CountNeverReceivedItemsByCateogryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format("SELECT count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1)"));
+            }
+            else
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
+                                                     FROM  dbo.vwGetAllItems 
+                                                     WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} AND typeId = {2}))) 
+                                                            AND (IsInHospitalList = 1)"
+                                    , storeId, year, categoryId));
+            }
+
+            return this.Getint("Count");
+        }
 
         public DataTable GetReceivedNotIssuedItems(int storeId)
         {
@@ -447,10 +512,35 @@ namespace BLL
             return this.DataTable;
         }
 
+        public DataTable GetReceivedNotIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}))) 
+                                                         AND (IsInHospitalList = 1) 
+                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2})))", storeId, year, categoryId));
+            return this.DataTable;
+        }
+
         public int CountReceivedNotIssuedItems(int storeId)
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0})))", storeId));
+            return this.Getint("Count");
+        }
+
+        public int CountReceivedNotIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) 
+                                                        AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} and year(Date) = {1} and TypeId = {2})))"
+                                , storeId, year, categoryId));
+
             return this.Getint("Count");
         }
 

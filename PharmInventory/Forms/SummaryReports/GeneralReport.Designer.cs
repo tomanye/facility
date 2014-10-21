@@ -234,6 +234,7 @@ namespace PharmInventory
             this.label51 = new System.Windows.Forms.Label();
             this.xpButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.lkCategory = new DevExpress.XtraEditors.LookUpEdit();
+            this.cboYear = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -277,6 +278,7 @@ namespace PharmInventory
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1142,7 +1144,7 @@ namespace PharmInventory
             this.label20.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(27, 192);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(145, 16);
+            this.label20.Size = new System.Drawing.Size(144, 16);
             this.label20.TabIndex = 4;
             this.label20.Text = "Trend (No. of Items)";
             this.label20.Visible = false;
@@ -1154,7 +1156,7 @@ namespace PharmInventory
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label22, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
@@ -1599,7 +1601,7 @@ namespace PharmInventory
             this.linkLabel9.AutoSize = true;
             this.linkLabel9.Location = new System.Drawing.Point(36, 183);
             this.linkLabel9.Name = "linkLabel9";
-            this.linkLabel9.Size = new System.Drawing.Size(177, 13);
+            this.linkLabel9.Size = new System.Drawing.Size(176, 13);
             this.linkLabel9.TabIndex = 20;
             this.linkLabel9.TabStop = true;
             this.linkLabel9.Text = "Top 10 Least Received Items ";
@@ -1610,7 +1612,7 @@ namespace PharmInventory
             this.linkLabel8.AutoSize = true;
             this.linkLabel8.Location = new System.Drawing.Point(36, 154);
             this.linkLabel8.Name = "linkLabel8";
-            this.linkLabel8.Size = new System.Drawing.Size(173, 13);
+            this.linkLabel8.Size = new System.Drawing.Size(172, 13);
             this.linkLabel8.TabIndex = 20;
             this.linkLabel8.TabStop = true;
             this.linkLabel8.Text = "Top 10 Most Received Items ";
@@ -1825,7 +1827,7 @@ namespace PharmInventory
             this.linkLabel16.AutoSize = true;
             this.linkLabel16.Location = new System.Drawing.Point(36, 193);
             this.linkLabel16.Name = "linkLabel16";
-            this.linkLabel16.Size = new System.Drawing.Size(163, 13);
+            this.linkLabel16.Size = new System.Drawing.Size(162, 13);
             this.linkLabel16.TabIndex = 29;
             this.linkLabel16.TabStop = true;
             this.linkLabel16.Text = "Top 10 Least Issued Items ";
@@ -1836,7 +1838,7 @@ namespace PharmInventory
             this.linkLabel17.AutoSize = true;
             this.linkLabel17.Location = new System.Drawing.Point(36, 164);
             this.linkLabel17.Name = "linkLabel17";
-            this.linkLabel17.Size = new System.Drawing.Size(159, 13);
+            this.linkLabel17.Size = new System.Drawing.Size(158, 13);
             this.linkLabel17.TabIndex = 28;
             this.linkLabel17.TabStop = true;
             this.linkLabel17.Text = "Top 10 Most Issued Items ";
@@ -2275,6 +2277,21 @@ namespace PharmInventory
             this.lkCategory.TabIndex = 29;
             this.lkCategory.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
+            // cboYear
+            // 
+            this.cboYear.Location = new System.Drawing.Point(321, 8);
+            this.cboYear.Name = "cboYear";
+            this.cboYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboYear.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "Year")});
+            this.cboYear.Properties.DisplayMember = "year";
+            this.cboYear.Properties.NullText = "";
+            this.cboYear.Properties.ValueMember = "year";
+            this.cboYear.Size = new System.Drawing.Size(73, 20);
+            this.cboYear.TabIndex = 29;
+            this.cboYear.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
+            // 
             // GeneralReport
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2282,6 +2299,7 @@ namespace PharmInventory
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 580);
+            this.Controls.Add(this.cboYear);
             this.Controls.Add(this.lkCategory);
             this.Controls.Add(this.xpButton2);
             this.Controls.Add(this.cboStores);
@@ -2338,6 +2356,7 @@ namespace PharmInventory
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2529,5 +2548,6 @@ namespace PharmInventory
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraEditors.CheckEdit ckExclude;
         private DevExpress.XtraEditors.LookUpEdit lkCategory;
+        private DevExpress.XtraEditors.LookUpEdit cboYear;
     }
 }

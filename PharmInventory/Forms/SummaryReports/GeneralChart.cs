@@ -29,9 +29,6 @@ namespace PharmInventory
 
         private void GeneralReport_Load(object sender, EventArgs e)
         {
-
-            
-
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
@@ -52,13 +49,10 @@ namespace PharmInventory
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
 
-
             cboYear.Properties.DataSource = Items.AllYears();
-
             cboYear.EditValue = dtCurrent.Year;
             if (cboYear.Properties.Columns.Count > 0)
                 cboYear.Properties.Columns[0].Alignment = DevExpress.Utils.HorzAlignment.Near;
-
         }
 
         private DateTime dtCurrent = new DateTime();
@@ -69,14 +63,11 @@ namespace PharmInventory
         {
             ReceiveDoc rec = new ReceiveDoc();
 
-            //progressBar1.Visible = true;
             chartPie.UseWaitCursor = true;
             chartPie.Series.Clear();
             int storeId = (cboStores.EditValue != null) ? Convert.ToInt32(cboStores.EditValue) : 0;
-
-            //int neverRec = rec.CountNeverReceivedItems(storeId);
-
             curYear = Convert.ToInt32(cboYear.EditValue);
+
             var category = Convert.ToInt32(lkCategory.EditValue);
             curMont = (curYear == dtCurrent.Year) ? dtCurrent.Month : 12;
             //progressBar1.PerformStep();
@@ -157,8 +148,6 @@ namespace PharmInventory
             chartPie.UseWaitCursor = false;
         }
 
-
-
         private void tabPage8_Click(object sender, EventArgs e)
         {
 
@@ -174,7 +163,6 @@ namespace PharmInventory
             {
                 GenerateStockStatusPieChart();
             }
-                
         }
 
         private void cboYear_SelectedValueChanged(object sender, EventArgs e)
@@ -208,11 +196,13 @@ namespace PharmInventory
                 GenerateStockStatusPieChart();
             }
         }
+
         private void PopulateSStatus1()
         {
             if (curMont != 0 && curYear != 0)
             {
                 var storeId = Convert.ToInt32(cboStores.EditValue);
+                curYear = Convert.ToInt32(cboYear.EditValue);
 
                 Balance blnc = new Balance();
                 DataTable dtbl = blnc.GetSOH(storeId, curMont, Convert.ToInt32(cboYear.EditValue));
@@ -301,8 +291,6 @@ namespace PharmInventory
             object[] oo5 = { "Below EOP", obj[4] };
             dtList.Rows.Add(oo5);
 
-
-
             Series ser = new Series("pie", ViewType.Pie3D);
             ser.DataSource = dtList;
 
@@ -325,17 +313,32 @@ namespace PharmInventory
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = {info.HospitalName , "Store: " + cboStores.Text,"Year: " + cboYear.Text ,"Printed Date: " + dtCurrent.ToShortDateString() };
+
+            int year = Convert.ToInt32(cboYear.EditValue);
+            int month = 10;
+            int day = 30;
+            if (year == dtCurrent.Year)
+            {
+                month = dtCurrent.Month;
+                day = dtCurrent.Day;
+            }
+
+            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year-1));
+            DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+
+            string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
+            string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text, " Start Date: " + strStartDate, " End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
           }
-
-
     }
 }
 

@@ -189,8 +189,7 @@ namespace PharmInventory.Forms.Transactions
             var inventory = new YearEnd();
             if (_tabPage == 0)
             {
-
-                if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0)
+                if (_dtSelectedTable != null && _dtSelectedTable.Rows.Count > 0 && gridItemChoiceView.SelectedRowsCount > 0)
                 {
                     PopulateGridList();
                 }
@@ -796,9 +795,8 @@ namespace PharmInventory.Forms.Transactions
 
         public void RefreshItems()
         {
-            _dtSelectedTable = null;
-            _tabPage = 0;
-            tabControl1.SelectedTabPageIndex = 0;
+            _dtSelectedTable.Clear();
+            ResetValues();
 
             for (int i = 0; i < gridItemChoiceView.DataRowCount; i++)
             {

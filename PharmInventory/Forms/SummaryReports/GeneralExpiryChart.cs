@@ -38,6 +38,10 @@ namespace PharmInventory
             System.Int32 dwRop // raster operation code
         );
 
+        DateTime dtCurrent = new DateTime();
+        int curMont = 0;
+        int curYear = 0;
+
         public GeneralExpiryChart()
         {
             InitializeComponent();
@@ -64,22 +68,22 @@ namespace PharmInventory
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
 
-
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCur = ConvertDate.DateConverter(dtDate.Text);
-            dtTo.Value = DateTime.Now;
-            // int yearFrom = ((_dtCur.Month == 11 && _dtCur.Month == 12) ? _dtCur.Year : _dtCur.Year - 1 );
-            dtFrom.Value = DateTime.Now;
 
+            cboYear.Properties.DataSource = Items.AllYears();
+            cboYear.EditValue = curYear;
           }
-
-        DateTime dtCurrent = new DateTime();
-        int curMont = 0;
-        int curYear = 0;
 
         public void GenerateExpiryChart()
         {
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+
+            dtFrom.Value = selectedStartedDate;
+            dtTo.Value = selectedEndDate;
+
             // Generate the pie Chart for the Current SOH and EXpired Drugs
             dtFrom.CustomFormat = "MM/dd/yyyy";
             DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
@@ -87,12 +91,11 @@ namespace PharmInventory
             DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
             //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
             //layoutControlGroup3.Text = "Cost Report " + dRange;
-            if (dt1 == dt2)
+            if (dt1.Year == dt2.Year)
             {
                 dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
                 //dRange = "For Year " + dt1.Year.ToString();
             }
-
 
             ReceiveDoc rec = new ReceiveDoc();
             Balance bal = new Balance();
@@ -103,7 +106,6 @@ namespace PharmInventory
             int storeId = Convert.ToInt32(cboStores.EditValue);
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
-            
             
             object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID ,dt1 ,dt2);
             Int64 expAmount = Convert.ToInt64(objExp[0]);
@@ -178,12 +180,11 @@ namespace PharmInventory
             //((PiePointOptions)serExpired.PointOptions).Separator = " , ";
             chartPie.Series.Add(serExpired);
             chartPie.Size = new System.Drawing.Size(1000, 500);
-
         }
 
         private void cboStores_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null)
+            if ((cboStores.EditValue != null) && (cboYear.EditValue != null))
                 GenerateExpiryChart();
         }
 
@@ -261,13 +262,42 @@ namespace PharmInventory
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "General Expiry For Current Year", "Printed Date: " + dtCurrent.ToShortDateString() };
+
+            int year = Convert.ToInt32(cboYear.EditValue);
+            int month = 10;
+            int day = 30;
+            if (year == dtCurrent.Year)
+            {
+                month = dtCurrent.Month;
+                day = dtCurrent.Day;
+            }
+
+            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year - 1));
+            DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+
+            string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
+            string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+
+            string[] header = { info.HospitalName, "General Expiry For Current Year", "Start Date: " + strStartDate, "End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-           }        
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+           }
+
+        private void cboYear_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboStores.EditValue != null)
+            {
+                if (cboYear.EditValue != null)
+                {
+                    GenerateExpiryChart();
+                }
+            }
+        }        
     }
 }

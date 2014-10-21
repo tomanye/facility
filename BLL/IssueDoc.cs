@@ -309,6 +309,19 @@ namespace BLL
 			return dt;
 		}
 
+		public DateTime GetLastIssuedDateByCategoryAndYear(int storeId, int categoryId, int year)
+		{
+			this.FlushData();
+            this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                                                 FROM IssueDoc 
+                                                 WHERE (StoreId = {0} AND YEAR(Date) = {1} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}) 
+                                                 ORDER BY Date DESC", storeId, year, categoryId));
+
+			DateTime dt = (this.DataTable.Rows.Count > 0) ? Convert.ToDateTime(this.DataTable.Rows[0]["Date"]) : new DateTime();
+
+			return dt;
+		}
+
 		public DataTable GetTopIssuedItems(int storeId)
 		{
 			this.FlushData();
@@ -316,10 +329,34 @@ namespace BLL
 			return this.DataTable;
 		}
 
+		public DataTable GetTopIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+		{
+			this.FlushData();
+			this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllitems vw 
+                                                     on v.ID = vw.ID 
+                                                 where storeId = {0} and YEAR(v.Date) = {1} and vw.typeId = {2} 
+                                                 Group By v.ID,vw.FullItemName,vw.StockCode, vw.Unit 
+                                                 order by NoOfRec DESC", storeId, year, categoryId));
+
+			return this.DataTable;
+		}
+
 		public DataTable GetLeastIssuedItems(int storeId)
 		{
 			this.FlushData();
 			this.LoadFromRawSql(String.Format("select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode from vwGetIssuedItemsByBatch v join vwGetAllItems vw on v.ID = vw.ID where v.StoreId = {0} Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName order by NoOfRec ASC", storeId));
+			return this.DataTable;
+		}
+
+		public DataTable GetLeastIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
+		{
+			this.FlushData();
+			this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
+                                                 on v.ID = vw.ID where v.StoreId = {0} and YEAR(v.Date) = {1} and vw.typeId = {2} 
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
+                                                 order by NoOfRec ASC", storeId, year, categoryId));
 			return this.DataTable;
 		}
 
