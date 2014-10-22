@@ -1064,7 +1064,10 @@ namespace PharmInventory
         private void PopulateList(DataTable dtItm,GridControl lst)
         {
             lst.DataSource = dtItm;
-            gridView2.ActiveFilterString = String.Format("TypeID ={0}", Convert.ToInt32(lkCategory.EditValue));
+            if (Convert.ToInt32(lkCategory.EditValue) != 0)
+            {
+                gridView2.ActiveFilterString = String.Format("TypeID ={0}", Convert.ToInt32(lkCategory.EditValue));
+            }
         }
 
         private void listNotEDL_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1131,7 +1134,7 @@ namespace PharmInventory
                                     select m).CopyToDataTable();
                 //((ckExclude.Checked) ? bal.GetReceivedStockOut(storeId, curMont, curYear) :);
            // StatusGroup.Text = "Stocked Out Items";
-            PopulateList(stockout, listStatused);           
+            PopulateList(dtStockout, listStatused);           
         }
 
         private void listNearEOP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
