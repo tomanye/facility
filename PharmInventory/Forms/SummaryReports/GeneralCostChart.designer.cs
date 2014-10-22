@@ -466,7 +466,7 @@ namespace PharmInventory
             // cboStores
             // 
             this.cboStores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboStores.Location = new System.Drawing.Point(722, 12);
+            this.cboStores.Location = new System.Drawing.Point(600, 12);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
@@ -497,7 +497,7 @@ namespace PharmInventory
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(921, 9);
+            this.btnPrint.Location = new System.Drawing.Point(799, 9);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(63, 24);
             this.btnPrint.TabIndex = 24;
@@ -536,7 +536,7 @@ namespace PharmInventory
             pointSeriesLabel3.LineVisible = true;
             this.chartReceiveCost.SeriesTemplate.Label = pointSeriesLabel3;
             this.chartReceiveCost.SeriesTemplate.View = lineSeriesView3;
-            this.chartReceiveCost.Size = new System.Drawing.Size(971, 527);
+            this.chartReceiveCost.Size = new System.Drawing.Size(849, 527);
             this.chartReceiveCost.TabIndex = 25;
             // 
             // printingSystem1
@@ -560,7 +560,7 @@ namespace PharmInventory
             // cboYear
             // 
             this.cboYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboYear.Location = new System.Drawing.Point(627, 12);
+            this.cboYear.Location = new System.Drawing.Point(505, 12);
             this.cboYear.Name = "cboYear";
             this.cboYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down)});
@@ -581,7 +581,7 @@ namespace PharmInventory
             this.dtDate.CustomFormat = "MM/dd/ yy";
             this.dtDate.DayOfWeekCharacters = 2;
             this.dtDate.ForeColor = System.Drawing.Color.Black;
-            this.dtDate.Location = new System.Drawing.Point(320, 18);
+            this.dtDate.Location = new System.Drawing.Point(198, 18);
             this.dtDate.Name = "dtDate";
             this.dtDate.PopUpFontSize = 9.75F;
             this.dtDate.Size = new System.Drawing.Size(114, 20);
@@ -595,7 +595,7 @@ namespace PharmInventory
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 580);
+            this.ClientSize = new System.Drawing.Size(873, 580);
             this.Controls.Add(this.cboYear);
             this.Controls.Add(this.chartReceiveCost);
             this.Controls.Add(this.btnPrint);

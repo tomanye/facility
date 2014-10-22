@@ -113,7 +113,8 @@ DateTime dtCurrent = new DateTime();
         private void button1_Click(object sender, EventArgs e)
         {
             printableComponentLink1.CreateMarginalHeaderArea += printableComponentLink1_CreateMarginalHeaderArea;
-            printableComponentLink1.CreateDocument();
+            printableComponentLink1.CreateDocument(false);
+            printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
             printableComponentLink1.ShowPreview();     
         }
 
@@ -133,13 +134,15 @@ DateTime dtCurrent = new DateTime();
 
             DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year - 1));
             DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+            DateTime currentDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", dtCurrent.Day, dtCurrent.Month, dtCurrent.Year));
 
             string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+            string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
 
-            string[] header = { info.HospitalName, "Store: " + cboStores.Text, "Start Date: " + strStartDate, "End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text, "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
-            printableComponentLink1.PageHeaderFooter = header;
+            printableComponentLink1.PageHeaderFooter = header;            
 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);

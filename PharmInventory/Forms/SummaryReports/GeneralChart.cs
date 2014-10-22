@@ -37,7 +37,12 @@ namespace PharmInventory
                 cboStores.ItemIndex = 0;
 
             var type = new BLL.Type();
-            var alltypes = type.GetAllCategory();
+            DataTable alltypes = type.GetAllCategory();
+            DataRow row = alltypes.NewRow();
+            row["ID"] = "0";
+            row["Name"] = "All";
+            alltypes.Rows.InsertAt(row, 0);
+
             lkCategory.Properties.DataSource = alltypes;
             lkCategory.Properties.DisplayMember = "Name";
             lkCategory.Properties.ValueMember = "ID";
@@ -81,17 +86,13 @@ namespace PharmInventory
             Int64 nearEOP = bal.CountNearEOPByCategory(storeId, curMont, curYear, category);
             // progressBar1.PerformStep();
             Int64 BelowEOP = bal.CountBelowEOPByCategory(storeId, curMont, curYear, category);
-            // progressBar1.PerformStep();
-            //Int64 belowMin = bal.CountBelowMin(storeId,curMont,curYear);
-            // progressBar1.PerformStep();
+
             object[] obj = {stockin, stockout, overstock, nearEOP, BelowEOP};
 
             DataTable dtList = new DataTable();
             dtList.Columns.Add("Type");
             dtList.Columns.Add("Value");
             dtList.Columns[1].DataType = typeof (Int64);
-
-
 
             object[] oo = {"In Stock", obj[0]};
             dtList.Rows.Add(oo);
@@ -108,9 +109,6 @@ namespace PharmInventory
             object[] oo5 = {"Below EOP", obj[4]};
             dtList.Rows.Add(oo5);
 
-            //object[] oo6 = { "Below Min", obj[5] };
-            //dtList.Rows.Add(oo6);
-
             Series ser = new Series("pie", ViewType.Pie3D);
             ser.DataSource = dtList;
 
@@ -123,19 +121,8 @@ namespace PharmInventory
             ser.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
             ser.PointOptions.ValueNumericOptions.Precision = 0;
 
-            // progressBar1.PerformStep();
-            //ser.SeriesPointsSorting = SortingMode.Ascending;
-            //ser.SeriesPointsSortingKey = SeriesPointKey.Value_1;
-
-            //SeriesPointFilter filter = new SeriesPointFilter(SeriesPointKey.Value_1,DataFilterCondition.GreaterThanOrEqual, 10);
-            //((PieSeriesView)ser.View).ExplodedPointsFilters.Add(filter);
-            //((PieSeriesView)ser.View).ExplodeMode = PieExplodeMode.UseFilters;
-            //((PieSeriesView)ser.View).Rotation = 90;
-
             ((PieSeriesLabel) ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
             ((PiePointOptions) ser.PointOptions).PointView = PointView.ArgumentAndValues;
-
-
 
             chartPie.Series.Add(ser);
             chartPie.Size = new System.Drawing.Size(1000, 500);
@@ -157,7 +144,7 @@ namespace PharmInventory
         {
             if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && ckExclude.Checked)
             {
-                PopulateSStatus1();
+                PopulateSStatusReport();
             }
             if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && !ckExclude.Checked)
             {
@@ -169,7 +156,7 @@ namespace PharmInventory
         {
             if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && ckExclude.Checked)
             {
-                PopulateSStatus1();
+                PopulateSStatusReport();
             }
 
             if (cboStores.EditValue != null && cboYear.EditValue != null && lkCategory.EditValue != null && !ckExclude.Checked)
@@ -181,7 +168,8 @@ namespace PharmInventory
         private void btnPrint_Click(object sender, EventArgs e)
         {
             printableComponentLink1.CreateMarginalHeaderArea += printableComponentLink1_CreateMarginalHeaderArea;
-            printableComponentLink1.CreateDocument();
+            printableComponentLink1.CreateDocument(false);
+            printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
             printableComponentLink1.ShowPreview();
         }
 
@@ -268,6 +256,113 @@ namespace PharmInventory
             }
         }
 
+        private void PopulateSStatusReport()
+        {
+            if (curMont != 0 && curYear != 0)
+            {
+                var storeId = Convert.ToInt32(cboStores.EditValue);
+                curYear = Convert.ToInt32(cboYear.EditValue);
+
+                Balance blnc = new Balance();
+                DataTable dtbl = blnc.GetSOH(storeId, curMont, Convert.ToInt32(cboYear.EditValue));
+
+                Items itm = new Items();
+                Balance bal = new Balance();
+                ReceiveDoc rec = new ReceiveDoc();
+
+                Programs prog = new Programs();
+                prog.GetProgramByName("Family Planning");
+                DataTable dtItm = itm.GetItemsByProgram(prog.ID);
+                int totalECLS = dtItm.Rows.Count;
+                int stockin, stockout, overstock, nearEOP, belowEOP, freeStockOut;
+
+                if (Convert.ToInt32(lkCategory.EditValue) != 0)
+                {
+                    stockin = (from m in dtbl.AsEnumerable()
+                                   where m["Status"].ToString() == "Normal"
+                                   && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                   select m).Count();
+
+                    stockout = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Stock Out"
+                                    && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                    select m).Count();
+
+                    overstock = (from m in dtbl.AsEnumerable()
+                                     where m["Status"].ToString() == "Over Stocked"
+                                     && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                     select m).Count();
+
+                    nearEOP = (from m in dtbl.AsEnumerable()
+                                   where m["Status"].ToString() == "Near EOP"
+                                   && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                   select m).Count();
+
+                    belowEOP = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Below EOP"
+                                    && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                    select m).Count();
+
+                    freeStockOut = (from m in dtbl.AsEnumerable()
+                                        where m["Status"].ToString() == "Stock Out"
+                                        && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue) && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                        select m).Count();
+                }
+                else
+                {
+                    stockin = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Normal"
+                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               select m).Count();
+
+                    stockout = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Stock Out"
+                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                select m).Count();
+
+                    overstock = (from m in dtbl.AsEnumerable()
+                                 where m["Status"].ToString() == "Over Stocked"
+                                 && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                 select m).Count();
+
+                    nearEOP = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Near EOP"
+                               && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                               select m).Count();
+
+                    belowEOP = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Below EOP"
+                                && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                select m).Count();
+
+                    freeStockOut = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Stock Out"
+                                    && ((!ckExclude.Checked) || Convert.ToInt32(m["EverReceived"]) == 1)
+                                    select m).Count();
+                }
+
+                object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
+                int totalItm = stockin + stockout + nearEOP + overstock;
+
+                decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+             
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(stockout) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(overstock) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(nearEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                int totalFree = itm.CountFreeItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                totalFree = itm.CountVitalItems();
+                GenerateStockStatusPieChart(obj);
+            }
+        }
+
         private void GenerateStockStatusPieChart(Object[] obj)
         {
             chartPie.Series.Clear();
@@ -325,11 +420,13 @@ namespace PharmInventory
 
             DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year-1));
             DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+            DateTime currentDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", dtCurrent.Day, dtCurrent.Month, dtCurrent.Year));
 
             string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+            string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
 
-            string[] header = { info.HospitalName, "Store: " + cboStores.Text, " Start Date: " + strStartDate, " End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
+            string[] header = { info.HospitalName, "Store: " + cboStores.Text, " From Start Date: " + strStartDate, " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 

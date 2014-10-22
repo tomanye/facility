@@ -50,7 +50,12 @@ namespace PharmInventory
         private void GeneralReport_Load(object sender, EventArgs e)
         {
             var type = new BLL.Type();
-            var alltypes = type.GetAllCategory();
+            DataTable alltypes = type.GetAllCategory();
+            DataRow row = alltypes.NewRow();
+            row["ID"] = "0";
+            row["Name"] = "All";
+            alltypes.Rows.InsertAt(row, 0);
+
             lkCategory.Properties.DataSource = alltypes;
             lkCategory.Properties.DisplayMember = "Name";
             lkCategory.Properties.ValueMember = "ID";
@@ -252,10 +257,10 @@ namespace PharmInventory
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);        
-            printableComponentLink1.CreateDocument();
+            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateDocument(false);
+            printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
             printableComponentLink1.ShowPreview();           
-
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -274,11 +279,13 @@ namespace PharmInventory
 
             DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year - 1));
             DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+            DateTime currentDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", dtCurrent.Day, dtCurrent.Month, dtCurrent.Year));
 
             string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+            string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
 
-            string[] header = { info.HospitalName, "General Expiry For Current Year", "Start Date: " + strStartDate, "End Date: " + strEndDate, "Printed Date: " + dtCurrent.ToShortDateString() };
+            string[] header = { info.HospitalName, "General Expiry For Current Year", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
