@@ -352,11 +352,11 @@ namespace PharmInventory.Forms.Reports
                 case 1:
                     if (filter == "Stock Out" && ckExclude.Checked)
                     {                        
-                        dtBal = bal.BalanceOfAllItemsForStockoutReport(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                        dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     }
                     else if (filter == "Stock Out" && !ckExclude.Checked)
                     {
-                        dtBal = bal.BalanceOfAllItemsForStockoutReport(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
+                        dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     }
                     else if (filter == "Over Stocked" && ckExclude.Checked)
                     {

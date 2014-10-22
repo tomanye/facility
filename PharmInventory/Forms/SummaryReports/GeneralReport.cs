@@ -54,7 +54,6 @@ namespace PharmInventory
             cboYear.Properties.DataSource = dtyears;
             cboYear.EditValue = curYear;
 
-            PopulateSStatusByYear();
             var bw = new BackgroundWorker();
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
@@ -68,14 +67,22 @@ namespace PharmInventory
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            PopulateInventory();
-            PopulateStockStatus();
+            //PopulateInventory();
+            if (Convert.ToInt32(lkCategory.EditValue) == 0)
+            {
+                PopulateSStatusByYear();
+                PopulateStockStatusByYear();
+            }
+            else
+            {
+                PopulateSStatusByCategoryAndYear();
+                PopulateStockStatusByCategoryAndYear();
+            }
 
-            Items itm = new Items();
-            DataTable dtItm = itm.GetAllItems(1);
-            // groupList.Text = "All Items";
-            PopulateList(dtItm, lstDetail);
-     
+            //Items itm = new Items();
+            //DataTable dtItm = itm.GetAllItems(1);
+            //// groupList.Text = "All Items";
+            //PopulateList(dtItm, lstDetail);     
         }
 
         DateTime dtCurrent = new DateTime();
@@ -162,7 +169,7 @@ namespace PharmInventory
                                 select m).Count();
                 if (belowEOP == 0)
                 {
-                    linkLabel23.Visible = false;
+                    listBelowEOP.Visible = false;
                 }
                 else
                 {
@@ -331,7 +338,7 @@ namespace PharmInventory
                                 select m).Count();
                 if (belowEOP == 0)
                 {
-                    linkLabel23.Visible = false;
+                    listBelowEOP.Visible = false;
                 }
                 else
                 {
@@ -500,7 +507,7 @@ namespace PharmInventory
                                 select m).Count();
                 if (belowEOP == 0)
                 {
-                    linkLabel23.Visible = false;
+                    listBelowEOP.Visible = false;
                 }
                 else
                 {
@@ -867,35 +874,19 @@ namespace PharmInventory
                 lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
                 lblIssuedDays.Text = noDays;
 
-                DataTable dtStockout;
+                DataTable dtAllItems;
                 try
                 {
-                    dtStockout = (from m in dtbl.AsEnumerable()
-                                            where m["Status"].ToString() == "Normal"
-                                            && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                    dtAllItems = (from m in dtbl.AsEnumerable()
+                                            where ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                             select m).CopyToDataTable();
                 }
                 catch (InvalidOperationException)
                 {
-                    dtStockout = null;
+                    dtAllItems = null;
                 }
 
-                PopulateList(dtStockout, listStatused);
-
-                DataTable dtFreeStockOut;
-                try
-                {
-                    dtFreeStockOut = (from m in dtbl.AsEnumerable()
-                                                where m["Status"].ToString() == "Stock Out"
-                                                && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
-                                                select m).CopyToDataTable();
-                }
-                catch (InvalidOperationException)
-                {
-                    dtFreeStockOut = null;
-                }
-
-                PopulateList(dtFreeStockOut, listStatused);
+                PopulateList(dtAllItems, listStatused);
 
                 DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
                // groupRecSummary.Text = "Top 10 Most Received Items";
@@ -1363,8 +1354,16 @@ namespace PharmInventory
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
-            PopulateSStatus1();
-            PopulateStockStatus();
+            if (Convert.ToInt32(lkCategory.EditValue) == 0)
+            {
+                PopulateSStatusByYear();
+                PopulateStockStatusByYear();
+            }
+            else
+            {
+                PopulateSStatusByCategoryAndYear();
+                PopulateStockStatusByCategoryAndYear();
+            }
         }
 
         private void xpButton2_Click(object sender, EventArgs e)
