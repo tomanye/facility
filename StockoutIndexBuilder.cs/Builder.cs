@@ -347,12 +347,21 @@ namespace StockoutIndexBuilder
             return (totalConsumption + CalculateTotalConsumption(itemId, storeId, startDate.Subtract(TimeSpan.FromDays(stockoutDays)),startDate));
         }
 
-        public static long CalculateTotalConsumptionAMC(int itemId, int storeId, DateTime startDate, DateTime endDate)
+        public static long CalculateTotalConsumptionAMC(int itemId, int storeId, DateTime startDate, DateTime endDate, int amcrange = 0, int stockoutDays = 0)
         {
             var db = new StockoutEntities();
-            var amcrange = db.GenralInfos.First();
-            var amcdays = amcrange.AMCRange * 30;
-            var stockoutDays = CalculateStockoutDays(itemId, storeId, startDate, endDate);
+            if (amcrange == 0)
+            {
+                amcrange = db.GenralInfos.First().AMCRange;
+            }
+
+            var amcdays = amcrange * 30;
+
+            if (stockoutDays == 0)
+            {
+                stockoutDays = CalculateStockoutDays(itemId, storeId, startDate, endDate);
+            }
+
             var allIssues = db.IssueDocs.Where(m => m.ItemID == itemId && m.StoreID == storeId).Where(issue => issue.Date >= startDate && issue.Date < endDate);
             if (!allIssues.Any())
                 return 0;

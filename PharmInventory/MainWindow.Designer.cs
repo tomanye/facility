@@ -128,6 +128,7 @@ namespace PharmInventory
             this.navBarItem9 = new DevExpress.XtraNavBar.NavBarItem();
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.bwAMCCalculator = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -1003,7 +1004,6 @@ namespace PharmInventory
             // navBarGroup5
             // 
             this.navBarGroup5.Caption = "Utilities";
-            this.navBarGroup5.Expanded = true;
             this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
@@ -1082,6 +1082,10 @@ namespace PharmInventory
             this.menuStrip2.Size = new System.Drawing.Size(1093, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
+            // 
+            // bwAMCCalculator
+            // 
+            this.bwAMCCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAMCCalculator_DoWork);
             // 
             // MainWindow
             // 
@@ -1215,6 +1219,7 @@ namespace PharmInventory
         private DevExpress.XtraNavBar.NavBarItem navBarItem9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraNavBar.NavBarItem menuItemPriceOnlyReport;
+        private System.ComponentModel.BackgroundWorker bwAMCCalculator;
     }
 }
 

@@ -36,6 +36,8 @@ namespace PharmInventory
         {
             ChangeHospitalName();
             ShowAccessLevel();
+
+            bwAMCCalculator.RunWorkerAsync();
         }
 
         /// <summary>
@@ -119,7 +121,6 @@ namespace PharmInventory
             tempFolder += "\\HCMS";
             return tempFolder;
         }
-
 
         private static readonly System.Configuration.AppSettingsReader ReadApp = new System.Configuration.AppSettingsReader();
 
@@ -259,6 +260,10 @@ namespace PharmInventory
             dbCleaning.ShowDialog();
         }
 
-       
+        private void bwAMCCalculator_DoWork(object sender, DoWorkEventArgs e)
+        {
+            HelperClasses.CalculateAMC calcAMC = new HelperClasses.CalculateAMC();
+            calcAMC.BuildAMC();
+        }
     }
 }
