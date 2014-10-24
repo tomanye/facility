@@ -12,7 +12,7 @@ namespace PharmInventory.HelperClasses
         private Boolean IsCalculatedToday()
         {
             AmcReportRepository _amcReportRepository = new AmcReportRepository();
-            int count = _amcReportRepository.AllAmcReport().Where(amc => amc.LastIndexedTime.Value.Day == DateTime.Today.Day).Select(amc => amc.ID).Count();
+            int count = _amcReportRepository.AllAmcReport().Where(amc => amc.LastIndexedTime.Value.Date == DateTime.Today.Date).Select(amc => amc.ID).Count();
             if (count > 0)
             {
                 return true;
