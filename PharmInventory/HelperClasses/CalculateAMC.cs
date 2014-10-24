@@ -23,9 +23,9 @@ namespace PharmInventory.HelperClasses
             }
         }
 
-        public void BuildAMC()
+        public void BuildAMC(bool forceCalc = false)
         {
-            if (IsCalculatedToday())
+            if ((IsCalculatedToday()) && (forceCalc == false))
             {
                 return;
             }

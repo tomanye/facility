@@ -61,6 +61,7 @@ namespace PharmInventory.Forms.Profiles
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.bwAMCCalculate = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -439,6 +440,10 @@ namespace PharmInventory.Forms.Profiles
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // bwAMCCalculate
+            // 
+            this.bwAMCCalculate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAMCCalculate_DoWork);
+            // 
             // Pipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,5 +506,6 @@ namespace PharmInventory.Forms.Profiles
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cboNearExpiryFlag;
+        private System.ComponentModel.BackgroundWorker bwAMCCalculate;
     }
 }

@@ -131,13 +131,7 @@ namespace PharmInventory.Forms.Profiles
             cboEOP.SelectedValue = _pipeline.EOP.ToString();
             txtMin.Text = _pipeline.Min.ToString() + " Month";
             txtmax.Text = _pipeline.Max.ToString() + " Month";
-            //try
-            //{
-            //    cboDUMax.SelectedValue = pipeline.DUMax.ToString();
-            //    cboDUMin.SelectedValue = pipeline.DUMin.ToString();
-            //}
-            //catch
-            //{ }
+
             cboAmcRange.SelectedValue = _pipeline.AMCRange.ToString();
             rdEven.Checked = _pipeline.IsEven;
             rdOdd.Checked = !_pipeline.IsEven;
@@ -172,7 +166,10 @@ namespace PharmInventory.Forms.Profiles
             _pipeline.AMCRange = Convert.ToInt32(cboAmcRange.SelectedValue);
             
             _pipeline.Save();
+
             PopulateFields();
+
+            bwAMCCalculate.RunWorkerAsync();
         }
 
         /// <summary>
@@ -212,7 +209,10 @@ namespace PharmInventory.Forms.Profiles
             }
         }
 
-
-
+        private void bwAMCCalculate_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            HelperClasses.CalculateAMC calcAMC = new HelperClasses.CalculateAMC();
+            calcAMC.BuildAMC(true);
+        }
     }
 }
