@@ -51,8 +51,9 @@ namespace PharmInventory.Forms.Reports
             _dtCur = ConvertDate.DateConverter(dtDate.Text);
             dtTo.Value = DateTime.Now;
            // int yearFrom = ((_dtCur.Month == 11 && _dtCur.Month == 12) ? _dtCur.Year : _dtCur.Year - 1 );
-            dtFrom.Value = DateTime.Now;
-            
+            int currYear = (EthiopianDate.EthiopianDate.Now.Month < 11) ? EthiopianDate.EthiopianDate.Now.Year - 1 : EthiopianDate.EthiopianDate.Now.Year;
+            dtFrom.Value = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, currYear));
+
             dtFrom.CustomFormat = "MM/dd/yyyy";
             DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
             dtTo.CustomFormat = "MM/dd/yyyy";
