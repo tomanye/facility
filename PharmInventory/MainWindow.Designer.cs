@@ -129,6 +129,8 @@ namespace PharmInventory
             this.ttlBar = new DevExpress.XtraEditors.GroupControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.bwAMCCalculator = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -137,6 +139,7 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ttlBar)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // fileToolStripMenuItem
@@ -602,7 +605,7 @@ namespace PharmInventory
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPanel.Location = new System.Drawing.Point(199, 126);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(894, 468);
+            this.mainPanel.Size = new System.Drawing.Size(894, 443);
             this.mainPanel.TabIndex = 16;
             // 
             // panelControl2
@@ -632,9 +635,8 @@ namespace PharmInventory
             // 
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
             this.navBarControl1.AllowSelectedLink = true;
-            this.navBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.None;
             this.navBarControl1.EachGroupHasSelectedLink = true;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
@@ -686,12 +688,12 @@ namespace PharmInventory
             this.navBarItem9,
             this.menuItemPriceOnlyReport});
             this.navBarControl1.LinkInterval = 5;
-            this.navBarControl1.Location = new System.Drawing.Point(0, 24);
+            this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 199;
             this.navBarControl1.OptionsNavPane.ShowExpandButton = false;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.NavigationPane;
-            this.navBarControl1.Size = new System.Drawing.Size(199, 570);
+            this.navBarControl1.Size = new System.Drawing.Size(199, 594);
             this.navBarControl1.StoreDefaultPaintStyleName = true;
             this.navBarControl1.TabIndex = 19;
             this.navBarControl1.Text = "navBarControl1";
@@ -1076,16 +1078,33 @@ namespace PharmInventory
             this.adminToolStripMenuItem,
             this.utilitiesToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Location = new System.Drawing.Point(199, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1093, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(894, 24);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // bwAMCCalculator
             // 
             this.bwAMCCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAMCCalculator_DoWork);
+            this.bwAMCCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwAMCCalculator_RunWorkerCompleted);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.AutoSize = false;
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip.Location = new System.Drawing.Point(199, 572);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(894, 22);
+            this.statusStrip.TabIndex = 24;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(91, 17);
+            this.toolStripStatusLabel1.Text = "[Status Toolbar]";
             // 
             // MainWindow
             // 
@@ -1094,6 +1113,7 @@ namespace PharmInventory
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 594);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.panelControl2);
@@ -1103,6 +1123,7 @@ namespace PharmInventory
             this.Name = "MainWindow";
             this.Text = "Ethiopian Health Commodity Management Information System (EHCMIS)";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).EndInit();
@@ -1114,6 +1135,8 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.ttlBar)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1220,6 +1243,8 @@ namespace PharmInventory
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraNavBar.NavBarItem menuItemPriceOnlyReport;
         private System.ComponentModel.BackgroundWorker bwAMCCalculator;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

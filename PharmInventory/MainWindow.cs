@@ -262,8 +262,25 @@ namespace PharmInventory
 
         private void bwAMCCalculator_DoWork(object sender, DoWorkEventArgs e)
         {
+            statusStrip.Items[0].Text = "AMC calculation started for all stores.";
             HelperClasses.CalculateAMC calcAMC = new HelperClasses.CalculateAMC();
             calcAMC.BuildAMC();
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (statusStrip.Items[0].Text == "AMC calculation started for all stores.")
+            {
+                MessageBox.Show(@"Automatic AMC calculation is in progress, please wait until it is completed. 
+                    Check the bottom of the window for status update.", "HCMIS FE", MessageBoxButtons.OK);
+
+                e.Cancel = true;
+            }
+        }
+
+        private void bwAMCCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            statusStrip.Items[0].Text = "AMC calculation completed for all stores.";
         }
     }
 }
