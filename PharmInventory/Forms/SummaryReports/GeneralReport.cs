@@ -22,15 +22,20 @@ namespace PharmInventory
             InitializeComponent();
         }
 
-        int storeId = 1;
+        int storeId = 0;
         private void GeneralReport_Load(object sender, EventArgs e)
         {
             //TabPage z = tabControl1.TabPages[2];
             //tabControl1.TabPages.Remove(tabControl1.TabPages[2]);
 
             Stores stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.DataSource = stor.DefaultView;
+            DataTable dtStor = stor.GetActiveStores();
+            DataRow rowStore = dtStor.NewRow();
+            rowStore["ID"] = "0";
+            rowStore["StoreName"] = "All";
+            dtStor.Rows.InsertAt(rowStore, 0);
+
+            cboStores.DataSource = dtStor;
 
             var type = new BLL.Type();
             DataTable alltypes = type.GetAllCategory();
@@ -67,28 +72,37 @@ namespace PharmInventory
 
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //PopulateInventory();
-            if (Convert.ToInt32(lkCategory.EditValue) == 0)
+            if (storeId == 0)
             {
-                PopulateSStatusByYear();
-                PopulateStockStatusByYear();
+                if (Convert.ToInt32(lkCategory.EditValue) == 0)
+                {
+                    PopulateSStatusByYearForAllStore();
+                    PopulateStockStatusByYearForAllStore();
+                }
+                else
+                {
+                    PopulateSStatusByCategoryAndYearForAllStore();
+                    PopulateStockStatusByCategoryAndYearForAllStore();
+                }
             }
             else
             {
-                PopulateSStatusByCategoryAndYear();
-                PopulateStockStatusByCategoryAndYear();
+                if (Convert.ToInt32(lkCategory.EditValue) == 0)
+                {
+                    PopulateSStatusByYear();
+                    PopulateStockStatusByYear();
+                }
+                else
+                {
+                    PopulateSStatusByCategoryAndYear();
+                    PopulateStockStatusByCategoryAndYear();
+                }
             }
-
-            //Items itm = new Items();
-            //DataTable dtItm = itm.GetAllItems(1);
-            //// groupList.Text = "All Items";
-            //PopulateList(dtItm, lstDetail);     
         }
 
         DateTime dtCurrent = new DateTime();
         int curMont = 0;
         int curYear = 0;
-
 
         private void PopulateSStatus1()
         {
@@ -427,6 +441,174 @@ namespace PharmInventory
             }
         }
 
+        private void PopulateSStatusByCategoryAndYearForAllStore()
+        {
+            if (curMont != 0 && curYear != 0)
+            {
+                curYear = Convert.ToInt32(cboYear.EditValue);
+
+                Balance blnc = new Balance();
+                DataTable dtbl = blnc.GetSOHForAllStores(curMont, curYear);
+
+                Items itm = new Items();
+                Balance bal = new Balance();
+                ReceiveDoc rec = new ReceiveDoc();
+
+                Programs prog = new Programs();
+                prog.GetProgramByName("Family Planning");
+                DataTable dtItm = itm.GetItemsByProgram(prog.ID);
+                int totalECLS = dtItm.Rows.Count;
+                lblNoECLS.Text = totalECLS.ToString();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+                int stockin = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                               && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                               select m).Count();
+                if (stockin == 0)
+                {
+                    listInStock.Visible = false;
+                }
+                else
+                {
+                    listInStock.Visible = true;
+                }
+                
+                //progressBar1.PerformStep();
+                int stockout = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                select m).Count();
+                if (stockout == 0)
+                {
+                    listStockOut.Visible = false;
+                }
+                else
+                {
+                    listStockOut.Visible = true;
+                }
+                //((ckExclude.Checked)? (bal.CountStockOut(storeId, curMont, curYear)- neverRec) : bal.CountStockOut(storeId, curMont, curYear));
+                //progressBar1.PerformStep();
+                int overstock = (from m in dtbl.AsEnumerable()
+                                 where m["Status"].ToString() == "Over Stocked" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                 select m).Count();
+                if (overstock == 0)
+                {
+                    listOverstock.Visible = false;
+                }
+                else
+                {
+                    listOverstock.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int nearEOP = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Near EOP" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                               && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                               select m).Count();
+                if (nearEOP == 0)
+                {
+                    listNearEOP.Visible = false;
+                }
+                else 
+                { 
+                    listNearEOP.Visible = true; 
+                }
+                //progressBar1.PerformStep();
+                int belowEOP = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Below EOP" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                select m).Count();
+                if (belowEOP == 0)
+                {
+                    listBelowEOP.Visible = false;
+                }
+                else
+                {
+                    listNearEOP.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
+                // progressBar1.PerformStep();
+                int freeStockOut = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                    && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                    select m).Count();
+                if (freeStockOut == 0)
+                {
+                    lblFreeStockedout.Visible = false;
+                }
+                else
+                {
+                    lblFreeStockedout.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int vitalStockOut = bal.CountVitalItemsStockOutForAllStore(curMont, curYear);
+                //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
+                // progressBar1.PerformStep();
+                object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
+                int totalItm = stockin + stockout + nearEOP + overstock;
+
+                decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblInStock.Text = stockin.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(stockout) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblStockOut.Text = stockout.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(overstock) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblOverStocked.Text = overstock.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(nearEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblNearEOP.Text = nearEOP.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblBelowEOP.Text = belowEOP.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowMin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblBelowMin.Text = belowMin.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                lblFreeStockedout.Text = freeStockOut.ToString();
+                if (freeStockOut == 0)
+                {
+                    linkLabel6.Visible = false;
+                }
+                else
+                {
+                    linkLabel6.Visible = true;
+                }
+                int totalFree = itm.CountFreeItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblFreeStock.Text = freeStockOut.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                lblVitalStockedout.Text = vitalStockOut.ToString();
+                if (vitalStockOut == 0)
+                {
+                    linkLabel7.Visible = false;
+                }
+                else
+                {
+                    linkLabel7.Visible = true;
+                }
+                totalFree = itm.CountVitalItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(vitalStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblVitalStock.Text = vitalStockOut.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                //totalFree = itm.CountVitalItems();
+                //percen = ((totalECLS != 0)?(Convert.ToDecimal(eclsStockout) / Convert.ToDecimal(totalECLS)) * 100:0);
+                //percen = Decimal.Round(percen, 0);
+                //lblEclsStock.Text = eclsStockout.ToString() + " (" + percen.ToString("#.0") + "%)"; 
+
+                GenerateStockStatusPieChart(obj);
+            }
+        }
+
         private void PopulateSStatusByYear()
         {
             if (curMont != 0 && curYear != 0)
@@ -530,6 +712,174 @@ namespace PharmInventory
                 }
                 // progressBar1.PerformStep();
                 int vitalStockOut = bal.CountVitalItemsStockOut(storeId, curMont, curYear);
+                //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
+                // progressBar1.PerformStep();
+                object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
+                int totalItm = stockin + stockout + nearEOP + overstock;
+
+                decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblInStock.Text = stockin.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(stockout) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblStockOut.Text = stockout.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(overstock) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblOverStocked.Text = overstock.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(nearEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblNearEOP.Text = nearEOP.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowEOP) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblBelowEOP.Text = belowEOP.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                percen = ((totalItm != 0) ? (Convert.ToDecimal(belowMin) / Convert.ToDecimal(totalItm)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblBelowMin.Text = belowMin.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                lblFreeStockedout.Text = freeStockOut.ToString();
+                if (freeStockOut == 0)
+                {
+                    linkLabel6.Visible = false;
+                }
+                else
+                {
+                    linkLabel6.Visible = true;
+                }
+                int totalFree = itm.CountFreeItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(freeStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblFreeStock.Text = freeStockOut.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                lblVitalStockedout.Text = vitalStockOut.ToString();
+                if (vitalStockOut == 0)
+                {
+                    linkLabel7.Visible = false;
+                }
+                else
+                {
+                    linkLabel7.Visible = true;
+                }
+                totalFree = itm.CountVitalItems();
+                percen = ((totalFree != 0) ? (Convert.ToDecimal(vitalStockOut) / Convert.ToDecimal(totalFree)) * 100 : 0);
+                percen = Decimal.Round(percen, 0);
+                lblVitalStock.Text = vitalStockOut.ToString() + " (" + percen.ToString("#.0") + "%)";
+
+                //totalFree = itm.CountVitalItems();
+                //percen = ((totalECLS != 0)?(Convert.ToDecimal(eclsStockout) / Convert.ToDecimal(totalECLS)) * 100:0);
+                //percen = Decimal.Round(percen, 0);
+                //lblEclsStock.Text = eclsStockout.ToString() + " (" + percen.ToString("#.0") + "%)"; 
+
+                GenerateStockStatusPieChart(obj);
+            }
+        }
+
+        private void PopulateSStatusByYearForAllStore()
+        {
+            if (curMont != 0 && curYear != 0)
+            {
+                curYear = Convert.ToInt32(cboYear.EditValue);
+
+                Balance blnc = new Balance();
+                DataTable dtbl = blnc.GetSOHForAllStores(curMont, curYear);
+
+                Items itm = new Items();
+                Balance bal = new Balance();
+                ReceiveDoc rec = new ReceiveDoc();
+
+                Programs prog = new Programs();
+                prog.GetProgramByName("Family Planning");
+                DataTable dtItm = itm.GetItemsByProgram(prog.ID);
+                int totalECLS = dtItm.Rows.Count;
+                lblNoECLS.Text = totalECLS.ToString();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(0, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+                int stockin = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Normal"
+                               && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                               select m).Count();
+                if (stockin == 0)
+                {
+                    listInStock.Visible = false;
+                }
+                else
+                {
+                    listInStock.Visible = true;
+                }
+                
+                //progressBar1.PerformStep();
+                int stockout = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Stock Out"
+                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                select m).Count();
+                if (stockout == 0)
+                {
+                    listStockOut.Visible = false;
+                }
+                else
+                {
+                    listStockOut.Visible = true;
+                }
+                //((ckExclude.Checked)? (bal.CountStockOut(storeId, curMont, curYear)- neverRec) : bal.CountStockOut(storeId, curMont, curYear));
+                //progressBar1.PerformStep();
+                int overstock = (from m in dtbl.AsEnumerable()
+                                 where m["Status"].ToString() == "Over Stocked"
+                                 && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                 select m).Count();
+                if (overstock == 0)
+                {
+                    listOverstock.Visible = false;
+                }
+                else
+                {
+                    listOverstock.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int nearEOP = (from m in dtbl.AsEnumerable()
+                               where m["Status"].ToString() == "Near EOP"
+                               && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                               select m).Count();
+                if (nearEOP == 0)
+                {
+                    listNearEOP.Visible = false;
+                }
+                else 
+                { 
+                    listNearEOP.Visible = true; 
+                }
+                //progressBar1.PerformStep();
+                int belowEOP = (from m in dtbl.AsEnumerable()
+                                where m["Status"].ToString() == "Below EOP"
+                                && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                select m).Count();
+                if (belowEOP == 0)
+                {
+                    listBelowEOP.Visible = false;
+                }
+                else
+                {
+                    listNearEOP.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
+                // progressBar1.PerformStep();
+                int freeStockOut = (from m in dtbl.AsEnumerable()
+                                    where m["Status"].ToString() == "Stock Out"
+                                    && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                    select m).Count();
+                if (freeStockOut == 0)
+                {
+                    lblFreeStockedout.Visible = false;
+                }
+                else
+                {
+                    lblFreeStockedout.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                int vitalStockOut = bal.CountVitalItemsStockOutForAllStore(curMont, curYear);
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
@@ -846,6 +1196,139 @@ namespace PharmInventory
             }
         }
 
+        private void PopulateStockStatusByCategoryAndYearForAllStore()
+        {
+           // progressBar1.Visible = true;
+
+            if (curMont != 0 && curYear != 0)
+            {
+                IssueDoc iss = new IssueDoc();
+                ReceiveDoc rec = new ReceiveDoc();
+                Balance blnc = new Balance();
+
+                DataTable dtbl = blnc.GetSOHForAllStores(curMont, curYear);
+
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+                DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+                //progressBar1.PerformStep();
+                tt = new TimeSpan(dtCurrent.Ticks - lastIss.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+                lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
+                lblIssuedDays.Text = noDays;
+
+                DataTable dtStockout;
+                try
+                {
+                    dtStockout = (from m in dtbl.AsEnumerable()
+                                            where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                            && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                            select m).CopyToDataTable();
+                }
+                catch (InvalidOperationException)
+                {
+                    dtStockout = null;
+                }
+
+                PopulateList(dtStockout, listStatused);
+
+                DataTable dtFreeStockOut;
+                try
+                {
+                    dtFreeStockOut = (from m in dtbl.AsEnumerable()
+                                                where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                                && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                                select m).CopyToDataTable();
+                }
+                catch (InvalidOperationException)
+                {
+                    dtFreeStockOut = null;
+                }
+
+                PopulateList(dtFreeStockOut, listStatused);
+
+                DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               // groupRecSummary.Text = "Top 10 Most Received Items";
+                PopulateList(dtRec, listReceiveSum);
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
+                if (rec.CountNeverReceivedItems(storeId) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else 
+                {
+                    linkLabel10.Visible = true;
+                }
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
+                if (lblNeverIssued.Text == "0")
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+               // progressBar1.PerformStep();
+                DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               // groupIssued.Text = "Top 10 Most Issued Items";
+                PopulateList(dtIss, listIssued);
+
+                //Balance bal = new Balance();
+                GeneralInfo info = new GeneralInfo();
+                info.LoadAll();
+                DataTable dtList = new DataTable();
+                DataTable dtCons = new DataTable();
+                string[] co = { "Ham", "Neh", "Mes", "Tek", "Hed", "Tah", "Tir", "Yek", "Meg", "Miz", "Gen", "Sen" };
+
+                //foreach(string s in co)
+                //{
+                dtList.Columns.Add("Month");
+                dtList.Columns.Add("Value");
+                dtList.Columns[1].DataType = typeof(Int64);
+
+                dtCons.Columns.Add("Month");
+                dtCons.Columns.Add("Value");
+                dtCons.Columns[1].DataType = typeof(Int64);
+
+                int[] mon = { 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                double[] cos = new double[12];
+                DataTable dtBal = new DataTable();
+                Items recd = new Items();
+               //time here
+                int year = dtCurrent.Year;
+                
+                chartReceiveCost.Series.Clear();
+
+                Series ser = new Series("Received Cost In Birr", ViewType.Line);
+                ser.DataSource = dtList;
+                ser.ArgumentScaleType = ScaleType.Qualitative;
+                ser.ArgumentDataMember = "Month";
+                ser.ValueScaleType = ScaleType.Numerical;
+                
+                ser.ValueDataMembers.AddRange(new string[] { "Value" });
+                chartReceiveCost.Series.Add(ser);
+
+                chartIssueCost.Series.Clear();
+
+                Series serIss = new Series("Issued Cost In Birr", ViewType.Line);
+                serIss.DataSource = dtCons;
+                serIss.ArgumentScaleType = ScaleType.Qualitative;
+                serIss.ArgumentDataMember = "Month";
+                serIss.ValueScaleType = ScaleType.Numerical;
+
+                serIss.ValueDataMembers.AddRange(new string[] { "Value" });
+                chartIssueCost.Series.Add(serIss);
+
+            }
+        }
+
         private void PopulateStockStatusByYear()
         {
            // progressBar1.Visible = true;
@@ -902,6 +1385,123 @@ namespace PharmInventory
                 }
                 lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
                 if (rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)) == 0)
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+               // progressBar1.PerformStep();
+                DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               // groupIssued.Text = "Top 10 Most Issued Items";
+                PopulateList(dtIss, listIssued);
+
+                //Balance bal = new Balance();
+                GeneralInfo info = new GeneralInfo();
+                info.LoadAll();
+                DataTable dtList = new DataTable();
+                DataTable dtCons = new DataTable();
+                string[] co = { "Ham", "Neh", "Mes", "Tek", "Hed", "Tah", "Tir", "Yek", "Meg", "Miz", "Gen", "Sen" };
+
+                //foreach(string s in co)
+                //{
+                dtList.Columns.Add("Month");
+                dtList.Columns.Add("Value");
+                dtList.Columns[1].DataType = typeof(Int64);
+
+                dtCons.Columns.Add("Month");
+                dtCons.Columns.Add("Value");
+                dtCons.Columns[1].DataType = typeof(Int64);
+
+                int[] mon = { 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                double[] cos = new double[12];
+                DataTable dtBal = new DataTable();
+                Items recd = new Items();
+               //time here
+                int year = dtCurrent.Year;
+                
+                chartReceiveCost.Series.Clear();
+
+                Series ser = new Series("Received Cost In Birr", ViewType.Line);
+                ser.DataSource = dtList;
+                ser.ArgumentScaleType = ScaleType.Qualitative;
+                ser.ArgumentDataMember = "Month";
+                ser.ValueScaleType = ScaleType.Numerical;
+                
+                ser.ValueDataMembers.AddRange(new string[] { "Value" });
+                chartReceiveCost.Series.Add(ser);
+
+                chartIssueCost.Series.Clear();
+
+                Series serIss = new Series("Issued Cost In Birr", ViewType.Line);
+                serIss.DataSource = dtCons;
+                serIss.ArgumentScaleType = ScaleType.Qualitative;
+                serIss.ArgumentDataMember = "Month";
+                serIss.ValueScaleType = ScaleType.Numerical;
+
+                serIss.ValueDataMembers.AddRange(new string[] { "Value" });
+                chartIssueCost.Series.Add(serIss);
+
+            }
+        }
+
+        private void PopulateStockStatusByYearForAllStore()
+        {
+           // progressBar1.Visible = true;
+
+            if (curMont != 0 && curYear != 0)
+            {
+                IssueDoc iss = new IssueDoc();
+                ReceiveDoc rec = new ReceiveDoc();
+                Balance blnc = new Balance();
+
+                DataTable dtbl = blnc.GetSOHForAllStores(curMont, curYear);
+
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+                DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+                //progressBar1.PerformStep();
+                tt = new TimeSpan(dtCurrent.Ticks - lastIss.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+                lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
+                lblIssuedDays.Text = noDays;
+
+                DataTable dtAllItems;
+                try
+                {
+                    dtAllItems = (from m in dtbl.AsEnumerable()
+                                            where ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                            select m).CopyToDataTable();
+                }
+                catch (InvalidOperationException)
+                {
+                    dtAllItems = null;
+                }
+
+                PopulateList(dtAllItems, listStatused);
+
+                DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+               // groupRecSummary.Text = "Top 10 Most Received Items";
+                PopulateList(dtRec, listReceiveSum);
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
+                if (rec.CountNeverReceivedItems(storeId) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else 
+                {
+                    linkLabel10.Visible = true;
+                }
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
+                if (lblNeverIssued.Text == "0")
                 {
                     linkLabel21.Visible = false;
                 }
@@ -1159,15 +1759,31 @@ namespace PharmInventory
 
                 storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
 
-                if (Convert.ToInt32(lkCategory.EditValue) == 0)
+                if (storeId == 0)
                 {
-                    PopulateSStatusByYear();
-                    PopulateStockStatusByYear();
+                    if (Convert.ToInt32(lkCategory.EditValue) == 0)
+                    {
+                        PopulateSStatusByYearForAllStore();
+                        PopulateStockStatusByYearForAllStore();
+                    }
+                    else
+                    {
+                        PopulateSStatusByCategoryAndYearForAllStore();
+                        PopulateStockStatusByCategoryAndYearForAllStore();
+                    }
                 }
                 else
                 {
-                    PopulateSStatusByCategoryAndYear();
-                    PopulateStockStatusByCategoryAndYear();
+                    if (Convert.ToInt32(lkCategory.EditValue) == 0)
+                    {
+                        PopulateSStatusByYear();
+                        PopulateStockStatusByYear();
+                    }
+                    else
+                    {
+                        PopulateSStatusByCategoryAndYear();
+                        PopulateStockStatusByCategoryAndYear();
+                    }
                 }
             }
         }
@@ -1426,22 +2042,5 @@ namespace PharmInventory
         {
 
         }
-
- /*       
-        private void EnableList()
-        {
-            if (lblAll.Text == "0")
-            {
-                listAll.Enabled = false;
-                //list
-            }
-        }
-
-        private void DisableList()
-        { 
-            
-        }
-  */
-
     }
 }

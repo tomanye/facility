@@ -32,7 +32,12 @@ namespace PharmInventory
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
+            DataRow rowStore = dtStor.NewRow();
+            rowStore["ID"] = "0";
+            rowStore["StoreName"] = "All";
+            dtStor.Rows.InsertAt(rowStore, 0);
             cboStores.Properties.DataSource = dtStor;
+
             if (stor.RowCount > 1)
                 cboStores.ItemIndex = 0;
 
@@ -264,7 +269,15 @@ namespace PharmInventory
                 curYear = Convert.ToInt32(cboYear.EditValue);
 
                 Balance blnc = new Balance();
-                DataTable dtbl = blnc.GetSOH(storeId, curMont, Convert.ToInt32(cboYear.EditValue));
+                DataTable dtbl = new DataTable();
+                if (storeId == 0)
+                {
+                    dtbl = blnc.GetSOHForAllStores(curMont, Convert.ToInt32(cboYear.EditValue));
+                }
+                else
+                {
+                    dtbl = blnc.GetSOH(storeId, curMont, Convert.ToInt32(cboYear.EditValue));
+                }
 
                 Items itm = new Items();
                 Balance bal = new Balance();

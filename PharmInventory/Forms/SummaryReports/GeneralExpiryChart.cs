@@ -64,6 +64,11 @@ namespace PharmInventory
             Stores stor = new Stores();
             stor.GetActiveStores();
             DataTable dtStor = stor.DefaultView.ToTable();
+            DataRow rowStore = dtStor.NewRow();
+            rowStore["ID"] = "0";
+            rowStore["StoreName"] = "All";
+            dtStor.Rows.InsertAt(rowStore, 0);
+
             cboStores.Properties.DataSource = dtStor;
             cboStores.ItemIndex = 0;
 
@@ -187,10 +192,124 @@ namespace PharmInventory
             chartPie.Size = new System.Drawing.Size(1000, 500);
         }
 
+        public void GenerateExpiryChartForAllStores()
+        {
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+
+            dtFrom.Value = selectedStartedDate;
+            dtTo.Value = selectedEndDate;
+
+            // Generate the pie Chart for the Current SOH and EXpired Drugs
+            dtFrom.CustomFormat = "MM/dd/yyyy";
+            DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            dtTo.CustomFormat = "MM/dd/yyyy";
+            DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
+            //layoutControlGroup3.Text = "Cost Report " + dRange;
+            if (dt1.Year == dt2.Year)
+            {
+                dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
+                //dRange = "For Year " + dt1.Year.ToString();
+            }
+
+            ReceiveDoc rec = new ReceiveDoc();
+            Balance bal = new Balance();
+            chartPie.Series.Clear();
+            lstExpStatus.Items.Clear();
+            Items itm = new Items();
+
+            int typeID = Convert.ToInt32(lkCategory.EditValue);
+            //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
+            
+            object[] objExp = itm.CountExpiredItemsAndAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            Int64 expAmount = Convert.ToInt64(objExp[0]);
+            Double expCost = Convert.ToDouble(objExp[1]);
+
+           // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
+            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
+            double nearExpCost = Convert.ToDouble(nearObj[1]);
+
+           // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
+            object[] sohObj = itm.GetAllSOHQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            Int64 soh = Convert.ToInt64(sohObj[0]);
+            double sohPrice = Convert.ToDouble(sohObj[1]);
+
+            Int64 normal = (soh - nearExpAmount - expAmount);
+            Int64 nearExpiry = nearExpAmount;
+            Int64 expired = expAmount;
+
+
+            object[] obj = { normal, nearExpiry, expired };
+
+            DataTable dtSOHList = new DataTable();
+            dtSOHList.Columns.Add("Type");
+            dtSOHList.Columns.Add("Value");
+            dtSOHList.Columns[1].DataType = typeof(Int64);
+            double normalPrice = (sohPrice - nearExpCost - expCost);
+
+            Int64 totItm = normal + nearExpiry + expired;
+
+            object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
+            dtSOHList.Rows.Add(oo);
+
+            object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
+            dtSOHList.Rows.Add(oo3);
+
+            object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
+            dtSOHList.Rows.Add(oo2);
+
+            decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
+            per = Decimal.Round(per, 0);
+            string[] str = { "Normal", per.ToString() + "%", obj[0].ToString(), normalPrice.ToString("C") };
+            ListViewItem lstItmNor = new ListViewItem(str);
+            lstExpStatus.Items.Add(lstItmNor);
+
+            per = Convert.ToDecimal(nearExpiry) / Convert.ToDecimal(totItm) * 100;
+            per = Decimal.Round(per, 0);
+            string[] str1 = { "Near Expiry", per.ToString() + "%", obj[1].ToString(), nearExpCost.ToString("C") };
+            ListViewItem lstItmNor1 = new ListViewItem(str1);
+            lstExpStatus.Items.Add(lstItmNor1);
+
+            per = Convert.ToDecimal(expired) / Convert.ToDecimal(totItm) * 100;
+            per = Decimal.Round(per, 0);
+            string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), expCost.ToString("C") };
+            ListViewItem lstItmNor2 = new ListViewItem(str2);
+            lstExpStatus.Items.Add(lstItmNor2);
+
+            Series serExpired = new Series("pie", ViewType.Pie3D);
+            serExpired.DataSource = dtSOHList;
+
+            serExpired.ArgumentScaleType = ScaleType.Qualitative;
+            serExpired.ArgumentDataMember = "Type";
+            serExpired.ValueScaleType = ScaleType.Numerical;
+            serExpired.ValueDataMembers.AddRange(new string[] { "Value" });
+            serExpired.PointOptions.PointView = PointView.ArgumentAndValues;
+            serExpired.LegendText = "Key";
+            serExpired.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+            serExpired.PointOptions.ValueNumericOptions.Precision = 0;
+            ((PieSeriesLabel)serExpired.Label).Position = PieSeriesLabelPosition.TwoColumns;
+            // ((PieSeriesLabel)serExpired.Label).ColumnIndent = 2;
+            ((PiePointOptions)serExpired.PointOptions).PointView = PointView.ArgumentAndValues;
+            //((PiePointOptions)serExpired.PointOptions).Separator = " , ";
+            chartPie.Series.Add(serExpired);
+            chartPie.Size = new System.Drawing.Size(1000, 500);
+        }
+
         private void cboStores_SelectedValueChanged_1(object sender, EventArgs e)
         {
             if ((cboStores.EditValue != null) && (cboYear.EditValue != null))
-                GenerateExpiryChart();
+            {
+                if (cboStores.ItemIndex == 0)
+                {
+                    GenerateExpiryChartForAllStores();
+                }
+                else
+                {
+                    GenerateExpiryChart();
+                }
+            }
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -302,7 +421,14 @@ namespace PharmInventory
             {
                 if (cboYear.EditValue != null)
                 {
-                    GenerateExpiryChart();
+                    if (cboStores.ItemIndex == 0)
+                    {
+                        GenerateExpiryChartForAllStores();
+                    }
+                    else
+                    {
+                        GenerateExpiryChart();
+                    }
                 }
             }
         }        

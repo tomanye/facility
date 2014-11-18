@@ -658,6 +658,33 @@ namespace BLL
             return count;
         }
 
+        public int CountVitalItemsStockOutForAllStore(int month, int year)
+        {
+            Items itm = new Items();
+            DataTable dtItem = itm.GetVitalItems();
+            GeneralInfo pipline = new GeneralInfo();
+            pipline.LoadAll();
+            int min = pipline.Min;
+            int max = pipline.Max;
+            double eop = pipline.EOP;
+            int count = 0;
+            Balance bal = new Balance();
+            foreach (DataRow dr in dtItem.Rows)
+            {
+                Int64 AMC = bal.CalculateAMCAll(Convert.ToInt32(dr["ID"]), month, year);
+                Int64 minCon = AMC * min;
+                Int64 maxCon = AMC * max;
+                double eopCon = AMC * (eop + 0.25);
+                Int64 SOH = bal.GetSOHForAllStore(Convert.ToInt32(dr["ID"]), month, year);
+                decimal MOS = (AMC != 0) ? (SOH / AMC) : 0;
+                Int64 reorder = (maxCon > SOH) ? maxCon - SOH : 0;
+                if (SOH == 0)
+                    count++;
+                //string status = (SOH <= eopCon && SOH > 0) ? "Near EOP" : ((SOH > maxCon) ? "Excess Stock" : ((SOH <= 0) ? "Stock Out" : "Normal"));
+            }
+            return count;
+        }
+
         public int CountECLSItemsStockOut(int storeId, int month, int year)
         {
             Items itm = new Items();
@@ -930,6 +957,18 @@ namespace BLL
 
         }
 
+        public DataTable GetSOHForAllStores(int month, int year)
+        {
+            var ld = new System.Collections.Specialized.ListDictionary
+                         {
+                             {"@month", month},
+                             {"@year", year},
+                             {"@days", DateTime.DaysInMonth(year, month)}
+                         };
+            this.LoadFromSql("SOHForAllStores", ld, CommandType.StoredProcedure);
+            return this.DataTable;
+        }
+
         public DataTable GetSOH(int storeId, int month, int year)
         {
             var ld = new System.Collections.Specialized.ListDictionary
@@ -1012,6 +1051,20 @@ namespace BLL
         public Int64 GetSOH(int itemID, int storeId, int month, int year)
         {
             GetSOH(storeId, month, year);
+            while (!this.EOF)
+            {
+                if (this.ID == itemID)
+                {
+                    return this.SOH;
+                }
+                this.MoveNext();
+            }
+            return 0;
+        }
+
+        public Int64 GetSOHForAllStore(int itemID, int month, int year)
+        {
+            GetSOHForAllStores(month, year);
             while (!this.EOF)
             {
                 if (this.ID == itemID)

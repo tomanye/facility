@@ -312,19 +312,40 @@ namespace BLL
 		public DateTime GetLastIssuedDateByCategoryAndYear(int storeId, int categoryId, int year)
 		{
 			this.FlushData();
-            if (categoryId != 0)
+
+            if (storeId == 0)
             {
-                this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                if (categoryId != 0)
+                {
+                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
                                                  FROM IssueDoc 
-                                                 WHERE (StoreId = {0} AND YEAR(Date) = {1} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}) 
-                                                 ORDER BY Date DESC", storeId, year, categoryId));
+                                                 WHERE (YEAR(Date) = {0} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1}) 
+                                                 ORDER BY Date DESC", year, categoryId));
+                }
+                else
+                {
+                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                                                 FROM IssueDoc 
+                                                 WHERE (YEAR(Date) = {0}) 
+                                                 ORDER BY Date DESC", year));
+                }
             }
             else
             {
-                this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                if (categoryId != 0)
+                {
+                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                                                 FROM IssueDoc 
+                                                 WHERE (StoreId = {0} AND YEAR(Date) = {1} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}) 
+                                                 ORDER BY Date DESC", storeId, year, categoryId));
+                }
+                else
+                {
+                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
                                                  FROM IssueDoc 
                                                  WHERE (StoreId = {0} AND YEAR(Date) = {1}) 
                                                  ORDER BY Date DESC", storeId, year));
+                }
             }
 
 			DateTime dt = (this.DataTable.Rows.Count > 0) ? Convert.ToDateTime(this.DataTable.Rows[0]["Date"]) : new DateTime();
@@ -342,23 +363,48 @@ namespace BLL
 		public DataTable GetTopIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
 		{
 			this.FlushData();
-            if (categoryId != 0)
+
+            if (storeId == 0)
             {
-                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
+                if (categoryId != 0)
+                {
+                    this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllitems vw 
+                                                     on v.ID = vw.ID 
+                                                 where YEAR(v.Date) = {0} and vw.typeId = {1} 
+                                                 Group By v.ID,vw.FullItemName,vw.StockCode, vw.Unit 
+                                                 order by NoOfRec DESC", year, categoryId));
+                }
+                else
+                {
+                    this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllitems vw 
+                                                     on v.ID = vw.ID 
+                                                 where YEAR(v.Date) = {0}
+                                                 Group By v.ID,vw.FullItemName,vw.StockCode, vw.Unit 
+                                                 order by NoOfRec DESC", year));
+                }
+            }
+            else
+            {
+                if (categoryId != 0)
+                {
+                    this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
                                                  from vwGetIssuedItemsByBatch v join vwGetAllitems vw 
                                                      on v.ID = vw.ID 
                                                  where storeId = {0} and YEAR(v.Date) = {1} and vw.typeId = {2} 
                                                  Group By v.ID,vw.FullItemName,vw.StockCode, vw.Unit 
                                                  order by NoOfRec DESC", storeId, year, categoryId));
-            }
-            else
-            {
-                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
+                }
+                else
+                {
+                    this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,vw.FullItemName, vw.StockCode,vw.Unit 
                                                  from vwGetIssuedItemsByBatch v join vwGetAllitems vw 
                                                      on v.ID = vw.ID 
                                                  where storeId = {0} and YEAR(v.Date) = {1}
                                                  Group By v.ID,vw.FullItemName,vw.StockCode, vw.Unit 
                                                  order by NoOfRec DESC", storeId, year));
+                }
             }
 
 			return this.DataTable;

@@ -634,11 +634,37 @@ FROM    Items itm
             return cost;
         }
 
+        public double GetCostIssuedByItemPerMonthForAllStores(int month, int yr)
+        {
+            this.FlushData();
+            int year = (month < 11) ? yr : yr - 1;
+            this.LoadFromRawSql(String.Format("SELECT SUM(Cost * Quantity) AS Cost FROM IssueDoc WHERE (IsApproved = 1) AND (MONTH(Date) = {0} AND Year(Date) = {1})", month, year));
+            double cost = 0;
+            if (this.DataTable.Rows[0]["Cost"].ToString() != "")
+            {
+                cost = Convert.ToInt64(this.DataTable.Rows[0]["Cost"]);
+            }
+            return cost;
+        }
+
         public double GetCostReceiveByItemPerMonth(int month, int storeId, int yr)
         {
             this.FlushData();
             int year = (month < 11) ? yr : yr - 1;
             this.LoadFromRawSql(String.Format("SELECT SUM(Cost * Quantity) AS Cost FROM ReceiveDoc WHERE (StoreId = {1}) AND (MONTH(Date) = {0} AND Year(Date) = {2})", month, storeId, year));
+            double cost = 0;
+            if (this.DataTable.Rows[0]["Cost"].ToString() != "")
+            {
+                cost = Convert.ToInt64(this.DataTable.Rows[0]["Cost"]);
+            }
+            return cost;
+        }
+
+        public double GetCostReceiveByItemPerMonthForAllStores(int month, int yr)
+        {
+            this.FlushData();
+            int year = (month < 11) ? yr : yr - 1;
+            this.LoadFromRawSql(String.Format("SELECT SUM(Cost * Quantity) AS Cost FROM ReceiveDoc WHERE (MONTH(Date) = {0} AND Year(Date) = {1})", month, year));
             double cost = 0;
             if (this.DataTable.Rows[0]["Cost"].ToString() != "")
             {
@@ -798,7 +824,34 @@ FROM    Items itm
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
             return obj;
         }
-        
+
+        public object[] CountExpiredItemsAndAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(
+                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                        typeID, dt1, dt2);
+            }
+            else
+            {
+                query =
+                    string.Format(
+                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND vw.IsInHospitalList = 1 and rd.Date between '{0}' and '{1}'",
+                        dt1, dt2);
+            }
+
+            this.LoadFromRawSql(query);
+            object[] obj = new object[2];
+            obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
+            obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+            return obj;
+        }
 
         public DataTable GetExpiredItemsByID(int storeId, int itemId)
         {
@@ -935,6 +988,37 @@ FROM    Items itm
             return obj;
         }
 
+        public object[] CountNearlyExpiredQtyAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(
+                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
+                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {0} and rd.Date between '{1}' and '{2}'",
+                        typeID, dt1, dt2);
+            }
+            else
+            {
+                query =
+                    string.Format(
+                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
+                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) and rd.Date between '{0}' and '{1}'",
+                        dt1, dt2);
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 qunatity = 0;
+            double price = 0;
+            qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+            price = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+
+            object[] obj = { qunatity, price };
+            return obj;
+        }
+
         public object[] GetSOHQtyAmount(int itemId, int storeId)
         {
             //i think it needs a date for the physical inventory part
@@ -1011,6 +1095,35 @@ FROM    Items itm
                 query =
                     String.Format(
                         "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and rd.Date between '{1}' and '{2}'", storeId, dt1, dt2);
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 soh = 0;
+            double sohPrice = 0;
+            if (this.DataTable.Rows.Count > 0)
+            {
+                soh = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+                sohPrice = ((this.DataTable.Rows.Count > 0) ? Convert.ToDouble(this.DataTable.Rows[0]["SOHPrice"]) : 0);
+            }
+            object[] obj = { soh, sohPrice };
+            return obj;
+        }
+
+        public object[] GetAllSOHQtyAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    String.Format(
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and TypeID ={0} and rd.Date between '{1}' and '{2}'", typeID, dt1, dt2);
+            }
+            else
+            {
+                query =
+                    String.Format(
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and rd.Date between '{0}' and '{1}'", dt1, dt2);
             }
 
             this.LoadFromRawSql(query);
