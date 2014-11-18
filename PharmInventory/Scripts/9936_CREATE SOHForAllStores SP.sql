@@ -1,12 +1,3 @@
-USE [MESHUWALEKIAHCDB]
-GO
-
-/****** Object:  StoredProcedure [dbo].[SOHForAllStores]    Script Date: 11/18/2014 9:37:52 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE PROCEDURE [dbo].[SOHForAllStores]
 	@month int,
@@ -85,6 +76,4 @@ BEGIN
 		where vw.IsInHospitalList = 1) 
 		t order by t.FullItemName
 END
-GO
-
 
