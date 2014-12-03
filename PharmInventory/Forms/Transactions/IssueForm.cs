@@ -1132,9 +1132,15 @@ namespace PharmInventory.Forms.Transactions
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
             var inventory = new YearEnd();
-            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(cboStores.EditValue)) != false) return;
-                XtraMessageBox.Show("Please First Finish All Inventory and come back!","Error", MessageBoxButtons.OK , MessageBoxIcon.Exclamation);
+            int currEthYear = EthiopianDate.EthiopianDate.Now.Year;
+            int currEthMonth = EthiopianDate.EthiopianDate.Now.Month;
+
+            if (currEthMonth == 11 || currEthMonth == 12)
+            {
+                if (inventory.IsInventoryCompleteToReceive(currEthYear, Convert.ToInt32(cboStores.EditValue)) != false) return;
+                XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
+            }
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
