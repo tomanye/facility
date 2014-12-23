@@ -43,18 +43,18 @@ namespace BLL
             }
         }
 
-        public DataTable LoadByNewProgramIdAndItemId(int ItemId, int programId)
+        public DataTable LoadByNewProgramIdAndItemId(int storeID, int ItemId, int programId)
         {
-            string query = String.Format(@"Select * from ProgramProduct where ItemID = {0} and ProgramID ={1}", ItemId,programId);
+            string query = String.Format(@"Select * from ProgramProduct where StoreID = {0} and ItemID = {1} and ProgramID ={2}", storeID, ItemId, programId);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
 
 
 
-        public DataTable LoadByOldProgramIdAndItemId(int ItemId, int previousprogid)
+        public DataTable LoadByOldProgramIdAndItemId(int storeID, int ItemId, int previousprogid)
         {
-            string query = String.Format(@"Select * from ProgramProduct where ItemID = {0} and ProgramID ={1}", ItemId, previousprogid);
+            string query = String.Format(@"Select * from ProgramProduct where StoreID = {0} and ItemID = {1} and ProgramID ={2}", storeID, ItemId, previousprogid);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

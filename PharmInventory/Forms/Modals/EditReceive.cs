@@ -238,10 +238,11 @@ namespace PharmInventory.Forms.Modals
                             rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                             rec.UnitID = VisibilitySetting.HandleUnits==1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
                             rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
-                            pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.ItemID), Convert.ToInt32(lkPrograms.EditValue));
+                            pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.StoreID), Convert.ToInt32(rec.ItemID), Convert.ToInt32(lkPrograms.EditValue));
                             if (pp.RowCount == 1)
                             {
                                 rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                                pp.StoreID = Convert.ToInt32(rec.StoreID);
                                 pp.ProgramID = Convert.ToInt32(lkPrograms.EditValue);
                                 pp.ItemID = Convert.ToInt32(rec.ItemID);
                                 pp.Save();
@@ -251,6 +252,7 @@ namespace PharmInventory.Forms.Modals
                             {
                                 rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
                                 pp.AddNew();
+                                pp.StoreID = Convert.ToInt32(rec.StoreID);
                                 pp.ProgramID = rec.SubProgramID;
                                 pp.ItemID = Convert.ToInt32(rec.ItemID);
                                 pp.Save();
@@ -274,10 +276,11 @@ namespace PharmInventory.Forms.Modals
                         rec.StoreID = Convert.ToInt32(cboStores.SelectedValue);
                         rec.SupplierID = Convert.ToInt32(cboSupplier.SelectedValue);
                         rec.UnitID = VisibilitySetting.HandleUnits == 1 ? 0 : Convert.ToInt32(lkItemUnit.EditValue);
-                        pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.ItemID), previousprogid);
+                        pp.LoadByNewProgramIdAndItemId(Convert.ToInt32(rec.StoreID), Convert.ToInt32(rec.ItemID), previousprogid);
                         if (pp.RowCount == 1)
                         {
                             rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
+                            pp.StoreID = Convert.ToInt32(rec.StoreID);
                             pp.ProgramID = Convert.ToInt32(lkPrograms.EditValue);
                             pp.ItemID = Convert.ToInt32(rec.ItemID);
                             pp.Save();
@@ -287,6 +290,7 @@ namespace PharmInventory.Forms.Modals
                         {
                             rec.SubProgramID = Convert.ToInt32(lkPrograms.EditValue);
                             pp.AddNew();
+                            pp.StoreID = rec.StoreID;
                             pp.ProgramID = rec.SubProgramID;
                             pp.ItemID = Convert.ToInt32(rec.ItemID);
                             pp.Save();

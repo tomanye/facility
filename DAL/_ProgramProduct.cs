@@ -106,14 +106,22 @@ namespace DAL
 					return new SqlParameter("@ID", SqlDbType.Int, 0);
 				}
 			}
-			
-			public static SqlParameter ProgramID
-			{
-				get
-				{
-					return new SqlParameter("@ProgramID", SqlDbType.Int, 0);
-				}
-			}
+
+            public static SqlParameter StoreID
+            {
+                get
+                {
+                    return new SqlParameter("@StoreID", SqlDbType.Int, 0);
+                }
+            }
+
+            public static SqlParameter ProgramID
+            {
+                get
+                {
+                    return new SqlParameter("@ProgramID", SqlDbType.Int, 0);
+                }
+            }
 			
 			public static SqlParameter ItemID
 			{
@@ -130,6 +138,7 @@ namespace DAL
 		public class ColumnNames
 		{  
             public const string ID = "ID";
+            public const string StoreID = "StoreID";
             public const string ProgramID = "ProgramID";
             public const string ItemID = "ItemID";
 
@@ -140,8 +149,9 @@ namespace DAL
 					ht = new Hashtable();
 					
 					ht[ID] = _ProgramProduct.PropertyNames.ID;
-					ht[ProgramID] = _ProgramProduct.PropertyNames.ProgramID;
-					ht[ItemID] = _ProgramProduct.PropertyNames.ItemID;
+                    ht[StoreID] = _ProgramProduct.PropertyNames.StoreID;
+                    ht[ProgramID] = _ProgramProduct.PropertyNames.ProgramID;
+                    ht[ItemID] = _ProgramProduct.PropertyNames.ItemID;
 
 				}
 				return (string)ht[columnName];
@@ -155,6 +165,7 @@ namespace DAL
 		public class PropertyNames
 		{  
             public const string ID = "ID";
+            public const string StoreID = "StoreID";
             public const string ProgramID = "ProgramID";
             public const string ItemID = "ItemID";
 
@@ -165,6 +176,7 @@ namespace DAL
 					ht = new Hashtable();
 					
 					ht[ID] = _ProgramProduct.ColumnNames.ID;
+                    ht[StoreID] = _ProgramProduct.ColumnNames.StoreID;
 					ht[ProgramID] = _ProgramProduct.ColumnNames.ProgramID;
 					ht[ItemID] = _ProgramProduct.ColumnNames.ItemID;
 
@@ -180,6 +192,7 @@ namespace DAL
 		public class StringPropertyNames
 		{  
             public const string ID = "s_ID";
+            public const string StoreID = "s_StoreID";
             public const string ProgramID = "s_ProgramID";
             public const string ItemID = "s_ItemID";
 
@@ -197,6 +210,18 @@ namespace DAL
 			set
 	        {
 				base.Setint(ColumnNames.ID, value);
+			}
+		}
+
+        public virtual int StoreID
+	    {
+			get
+	        {
+                return base.Getint(ColumnNames.StoreID);
+			}
+			set
+	        {
+                base.Setint(ColumnNames.StoreID, value);
 			}
 		}
 
@@ -241,6 +266,21 @@ namespace DAL
 					this.SetColumnNull(ColumnNames.ID);
 				else
 					this.ID = base.SetintAsString(ColumnNames.ID, value);
+			}
+		}
+
+        public virtual string s_StoreID
+	    {
+			get
+	        {
+                return this.IsColumnNull(ColumnNames.StoreID) ? string.Empty : base.GetintAsString(ColumnNames.StoreID);
+			}
+			set
+	        {
+				if(string.Empty == value)
+                    this.SetColumnNull(ColumnNames.StoreID);
+				else
+                    this.StoreID = base.SetintAsString(ColumnNames.StoreID, value);
 			}
 		}
 
@@ -317,6 +357,16 @@ namespace DAL
 					}
 				}
 
+                public WhereParameter StoreID
+				{
+					get
+					{
+                        WhereParameter where = new WhereParameter(ColumnNames.StoreID, Parameters.StoreID);
+							this._clause._entity.Query.AddWhereParameter(where);
+							return where;
+					}
+				}
+
 				public WhereParameter ProgramID
 				{
 					get
@@ -354,6 +404,18 @@ namespace DAL
 				}
 			}
 
+            public WhereParameter StoreID
+		    {
+				get
+		        {
+                    if (_StoreID_W == null)
+	        	    {
+                        _StoreID_W = TearOff.StoreID;
+					}
+                    return _StoreID_W;
+				}
+			}
+
 			public WhereParameter ProgramID
 		    {
 				get
@@ -379,6 +441,7 @@ namespace DAL
 			}
 
 			private WhereParameter _ID_W = null;
+            private WhereParameter _StoreID_W = null;
 			private WhereParameter _ProgramID_W = null;
 			private WhereParameter _ItemID_W = null;
 
@@ -453,6 +516,16 @@ namespace DAL
 					}
 				}
 
+                public AggregateParameter StoreID
+				{
+					get
+					{
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.StoreID, Parameters.StoreID);
+							this._clause._entity.Query.AddAggregateParameter(aggregate);
+							return aggregate;
+					}
+				}
+
 				public AggregateParameter ProgramID
 				{
 					get
@@ -490,6 +563,18 @@ namespace DAL
 				}
 			}
 
+            public AggregateParameter StoreID
+		    {
+				get
+		        {
+                    if (_StoreID_W == null)
+	        	    {
+                        _StoreID_W = TearOff.StoreID;
+					}
+                    return _StoreID_W;
+				}
+			}
+
 			public AggregateParameter ProgramID
 		    {
 				get
@@ -515,6 +600,7 @@ namespace DAL
 			}
 
 			private AggregateParameter _ID_W = null;
+            private AggregateParameter _StoreID_W = null;
 			private AggregateParameter _ProgramID_W = null;
 			private AggregateParameter _ItemID_W = null;
 
@@ -599,6 +685,10 @@ namespace DAL
 		
 			p = cmd.Parameters.Add(Parameters.ID);
 			p.SourceColumn = ColumnNames.ID;
+			p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.StoreID);
+            p.SourceColumn = ColumnNames.StoreID;
 			p.SourceVersion = DataRowVersion.Current;
 
 			p = cmd.Parameters.Add(Parameters.ProgramID);

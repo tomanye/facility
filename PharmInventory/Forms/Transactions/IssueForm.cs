@@ -1137,7 +1137,7 @@ namespace PharmInventory.Forms.Transactions
 
             if (currEthMonth == 11 || currEthMonth == 12)
             {
-                if (inventory.IsInventoryCompleteToReceive(currEthYear, Convert.ToInt32(cboStores.EditValue)) != false) return;
+                if (inventory.IsInventoryCompleteToReceive(currEthYear-1, Convert.ToInt32(cboStores.EditValue)) != false) return;
                 XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
             }

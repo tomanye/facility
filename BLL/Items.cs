@@ -1835,7 +1835,6 @@ FROM    Items itm
             var dtbl = balance.GetSOHForProgramRRF(storeId, fromMonth, fromYear);
             var dtbl2 = balance.GetSOHForProgramRRF(storeId, toMonth, toYear);
 
-
             var dt1 = new DateTime(fromYear, fromMonth, DateTime.DaysInMonth(fromYear, fromMonth));
             var dt2 = new DateTime(toYear, toMonth, DateTime.DaysInMonth(toYear, toMonth));
 
@@ -1868,7 +1867,9 @@ FROM    Items itm
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
-            query = string.Format("select distinct Items.ID,Items.StockCodeDACA,Items.Cost, case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack from Items");
+            query = string.Format("select distinct Items.ID,Items.StockCodeDACA,Items.Cost, " +
+                                  " case Items.Cost when 0 then 1 else isnull(Items.Cost,1) end as QtyPerPack " + 
+                                  " from Items");
             this.LoadFromRawSql(query);
             var preferredPackSizetbl = DataTable;
             var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();

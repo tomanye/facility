@@ -174,12 +174,10 @@ namespace PharmInventory.Forms.Reports
             {
                 tblRRF = itm.GetRRFReportWithOutUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
-
             else if (_standardRRF && VisibilitySetting.HandleUnits == 2)
             {
                 tblRRF = itm.GetRRFReportByUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
-
             else if (_standardRRF && VisibilitySetting.HandleUnits == 3)
             {
                 tblRRF = itm.GetRRFReportByUnit(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
@@ -188,11 +186,11 @@ namespace PharmInventory.Forms.Reports
             {
                 tblRRF = itm.GetEmergencyRRFReport(_storeID, _fromYear, _fromMonth, _toYear, _toMonth);
             }
+
             gridItemsChoice.DataSource = tblRRF;
 
             ChooseGridView();
         }
-
 
         private static void PopulateTheYearCombo(ComboBoxEdit combo)
         {
