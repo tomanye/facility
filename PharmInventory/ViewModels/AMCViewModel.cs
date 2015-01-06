@@ -161,6 +161,11 @@ namespace PharmInventory.ViewModels
         {
             var amcrepo = new AmcReportRepository();
             var DOS = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
+            if (DOS > (amcRange * 30))
+            {
+                DOS = amcRange * 30;
+            }
+
             var totalCAMC = Builder.CalculateTotalConsumptionAMC(itemId, storeId, startDate, endDate, amcRange, DOS);
             var totalCWDOS = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate,endDate);
 
@@ -186,6 +191,11 @@ namespace PharmInventory.ViewModels
         {
             var amcrepo = new AmcReportRepository();
             var DOS = Builder.CalculateStockoutDays(itemId, storeId, startDate, DateTime.Now);
+            if (DOS > (amcRange * 30))
+            {
+                DOS = amcRange * 30;
+            }
+
             var totalCAMC = Builder.CalculateTotalConsumptionAMC(itemId, storeId, startDate, endDate, amcRange, DOS);
             var totalCWDOS = Builder.CalculateTotalConsumptionWithoutDOS(itemId, storeId, startDate, endDate);
 
