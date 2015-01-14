@@ -926,7 +926,22 @@
     <Content Include="Scripts\9941_Add Program Name and Description.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9942_ALTER ProgramProduct Stored Procedures for StoreID column.sql">
+    <Content Include="Scripts\9942_DROP ProgramProduct Stored Procedures.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9943_CREATE ProgramProductDelete Stored Procedures for StoreID column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9944_CREATE ProgramProduct StoredInsert Procedures for StoreID column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9945_CREATE ProgramProductLoadAll Stored Procedures for StoreID column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9946_CREATE ProgramProductLoadByPrimaryKey Stored Procedures for StoreID column.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9947_CREATE ProgramProductUpdate Stored Procedures for StoreID column.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\994_AlterYearEndUpdate.sql">

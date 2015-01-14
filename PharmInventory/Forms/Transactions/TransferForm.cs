@@ -402,11 +402,9 @@ namespace PharmInventory.Forms.Transactions
             var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);
             PopulateItemList(dtItem);
             var inventory = new YearEnd();
-            if (inventory.IsInventoryCompleteToReceive(2006, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
+            if (inventory.IsInventoryCompleteToReceive(EthiopianDate.EthiopianDate.Now.Year-1, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
             XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
-
-
         }
 
 
