@@ -131,6 +131,7 @@ namespace PharmInventory
             this.bwAMCCalculator = new System.ComponentModel.BackgroundWorker();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bwDOSCalculator = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -179,7 +180,7 @@ namespace PharmInventory
             this.inventoryToolStripMenuItem});
             this.transactionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
-            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.transactionsToolStripMenuItem.Text = "Transactions";
             // 
             // receiveToolStripMenuItem
@@ -379,7 +380,7 @@ namespace PharmInventory
             // 
             this.receiveTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_48;
             this.receiveTransactionToolStripMenuItem.Name = "receiveTransactionToolStripMenuItem";
-            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.receiveTransactionToolStripMenuItem.Tag = "Receive Log";
             this.receiveTransactionToolStripMenuItem.Text = "Receive Transactions";
             this.receiveTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -388,7 +389,7 @@ namespace PharmInventory
             // 
             this.issueTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_green_48;
             this.issueTransactionToolStripMenuItem.Name = "issueTransactionToolStripMenuItem";
-            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.issueTransactionToolStripMenuItem.Tag = "Issue Log";
             this.issueTransactionToolStripMenuItem.Text = "Issue Transactions";
             this.issueTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -397,7 +398,7 @@ namespace PharmInventory
             // 
             this.lossAdjustmentToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.navigate_48;
             this.lossAdjustmentToolStripMenuItem.Name = "lossAdjustmentToolStripMenuItem";
-            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.lossAdjustmentToolStripMenuItem.Tag = "Adjustment Log";
             this.lossAdjustmentToolStripMenuItem.Text = "Loss / Adjustment";
             this.lossAdjustmentToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -406,7 +407,7 @@ namespace PharmInventory
             // 
             this.inventoryLogToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.Blue_cube1;
             this.inventoryLogToolStripMenuItem.Name = "inventoryLogToolStripMenuItem";
-            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.inventoryLogToolStripMenuItem.Tag = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Text = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -1106,6 +1107,11 @@ namespace PharmInventory
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(91, 17);
             this.toolStripStatusLabel1.Text = "[Status Toolbar]";
             // 
+            // bwDOSCalculator
+            // 
+            this.bwDOSCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDOSCalculator_DoWork);
+            this.bwDOSCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDOSCalculator_RunWorkerCompleted);
+            // 
             // MainWindow
             // 
             this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1245,6 +1251,7 @@ namespace PharmInventory
         private System.ComponentModel.BackgroundWorker bwAMCCalculator;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.ComponentModel.BackgroundWorker bwDOSCalculator;
     }
 }
 

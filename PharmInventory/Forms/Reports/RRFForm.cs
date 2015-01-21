@@ -158,7 +158,6 @@ namespace PharmInventory.Forms.Reports
             return currentYear;
         }
 
-
         private void PopulateList()
         {
             _storeID = Convert.ToInt32(cboStores.EditValue);

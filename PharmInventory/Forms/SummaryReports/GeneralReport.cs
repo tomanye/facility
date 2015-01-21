@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
@@ -11,6 +13,7 @@ using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using System.Threading;
+using DevExpress.XtraPrinting;
 using PharmInventory.HelperClasses;
 
 namespace PharmInventory
@@ -21,6 +24,8 @@ namespace PharmInventory
         {
             InitializeComponent();
         }
+        private System.IO.Stream streamToPrint;
+        string streamType;
 
         int storeId = 0;
         private void GeneralReport_Load(object sender, EventArgs e)
@@ -1982,17 +1987,39 @@ namespace PharmInventory
             }
         }
 
-        private void xpButton2_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
-            //string[] header = { info.HospitalName, " Summery Report ", cboStores.Text, " Date: " + dtDate.Text };
-            //MainWindow.ExportToExcel(listDetail, header);
-            //MainWindow.ExportToExcel(listStatused, header);
-            //MainWindow.ExportToExcel(listReceiveSum, header);
-            //MainWindow.ExportToExcel(listIssued, header);
+            string[] header = { info.HospitalName, " Summery Report ", cboStores.Text, " Date: " + dtDate.Text };
+
+            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel | *.xls", FileName = header[0]};
+            if (DialogResult.OK == saveDlg.ShowDialog())
+            {
+                if (tabControl1.SelectedTabPage == tabPage8)
+                {
+                    XlsExportOptions opts2 = new XlsExportOptions();
+                    opts2.SheetName = "Receive Summary";
+                    listReceiveSum.ExportToXls(saveDlg.FileName, opts2);
+                    System.Diagnostics.Process.Start(saveDlg.FileName);
+                }
+                else if (tabControl1.SelectedTabPage == tabPage9)
+                {
+                    XlsExportOptions opts3 = new XlsExportOptions();
+                    opts3.SheetName = "Issue Summary";
+                    listIssued.ExportToXls(saveDlg.FileName, opts3);
+                    System.Diagnostics.Process.Start(saveDlg.FileName);
+                }
+                else
+                {
+                    XlsExportOptions opts1 = new XlsExportOptions();
+                    opts1.SheetName = "Stock Status Summary";
+                    listStatused.ExportToXls(saveDlg.FileName, opts1);
+                    System.Diagnostics.Process.Start(saveDlg.FileName);
+                }
+            }
         }
 
         private void linkLabel22_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -2041,6 +2068,47 @@ namespace PharmInventory
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            printableComponentLink1.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            printableComponentLink1.CreateDocument(false);
+            //printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
+            printableComponentLink1.ShowPreview();
+        }
+
+        private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            var info = new GeneralInfo();
+            info.LoadAll();
+
+            int year = Convert.ToInt32(cboYear.EditValue);
+            int month = 10;
+            int day = 30;
+            if (year == dtCurrent.Year)
+            {
+                month = dtCurrent.Month;
+                day = dtCurrent.Day;
+            }
+
+            DateTime startDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, year - 1));
+            DateTime endDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", day, month, year));
+            DateTime currentDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", dtCurrent.Day, dtCurrent.Month, dtCurrent.Year));
+
+            string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
+            string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
+            string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
+
+            string[] header = { info.HospitalName, "Summary Report", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.PageHeaderFooter = header;
+
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
         }
     }
 }

@@ -485,6 +485,7 @@
       <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperClasses\CalculateAMC.cs" />
+    <Compile Include="HelperClasses\CalculateDOS.cs" />
     <Compile Include="HelperClasses\Cell.cs" />
     <Compile Include="Forms\UtilitiesAndForms\ChangePassword.cs">
       <SubType>Form</SubType>
