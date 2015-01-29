@@ -1,0 +1,12 @@
+PharmInventory/bin/
+PharmInventory/obj/
+QuickUpdator/obj/
+StockoutIndexBuilder.cs/bin/
+QuickUpdator/bin/
+BLL/bin/
+BLL/obj/
+ConnectionStringManager/bin/
+ConnectionStringManager/obj/
+DAL/bin/
+DAL/obj/
+StockoutIndexBuilder.cs/obj/
