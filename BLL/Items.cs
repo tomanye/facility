@@ -704,15 +704,18 @@ FROM    Items itm
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeID)
+
+        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeId)
         {
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
-            var query = string.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
-                                      "CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
+            whereQ = whereQ + ((typeId != 0) ? " AND vwGetAllItems.TypeID = " + typeId : "");
+
+            var query = string.Format(" SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
+                                      " CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
-                                      "ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE quantityleft > 0 AND Disposal.StoreId = {0} " +
-                                      "AND year(Disposal.Date) = {1} and vwGetAllItems.TypeID = {2} " + whereQ + " ORDER BY FullItemName", storeId, year ,typeID);
+                                      " ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
+                                      " AND year(Disposal.Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
 
             this.LoadFromRawSql(query);
             return this.DataTable;

@@ -1026,7 +1026,6 @@ namespace PharmInventory
             this.navBarItem1.Name = "navBarItem1";
             this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
             this.navBarItem1.Tag = "stockoutindexer";
-            this.navBarItem1.Visible = false;
             // 
             // lbiRRF
             // 

@@ -35,11 +35,6 @@ namespace PharmInventory
 
             Stores stor = new Stores();
             DataTable dtStor = stor.GetActiveStores();
-            DataRow rowStore = dtStor.NewRow();
-            rowStore["ID"] = "0";
-            rowStore["StoreName"] = "All";
-            dtStor.Rows.InsertAt(rowStore, 0);
-
             cboStores.DataSource = dtStor;
 
             var type = new BLL.Type();

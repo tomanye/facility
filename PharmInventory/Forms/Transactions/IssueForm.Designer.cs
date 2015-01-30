@@ -886,6 +886,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn17.OptionsColumn.ReadOnly = true;
             this.gridColumn17.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn17.OptionsFilter.AllowFilter = false;
+            this.gridColumn17.ToolTip = "Dispensing Unit Average Monthly Consumption";
             this.gridColumn17.UnboundExpression = "Dispensing Unit Average Monthly Consumption";
             this.gridColumn17.Visible = true;
             this.gridColumn17.Width = 84;
@@ -907,6 +908,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsColumn.ReadOnly = true;
             this.gridColumn18.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn18.OptionsFilter.AllowFilter = false;
+            this.gridColumn18.ToolTip = "Dispensing Unit Requested Quantity";
             this.gridColumn18.Visible = true;
             this.gridColumn18.Width = 129;
             // 

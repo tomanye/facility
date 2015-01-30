@@ -242,7 +242,7 @@ namespace PharmInventory.Forms.Reports
             this.txtItemName.Size = new System.Drawing.Size(336, 20);
             this.txtItemName.StyleController = this.layoutControl1;
             this.txtItemName.TabIndex = 45;
-            this.txtItemName.TextChanged += new System.EventHandler(this.txtItemName_TextChanged);
+            this.txtItemName.TextChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // treeCategory
             // 

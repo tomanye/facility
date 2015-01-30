@@ -37,7 +37,7 @@ namespace PharmInventory
             ChangeHospitalName();
             ShowAccessLevel();
 
-            bwAMCCalculator.RunWorkerAsync();
+            bwDOSCalculator.RunWorkerAsync();
         }
 
         /// <summary>
@@ -288,7 +288,6 @@ namespace PharmInventory
         private void bwAMCCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             statusStrip.Items[0].Text = "AMC calculation completed for all stores.";
-            bwDOSCalculator.RunWorkerAsync();
         }
 
         private void bwDOSCalculator_DoWork(object sender, DoWorkEventArgs e)
@@ -301,6 +300,7 @@ namespace PharmInventory
         private void bwDOSCalculator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             statusStrip.Items[0].Text = "DOS calculation completed for all stores.";
+            bwAMCCalculator.RunWorkerAsync();
         }
     }
 }

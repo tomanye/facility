@@ -41,7 +41,7 @@ namespace PharmInventory.HelperClasses
             var allstores = _storerepository.AllStores();
             foreach (var store in allstores)
             {        
-                var allItems = receiveDocRepository.RecievedItems().Select(m => m.Item).Distinct().ToList();
+                var allItems = receiveDocRepository.RecievedItems().Where(x=>x.StoreID == store.ID).Select(m => m.Item).Distinct().ToList();
                 var itemsList = ItemViewModelCollection.Create(allItems);
 
                 foreach (var item in itemsList)

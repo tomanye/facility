@@ -97,7 +97,7 @@ namespace StockoutIndexBuilder
             var stockOut = new Stockout() { ItemID = itemID, StoreID = storeID};
             var lastTransaction = allTransactions.LastOrDefault();
             for (int i = 0; i < allTransactions.Length; i++)
-            {                
+            {
                 switch (allTransactions[i].TransactionType)
                 {   
                     case TransactionType.Receipt:

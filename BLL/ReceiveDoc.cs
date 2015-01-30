@@ -624,7 +624,7 @@ namespace BLL
                 this.LoadFromRawSql(String.Format(@" SELECT * 
                                                  FROM  dbo.vwGetAllItems 
                                                  WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
-                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}))) 
+                                                         ))) 
                                                          AND (IsInHospitalList = 1) 
                                                          AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
                                                          )))", storeId, year));

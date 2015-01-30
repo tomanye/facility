@@ -129,7 +129,7 @@ namespace PharmInventory.Forms.Reports
         {
             gridItemsList.DataSource = (DataTable)e.Result;
             if (ckExclude.Checked)
-                gridItemListView.ActiveFilterString = string.Format("[Received] != '0'and [TypeID]={0}", Convert.ToInt32(lkCategory.EditValue));
+                gridItemListView.ActiveFilterString = string.Format("[Received] != '0'and [TypeID]={0} AND [FullItemName] like '{1}%'", Convert.ToInt32(lkCategory.EditValue), txtItemName.Text);
         }
 
         /// <summary>
@@ -335,10 +335,8 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            gridItemListView.ActiveFilterString = "[FullItemName] like '" + txtItemName.Text + "%'";
-        }
-
-       
+            PopulateItemList();
+        }      
 
         /// <summary>
         /// Populates the items based on the chosen program
