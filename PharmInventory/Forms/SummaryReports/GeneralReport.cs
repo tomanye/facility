@@ -30,19 +30,21 @@ namespace PharmInventory
         int storeId = 0;
         private void GeneralReport_Load(object sender, EventArgs e)
         {
-            //TabPage z = tabControl1.TabPages[2];
-            //tabControl1.TabPages.Remove(tabControl1.TabPages[2]);
-
             Stores stor = new Stores();
             DataTable dtStor = stor.GetActiveStores();
+            DataRow dtStorRow = dtStor.NewRow();
+            dtStorRow["ID"] = "0";
+            dtStorRow["StoreName"] = "All";
+            dtStor.Rows.InsertAt(dtStorRow, 0);
+
             cboStores.DataSource = dtStor;
 
             var type = new BLL.Type();
             DataTable alltypes = type.GetAllCategory();
-            DataRow row = alltypes.NewRow();
-            row["ID"] = "0";
-            row["Name"] = "All";
-            alltypes.Rows.InsertAt(row, 0);
+            DataRow alltypesRow = alltypes.NewRow();
+            alltypesRow["ID"] = "0";
+            alltypesRow["Name"] = "All";
+            alltypes.Rows.InsertAt(alltypesRow, 0);
 
             lkCategory.Properties.DataSource = alltypes;
             lkCategory.Properties.DisplayMember = "Name";
@@ -1990,30 +1992,27 @@ namespace PharmInventory
             dtDate.CustomFormat = "MM/dd/yyyy";
             string[] header = { info.HospitalName, " Summery Report ", cboStores.Text, " Date: " + dtDate.Text };
 
-            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel | *.xls", FileName = header[0]};
-            if (DialogResult.OK == saveDlg.ShowDialog())
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/SummaryReport" + (new Random()).Next(1, 1000) + ".xls";
+            if (tabControl1.SelectedTabPage == tabPage8)
             {
-                if (tabControl1.SelectedTabPage == tabPage8)
-                {
-                    XlsExportOptions opts2 = new XlsExportOptions();
-                    opts2.SheetName = "Receive Summary";
-                    listReceiveSum.ExportToXls(saveDlg.FileName, opts2);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
-                else if (tabControl1.SelectedTabPage == tabPage9)
-                {
-                    XlsExportOptions opts3 = new XlsExportOptions();
-                    opts3.SheetName = "Issue Summary";
-                    listIssued.ExportToXls(saveDlg.FileName, opts3);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
-                else
-                {
-                    XlsExportOptions opts1 = new XlsExportOptions();
-                    opts1.SheetName = "Stock Status Summary";
-                    listStatused.ExportToXls(saveDlg.FileName, opts1);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
+                XlsExportOptions opts2 = new XlsExportOptions();
+                opts2.SheetName = "Receive Summary";
+                listReceiveSum.ExportToXls(filePath, opts2);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            else if (tabControl1.SelectedTabPage == tabPage9)
+            {
+                XlsExportOptions opts3 = new XlsExportOptions();
+                opts3.SheetName = "Issue Summary";
+                listIssued.ExportToXls(filePath, opts3);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            else
+            {
+                XlsExportOptions opts1 = new XlsExportOptions();
+                opts1.SheetName = "Stock Status Summary";
+                listStatused.ExportToXls(filePath, opts1);
+                System.Diagnostics.Process.Start(filePath);
             }
         }
 
