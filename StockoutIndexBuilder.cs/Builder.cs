@@ -186,7 +186,7 @@ namespace StockoutIndexBuilder
             var db = new StockoutEntities();
             var receipts = from receipt in db.ReceiveDocs
                            where receipt.ItemID == itemID && receipt.StoreID == storeID
-                           select new Transaction { TransactionID = receipt.ID, TransactionTypeCode = (int)TransactionType.Receipt, Date = receipt.Date, Quantity = receipt.Quantity };
+                           select new Transaction { TransactionID = receipt.ID, TransactionTypeCode = (int)TransactionType.Receipt, Date = receipt.Date, Quantity = receipt.QuantityLeft };
             return receipts.ToList();
         }
 
