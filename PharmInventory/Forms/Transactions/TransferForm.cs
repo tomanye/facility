@@ -75,7 +75,6 @@ namespace PharmInventory.Forms.Transactions
             gridItemsView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# ", DateTime.Now);
         }
 
-
         private void PopulateItemList(DataTable dtItem)
         {
             if (_dtSelectedTable == null)
@@ -84,7 +83,6 @@ namespace PharmInventory.Forms.Transactions
                 _dtSelectedTable.PrimaryKey = new[] { _dtSelectedTable.Columns["ReceiveID"] };
             }
             gridItemsChoice.DataSource = dtItem;
-          
             try
             {
                 dtItem.Columns.Add("IsSelected", typeof(bool));
@@ -202,6 +200,7 @@ namespace PharmInventory.Forms.Transactions
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
+        
         private string ValidateFields()
         {
             dtRecDate.Value = DateTime.Now;
@@ -252,10 +251,12 @@ namespace PharmInventory.Forms.Transactions
             return valid;
 
         }
+        
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ResetFields();
         }
+        
         private void ResetFields()
         {
             tabControl1.SelectedTabPageIndex = 0;
@@ -270,6 +271,7 @@ namespace PharmInventory.Forms.Transactions
                 dr["IsSelected"] = false;
             }
         }
+        
         private void gridItemsView_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             var view = sender as GridView;
@@ -377,7 +379,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void TxtItemNameTextChanged(object sender, EventArgs e)
         {
-            gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '%{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
+            gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
         }
 
         private void RepositoryItemLookUpEdit1Enter(object sender, EventArgs e)
@@ -401,12 +403,13 @@ namespace PharmInventory.Forms.Transactions
             if (lkFromStore.EditValue == null) return;
             var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);
             PopulateItemList(dtItem);
+            gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
+
             var inventory = new YearEnd();
             if (inventory.IsInventoryCompleteToReceive(EthiopianDate.EthiopianDate.Now.Year-1, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
             XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
         }
-
 
         private bool Validate()
         {
@@ -460,6 +463,5 @@ namespace PharmInventory.Forms.Transactions
                     _tabPage = 0;
             }
         }
-
     }
 }

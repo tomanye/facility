@@ -37,6 +37,12 @@ namespace PharmInventory.Forms.Reports
         {
 
             PopulateCatTree(SelectedType);
+
+            var stor = new Stores();
+            stor.GetActiveStores();
+            cboStores.Properties.DataSource = stor.DefaultView;
+            cboStores.ItemIndex = 0;
+
             DataTable table = BLL.Type.GetAllTypes();
             DataRow row = table.NewRow();
             row["ID"] = "0";
@@ -49,10 +55,6 @@ namespace PharmInventory.Forms.Reports
             var itemunit = new ItemUnit();
             var allunits = itemunit.GetAllUnits();
             unitBindingSource.DataSource = allunits.DefaultView;
-
-            var stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
 
             string[] arr = {"All",
             "Stock Out",
@@ -467,18 +469,118 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            if (filter == "Stock Out" && cboStores.EditValue !=null)
+            if (ckExclude.Checked)
             {
-               // PopulateGrid();
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Stock Out'",
-                                                                      Convert.ToInt32(lkCommodityTypes.EditValue));
+                if (filter == "Stock Out" && cboStores.EditValue != null)
+                {
+                    if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and [Status]='Stock Out'");
+                    }
+                    else
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and TypeID={0} and [Status]='Stock Out'",
+                                                      Convert.ToInt32(lkCommodityTypes.EditValue));
+                    }
+                }
+                else if (filter == "Over Stocked" && cboStores.EditValue != null)
+                {
+                    if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and [Status]='Over Stocked'");
+                    }
+                    else
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and TypeID={0} and [Status]='Over Stocked'",
+                                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    }
+                }
             }
-            else if (filter == "Over Stocked" && cboStores.EditValue != null)
+            else
             {
-                //PopulateGrid();
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and [Status]='Over Stocked'",
-                                                                      Convert.ToInt32(lkCommodityTypes.EditValue));
+                if (filter == "Stock Out" && cboStores.EditValue != null)
+                {
+                    if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and [Status]='Stock Out'");
+                    }
+                    else
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and TypeID={0} and [Status]='Stock Out'",
+                                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    }
+                }
+                else if (filter == "Over Stocked" && cboStores.EditValue != null)
+                {
+                    if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and [Status]='Over Stocked'");
+                    }
+                    else
+                    {
+                        gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and TypeID={0} and [Status]='Over Stocked'",
+                                                                              Convert.ToInt32(lkCommodityTypes.EditValue));
+                    }
+                }
             }
+        }
+
+        private void ckExclude_CheckedChanged(object sender, EventArgs e)
+        {            
+                if (ckExclude.Checked)
+                {
+                    if (filter == "Stock Out" && cboStores.EditValue != null)
+                    {
+                        if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and [Status]='Stock Out'");
+                        }
+                        else
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and TypeID={0} and [Status]='Stock Out'",
+                                                          Convert.ToInt32(lkCommodityTypes.EditValue));
+                        }
+                    }
+                    else if (filter == "Over Stocked" && cboStores.EditValue != null)
+                    {
+                        if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and [Status]='Over Stocked'");
+                        }
+                        else
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] != '0' and TypeID={0} and [Status]='Over Stocked'",
+                                                                                  Convert.ToInt32(lkCommodityTypes.EditValue));
+                        }
+                    }
+                }
+                else
+                {
+                    if (filter == "Stock Out" && cboStores.EditValue != null)
+                    {
+                        if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and [Status]='Stock Out'");
+                        }
+                        else
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and TypeID={0} and [Status]='Stock Out'",
+                                                                                  Convert.ToInt32(lkCommodityTypes.EditValue));
+                        }
+                    }
+                    else if (filter == "Over Stocked" && cboStores.EditValue != null)
+                    {
+                        if (Convert.ToInt32(lkCommodityTypes.EditValue) == 0)
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and [Status]='Over Stocked'");
+                        }
+                        else
+                        {
+                            gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == '0' and TypeID={0} and [Status]='Over Stocked'",
+                                                                                  Convert.ToInt32(lkCommodityTypes.EditValue));
+                        }
+                    }
+                }
         }
     }
 }

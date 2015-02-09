@@ -180,14 +180,15 @@ namespace PharmInventory
 
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
-            if (ckExclude.Checked)
-            {
-                PopulateSStatus1();
-            }
-            if (!ckExclude.Checked)
-            {
-                GenerateStockStatusPieChart();
-            }
+            cboYear_SelectedValueChanged(sender, e);
+            //if (ckExclude.Checked)
+            //{
+            //    PopulateSStatus1();
+            //}
+            //if (!ckExclude.Checked)
+            //{
+            //    GenerateStockStatusPieChart();
+            //}
         }
 
         private void PopulateSStatus1()
