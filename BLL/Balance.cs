@@ -971,15 +971,22 @@ namespace BLL
 
         public DataTable GetSOH(int storeId, int month, int year)
         {
-            var ld = new System.Collections.Specialized.ListDictionary
+            if (storeId == 0)
+            {
+                return GetSOHForAllStores(month, year);
+            }
+            else
+            {
+                var ld = new System.Collections.Specialized.ListDictionary
                          {
                              {"@storeid", storeId},
                              {"@month", month},
                              {"@year", year},
                              {"@days", DateTime.DaysInMonth(year, month)}
                          };
-            this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
-            return this.DataTable;
+                this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
+                return this.DataTable;
+            }
         }
 
         public DataTable GetSOHOptimizedDB(int storeId, int itemid, int month, int year)

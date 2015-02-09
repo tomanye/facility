@@ -760,6 +760,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+
             xpButton2_Click(sender, e);
             issueGrid.DataSource = null;
             issueGridView.RefreshData();
@@ -787,7 +788,7 @@ namespace PharmInventory.Forms.Transactions
             txtRemark.Text = "";
             txtStore.Text = "";
             cboReceivingUnits.ItemIndex = -1;
-            cboStores.EditValue = 1;
+            cboStores.ItemIndex = 0;
             PopulateItemList();
             _tabPage = 0;
             tabControl1.SelectedTabPageIndex = 0;

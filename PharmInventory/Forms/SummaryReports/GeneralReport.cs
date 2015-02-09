@@ -65,6 +65,28 @@ namespace PharmInventory
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerAsync();
+
+            ManageLabelLinksStatus();
+        }
+
+        private void ManageLabelLinksStatus()
+        {
+            #region Stockstatus Summary tab
+            listInStock.Visible = lblInStock.Text != "0 (.0%)";
+            listStockOut.Visible = lblStockOut.Text != "0 (.0%)";
+            listNearEOP.Visible = lblNearEOP.Text != "0 (.0%)";
+            listOverstock.Visible = lblOverStocked.Text != "0 (.0%)";
+            listBelowEOP.Visible = lblBelowEOP.Text != "0 (.0%)";
+            listBelowMin.Visible = lblBelowMin.Text != "0 (.0%)";
+            #endregion Stockstatus Summary tab
+
+            #region Never Received Summary tab
+            linkLabel10.Visible = lblNeverRecived.Text != "0 (.0%)";
+            #endregion Never Received Summary tab
+            
+            #region Never Issued Summary tab
+            linkLabel21.Visible = lblNeverIssued.Text != "0 (.0%)";
+            #endregion Never Issued Summary tab
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -124,7 +146,7 @@ namespace PharmInventory
                 DataTable dtItm = itm.GetItemsByProgram(prog.ID);
                 int totalECLS = dtItm.Rows.Count;
                 lblNoECLS.Text = totalECLS.ToString();
-                int neverRec = rec.CountNeverReceivedItems(storeId);
+                int neverRec = rec.CountNeverReceivedItems(storeId, curYear);
                 int stockin = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
@@ -189,7 +211,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -358,7 +380,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -526,7 +548,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -695,7 +717,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -863,7 +885,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -993,8 +1015,8 @@ namespace PharmInventory
                 DataTable dtRec = rec.GetTopReceivedItems(storeId);
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
-                lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId, curYear).ToString();
+                if (lblNeverRecived.Text == "0")
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1002,8 +1024,8 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
-                lblNeverIssued.Text = rec.CountReceivedNotIssuedItems(storeId).ToString();
-                if (rec.CountReceivedNotIssuedItems(storeId) == 0)
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItems(storeId, curYear).ToString();
+                if (lblNeverIssued.Text == "0")
                 {
                     linkLabel21.Visible = false;
                 }
@@ -1127,7 +1149,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1260,7 +1282,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1377,7 +1399,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1494,7 +1516,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1788,6 +1810,8 @@ namespace PharmInventory
                     }
                 }
             }
+
+            ManageLabelLinksStatus();
         }
 
         private void tabPage8_Click(object sender, EventArgs e)
