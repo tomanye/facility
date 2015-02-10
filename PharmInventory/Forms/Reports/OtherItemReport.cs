@@ -115,7 +115,19 @@ namespace PharmInventory.Forms.Reports
                     unitcolumn.Visible = true;
                     break;
             }
+
             PopulateGrid();
+
+            if (filter == "Stock Out")
+            {
+                ckExclude.Visible = true;
+            }
+            else if (filter == "Over Stocked")
+            {
+                gridItemChoiceView.Columns.RemoveAt(14);//remove DOS column
+                ckExclude.Hide();
+                ckExclude.Enabled = false;
+            }
         }
 
         private void PopulateGrid()

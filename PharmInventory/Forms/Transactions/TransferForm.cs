@@ -403,6 +403,7 @@ namespace PharmInventory.Forms.Transactions
             if (lkFromStore.EditValue == null) return;
             var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue);
             PopulateItemList(dtItem);
+
             gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
 
             var inventory = new YearEnd();
