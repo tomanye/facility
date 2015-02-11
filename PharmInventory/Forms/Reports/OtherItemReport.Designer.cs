@@ -220,6 +220,7 @@ namespace PharmInventory.Forms.Reports
             this.ckExclude.StyleController = this.layoutControl1;
             this.ckExclude.TabIndex = 36;
             this.ckExclude.Visible = false;
+            this.ckExclude.CheckedChanged += new System.EventHandler(this.ckExclude_CheckedChanged);
             // 
             // lkCommodityTypes
             // 

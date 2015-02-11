@@ -35,7 +35,6 @@ namespace PharmInventory.Forms.Reports
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
-
             PopulateCatTree(SelectedType);
 
             var stor = new Stores();
@@ -194,8 +193,6 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-
-
         private void cboStores_SelectedValueChanged(object sender, EventArgs e)
         {
             PopulateGrid();
@@ -271,7 +268,6 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
         }
 
-
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
             //gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
@@ -298,16 +294,12 @@ namespace PharmInventory.Forms.Reports
             //}
         }
 
-
-
         private void radioGroup1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedType = radioGroup1.EditValue.ToString();
             PopulateCatTree(SelectedType);
             PopulateGrid();
         }
-
-
 
         private void gridItemsChoice_DoubleClick(object sender, EventArgs e)
         {
@@ -376,7 +368,6 @@ namespace PharmInventory.Forms.Reports
                     {
                         dtBal = bal.BalanceOfAllItemsForStockStatus(storeId, year, month, SelectedType, programID, commodityTypeID, dtCur, bw);
                     }
-
                     e.Result = dtBal;
                     break;
                 case 2:
@@ -396,11 +387,11 @@ namespace PharmInventory.Forms.Reports
             gridItemsChoice.DataSource = (DataTable)e.Result;
             if (filter == "Stock Out")
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Stock Out' AND [FullItemName] Like '{0}%'", txtItemName.Text);
+                gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == {1} and [Status] == 'Stock Out' AND [FullItemName] Like '{0}%'", txtItemName.Text, (ckExclude.Checked ? 1 : 0));
             }
             else if (filter == "Over Stocked")
             {
-                gridItemChoiceView.ActiveFilterString = String.Format("[Status] == 'Over Stocked' AND [FullItemName] Like '{0}%'", txtItemName.Text);
+                gridItemChoiceView.ActiveFilterString = String.Format("[EverReceived] == {1} and [Status] == 'Over Stocked' AND [FullItemName] Like '{0}%'", txtItemName.Text, (ckExclude.Checked ? 1 : 0));
             }
         }
 
