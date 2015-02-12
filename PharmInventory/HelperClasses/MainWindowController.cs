@@ -134,10 +134,6 @@ namespace PharmInventory
                     frm = new ItemPriceOnlyReport();
                     AddTab("Item Price Only", frm);
                     break;
-                case "stockoutindexer":
-                    frm = new StockOutIndicesBuilder();
-                    AddTab("Stockout Indices Builder",frm);
-                    break;
                 case "Facility Settings":
                     frm = new Hospital();
                     AddTab("Facility Settings", frm);
