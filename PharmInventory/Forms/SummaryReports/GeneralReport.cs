@@ -2128,5 +2128,26 @@ namespace PharmInventory
             TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
             TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
         }
+
+        private void btnPrintGrid_Click(object sender, EventArgs e)
+        {
+            pcl.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pcl.CreateDocument();
+            pcl.ShowPreview();
+        }
+
+        private void btnPrintReceiveSummaryGrid_Click(object sender, EventArgs e)
+        {
+            pclReceive.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pclReceive.CreateDocument();
+            pclReceive.ShowPreview();
+        }
+
+        private void btnPrintIssueSummaryGrid_Click(object sender, EventArgs e)
+        {
+            pclIssue.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pclIssue.CreateDocument();
+            pclIssue.ShowPreview();
+        }
     }
 }
