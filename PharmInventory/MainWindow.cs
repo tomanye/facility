@@ -7,6 +7,10 @@ using DevExpress.XtraEditors;
 using PharmInventory.Forms.Modals;
 using PharmInventory.Forms.Transactions;
 using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace PharmInventory
 {
@@ -38,6 +42,92 @@ namespace PharmInventory
             ShowAccessLevel();
 
             bwDOSCalculator.RunWorkerAsync();
+
+            try
+            {
+                UpdateIssueDocEurDateForNull();
+                UpdateReceiveDocEurDateForNull();
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void UpdateReceiveDocEurDateForNull()
+        {
+            string query = @"select Id, Date, EurDate from ReceiveDoc
+                            where EurDate is null";
+
+            var sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (var connection = new SqlConnection(sqlConnectionString))
+            {
+                var command = new SqlCommand { CommandText = query, CommandType = CommandType.Text, Connection = connection };
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string ethDate = reader.GetValue(1).ToString();
+                    //string[] ethDay;
+                    string[] ethDay = ethDate.Split('/');
+                    string newDate = ethDay[1] + '/' + ethDay[0] + '/' + ethDay[2].Substring(0, 4);
+                    DateTime eurDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(newDate);
+
+                    query = @" update ReceiveDoc set EurDate = '" + eurDate + "' where Id = " + reader.GetValue(0);
+                    ExecuteNonQuery(query);
+                }
+            }
+        }
+
+        private void UpdateIssueDocEurDateForNull()
+        {
+            string query = @"select Id, Date from IssueDoc
+                            where EurDate is null";
+
+            var sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (var connection = new SqlConnection(sqlConnectionString))
+            {
+                var command = new SqlCommand { CommandText = query, CommandType = CommandType.Text, Connection = connection };
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string ethDate = reader.GetValue(1).ToString();
+                    //string[] ethDay;
+                    string[] ethDay = ethDate.Split('/');
+                    string newDate = ethDay[1] + '/' + ethDay[0] + '/' + ethDay[2].Substring(0,4);
+                    DateTime eurDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(newDate);
+
+                    query = @" update IssueDoc set EurDate = '" + eurDate + "' where Id = " + reader.GetValue(0);
+                    ExecuteNonQuery(query);
+                }
+            }
+        }
+
+        public static SqlDataReader ExecuteQuery(string query)
+        {
+            var sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (var connection = new SqlConnection(sqlConnectionString))
+            {
+                var command = new SqlCommand { CommandText = query, CommandType = CommandType.Text, Connection = connection };
+                connection.Open();
+                return command.ExecuteReader();
+            }
+
+        }
+
+        public static void ExecuteNonQuery(string query)
+        {
+            var sqlConnectionString = StockoutIndexBuilder.Settings.ConnectionString;
+            using (var connection = new SqlConnection(sqlConnectionString))
+            {
+                var command = new SqlCommand { CommandText = query, CommandType = CommandType.Text, Connection = connection };
+                connection.Open();
+                command.ExecuteReader();
+            }
+
         }
 
         /// <summary>
