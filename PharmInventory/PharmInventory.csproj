@@ -945,12 +945,6 @@
     <Content Include="Scripts\9947_CREATE ProgramProductUpdate Stored Procedures for StoreID column.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9948_Update IssueDoc.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9949_Update ReceiveDoc.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\994_AlterYearEndUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

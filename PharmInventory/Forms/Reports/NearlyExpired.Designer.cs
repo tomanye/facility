@@ -596,11 +596,11 @@ namespace PharmInventory.Forms.Reports
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.lkCommodityTypes;
-            this.layoutControlItem10.CustomizationFormText = " Type";
+            this.layoutControlItem10.CustomizationFormText = " Category";
             this.layoutControlItem10.Location = new System.Drawing.Point(28, 24);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(259, 24);
-            this.layoutControlItem10.Text = "Type";
+            this.layoutControlItem10.Text = "Category";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(94, 13);
             // 
             // layoutControlItem11

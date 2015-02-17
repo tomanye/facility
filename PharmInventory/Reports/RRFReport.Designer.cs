@@ -194,15 +194,16 @@
             this.xrTableCell46.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell46.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.StockCodeDACA")});
-            this.xrTableCell46.Font = new System.Drawing.Font("Times New Roman", 8.5F);
+            this.xrTableCell46.Font = new System.Drawing.Font("Times New Roman", 8F);
             this.xrTableCell46.Name = "xrTableCell46";
+            this.xrTableCell46.SnapLineMargin = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
             this.xrTableCell46.StylePriority.UseBorderColor = false;
             this.xrTableCell46.StylePriority.UseBorders = false;
             this.xrTableCell46.StylePriority.UseFont = false;
             this.xrTableCell46.StylePriority.UseTextAlignment = false;
             this.xrTableCell46.Text = "xrTableCell46";
-            this.xrTableCell46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell46.Weight = 0.34097435439257673D;
+            this.xrTableCell46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell46.Weight = 0.49695277451062092D;
             // 
             // xrTableCell32
             // 
@@ -220,7 +221,7 @@
             this.xrTableCell32.StylePriority.UseTextAlignment = false;
             this.xrTableCell32.Text = "xrTableCell6";
             this.xrTableCell32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell32.Weight = 0.57336714003561373D;
+            this.xrTableCell32.Weight = 0.41738871991756943D;
             // 
             // xrTableCell33
             // 
@@ -603,8 +604,8 @@
             this.xrTableCell45.StylePriority.UsePadding = false;
             this.xrTableCell45.StylePriority.UseTextAlignment = false;
             this.xrTableCell45.Text = "PPPS";
-            this.xrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
-            this.xrTableCell45.Weight = 0.33847401466983973D;
+            this.xrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell45.Weight = 0.49330830976984619D;
             // 
             // xrTableCell13
             // 
@@ -617,9 +618,9 @@
             this.xrTableCell13.StylePriority.UseFont = false;
             this.xrTableCell13.StylePriority.UsePadding = false;
             this.xrTableCell13.StylePriority.UseTextAlignment = false;
-            this.xrTableCell13.Text = "Beginning B";
+            this.xrTableCell13.Text = "Beg Bal";
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell13.Weight = 0.56916279673379055D;
+            this.xrTableCell13.Weight = 0.4143285016337841D;
             // 
             // xrTableCell14
             // 

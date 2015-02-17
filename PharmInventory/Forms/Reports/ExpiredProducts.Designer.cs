@@ -596,7 +596,7 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(228, 24);
-            this.layoutControlItem9.Text = "Type";
+            this.layoutControlItem9.Text = "Category";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(94, 13);
             // 
             // layoutControlItem14

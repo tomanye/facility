@@ -805,62 +805,32 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetRecievedItemsWithBalanceForTransfer(int storeID, int typeID)
+        public DataTable GetRecievedItemsWithBalanceForStore(int storeID, int typeID, string startDate, string endDate)
         {
-            var query =
-                String.Format(@"SELECT  vw.FullItemName ,
-                                        vw.TypeID ,
-                                        vw.Unit ,
-                                        rd.ID AS ReceiveID ,
-                                        rd.BatchNo ,
-                                        rd.ItemID ,
-                                        ExpDate ExpiryDate ,
-                                        rd.StoreID ,
-                                        rd.Cost ,
-                                        SUM(ISNULL(rd.QuantityLeft,0)) QuantityLeft,
-                                        rd.EurDate ,
-                                        SUM(ISNULL(rd.Quantity, 0)) Received,
-                                        SUM(ISNULL(id.Quantity, 0)) Issued,
-                                        SUM(ISNULL(dl.Quantity, 0)) Loss,
-                                        SUM(ISNULL(da.Quantity, 0)) Adjustment,
-                                       ( SUM(ISNULL(rd.Quantity, 0)) - SUM(ISNULL(id.Quantity, 0))
-                                          - SUM(ISNULL(dl.Quantity, 0)) + SUM(ISNULL(da.Quantity, 0)) ) SOH
-                                FROM    ReceiveDoc rd
-                                        INNER JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
-                                        LEFT JOIN ( SELECT    *
-                                                          FROM      IssueDoc
-                                                        ) id ON rd.ID = id.RecievDocID AND rd.ItemId = id.ItemId
-                                        LEFT JOIN ( SELECT    *
-                                                          FROM      Disposal
-                                                          WHERE     Losses = 0
-                                                        ) dl ON rd.ID = dl.RecID AND  rd.ItemID = dl.ItemID
-                                        LEFT JOIN ( SELECT    *
-                                                          FROM      Disposal
-                                                          WHERE     Losses = 1
-                                                        ) da ON rd.ID = da.RecID and rd.ItemID = da.ItemID
-                                where rd.StoreID = {0} and vw.TypeID = {1}
-                                GROUP BY vw.FullItemName ,
-                                        vw.TypeID ,
-                                        vw.Unit ,
-                                        rd.ID ,
-                                        rd.BatchNo ,
-                                        rd.ItemID ,
-                                        ExpDate ,
-                                        rd.StoreID ,
-                                        rd.Cost ,
-                                        rd.EurDate
-                                HAVING  ( SUM(ISNULL(rd.Quantity, 0)) - SUM(ISNULL(id.Quantity, 0))
-                                          - SUM(ISNULL(dl.Quantity, 0)) + SUM(ISNULL(da.Quantity, 0)) ) > 0 AND SUM(ISNULL(rd.QuantityLeft,0)) > 0
-                                ORDER BY FullItemName ASC", storeID, typeID);
-            this.LoadFromRawSql(query);
-            return this.DataTable;
-        }
-
-        public DataTable GetRecievedItemsWithBalanceForStore(int storeID, int typeID)
-        {
-            var query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate," +
-                                         " StoreID,QuantityLeft,RefNo,rd.UnitID, rd.Cost, EurDate from ReceiveDoc rd " +
-                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft >0 order by FullItemName", storeID, typeID);
+            var query = String.Format(@"SELECT  rd.ID AS ReceiveID ,
+	                                    rd.ItemID ,
+	                                    rd.StoreID ,
+			                                    vw.FullItemName ,
+			                                    vw.StockCode ,
+			                                    vw.TypeID ,
+			                                    vw.Unit ,
+	                                    rd.RefNo ,
+			                                    rd.BatchNo ,
+	                                    rd.EurDate ,
+	                                    ExpDate ExpiryDate ,
+			                                    SupplierID ,
+			                                    rd.Cost ,
+			                                    QuantityLeft ,
+			                                    rd.UnitID ,
+	                                    [Date]
+                                    FROM    ReceiveDoc rd
+                                            JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE   rd.StoreID = {0}
+                                            AND TypeID = {1}
+                                            AND QuantityLeft > 0
+                                    AND Out = 0
+                                    AND rd.[Date] BETWEEN '{2}' AND '{3}'
+                                    ORDER BY FullItemName", storeID, typeID, startDate, endDate);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

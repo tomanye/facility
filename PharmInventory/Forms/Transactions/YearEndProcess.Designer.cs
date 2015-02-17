@@ -580,11 +580,11 @@ namespace PharmInventory.Forms.Transactions
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.lkCommodityTypes;
-            this.layoutControlItem2.CustomizationFormText = "Type";
+            this.layoutControlItem2.CustomizationFormText = "Category";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(289, 24);
-            this.layoutControlItem2.Text = "Type";
+            this.layoutControlItem2.Text = "Category";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(26, 13);
             // 
             // emptySpaceItem2
