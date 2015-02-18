@@ -408,14 +408,16 @@ namespace PharmInventory.Forms.Transactions
             EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
             if (startDate.Month < 11)
             {
-                strStartDate = startDate.Month.ToString() + '/' + startDate.Day.ToString() + '/' + (startDate.Year - 1).ToString();
+                strStartDate = "11/1/" + (startDate.Year - 1).ToString();
             }
             else
             {
-                strStartDate = startDate.Month.ToString() + '/' + startDate.Day.ToString() + '/' + startDate.Year.ToString();
+                strStartDate = "11/1/" + startDate.Year.ToString();
             }
 
-            var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue, strStartDate, EthiopianDate.EthiopianDate.Now.ToDateString());
+            string strEndDate = EthiopianDate.EthiopianDate.Now.Month.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Day.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Year.ToString();
+
+            var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(lkFromStore.EditValue), (int)lkCategories.EditValue, strStartDate, strEndDate);
             PopulateItemList(dtItem);
 
             gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));

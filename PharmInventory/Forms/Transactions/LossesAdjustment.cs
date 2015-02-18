@@ -468,18 +468,20 @@ namespace PharmInventory
             EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
             if (startDate.Month < 11)
             {
-                strStartDate = startDate.Month.ToString() + '/' + startDate.Day.ToString() + '/' + (startDate.Year - 1).ToString();
+                strStartDate = "11/1/" + (startDate.Year - 1).ToString();
             }
             else
             {
-                strStartDate = startDate.Month.ToString() + '/' + startDate.Day.ToString() + '/' + startDate.Year.ToString();
+                strStartDate = "11/1/" + startDate.Year.ToString();
             }
+
+            string strEndDate = EthiopianDate.EthiopianDate.Now.Month.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Day.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Year.ToString();
 
             var rDoc = new ReceiveDoc();
             if (ckExpired.Checked && cboStores.EditValue !=null && lkCategories.EditValue !=null)
             {
                 var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
-                                                                      (int) lkCategories.EditValue, strStartDate, EthiopianDate.EthiopianDate.Now.ToDateString());
+                                                                      (int)lkCategories.EditValue, strStartDate, strEndDate);
                 PopulateItemList(dtItem);
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}",
                                                                       DateTime.Now, (int) lkCategories.EditValue);
