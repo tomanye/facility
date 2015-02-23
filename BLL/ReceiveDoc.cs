@@ -832,6 +832,16 @@ namespace BLL
                                     AND rd.[Date] BETWEEN '{2}' AND '{3}'
                                     ORDER BY FullItemName", storeID, typeID, startDate, endDate);
             this.LoadFromRawSql(query);
+
+            EthiopianDate.EthiopianDate startDateIn = EthiopianDate.EthiopianDate.Now;
+
+            string strStartDateIn = "10/1/" + (startDateIn.Year - 1).ToString();
+            string strEndDateIn = "10/30/" + (startDateIn.Year - 1).ToString();
+
+            DataView dv = new DataView(this.DataTable);
+            dv.RowFilter = "[Date] < '" + strStartDateIn + "' or [Date] > '" + strEndDateIn + "'";
+
+            this.DataTable = dv.ToTable();
             return this.DataTable;
         }
 

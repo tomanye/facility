@@ -442,6 +442,8 @@
             this.gridColumn25.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn25.FieldName = "QuantityLeft";
             this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowEdit = false;
+            this.gridColumn25.OptionsColumn.AllowFocus = false;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 6;
             this.gridColumn25.Width = 168;

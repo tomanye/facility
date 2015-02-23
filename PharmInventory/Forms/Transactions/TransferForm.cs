@@ -406,14 +406,7 @@ namespace PharmInventory.Forms.Transactions
             
             string strStartDate;
             EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
-            if (startDate.Month < 11)
-            {
-                strStartDate = "11/1/" + (startDate.Year - 1).ToString();
-            }
-            else
-            {
-                strStartDate = "11/1/" + startDate.Year.ToString();
-            }
+            strStartDate = "11/1/" + (startDate.Year - 2).ToString();
 
             string strEndDate = EthiopianDate.EthiopianDate.Now.Month.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Day.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Year.ToString();
 
