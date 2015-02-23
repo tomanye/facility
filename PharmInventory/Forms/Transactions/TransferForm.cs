@@ -73,6 +73,16 @@ namespace PharmInventory.Forms.Transactions
             // bind the current date as the datetime field
             dtRecDate.Value = DateTime.Now;
             gridItemsView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# ", DateTime.Now);
+
+            if (Common.IsInventoryPeriod())
+            {
+                btnSave.Enabled = false;
+            }
+            else
+            {
+                btnSave.Enabled = true;
+            }
+
         }
 
         private void PopulateItemList(DataTable dtItem)
