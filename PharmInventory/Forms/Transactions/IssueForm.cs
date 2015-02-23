@@ -121,6 +121,15 @@ namespace PharmInventory.Forms.Transactions
 
             if (!chkExcludeStockedOut.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
+
+            if (Common.IsInventoryPeriod())
+            {
+                btnConfirm.Enabled = false;
+            }
+            else
+            {
+                btnConfirm.Enabled = true;
+            }
         }
 
         private void PopulateCatTree(String type)

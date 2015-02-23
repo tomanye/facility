@@ -78,6 +78,16 @@ namespace PharmInventory
             dtAdjustDate.Value = DateTime.Now;
             if (ckExpired.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1} and [QuantityLeft] > 0", DateTime.Now, (int)lkCategories.EditValue);
+
+            if (Common.IsInventoryPeriod())
+            {
+                btnSave.Enabled = false;
+            }
+            else
+            {
+                btnSave.Enabled = true;
+            }
+
         }
 
         public void PopulateItemList(DataTable dtItem)
