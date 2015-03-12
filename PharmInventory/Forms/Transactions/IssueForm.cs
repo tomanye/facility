@@ -503,7 +503,7 @@ namespace PharmInventory.Forms.Transactions
                                     break;
                             }
 
-                            while (quantity > 0 && rec.RowCount > j)
+                            while (quantity >= 0 && rec.RowCount > j)
                             {
                                 var batch = itm.NeedExpiryBatch ? _dtRec.Rows[j]["BatchNo"].ToString() : "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);

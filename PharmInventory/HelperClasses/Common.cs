@@ -11,7 +11,7 @@ namespace PharmInventory.HelperClasses
         public static bool IsInventoryPeriod()
         {
             int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
-            if (currentMonth == 10)
+            if (currentMonth == 11)
             {
                 MessageBox.Show("You are on inventory period so you cann't perform any transaction.", "HCMIS FE", MessageBoxButton.OK);
                 return true;
