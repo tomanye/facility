@@ -700,7 +700,7 @@ FROM    Items itm
         public DataTable GetExpiredItemsByBatch(int storeId)
         {
             this.FlushData();
-            string query = string.Format("SELECT YEAR(ExpDate) Year, ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} ORDER BY Price DESC", storeId);
+            string query = string.Format("SELECT YEAR(ExpDate) Year, ib.*, (Cost * QuantityLeft) AS Price FROM vwGetReceivedItems ib WHERE (ib.ExpDate <= GETDATE()) AND (ib.Out = 0) AND ib.StoreId = {0} AND (Cost * QuantityLeft) > 0 ORDER BY Price DESC", storeId);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
