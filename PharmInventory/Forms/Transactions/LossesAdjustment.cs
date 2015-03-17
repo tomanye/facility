@@ -476,7 +476,7 @@ namespace PharmInventory
         {
             string strStartDate;
             EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
-            strStartDate = "11/1/" + (startDate.Year - 2).ToString();
+            strStartDate = "11/1/" + (startDate.Year - 5).ToString();
 
             string strEndDate = EthiopianDate.EthiopianDate.Now.Month.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Day.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Year.ToString();
 
