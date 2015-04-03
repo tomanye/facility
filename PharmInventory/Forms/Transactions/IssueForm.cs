@@ -569,18 +569,21 @@ namespace PharmInventory.Forms.Transactions
                 }
                 if (dtIssueConf.Rows.Count > 0)
                 {
-                    _tabPage = 2;
+                    if (txtConfRef.Text == String.Empty)
+                    {
+                        txtConfRef.Text = txtRefNo.Text;
+                        txtIssuedDate.Value = dtIssueDate.Value;
+                        txtIssuedTo.Text = cboReceivingUnits.Text;
 
-                    tabControl1.SelectedTabPageIndex = 2;
-                    txtConfRef.Text = txtRefNo.Text;
-                    txtIssuedDate.Value = dtIssueDate.Value;
-                    txtIssuedTo.Text = cboReceivingUnits.Text;
+                        txtStore.Text = cboStores.Text;
+                        txtConIssuedBy.Text = txtIssuedBy.Text;
+                        txtConRemark.Text = txtRemark.Text;
+                        txtConRecipientName.Text = txtRecipientName.Text;
+                        gridConfirmation.DataSource = dtIssueConf;
+                        _tabPage = 2;
 
-                    txtStore.Text = cboStores.Text;
-                    txtConIssuedBy.Text = txtIssuedBy.Text;
-                    txtConRemark.Text = txtRemark.Text;
-                    txtConRecipientName.Text = txtRecipientName.Text;
-                    gridConfirmation.DataSource = dtIssueConf;
+                        tabControl1.SelectedTabPageIndex = 2;
+                    }
                 }
             }
             else
@@ -762,6 +765,11 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    xpButton2_Click(sender, e);
+                    issueGrid.DataSource = null;
+                    issueGridView.RefreshData();
+                    RefreshItems();
                 }
               
             }
@@ -769,11 +777,6 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-
-            xpButton2_Click(sender, e);
-            issueGrid.DataSource = null;
-            issueGridView.RefreshData();
-            RefreshItems();
         }       
 
         /// <summary>
@@ -1135,6 +1138,13 @@ namespace PharmInventory.Forms.Transactions
                 if (!Validation())
                 {
                     e.Cancel = true;
+                }
+            }
+            else if (e.Page == tabPage3)
+            {
+                if (sender.GetType() != typeof(Button))
+                {
+                    PopulatePickList();
                 }
             }
         }

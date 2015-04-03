@@ -721,7 +721,7 @@ namespace PharmInventory.Forms.Transactions
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
-                    if (ckExclude == null || (!ckExclude.Checked))
+                    if (ckExclude != null && (ckExclude.Checked))
                         dtItm = itm.ExcludeNeverReceivedItems(Convert.ToInt32(cboStores.EditValue),
                                                               Convert.ToInt32(lkCommodityTypes.EditValue));
                     else dtItm = itm.GetAllItems(1, Convert.ToInt32(lkCommodityTypes.EditValue));

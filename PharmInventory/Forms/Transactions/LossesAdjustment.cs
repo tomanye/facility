@@ -492,10 +492,10 @@ namespace PharmInventory
             if (!ckExpired.Checked && cboStores.EditValue != null && lkCategories.EditValue != null)
             {
                 var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
-                                                                      (int)lkCategories.EditValue, strStartDate, EthiopianDate.EthiopianDate.Now.ToDateString());
+                                                                      (int)lkCategories.EditValue, strStartDate, strEndDate);
                 PopulateItemList(dtItem);
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}",
-                                                                      DateTime.Now, (int)lkCategories.EditValue, strStartDate, EthiopianDate.EthiopianDate.Now.ToDateString());
+                                                                      DateTime.Now, (int)lkCategories.EditValue, strStartDate, strEndDate);
             }
 
         }
