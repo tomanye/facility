@@ -2002,8 +2002,8 @@ FROM    Items itm
                 value.Columns.Add("FullItemName");
                 value.Columns.Add("Unit");
                 value.Columns.Add("StockCode");
-                value.Columns.Add("BeginingBalance", typeof (double));
-                value.Columns.Add("SOH", typeof (double));
+                value.Columns.Add("BeginingBalance", typeof(double));
+                value.Columns.Add("SOH", typeof(double));
                 value.Columns.Add("Max", typeof (double));
                 value.Columns.Add("StockCodeDACA", typeof (string));
                 value.Columns.Add("QtyPerPack", typeof (double));

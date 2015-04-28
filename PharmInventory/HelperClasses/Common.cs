@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using BLL;
 
 namespace PharmInventory.HelperClasses
 {
@@ -13,8 +14,16 @@ namespace PharmInventory.HelperClasses
             int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
             if (currentMonth == 11)
             {
-                MessageBox.Show("You are on inventory period so you cann't perform any transaction.", "HCMIS FE", MessageBoxButton.OK);
-                return true;
+                YearEnd yearEnd = new YearEnd();
+                if (!yearEnd.IsInventoryCompleted(EthiopianDate.EthiopianDate.Now.Year))
+                {
+                    MessageBox.Show("You are on inventory period and inventory is not completed, so you cann't perform any transaction.", "HCMIS FE", MessageBoxButton.OK);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {

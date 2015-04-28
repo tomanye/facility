@@ -57,12 +57,34 @@ namespace BLL
             return false;
         }
 
-
         public bool IsInventoryEntered(int year)
         {
             string query = string.Format(@"SELECT * FROM dbo.YearEnd WHERE [Year]={0} AND AutomaticallyEntered =0", year);
             this.LoadFromSql(query);
             return this.DataTable.Rows.Count >= 100;
+        }
+
+        public bool IsInventoryCompleted(int year)
+        {
+            string query = string.Format(@" select st.StoreName, vw.FullItemName 
+                                            from (
+	                                            select distinct r.StoreID, r.ItemID
+	                                            from ReceiveDoc r
+	                                            where YEAR(r.[Date]) = {0}
+
+	                                            UNION
+	
+	                                            select distinct i.StoreID, i.ItemID
+	                                            from IssueDoc i
+	                                            where YEAR(i.[Date]) = {0}
+                                            ) transact
+                                            left join (select * from YearEnd yeInner where [Year] = {0}) ye on transact.StoreID = ye.StoreID and transact.ItemID = ye.ItemID
+                                            inner join Stores st on transact.StoreID = st.ID
+                                            inner join vwGetAllItems vw on transact.ItemID = vw.ID
+                                            where ye.ItemID is null
+                                            order by st.StoreName, vw.FullItemName", year);
+            this.LoadFromSql(query);
+            return this.DataTable.Rows.Count == 0;
         }
 
         /// <summary>
