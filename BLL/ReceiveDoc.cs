@@ -833,15 +833,15 @@ namespace BLL
                                     ORDER BY FullItemName", storeID, typeID, startDate, endDate);
             this.LoadFromRawSql(query);
 
-            EthiopianDate.EthiopianDate startDateIn = EthiopianDate.EthiopianDate.Now;
+            //EthiopianDate.EthiopianDate startDateIn = EthiopianDate.EthiopianDate.Now;
 
-            string strStartDateIn = "10/1/" + (startDateIn.Year - 1).ToString();
-            string strEndDateIn = "10/30/" + (startDateIn.Year - 1).ToString();
+            //string strStartDateIn = "10/1/" + (startDateIn.Year - 1).ToString();
+            //string strEndDateIn = "10/30/" + (startDateIn.Year - 1).ToString();
 
-            DataView dv = new DataView(this.DataTable);
-            dv.RowFilter = "[Date] < '" + strStartDateIn + "' or [Date] > '" + strEndDateIn + "'";
+            //DataView dv = new DataView(this.DataTable);
+            //dv.RowFilter = "[Date] < '" + strStartDateIn + "' or [Date] > '" + strEndDateIn + "'";
 
-            this.DataTable = dv.ToTable();
+            //this.DataTable = dv.ToTable();
             return this.DataTable;
         }
 
