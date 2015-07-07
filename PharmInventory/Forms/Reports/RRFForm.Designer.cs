@@ -72,6 +72,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnGenerateRRF = new System.Windows.Forms.Button();
             this.lkorderstatus = new DevExpress.XtraEditors.LookUpEdit();
             this.orderbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkCategory = new DevExpress.XtraEditors.LookUpEdit();
@@ -133,6 +134,7 @@
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lcRRFList = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -149,6 +151,7 @@
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
             this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -194,6 +197,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
@@ -231,6 +235,7 @@
             this.gridColumn11,
             this.gridColumn12,
             this.gridColumn13,
+            this.gridColumn47,
             this.gridColumn14,
             this.gridColumn15,
             this.gridColumn16,
@@ -321,7 +326,7 @@
             this.gridColumn14.UnboundExpression = "Received/QtyPerPack";
             this.gridColumn14.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 4;
+            this.gridColumn14.VisibleIndex = 5;
             this.gridColumn14.Width = 65;
             // 
             // gridColumn15
@@ -336,7 +341,7 @@
             this.gridColumn15.UnboundExpression = "LossAdj/QtyPerPack";
             this.gridColumn15.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 5;
+            this.gridColumn15.VisibleIndex = 6;
             this.gridColumn15.Width = 65;
             // 
             // gridColumn16
@@ -351,7 +356,7 @@
             this.gridColumn16.UnboundExpression = "USOH/QtyPerPack";
             this.gridColumn16.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 6;
+            this.gridColumn16.VisibleIndex = 7;
             this.gridColumn16.Width = 65;
             // 
             // gridColumn17
@@ -366,7 +371,7 @@
             this.gridColumn17.UnboundExpression = "Issued/QtyPerPack";
             this.gridColumn17.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 7;
+            this.gridColumn17.VisibleIndex = 8;
             this.gridColumn17.Width = 65;
             // 
             // gridColumn18
@@ -379,7 +384,7 @@
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 8;
+            this.gridColumn18.VisibleIndex = 9;
             this.gridColumn18.Width = 58;
             // 
             // gridColumn19
@@ -394,7 +399,7 @@
             this.gridColumn19.UnboundExpression = "(120 * [gridColumn17]) / (60-[DaysOutOfStock])";
             this.gridColumn19.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 9;
+            this.gridColumn19.VisibleIndex = 10;
             this.gridColumn19.Width = 76;
             // 
             // gridColumn20
@@ -407,7 +412,7 @@
             this.gridColumn20.UnboundExpression = "Quantity/QtyPerPack";
             this.gridColumn20.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 11;
+            this.gridColumn20.VisibleIndex = 12;
             this.gridColumn20.Width = 98;
             // 
             // gridColumn21
@@ -427,7 +432,7 @@
             this.gridColumn41.UnboundExpression = "[gridColumn19] - [gridColumn16]";
             this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 10;
+            this.gridColumn41.VisibleIndex = 11;
             this.gridColumn41.Width = 92;
             // 
             // gridItemsChoice
@@ -735,7 +740,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 10;
+            this.gridColumn5.VisibleIndex = 8;
             this.gridColumn5.Width = 69;
             // 
             // gridColumn6
@@ -767,7 +772,7 @@
             this.gridColumn7.UnboundExpression = "(120 * [Issued]) / (60-[DaysOutOfStock])";
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.VisibleIndex = 10;
             this.gridColumn7.Width = 73;
             // 
             // gridColumn8
@@ -777,8 +782,11 @@
             this.gridColumn8.Caption = "Qty Ordered";
             this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn8.FieldName = "Quantity";
+            this.gridColumn8.FieldName = "gridColumn8";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
+    "] - [LastDUSoh])))";
+            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 12;
             this.gridColumn8.Width = 101;
@@ -842,8 +850,8 @@
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.OptionsColumn.AllowEdit = false;
             this.gridColumn33.OptionsColumn.ReadOnly = true;
-            this.gridColumn33.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] + [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
-    "] + [LastDUSoh])))";
+            this.gridColumn33.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
+    "] - [LastDUSoh])))";
             this.gridColumn33.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 11;
@@ -877,10 +885,10 @@
             this.cboStores.Size = new System.Drawing.Size(247, 20);
             this.cboStores.StyleController = this.layoutControl1;
             this.cboStores.TabIndex = 34;
-            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnGenerateRRF);
             this.layoutControl1.Controls.Add(this.lkorderstatus);
             this.layoutControl1.Controls.Add(this.lkCategory);
             this.layoutControl1.Controls.Add(this.btnSendEmergencyOrder);
@@ -909,6 +917,16 @@
             this.layoutControl1.Size = new System.Drawing.Size(1098, 733);
             this.layoutControl1.TabIndex = 38;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnGenerateRRF
+            // 
+            this.btnGenerateRRF.Location = new System.Drawing.Point(957, 548);
+            this.btnGenerateRRF.Name = "btnGenerateRRF";
+            this.btnGenerateRRF.Size = new System.Drawing.Size(117, 20);
+            this.btnGenerateRRF.TabIndex = 52;
+            this.btnGenerateRRF.Text = "Generate RRF";
+            this.btnGenerateRRF.UseVisualStyleBackColor = true;
+            this.btnGenerateRRF.Click += new System.EventHandler(this.btnGenerateRRF_Click);
             // 
             // lkorderstatus
             // 
@@ -1008,7 +1026,7 @@
             // 
             // cboToYear
             // 
-            this.cboToYear.Location = new System.Drawing.Point(943, 548);
+            this.cboToYear.Location = new System.Drawing.Point(822, 548);
             this.cboToYear.Name = "cboToYear";
             this.cboToYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1018,7 +1036,7 @@
             // 
             // cboToMonth
             // 
-            this.cboToMonth.Location = new System.Drawing.Point(1024, 548);
+            this.cboToMonth.Location = new System.Drawing.Point(903, 548);
             this.cboToMonth.Name = "cboToMonth";
             this.cboToMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1038,7 +1056,7 @@
             // 
             this.chkCalculateInPacks.Location = new System.Drawing.Point(329, 548);
             this.chkCalculateInPacks.Name = "chkCalculateInPacks";
-            this.chkCalculateInPacks.Size = new System.Drawing.Size(362, 20);
+            this.chkCalculateInPacks.Size = new System.Drawing.Size(241, 20);
             this.chkCalculateInPacks.TabIndex = 38;
             this.chkCalculateInPacks.Text = "Calculate in Packs";
             this.chkCalculateInPacks.UseVisualStyleBackColor = true;
@@ -1056,6 +1074,7 @@
             // 
             // grdRRF
             // 
+            this.grdRRF.Cursor = System.Windows.Forms.Cursors.Default;
             this.grdRRF.Location = new System.Drawing.Point(24, 69);
             this.grdRRF.MainView = this.grdViewRRFList;
             this.grdRRF.Name = "grdRRF";
@@ -1471,7 +1490,7 @@
             // 
             // cboFromYear
             // 
-            this.cboFromYear.Location = new System.Drawing.Point(749, 548);
+            this.cboFromYear.Location = new System.Drawing.Point(628, 548);
             this.cboFromYear.Name = "cboFromYear";
             this.cboFromYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1493,7 +1512,7 @@
             // 
             // cboFromMonth
             // 
-            this.cboFromMonth.Location = new System.Drawing.Point(835, 548);
+            this.cboFromMonth.Location = new System.Drawing.Point(714, 548);
             this.cboFromMonth.Name = "cboFromMonth";
             this.cboFromMonth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1552,7 +1571,8 @@
             this.layoutControlItem13,
             this.layoutControlItem18,
             this.emptySpaceItem3,
-            this.emptySpaceItem4});
+            this.emptySpaceItem4,
+            this.layoutControlItem19});
             this.lcRRFInformation.Location = new System.Drawing.Point(0, 505);
             this.lcRRFInformation.Name = "lcRRFInformation";
             this.lcRRFInformation.Size = new System.Drawing.Size(1078, 208);
@@ -1616,7 +1636,7 @@
             // 
             this.layoutControlItem3.Control = this.cboToMonth;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(1000, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(879, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -1634,7 +1654,7 @@
             this.layoutControlItem7.Location = new System.Drawing.Point(305, 0);
             this.layoutControlItem7.MinSize = new System.Drawing.Size(24, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(366, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(245, 24);
             this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.Text = "layoutControlItem7";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
@@ -1688,7 +1708,7 @@
             // 
             this.layoutControlItem12.Control = this.cboToYear;
             this.layoutControlItem12.CustomizationFormText = "To";
-            this.layoutControlItem12.Location = new System.Drawing.Point(865, 0);
+            this.layoutControlItem12.Location = new System.Drawing.Point(744, 0);
             this.layoutControlItem12.MaxSize = new System.Drawing.Size(135, 24);
             this.layoutControlItem12.MinSize = new System.Drawing.Size(135, 24);
             this.layoutControlItem12.Name = "layoutControlItem12";
@@ -1724,7 +1744,7 @@
             // 
             this.layoutControlItem11.Control = this.cboFromYear;
             this.layoutControlItem11.CustomizationFormText = "Year";
-            this.layoutControlItem11.Location = new System.Drawing.Point(671, 0);
+            this.layoutControlItem11.Location = new System.Drawing.Point(550, 0);
             this.layoutControlItem11.MaxSize = new System.Drawing.Size(140, 24);
             this.layoutControlItem11.MinSize = new System.Drawing.Size(140, 24);
             this.layoutControlItem11.Name = "layoutControlItem11";
@@ -1737,7 +1757,7 @@
             // 
             this.layoutControlItem2.Control = this.cboFromMonth;
             this.layoutControlItem2.CustomizationFormText = "From";
-            this.layoutControlItem2.Location = new System.Drawing.Point(811, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(690, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(54, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -1812,6 +1832,18 @@
             this.emptySpaceItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem4.Text = "emptySpaceItem4";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.btnGenerateRRF;
+            this.layoutControlItem19.CustomizationFormText = "layoutControlItem19";
+            this.layoutControlItem19.Location = new System.Drawing.Point(933, 0);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.Size = new System.Drawing.Size(121, 24);
+            this.layoutControlItem19.Text = "layoutControlItem19";
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem19.TextToControlDistance = 0;
+            this.layoutControlItem19.TextVisible = false;
             // 
             // lcRRFList
             // 
@@ -1963,6 +1995,18 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
+            // gridColumn47
+            // 
+            this.gridColumn47.Caption = "LDU-SOH";
+            this.gridColumn47.FieldName = "gridColumn47";
+            this.gridColumn47.Name = "gridColumn47";
+            this.gridColumn47.OptionsColumn.AllowEdit = false;
+            this.gridColumn47.OptionsFilter.AllowFilter = false;
+            this.gridColumn47.UnboundExpression = "[LastDUSoh]/[QtyPerPack]";
+            this.gridColumn47.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn47.Visible = true;
+            this.gridColumn47.VisibleIndex = 4;
+            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2019,6 +2063,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lcRRFList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
@@ -2153,5 +2198,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
+        private System.Windows.Forms.Button btnGenerateRRF;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
     }
 }

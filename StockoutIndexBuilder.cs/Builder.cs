@@ -154,21 +154,21 @@ namespace StockoutIndexBuilder
             }
             return stockOuts;
         }
-        public static int GetStockOutDaysForRRF(int itemId, int storeId,DateTime endDate)
-        {
-            var startDate = endDate.Subtract(TimeSpan.FromDays(60));
-            return Builder.CalculateStockoutDays(itemId, storeId, startDate, endDate);
-        }
+       
         #region Private static helper methods
         static List<Transaction> TransactionDates(int itemID,int storeID)
         {
             var db = new StockoutEntities();
             List<Transaction> dates = new List<Transaction>();
 
-            dates.AddRange((from receipt in db.ReceiveDocs.Where(m => m.ItemID == itemID && m.StoreID==storeID).OrderBy(m => m.Date) select new Transaction { TransactionID = receipt.ID, Date = receipt.Date, TransactionTypeCode = (int)TransactionType.Receipt }).ToList()); // Receipts
-            dates.AddRange((from issue in db.IssueDocs.Where(m => m.ItemID == itemID && m.StoreID ==storeID).OrderBy(m => m.Date) select new Transaction { TransactionID = issue.ID, Date = issue.Date, TransactionTypeCode = (int)TransactionType.Issue }).ToList()); // Issues
-            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID ==storeID && (bool) m.IsLoss).OrderBy(m => m.Date) select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Disposal }).ToList()); // Disposals
-            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID == storeID && !(bool)m.IsLoss).OrderBy(m => m.Date) select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Adjustment }).ToList()); // Adjustments
+            dates.AddRange((from receipt in db.ReceiveDocs.Where(m => m.ItemID == itemID && m.StoreID==storeID).OrderBy(m => m.Date) 
+                            select new Transaction { TransactionID = receipt.ID, Date = receipt.Date, TransactionTypeCode = (int)TransactionType.Receipt }).ToList()); // Receipts
+            dates.AddRange((from issue in db.IssueDocs.Where(m => m.ItemID == itemID && m.StoreID ==storeID).OrderBy(m => m.Date) 
+                            select new Transaction { TransactionID = issue.ID, Date = issue.Date, TransactionTypeCode = (int)TransactionType.Issue }).ToList()); // Issues
+            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID ==storeID && (bool) m.IsLoss).OrderBy(m => m.Date) 
+                            select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Disposal }).ToList()); // Disposals
+            dates.AddRange((from disposal in db.Disposals.Where(m => m.ItemID == itemID && m.StoreID == storeID && !(bool)m.IsLoss).OrderBy(m => m.Date) 
+                            select new Transaction { TransactionID = disposal.ID, Date = disposal.Date, TransactionTypeCode = (int)TransactionType.Adjustment }).ToList()); // Adjustments
             return dates.OrderBy(m => m.Date).ToList();
         }
 
@@ -186,7 +186,7 @@ namespace StockoutIndexBuilder
             var db = new StockoutEntities();
             var receipts = from receipt in db.ReceiveDocs
                            where receipt.ItemID == itemID && receipt.StoreID == storeID
-                           select new Transaction { TransactionID = receipt.ID, TransactionTypeCode = (int)TransactionType.Receipt, Date = receipt.Date, Quantity = receipt.QuantityLeft };
+                           select new Transaction { TransactionID = receipt.ID, TransactionTypeCode = (int)TransactionType.Receipt, Date = receipt.Date, Quantity = receipt.Quantity };
             return receipts.ToList();
         }
 

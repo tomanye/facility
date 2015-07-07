@@ -112,6 +112,7 @@
             this.calculatedField8 = new DevExpress.XtraReports.UI.CalculatedField();
             this.calculatedField9 = new DevExpress.XtraReports.UI.CalculatedField();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.calculatedField10 = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -231,7 +232,7 @@
             this.xrTableCell2.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell2.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.LastDUSoh", "{0:#,##0.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "calculatedField10", "{0:#,##0}")});
             this.xrTableCell2.Font = new System.Drawing.Font("Times New Roman", 8.5F);
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 3, 0, 0, 100F);
@@ -496,7 +497,7 @@
             // 
             // Period
             // 
-            this.Period.Font = new System.Drawing.Font("Nyala", 10F);
+            this.Period.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Period.LocationFloat = new DevExpress.Utils.PointFloat(503.5847F, 155.103F);
             this.Period.Name = "Period";
             this.Period.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -1025,6 +1026,11 @@
             this.ReportHeader.HeightF = 255.2083F;
             this.ReportHeader.Name = "ReportHeader";
             // 
+            // calculatedField10
+            // 
+            this.calculatedField10.Expression = "[LastDUSoh] / [QtyPerPack]";
+            this.calculatedField10.Name = "calculatedField10";
+            // 
             // RRFReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1042,7 +1048,8 @@
             this.calculatedField6,
             this.calculatedField7,
             this.calculatedField8,
-            this.calculatedField9});
+            this.calculatedField9,
+            this.calculatedField10});
             this.DataMember = "DataTable1";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
@@ -1143,5 +1150,6 @@
         private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
+        private DevExpress.XtraReports.UI.CalculatedField calculatedField10;
     }
 }
