@@ -17,7 +17,7 @@ namespace PharmInventory.HelperClasses
                 YearEnd yearEnd = new YearEnd();
                 if (!yearEnd.IsInventoryCompleted(EthiopianDate.EthiopianDate.Now.Year))
                 {
-                    MessageBox.Show("You are on inventory period and inventory is not completed, so you cann't perform any transaction.", "HCMIS FE", MessageBoxButton.OK);
+                    MessageBox.Show("You are on inventory period and inventory is not completed for all Items Received and Issued this year!, so you cann't perform any transaction until inventory is done for all Items.", "HCMIS FE", MessageBoxButton.OK);
                     return true;
                 }
                 else

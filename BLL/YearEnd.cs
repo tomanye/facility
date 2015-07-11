@@ -66,24 +66,29 @@ namespace BLL
 
         public bool IsInventoryCompleted(int year)
         {
-            string query = string.Format(@" select st.StoreName, vw.FullItemName 
-                                            from (
-	                                            select distinct r.StoreID, r.ItemID
-	                                            from ReceiveDoc r
-	                                            where YEAR(r.[Date]) = {0}
-
-	                                            UNION
-	
-	                                            select distinct i.StoreID, i.ItemID
-	                                            from IssueDoc i
-	                                            where YEAR(i.[Date]) = {0}
-                                            ) transact
-                                            left join (select * from YearEnd yeInner where [Year] = {0}) ye on transact.StoreID = ye.StoreID and transact.ItemID = ye.ItemID
-                                            inner join Stores st on transact.StoreID = st.ID
-                                            inner join vwGetAllItems vw on transact.ItemID = vw.ID
-                                            where ye.ItemID is null
-                                            order by st.StoreName, vw.FullItemName", year);
-            this.LoadFromSql(query);
+            string query = string.Format(@" SELECT  st.StoreName ,
+                                                    vw.FullItemName
+                                            FROM    ( SELECT DISTINCT
+                                                                r.StoreID ,
+                                                                r.ItemID 
+                                                      FROM      ReceiveDoc r
+                                                      WHERE     CAST(YEAR(r.[Date]) as INT) = {0}
+                                                      UNION
+                                                      SELECT DISTINCT
+                                                                i.StoreID ,
+                                                                i.ItemID
+                                                      FROM      IssueDoc i
+                                                      WHERE     CAST(YEAR(i.[Date]) as INT) = {0}
+                                                    ) transact
+                                                    LEFT JOIN ( SELECT  *
+                                                                FROM    YearEnd yeInner
+                                                                WHERE   [Year] = {0}
+                                                              ) ye ON transact.StoreID = ye.StoreID AND transact.ItemID = ye.ItemID
+                                                    JOIN Stores st ON transact.StoreID = st.ID
+                                                    JOIN vwGetAllItems vw ON transact.ItemID = vw.ID
+                                            ORDER BY st.StoreName ,
+                                            vw.FullItemName", year);
+            this.LoadFromRawSql(query);
             return this.DataTable.Rows.Count == 0;
         }
 
