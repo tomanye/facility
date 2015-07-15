@@ -122,6 +122,8 @@ namespace PharmInventory.Forms.Modals
                     break;
 
             }
+            XtraMessageBox.Show("New batch saved successfully", "Information",MessageBoxButtons.OK);
+            this.Close();
         }
 
 
