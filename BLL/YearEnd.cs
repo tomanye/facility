@@ -80,9 +80,9 @@ namespace BLL
                                                       FROM      IssueDoc i
                                                       WHERE     CAST(YEAR(i.[Date]) as INT) = {0}
                                                     ) transact
-                                                    LEFT JOIN ( SELECT  *
+                                                    JOIN ( SELECT  *
                                                                 FROM    YearEnd yeInner
-                                                                WHERE   [Year] = {0} and AutomaticallyEntered = 0
+                                                                WHERE   [Year] = {0} and AutomaticallyEntered = 1
                                                               ) ye ON transact.StoreID = ye.StoreID AND transact.ItemID = ye.ItemID
                                                     JOIN Stores st ON transact.StoreID = st.ID
                                                     JOIN vwGetAllItems vw ON transact.ItemID = vw.ID
