@@ -2,14 +2,15 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using BLL;
-using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 using System.ComponentModel;
 using DevExpress.XtraEditors;
+using GridView = DevExpress.XtraGrid.Views.Grid.GridView;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -23,6 +24,8 @@ namespace PharmInventory.Forms.Reports
             InitializeComponent();
         }
 
+
+        private DateTime selecteddate ;
         String _selectedType = "Drug";
         bool _isReady = false;
         DateTime _dtCur;
@@ -66,7 +69,6 @@ namespace PharmInventory.Forms.Reports
                 //dRange = "For Year " + dt1.Year.ToString();
             }
             this._isReady = true;
-
             txtFromDate.Text = dt1.ToShortDateString();
 
             PopulateItemList();
@@ -158,6 +160,7 @@ namespace PharmInventory.Forms.Reports
             }
             
             var dtBal = bal.TransactionReport(storeId, dt1,dt2, _selectedType, bw);
+            selecteddate = dt1;
             e.Result = dtBal;
             //txtFromDate.Text = dt1.ToShortDateString();
         }
@@ -365,7 +368,7 @@ namespace PharmInventory.Forms.Reports
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "From Date:" + txtFromDate.Text, "To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text };
+            string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString(), "To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 

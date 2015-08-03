@@ -37,6 +37,7 @@
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -151,7 +152,6 @@
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
             this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -313,6 +313,18 @@
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 3;
             this.gridColumn13.Width = 65;
+            // 
+            // gridColumn47
+            // 
+            this.gridColumn47.Caption = "LDU-SOH";
+            this.gridColumn47.FieldName = "gridColumn47";
+            this.gridColumn47.Name = "gridColumn47";
+            this.gridColumn47.OptionsColumn.AllowEdit = false;
+            this.gridColumn47.OptionsFilter.AllowFilter = false;
+            this.gridColumn47.UnboundExpression = "[LastDUSoh]/[QtyPerPack]";
+            this.gridColumn47.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+            this.gridColumn47.Visible = true;
+            this.gridColumn47.VisibleIndex = 4;
             // 
             // gridColumn14
             // 
@@ -782,11 +794,8 @@
             this.gridColumn8.Caption = "Qty Ordered";
             this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn8.FieldName = "gridColumn8";
+            this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
-    "] - [LastDUSoh])))";
-            this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 12;
             this.gridColumn8.Width = 101;
@@ -1994,18 +2003,6 @@
             // 
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
-            // 
-            // gridColumn47
-            // 
-            this.gridColumn47.Caption = "LDU-SOH";
-            this.gridColumn47.FieldName = "gridColumn47";
-            this.gridColumn47.Name = "gridColumn47";
-            this.gridColumn47.OptionsColumn.AllowEdit = false;
-            this.gridColumn47.OptionsFilter.AllowFilter = false;
-            this.gridColumn47.UnboundExpression = "[LastDUSoh]/[QtyPerPack]";
-            this.gridColumn47.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
-            this.gridColumn47.Visible = true;
-            this.gridColumn47.VisibleIndex = 4;
             // 
             // RRFForm
             // 

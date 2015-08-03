@@ -2036,7 +2036,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = v.Quantity;
+                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH;
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
@@ -2069,7 +2069,7 @@ FROM    Items itm
                                   LossAdj = n.LossAdj,
                                   ProgramID = n.ProgramID,
                                   Status = n.Status,
-                                  Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                                  Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   TypeID = n.TypeID
                               }).ToArray();
@@ -2112,7 +2112,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = v.Quantity;
+                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH; ;
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
