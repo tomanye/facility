@@ -178,6 +178,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraGauges.v14.1.Core, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
@@ -349,6 +350,12 @@
     </Compile>
     <Compile Include="Forms\Reports\ItemPriceOnlyReport.Designer.cs">
       <DependentUpon>ItemPriceOnlyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\VRFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\VRFForm.Designer.cs">
+      <DependentUpon>VRFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Transactions\TransferForm.cs">
       <SubType>Form</SubType>
@@ -549,6 +556,12 @@
     </Compile>
     <Compile Include="Reports\RRFReport.Designer.cs">
       <DependentUpon>RRFReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\VRFReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\VRFReport.Designer.cs">
+      <DependentUpon>VRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
     <None Include="Service References\RRFTransactionService\ServiceOrder11.disco" />
@@ -959,7 +972,43 @@
     <Content Include="Scripts\9947_CREATE ProgramProductUpdate Stored Procedures for StoreID column.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9948-CreateVRF.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9949-proc_VRFInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\994_AlterYearEndUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9950-proc_VRFLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9951-proc-VRFLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9952-pro-VRFDelete.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9953-pro-VRFUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9954-CreateVRFDetail.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9955-proc-VRFDetailDelete.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9956-proc-VRFDetailInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9957-proc-VRFDetailLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9958-proc_VRFDetailLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9959-proc_VRFDetailUpdate.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\995_AlterSOHBYUNIT.sql">
@@ -1082,6 +1131,9 @@
     <EmbeddedResource Include="Forms\Reports\ItemPriceOnlyReport.resx">
       <DependentUpon>ItemPriceOnlyReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\VRFForm.resx">
+      <DependentUpon>VRFForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1172,6 +1224,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\RRFReport.resx">
       <DependentUpon>RRFReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\VRFReport.resx">
+      <DependentUpon>VRFReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Legend.resx">
       <DependentUpon>Legend.cs</DependentUpon>

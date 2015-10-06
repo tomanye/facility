@@ -178,6 +178,8 @@
     <Compile Include="User.cs" />
     <Compile Include="UserType.cs" />
     <Compile Include="VEN.cs" />
+    <Compile Include="VRF.cs" />
+    <Compile Include="VRFDetail.cs" />
     <Compile Include="Woreda.cs" />
     <Compile Include="YearEnd.cs" />
     <Compile Include="Zone.cs" />

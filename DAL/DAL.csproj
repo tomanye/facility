@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VRFDetail.cs" />
     <Compile Include="_ItemUnit.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -159,6 +160,7 @@
     <Compile Include="_User.cs" />
     <Compile Include="_UserType.cs" />
     <Compile Include="_VEN.cs" />
+    <Compile Include="_VRF.cs" />
     <Compile Include="_Woreda.cs" />
     <Compile Include="_YearEnd.cs" />
     <Compile Include="_Zone.cs" />
