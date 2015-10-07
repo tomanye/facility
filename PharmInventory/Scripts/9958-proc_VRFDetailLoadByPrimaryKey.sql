@@ -21,12 +21,8 @@ BEGIN
 	FROM [VRFDetail]
 	WHERE
 		([ID] = @ID)
-
 	SET @Err = @@Error
-
 	RETURN @Err
 END
-
-GO
 
 

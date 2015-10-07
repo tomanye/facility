@@ -11,7 +11,6 @@ CREATE PROCEDURE [dbo].[proc_VRFInsert]
 )
 AS
 BEGIN
-
 	SET NOCOUNT OFF
 	DECLARE @Err int
 
@@ -43,7 +42,3 @@ BEGIN
 
 	RETURN @Err
 END
-
-GO
-
-

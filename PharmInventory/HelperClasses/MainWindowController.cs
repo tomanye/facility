@@ -177,10 +177,15 @@ namespace PharmInventory
                     frm = new ChangePassword(UserId);
                     AddTab("Change Password", frm);
                     break;
-                    break;
                 case "Transfer Log":
                     frm = new LogTransfer();
                     AddTab("Transfer Log", frm);
+                    break;
+
+
+                case "VRF Form":
+                    frm = new vrfmainForm();
+                    AddTab("Vaccine Requistion and Report Form", frm);
                     break;
                 case "Losses/Adjustment":
                     frm = new LossesAdjustment();

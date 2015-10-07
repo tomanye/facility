@@ -274,7 +274,8 @@ namespace PharmInventory.Forms.Reports
                 TelephoneNumber = { Text = ginfo.Telephone},
                 MonthsToSupply = { Text = ginfo.RRFStatusUpdateFrequency },
                 Births = { Text = ginfo.RRFStatusFirstUpdateAfter },
-                SurvivingInfants = { Text = ginfo.ScmsWSUserName}
+                SurvivingInfants = { Text = ginfo.ScmsWSUserName} ,
+                RequestDate = { Text =  DateTime.Now.ToShortDateString()}
 
             };
 

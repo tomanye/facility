@@ -2354,7 +2354,7 @@ FROM    Items itm
                     drv["ProgramID"] = v.ProgramID;
                    
                     drv["Doses"] = 1;
-                    drv["WasteFactor"] = 1;
+                    drv["WasteFactor"] = 1.33;
                     drv["TargetCoverage"] = 1;
                     drv["RequirmentforNextSupply"] = 200;
                     drv["VaccinationGiven"] = 1;
@@ -2447,7 +2447,7 @@ FROM    Items itm
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
                     drv["Doses"] = 1;
-                    drv["WasteFactor"] = 1;
+                    drv["WasteFactor"] = 1.33;
                     drv["TargetCoverage"] = 1;
                     drv["RequirmentforNextSupply"] = 200;
                     drv["VaccinationGiven"] = 1;

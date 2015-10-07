@@ -15,12 +15,6 @@ BEGIN
 		[LastVRFStatus],
 		[VRFType]
 	FROM [VRF]
-
 	SET @Err = @@Error
-
 	RETURN @Err
 END
-
-GO
-
-

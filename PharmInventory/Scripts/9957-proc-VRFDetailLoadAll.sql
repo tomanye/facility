@@ -16,12 +16,8 @@ BEGIN
        [VaccinationGiven],
        [Remark]
 	FROM [VRFDetail]
-
 	SET @Err = @@Error
-
 	RETURN @Err
 END
-
-GO
 
 

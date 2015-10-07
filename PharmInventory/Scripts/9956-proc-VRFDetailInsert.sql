@@ -27,8 +27,6 @@ BEGIN
 		[Doses],
 	    [WasteFactor],
 	    [TargetCoverage],
-	    [RequirmentforNextsupplyPeriod],
-	    [RequestedAmount],
 	    [VaccinationGiven],
 	    [Remark]
 	)
@@ -41,19 +39,13 @@ BEGIN
        @Doses ,
        @WasteFactor,
        @TargetCoverage ,
-       @RequirmentforNextsupplyPeriod,
-       @RequestedAmount,
        @VaccinationGiven,
        @Remark
 	)
-
 	SET @Err = @@Error
-
 	SELECT @ID = SCOPE_IDENTITY()
-
 	RETURN @Err
 END
 
-GO
 
 

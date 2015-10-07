@@ -30,14 +30,6 @@ BEGIN
 		[Remark]=@Remark
 	WHERE
 		[ID] = @ID
-
-
 	SET @Err = @@Error
-
-
 	RETURN @Err
 END
-
-GO
-
-
