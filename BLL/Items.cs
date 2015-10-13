@@ -2132,8 +2132,6 @@ FROM    Items itm
         {
             var ginfo = new GeneralInfo();
             ginfo.LoadAll();
-            var monthstosupply = Convert.ToInt32(ginfo.RRFStatusUpdateFrequency);
-            var survivinginfants = Convert.ToInt32(ginfo.ScmsWSUserName);
 
             var balance = new Balance();
             var issue = new IssueDoc();
@@ -2321,8 +2319,8 @@ FROM    Items itm
                 //Added for vaccine RF
                 value.Columns.Add("Doses", typeof (int));
                 value.Columns.Add("WasteFactor", typeof(decimal));
-                value.Columns.Add("TargetCoverage", typeof(int));
-                value.Columns.Add("VaccinationGiven", typeof(string));
+                value.Columns.Add("TargetCoverage", typeof(decimal));
+                value.Columns.Add("VaccinationGiven", typeof(double));
                 value.Columns.Add("RequirmentforNextSupply", typeof(decimal));
                 value.Columns.Add("Remark", typeof(string));
 
@@ -2355,9 +2353,9 @@ FROM    Items itm
                    
                     drv["Doses"] = 1;
                     drv["WasteFactor"] = 1.33;
-                    drv["TargetCoverage"] = 1;
+                    drv["TargetCoverage"] = 1.00;
                     drv["RequirmentforNextSupply"] = 200;
-                    drv["VaccinationGiven"] = 1;
+                    drv["VaccinationGiven"] = 1.0;
 
                     drv["Remark"] = "";
                    // drv["DaysOutOfStock"] = v.DaysOutOfStock;
@@ -2414,9 +2412,9 @@ FROM    Items itm
 
                 value.Columns.Add("Doses", typeof(int));
                 value.Columns.Add("WasteFactor", typeof(decimal));
-                value.Columns.Add("TargetCoverage", typeof(int));
+                value.Columns.Add("TargetCoverage", typeof(decimal));
                 value.Columns.Add("RequirmentforNextSupply", typeof(decimal));
-                value.Columns.Add("VaccinationGiven", typeof(string));
+                value.Columns.Add("VaccinationGiven", typeof(double));
                 value.Columns.Add("Remark", typeof(string));
 
                 value.Columns.Add("ProgramID", typeof(int));
@@ -2448,9 +2446,9 @@ FROM    Items itm
                     //drv["MaxStockQty"] = v.MaxStockQty;
                     drv["Doses"] = 1;
                     drv["WasteFactor"] = 1.33;
-                    drv["TargetCoverage"] = 1;
+                    drv["TargetCoverage"] = 1.00;
                     drv["RequirmentforNextSupply"] = 200;
-                    drv["VaccinationGiven"] = 1;
+                    drv["VaccinationGiven"] = 1.0;
                     drv["Remark"] = "";
 
                     drv["Status"] = v.Status;

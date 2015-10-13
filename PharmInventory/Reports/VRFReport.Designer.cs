@@ -926,7 +926,7 @@
             this.xrTableCell18.StylePriority.UseFont = false;
             this.xrTableCell18.StylePriority.UsePadding = false;
             this.xrTableCell18.StylePriority.UseTextAlignment = false;
-            this.xrTableCell18.Text = "Qty Released";
+            this.xrTableCell18.Text = "Qty Rels/Ord";
             this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell18.Weight = 0.47782210259996538D;
             // 
@@ -1064,13 +1064,13 @@
             this.xrLabel6,
             this.xrTable5,
             this.xrTable4});
-            this.ReportFooter.HeightF = 446.7188F;
+            this.ReportFooter.HeightF = 512.5833F;
             this.ReportFooter.Name = "ReportFooter";
             // 
             // xrLabel12
             // 
             this.xrLabel12.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(40.9521F, 389.5833F);
+            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(40.9521F, 484.375F);
             this.xrLabel12.Name = "xrLabel12";
             this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel12.SizeF = new System.Drawing.SizeF(1143.048F, 25.08331F);
@@ -1082,7 +1082,7 @@
             // xrLabel6
             // 
             this.xrLabel6.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(40.95208F, 355.3855F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(40.95208F, 450.1772F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(436.1112F, 23F);
@@ -1095,7 +1095,7 @@
             this.xrTable5.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable5.LocationFloat = new DevExpress.Utils.PointFloat(40.95208F, 148.5417F);
+            this.xrTable5.LocationFloat = new DevExpress.Utils.PointFloat(40.95208F, 237.0834F);
             this.xrTable5.Name = "xrTable5";
             this.xrTable5.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow8,
@@ -1376,7 +1376,7 @@
             // 
             // xrTable4
             // 
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(750.6544F, 148.5417F);
+            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(750.654F, 237.0834F);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow6,
@@ -1437,13 +1437,14 @@
             // calculatedField1
             // 
             this.calculatedField1.DataMember = "DataTable11";
-            this.calculatedField1.Expression = "[BeginingBalance] + [Received] - [Issued]";
+            this.calculatedField1.Expression = "[BeginingBalance] + [Received] - [Issued]+([LossAdj])";
             this.calculatedField1.Name = "calculatedField1";
             // 
             // calculatedField2
             // 
             this.calculatedField2.DataMember = "DataTable11";
-            this.calculatedField2.Expression = "([RequirmentforNextSupply]) - ([BeginingBalance] + [Received] - [Issued])";
+            this.calculatedField2.Expression = "Iif([RequirmentforNextSupply]-[calculatedField1]<0 ,0,[RequirmentforNextSupply]-[" +
+    "calculatedField1])";
             this.calculatedField2.Name = "calculatedField2";
             // 
             // VRFReport
