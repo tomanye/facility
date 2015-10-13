@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VRFReport));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
@@ -250,7 +251,7 @@
             this.xrTableCell32.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell32.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell32.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable11.TargetCoverage")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable11.TargetCoverage", "{0}%")});
             this.xrTableCell32.Font = new System.Drawing.Font("Times New Roman", 9F);
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 3, 0, 0, 100F);
@@ -259,6 +260,8 @@
             this.xrTableCell32.StylePriority.UseFont = false;
             this.xrTableCell32.StylePriority.UsePadding = false;
             this.xrTableCell32.StylePriority.UseTextAlignment = false;
+            xrSummary1.FormatString = "{0:0%}";
+            this.xrTableCell32.Summary = xrSummary1;
             this.xrTableCell32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell32.Weight = 0.62568540913510962D;
             // 
@@ -395,10 +398,10 @@
             this.xrTableCell38.StylePriority.UseFont = false;
             this.xrTableCell38.StylePriority.UsePadding = false;
             this.xrTableCell38.StylePriority.UseTextAlignment = false;
-            xrSummary1.FormatString = "{0:#,##0.00}";
-            xrSummary1.Func = DevExpress.XtraReports.UI.SummaryFunc.Max;
-            xrSummary1.IgnoreNullValues = true;
-            this.xrTableCell38.Summary = xrSummary1;
+            xrSummary2.FormatString = "{0:#,##0.00}";
+            xrSummary2.Func = DevExpress.XtraReports.UI.SummaryFunc.Max;
+            xrSummary2.IgnoreNullValues = true;
+            this.xrTableCell38.Summary = xrSummary2;
             this.xrTableCell38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell38.Weight = 0.48135130984050856D;
             // 
