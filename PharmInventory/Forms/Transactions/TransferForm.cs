@@ -38,6 +38,8 @@ namespace PharmInventory.Forms.Transactions
             unitBindingSource.DataSource = allunits.DefaultView;
 
             lkToStore.Properties.DataSource = store.DefaultView;
+
+           
             var unitcolumn0 = ((GridView)gridItemsChoice.MainView).Columns[7];
             var unitcolumn1 = ((GridView)gridItemsChoice.MainView).Columns[2];
             var unitcolumn2 = ((GridView)receivingGrid.MainView).Columns[4];
@@ -59,6 +61,14 @@ namespace PharmInventory.Forms.Transactions
                     unitcolumn1.Visible = false;
                     unitcolumn2.Visible = true;
                     break;
+            }
+            if (Common.IsInventoryPeriod())
+            {
+                btnSave.Enabled = false;
+            }
+            else
+            {
+                btnSave.Enabled = true;
             }
 
             lkCategories.ItemIndex = 0;
@@ -425,10 +435,10 @@ namespace PharmInventory.Forms.Transactions
 
             gridItemsView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}", txtItemName.Text, (int)(lkCategories.EditValue ?? 0));
 
-            var inventory = new YearEnd();
-            if (inventory.IsInventoryCompleteToReceive(EthiopianDate.EthiopianDate.Now.Year-1, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
-            XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                btnSave.Enabled = false;
+            //var inventory = new YearEnd();
+            //if (inventory.IsInventoryCompleteToReceive(EthiopianDate.EthiopianDate.Now.Year-1, Convert.ToInt32(lkFromStore.EditValue)) != false) return;
+            //XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //    btnSave.Enabled = false;
         }
 
         private bool Validate()

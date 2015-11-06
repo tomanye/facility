@@ -16,7 +16,7 @@ SELECT DISTINCT
 					  , dbo.Items.Refrigeratored
 					  , dbo.Items.Pediatric
 					  , dbo.Items.DosageFormID
-					  , dbo.DosageForm.Form AS DosageForm
+					  , dbo.DosageForm.Form AS Unit
 					  , dbo.Items.UnitID
 					  , dbo.Items.StockCode
 					  , dbo.Items.IINID
@@ -61,7 +61,7 @@ SELECT DISTINCT
 					  , dbo.Items.Refrigeratored
 					  , dbo.Items.Pediatric
 					  , dbo.Items.DosageFormID
-					  , null AS DosageForm
+					  , null AS Unit
 					  , dbo.Items.UnitID
 					  , dbo.Items.StockCode
 					  , dbo.Items.IINID
@@ -83,6 +83,3 @@ FROM
 					 -- LEFT JOIN  dbo.ItemSupplyCategory ON dbo.Items.ID = dbo.ItemSupplyCategory.ItemID 
 					 -- LEFT JOIN dbo.SupplyCategory on dbo.ItemSupplyCategory.CategoryID = dbo.SupplyCategory.ID 
 								and (dbo.Product.TypeID <> 1 )
-
-
-
