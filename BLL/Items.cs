@@ -2323,6 +2323,7 @@ FROM    Items itm
                 value.Columns.Add("VaccinationGiven", typeof(double));
                 value.Columns.Add("RequirmentforNextSupply", typeof(decimal));
                 value.Columns.Add("Remark", typeof(string));
+                value.Columns.Add("QuantityOrdered", typeof(decimal));
 
                 //value.Columns.Add("MaxStockQty", typeof (double));
                 value.Columns.Add("ProgramID", typeof(int));
@@ -2356,6 +2357,8 @@ FROM    Items itm
                     drv["TargetCoverage"] = 1.00;
                     drv["RequirmentforNextSupply"] = 200;
                     drv["VaccinationGiven"] = 1.0;
+
+                    drv["QuantityOrdered"] = Convert.ToDouble(drv["RequirmentforNextSupply"]) - (Convert.ToDouble(drv["BeginingBalance"]) + Convert.ToDouble(drv["Received"]) - Convert.ToDouble(drv["Issued"]) + Convert.ToDouble(drv["LossAdj"])) < 0 ? 0 : Convert.ToDouble(drv["RequirmentforNextSupply"]) - (Convert.ToDouble(drv["BeginingBalance"]) + Convert.ToDouble(drv["Received"]) - Convert.ToDouble(drv["Issued"]) + Convert.ToDouble(drv["LossAdj"]));
 
                     drv["Remark"] = "";
                    // drv["DaysOutOfStock"] = v.DaysOutOfStock;
@@ -2417,6 +2420,9 @@ FROM    Items itm
                 value.Columns.Add("VaccinationGiven", typeof(double));
                 value.Columns.Add("Remark", typeof(string));
 
+
+                value.Columns.Add("QuantityOrdered", typeof(decimal));
+
                 value.Columns.Add("ProgramID", typeof(int));
                 value.Columns.Add("Status", typeof(string));
                 value.Columns.Add("TypeID", typeof(int));
@@ -2448,6 +2454,9 @@ FROM    Items itm
                     drv["WasteFactor"] = 1.33;
                     drv["TargetCoverage"] = 1.00;
                     drv["RequirmentforNextSupply"] = 200;
+
+                    drv["QuantityOrdered"] = Convert.ToDouble(drv["RequirmentforNextSupply"]) - (Convert.ToDouble(drv["BeginingBalance"]) + Convert.ToDouble(drv["Received"]) - Convert.ToDouble(drv["Issued"]) + Convert.ToDouble(drv["LossAdj"])) < 0 ? 0 : Convert.ToDouble(drv["RequirmentforNextSupply"]) - (Convert.ToDouble(drv["BeginingBalance"]) + Convert.ToDouble(drv["Received"]) - Convert.ToDouble(drv["Issued"]) + Convert.ToDouble(drv["LossAdj"]));
+                   
                     drv["VaccinationGiven"] = 1.0;
                     drv["Remark"] = "";
 
