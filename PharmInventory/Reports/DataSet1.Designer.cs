@@ -781,6 +781,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnRequirmentforNextSupply;
             
+            private global::System.Data.DataColumn columnQuantityOrdered;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable11DataTable() {
@@ -912,6 +914,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QuantityOrderedColumn {
+                get {
+                    return this.columnQuantityOrdered;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -947,7 +957,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable11Row AddDataTable11Row(string FullItemName, string Doses, string WasteFactor, string TargetCoverage, string BeginingBalance, string Received, string Issued, string LossAdj, string Quantity, string VaccinationGiven, string Remark, string RequirmentforNextSupply) {
+            public DataTable11Row AddDataTable11Row(string FullItemName, string Doses, string WasteFactor, string TargetCoverage, string BeginingBalance, string Received, string Issued, string LossAdj, string Quantity, string VaccinationGiven, string Remark, string RequirmentforNextSupply, string QuantityOrdered) {
                 DataTable11Row rowDataTable11Row = ((DataTable11Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FullItemName,
@@ -961,7 +971,8 @@ namespace PharmInventory.Reports {
                         Quantity,
                         VaccinationGiven,
                         Remark,
-                        RequirmentforNextSupply};
+                        RequirmentforNextSupply,
+                        QuantityOrdered};
                 rowDataTable11Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable11Row);
                 return rowDataTable11Row;
@@ -996,6 +1007,7 @@ namespace PharmInventory.Reports {
                 this.columnVaccinationGiven = base.Columns["VaccinationGiven"];
                 this.columnRemark = base.Columns["Remark"];
                 this.columnRequirmentforNextSupply = base.Columns["RequirmentforNextSupply"];
+                this.columnQuantityOrdered = base.Columns["QuantityOrdered"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1025,6 +1037,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnRemark);
                 this.columnRequirmentforNextSupply = new global::System.Data.DataColumn("RequirmentforNextSupply", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRequirmentforNextSupply);
+                this.columnQuantityOrdered = new global::System.Data.DataColumn("QuantityOrdered", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantityOrdered);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1794,6 +1808,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QuantityOrdered {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable11.QuantityOrderedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QuantityOrdered\' in table \'DataTable11\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable11.QuantityOrderedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFullItemNameNull() {
                 return this.IsNull(this.tableDataTable11.FullItemNameColumn);
             }
@@ -1934,6 +1964,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRequirmentforNextSupplyNull() {
                 this[this.tableDataTable11.RequirmentforNextSupplyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQuantityOrderedNull() {
+                return this.IsNull(this.tableDataTable11.QuantityOrderedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQuantityOrderedNull() {
+                this[this.tableDataTable11.QuantityOrderedColumn] = global::System.Convert.DBNull;
             }
         }
         

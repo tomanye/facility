@@ -67,6 +67,7 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -142,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -430,7 +432,8 @@
             this.gridItemsChoice.Name = "gridItemsChoice";
             this.gridItemsChoice.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemMemoEdit1});
             this.gridItemsChoice.Size = new System.Drawing.Size(1050, 127);
             this.gridItemsChoice.TabIndex = 33;
             this.gridItemsChoice.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -735,10 +738,11 @@
             // gridColumn33
             // 
             this.gridColumn33.Caption = "Qty Rels/Ordered";
-            this.gridColumn33.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn33.DisplayFormat.FormatString = "#,##0";
             this.gridColumn33.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn33.FieldName = "Quantity";
+            this.gridColumn33.FieldName = "QuantityOrdered";
             this.gridColumn33.Name = "gridColumn33";
+            this.gridColumn33.ShowUnboundExpressionMenu = true;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 11;
             this.gridColumn33.Width = 72;
@@ -775,6 +779,10 @@
             this.repositoryItemLookUpEdit1.DisplayMember = "Text";
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // gridColumn36
             // 
@@ -1374,6 +1382,7 @@
             this.cboFromYear.Size = new System.Drawing.Size(82, 20);
             this.cboFromYear.StyleController = this.layoutControl1;
             this.cboFromYear.TabIndex = 43;
+            this.cboFromYear.SelectedIndexChanged += new System.EventHandler(this.cboFromYear_SelectedIndexChanged);
             // 
             // cboFromMonth
             // 
@@ -1384,6 +1393,7 @@
             this.cboFromMonth.Size = new System.Drawing.Size(50, 20);
             this.cboFromMonth.StyleController = this.layoutControl1;
             this.cboFromMonth.TabIndex = 42;
+            this.cboFromMonth.SelectedIndexChanged += new System.EventHandler(this.cboFromMonth_SelectedIndexChanged);
             // 
             // cboProgram
             // 
@@ -1594,12 +1604,17 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
+            this.emptySpaceItem1.AppearanceItemCaption.ForeColor = System.Drawing.Color.Red;
+            this.emptySpaceItem1.AppearanceItemCaption.Options.UseForeColor = true;
+            this.emptySpaceItem1.CustomizationFormText = "Requirment for Next Supply = Surviving Infants * Doses * Waste Factor * Target Co" +
+    "verage * Months to Supply  / 12 * 1.25";
             this.emptySpaceItem1.Location = new System.Drawing.Point(499, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(555, 24);
-            this.emptySpaceItem1.Text = "emptySpaceItem1";
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.emptySpaceItem1.Text = "**Requirment for Next Supply = Surviving Infants * Doses * Waste Factor * Target " +
+    "Coverage * Months to Supply  / 12 * 1.25";
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(51, 0);
+            this.emptySpaceItem1.TextVisible = true;
             // 
             // lcRRFList
             // 
@@ -1744,6 +1759,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -1896,5 +1912,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

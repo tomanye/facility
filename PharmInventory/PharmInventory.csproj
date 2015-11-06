@@ -32,7 +32,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\Teddy\Desktop\HCMIS FE VRF draft version\</PublishUrl>
+    <PublishUrl>C:\Users\Teddy\Desktop\HCMIS FE VRF draft version - 10-30\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -1014,6 +1014,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\995_AlterSOHBYUNIT.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9960_AltervwGetAllItems2.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\996_SetIsInHospitalList.sql">

@@ -144,39 +144,7 @@ namespace PharmInventory.Forms.Reports
          //    ChooseGridView();
         }
 
-        //private void ChooseGridView()
-        //{
-
-        //    if (chkCalculateInPacks.Checked && lkCategory.EditValue == null && cboProgram.EditValue == null)
-        //    {
-        //        gridItemsChoice.MainView = grdViewInPacks;
-        //    }
-
-        //    else if (chkCalculateInPacks.Checked && lkCategory.EditValue != DBNull.Value &&
-        //             cboProgram.EditValue == null)
-        //    {
-        //        gridItemsChoice.MainView = grdViewInPacks;
-        //        grdViewInPacks.ActiveFilterString = String.Format("TypeID={0}",
-        //                                                          Convert.ToInt32(lkCategory.EditValue));
-        //    }
-        //    else if (chkCalculateInPacks.Checked && cboProgram.EditValue != DBNull.Value &&
-        //             lkCategory.EditValue == null)
-        //    {
-        //        gridItemsChoice.MainView = grdViewInPacks;
-        //        grdViewInPacks.ActiveFilterString = String.Format("ProgramID={0}",
-        //                                                          Convert.ToInt32(cboProgram.EditValue));
-        //    }
-
-        //    else if (chkCalculateInPacks.Checked && lkCategory.EditValue != null &&
-        //             cboProgram.EditValue != null)
-        //    {
-        //        gridItemsChoice.MainView = grdViewInPacks;
-        //        grdViewInPacks.ActiveFilterString = String.Format("TypeID={0} and ProgramID={1}",
-        //                                                          Convert.ToInt32(lkCategory.EditValue),
-        //                                                          Convert.ToInt32(cboProgram.EditValue));
-        //    }
-        //    else gridItemsChoice.MainView = gridItemChoiceView;
-        //}
+        
 
         private void btnGenerateRRF_Click(object sender, EventArgs e)
         {
@@ -229,7 +197,7 @@ namespace PharmInventory.Forms.Reports
         {
             if (startingMonth <= 11)
             {
-                cboToMonth.EditValue = startingMonth + 1;
+                cboToMonth.EditValue = startingMonth;
                 cboToYear.EditValue = startingYear;
             }
 
@@ -237,7 +205,7 @@ namespace PharmInventory.Forms.Reports
             //If the starting month is the 12th month. (The period will be from Nehassie of last year - Meskerem of the next year)
             {
                 cboToMonth.EditValue = 1;
-                cboToYear.EditValue = startingYear + 1;
+                cboToYear.EditValue = startingYear;
             }
         }
 
@@ -312,11 +280,12 @@ namespace PharmInventory.Forms.Reports
             }
             var rrfID = vrf.AddNewVRF(_storeID, _fromYear, _fromMonth, _toYear, _toMonth, true);
             var dtbl1 = new DataTable();
-            if (gridItemChoiceView.DataSource != null) dtbl1 = ((DataView)gridItemChoiceView.DataSource).Table;
+            if (gridItemChoiceView.DataSource != null) 
+                dtbl1 = ((DataView)gridItemChoiceView.DataSource).Table;
             foreach (DataRow dr in dtbl1.Rows)
             {
                 var itemID = Convert.ToInt32(dr["ID"]);
-                var requestedqty = Convert.ToInt32(dr["Quantity"]);
+                var requestedqty = Convert.ToInt32(dr["QuantityOrdered"]);
                 var storeID = int.Parse(cboStores.EditValue.ToString());
                 var doses = Convert.ToInt32(dr["Doses"]);
                 var wasteFactor = Convert.ToDecimal(dr["WasteFactor"]);
@@ -339,9 +308,7 @@ namespace PharmInventory.Forms.Reports
 
         private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "gridColumn40")
-                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
-            if (e.Column.FieldName == "BeginingBalance")
+            if (e.Column.FieldName == "QuantityOrdered")
                 if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
         }
 
@@ -369,6 +336,43 @@ namespace PharmInventory.Forms.Reports
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and ProgramID ={1}", Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboProgram.EditValue));
             }
         }
+
+        private void cboFromYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
+            SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
+        }
+
+        private void cboFromMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
+            SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
+        }
+
+        Dictionary<int,decimal> _customQuantity = new Dictionary<int, decimal>();
+
+        //private void gridItemChoiceView_CustomUnboundColumnData(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDataEventArgs e)
+        //{
+        //    //int rowIndex = e.ListSourceRowIndex;
+        //    //decimal reqirment = Convert.ToDecimal(gridItemChoiceView.GetListSourceRowCellValue(rowIndex, "RequirmentforNextSupply"));
+        //    //decimal begBal = Convert.ToDecimal(gridItemChoiceView.GetListSourceRowCellValue(rowIndex, "BeginingBalance"));
+        //    //decimal received = Convert.ToDecimal(gridItemChoiceView.GetListSourceRowCellValue(rowIndex, "Received"));
+        //    //decimal issued = Convert.ToDecimal(gridItemChoiceView.GetListSourceRowCellValue(rowIndex, "Issued"));
+        //    //decimal lossadj = Convert.ToDecimal(gridItemChoiceView.GetListSourceRowCellValue(rowIndex, "LossAdj"));
+        //    //decimal currBal = begBal + received - issued + lossadj;
+        //    //decimal qtyOrdered = reqirment - currBal;
+        //    //if (e.Column.FieldName != "QuantityOrdered") return;
+        //    //if (e.IsGetData)
+        //    //{
+        //    //    if (!_customQuantity.ContainsKey(rowIndex))
+        //    //        _customQuantity.Add(rowIndex, qtyOrdered);
+        //    //    e.Value = _customQuantity[rowIndex];
+        //    //}
+        //    //if (e.IsSetData)
+        //    //{
+        //    //    _customQuantity[rowIndex] = Convert.ToDecimal(e.Value);
+        //    //}
+        //}
 
        
 

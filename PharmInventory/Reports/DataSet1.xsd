@@ -48,6 +48,7 @@
               <xs:element name="VaccinationGiven" msprop:Generator_ColumnVarNameInTable="columnVaccinationGiven" msprop:Generator_ColumnPropNameInRow="VaccinationGiven" msprop:Generator_ColumnPropNameInTable="VaccinationGivenColumn" msprop:Generator_UserColumnName="VaccinationGiven" type="xs:string" minOccurs="0" />
               <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" type="xs:string" minOccurs="0" />
               <xs:element name="RequirmentforNextSupply" msprop:Generator_ColumnVarNameInTable="columnRequirmentforNextSupply" msprop:Generator_ColumnPropNameInRow="RequirmentforNextSupply" msprop:Generator_ColumnPropNameInTable="RequirmentforNextSupplyColumn" msprop:Generator_UserColumnName="RequirmentforNextSupply" type="xs:string" minOccurs="0" />
+              <xs:element name="QuantityOrdered" msprop:Generator_ColumnVarNameInTable="columnQuantityOrdered" msprop:Generator_ColumnPropNameInRow="QuantityOrdered" msprop:Generator_ColumnPropNameInTable="QuantityOrderedColumn" msprop:Generator_UserColumnName="QuantityOrdered" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
