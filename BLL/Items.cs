@@ -331,7 +331,7 @@ FROM    Items itm
         {
             this.FlushData();
             this.LoadFromRawSql(String.Format("SELECT ROW_NUMBER() OVER (ORDER BY FullItemName) AS No,*, " +
-                                              "( ItemName + ' - ' + DosageForm + ' - ' + Strength) as DrugName FROM vwGetAllItems ORDER BY ItemName"));
+                                              "( ItemName + ' - ' + Unit + ' - ' + Strength) as DrugName FROM vwGetAllItems ORDER BY ItemName"));
             return this.DataTable;
         }
 

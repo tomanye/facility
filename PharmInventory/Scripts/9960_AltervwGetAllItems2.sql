@@ -3,7 +3,7 @@ AS
 SELECT DISTINCT 
 					  dbo.Items.ID
 					  ,dbo.Items.DSItemID As SN
-					  , dbo.Product.IIN AS Product
+					  , dbo.Product.IIN AS ItemName
 					  , ISNULL(dbo.Product.IIN, '') + ' - ' + ISNULL(dbo.DosageForm.Form, '') + ' - ' + ISNULL(dbo.Items.Strength, '') AS FullItemName
 					  , dbo.Items.Strength
 					  , dbo.Items.ABC AS ABCID
@@ -48,7 +48,7 @@ Union
 SELECT DISTINCT 
 					  dbo.Items.ID
 					  , dbo.Items.DSItemID As SN
-					  , dbo.Product.IIN AS Product
+					  , dbo.Product.IIN AS ItemName
 					  , ISNULL(dbo.Product.IIN, '') + ' - ' + ISNULL(dbo.Items.Strength, '') AS FullItemName
 					  , dbo.Items.Strength
 					  , dbo.Items.ABC AS ABCID
