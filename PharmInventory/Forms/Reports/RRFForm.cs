@@ -157,13 +157,44 @@ namespace PharmInventory.Forms.Reports
             }
             return currentYear;
         }
-
-        private void PopulateList()
+        private void grdRRF_DoubleClick(object sender, EventArgs e)
         {
+            DataRow dr = grdViewRRFList.GetFocusedDataRow();
+            if (dr == null)
+                return;
+            int rrfID = Convert.ToInt32(dr["ID"]);
+            ShowRRFDetailWindow(rrfID);
+            WindowVisibility(true);
+        }
+
+        private void ShowRRFDetailWindow(int rrfID)
+        {
+            Cursor = Cursors.WaitCursor;
+            RRF rrf = new RRF();
+            rrf.LoadByPrimaryKey(rrfID);
+            cboFromMonth.EditValue = rrf.FromMonth;
+            cboFromYear.EditValue = rrf.FromYear;
+            cboToMonth.EditValue = rrf.ToMonth;
+            cboToYear.EditValue = rrf.ToYear;
+            cboStores.EditValue = rrf.RRFType;
+            PopulateList();
+            // Handle Edits here (Populate exact values from the database)
+            if (!rrf.IsColumnNull("LastRRFStatus"))
+            {
+                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
+                    btnAutoPushToPFSA.Enabled = false;
+            }
+            else
+                btnAutoPushToPFSA.Enabled = false;
+            Cursor = Cursors.Default;
+        }
+        private void PopulateList()
+        {  
+             Items itm = new Items();
             _storeID = Convert.ToInt32(cboStores.EditValue);
             _programID = Convert.ToInt32(cboProgram.EditValue);
-            Items itm = new Items();
-
+          
+            
             _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
             _toMonth = int.Parse(cboToMonth.EditValue.ToString());
             _toYear = int.Parse(cboToYear.EditValue.ToString());
@@ -994,47 +1025,17 @@ namespace PharmInventory.Forms.Reports
         {
             if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
-            PopulateList();
+           //PopulateList();
         }
 
         private void cboFromMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
-            PopulateList();
+           // PopulateList();
         }
 
-        private void grdRRF_DoubleClick(object sender, EventArgs e)
-        {
-            DataRow dr = grdViewRRFList.GetFocusedDataRow();
-            if (dr == null)
-                return;
-            int rrfID = Convert.ToInt32(dr["ID"]);
-            ShowRRFDetailWindow(rrfID);
-            WindowVisibility(true);
-        }
-
-        private void ShowRRFDetailWindow(int rrfID)
-        {
-            Cursor = Cursors.WaitCursor;
-            RRF rrf = new RRF();
-            rrf.LoadByPrimaryKey(rrfID);
-            cboFromMonth.EditValue = rrf.FromMonth;
-            cboFromYear.EditValue = rrf.FromYear;
-            cboToMonth.EditValue = rrf.ToMonth;
-            cboToYear.EditValue = rrf.ToYear;
-            cboStores.EditValue = rrf.RRFType;
-            PopulateList();
-           // Handle Edits here (Populate exact values from the database)
-            if (!rrf.IsColumnNull("LastRRFStatus"))
-            {
-                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
-                    btnAutoPushToPFSA.Enabled = false;
-                }
-            else
-                btnAutoPushToPFSA.Enabled = false;
-            Cursor = Cursors.Default;
-        }
+       
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -1186,6 +1187,13 @@ namespace PharmInventory.Forms.Reports
                 btnSendEmergencyOrder.Enabled = true;
                 btnAutoPushToPFSA.Enabled = false;
             }
+        }
+
+        private void btnGenerateRRF_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            PopulateList();
+            Cursor = Cursors.Default;
         }
 
     }

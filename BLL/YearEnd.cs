@@ -57,12 +57,39 @@ namespace BLL
             return false;
         }
 
-
         public bool IsInventoryEntered(int year)
         {
             string query = string.Format(@"SELECT * FROM dbo.YearEnd WHERE [Year]={0} AND AutomaticallyEntered =0", year);
             this.LoadFromSql(query);
             return this.DataTable.Rows.Count >= 100;
+        }
+
+        public bool IsInventoryCompleted(int year)
+        {
+            string query = string.Format(@" SELECT  st.StoreName ,
+                                                    vw.FullItemName
+                                            FROM    ( SELECT DISTINCT
+                                                                r.StoreID ,
+                                                                r.ItemID 
+                                                      FROM      ReceiveDoc r
+                                                      WHERE     CAST(YEAR(r.[Date]) as INT) = {0}
+                                                      UNION
+                                                      SELECT DISTINCT
+                                                                i.StoreID ,
+                                                                i.ItemID
+                                                      FROM      IssueDoc i
+                                                      WHERE     CAST(YEAR(i.[Date]) as INT) = {0}
+                                                    ) transact
+                                                    JOIN ( SELECT  *
+                                                                FROM    YearEnd yeInner
+                                                                WHERE   [Year] = {0} and AutomaticallyEntered = 1
+                                                              ) ye ON transact.StoreID = ye.StoreID AND transact.ItemID = ye.ItemID
+                                                    JOIN Stores st ON transact.StoreID = st.ID
+                                                    JOIN vwGetAllItems vw ON transact.ItemID = vw.ID
+                                            ORDER BY st.StoreName ,
+                                            vw.FullItemName", year);
+            this.LoadFromRawSql(query);
+            return this.DataTable.Rows.Count == 0;
         }
 
         /// <summary>

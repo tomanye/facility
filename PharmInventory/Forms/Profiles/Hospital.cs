@@ -58,12 +58,18 @@ namespace PharmInventory.Forms.Profiles
             //cboZone.SelectedValue = _hospInfo.Zone;
             string [] userPass = _hospInfo.Description.Split(';');
             txtUserName.Text = userPass[0];
-            txtScmsUserName.Text = _hospInfo.ScmsWSUserName;
-            txtScmsPassword.Text = _hospInfo.ScmsWSPassword;
+            txtmonthstosupply.Text = _hospInfo.ScmsWSUserName;
+            txtBirths.Text = _hospInfo.ScmsWSPassword;
             txtPassword.Text = (userPass.Length == 1) ? "" : userPass[1];
-            cboDSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("DSUpdateFrequency")?"": _hospInfo.DSUpdateFrequency;
-            cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
-            cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
+
+            txtRegionZoneWoreda.Text =_hospInfo.DSUpdateFrequency; //columns doesnt  match
+            txtmonthstosupply.Text =_hospInfo.RRFStatusUpdateFrequency; ////columns doesnt  match
+            txtBirths.Text =_hospInfo.RRFStatusFirstUpdateAfter; //columns doesnt  match
+            txtSurvivingInfants.Text =_hospInfo.ScmsWSUserName;//columns doesnt  match
+
+            //cboDSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("DSUpdateFrequency")?"": _hospInfo.DSUpdateFrequency;
+            //cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
+            //cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
             _hospitalId = _hospInfo.ID;
            //  chkNormal.EditValue = _hospInfo.NormalFacility;
             if (!_hospInfo.IsColumnNull("FacilityID"))
@@ -158,9 +164,16 @@ namespace PharmInventory.Forms.Profiles
             }
 
             _hospInfo.Description = txtUserName.Text + ";" + txtPassword.Text;
-            _hospInfo.DSUpdateFrequency = cboDSUpdateFrequency.EditValue.ToString();
-            _hospInfo.RRFStatusUpdateFrequency = cboHCTSUpdateFrequency.EditValue.ToString();
-            _hospInfo.RRFStatusFirstUpdateAfter = cboHCTSFirstUpdate.EditValue.ToString();
+            //_hospInfo.DSUpdateFrequency = cboDSUpdateFrequency.EditValue.ToString();
+            //_hospInfo.RRFStatusUpdateFrequency = cboHCTSUpdateFrequency.EditValue.ToString();
+            //_hospInfo.RRFStatusFirstUpdateAfter = cboHCTSFirstUpdate.EditValue.ToString();
+
+
+            _hospInfo.DSUpdateFrequency = txtRegionZoneWoreda.Text; //columns doesnt  match
+            _hospInfo.RRFStatusUpdateFrequency = txtmonthstosupply.Text; ////columns doesnt  match
+            _hospInfo.RRFStatusFirstUpdateAfter = txtBirths.Text; //columns doesnt  match
+            _hospInfo.ScmsWSUserName = txtSurvivingInfants.Text;//columns doesnt  match
+
             //_hospInfo.NormalFacility = (bool) chkNormal.EditValue;
             //_hospInfo.Region = Convert.ToInt32(cboRegion.SelectedValue);
             //_hospInfo.Woreda = Convert.ToInt32(cboWoreda.SelectedValue);
@@ -169,8 +182,8 @@ namespace PharmInventory.Forms.Profiles
             if (txtFacilityID.Text != "")
             {
                 _hospInfo.FacilityID = Convert.ToInt32(txtFacilityID.EditValue);
-                _hospInfo.ScmsWSUserName = txtScmsUserName.Text;
-                _hospInfo.ScmsWSPassword = txtScmsPassword.Text;
+                //_hospInfo.ScmsWSUserName = txtmonthstosupply.Text;
+                //_hospInfo.ScmsWSPassword = txtBirths.Text;
             }
             if (txtLogo.Text != "")
             {

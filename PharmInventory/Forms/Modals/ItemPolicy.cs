@@ -47,9 +47,10 @@ namespace PharmInventory.Forms.Modals
             Items itm = new Items();
 
             DataTable dtItem = itm.GetItemById(_itemId);
-            txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["DosageForm"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
+            txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["Unit"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
             ckExculed.Checked =itm.IsInHospitalList;
             chkNeedExpiryBatch.Checked = itm.NeedExpiryBatch;
+            chkIsVaccine.Checked = itm.Pediatric;
             txtText.Text = itm.StockCodeDACA ?? string.Empty;
             txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
            
@@ -238,6 +239,7 @@ namespace PharmInventory.Forms.Modals
             if (valid == "true")
             {
                 itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
+                itm.Pediatric = chkIsVaccine.Checked; //wrong coulmn name but used to identify the vaccine items
                 itm.StockCodeDACA = txtText.Text;
                 itm.Cost = txtQuantityPerPack.Text;
                 itm.Save();

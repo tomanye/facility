@@ -474,11 +474,17 @@ namespace PharmInventory
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
+            string strStartDate;
+            EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
+            strStartDate = "11/1/" + (startDate.Year - 5).ToString();
+
+            string strEndDate = EthiopianDate.EthiopianDate.Now.Month.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Day.ToString() + '/' + EthiopianDate.EthiopianDate.Now.Year.ToString();
+
             var rDoc = new ReceiveDoc();
             if (ckExpired.Checked && cboStores.EditValue !=null && lkCategories.EditValue !=null)
             {
                 var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
-                                                                      (int) lkCategories.EditValue);
+                                                                      (int)lkCategories.EditValue, strStartDate, strEndDate);
                 PopulateItemList(dtItem);
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] < #{0}# and [TypeID]={1}",
                                                                       DateTime.Now, (int) lkCategories.EditValue);
@@ -486,10 +492,10 @@ namespace PharmInventory
             if (!ckExpired.Checked && cboStores.EditValue != null && lkCategories.EditValue != null)
             {
                 var dtItem = rDoc.GetRecievedItemsWithBalanceForStore(Convert.ToInt32(cboStores.EditValue),
-                                                                      (int) lkCategories.EditValue);
+                                                                      (int)lkCategories.EditValue, strStartDate, strEndDate);
                 PopulateItemList(dtItem);
                 gridItemChoiceView.ActiveFilterString = String.Format("[ExpiryDate] > #{0}# and [TypeID]={1}",
-                                                                      DateTime.Now, (int) lkCategories.EditValue);
+                                                                      DateTime.Now, (int)lkCategories.EditValue, strStartDate, strEndDate);
             }
 
         }

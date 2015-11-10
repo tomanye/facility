@@ -315,8 +315,9 @@ namespace PharmInventory.Forms.Reports
 
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} ",
-                                                                    Convert.ToInt32(lkCommodityTypes.EditValue));
+            PopulateGrid();
+            gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",
+                                                                    txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
         }
     }
 }

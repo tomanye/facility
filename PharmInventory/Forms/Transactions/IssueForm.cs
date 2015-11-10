@@ -503,7 +503,7 @@ namespace PharmInventory.Forms.Transactions
                                     break;
                             }
 
-                            while (quantity >=0 && rec.RowCount > j)
+                            while (quantity >= 0 && rec.RowCount > j)
                             {
                                 var batch = itm.NeedExpiryBatch ? _dtRec.Rows[j]["BatchNo"].ToString() : "";
                                 Int64 qu = ((quantity > Convert.ToInt32(_dtRec.Rows[j]["QuantityLeft"])) ? Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]) : quantity);
@@ -569,18 +569,21 @@ namespace PharmInventory.Forms.Transactions
                 }
                 if (dtIssueConf.Rows.Count > 0)
                 {
-                    _tabPage = 2;
+                    if (txtConfRef.Text == String.Empty)
+                    {
+                        txtConfRef.Text = txtRefNo.Text;
+                        txtIssuedDate.Value = dtIssueDate.Value;
+                        txtIssuedTo.Text = cboReceivingUnits.Text;
 
-                    tabControl1.SelectedTabPageIndex = 2;
-                    txtConfRef.Text = txtRefNo.Text;
-                    txtIssuedDate.Value = dtIssueDate.Value;
-                    txtIssuedTo.Text = cboReceivingUnits.Text;
+                        txtStore.Text = cboStores.Text;
+                        txtConIssuedBy.Text = txtIssuedBy.Text;
+                        txtConRemark.Text = txtRemark.Text;
+                        txtConRecipientName.Text = txtRecipientName.Text;
+                        gridConfirmation.DataSource = dtIssueConf;
+                        _tabPage = 2;
 
-                    txtStore.Text = cboStores.Text;
-                    txtConIssuedBy.Text = txtIssuedBy.Text;
-                    txtConRemark.Text = txtRemark.Text;
-                    txtConRecipientName.Text = txtRecipientName.Text;
-                    gridConfirmation.DataSource = dtIssueConf;
+                        tabControl1.SelectedTabPageIndex = 2;
+                    }
                 }
             }
             else
@@ -762,6 +765,11 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    xpButton2_Click(sender, e);
+                    issueGrid.DataSource = null;
+                    issueGridView.RefreshData();
+                    RefreshItems();
                 }
               
             }
@@ -769,10 +777,6 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            xpButton2_Click(sender, e);
-            issueGrid.DataSource = null;
-            issueGridView.RefreshData();
-            RefreshItems();
         }       
 
         /// <summary>
@@ -796,7 +800,7 @@ namespace PharmInventory.Forms.Transactions
             txtRemark.Text = "";
             txtStore.Text = "";
             cboReceivingUnits.ItemIndex = -1;
-            cboStores.EditValue = 1;
+            cboStores.ItemIndex = 0;
             PopulateItemList();
             _tabPage = 0;
             tabControl1.SelectedTabPageIndex = 0;
@@ -1136,6 +1140,13 @@ namespace PharmInventory.Forms.Transactions
                     e.Cancel = true;
                 }
             }
+            else if (e.Page == tabPage3)
+            {
+                if (sender.GetType() != typeof(Button))
+                {
+                    PopulatePickList();
+                }
+            }
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -1221,6 +1232,11 @@ namespace PharmInventory.Forms.Transactions
                     e.Appearance.BackColor = Color.Green;
                 }
             }
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
 
         }
 
