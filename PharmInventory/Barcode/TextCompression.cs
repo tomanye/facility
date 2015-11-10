@@ -41,6 +41,11 @@ namespace PharmInventory.Barcode
             return Unzip(bytes);
         }
 
+        public static string ConvetFromBase64StringToUTF(string text)
+        {
+            return Encoding.UTF8.GetString(Convert.FromBase64String(text));
+        }
+
         private static void CopyTo(Stream src, Stream dest)
         {
             var bytes = new byte[4096];

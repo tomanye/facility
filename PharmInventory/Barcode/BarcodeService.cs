@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using DataMatrix.net;
+using MessagingToolkit.QRCode.Codec;
 
 namespace PharmInventory.Barcode
 {
