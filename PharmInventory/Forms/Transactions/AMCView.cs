@@ -36,7 +36,7 @@ namespace PharmInventory.Forms.Transactions
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
             if (e.Column.FieldName == "")
-                e.DisplayText = (e.RowHandle + 1).ToString();
+                e.DisplayText = (e.GroupRowHandle + 1).ToString();
         }
 
         private void AMCView_Load(object sender, EventArgs e)

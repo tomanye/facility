@@ -19,8 +19,8 @@ namespace QuickUpdator
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
             //MyGeneration.dOOdads.BusinessEntity.RegistryConnectionString = System.Configuration.ConfigurationManager.AppSettings.Get("dbConnection");
             ConnectionManager = new ConnectionStringManager.ConnectionStringManager(RegKey, PrevConnectionStringKey);
             MyGeneration.dOOdads.BusinessEntity.RegistryConnectionString = ConnectionManager.GetFromRegistry();
