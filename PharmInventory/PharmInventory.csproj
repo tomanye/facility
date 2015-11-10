@@ -293,6 +293,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Barcode\BarcodeService.cs" />
+    <Compile Include="Barcode\DTO\InvoiceDetail.cs" />
+    <Compile Include="Barcode\DTO\InvoiceHeader.cs" />
+    <Compile Include="Barcode\Service\BarcodeDTOService.cs" />
+    <Compile Include="Barcode\TextCompression.cs" />
     <Compile Include="Forms\ActivityLogs\LogTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
