@@ -240,7 +240,7 @@ namespace PharmInventory.Forms.Transactions
 
             foreach (DataRow dr in dtItm.Rows)//For each item
             {
-                string itemName = dr["ItemName"].ToString() + " - " + dr["DosageForm"].ToString() + " - " + dr["Strength"].ToString();
+                string itemName = dr["ItemName"].ToString() + " - " + dr["Unit"].ToString() + " - " + dr["Strength"].ToString();
                 int itemID = Convert.ToInt32(dr["ID"]);
                 bool BalanceExists = (yProcess.DoesBalanceExist(year, storeId, itemID, false));
 
