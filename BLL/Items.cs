@@ -40,6 +40,32 @@ namespace BLL
             }
         }
 
+        public static string GetFullItemNameFromSN(int sn)
+        {
+            string query = "select * from vwGetAllItems where sn = " + sn;
+            var item = new Items();
+            item.LoadFromRawSql(query);
+            if (item.DefaultView == null || item.DefaultView.Count == 0)
+                return string.Empty;
+
+            return item.DefaultView.Table.AsEnumerable().First().Field<string>("FullItemName");
+        }
+
+        public int LoadBySN(int snID)
+        {
+            this.FlushData();
+            this.Where.DSItemID.Value = snID;
+            this.Query.Load();
+            if (this.RowCount > 0)
+            {
+                return this.ID;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public bool IsMapped
         {
             get { return !this.IsColumnNull("Code"); }
