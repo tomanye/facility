@@ -5,9 +5,9 @@ namespace PharmInventory.Barcode.DTO
 {
     public class InvoiceHeader
     {
-        public int ID { get; set; } //STVID
-        public int M { get; set; } //Mode ID
-        public int A { get; set; } //Account ID
+        //public int ID { get; set; } //STVID
+        public string M { get; set; } //Mode code
+        public string A { get; set; } //Account code
         public string F { get; set; }//From
         public int T { get; set; }//To ID
         public string IN { get; set; }//InvoiceNumber

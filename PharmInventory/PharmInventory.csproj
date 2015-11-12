@@ -305,7 +305,6 @@
     <Compile Include="Barcode\BarcodeService.cs" />
     <Compile Include="Barcode\DTO\InvoiceDetail.cs" />
     <Compile Include="Barcode\DTO\InvoiceHeader.cs" />
-    <Compile Include="Barcode\Service\BarcodeDTOService.cs" />
     <Compile Include="Barcode\TextCompression.cs" />
     <Compile Include="Forms\ActivityLogs\LogTransfer.cs">
       <SubType>Form</SubType>
@@ -1929,6 +1928,9 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Barcode\Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
