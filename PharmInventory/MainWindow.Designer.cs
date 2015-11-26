@@ -81,9 +81,6 @@ namespace PharmInventory
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.lbiReceive = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiIssue = new DevExpress.XtraNavBar.NavBarItem();
@@ -123,6 +120,9 @@ namespace PharmInventory
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem3 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarPipeline = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup5 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiRRF = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem7 = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem8 = new DevExpress.XtraNavBar.NavBarItem();
@@ -181,7 +181,7 @@ namespace PharmInventory
             this.inventoryToolStripMenuItem});
             this.transactionsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
-            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.transactionsToolStripMenuItem.Text = "Transactions";
             // 
             // receiveToolStripMenuItem
@@ -381,7 +381,7 @@ namespace PharmInventory
             // 
             this.receiveTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_48;
             this.receiveTransactionToolStripMenuItem.Name = "receiveTransactionToolStripMenuItem";
-            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.receiveTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.receiveTransactionToolStripMenuItem.Tag = "Receive Log";
             this.receiveTransactionToolStripMenuItem.Text = "Receive Transactions";
             this.receiveTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -390,7 +390,7 @@ namespace PharmInventory
             // 
             this.issueTransactionToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.table_green_48;
             this.issueTransactionToolStripMenuItem.Name = "issueTransactionToolStripMenuItem";
-            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.issueTransactionToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.issueTransactionToolStripMenuItem.Tag = "Issue Log";
             this.issueTransactionToolStripMenuItem.Text = "Issue Transactions";
             this.issueTransactionToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -399,7 +399,7 @@ namespace PharmInventory
             // 
             this.lossAdjustmentToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.navigate_48;
             this.lossAdjustmentToolStripMenuItem.Name = "lossAdjustmentToolStripMenuItem";
-            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.lossAdjustmentToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.lossAdjustmentToolStripMenuItem.Tag = "Adjustment Log";
             this.lossAdjustmentToolStripMenuItem.Text = "Loss / Adjustment";
             this.lossAdjustmentToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -408,7 +408,7 @@ namespace PharmInventory
             // 
             this.inventoryLogToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.Blue_cube1;
             this.inventoryLogToolStripMenuItem.Name = "inventoryLogToolStripMenuItem";
-            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.inventoryLogToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.inventoryLogToolStripMenuItem.Tag = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Text = "Inventory Log";
             this.inventoryLogToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -636,11 +636,9 @@ namespace PharmInventory
             // navBarControl1
             // 
             this.navBarControl1.ActiveGroup = this.navBarGroup1;
-            this.navBarControl1.AllowSelectedLink = true;
             this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navBarControl1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.None;
-            this.navBarControl1.EachGroupHasSelectedLink = true;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
             this.navBarGroup1,
             this.navBarGroup2,
@@ -689,8 +687,9 @@ namespace PharmInventory
             this.navBarItem8,
             this.navBarItem9,
             this.menuItemPriceOnlyReport,
-            navBarItem10});
+            this.navBarItem10});
             this.navBarControl1.LinkInterval = 5;
+            this.navBarControl1.LinkSelectionMode = DevExpress.XtraNavBar.LinkSelectionModeType.OneInGroup;
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 199;
@@ -702,31 +701,6 @@ namespace PharmInventory
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
             this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
-            // 
-            // navBarGroup5
-            // 
-            this.navBarGroup5.Caption = "Utilities";
-            this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
-            this.navBarGroup5.Name = "navBarGroup5";
-            this.navBarGroup5.SelectedLinkIndex = 2;
-            // 
-            // navBarItem4
-            // 
-            this.navBarItem4.Caption = "Database Actions";
-            this.navBarItem4.Name = "navBarItem4";
-            this.navBarItem4.SmallImage = global::PharmInventory.Properties.Resources._1287716501_database_save;
-            this.navBarItem4.Tag = "DataBase";
-            // 
-           
-            // navBarItem1
-            // 
-            this.navBarItem1.Caption = "Stockout Indexer";
-            this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
-            this.navBarItem1.Tag = "stockoutindexer";
-            this.navBarItem1.Visible = false;
             // 
             // navBarGroup1
             // 
@@ -743,7 +717,7 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem5),
             new DevExpress.XtraNavBar.NavBarItemLink(this.LbTransfer)});
             this.navBarGroup1.Name = "navBarGroup1";
-            this.navBarGroup1.SelectedLinkIndex = 5;
+            this.navBarGroup1.SelectedLinkIndex = 0;
             // 
             // lbiReceive
             // 
@@ -917,8 +891,8 @@ namespace PharmInventory
             this.navBarItem10.SmallImage = global::PharmInventory.Properties.Resources._1286958752_issue;
             this.navBarItem10.Tag = "VRF Form";
             // 
-
-
+            // navBarGroup3
+            // 
             this.navBarGroup3.Caption = "Summary Reports";
             this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiSummaryReport),
@@ -1040,6 +1014,30 @@ namespace PharmInventory
             this.navBarPipeline.SmallImage = global::PharmInventory.Properties.Resources._1287716461_pipe;
             this.navBarPipeline.Tag = "Pipeline";
             // 
+            // navBarGroup5
+            // 
+            this.navBarGroup5.Caption = "Utilities";
+            this.navBarGroup5.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem4),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItem1)});
+            this.navBarGroup5.Name = "navBarGroup5";
+            this.navBarGroup5.SelectedLinkIndex = 2;
+            // 
+            // navBarItem4
+            // 
+            this.navBarItem4.Caption = "Database Actions";
+            this.navBarItem4.Name = "navBarItem4";
+            this.navBarItem4.SmallImage = global::PharmInventory.Properties.Resources._1287716501_database_save;
+            this.navBarItem4.Tag = "DataBase";
+            // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Caption = "Stockout Indexer";
+            this.navBarItem1.Name = "navBarItem1";
+            this.navBarItem1.SmallImage = global::PharmInventory.Properties.Resources.Burn_table1;
+            this.navBarItem1.Tag = "stockoutindexer";
+            this.navBarItem1.Visible = false;
+            // 
             // lbiRRF
             // 
             this.lbiRRF.Caption = "RRF";
@@ -1116,7 +1114,7 @@ namespace PharmInventory
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(91, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(90, 17);
             this.toolStripStatusLabel1.Text = "[Status Toolbar]";
             // 
             // bwDOSCalculator
@@ -1126,7 +1124,6 @@ namespace PharmInventory
             // 
             // MainWindow
             // 
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1137,6 +1134,7 @@ namespace PharmInventory
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.ttlBar);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.Text = "Ethiopian Health Commodity Management Information System (EHCMIS)";

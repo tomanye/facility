@@ -12,3 +12,5 @@ DAL/obj/
 StockoutIndexBuilder.cs/obj/
 HCMIS Facility Edition.v11.suo
 PharmInventory/PharmInventory.csproj.user
+packages/
+HCMIS Facility Edition.sln.DotSettings

@@ -62,6 +62,17 @@ namespace BLL
             return item.DefaultView.Table.AsEnumerable().First().Field<string>("Unit");
         }
 
+        public static int? GetUnitIDFromSN(int sn)
+        {
+            string query = "select * from vwGetAllItems where sn = " + sn;
+            var item = new Items();
+            item.LoadFromRawSql(query);
+            if (item.DefaultView == null || item.DefaultView.Count == 0)
+                return -1;
+
+            return item.DefaultView.Table.AsEnumerable().First().Field<int?>("UnitID");
+        }
+
         public int LoadBySN(int snID)
         {
             this.FlushData();

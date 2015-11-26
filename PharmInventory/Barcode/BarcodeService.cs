@@ -7,7 +7,7 @@ namespace PharmInventory.Barcode
 {
     public class BarcodeService
     {
-        public Bitmap Encode(string text, EncodingType type, EncodedDataType dataType)
+        public Bitmap Encode(string text, EncodingType type, string dataType)
         {
             var uncompressedText = "UNC" + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
             var compressedText = "CMP" + TextCompression.Zip(text);
@@ -16,7 +16,10 @@ namespace PharmInventory.Barcode
 
             var toEncode = compressedLen < originalLen ? compressedText : uncompressedText;
 
-            toEncode = (dataType == EncodedDataType.Invoice ? "INV" : "RCT") + toEncode;
+            if (dataType != EncodedDataType.Invoice && dataType != EncodedDataType.RRF && EncodedDataType.Receipt != dataType)
+                throw new Exception("Invalid data type, please use the defined constants in EncodedDataType class");
+
+            toEncode = dataType + toEncode;
 
             toEncode = toEncode.Length.ToString("0000") + toEncode;
 
@@ -44,8 +47,9 @@ namespace PharmInventory.Barcode
         QrCode, DataMatrix
     }
 
-    public enum EncodedDataType
+    public class EncodedDataType
     {
-        Invoice, Receipt
+        public const string Invoice = "INV", Receipt = "RCT", RRF = "RRF", Grv = "GRV";
     }
+
 }

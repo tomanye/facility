@@ -10,6 +10,10 @@ using CommCtrl;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
+using Newtonsoft.Json;
+using PharmInventory.Barcode;
+using PharmInventory.Barcode.DTO;
+using PharmInventory.Barcode.Service;
 using PharmInventory.RRFLookUpService;
 using PharmInventory.RRFTransactionService;
 using PharmInventory.Reports;
@@ -20,7 +24,9 @@ using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraReports.UI;
 using EthiopianDate;
 using PharmInventory.ViewModels;
+using EncodingType = PharmInventory.Barcode.EncodingType;
 using Order = PharmInventory.RRFTransactionService.Order;
+using RRFDetail = BLL.RRFDetail;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -281,10 +287,10 @@ namespace PharmInventory.Forms.Reports
                                     FacilityName = {Text = ginfo.HospitalName},
                                     Period =
                                         {
-                                            Text =
-                                                string.Format("{0}, {1} - {2}, {3}", ethioDateFrom.GetMonthName(),
-                                                              ethioDateFrom.Year, ethioDateTo.GetMonthName(),
-                                                              ethioDateTo.Year)
+                                            Text = String.Format("{0}, {1} - {2}, {3}", ethioDateFrom.GetMonthName(),
+                    ethioDateFrom.Year, ethioDateTo.GetMonthName(),
+                    ethioDateTo.Year),
+                                               
                                         },
                                     ProgramName = {Text = cboProgram.Text},
                                     categoryName = {Text = lkCategory.Text}
@@ -293,6 +299,23 @@ namespace PharmInventory.Forms.Reports
             var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
             tbl.TableName = "DataTable1";
             var dtset = new DataSet();
+            ///////////////////////////Barcode stuff///////////////////
+            var rrf = new RRFHeader
+            {
+                F = ginfo.HospitalName,
+                M = cboStores.Text,
+                P =  String.Format("{0} - {1}", ethioDateFrom.ToGregorianDate().ToShortDateString(), ethioDateTo.ToGregorianDate().ToShortDateString()),
+                C = lkCategory.Text,
+                PN = cboProgram.Text,
+                D = RRFDataService.GetRRFDetails(tbl)
+            };
+
+            var serialized = JsonConvert.SerializeObject(rrf);
+
+            var barcodeService = new BarcodeService();
+            rrfReport.xrBarcode.Image = barcodeService.Encode(serialized, EncodingType.QrCode, EncodedDataType.RRF);
+
+            ///////////////////////////////////////////////////////////
             dtset.Tables.Add(tbl.Copy());
             rrfReport.DataSource = dtset;
             if (Convert.ToInt32(cboProgram.EditValue) == 0 && Convert.ToInt32(lkCategory.EditValue) == 0)
