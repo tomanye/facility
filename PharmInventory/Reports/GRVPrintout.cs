@@ -1,4 +1,5 @@
-﻿using PharmInventory.ViewModels;
+﻿using PharmInventory.Barcode.DTO;
+using PharmInventory.ViewModels;
 
 namespace PharmInventory.Reports
 {

@@ -1,4 +1,6 @@
-﻿namespace PharmInventory.Reports
+﻿using PharmInventory.Barcode.DTO;
+
+namespace PharmInventory.Reports
 {
     partial class GRVPrintout
     {
@@ -685,7 +687,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(PharmInventory.ViewModels.GrvViewModel);
+            this.bindingSource1.DataSource = typeof(GrvViewModel);
             // 
             // GRVPrintout
             // 

@@ -18,31 +18,31 @@ namespace PharmInventory.Forms.Modals
             InitializeComponent();
             btnAddScannedData.DialogResult = DialogResult.OK;
             btnCancelScan.DialogResult = DialogResult.Cancel;
-            txtRowInput.Focus();
+            scannerInput1.Focus();
         }
 
-        private void txtRowInput_TextChanged(object sender, EventArgs e)
-        {
-            if (txtRowInput.Text.Length < 4) return;
+        //private void txtRowInput_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (txtRowInput.Text.Length < 4) return;
 
-            var dataLen = txtRowInput.Text.Substring(0, 4);
+        //    var dataLen = txtRowInput.Text.Substring(0, 4);
 
-            if(_barcodeDataLen == -1)
-                if (!int.TryParse(dataLen, out _barcodeDataLen))
-                    return;
+        //    if(_barcodeDataLen == -1)
+        //        if (!int.TryParse(dataLen, out _barcodeDataLen))
+        //            return;
 
-            if (_barcodeDataLen == -1) return;
+        //    if (_barcodeDataLen == -1) return;
 
-            if (txtRowInput.Text.Length == _barcodeDataLen + 4)
-            {
-                STVs = DecodeBarcode(txtRowInput.Text.Substring(4, txtRowInput.Text.Length - 4));
+        //    if (txtRowInput.Text.Length == _barcodeDataLen + 4)
+        //    {
+        //        STVs = DecodeBarcode(txtRowInput.Text.Substring(4, txtRowInput.Text.Length - 4));
                 
-                lblBarcodeStatus.Text = "Barcode read and decoded successfuly";
-                //Thread.Sleep(2 * 1000);
-                //Close();
-                //DialogResult = DialogResult.OK;
-            }
-        }
+        //        lblBarcodeStatus.Text = "Barcode read and decoded successfuly";
+        //        //Thread.Sleep(2 * 1000);
+        //        //Close();
+        //        //DialogResult = DialogResult.OK;
+        //    }
+        //}
 
         private IEnumerable<InvoiceHeader> DecodeBarcode(string rowData)
         {
@@ -60,9 +60,21 @@ namespace PharmInventory.Forms.Modals
             if (dataType != "INV")
             {
                 MessageBox.Show("Incorrect barcode");
+                lblBarcodeStatus.Text = "Incorrect barcode. Make sure you are scanning the proper barcode.";
+                barcodePicture.Image = null;
                 throw new Exception("Incorrect type of barcode");
             }
             return JsonConvert.DeserializeObject<IEnumerable<InvoiceHeader>>(serialized);
+        }
+
+        private void scannerInput1_OnScanCompleted(object sender, EventArgs e)
+        {
+                STVs = DecodeBarcode(scannerInput1.InputData.Substring(4, scannerInput1.DataSize - 4));
+
+                lblBarcodeStatus.Text = "Barcode read and decoded successfuly";
+                //Thread.Sleep(2 * 1000);
+                //Close();
+                //DialogResult = DialogResult.OK;
         }
 
     }

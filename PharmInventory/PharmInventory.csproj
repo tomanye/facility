@@ -309,6 +309,12 @@
     <Compile Include="Barcode\DTO\RRFHeader.cs" />
     <Compile Include="Barcode\Service\RRFDataService.cs" />
     <Compile Include="Barcode\TextCompression.cs" />
+    <Compile Include="CustomControl\ScannerInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\ScannerInput.Designer.cs">
+      <DependentUpon>ScannerInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ActivityLogs\LogTransfer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -789,7 +795,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AMCViewModel.cs" />
-    <Compile Include="ViewModels\GRVViewModel.cs" />
+    <Compile Include="Barcode\DTO\GRVViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModelCollection.cs" />
     <Content Include="Scripts\28_SOHByPrograms.sql" />
@@ -1135,6 +1141,9 @@
     </None>
     <None Include="Service References\RRFLookUpService\configuration.svcinfo" />
     <None Include="Service References\RRFLookUpService\configuration91.svcinfo" />
+    <EmbeddedResource Include="CustomControl\ScannerInput.resx">
+      <DependentUpon>ScannerInput.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ActivityLogs\LogTransfer.resx">
       <DependentUpon>LogTransfer.cs</DependentUpon>
     </EmbeddedResource>

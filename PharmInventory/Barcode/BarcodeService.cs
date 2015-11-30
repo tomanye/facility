@@ -16,7 +16,7 @@ namespace PharmInventory.Barcode
 
             var toEncode = compressedLen < originalLen ? compressedText : uncompressedText;
 
-            if (dataType != EncodedDataType.Invoice && dataType != EncodedDataType.RRF && EncodedDataType.Receipt != dataType)
+            if (dataType != EncodedDataType.Invoice && dataType != EncodedDataType.RRF && EncodedDataType.Receipt != dataType && EncodedDataType.Grv != dataType)
                 throw new Exception("Invalid data type, please use the defined constants in EncodedDataType class");
 
             toEncode = dataType + toEncode;

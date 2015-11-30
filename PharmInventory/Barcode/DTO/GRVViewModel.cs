@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmInventory.ViewModels
+namespace PharmInventory.Barcode.DTO
 {
     public class GrvViewModel
     {
+        public int STVID { get; set; }
         public string From { get; set; }
         public DateTime Date { get; set; }
         public string To { get; set; }
