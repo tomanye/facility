@@ -181,7 +181,7 @@ namespace PharmInventory.Forms.Profiles
 
             if (txtFacilityID.Text != "")
             {
-                _hospInfo.FacilityID = Convert.ToInt32(txtFacilityID.EditValue);
+                //_hospInfo.FacilityID = Convert.ToInt32(txtFacilityID.EditValue);
                 //_hospInfo.ScmsWSUserName = txtmonthstosupply.Text;
                 //_hospInfo.ScmsWSPassword = txtBirths.Text;
             }

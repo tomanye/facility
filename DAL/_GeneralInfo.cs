@@ -271,7 +271,7 @@ namespace DAL
 			{
 				get
 				{
-					return new SqlParameter("@FacilityID", SqlDbType.Int, 0);
+					return new SqlParameter("@FacilityID", SqlDbType.UniqueIdentifier, 0);
 				}
 			}
 			
@@ -765,15 +765,15 @@ namespace DAL
 			}
 		}
 
-		public virtual int FacilityID
+		public virtual Guid FacilityID
 	    {
 			get
 	        {
-				return base.Getint(ColumnNames.FacilityID);
+				return base.GetGuid(ColumnNames.FacilityID);
 			}
 			set
 	        {
-				base.Setint(ColumnNames.FacilityID, value);
+				base.SetGuid(ColumnNames.FacilityID, value);
 			}
 		}
 
@@ -1173,14 +1173,14 @@ namespace DAL
 	    {
 			get
 	        {
-				return this.IsColumnNull(ColumnNames.FacilityID) ? string.Empty : base.GetintAsString(ColumnNames.FacilityID);
+				return this.IsColumnNull(ColumnNames.FacilityID) ? string.Empty : base.GetGuidAsString(ColumnNames.FacilityID);
 			}
 			set
 	        {
 				if(string.Empty == value)
 					this.SetColumnNull(ColumnNames.FacilityID);
 				else
-					this.FacilityID = base.SetintAsString(ColumnNames.FacilityID, value);
+					this.FacilityID = base.SetGuidAsString(ColumnNames.FacilityID, value);
 			}
 		}
 
