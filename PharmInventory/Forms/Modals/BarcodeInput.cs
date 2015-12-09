@@ -67,6 +67,7 @@ namespace PharmInventory.Forms.Modals
             return JsonConvert.DeserializeObject<IEnumerable<InvoiceHeader>>(serialized);
         }
 
+
         private void scannerInput1_OnScanCompleted(object sender, EventArgs e)
         {
                 STVs = DecodeBarcode(scannerInput1.InputData.Substring(4, scannerInput1.DataSize - 4));

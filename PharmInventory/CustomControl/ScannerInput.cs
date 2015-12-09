@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace PharmInventory.CustomControl
 {
-    public delegate void ScanComplete(object sender, EventArgs e);
+    public delegate void ScanComplete(object sender, EventArgs e);//todo: create custom event args
 
     public partial class ScannerInput : UserControl
     {
@@ -17,6 +18,7 @@ namespace PharmInventory.CustomControl
             ScanProgress.Maximum = 0;
             ScanProgress.Minimum = 0;
             scanTextInput.TextChanged += scanTextInput_TextChanged;
+            SetFocus();
         }
 
         void scanTextInput_TextChanged(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace PharmInventory.CustomControl
               _dataSize = ScanProgress.Maximum = len + 4;
         }
 
-        public new void SetFocus()
+        public void SetFocus()
         {
             scanTextInput.Focus();
         }
@@ -52,7 +54,10 @@ namespace PharmInventory.CustomControl
 
         protected override void OnGotFocus(EventArgs e)
         {
+            base.OnGotFocus(e);
             scanTextInput.Focus();
         }
     }
+
+ 
 }

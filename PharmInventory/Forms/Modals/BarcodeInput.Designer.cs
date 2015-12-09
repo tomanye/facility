@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.scannerInput1 = new PharmInventory.CustomControl.ScannerInput();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBarcodeStatus = new System.Windows.Forms.Label();
             this.btnCancelScan = new DevExpress.XtraEditors.SimpleButton();
@@ -42,6 +41,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.scannerInput1 = new PharmInventory.CustomControl.ScannerInput();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -71,14 +71,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(426, 379);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // scannerInput1
-            // 
-            this.scannerInput1.Location = new System.Drawing.Point(41, 37);
-            this.scannerInput1.Name = "scannerInput1";
-            this.scannerInput1.Size = new System.Drawing.Size(373, 49);
-            this.scannerInput1.TabIndex = 11;
-            this.scannerInput1.OnScanCompleted += new PharmInventory.CustomControl.ScanComplete(this.scannerInput1_OnScanCompleted);
             // 
             // label1
             // 
@@ -213,6 +205,14 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextToControlDistance = 0;
             this.layoutControlItem6.TextVisible = false;
+            // 
+            // scannerInput1
+            // 
+            this.scannerInput1.Location = new System.Drawing.Point(41, 37);
+            this.scannerInput1.Name = "scannerInput1";
+            this.scannerInput1.Size = new System.Drawing.Size(373, 49);
+            this.scannerInput1.TabIndex = 11;
+            this.scannerInput1.OnScanCompleted += new PharmInventory.CustomControl.ScanComplete(this.scannerInput1_OnScanCompleted);
             // 
             // layoutControlItem8
             // 
