@@ -83,9 +83,9 @@ namespace PharmInventory
             //f = new ReceivingForm();
             //AddTab("Receiving Form", f);
 
-            
+
             LoadForm("Receives");
-            
+
 
 
             // toolStripStatusLabel1.Text = "Logged in as " + us.FullName;
@@ -114,7 +114,7 @@ namespace PharmInventory
                         break;
                 }
             }
-            
+
             Form frm;
             switch (tag)
             {
@@ -147,12 +147,12 @@ namespace PharmInventory
                     frm = new ManageSupplies();
                     AddTab("Manage Supplies List", frm);
                     break;
-               case "Item Consolidator":
+                case "Item Consolidator":
                     //frm = new ManageItems();
                     frm = new ItemConsolidator();
                     AddTab("Update Items List From The Directory Service", frm);
                     break;
-              
+
                 case "Customize Druglist":
                     frm = new CustomDrugList();
                     AddTab("Customize Drug List", frm);
@@ -303,7 +303,7 @@ namespace PharmInventory
                     frm = new CostReport();
                     AddTab("Cost Report", frm);
                     break;
-                case "ConsumptionByUnit" :
+                case "ConsumptionByUnit":
                     frm = new ConsumptionByUnits();
                     AddTab("Consumption By Dispensary Unit", frm);
                     break;
