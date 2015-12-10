@@ -1,0 +1,2 @@
+Alter Table GeneralInfo
+Alter Column FacilityID UniqueIdentifier
