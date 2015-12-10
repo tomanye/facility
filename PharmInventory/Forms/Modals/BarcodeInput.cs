@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using PharmInventory.Barcode;
@@ -73,9 +74,13 @@ namespace PharmInventory.Forms.Modals
                 STVs = DecodeBarcode(scannerInput1.InputData.Substring(4, scannerInput1.DataSize - 4));
 
                 lblBarcodeStatus.Text = "Barcode read and decoded successfuly";
-                //Thread.Sleep(2 * 1000);
-                //Close();
-                //DialogResult = DialogResult.OK;
+
+            if (STVs != null)
+            {
+                Thread.Sleep(2 * 1000);
+                Close();
+                DialogResult = DialogResult.OK;
+            }
         }
 
     }
