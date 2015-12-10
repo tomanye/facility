@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.ServiceModel;
 using System.Windows.Forms;
 using BLL;
-using System.Linq;
 using DevExpress.XtraEditors;
-using CommCtrl;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout.Utils;
@@ -14,18 +10,10 @@ using Newtonsoft.Json;
 using PharmInventory.Barcode;
 using PharmInventory.Barcode.DTO;
 using PharmInventory.Barcode.Service;
-using PharmInventory.RRFLookUpService;
-using PharmInventory.RRFTransactionService;
 using PharmInventory.Reports;
-using PharmInventory.RRFService;
 using PharmInventory.HelperClasses;
-using DevExpress.XtraPrinting;
-using DevExpress.XtraPrinting.Preview;
 using DevExpress.XtraReports.UI;
-using EthiopianDate;
-using PharmInventory.ViewModels;
 using EncodingType = PharmInventory.Barcode.EncodingType;
-using Order = PharmInventory.RRFTransactionService.Order;
 using RRFDetail = BLL.RRFDetail;
 
 namespace PharmInventory.Forms.Reports
@@ -300,13 +288,16 @@ namespace PharmInventory.Forms.Reports
             tbl.TableName = "DataTable1";
             var dtset = new DataSet();
             ///////////////////////////Barcode stuff///////////////////
+            var program = new BLL.Programs();
+            program.LoadByPrimaryKey(Convert.ToInt32(cboProgram.EditValue));
+            
             var rrf = new RRFHeader
             {
-                F = ginfo.HospitalName,
+                F = ginfo.FacilityID,
                 M = cboStores.Text,
-                P =  String.Format("{0} - {1}", ethioDateFrom.ToGregorianDate().ToShortDateString(), ethioDateTo.ToGregorianDate().ToShortDateString()),
-                C = lkCategory.Text,
-                PN = cboProgram.Text,
+                PS = ethioDateFrom.ToGregorianDate(),
+                PE = ethioDateTo.ToGregorianDate(),
+                PC = program.ProgramCode,
                 D = RRFDataService.GetRRFDetails(tbl)
             };
 
@@ -332,7 +323,6 @@ namespace PharmInventory.Forms.Reports
                 rrfReport.FilterString = String.Format("ProgramID={0}", Convert.ToInt32(cboProgram.EditValue));
                 rrfReport.ShowPreviewDialog();
             }
-           
         }
 
         private void btnAutoPushToPFSA_Click(object sender, EventArgs e)

@@ -3,9 +3,9 @@ namespace PharmInventory.Barcode.DTO
 {
     public class RRFDetail
     {
-        public string SC { get; set; }//stock code
+        //public string SC { get; set; }//stock code
         public int I { get; set; }//Item SN
-        public int? UID { get; set; } //UnitID
+        //public int? UID { get; set; } //UnitID
         //public int PPPS { get; set; }//prefered pfsa pack size
         public decimal B  { get; set; } //Beggining Balance
         //public decimal LDUSOH { get; set; } //Last despensing unit soh

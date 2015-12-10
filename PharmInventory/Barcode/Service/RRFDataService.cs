@@ -19,8 +19,8 @@ namespace PharmInventory.Barcode.Service
                 details.Add(new DTO.RRFDetail
                 {
                     I = item.DSItemID,
-                    SC = t.Field<string>("StockCode"),
-                    UID = Items.GetUnitIDFromSN(item.DSItemID),
+                    //SC = t.Field<string>("StockCode"),
+                    //UID = Items.GetUnitIDFromSN(item.DSItemID),
                     B = (decimal) t.Field<double>("BeginingBalance"),
                     D = t.Field<int>("DaysOutOfStock"),
                     E = t.Field<decimal>("TotalSOH"),
