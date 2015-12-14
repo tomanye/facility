@@ -289,8 +289,20 @@ namespace PharmInventory.Forms.Reports
             var dtset = new DataSet();
             ///////////////////////////Barcode stuff///////////////////
             var program = new BLL.Programs();
+            var detailTable = tbl.Copy();
             program.LoadByPrimaryKey(Convert.ToInt32(cboProgram.EditValue));
-            
+
+             if (Convert.ToInt32(lkCategory.EditValue) != 0 && Convert.ToInt32(cboProgram.EditValue) != 0)
+                detailTable =
+                    detailTable.AsEnumerable()
+                        .Where(t => t.Field<int>("ProgramID") == Convert.ToInt32(cboProgram.EditValue)
+                                    && t.Field<int>("TypeID") == Convert.ToInt32(lkCategory.EditValue)
+                        ).CopyToDataTable();
+            else if(Convert.ToInt32(cboProgram.EditValue) != 0)
+                detailTable =
+                   detailTable.AsEnumerable()
+                       .Where(t => t.Field<int>("ProgramID") == Convert.ToInt32(cboProgram.EditValue)).CopyToDataTable();
+
             var rrf = new RRFHeader
             {
                 F = ginfo.FacilityID,
@@ -298,7 +310,7 @@ namespace PharmInventory.Forms.Reports
                 PS = ethioDateFrom.ToGregorianDate(),
                 PE = ethioDateTo.ToGregorianDate(),
                 PC = program.ProgramCode,
-                D = RRFDataService.GetRRFDetails(tbl)
+                D = RRFDataService.GetRRFDetails(detailTable)
             };
 
             var serialized = JsonConvert.SerializeObject(rrf);

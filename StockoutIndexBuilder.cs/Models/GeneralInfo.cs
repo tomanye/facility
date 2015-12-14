@@ -13,6 +13,6 @@ namespace StockoutIndexBuilder.Models
         [Key]
         public int ID { get; set; }
         public int AMCRange { get; set; }
-        public int? FacilityID { get; set; }
+        public Guid? FacilityID { get; set; }
     }
 }
