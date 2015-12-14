@@ -284,7 +284,7 @@ namespace PharmInventory.Forms.Reports
                                     categoryName = {Text = lkCategory.Text}
                                 };
 
-            var tbl = ((DataView) gridItemChoiceView.DataSource).Table;
+            var tbl = ((DataView)gridItemChoiceView.DataSource).ToTable();
             tbl.TableName = "DataTable1";
             var dtset = new DataSet();
             ///////////////////////////Barcode stuff///////////////////

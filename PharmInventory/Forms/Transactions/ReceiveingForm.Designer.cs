@@ -869,8 +869,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn2.Caption = "Invoice #";
             this.gridColumn2.FieldName = "InvoiceNumber";
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             // 
             // gridColumn13
             // 
@@ -885,7 +884,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn13.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn13.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 1;
+            this.gridColumn13.VisibleIndex = 0;
             this.gridColumn13.Width = 228;
             // 
             // gridColumn15
@@ -896,7 +895,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 4;
+            this.gridColumn15.VisibleIndex = 2;
             this.gridColumn15.Width = 63;
             // 
             // repositoryItemSpinEdit1
@@ -925,7 +924,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn14.OptionsColumn.AllowShowHide = false;
             this.gridColumn14.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 5;
+            this.gridColumn14.VisibleIndex = 3;
             this.gridColumn14.Width = 63;
             // 
             // gridColumn17
@@ -942,7 +941,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn17.UnboundExpression = "[Pack Qty] * [Qty/pack]";
             this.gridColumn17.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 6;
+            this.gridColumn17.VisibleIndex = 4;
             this.gridColumn17.Width = 68;
             // 
             // gridColumn18
@@ -956,7 +955,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsColumn.AllowFocus = false;
             this.gridColumn18.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 3;
+            this.gridColumn18.VisibleIndex = 1;
             this.gridColumn18.Width = 65;
             // 
             // gridColumn19
@@ -967,7 +966,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 7;
+            this.gridColumn19.VisibleIndex = 5;
             this.gridColumn19.Width = 65;
             // 
             // repositoryItemTextEdit1
@@ -987,7 +986,7 @@ namespace PharmInventory.Forms.Transactions
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total Price", "{0: #,##0.#0}")});
             this.gridTotalPrice.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridTotalPrice.Visible = true;
-            this.gridTotalPrice.VisibleIndex = 8;
+            this.gridTotalPrice.VisibleIndex = 6;
             this.gridTotalPrice.Width = 57;
             // 
             // gridColumn20
@@ -997,7 +996,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 9;
+            this.gridColumn20.VisibleIndex = 7;
             this.gridColumn20.Width = 92;
             // 
             // gridColumn21
@@ -1010,7 +1009,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn21.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 10;
+            this.gridColumn21.VisibleIndex = 8;
             this.gridColumn21.Width = 20;
             // 
             // repositoryItemButtonEdit2
@@ -1032,7 +1031,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 12;
+            this.gridColumn22.VisibleIndex = 10;
             this.gridColumn22.Width = 182;
             // 
             // ExpireDateEditor
@@ -1059,7 +1058,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn16.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn16.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 11;
+            this.gridColumn16.VisibleIndex = 9;
             this.gridColumn16.Width = 20;
             // 
             // repositoryItemButtonEdit1
@@ -1078,8 +1077,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn24.OptionsColumn.AllowSort = DevExpress.Utils.DefaultBoolean.True;
-            this.gridColumn24.Visible = true;
-            this.gridColumn24.VisibleIndex = 2;
             this.gridColumn24.Width = 84;
             // 
             // unitsrepositoryItemLookUpEdit

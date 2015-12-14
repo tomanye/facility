@@ -112,8 +112,8 @@
             this.calculatedField8 = new DevExpress.XtraReports.UI.CalculatedField();
             this.calculatedField9 = new DevExpress.XtraReports.UI.CalculatedField();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.calculatedField10 = new DevExpress.XtraReports.UI.CalculatedField();
             this.xrBarcode = new DevExpress.XtraReports.UI.XRPictureBox();
+            this.calculatedField10 = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
@@ -1025,13 +1025,8 @@
             this.categoryName,
             this.xrLabel5,
             this.xrLabel1});
-            this.ReportHeader.HeightF = 307.2917F;
+            this.ReportHeader.HeightF = 297.2917F;
             this.ReportHeader.Name = "ReportHeader";
-            // 
-            // calculatedField10
-            // 
-            this.calculatedField10.Expression = "[LastDUSoh] / [QtyPerPack]";
-            this.calculatedField10.Name = "calculatedField10";
             // 
             // xrBarcode
             // 
@@ -1039,6 +1034,11 @@
             this.xrBarcode.Name = "xrBarcode";
             this.xrBarcode.SizeF = new System.Drawing.SizeF(225F, 225F);
             this.xrBarcode.Sizing = DevExpress.XtraPrinting.ImageSizeMode.ZoomImage;
+            // 
+            // calculatedField10
+            // 
+            this.calculatedField10.Expression = "[LastDUSoh] / [QtyPerPack]";
+            this.calculatedField10.Name = "calculatedField10";
             // 
             // RRFReport
             // 
