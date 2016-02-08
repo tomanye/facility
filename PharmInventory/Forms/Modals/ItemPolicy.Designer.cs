@@ -209,6 +209,7 @@ namespace PharmInventory.Forms.Modals
             this.txtQuantityPerPack.Enabled = false;
             this.txtQuantityPerPack.Location = new System.Drawing.Point(192, 67);
             this.txtQuantityPerPack.Name = "txtQuantityPerPack";
+            this.txtQuantityPerPack.Properties.ReadOnly = true;
             this.txtQuantityPerPack.Size = new System.Drawing.Size(187, 20);
             this.txtQuantityPerPack.StyleController = this.layout;
             this.txtQuantityPerPack.TabIndex = 21;
@@ -218,6 +219,7 @@ namespace PharmInventory.Forms.Modals
             this.txtText.Enabled = false;
             this.txtText.Location = new System.Drawing.Point(192, 91);
             this.txtText.Name = "txtText";
+            this.txtText.Properties.ReadOnly = true;
             this.txtText.Size = new System.Drawing.Size(187, 20);
             this.txtText.StyleController = this.layout;
             this.txtText.TabIndex = 20;

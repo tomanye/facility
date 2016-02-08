@@ -17,5 +17,7 @@ namespace PharmInventory.Barcode.DTO
         public decimal M { get; set; } //Max stock
         public decimal QM { get; set; } //qty to reach max
         public decimal Q { get; set; } //quantity ordered
+
+        public int? U { get; set; } //unit id
     }
 }

@@ -1894,7 +1894,6 @@ FROM    Items itm
                                          " Items left join (select ItemID, sum(Quantity) as Quantity from ReceiveDoc rd " +
                                          "where [Date] between '{0}' and '{1}' and" + " StoreID = {2} group by ItemID) as" +
                                          " A on Items.ID = A.ItemID", dt1, dt2, storeId);
-            //var query = string.Format("SELECT  ItemID ID,SUM(Quantity) AS Quantity FROM ReceiveDoc rd WHERE   [Date] BETWEEN '{0}' AND '{1}'AND StoreID = {2} GROUP BY ItemID ", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
 
@@ -1904,8 +1903,6 @@ FROM    Items itm
                                   "where [Date] between '{0}' and '{1}' and StoreID = {2} and IsTransfer = 0 " +
                                   "group by ItemID ) as A on Items.ID = A.ItemID "
                                   , dt1, dt2, storeId);
-
-            //query = string.Format(" SELECT ItemID ID ,SUM(Quantity) Quantity FROM IssueDoc WHERE   [Date] BETWEEN '{0}' AND '{1}' AND StoreID = {2} AND IsTransfer = 0 GROUP BY ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
@@ -1915,7 +1912,6 @@ FROM    Items itm
                                   "and StoreID = {2} group by ItemID) as A on Items.ID = A.ItemID "
                                  , dt1, dt2, storeId);
 
-            //query = string.Format("select ItemID ID ,sum(case when Losses = 1 then - Quantity else Quantity end) Quantity from Disposal where [Date] between '{0}' and '{1}' and StoreID = {2} group by ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var lost = this.DataTable;
 
@@ -1924,7 +1920,6 @@ FROM    Items itm
                                   " from Items");
             this.LoadFromRawSql(query);
             var preferredPackSizetbl = DataTable;
-            //var daysOutOfStock = this.GetItemsWithLastIssuedOrDisposedDate();
 
             var x = (from y in dtbl.AsEnumerable()
                      join z in dtbl2.AsEnumerable()
@@ -1946,7 +1941,9 @@ FROM    Items itm
                          QtyPerPack = Convert.ToDouble(p["QtyPerPack"]),
                          StockCodeDACA = p["StockCodeDACA"],
                          Status=y["Status"],
-                         TypeID=y["TypeID"]
+                         TypeID=y["TypeID"],
+                         DefaultUnitID = y["DefaultUnitID"]
+
                      }).Distinct().ToArray();
 
             var m = (from n in x
@@ -1967,7 +1964,8 @@ FROM    Items itm
                          ProgramID = n.ProgramID,
                          Received = z["Quantity"],
                          Status = n.Status,
-                         TypeID = n.TypeID
+                         TypeID = n.TypeID,
+                         DefaultUnitID = n.DefaultUnitID
                         }).ToArray();
 
             var l = (from n in m
@@ -1990,7 +1988,8 @@ FROM    Items itm
                              ProgramID = n.ProgramID,
                              Status=n.Status,
                              Issued = Convert.ToInt32(z["Quantity"]),
-                             TypeID=n.TypeID
+                             TypeID=n.TypeID,
+                             DefaultUnitID = n.DefaultUnitID
                              }).ToArray();
 
             var t = (from n in l
@@ -2014,7 +2013,8 @@ FROM    Items itm
                          Status =n.Status,
                          LossAdj = z["Quantity"],
                          Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                         TypeID=n.TypeID
+                         TypeID=n.TypeID,
+                         DefaultUnitID = n.DefaultUnitID
                          }).ToArray();
             if (t.Length == 0)
             {
@@ -2037,6 +2037,7 @@ FROM    Items itm
                                       LossAdj = 0,
                                       ProgramID = n.ProgramID,
                                       Status = n.Status,
+                                      DefaultUnitID = n.DefaultUnitID,
                                       Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                       DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
@@ -2068,6 +2069,7 @@ FROM    Items itm
                 value.Columns.Add("LastDUSoh", typeof (decimal));
                 value.Columns.Add("USOH", typeof (decimal));
                 value.Columns.Add("TotalSOH", typeof (decimal));
+                value.Columns.Add("DefaultUnitID", typeof(int));
 
                 foreach (var v in t2)
                 {
@@ -2088,11 +2090,11 @@ FROM    Items itm
                     drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH;
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
-                    //drv["MaxStockQty"] = v.MaxStockQty;
                     drv["Status"] = v.Status;
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["TotalSOH"] = v.USOH + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["DefaultUnitID"] = v.DefaultUnitID;
                 }
 
                 return value;
@@ -2120,7 +2122,8 @@ FROM    Items itm
                                   Status = n.Status,
                                   Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
                                   DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
-                                  TypeID = n.TypeID
+                                  TypeID = n.TypeID,
+                                  DefaultUnitID = n.DefaultUnitID
                               }).ToArray();
 
                 var value = new DataTable();
@@ -2144,6 +2147,7 @@ FROM    Items itm
                 value.Columns.Add("LastDUSoh", typeof(decimal));
                 value.Columns.Add("USOH", typeof(decimal));
                 value.Columns.Add("TotalSOH", typeof(decimal));
+                value.Columns.Add("DefaultUnitID", typeof(int));
 
                 foreach (var v in t2)
                 {
@@ -2169,6 +2173,7 @@ FROM    Items itm
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["TotalSOH"] = v.USOH + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["DefaultUnitID"] = v.DefaultUnitID;
                 }
 
                 return value;

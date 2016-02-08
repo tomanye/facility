@@ -29,6 +29,7 @@ SELECT DISTINCT
 					  , dbo.Items.NeedExpiryBatch
 					  , dbo.Items.StorageTypeID
 					  , dbo.Items.NearExpiryTrigger
+					  , dbo.Items.DefaultUnitID
 					  --, dbo.SubCategory.CategoryId
 					  --, PC.SubCategoryID
 FROM				  
@@ -74,7 +75,8 @@ SELECT DISTINCT
 					  , dbo.Items.NeedExpiryBatch
 					  , dbo.Items.StorageTypeID
 					  , dbo.Items.NearExpiryTrigger
-					 -- , dbo.SupplyCategory.ParentId as CategoryID 
+					  , dbo.Items.DefaultUnitID					
+					   -- , dbo.SupplyCategory.ParentId as CategoryID 
 					 -- , dbo.ItemSupplyCategory.CategoryID as SubCategoryID 
 FROM        
 					  dbo.Items   

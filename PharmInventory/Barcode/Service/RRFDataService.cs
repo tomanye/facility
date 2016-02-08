@@ -26,7 +26,8 @@ namespace PharmInventory.Barcode.Service
                     E = t.Field<decimal>("TotalSOH"),
                     L = (decimal) t.Field<double>("LossAdj"),
                     Q = (decimal) t.Field<double>("Quantity"),
-                    R = (decimal) t.Field<double>("Received")
+                    R = (decimal) t.Field<double>("Received"),
+                    U = t.Field<int?>("DefaultUnitID")
                 });
             }
 

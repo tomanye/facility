@@ -600,6 +600,9 @@
       <DependentUpon>VRFReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FacilityOrderViewModel.cs" />
+    <Content Include="Scripts\9961_AlterSOHByProgramByDefault.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\AlterGeneralInfoFacilityID.sql" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PharmInventory.Reports.GRVPrintout.datasource" />

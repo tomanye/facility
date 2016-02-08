@@ -152,6 +152,7 @@
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
             this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -600,7 +601,8 @@
             this.gridColumn42,
             this.gridColumn43,
             this.gridColumn44,
-            this.gridColumn33});
+            this.gridColumn33,
+            this.gridColumn48});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
@@ -2004,6 +2006,12 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
+            // gridColumn48
+            // 
+            this.gridColumn48.Caption = "DefaultUnitID";
+            this.gridColumn48.FieldName = "DefaultUnitID";
+            this.gridColumn48.Name = "gridColumn48";
+            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2198,5 +2206,6 @@
         private System.Windows.Forms.Button btnGenerateRRF;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn48;
     }
 }
