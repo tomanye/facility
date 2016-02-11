@@ -1148,10 +1148,10 @@ namespace PharmInventory.Forms.Reports
 
         private void grdViewInPacks_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "gridColumn41")
-                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
-            if (e.Column.FieldName == "gridColumn13")
-                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+            if (e.Column.FieldName == "gridColumn41" && (Convert.ToString(e.Value) == "#Err" ||Convert.ToDecimal(e.Value) < 0 ))
+                e.DisplayText = "0";
+            if (e.Column.FieldName == "gridColumn13" && (Convert.ToString(e.Value) == "#Err" ||Convert.ToDecimal(e.Value) < 0 ))
+               e.DisplayText = "0";
         }
 
 
@@ -1194,6 +1194,32 @@ namespace PharmInventory.Forms.Reports
             Cursor = Cursors.WaitCursor;
             PopulateList();
             Cursor = Cursors.Default;
+        }
+
+        private void cboStores_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboStores.Text.Contains("B"))
+            {
+                Programs prog = new Programs();
+                DataTable dtProg = prog.GetSubPrograms();
+                DataView dtView = dtProg.AsDataView();
+                dtView.RowFilter = "Name = 'All Programs'";
+
+                cboProgram.Properties.DataSource = dtView.ToTable();
+                cboProgram.Properties.DisplayMember = "Name";
+                cboProgram.Properties.ValueMember = "ID";
+            }
+            else
+            {
+                Programs prog = new Programs();
+                DataTable dtProg = prog.GetSubPrograms();
+                DataView dtView = dtProg.AsDataView();
+                dtView.RowFilter = new string("Name <> 'All Programs'".ToCharArray());
+
+                cboProgram.Properties.DataSource = dtView.ToTable();
+                cboProgram.Properties.DisplayMember = "Name";
+                cboProgram.Properties.ValueMember = "ID";
+            }
         }
 
     }

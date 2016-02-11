@@ -47,7 +47,6 @@ namespace PharmInventory.Forms.Transactions
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueForm));
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn68 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -364,7 +363,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.gridConfirmation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
@@ -390,7 +389,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink2.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn1
@@ -637,6 +635,7 @@ namespace PharmInventory.Forms.Transactions
             this.issueGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.issueGrid.Cursor = System.Windows.Forms.Cursors.Default;
             this.issueGrid.Location = new System.Drawing.Point(7, 55);
             this.issueGrid.MainView = this.issueGridView;
             this.issueGrid.Name = "issueGrid";
@@ -700,6 +699,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand3.Columns.Add(this.gridColumn4);
             this.gridBand3.Columns.Add(this.gridColumn6);
             this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 0;
             this.gridBand3.Width = 253;
             // 
             // gridColumn3
@@ -764,6 +764,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand2.Columns.Add(this.gridColumn17);
             this.gridBand2.Columns.Add(this.gridColumn18);
             this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
             this.gridBand2.Width = 560;
             // 
             // gridColumn5
@@ -908,7 +909,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsColumn.ReadOnly = true;
             this.gridColumn18.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn18.OptionsFilter.AllowFilter = false;
-            this.gridColumn18.ToolTip = "Dispensing Unit Requested Quantity";
+            this.gridColumn18.ToolTip = "Dispensing Unit Recommended Quantity";
             this.gridColumn18.Visible = true;
             this.gridColumn18.Width = 129;
             // 
@@ -920,6 +921,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand4.Columns.Add(this.gridColumn21);
             this.gridBand4.Columns.Add(this.gridColumnRemove);
             this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 2;
             this.gridBand4.Width = 193;
             // 
             // gridColumn19
@@ -1118,7 +1120,6 @@ namespace PharmInventory.Forms.Transactions
             this.treeListColumn1});
             this.treeCategory.Location = new System.Drawing.Point(7, 43);
             this.treeCategory.Name = "treeCategory";
-            this.treeCategory.OptionsPrint.UsePrintStyles = true;
             this.treeCategory.OptionsView.ShowIndicator = false;
             this.treeCategory.ParentFieldName = "Parent";
             this.treeCategory.Size = new System.Drawing.Size(225, 474);
@@ -2179,13 +2180,12 @@ namespace PharmInventory.Forms.Transactions
             // dtIssueDate
             // 
             this.dtIssueDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtIssueDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtIssueDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dtIssueDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtIssueDate.DayOfWeekCharacters = 2;
+            this.dtIssueDate.DayOfWeekCharacters = 1;
             this.dtIssueDate.ForeColor = System.Drawing.Color.Black;
             this.dtIssueDate.Location = new System.Drawing.Point(840, 31);
             this.dtIssueDate.Name = "dtIssueDate";
-            this.dtIssueDate.PopUpFontSize = 9.75F;
             this.dtIssueDate.Size = new System.Drawing.Size(202, 20);
             this.dtIssueDate.TabIndex = 11;
             this.dtIssueDate.Value = new System.DateTime(2011, 10, 5, 0, 0, 0, 0);
@@ -2541,9 +2541,9 @@ namespace PharmInventory.Forms.Transactions
             // 
             // txtIssuedDate
             // 
-            this.txtIssuedDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.txtIssuedDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.75F);
             this.txtIssuedDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.txtIssuedDate.DayOfWeekCharacters = 2;
+            this.txtIssuedDate.DayOfWeekCharacters = 1;
             this.txtIssuedDate.Enabled = false;
             this.txtIssuedDate.ForeColor = System.Drawing.Color.Black;
             this.txtIssuedDate.Location = new System.Drawing.Point(105, 36);
@@ -2826,14 +2826,14 @@ namespace PharmInventory.Forms.Transactions
             this.ExpireDateEditor.AutoHeight = false;
             this.ExpireDateEditor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ExpireDateEditor.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ExpireDateEditor.DisplayFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.EditFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.Value;
             this.ExpireDateEditor.Name = "ExpireDateEditor";
-            this.ExpireDateEditor.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // repositoryItemButtonEdit2
             // 
@@ -2933,6 +2933,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand1.Columns.Add(this.bandedGridColumn10);
             this.gridBand1.Columns.Add(this.bandedGridColumn11);
             this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
             this.gridBand1.Width = 1117;
             // 
             // bandedGridColumn1
@@ -3295,10 +3296,6 @@ namespace PharmInventory.Forms.Transactions
             // printableComponentLink2
             // 
             this.printableComponentLink2.Component = this.gridConfirmation;
-            // 
-            // 
-            // 
-            this.printableComponentLink2.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink2.ImageCollection.ImageStream")));
             this.printableComponentLink2.Landscape = true;
             this.printableComponentLink2.Margins = new System.Drawing.Printing.Margins(5, 5, 100, 100);
             this.printableComponentLink2.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -3307,7 +3304,6 @@ namespace PharmInventory.Forms.Transactions
                 "",
                 ""}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.printableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.printableComponentLink2.PrintingSystem = this.printingSystem1;
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink2.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink2_CreateMarginalHeaderArea);
             // 
@@ -3409,7 +3405,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.txtStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridConfirmation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).EndInit();
@@ -3436,7 +3432,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink2.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }

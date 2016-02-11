@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -441,7 +441,8 @@
             this.gridColumn41.FieldName = "gridColumn41";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.AllowEdit = false;
-            this.gridColumn41.UnboundExpression = "[gridColumn19] - [gridColumn16]";
+            this.gridColumn41.UnboundExpression = "Floor(Iif(([gridColumn19] -[Ending Balance ] - [gridColumn47])<0,0,([gridColumn19" +
+    "] -[Ending Balance ] - [gridColumn47])))";
             this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 11;
@@ -453,10 +454,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridItemsChoice.Cursor = System.Windows.Forms.Cursors.Default;
-            gridLevelNode1.LevelTemplate = this.grdViewInPacks;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.grdViewInPacks;
+            gridLevelNode2.RelationName = "Level1";
             this.gridItemsChoice.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridItemsChoice.Location = new System.Drawing.Point(24, 620);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -602,13 +603,13 @@
             this.gridColumn44,
             this.gridColumn33});
             this.gridItemChoiceView.FixedLineWidth = 1;
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.Column = this.gridColumn40;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
-            styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Green;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.Column = this.gridColumn40;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
+            styleFormatCondition2.Expression = "[gridColumn7]<[SOH]";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1});
+            styleFormatCondition2});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -894,6 +895,7 @@
             this.cboStores.Size = new System.Drawing.Size(247, 20);
             this.cboStores.StyleController = this.layoutControl1;
             this.cboStores.TabIndex = 34;
+            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
             // 
             // layoutControl1
             // 
