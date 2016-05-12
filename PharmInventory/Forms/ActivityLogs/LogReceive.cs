@@ -36,16 +36,16 @@ namespace PharmInventory.Forms.ActivityLogs
 
             var sup = new Supplier();
             var dtSup = sup.GetSuppliersWithTransaction();
-            cboSupplier.Properties.DataSource = dtSup;
-            cboSupplier.ItemIndex = -1;
-            cboSupplier.Text = "Select Supplier";
+            //cboSupplier.Properties.DataSource = dtSup;
+            //cboSupplier.ItemIndex = -1;
+            //cboSupplier.Text = "Select Supplier";
 
             var itemunit = new ItemUnit();
             var units = itemunit.GetAllUnits();
             unitsbindingSource.DataSource = units.DefaultView;
 
             // bind the supplier lookup for the grid.
-            lkEditSupplier.DataSource = dtSup;
+            //lkEditSupplier.DataSource = dtSup;
             var unitcolumn = ((GridView)gridReceives.MainView).Columns[14];
             switch (VisibilitySetting.HandleUnits)
             {
@@ -67,6 +67,8 @@ namespace PharmInventory.Forms.ActivityLogs
                 var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
                 if (dr == null) return;
                 var rec = new ReceiveDoc();
+                var supplier= new Supplier();
+                
                 if (dr["ParentID"] == DBNull.Value)
                 {
                    // int yr = ((dtCurrent.Month > 10) ? dtCurrent.Year : dtCurrent.Year - 1);
@@ -103,38 +105,17 @@ namespace PharmInventory.Forms.ActivityLogs
 
             PopulateDocuments(dtRec);
 
-            //var dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
-            //if (dr == null) return;
-            //dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue),
-            //                                  dr["Date"].ToString());
-            //gridReceives.DataSource = dtRec;
         }
 
         private void cboSupplier_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboSupplier.EditValue == null) return;
-            var rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetTransactionBySupplierId(Convert.ToInt32(cboStores.EditValue),
-                                                             Convert.ToInt32(cboSupplier.EditValue));
-            gridReceives.DataSource = dtRec;
+           // if (cboSupplier.EditValue == null) return;
+            //var rec = new ReceiveDoc();
+            //DataTable dtRec = rec.GetTransactionBySupplierId(Convert.ToInt32(cboStores.EditValue),
+            //                                                 Convert.ToInt32(cboSupplier.EditValue));
+            //gridReceives.DataSource = dtRec;
         }
 
-        private void dtTo_ValueChanged(object sender, EventArgs e)
-        {
-            ReceiveDoc rec = new ReceiveDoc();
-            dtFrom.CustomFormat = "MM/dd/yyyy";
-            dtTo.CustomFormat = "MM/dd/yyyy";
-
-            DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
-            DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
-
-            DataTable dtRec = dteFrom < dteTo
-                                  ? rec.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dteFrom, dteTo)
-                                  : rec.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
-            gridReceives.DataSource = dtRec;
-            dtFrom.CustomFormat = "MMMM dd, yyyy";
-            dtTo.CustomFormat = "MMMM dd, yyyy";
-        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -222,35 +203,6 @@ namespace PharmInventory.Forms.ActivityLogs
             }
         }
 
-        //private static void AddDeletedRecieveDoc(ReceiveDoc rec)
-        //{
-        //    var recd = new ReceiveDocDeleted();
-        //    recd.AddNew();
-        //    recd.ID = rec.ID;
-        //    recd.BatchNo = rec.BatchNo;
-        //    recd.ItemID = rec.ItemID;
-        //    recd.SupplierID = rec.SupplierID;
-        //    recd.Quantity = rec.Quantity;
-        //    recd.Date = rec.Date;
-        //    recd.ExpDate = rec.ExpDate;
-        //    recd.Out = rec.Out;
-        //    //recd.ReceivedStatus = rec.ReceivedStatus;
-        //    //recd.ReceivedBy = rec.ReceivedBy;
-        //    // recd.Remark = rec.Remark;
-        //    recd.StoreID = rec.StoreID;
-        //    recd.LocalBatchNo = rec.LocalBatchNo;
-        //    recd.RefNo = rec.RefNo;
-        //    recd.Cost = rec.Cost;
-        //    recd.IsApproved = rec.IsApproved;
-        //    //recd.ManufacturerId = rec.ManufacturerId;
-        //    recd.QuantityLeft = rec.QuantityLeft;
-        //    recd.NoOfPack = rec.NoOfPack;
-        //    recd.QtyPerPack = rec.QtyPerPack;
-        //    // recd.BoxLevel = rec.BoxLevel;
-        //    recd.EurDate = rec.EurDate;
-        //    // recd.SubProgramID = rec.SubProgramID;
-        //    recd.Save();
-        //}
 
         private void btnExportToExcel_Click(object sender, EventArgs e)
         {

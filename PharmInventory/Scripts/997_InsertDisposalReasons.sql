@@ -37,6 +37,16 @@ declare @ItemsXML xml ='<DisposalReasons>
     <Reason>Transfer</Reason>
     <Description>Transfer to Other Health Facility</Description>
   </DisposalReason>
+  <DisposalReason>
+    <ID>10</ID>
+    <Reason>Transfer  In</Reason>
+    <Description>Transfer In Health Facility</Description>
+  </DisposalReason>
+  <DisposalReason>
+    <ID>11</ID>
+    <Reason>Transfer Out</Reason>
+    <Description>Transfer Out</Description>
+  </DisposalReason>
 </DisposalReasons>'
 
 SET IDENTITY_INSERT DisposalReasons ON

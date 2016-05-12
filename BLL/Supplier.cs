@@ -37,6 +37,7 @@ namespace BLL
 			return this.DataTable;
 		}
 
+
 		public DataTable GetSuppliersWithTransaction()
 		{
 			this.FlushData();

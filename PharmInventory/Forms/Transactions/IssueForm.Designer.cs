@@ -700,7 +700,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand3.Columns.Add(this.gridColumn6);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 0;
-            this.gridBand3.Width = 253;
+            this.gridBand3.Width = 256;
             // 
             // gridColumn3
             // 
@@ -730,7 +730,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn4.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.Width = 197;
+            this.gridColumn4.Width = 198;
             // 
             // gridColumn6
             // 
@@ -750,7 +750,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.ToolTip = "Store Stock On Hand";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.Width = 56;
+            this.gridColumn6.Width = 58;
             // 
             // gridBand2
             // 
@@ -765,7 +765,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridBand2.Columns.Add(this.gridColumn18);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 560;
+            this.gridBand2.Width = 568;
             // 
             // gridColumn5
             // 
@@ -911,7 +911,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.ToolTip = "Dispensing Unit Recommended Quantity";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.Width = 129;
+            this.gridColumn18.Width = 137;
             // 
             // gridBand4
             // 
@@ -940,7 +940,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn19.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn19.OptionsFilter.AllowFilter = false;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.Width = 56;
+            this.gridColumn19.Width = 54;
             // 
             // gridColumn20
             // 
@@ -956,7 +956,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn20.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn20.OptionsFilter.AllowFilter = false;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.Width = 52;
+            this.gridColumn20.Width = 50;
             // 
             // gridColumn21
             // 
@@ -966,7 +966,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21.AppearanceCell.Options.UseForeColor = true;
             this.gridColumn21.AppearanceHeader.BackColor = System.Drawing.Color.Silver;
             this.gridColumn21.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn21.Caption = "Requested Qty";
+            this.gridColumn21.Caption = "Supplied Qty";
             this.gridColumn21.ColumnEdit = this.repositoryItemTextEdit1;
             this.gridColumn21.FieldName = "Requested Qty";
             this.gridColumn21.Name = "gridColumn21";
@@ -974,7 +974,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21.OptionsFilter.AllowAutoFilter = false;
             this.gridColumn21.OptionsFilter.AllowFilter = false;
             this.gridColumn21.Visible = true;
-            this.gridColumn21.Width = 39;
+            this.gridColumn21.Width = 38;
             // 
             // gridColumnRemove
             // 
@@ -984,7 +984,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumnRemove.Name = "gridColumnRemove";
             this.gridColumnRemove.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumnRemove.Visible = true;
-            this.gridColumnRemove.Width = 46;
+            this.gridColumnRemove.Width = 51;
             // 
             // repositoryItemLookUpEdit2
             // 

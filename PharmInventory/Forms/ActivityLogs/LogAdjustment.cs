@@ -38,7 +38,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             var rec = new DisposalReasons();
             var dtDis = rec.GetAvailableReasons();
-            cboReasons.Properties.DataSource = dtDis.DefaultView;
+            //cboReasons.Properties.DataSource = dtDis.DefaultView;
             reasonBindingSource.DataSource = dtDis.DefaultView;
            // cboReasons.ItemIndex = 0;
 
@@ -117,27 +117,27 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void cboReasons_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.EditValue != null && cboReasons.EditValue != null)
-            {
-                var adj = new Disposal();
-                dtRec = adj.GetTransactionByReason(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(cboReasons.EditValue));
-                //PopulateDocuments(dtRec);
-                gridAdjustments.DataSource = dtRec;                
-            }
+            //if (cboStores.EditValue != null && cboReasons.EditValue != null)
+            //{
+            //    var adj = new Disposal();
+            //    dtRec = adj.GetTransactionByReason(Convert.ToInt32(cboStores.EditValue),Convert.ToInt32(cboReasons.EditValue));
+            //    //PopulateDocuments(dtRec);
+            //    gridAdjustments.DataSource = dtRec;                
+            //}
         }
 
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             //CALENDAR:
-            Disposal adj = new Disposal();
-            DataTable dtRec;
-            dtFrom.CustomFormat = "MM/dd/yyyy";
-            dtTo.CustomFormat = "MM/dd/yyyy";
-            DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
-            DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
+            //Disposal adj = new Disposal();
+            //DataTable dtRec;
+           // dtFrom.CustomFormat = "MM/dd/yyyy";
+           // dtTo.CustomFormat = "MM/dd/yyyy";
+           // DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
+            //DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
             
-            dtRec = dteFrom < dteTo ? adj.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dteFrom,dteTo) : adj.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
-            gridAdjustments.DataSource = dtRec;
+           // dtRec = dteFrom < dteTo ? adj.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dteFrom,dteTo) : adj.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
+           // gridAdjustments.DataSource = dtRec;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -284,13 +284,13 @@ namespace PharmInventory.Forms.ActivityLogs
                 disposal.Save();
 
                 //Repopulate the grid
-                DataTable dtRec;
-                dtFrom.CustomFormat = "MM/dd/yyyy";
-                dtTo.CustomFormat = "MM/dd/yyyy";
-                DateTime from = ConvertDate.DateConverter(dtFrom.Text);
-                DateTime to = ConvertDate.DateConverter(dtTo.Text);
-                dtRec = disposal.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), from, to);
-                gridAdjustments.DataSource = dtRec;
+                //DataTable dtRec;
+               // dtFrom.CustomFormat = "MM/dd/yyyy";
+                //dtTo.CustomFormat = "MM/dd/yyyy";
+                //DateTime from = ConvertDate.DateConverter(dtFrom.Text);
+                //DateTime to = ConvertDate.DateConverter(dtTo.Text);
+                //dtRec = disposal.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), from, to);
+             //   gridAdjustments.DataSource = dtRec;
             }
         }
 

@@ -160,7 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemunitLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EditRecivingBoxLevels)).BeginInit();
@@ -638,7 +638,6 @@
             // 
             this.txtApprovedBy.Location = new System.Drawing.Point(602, 307);
             this.txtApprovedBy.Name = "txtApprovedBy";
-            this.txtApprovedBy.Properties.ReadOnly = true;
             this.txtApprovedBy.Size = new System.Drawing.Size(358, 20);
             this.txtApprovedBy.StyleController = this.layoutControl3;
             this.txtApprovedBy.TabIndex = 15;
@@ -657,13 +656,12 @@
             // dtRecDate
             // 
             this.dtRecDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtRecDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtRecDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dtRecDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtRecDate.DayOfWeekCharacters = 2;
+            this.dtRecDate.DayOfWeekCharacters = 1;
             this.dtRecDate.ForeColor = System.Drawing.Color.Black;
             this.dtRecDate.Location = new System.Drawing.Point(602, 38);
             this.dtRecDate.Name = "dtRecDate";
-            this.dtRecDate.PopUpFontSize = 9.75F;
             this.dtRecDate.Size = new System.Drawing.Size(358, 20);
             this.dtRecDate.TabIndex = 10;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
@@ -716,13 +714,13 @@
             this.gridColumn18,
             this.gridColumn19});
             this.gridRecieveView.GridControl = this.receivingGrid;
-            this.gridRecieveView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridRecieveView.Name = "gridRecieveView";
             this.gridRecieveView.OptionsCustomization.AllowFilter = false;
             this.gridRecieveView.OptionsCustomization.AllowSort = false;
             this.gridRecieveView.OptionsMenu.EnableColumnMenu = false;
             this.gridRecieveView.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridRecieveView.OptionsView.AllowCellMerge = true;
+            this.gridRecieveView.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridRecieveView.OptionsView.ShowFooter = true;
             this.gridRecieveView.OptionsView.ShowGroupPanel = false;
             // 
@@ -845,14 +843,14 @@
             this.ExpireDateEditor.AutoHeight = false;
             this.ExpireDateEditor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ExpireDateEditor.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ExpireDateEditor.DisplayFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.EditFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.Value;
             this.ExpireDateEditor.Name = "ExpireDateEditor";
-            this.ExpireDateEditor.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // repositoryItemButtonEdit2
             // 
@@ -941,6 +939,7 @@
             this.gridBand1.Columns.Add(this.gridColumn12);
             this.gridBand1.Columns.Add(this.gridColumn9);
             this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
             this.gridBand1.Width = 1117;
             // 
             // gridColumn3
@@ -1330,7 +1329,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemunitLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editManufacturer)).EndInit();

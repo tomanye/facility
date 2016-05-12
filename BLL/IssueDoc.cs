@@ -19,9 +19,9 @@ namespace BLL
 			this.FlushData();
 		    var query =
 		        String.Format(
-		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI " +
+		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, ru.Name IssuedTo , datediff(day, id.EurDate, ExpDate) as DBEI " +
 		            "FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID " +
-                    "join vwGetAllItems vw on id.ItemID =vw.ID WHERE (id.IsTransfer = 0) and id.RefNo = '{0}' and id.Date = '{1}'",
+                    "join vwGetAllItems vw on id.ItemID =vw.ID join ReceivingUnits ru on id.ReceivingUnitID = ru.ID  WHERE (id.IsTransfer = 0) and id.RefNo = '{0}' and id.Date = '{1}'",
 		            refNo, date.ToShortDateString());
 
             this.LoadFromRawSql(query);
@@ -253,8 +253,8 @@ namespace BLL
 			this.FlushData();
 		    var query =
 		        String.Format(
-                    "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id " +
-                    "Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID  WHERE (id.IsTransfer = 0) and id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
+                    "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo ,ru.Name IssuedTo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id " +
+                    "Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID join ReceivingUnits ru on id.ReceivingUnitID = ru.ID  WHERE (id.IsTransfer = 0) and id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
 		            storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
 			this.LoadFromRawSql(query);
 			return this.DataTable;

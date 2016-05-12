@@ -77,7 +77,7 @@ namespace PharmInventory.Forms.Transactions
             var userID = MainWindow.LoggedinId;
             var us = new User();
             us.LoadByPrimaryKey(userID);
-            txtApprovedBy.Text = us.FullName;
+            //txtApprovedBy.Text = us.FullName;
            
 
             // bind the current date as the datetime field

@@ -167,7 +167,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UnitsbindingSource)).BeginInit();
@@ -735,9 +735,9 @@ namespace PharmInventory.Forms.Transactions
             // dtRecDate
             // 
             this.dtRecDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtRecDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtRecDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.75F);
             this.dtRecDate.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtRecDate.DayOfWeekCharacters = 2;
+            this.dtRecDate.DayOfWeekCharacters = 1;
             this.dtRecDate.ForeColor = System.Drawing.Color.Black;
             this.dtRecDate.Location = new System.Drawing.Point(802, 36);
             this.dtRecDate.Name = "dtRecDate";
@@ -809,7 +809,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn16,
             this.gridColumn24});
             this.gridRecieveView.GridControl = this.receivingGrid;
-            this.gridRecieveView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridRecieveView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total Price", this.gridTotalPrice, "")});
             this.gridRecieveView.Name = "gridRecieveView";
@@ -818,6 +817,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridRecieveView.OptionsMenu.EnableColumnMenu = false;
             this.gridRecieveView.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridRecieveView.OptionsView.AllowCellMerge = true;
+            this.gridRecieveView.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridRecieveView.OptionsView.ShowFooter = true;
             this.gridRecieveView.OptionsView.ShowGroupPanel = false;
             this.gridRecieveView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.OnAnyCellValueChangedOnRecieveGrid);
@@ -1003,14 +1003,14 @@ namespace PharmInventory.Forms.Transactions
             this.ExpireDateEditor.AutoHeight = false;
             this.ExpireDateEditor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ExpireDateEditor.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ExpireDateEditor.DisplayFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.EditFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.Value;
             this.ExpireDateEditor.Name = "ExpireDateEditor";
-            this.ExpireDateEditor.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // gridColumn16
             // 
@@ -1385,12 +1385,12 @@ namespace PharmInventory.Forms.Transactions
             // 
             // ReceivingForm
             // 
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 580);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ReceivingForm";
             this.Text = "ReceiveingForm";
             this.Load += new System.EventHandler(this.ReceiveingForm_Load);
@@ -1434,7 +1434,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsrepositoryItemLookUpEdit)).EndInit();

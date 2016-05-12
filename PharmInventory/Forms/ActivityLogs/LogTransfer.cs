@@ -92,19 +92,19 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
-            var rec = new Transfer();
-            dtFrom.CustomFormat = "MM/dd/yyyy";
-            dtTo.CustomFormat = "MM/dd/yyyy";
+            //var rec = new Transfer();
+            //dtFrom.CustomFormat = "MM/dd/yyyy";
+            //dtTo.CustomFormat = "MM/dd/yyyy";
 
-            DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
-            DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
+            //DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
+            //DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
 
-            DataTable dtRec = dteFrom < dteTo
-                                  ? rec.GetTransactionByDateRange(Convert.ToInt32(lkToStore.EditValue), dteFrom, dteTo)
-                                  : rec.GetAllTransaction(Convert.ToInt32(lkToStore.EditValue));
-            gridControl1.DataSource = dtRec;
-            dtFrom.CustomFormat = "MMMM dd, yyyy";
-            dtTo.CustomFormat = "MMMM dd, yyyy";
+            //DataTable dtRec = dteFrom < dteTo
+            //                      ? rec.GetTransactionByDateRange(Convert.ToInt32(lkToStore.EditValue), dteFrom, dteTo)
+            //                      : rec.GetAllTransaction(Convert.ToInt32(lkToStore.EditValue));
+            //gridControl1.DataSource = dtRec;
+            //dtFrom.CustomFormat = "MMMM dd, yyyy";
+            //dtTo.CustomFormat = "MMMM dd, yyyy";
         }
 
         private void lkToStore_EditValueChanged(object sender, EventArgs e)

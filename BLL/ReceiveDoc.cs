@@ -183,7 +183,11 @@ namespace BLL
         public DataTable GetTransactionByRefNo(string refNo, int storeId, string dt)
         {
             this.FlushData();
-            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice , datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID  WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
+            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice ,sp.CompanyName as SupplierName ," +
+                                         "datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd " +
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID " +
+                                         "join Supplier sp on rd.SupplierID = sp.ID  " +
+                                         "WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -192,8 +196,11 @@ namespace BLL
         {
             this.FlushData();
             string query = String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo ," +
-                                         " (rd.Cost * QtyPerPack) as PackPrice, datediff(day, EurDate, ExpDate) as DBER " +
-                                         "FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID join ItemUnit iu on rd.UnitID =iu.ID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' )" +
+                                         " (rd.Cost * QtyPerPack) as PackPrice, sp.CompanyName as SupplierName , datediff(day, EurDate, ExpDate) as DBER " +
+                                         "FROM ReceiveDoc rd " +
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID " +
+                                         "join ItemUnit iu on rd.UnitID =iu.ID " +
+                                         "join Supplier sp on rd.SupplierID = sp.ID  WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' )" +
                                          " ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;

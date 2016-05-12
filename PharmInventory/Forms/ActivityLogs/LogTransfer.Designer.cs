@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.dtTo = new CalendarLib.DateTimePickerEx();
-            this.dtFrom = new CalendarLib.DateTimePickerEx();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.lkToStore = new DevExpress.XtraEditors.LookUpEdit();
@@ -62,8 +60,6 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.cboToStore = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -85,15 +81,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.dtTo);
-            this.layoutControl1.Controls.Add(this.dtFrom);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Controls.Add(this.lkToStore);
@@ -108,32 +100,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(1165, 542);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // dtTo
-            // 
-            this.dtTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtTo.CalendarFont = new System.Drawing.Font("Nyala", 10F);
-            this.dtTo.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtTo.DayOfWeekCharacters = 2;
-            this.dtTo.ForeColor = System.Drawing.Color.Black;
-            this.dtTo.Location = new System.Drawing.Point(882, 36);
-            this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(271, 20);
-            this.dtTo.TabIndex = 13;
-            this.dtTo.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
-            // 
-            // dtFrom
-            // 
-            this.dtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtFrom.CalendarFont = new System.Drawing.Font("Nyala", 10F);
-            this.dtFrom.CalendarForeColor = System.Drawing.Color.Black;
-            this.dtFrom.DayOfWeekCharacters = 2;
-            this.dtFrom.ForeColor = System.Drawing.Color.Black;
-            this.dtFrom.Location = new System.Drawing.Point(883, 12);
-            this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(270, 20);
-            this.dtFrom.TabIndex = 13;
-            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // btnPrint
             // 
@@ -157,7 +123,7 @@
             // 
             // lkToStore
             // 
-            this.lkToStore.Location = new System.Drawing.Point(364, 12);
+            this.lkToStore.Location = new System.Drawing.Point(355, 12);
             this.lkToStore.Name = "lkToStore";
             this.lkToStore.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -166,7 +132,7 @@
             this.lkToStore.Properties.DisplayMember = "StoreName";
             this.lkToStore.Properties.NullText = "Select Stores";
             this.lkToStore.Properties.ValueMember = "ID";
-            this.lkToStore.Size = new System.Drawing.Size(199, 20);
+            this.lkToStore.Size = new System.Drawing.Size(209, 20);
             this.lkToStore.StyleController = this.layoutControl1;
             this.lkToStore.TabIndex = 12;
             this.lkToStore.EditValueChanged += new System.EventHandler(this.lkToStore_EditValueChanged);
@@ -192,6 +158,7 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.Location = new System.Drawing.Point(311, 60);
             this.gridControl1.MainView = this.gridItemsListView;
             this.gridControl1.Name = "gridControl1";
@@ -315,7 +282,6 @@
             this.lstTree.Location = new System.Drawing.Point(12, 12);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
-            this.lstTree.OptionsPrint.UsePrintStyles = true;
             this.lstTree.PreviewFieldName = "RefNo";
             this.lstTree.Size = new System.Drawing.Size(295, 518);
             this.lstTree.TabIndex = 4;
@@ -355,9 +321,7 @@
             this.layoutControlItem9,
             this.layoutControlItem10,
             this.emptySpaceItem1,
-            this.cboToStore,
-            this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.cboToStore});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1165, 542);
@@ -395,11 +359,10 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(555, 0);
-            this.emptySpaceItem2.MaxSize = new System.Drawing.Size(263, 24);
-            this.emptySpaceItem2.MinSize = new System.Drawing.Size(263, 24);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(556, 0);
+            this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(263, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(589, 24);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -412,7 +375,7 @@
             this.layoutControlItem7.MaxSize = new System.Drawing.Size(261, 24);
             this.layoutControlItem7.MinSize = new System.Drawing.Size(261, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(261, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(589, 24);
             this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.Text = "layoutControlItem7";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
@@ -482,38 +445,13 @@
             this.cboToStore.Control = this.lkToStore;
             this.cboToStore.CustomizationFormText = "To Store";
             this.cboToStore.Location = new System.Drawing.Point(299, 0);
-            this.cboToStore.MinSize = new System.Drawing.Size(107, 24);
+            this.cboToStore.MaxSize = new System.Drawing.Size(257, 24);
+            this.cboToStore.MinSize = new System.Drawing.Size(257, 24);
             this.cboToStore.Name = "cboToStore";
-            this.cboToStore.Size = new System.Drawing.Size(256, 24);
+            this.cboToStore.Size = new System.Drawing.Size(257, 24);
             this.cboToStore.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.cboToStore.Text = "To Store";
-            this.cboToStore.TextSize = new System.Drawing.Size(50, 13);
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.dtFrom;
-            this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(818, 0);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(327, 24);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(327, 24);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(327, 24);
-            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem5.Text = "From Date";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(50, 13);
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.dtTo;
-            this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(817, 24);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(328, 24);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(328, 24);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(328, 24);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.Text = "To Date";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(50, 13);
+            this.cboToStore.TextSize = new System.Drawing.Size(41, 13);
             // 
             // simpleLabelItem1
             // 
@@ -554,8 +492,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             this.ResumeLayout(false);
 
@@ -591,10 +527,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private CalendarLib.DateTimePickerEx dtFrom;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private CalendarLib.DateTimePickerEx dtTo;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private System.Windows.Forms.BindingSource storeBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
