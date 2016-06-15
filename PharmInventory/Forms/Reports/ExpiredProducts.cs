@@ -99,8 +99,6 @@ namespace PharmInventory.Forms.Reports
             if (cboStores.EditValue != null)
             {
                 int currentMonth = EthiopianDate.EthiopianDate.Now.Month;
-                var expDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, currentMonth, Convert.ToInt32(cboYear.EditValue)));
-
                 Items itm = new Items();
                 DataTable dtItem = itm.GetExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue));
                 PopulateItemList(dtItem);

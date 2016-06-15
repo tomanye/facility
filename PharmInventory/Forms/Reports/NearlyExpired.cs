@@ -243,5 +243,10 @@ namespace PharmInventory.Forms.Reports
                 gridItemListView.ActiveFilterString = "";
             }
         }
+
+        private void xpButton2_ClientSizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

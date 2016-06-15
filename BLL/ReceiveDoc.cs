@@ -183,7 +183,11 @@ namespace BLL
         public DataTable GetTransactionByRefNo(string refNo, int storeId, string dt)
         {
             this.FlushData();
-            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice , datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID  WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
+            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo , (rd.Cost * QtyPerPack) as PackPrice ,sp.CompanyName as SupplierName ," +
+                                         "datediff(day, EurDate, ExpDate) as DBER FROM ReceiveDoc rd " +
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID " +
+                                         "join Supplier sp on rd.SupplierID = sp.ID  " +
+                                         "WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -192,8 +196,11 @@ namespace BLL
         {
             this.FlushData();
             string query = String.Format("SELECT *, ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo ," +
-                                         " (rd.Cost * QtyPerPack) as PackPrice, datediff(day, EurDate, ExpDate) as DBER " +
-                                         "FROM ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID join ItemUnit iu on rd.UnitID =iu.ID WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' )" +
+                                         " (rd.Cost * QtyPerPack) as PackPrice, sp.CompanyName as SupplierName , datediff(day, EurDate, ExpDate) as DBER " +
+                                         "FROM ReceiveDoc rd " +
+                                         "join vwGetAllItems vw on rd.ItemID = vw.ID " +
+                                         "join ItemUnit iu on rd.UnitID =iu.ID " +
+                                         "join Supplier sp on rd.SupplierID = sp.ID  WHERE StoreId = {0} AND (Date BETWEEN '{1}' AND '{2}' )" +
                                          " ORDER BY Date DESC", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
@@ -495,21 +502,37 @@ namespace BLL
         public DataTable GetLeastReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
-            if (categoryId != 0)
+            if ((storeId == 0) && (categoryId == 0))
             {
                 this.LoadFromRawSql(String.Format(@" select TOP 10 count(*)AS NoOfRec,vw.FullItemName,v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
                                                  from vwGetReceivedItemsByBatch v join vwGetAllItems vw 
-                                                         on v.ID = vw.ID where v.StoreId = {0} and year(v.Date) = {1} and v.TypeId = {2}
+                                                         on v.ID = vw.ID where year(v.Date) = {0}
                                                  Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode, vw.FullItemName 
-                                                 order by NoOfRec ASC", storeId, year, categoryId));
+                                                 order by NoOfRec ASC", year));
             }
-            else
+            else if (categoryId == 0)
             {
                 this.LoadFromRawSql(String.Format(@" select TOP 10 count(*)AS NoOfRec,vw.FullItemName,v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
                                                  from vwGetReceivedItemsByBatch v join vwGetAllItems vw 
                                                          on v.ID = vw.ID where v.StoreId = {0} and year(v.Date) = {1}
                                                  Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode, vw.FullItemName 
                                                  order by NoOfRec ASC", storeId, year));
+            }
+            else if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" select TOP 10 count(*)AS NoOfRec,vw.FullItemName,v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetReceivedItemsByBatch v join vwGetAllItems vw 
+                                                         on v.ID = vw.ID where year(v.Date) = {0} and v.TypeId = {1}
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode, vw.FullItemName 
+                                                 order by NoOfRec ASC", year, categoryId));
+            }
+            else
+            {
+                this.LoadFromRawSql(String.Format(@" select TOP 10 count(*)AS NoOfRec,vw.FullItemName,v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetReceivedItemsByBatch v join vwGetAllItems vw 
+                                                         on v.ID = vw.ID where v.StoreId = {0} and year(v.Date) = {1} and v.TypeId = {2}
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode, vw.FullItemName 
+                                                 order by NoOfRec ASC", storeId, year, categoryId));
             }
             return this.DataTable;
         }
@@ -524,20 +547,35 @@ namespace BLL
         public DataTable GetNeverReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
-            if (categoryId != 0)
+            if ((storeId == 0) && (categoryId == 0))
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) 
+                                                         AND (IsInHospitalList = 1)", year));
+            }
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1}))) 
+                                                         AND (IsInHospitalList = 1)", year, categoryId));
+            }
+            if (categoryId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) 
+                                                         AND (IsInHospitalList = 1)", storeId, year));
+            }
+            else
             {
                 this.LoadFromRawSql(String.Format(@" SELECT * 
                                                  FROM  dbo.vwGetAllItems 
                                                  WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
                                                          AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}))) 
                                                          AND (IsInHospitalList = 1)", storeId, year, categoryId));
-            }
-            else
-            {
-                this.LoadFromRawSql(String.Format(@" SELECT * 
-                                                 FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) 
-                                                         AND (IsInHospitalList = 1)", storeId, year));
             }
             return this.DataTable;
         }
@@ -557,16 +595,16 @@ namespace BLL
 
         }
         
-        public int CountNeverReceivedItems(int storeId)
+        public int CountNeverReceivedItems(int storeId, int year)
         {
             this.FlushData();
             if (storeId == 0)
             {
-                this.LoadFromRawSql(String.Format("SELECT count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1)"));
+                this.LoadFromRawSql(String.Format("SELECT count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) AND (IsInHospitalList = 1)", year));
             }
             else
             {
-                this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1)", storeId));
+                this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) AND (IsInHospitalList = 1)", storeId, year));
             }
 
             return this.Getint("Count");
@@ -575,16 +613,27 @@ namespace BLL
         public int CountNeverReceivedItemsByCateogryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
-            if (storeId == 0)
+            if ((storeId == 0) && (categoryId == 0))
             {
-                this.LoadFromRawSql(String.Format("SELECT count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1)"));
+                this.LoadFromRawSql(String.Format(@"SELECT count(*) as Count " +
+                                                  " FROM  dbo.vwGetAllItems " +
+                                                  " WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) " +
+                                                  "     AND (IsInHospitalList = 1)", year));
+            }
+            else if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
+                                                     FROM  dbo.vwGetAllItems 
+                                                     WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0} AND typeId = {1}))) 
+                                                         AND (IsInHospitalList = 1)"
+                                    , year, categoryId));
             }
             else if (categoryId == 0)
             {
                 this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                      FROM  dbo.vwGetAllItems 
                                                      WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) 
-                                                            AND (IsInHospitalList = 1)"
+                                                         AND (IsInHospitalList = 1)"
                                     , storeId, year));
             }
             else
@@ -609,7 +658,33 @@ namespace BLL
         public DataTable GetReceivedNotIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
-            if (categoryId != 0)
+            if ((storeId == 0) && (categoryId == 0))
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) 
+                                                         AND (IsInHospitalList = 1) 
+                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (YEAR(Date) = {0})))", year));
+            }
+            else if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1}))) 
+                                                         AND (IsInHospitalList = 1) 
+                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (YEAR(Date) = {0} 
+                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1})))", year, categoryId));
+            }
+            else if (categoryId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" SELECT * 
+                                                 FROM  dbo.vwGetAllItems 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) 
+                                                         AND (IsInHospitalList = 1) 
+                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1})))", storeId, year));
+            }
+            else
             {
                 this.LoadFromRawSql(String.Format(@" SELECT * 
                                                  FROM  dbo.vwGetAllItems 
@@ -619,23 +694,20 @@ namespace BLL
                                                          AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
                                                          AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2})))", storeId, year, categoryId));
             }
-            else
-            {
-                this.LoadFromRawSql(String.Format(@" SELECT * 
-                                                 FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
-                                                         ))) 
-                                                         AND (IsInHospitalList = 1) 
-                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
-                                                         )))", storeId, year));
-            }
             return this.DataTable;
         }
 
-        public int CountReceivedNotIssuedItems(int storeId)
+        public int CountReceivedNotIssuedItems(int storeId, int year)
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0})))", storeId));
+            if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) AND (IsInHospitalList = 1) AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc))", year));
+            }
+            else
+            {
+                this.LoadFromRawSql(String.Format("SELECT Count(*) as Count FROM  dbo.vwGetAllItems WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) AND (IsInHospitalList = 1) AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} AND YEAR(Date) = {1})))", storeId, year));
+            }
             return this.Getint("Count");
         }
 
@@ -649,7 +721,7 @@ namespace BLL
                 {
                     this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc )) AND (IsInHospitalList = 1) 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (year(Date) = {0} = {1} and TypeId = {2}))) AND (IsInHospitalList = 1) 
                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (year(Date) = {0} and TypeId = {1})))"
                                         , year, categoryId));
                 }
@@ -657,7 +729,7 @@ namespace BLL
                 {
                     this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc)) AND (IsInHospitalList = 1) 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (year(Date) = {0}))) AND (IsInHospitalList = 1) 
                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (year(Date) = {0})))"
                                         , year));
                 }
@@ -668,7 +740,7 @@ namespace BLL
                 {
                     this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} and year(Date) = {1} and TypeId = {2}))) AND (IsInHospitalList = 1) 
                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} and year(Date) = {1} and TypeId = {2})))"
                                         , storeId, year, categoryId));
                 }
@@ -676,7 +748,7 @@ namespace BLL
                 {
                     this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0}))) AND (IsInHospitalList = 1) 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} and year(Date) = {1}))) AND (IsInHospitalList = 1) 
                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (StoreID = {0} and year(Date) = {1})))"
                                         , storeId, year));
                 }
@@ -740,12 +812,43 @@ namespace BLL
             return this.DataTable;
         }
 
-        public DataTable GetRecievedItemsWithBalanceForStore(int storeID, int typeID)
+        public DataTable GetRecievedItemsWithBalanceForStore(int storeID, int typeID, string startDate, string endDate)
         {
-            var query = String.Format("select vw.FullItemName, vw.TypeID ,vw.Unit,vw.StockCode, rd.ID as ReceiveID,BatchNo,ItemID,SupplierID, ExpDate ExpiryDate," +
-                                         " StoreID,QuantityLeft,RefNo,rd.UnitID, rd.Cost, EurDate from ReceiveDoc rd " +
-                                         "join vwGetAllItems vw on rd.ItemID = vw.ID where StoreID = {0} and TypeID={1} and QuantityLeft >0 order by FullItemName", storeID, typeID);
+            var query = String.Format(@"SELECT  rd.ID AS ReceiveID ,
+	                                    rd.ItemID ,
+	                                    rd.StoreID ,
+			                                    vw.FullItemName ,
+			                                    vw.StockCode ,
+			                                    vw.TypeID ,
+			                                    vw.Unit ,
+	                                    rd.RefNo ,
+			                                    rd.BatchNo ,
+	                                    rd.EurDate ,
+	                                    ExpDate ExpiryDate ,
+			                                    SupplierID ,
+			                                    rd.Cost ,
+			                                    QuantityLeft ,
+			                                    rd.UnitID ,
+	                                    [Date]
+                                    FROM    ReceiveDoc rd
+                                            JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE   rd.StoreID = {0}
+                                            AND TypeID = {1}
+                                            AND QuantityLeft > 0
+                                    AND Out = 0
+                                    AND rd.[Date] BETWEEN '{2}' AND '{3}'
+                                    ORDER BY FullItemName", storeID, typeID, startDate, endDate);
             this.LoadFromRawSql(query);
+
+            //EthiopianDate.EthiopianDate startDateIn = EthiopianDate.EthiopianDate.Now;
+
+            //string strStartDateIn = "10/1/" + (startDateIn.Year - 1).ToString();
+            //string strEndDateIn = "10/30/" + (startDateIn.Year - 1).ToString();
+
+            //DataView dv = new DataView(this.DataTable);
+            //dv.RowFilter = "[Date] < '" + strStartDateIn + "' or [Date] > '" + strEndDateIn + "'";
+
+            //this.DataTable = dv.ToTable();
             return this.DataTable;
         }
 

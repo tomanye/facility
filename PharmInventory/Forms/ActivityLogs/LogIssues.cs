@@ -32,9 +32,9 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             var rec = new ReceivingUnits();
             DataTable drRec = rec.GetAllApplicableDU();
-            cboIssuedTo.Properties.DataSource = drRec;
-            cboIssuedTo.ItemIndex = -1;//.SelectedIndex = -1;
-            cboIssuedTo.Text = @"Select Issue Location";
+            //cboIssuedTo.Properties.DataSource = drRec;
+            //cboIssuedTo.ItemIndex = -1;//.SelectedIndex = -1;
+            //cboIssuedTo.Text = @"Select Issue Location";
 
 
             var itemunit = new ItemUnit();
@@ -112,12 +112,12 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void cboIssuedTo_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboIssuedTo.EditValue == null || cboStores.EditValue == null) return;
+            //if (cboIssuedTo.EditValue == null || cboStores.EditValue == null) return;
 
-            IssueDoc iss = new IssueDoc();
+            //IssueDoc iss = new IssueDoc();
 
-            DataTable dtRec = iss.GetTransactionByReceivingUnit(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(cboIssuedTo.EditValue));
-            gridIssues.DataSource = dtRec;
+            //DataTable dtRec = iss.GetTransactionByReceivingUnit(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(cboIssuedTo.EditValue));
+            //gridIssues.DataSource = dtRec;
         }
 
         private void dtTo_ValueChanged(object sender, EventArgs e)
@@ -130,8 +130,8 @@ namespace PharmInventory.Forms.ActivityLogs
             //DateTime dteFrom = ConvertDate.DateConverter(dtFrom.Text);
             //DateTime dteTo = ConvertDate.DateConverter(dtTo.Text);
             
-            DataTable dtRec = dtFrom.Value < dtTo.Value ? iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value) : iss.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
-            gridIssues.DataSource = dtRec;
+         //   DataTable dtRec = dtFrom.Value < dtTo.Value ? iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value) : iss.GetAllTransaction(Convert.ToInt32(cboStores.EditValue));
+           // gridIssues.DataSource = dtRec;
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -335,6 +335,7 @@ namespace PharmInventory.Forms.ActivityLogs
                 //dtRec = iss.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
                 dtRec = iss.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToDateTime(dr["Date"]));
                 lblIssDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
+                
             }
             gridIssues.DataSource = dtRec;
         }

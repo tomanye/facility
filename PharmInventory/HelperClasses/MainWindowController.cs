@@ -134,10 +134,6 @@ namespace PharmInventory
                     frm = new ItemPriceOnlyReport();
                     AddTab("Item Price Only", frm);
                     break;
-                case "stockoutindexer":
-                    frm = new StockOutIndicesBuilder();
-                    AddTab("Stockout Indices Builder",frm);
-                    break;
                 case "Facility Settings":
                     frm = new Hospital();
                     AddTab("Facility Settings", frm);
@@ -181,10 +177,15 @@ namespace PharmInventory
                     frm = new ChangePassword(UserId);
                     AddTab("Change Password", frm);
                     break;
-                    break;
                 case "Transfer Log":
                     frm = new LogTransfer();
                     AddTab("Transfer Log", frm);
+                    break;
+
+
+                case "VRF Form":
+                    frm = new vrfmainForm();
+                    AddTab("Vaccine Requistion and Report Form", frm);
                     break;
                 case "Losses/Adjustment":
                     frm = new LossesAdjustment();

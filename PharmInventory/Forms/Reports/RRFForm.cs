@@ -157,13 +157,44 @@ namespace PharmInventory.Forms.Reports
             }
             return currentYear;
         }
-
-        private void PopulateList()
+        private void grdRRF_DoubleClick(object sender, EventArgs e)
         {
+            DataRow dr = grdViewRRFList.GetFocusedDataRow();
+            if (dr == null)
+                return;
+            int rrfID = Convert.ToInt32(dr["ID"]);
+            ShowRRFDetailWindow(rrfID);
+            WindowVisibility(true);
+        }
+
+        private void ShowRRFDetailWindow(int rrfID)
+        {
+            Cursor = Cursors.WaitCursor;
+            RRF rrf = new RRF();
+            rrf.LoadByPrimaryKey(rrfID);
+            cboFromMonth.EditValue = rrf.FromMonth;
+            cboFromYear.EditValue = rrf.FromYear;
+            cboToMonth.EditValue = rrf.ToMonth;
+            cboToYear.EditValue = rrf.ToYear;
+            cboStores.EditValue = rrf.RRFType;
+            PopulateList();
+            // Handle Edits here (Populate exact values from the database)
+            if (!rrf.IsColumnNull("LastRRFStatus"))
+            {
+                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
+                    btnAutoPushToPFSA.Enabled = false;
+            }
+            else
+                btnAutoPushToPFSA.Enabled = false;
+            Cursor = Cursors.Default;
+        }
+        private void PopulateList()
+        {  
+             Items itm = new Items();
             _storeID = Convert.ToInt32(cboStores.EditValue);
             _programID = Convert.ToInt32(cboProgram.EditValue);
-            Items itm = new Items();
-
+          
+            
             _fromMonth = int.Parse(cboFromMonth.EditValue.ToString());
             _toMonth = int.Parse(cboToMonth.EditValue.ToString());
             _toYear = int.Parse(cboToYear.EditValue.ToString());
@@ -994,47 +1025,17 @@ namespace PharmInventory.Forms.Reports
         {
             if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
-            PopulateList();
+           //PopulateList();
         }
 
         private void cboFromMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
-            PopulateList();
+           // PopulateList();
         }
 
-        private void grdRRF_DoubleClick(object sender, EventArgs e)
-        {
-            DataRow dr = grdViewRRFList.GetFocusedDataRow();
-            if (dr == null)
-                return;
-            int rrfID = Convert.ToInt32(dr["ID"]);
-            ShowRRFDetailWindow(rrfID);
-            WindowVisibility(true);
-        }
-
-        private void ShowRRFDetailWindow(int rrfID)
-        {
-            Cursor = Cursors.WaitCursor;
-            RRF rrf = new RRF();
-            rrf.LoadByPrimaryKey(rrfID);
-            cboFromMonth.EditValue = rrf.FromMonth;
-            cboFromYear.EditValue = rrf.FromYear;
-            cboToMonth.EditValue = rrf.ToMonth;
-            cboToYear.EditValue = rrf.ToYear;
-            cboStores.EditValue = rrf.RRFType;
-            PopulateList();
-           // Handle Edits here (Populate exact values from the database)
-            if (!rrf.IsColumnNull("LastRRFStatus"))
-            {
-                if (rrf.LastRRFStatus == "" || rrf.LastRRFStatus.Contains("not") || rrf.LastRRFStatus.Contains("Not"))
-                    btnAutoPushToPFSA.Enabled = false;
-                }
-            else
-                btnAutoPushToPFSA.Enabled = false;
-            Cursor = Cursors.Default;
-        }
+       
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -1147,10 +1148,10 @@ namespace PharmInventory.Forms.Reports
 
         private void grdViewInPacks_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.FieldName == "gridColumn41")
-                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
-            if (e.Column.FieldName == "gridColumn13")
-                if (Convert.ToDecimal(e.Value) <= 0) e.DisplayText = "0";
+            if (e.Column.FieldName == "gridColumn41" && (Convert.ToString(e.Value) == "#Err" ||Convert.ToDecimal(e.Value) < 0 ))
+                e.DisplayText = "0";
+            if (e.Column.FieldName == "gridColumn13" && (Convert.ToString(e.Value) == "#Err" ||Convert.ToDecimal(e.Value) < 0 ))
+               e.DisplayText = "0";
         }
 
 
@@ -1185,6 +1186,39 @@ namespace PharmInventory.Forms.Reports
             {
                 btnSendEmergencyOrder.Enabled = true;
                 btnAutoPushToPFSA.Enabled = false;
+            }
+        }
+
+        private void btnGenerateRRF_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            PopulateList();
+            Cursor = Cursors.Default;
+        }
+
+        private void cboStores_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboStores.Text.Contains("B"))
+            {
+                Programs prog = new Programs();
+                DataTable dtProg = prog.GetSubPrograms();
+                DataView dtView = dtProg.AsDataView();
+                dtView.RowFilter = "Name = 'All Programs'";
+
+                cboProgram.Properties.DataSource = dtView.ToTable();
+                cboProgram.Properties.DisplayMember = "Name";
+                cboProgram.Properties.ValueMember = "ID";
+            }
+            else
+            {
+                Programs prog = new Programs();
+                DataTable dtProg = prog.GetSubPrograms();
+                DataView dtView = dtProg.AsDataView();
+                dtView.RowFilter = new string("Name <> 'All Programs'".ToCharArray());
+
+                cboProgram.Properties.DataSource = dtView.ToTable();
+                cboProgram.Properties.DisplayMember = "Name";
+                cboProgram.Properties.ValueMember = "ID";
             }
         }
 

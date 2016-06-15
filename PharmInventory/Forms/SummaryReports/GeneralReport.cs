@@ -30,19 +30,21 @@ namespace PharmInventory
         int storeId = 0;
         private void GeneralReport_Load(object sender, EventArgs e)
         {
-            //TabPage z = tabControl1.TabPages[2];
-            //tabControl1.TabPages.Remove(tabControl1.TabPages[2]);
-
             Stores stor = new Stores();
             DataTable dtStor = stor.GetActiveStores();
+            DataRow dtStorRow = dtStor.NewRow();
+            dtStorRow["ID"] = "0";
+            dtStorRow["StoreName"] = "All Strore";
+            dtStor.Rows.InsertAt(dtStorRow, 0);
+
             cboStores.DataSource = dtStor;
 
             var type = new BLL.Type();
             DataTable alltypes = type.GetAllCategory();
-            DataRow row = alltypes.NewRow();
-            row["ID"] = "0";
-            row["Name"] = "All";
-            alltypes.Rows.InsertAt(row, 0);
+            DataRow alltypesRow = alltypes.NewRow();
+            alltypesRow["ID"] = "0";
+            alltypesRow["Name"] = "All Category";
+            alltypes.Rows.InsertAt(alltypesRow, 0);
 
             lkCategory.Properties.DataSource = alltypes;
             lkCategory.Properties.DisplayMember = "Name";
@@ -63,6 +65,28 @@ namespace PharmInventory
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerAsync();
+
+            ManageLabelLinksStatus();
+        }
+
+        private void ManageLabelLinksStatus()
+        {
+            #region Stockstatus Summary tab
+            listInStock.Visible = lblInStock.Text != "0 (.0%)";
+            listStockOut.Visible = lblStockOut.Text != "0 (.0%)";
+            listNearEOP.Visible = lblNearEOP.Text != "0 (.0%)";
+            listOverstock.Visible = lblOverStocked.Text != "0 (.0%)";
+            listBelowEOP.Visible = lblBelowEOP.Text != "0 (.0%)";
+            listBelowMin.Visible = lblBelowMin.Text != "0 (.0%)";
+            #endregion Stockstatus Summary tab
+
+            #region Never Received Summary tab
+            linkLabel10.Visible = lblNeverRecived.Text != "0 (.0%)";
+            #endregion Never Received Summary tab
+            
+            #region Never Issued Summary tab
+            linkLabel21.Visible = lblNeverIssued.Text != "0 (.0%)";
+            #endregion Never Issued Summary tab
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -122,7 +146,7 @@ namespace PharmInventory
                 DataTable dtItm = itm.GetItemsByProgram(prog.ID);
                 int totalECLS = dtItm.Rows.Count;
                 lblNoECLS.Text = totalECLS.ToString();
-                int neverRec = rec.CountNeverReceivedItems(storeId);
+                int neverRec = rec.CountNeverReceivedItems(storeId, curYear);
                 int stockin = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
@@ -187,7 +211,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -356,7 +380,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -524,7 +548,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -693,7 +717,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -861,7 +885,7 @@ namespace PharmInventory
                 }
                 else
                 {
-                    listNearEOP.Visible = true;
+                    listBelowEOP.Visible = true;
                 }
                 // progressBar1.PerformStep();
                 int belowMin = 0;//bal.CountBelowMin(storeId, curMont, curYear);
@@ -991,8 +1015,8 @@ namespace PharmInventory
                 DataTable dtRec = rec.GetTopReceivedItems(storeId);
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
-                lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId, curYear).ToString();
+                if (lblNeverRecived.Text == "0")
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1000,8 +1024,8 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
-                lblNeverIssued.Text = rec.CountReceivedNotIssuedItems(storeId).ToString();
-                if (rec.CountReceivedNotIssuedItems(storeId) == 0)
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItems(storeId, curYear).ToString();
+                if (lblNeverIssued.Text == "0")
                 {
                     linkLabel21.Visible = false;
                 }
@@ -1125,7 +1149,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1258,7 +1282,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1375,7 +1399,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1492,7 +1516,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId) == 0)
+                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1786,6 +1810,8 @@ namespace PharmInventory
                     }
                 }
             }
+
+            ManageLabelLinksStatus();
         }
 
         private void tabPage8_Click(object sender, EventArgs e)
@@ -1990,30 +2016,27 @@ namespace PharmInventory
             dtDate.CustomFormat = "MM/dd/yyyy";
             string[] header = { info.HospitalName, " Summery Report ", cboStores.Text, " Date: " + dtDate.Text };
 
-            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel | *.xls", FileName = header[0]};
-            if (DialogResult.OK == saveDlg.ShowDialog())
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/SummaryReport" + (new Random()).Next(1, 1000) + ".xls";
+            if (tabControl1.SelectedTabPage == tabPage8)
             {
-                if (tabControl1.SelectedTabPage == tabPage8)
-                {
-                    XlsExportOptions opts2 = new XlsExportOptions();
-                    opts2.SheetName = "Receive Summary";
-                    listReceiveSum.ExportToXls(saveDlg.FileName, opts2);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
-                else if (tabControl1.SelectedTabPage == tabPage9)
-                {
-                    XlsExportOptions opts3 = new XlsExportOptions();
-                    opts3.SheetName = "Issue Summary";
-                    listIssued.ExportToXls(saveDlg.FileName, opts3);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
-                else
-                {
-                    XlsExportOptions opts1 = new XlsExportOptions();
-                    opts1.SheetName = "Stock Status Summary";
-                    listStatused.ExportToXls(saveDlg.FileName, opts1);
-                    System.Diagnostics.Process.Start(saveDlg.FileName);
-                }
+                XlsExportOptions opts2 = new XlsExportOptions();
+                opts2.SheetName = "Receive Summary";
+                listReceiveSum.ExportToXls(filePath, opts2);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            else if (tabControl1.SelectedTabPage == tabPage9)
+            {
+                XlsExportOptions opts3 = new XlsExportOptions();
+                opts3.SheetName = "Issue Summary";
+                listIssued.ExportToXls(filePath, opts3);
+                System.Diagnostics.Process.Start(filePath);
+            }
+            else
+            {
+                XlsExportOptions opts1 = new XlsExportOptions();
+                opts1.SheetName = "Stock Status Summary";
+                listStatused.ExportToXls(filePath, opts1);
+                System.Diagnostics.Process.Start(filePath);
             }
         }
 
@@ -2104,6 +2127,27 @@ namespace PharmInventory
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
             TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
             TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+        }
+
+        private void btnPrintGrid_Click(object sender, EventArgs e)
+        {
+            pcl.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pcl.CreateDocument();
+            pcl.ShowPreview();
+        }
+
+        private void btnPrintReceiveSummaryGrid_Click(object sender, EventArgs e)
+        {
+            pclReceive.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pclReceive.CreateDocument();
+            pclReceive.ShowPreview();
+        }
+
+        private void btnPrintIssueSummaryGrid_Click(object sender, EventArgs e)
+        {
+            pclIssue.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
+            pclIssue.CreateDocument();
+            pclIssue.ShowPreview();
         }
     }
 }

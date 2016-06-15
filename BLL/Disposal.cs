@@ -18,7 +18,7 @@ namespace BLL
         {
             this.FlushData();
             string query =
-                String.Format("SELECT *, CASE Losses WHEN 1 then cast(0-d.Quantity as nvarchar) else '+' + cast(d.Quantity as nvarchar) end as QuantityDetail, ROW_NUMBER() OVER (ORDER BY d.[Date] DESC) as RowNo FROM Disposal d JOIN dbo.ReceiveDoc rd ON d.RecID = rd.ID JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID WHERE (d.RefNo = '{0}') AND d.[Date] = '{2}' AND d.StoreId = {1} ",refNo, storeId, dtAdj);
+                String.Format("SELECT *, CASE Losses WHEN 1 then cast(0-d.Quantity as nvarchar) else '+' + cast(d.Quantity as nvarchar) end as QuantityDetail, ROW_NUMBER() OVER (ORDER BY d.[Date] DESC) as RowNo ,dr.Reason ReasonText  FROM Disposal d JOIN dbo.ReceiveDoc rd ON d.RecID = rd.ID JOIN DisposalReasons dr on d.ReasonId = dr.ID JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID WHERE (d.RefNo = '{0}') AND d.[Date] = '{2}' AND d.StoreId = {1} ", refNo, storeId, dtAdj);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -75,7 +75,7 @@ namespace BLL
         public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
-            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY d.[Date] DESC) as RowNo, CASE Losses WHEN 1 then cast(0-d.Quantity as nvarchar) else '+' + cast(d.Quantity as nvarchar) end as QuantityDetail FROM Disposal d JOIN dbo.ReceiveDoc rd ON d.RecID = rd.ID JOIN DisposalReasons on d.ReasonId = DisposalReasons.ID JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID WHERE d.StoreId = {0} AND (d.[Date] BETWEEN '{1}' AND '{2}' ) ORDER BY d.[Date] DESC",
+            string query = String.Format("SELECT *,ROW_NUMBER() OVER (ORDER BY d.[Date] DESC) as RowNo,  dr.Reason ReasonText, CASE Losses WHEN 1 then cast(0-d.Quantity as nvarchar) else '+' + cast(d.Quantity as nvarchar) end as QuantityDetail FROM Disposal d JOIN dbo.ReceiveDoc rd ON d.RecID = rd.ID JOIN DisposalReasons dr on d.ReasonId = dr.ID JOIN vwGetAllItems on vwGetAllItems.ID = d.ItemID WHERE d.StoreId = {0} AND (d.[Date] BETWEEN '{1}' AND '{2}' ) ORDER BY d.[Date] DESC",
                                          storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;

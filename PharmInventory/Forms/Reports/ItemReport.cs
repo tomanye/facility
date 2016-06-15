@@ -585,7 +585,7 @@ namespace PharmInventory.Forms.Reports
                     }
                     else
                     {
-                        criteria = "[SOH] != '0' or [AMC] != '0' or [Received] != '0' and [TypeID] = " + Convert.ToInt32(lkCommodityTypes.EditValue);
+                        criteria = "([SOH] != '0' or [AMC] != '0' or [Received] != '0') and [TypeID] = " + Convert.ToInt32(lkCommodityTypes.EditValue);
                         gridItemChoiceView.ActiveFilterString = criteria;
                     }
                 }

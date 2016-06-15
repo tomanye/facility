@@ -19,9 +19,9 @@ namespace BLL
 			this.FlushData();
 		    var query =
 		        String.Format(
-		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, datediff(day, id.EurDate, ExpDate) as DBEI " +
+		            "SELECT *, ROW_NUMBER() OVER (ORDER BY id.DATE DESC) as RowNo, ru.Name IssuedTo , datediff(day, id.EurDate, ExpDate) as DBEI " +
 		            "FROM IssueDoc id Join ReceiveDoc rd on id.RecievDocID = rd.ID " +
-                    "join vwGetAllItems vw on id.ItemID =vw.ID WHERE (id.IsTransfer = 0) and id.RefNo = '{0}' and id.Date = '{1}'",
+                    "join vwGetAllItems vw on id.ItemID =vw.ID join ReceivingUnits ru on id.ReceivingUnitID = ru.ID  WHERE (id.IsTransfer = 0) and id.RefNo = '{0}' and id.Date = '{1}'",
 		            refNo, date.ToShortDateString());
 
             this.LoadFromRawSql(query);
@@ -253,8 +253,8 @@ namespace BLL
 			this.FlushData();
 		    var query =
 		        String.Format(
-                    "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id " +
-                    "Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID  WHERE (id.IsTransfer = 0) and id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
+                    "SELECT *, ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo ,ru.Name IssuedTo , datediff(day, id.EurDate, ExpDate) as DBEI FROM IssueDoc id " +
+                    "Join ReceiveDoc rd on id.RecievDocID = rd.ID  join vwGetAllItems vw on id.ItemID = vw.ID join ReceivingUnits ru on id.ReceivingUnitID = ru.ID  WHERE (id.IsTransfer = 0) and id.StoreId = {0} AND (id.EurDate BETWEEN '{1}' AND '{2}' ) ORDER BY id.EurDate DESC",
 		            storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
 			this.LoadFromRawSql(query);
 			return this.DataTable;
@@ -420,21 +420,37 @@ namespace BLL
 		public DataTable GetLeastIssuedItemsByCategoryAndYear(int storeId, int categoryId, int year)
 		{
 			this.FlushData();
-            if (categoryId != 0)
+            if ((storeId == 0) && (categoryId == 0))
+            {
+                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
+                                                 on v.ID = vw.ID where YEAR(v.Date) = {0} 
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
+                                                 order by NoOfRec ASC", year));
+            }
+            else if (storeId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
+                                                 on v.ID = vw.ID where YEAR(v.Date) = {0} and vw.typeId = {1} 
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
+                                                 order by NoOfRec ASC", year, categoryId));
+            }
+            else if (categoryId == 0)
+            {
+                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
+                                                 from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
+                                                 on v.ID = vw.ID where v.StoreId = {0} and YEAR(v.Date) = {1} 
+                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
+                                                 order by NoOfRec ASC", storeId, year));
+            }
+            else
             {
                 this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
                                                  from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
                                                  on v.ID = vw.ID where v.StoreId = {0} and YEAR(v.Date) = {1} and vw.typeId = {2} 
                                                  Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
                                                  order by NoOfRec ASC", storeId, year, categoryId));
-            }
-            else
-            {
-                this.LoadFromRawSql(String.Format(@" select top 10 count(*)AS NoOfRec,v.ID,v.ItemName,vw.FullItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode 
-                                                 from vwGetIssuedItemsByBatch v join vwGetAllItems vw 
-                                                 on v.ID = vw.ID where v.StoreId = {0} and YEAR(v.Date) = {1}
-                                                 Group By v.ID,v.ItemName,v.DosageForm,v.Strength,v.Unit,v.StockCode,vw.FullItemName 
-                                                 order by NoOfRec ASC", storeId, year));
             }
 			return this.DataTable;
 		}
