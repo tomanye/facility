@@ -392,10 +392,6 @@ namespace PharmInventory
             statusStrip.Items[0].Text = "DOS calculation completed for all stores.";
             bwAMCCalculator.RunWorkerAsync();
         }
-
-        private void navBarControl1_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }
