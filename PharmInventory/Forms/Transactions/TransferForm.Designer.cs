@@ -33,6 +33,7 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
@@ -641,6 +642,9 @@
             this.txtApprovedBy.Size = new System.Drawing.Size(358, 20);
             this.txtApprovedBy.StyleController = this.layoutControl3;
             this.txtApprovedBy.TabIndex = 15;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Approved by can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtApprovedBy, conditionValidationRule1);
             // 
             // txtRequestedBy
             // 
@@ -649,9 +653,9 @@
             this.txtRequestedBy.Size = new System.Drawing.Size(358, 20);
             this.txtRequestedBy.StyleController = this.layoutControl3;
             this.txtRequestedBy.TabIndex = 14;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "Requested by can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtRequestedBy, conditionValidationRule1);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Requested by can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtRequestedBy, conditionValidationRule2);
             // 
             // dtRecDate
             // 
@@ -1072,9 +1076,9 @@
             this.lkToStore.Size = new System.Drawing.Size(360, 20);
             this.lkToStore.StyleController = this.layoutControl3;
             this.lkToStore.TabIndex = 13;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "To Store can not be empty.";
-            this.dxValidationProvider1.SetValidationRule(this.lkToStore, conditionValidationRule2);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "To Store can not be empty.";
+            this.dxValidationProvider1.SetValidationRule(this.lkToStore, conditionValidationRule3);
             // 
             // txtRefNo
             // 
@@ -1084,9 +1088,9 @@
             this.txtRefNo.Size = new System.Drawing.Size(358, 20);
             this.txtRefNo.StyleController = this.layoutControl3;
             this.txtRefNo.TabIndex = 0;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Reference Number can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule3);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule4.ErrorText = "Reference Number can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule4);
             // 
             // txtTransferReason
             // 
@@ -1095,9 +1099,9 @@
             this.txtTransferReason.Size = new System.Drawing.Size(834, 20);
             this.txtTransferReason.StyleController = this.layoutControl3;
             this.txtTransferReason.TabIndex = 16;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "Transfer reason can not be empty!";
-            this.dxValidationProvider1.SetValidationRule(this.txtTransferReason, conditionValidationRule4);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule5.ErrorText = "Transfer reason can not be empty!";
+            this.dxValidationProvider1.SetValidationRule(this.txtTransferReason, conditionValidationRule5);
             // 
             // layoutControlGroup5
             // 
