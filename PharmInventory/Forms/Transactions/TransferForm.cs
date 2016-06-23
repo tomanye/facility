@@ -287,6 +287,7 @@ namespace PharmInventory.Forms.Transactions
             txtRequestedBy.Text = "";
             txtTransferReason.Text = "";
             txtItemName.Text = "";
+            txtApprovedBy.Text = "";
             _dtSelectedTable.Rows.Clear();
             foreach (DataRowView dr in ((DataView)gridItemsView.DataSource))
             {
