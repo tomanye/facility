@@ -1169,10 +1169,14 @@ FROM    Items itm
             var query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib " +
                                        "WHERE ib.TypeID = {1} AND ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId, commodityType));
             this.LoadFromRawSql(query);
-            this.DataTable.Columns.Add("MOS");
+            DataColumn mos = new DataColumn("MOS", typeof(decimal));
+            DataColumn amc = new DataColumn("AMC", typeof(decimal));
+            this.DataTable.Columns.Add(mos); 
+            this.DataTable.Columns.Add(amc); 
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {
                 this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), dtCurrent);
+                this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)), 2);
             }
             return this.DataTable;
         }
@@ -1184,9 +1188,12 @@ FROM    Items itm
                                        "WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId));
             this.LoadFromRawSql(query);
             this.DataTable.Columns.Add("MOS");
+            this.DataTable.Columns.Add("AMC"); 
+
             for (int i = 0; i < this.DataTable.Rows.Count; i++)
             {
                 this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]));
+                this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)),2);
             }
             return this.DataTable;
         }
