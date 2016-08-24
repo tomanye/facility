@@ -1891,6 +1891,7 @@ FROM    Items itm
                      join p in preferredPackSizetbl.AsEnumerable()
                      on y["ID"] equals p["ID"]
                      where Convert.ToInt32(y["EverReceived"]) == 1
+                     orderby y["TypeID"]
                      select new
                      {
                          ID = y["ID"],
