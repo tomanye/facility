@@ -48,7 +48,7 @@
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>221</ApplicationRevision>
+    <ApplicationRevision>222</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -486,9 +486,7 @@
     <Compile Include="Forms\Legacy\Calc.Designer.cs">
       <DependentUpon>Calc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Legacy\CalenderColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Forms\Legacy\CalenderColumn.cs" />
     <Compile Include="Forms\Tools\DatabaseCleaning.cs">
       <SubType>Form</SubType>
     </Compile>
