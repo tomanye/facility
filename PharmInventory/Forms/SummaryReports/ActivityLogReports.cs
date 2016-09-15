@@ -56,7 +56,7 @@ namespace PharmInventory.Forms.SummaryReports
         }
         private void RefreshFilter()
         {
-            if (cboStores.Text == "All Stores")
+            if ((cboStores.Text == "All Stores") || (cboStores.EditValue== null))
             {
                 dtRec = rec.GetAllReceiveByDateRange(dtFrom.Value, dtTo.Value);
             }
