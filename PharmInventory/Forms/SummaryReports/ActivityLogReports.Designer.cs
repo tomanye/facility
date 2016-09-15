@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
+            this.dtTo = new CalendarLib.DateTimePickerEx();
+            this.dtFrom = new CalendarLib.DateTimePickerEx();
             this.xtraTabActivityLog = new DevExpress.XtraTab.XtraTabControl();
             this.receiveLog = new DevExpress.XtraTab.XtraTabPage();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.lkSupplier = new DevExpress.XtraEditors.LookUpEdit();
             this.gridReceives = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdViewReceive = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,38 +55,46 @@
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.lkEditSupplier = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.issueLog = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dtFrom = new CalendarLib.DateTimePickerEx();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.dtTo = new CalendarLib.DateTimePickerEx();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabActivityLog)).BeginInit();
             this.xtraTabActivityLog.SuspendLayout();
             this.receiveLog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewReceive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -98,6 +111,50 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // cboStores
+            // 
+            this.cboStores.Location = new System.Drawing.Point(45, 12);
+            this.cboStores.Name = "cboStores";
+            this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboStores.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Stores"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
+            this.cboStores.Properties.DisplayMember = "StoreName";
+            this.cboStores.Properties.NullValuePrompt = "All Stores";
+            this.cboStores.Properties.ShowFooter = false;
+            this.cboStores.Properties.ValueMember = "ID";
+            this.cboStores.Size = new System.Drawing.Size(214, 20);
+            this.cboStores.StyleController = this.layoutControl1;
+            this.cboStores.TabIndex = 8;
+            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
+            // 
+            // dtTo
+            // 
+            this.dtTo.CalendarFont = new System.Drawing.Font("Nyala", 10F);
+            this.dtTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            this.dtTo.DayOfWeekCharacters = 1;
+            this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            this.dtTo.Location = new System.Drawing.Point(487, 12);
+            this.dtTo.Name = "dtTo";
+            this.dtTo.PopUpFontSize = 12F;
+            this.dtTo.Size = new System.Drawing.Size(154, 20);
+            this.dtTo.TabIndex = 7;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
+            // 
+            // dtFrom
+            // 
+            this.dtFrom.CalendarFont = new System.Drawing.Font("Nyala", 10F);
+            this.dtFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            this.dtFrom.DayOfWeekCharacters = 1;
+            this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
+            this.dtFrom.Location = new System.Drawing.Point(296, 12);
+            this.dtFrom.Name = "dtFrom";
+            this.dtFrom.PopUpFontSize = 12F;
+            this.dtFrom.Size = new System.Drawing.Size(154, 20);
+            this.dtFrom.TabIndex = 6;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
+            // 
             // xtraTabActivityLog
             // 
             this.xtraTabActivityLog.Location = new System.Drawing.Point(12, 36);
@@ -111,29 +168,59 @@
             // 
             // receiveLog
             // 
-            this.receiveLog.Controls.Add(this.gridReceives);
+            this.receiveLog.Controls.Add(this.layoutControl2);
             this.receiveLog.Name = "receiveLog";
             this.receiveLog.Size = new System.Drawing.Size(964, 351);
             this.receiveLog.Text = "Receive Log";
             // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.lkSupplier);
+            this.layoutControl2.Controls.Add(this.gridReceives);
+            this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(397, 213, 250, 350);
+            this.layoutControl2.Root = this.layoutControlGroup2;
+            this.layoutControl2.Size = new System.Drawing.Size(964, 351);
+            this.layoutControl2.TabIndex = 29;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // lkSupplier
+            // 
+            this.lkSupplier.Location = new System.Drawing.Point(656, 12);
+            this.lkSupplier.Name = "lkSupplier";
+            this.lkSupplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkSupplier.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CompanyName", "Supplier Name")});
+            this.lkSupplier.Properties.DisplayMember = "CompanyName";
+            this.lkSupplier.Properties.NullText = "All Suppliers";
+            this.lkSupplier.Properties.ShowFooter = false;
+            this.lkSupplier.Properties.ValueMember = "ID";
+            this.lkSupplier.Size = new System.Drawing.Size(296, 20);
+            this.lkSupplier.StyleController = this.layoutControl2;
+            this.lkSupplier.TabIndex = 29;
+            this.lkSupplier.EditValueChanged += new System.EventHandler(this.lkSupplier_EditValueChanged);
+            // 
             // gridReceives
             // 
             this.gridReceives.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridReceives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridReceives.Location = new System.Drawing.Point(0, 0);
-            this.gridReceives.MainView = this.gridView1;
+            this.gridReceives.Location = new System.Drawing.Point(12, 36);
+            this.gridReceives.MainView = this.grdViewReceive;
             this.gridReceives.Name = "gridReceives";
             this.gridReceives.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lkEditSupplier,
             this.repositoryItemLookUpEdit1});
-            this.gridReceives.Size = new System.Drawing.Size(964, 351);
+            this.gridReceives.Size = new System.Drawing.Size(940, 303);
             this.gridReceives.TabIndex = 28;
             this.gridReceives.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.grdViewReceive});
             // 
-            // gridView1
+            // grdViewReceive
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdViewReceive.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -149,13 +236,13 @@
             this.gridColumn13,
             this.gridColumn14,
             this.gridColumn15});
-            this.gridView1.GridControl = this.gridReceives;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.grdViewReceive.GridControl = this.gridReceives;
+            this.grdViewReceive.Name = "grdViewReceive";
+            this.grdViewReceive.OptionsBehavior.Editable = false;
+            this.grdViewReceive.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdViewReceive.OptionsView.ColumnAutoWidth = false;
+            this.grdViewReceive.OptionsView.ShowFooter = true;
+            this.grdViewReceive.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
             // 
@@ -328,10 +415,57 @@
             this.lkEditSupplier.Name = "lkEditSupplier";
             this.lkEditSupplier.ValueMember = "ID";
             // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.CustomizationFormText = "layoutControlGroup2";
+            this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup2.GroupBordersVisible = false;
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem7,
+            this.layoutControlItem8,
+            this.emptySpaceItem2});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(964, 351);
+            this.layoutControlGroup2.Text = "layoutControlGroup2";
+            this.layoutControlGroup2.TextVisible = false;
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.gridReceives;
+            this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(944, 307);
+            this.layoutControlItem7.Text = "layoutControlItem7";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextToControlDistance = 0;
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.lkSupplier;
+            this.layoutControlItem8.CustomizationFormText = "Supplier:";
+            this.layoutControlItem8.Location = new System.Drawing.Point(599, 0);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(345, 24);
+            this.layoutControlItem8.Text = "Supplier:";
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(42, 13);
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(599, 24);
+            this.emptySpaceItem2.Text = "emptySpaceItem2";
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // issueLog
             // 
             this.issueLog.Name = "issueLog";
-            this.issueLog.Size = new System.Drawing.Size(964, 375);
+            this.issueLog.Size = new System.Drawing.Size(964, 351);
             this.issueLog.Text = "Issue Log";
             // 
             // layoutControlGroup1
@@ -363,45 +497,6 @@
             this.layoutControlItem1.TextToControlDistance = 0;
             this.layoutControlItem1.TextVisible = false;
             // 
-            // layoutControlItem14
-            // 
-            this.layoutControlItem14.Control = this.gridReceives;
-            this.layoutControlItem14.CustomizationFormText = "layoutControlItem14";
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 48);
-            this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(1010, 479);
-            this.layoutControlItem14.Text = "layoutControlItem14";
-            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem14.TextToControlDistance = 0;
-            this.layoutControlItem14.TextVisible = false;
-            // 
-            // dtFrom
-            // 
-            this.dtFrom.CalendarFont = new System.Drawing.Font("Nyala", 10F);
-            this.dtFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-            this.dtFrom.DayOfWeekCharacters = 1;
-            this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-            this.dtFrom.Location = new System.Drawing.Point(296, 12);
-            this.dtFrom.Name = "dtFrom";
-            this.dtFrom.PopUpFontSize = 12F;
-            this.dtFrom.Size = new System.Drawing.Size(154, 20);
-            this.dtFrom.TabIndex = 6;
-            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.dtFrom;
-            this.layoutControlItem3.CustomizationFormText = "From:";
-            this.layoutControlItem3.Location = new System.Drawing.Point(437, 0);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(136, 26);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(136, 26);
-            this.layoutControlItem3.Name = "layoutControlItem2";
-            this.layoutControlItem3.Size = new System.Drawing.Size(136, 26);
-            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.Text = "From:";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(28, 13);
-            this.layoutControlItem3.TextToControlDistance = 5;
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dtFrom;
@@ -411,33 +506,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(191, 24);
             this.layoutControlItem4.Text = "From:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(30, 13);
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.dtTo;
-            this.layoutControlItem5.CustomizationFormText = "To:";
-            this.layoutControlItem5.Location = new System.Drawing.Point(573, 0);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(136, 26);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(136, 26);
-            this.layoutControlItem5.Name = "layoutControlItem3";
-            this.layoutControlItem5.Size = new System.Drawing.Size(136, 26);
-            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem5.Text = "To:";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(28, 13);
-            this.layoutControlItem5.TextToControlDistance = 5;
-            // 
-            // dtTo
-            // 
-            this.dtTo.CalendarFont = new System.Drawing.Font("Nyala", 10F);
-            this.dtTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-            this.dtTo.DayOfWeekCharacters = 1;
-            this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
-            this.dtTo.Location = new System.Drawing.Point(487, 12);
-            this.dtTo.Name = "dtTo";
-            this.dtTo.PopUpFontSize = 12F;
-            this.dtTo.Size = new System.Drawing.Size(154, 20);
-            this.dtTo.TabIndex = 7;
-            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // layoutControlItem6
             // 
@@ -459,24 +527,6 @@
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // cboStores
-            // 
-            this.cboStores.Location = new System.Drawing.Point(45, 12);
-            this.cboStores.Name = "cboStores";
-            this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboStores.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Stores"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
-            this.cboStores.Properties.DisplayMember = "StoreName";
-            this.cboStores.Properties.NullValuePrompt = "All Stores";
-            this.cboStores.Properties.ShowFooter = false;
-            this.cboStores.Properties.ValueMember = "ID";
-            this.cboStores.Size = new System.Drawing.Size(214, 20);
-            this.cboStores.StyleController = this.layoutControl1;
-            this.cboStores.TabIndex = 8;
-            this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
-            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.cboStores;
@@ -486,6 +536,46 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(251, 24);
             this.layoutControlItem2.Text = "Store:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(30, 13);
+            // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.gridReceives;
+            this.layoutControlItem14.CustomizationFormText = "layoutControlItem14";
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(1010, 479);
+            this.layoutControlItem14.Text = "layoutControlItem14";
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem14.TextToControlDistance = 0;
+            this.layoutControlItem14.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.dtFrom;
+            this.layoutControlItem3.CustomizationFormText = "From:";
+            this.layoutControlItem3.Location = new System.Drawing.Point(437, 0);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(136, 26);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(136, 26);
+            this.layoutControlItem3.Name = "layoutControlItem2";
+            this.layoutControlItem3.Size = new System.Drawing.Size(136, 26);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.Text = "From:";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(28, 13);
+            this.layoutControlItem3.TextToControlDistance = 5;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.dtTo;
+            this.layoutControlItem5.CustomizationFormText = "To:";
+            this.layoutControlItem5.Location = new System.Drawing.Point(573, 0);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(136, 26);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(136, 26);
+            this.layoutControlItem5.Name = "layoutControlItem3";
+            this.layoutControlItem5.Size = new System.Drawing.Size(136, 26);
+            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem5.Text = "To:";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(28, 13);
+            this.layoutControlItem5.TextToControlDistance = 5;
             // 
             // ActivityLogReports
             // 
@@ -499,23 +589,30 @@
             this.Load += new System.EventHandler(this.ActivityLogReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabActivityLog)).EndInit();
             this.xtraTabActivityLog.ResumeLayout(false);
             this.receiveLog.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplier.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridReceives)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewReceive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkEditSupplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,7 +626,7 @@
         private DevExpress.XtraTab.XtraTabPage issueLog;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraGrid.GridControl gridReceives;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdViewReceive;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -557,5 +654,11 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.LookUpEdit cboStores;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControl layoutControl2;
+        private DevExpress.XtraEditors.LookUpEdit lkSupplier;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
     }
 }

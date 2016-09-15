@@ -33,6 +33,13 @@ namespace PharmInventory.Forms.SummaryReports
             DateTime dateFrom = dtFrom.Value;
             DateTime dateTo = dtTo.Value;
 
+            Supplier sp = new Supplier();
+            DataTable dtsupp = sp.GetActiveSuppliers();
+            DataRow dtrsupp = dtsupp.NewRow();
+            dtrsupp["ID"] = "0";
+            dtrsupp["CompanyName"] = "All Suppliers";
+            dtsupp.Rows.InsertAt(dtrsupp, 0);
+            lkSupplier.Properties.DataSource = dtsupp;
            
             dtRec = rec.GetAllReceiveByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
@@ -61,6 +68,14 @@ namespace PharmInventory.Forms.SummaryReports
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             RefreshFilter();
+        }
+
+        private void lkSupplier_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lkSupplier.Text != "All Suppliers")
+                grdViewReceive.ActiveFilterString = string.Format("[CompanyName]='{0}'", lkSupplier.Text);
+            else
+                grdViewReceive.ActiveFilterString = "";
         }
     }
 }
