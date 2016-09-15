@@ -41,7 +41,15 @@ namespace PharmInventory.Forms.SummaryReports
             dtrsupp["CompanyName"] = "All Suppliers";
             dtsupp.Rows.InsertAt(dtrsupp, 0);
             lkSupplier.Properties.DataSource = dtsupp;
-           
+
+            ReceivingUnits ru = new ReceivingUnits();
+            DataTable dtru = ru.GetAllApplicableDU();
+            DataRow dtrru = dtru.NewRow();
+            dtrru["ID"] = "0";
+            dtrru["Name"] = "All Receiving Units";
+            dtru.Rows.InsertAt(dtrru, 0);
+            lklocation.Properties.DataSource = dtru;
+
             dtRec = rec.GetAllReceiveByDateRange(dateFrom, dateTo);
             dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
@@ -77,6 +85,14 @@ namespace PharmInventory.Forms.SummaryReports
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             RefreshFilter();
+        }
+
+        private void lklocation_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lklocation.Text != "All Receiving Units")
+                grdViewIssued.ActiveFilterString = string.Format("[IssuedTo]='{0}'", lklocation.Text);
+            else
+                grdViewIssued.ActiveFilterString = "";
         }
 
         private void lkSupplier_EditValueChanged(object sender, EventArgs e)
