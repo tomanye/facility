@@ -62,6 +62,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -75,7 +76,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -172,7 +172,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Location = new System.Drawing.Point(10, 29);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
+            this.lstTree.OptionsBehavior.EnableFiltering = true;
+            this.lstTree.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
             this.lstTree.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.lstTree.OptionsView.ShowAutoFilterRow = true;
             this.lstTree.OptionsView.ShowIndicator = false;
             this.lstTree.Size = new System.Drawing.Size(240, 543);
             this.lstTree.TabIndex = 32;
@@ -183,6 +186,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.ReferenceNo.Caption = "Ref No.";
             this.ReferenceNo.FieldName = "RefNo";
             this.ReferenceNo.Name = "ReferenceNo";
+            this.ReferenceNo.OptionsFilter.AutoFilterCondition = DevExpress.XtraTreeList.Columns.AutoFilterCondition.Contains;
             this.ReferenceNo.Visible = true;
             this.ReferenceNo.VisibleIndex = 0;
             // 
@@ -190,7 +194,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.Date.Caption = "Date";
             this.Date.FieldName = "Date";
+            this.Date.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
             this.Date.Name = "Date";
+            this.Date.OptionsFilter.AutoFilterCondition = DevExpress.XtraTreeList.Columns.AutoFilterCondition.Contains;
             this.Date.Visible = true;
             this.Date.VisibleIndex = 1;
             // 
@@ -434,6 +440,14 @@ namespace PharmInventory.Forms.ActivityLogs
             this.repositoryItemLookUpEdit1.NullText = "No Unit";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Issued To";
+            this.gridColumn13.FieldName = "IssuedTo";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 12;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "Root";
@@ -588,14 +602,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextToControlDistance = 0;
             this.layoutControlItem7.TextVisible = false;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Issued To";
-            this.gridColumn13.FieldName = "IssuedTo";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
             // 
             // LogIssues
             // 
