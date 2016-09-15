@@ -360,6 +360,12 @@
     <Compile Include="Forms\Reports\VRFForm.Designer.cs">
       <DependentUpon>VRFForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SummaryReports\ActivityLogReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SummaryReports\ActivityLogReports.Designer.cs">
+      <DependentUpon>ActivityLogReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Transactions\TransferForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1134,6 +1140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\VRFForm.resx">
       <DependentUpon>VRFForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SummaryReports\ActivityLogReports.resx">
+      <DependentUpon>ActivityLogReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Transactions\TransferForm.resx">
       <DependentUpon>TransferForm.cs</DependentUpon>
