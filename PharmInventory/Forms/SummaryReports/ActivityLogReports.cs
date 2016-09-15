@@ -12,8 +12,9 @@ namespace PharmInventory.Forms.SummaryReports
 {
     public partial class ActivityLogReports : Form
     {
-        private DataTable dtRec;
+        private DataTable dtRec,dtiss;
         private ReceiveDoc rec = new ReceiveDoc();
+        private IssueDoc iss = new IssueDoc();
         public ActivityLogReports()
         {
             InitializeComponent();
@@ -42,7 +43,9 @@ namespace PharmInventory.Forms.SummaryReports
             lkSupplier.Properties.DataSource = dtsupp;
            
             dtRec = rec.GetAllReceiveByDateRange(dateFrom, dateTo);
+            dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
+            gridIssues.DataSource = dtiss;
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -59,10 +62,16 @@ namespace PharmInventory.Forms.SummaryReports
             if ((cboStores.Text == "All Stores") || (cboStores.EditValue== null))
             {
                 dtRec = rec.GetAllReceiveByDateRange(dtFrom.Value, dtTo.Value);
+                dtiss = iss.GetIssuedByDateRange(dtFrom.Value, dtTo.Value);
             }
             else
+            {
                 dtRec = rec.GetAllReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+                dtiss = iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+            }
+                
             gridReceives.DataSource = dtRec;
+            gridIssues.DataSource = dtiss;
         }
 
         private void dtTo_ValueChanged(object sender, EventArgs e)
