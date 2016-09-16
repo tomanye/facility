@@ -10,6 +10,7 @@ using PharmInventory.Forms.Trends;
 using PharmInventory.Forms.UtilitiesAndForms;
 using System;
 using PharmInventory.HelperClasses;
+using PharmInventory.Forms.SummaryReports;
 
 
 namespace PharmInventory
@@ -263,6 +264,10 @@ namespace PharmInventory
                     frm = new GeneralChart();
                     AddTab("General Chart", frm);
                     break;
+                case "Activity Log Reports":
+                    frm = new ActivityLogReports();
+                    AddTab("Activity Log", frm);
+                    break;
                 case "ECLS":
                     frm = new ECLS();
                     AddTab("CS Stock Status", frm);
@@ -309,7 +314,7 @@ namespace PharmInventory
                     break;
                 case "About":
                     Program.ShowHCMISVersionInfoMessageBox();
-                    break;
+                    break; 
 
             }
         }

@@ -152,7 +152,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.Location = new System.Drawing.Point(8, 27);
             this.lstTree.Name = "lstTree";
             this.lstTree.OptionsBehavior.Editable = false;
+            this.lstTree.OptionsBehavior.EnableFiltering = true;
+            this.lstTree.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended;
             this.lstTree.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.lstTree.OptionsView.ShowAutoFilterRow = true;
             this.lstTree.OptionsView.ShowIndicator = false;
             this.lstTree.PreviewFieldName = "RefNo";
             this.lstTree.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -168,6 +171,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colRefNo.ColumnEdit = this.repositoryItemTextEdit1;
             this.colRefNo.FieldName = "RefNo";
             this.colRefNo.Name = "colRefNo";
+            this.colRefNo.OptionsFilter.AutoFilterCondition = DevExpress.XtraTreeList.Columns.AutoFilterCondition.Contains;
             this.colRefNo.Visible = true;
             this.colRefNo.VisibleIndex = 0;
             this.colRefNo.Width = 117;
@@ -208,7 +212,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.treeListColumn2.Caption = "Date";
             this.treeListColumn2.ColumnEdit = this.repositoryItemTextEdit1;
             this.treeListColumn2.FieldName = "Date";
+            this.treeListColumn2.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.DisplayText;
             this.treeListColumn2.Name = "treeListColumn2";
+            this.treeListColumn2.OptionsFilter.AutoFilterCondition = DevExpress.XtraTreeList.Columns.AutoFilterCondition.Contains;
             this.treeListColumn2.SortOrder = System.Windows.Forms.SortOrder.Descending;
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 1;

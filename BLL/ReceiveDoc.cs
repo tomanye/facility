@@ -205,8 +205,36 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-
-
+        public DataTable GetAllReceiveByDateRange(DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT *
+                                                ,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo 
+                                                ,(rd.Cost * QtyPerPack) as PackPrice 
+                                                ,sp.CompanyName as SupplierName 
+                                                ,datediff(day, EurDate, ExpDate) as DBER
+                                            FROM ReceiveDoc rd 
+                                                 JOIN vwGetAllItems vw on rd.ItemID = vw.ID 
+	                                             JOIN Supplier sp on rd.SupplierID = sp.ID
+                                            WHERE rd.EurDate  BETWEEN '{0}' AND '{1}'", dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
+        public DataTable GetAllReceiveByStoreDateRange(int storeId, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT *
+                                                ,ROW_NUMBER() OVER (ORDER BY Date DESC) as RowNo 
+                                                ,(rd.Cost * QtyPerPack) as PackPrice 
+                                                ,sp.CompanyName as SupplierName 
+                                                ,datediff(day, EurDate, ExpDate) as DBER
+                                            FROM ReceiveDoc rd 
+                                                 JOIN vwGetAllItems vw on rd.ItemID = vw.ID 
+	                                             JOIN Supplier sp on rd.SupplierID = sp.ID
+                                            WHERE rd.StoreID = {0} AND rd.EurDate  BETWEEN '{1}' AND '{2}'", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
 
         public DataTable GetAllTransaction(int storeId)
         {
