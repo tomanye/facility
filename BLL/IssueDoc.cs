@@ -259,8 +259,26 @@ namespace BLL
 			this.LoadFromRawSql(query);
 			return this.DataTable;
 		}
+        public DataTable GetIssuedByDateRange(DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            var query =
+                String.Format(@"SELECT *
+	                                  , ROW_NUMBER() OVER (ORDER BY id.EurDate DESC) as RowNo 
+	                                  ,ru.Name IssuedTo 
+	                                  , datediff(day, id.EurDate, ExpDate) as DBEI 
+                                FROM IssueDoc id 
+                                    JOIN ReceiveDoc rd on id.RecievDocID = rd.ID  
+	                                JOIN vwGetAllItems vw on id.ItemID = vw.ID 
+	                                JOIN ReceivingUnits ru on id.ReceivingUnitID = ru.ID 
+                                WHERE (id.IsTransfer = 0) 
+                                      AND (id.EurDate BETWEEN '{0}' AND '{1}' )
+                                ORDER BY id.EurDate DESC", dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
 
-		public Int64 GetIssueByDateRange(int itemId,int storeId, DateTime dt1, DateTime dt2)
+        public Int64 GetIssueByDateRange(int itemId,int storeId, DateTime dt1, DateTime dt2)
 		{
 			this.FlushData();
 			this.LoadFromRawSql(String.Format("SELECT Sum(Quantity) AS Issued FROM IssueDoc WHERE StoreId = {0} AND ItemID = {3} AND (Date BETWEEN '{1}' AND '{2}' )", storeId, dt1.ToShortDateString(), dt2.ToShortDateString(),itemId));
