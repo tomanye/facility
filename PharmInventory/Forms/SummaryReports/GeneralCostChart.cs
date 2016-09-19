@@ -26,7 +26,7 @@ DateTime dtCurrent = new DateTime();
             DataTable dtStor = stor.GetActiveStores();
             DataRow rowStore = dtStor.NewRow();
             rowStore["ID"] = "0";
-            rowStore["StoreName"] = "All";
+            rowStore["StoreName"] = "All Stores";
             dtStor.Rows.InsertAt(rowStore, 0);
 
             cboStores.Properties.DataSource = dtStor;
