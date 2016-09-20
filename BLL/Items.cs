@@ -1193,6 +1193,7 @@ FROM    Items itm
 	                                           WHEN isNull(AmcWithDos, 0) = 0 
 	                                           THEN 0 
 	                                           ELSE QuantityLeft/AmcWithDos END AS MOS
+                                            , (DATEDIFF(MONTH,GetDate(),ib.expDate) * amc.AmcWithDos ) RedistributionQty
                                         FROM vwGetReceivedItems ib 
                                              LEFT JOIN AmcReport amc on ib.ItemID = amc.ItemID and ib.StoreID = amc.StoreID
                                         WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0)
