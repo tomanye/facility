@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Utils;
 
 namespace PharmInventory.Forms.Profiles
 {
@@ -24,6 +25,7 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void HospitalSettings_Load(object sender, EventArgs e)
         {
+            lgrpStoreEdit.Visibility = (MainWindow.IsAdmin) ?LayoutVisibility.Always: LayoutVisibility.Never;
             Supplier sup = new Supplier();
             sup.LoadAll();
             PopulateSupplier(sup);
