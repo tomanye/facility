@@ -483,38 +483,66 @@ namespace BLL
             {
                 if (categoryId != 0)
                 {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP 10 count(*)AS NoOfRec,ID, (ItemName + ' ' + DosageForm + ' ' + Strength) as FullItemName,Unit,StockCode 
-                                                 FROM vwGetReceivedItemsByBatch 
-                                                 WHERE year(Date) = {0} and typeId = {1}
-                                                 GROUP BY ID,ItemName,DosageForm,Strength,Unit,StockCode 
-                                                 ORDER BY NoOfRec DESC", year, categoryId));
+                    this.LoadFromRawSql(String.Format(@" SELECT top 10 Count(*) NoOfRec  
+	                                                              ,   va.StockCode
+                                                                  ,   va.FullItemName
+                                                         FROM ReceiveDoc rd
+                                                             JOIN  dbo.vwGetAllItems va on va.ID = rd.ItemID
+                                                         WHERE va.IsInHospitalList = 1 
+                                                               and year(Date) = {0} and  TypeID = {1}
+                                                         GROUP BY   
+                                                             rd.ItemID 
+                                                             ,va.StockCode
+                                                             ,va.FullItemName
+                                                        Order by Count(*) Desc", year, categoryId));
                 }
                 else
                 {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP 10 count(*)AS NoOfRec,ID, (ItemName + ' ' + DosageForm + ' ' + Strength) as FullItemName,Unit,StockCode 
-                                                 FROM vwGetReceivedItemsByBatch 
-                                                 WHERE year(Date) = {0}
-                                                 GROUP BY ID,ItemName,DosageForm,Strength,Unit,StockCode 
-                                                 ORDER BY NoOfRec DESC", year));
+                    this.LoadFromRawSql(String.Format(@" SELECT top 10 Count(*) NoOfRec  
+	                                                              ,   va.StockCode
+                                                                  ,   va.FullItemName
+                                                         FROM ReceiveDoc rd
+                                                             JOIN  dbo.vwGetAllItems va on va.ID = rd.ItemID
+                                                         WHERE va.IsInHospitalList = 1 
+                                                               and year(Date) = {0} 
+                                                         GROUP BY   
+                                                             rd.ItemID 
+                                                             ,va.StockCode
+                                                             ,va.FullItemName
+                                                        Order by Count(*) Desc", year));
                 }
             }
             else
             {
                 if (categoryId != 0)
                 {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP 10 count(*)AS NoOfRec,ID, (ItemName + ' ' + DosageForm + ' ' + Strength) as FullItemName,Unit,StockCode 
-                                                 FROM vwGetReceivedItemsByBatch 
-                                                 WHERE storeId = {0} and year(Date) = {1} and typeId = {2}
-                                                 GROUP BY ID,ItemName,DosageForm,Strength,Unit,StockCode 
-                                                 ORDER BY NoOfRec DESC", storeId, year, categoryId));
+                    this.LoadFromRawSql(String.Format(@" SELECT top 10 Count(*) NoOfRec  
+	                                                              ,   va.StockCode
+                                                                  ,   va.FullItemName
+                                                         FROM ReceiveDoc rd
+                                                             JOIN  dbo.vwGetAllItems va on va.ID = rd.ItemID
+                                                         WHERE va.IsInHospitalList = 1 
+                                                               and year(Date) = {0} and  TypeID = {1} and StoreID = {2}
+                                                         GROUP BY   
+                                                             rd.ItemID 
+                                                             ,va.StockCode
+                                                             ,va.FullItemName
+                                                        Order by Count(*) Desc", year, categoryId, storeId));
                 }
                 else
                 {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP 10 count(*)AS NoOfRec,ID, (ItemName + ' ' + DosageForm + ' ' + Strength) as FullItemName,Unit,StockCode 
-                                                 FROM vwGetReceivedItemsByBatch 
-                                                 WHERE storeId = {0} and year(Date) = {1}
-                                                 GROUP BY ID,ItemName,DosageForm,Strength,Unit,StockCode 
-                                                 ORDER BY NoOfRec DESC", storeId, year));
+                    this.LoadFromRawSql(String.Format(@" SELECT top 10 Count(*) NoOfRec  
+	                                                              ,   va.StockCode
+                                                                  ,   va.FullItemName
+                                                         FROM ReceiveDoc rd
+                                                             JOIN  dbo.vwGetAllItems va on va.ID = rd.ItemID
+                                                         WHERE va.IsInHospitalList = 1 
+                                                               and year(Date) = {0} and StoreID = {1}
+                                                         GROUP BY   
+                                                             rd.ItemID 
+                                                             ,va.StockCode
+                                                             ,va.FullItemName
+                                                        Order by Count(*) Desc", storeId, year));
                 }
             }
             return this.DataTable;
@@ -749,7 +777,7 @@ namespace BLL
                 {
                     this.LoadFromRawSql(String.Format(@" SELECT Count(*) as Count 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (year(Date) = {0} = {1} and TypeId = {2}))) AND (IsInHospitalList = 1) 
+                                                 WHERE (ID IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (year(Date) = {0}  and TypeId = {1}))) AND (IsInHospitalList = 1) 
                                                         AND (ID NOT IN (SELECT ItemID FROM  dbo.IssueDoc WHERE (year(Date) = {0} and TypeId = {1})))"
                                         , year, categoryId));
                 }
