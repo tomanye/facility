@@ -553,36 +553,21 @@ namespace BLL
         public DataTable GetNeverReceivedItemsByCategoryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
-            if ((storeId == 0) && (categoryId == 0))
-            {
+            string queryFilter =
+           (storeId != 0 && categoryId != 0 && year != 0000) ? string.Format("WHERE year(Date) = {0} AND StoreID = {2})) AND TypeID = {1}", year, categoryId, storeId) :
+            (categoryId != 0 && year != 0000) ? string.Format("WHERE year(Date) = {0}))and TypeID = {1}", year, categoryId) :
+            (storeId != 0 && categoryId != 0) ? string.Format("WHERE StoreID ={0})) and TypeID ={1} ", storeId, categoryId) :
+              (storeId != 0 && year != 0000) ? string.Format("WHERE StoreID ={0} and year(Date)={1}))", storeId, year) :
+              (storeId != 0) ? string.Format("WHERE StoreID ={0}))", storeId) :
+                (categoryId != 0) ? string.Format(")) AND TypeID ={0}", categoryId) :
+                 (year != 0000) ? string.Format("WHERE year(Date) = {0}))", year) : string.Format("))");
+  
                 this.LoadFromRawSql(String.Format(@" SELECT * 
                                                  FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0}))) 
-                                                         AND (IsInHospitalList = 1)", year));
-            }
-            if (storeId == 0)
-            {
-                this.LoadFromRawSql(String.Format(@" SELECT * 
-                                                 FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (YEAR(Date) = {0} 
-                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1}))) 
-                                                         AND (IsInHospitalList = 1)", year, categoryId));
-            }
-            if (categoryId == 0)
-            {
-                this.LoadFromRawSql(String.Format(@" SELECT * 
-                                                 FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1}))) 
-                                                         AND (IsInHospitalList = 1)", storeId, year));
-            }
-            else
-            {
-                this.LoadFromRawSql(String.Format(@" SELECT * 
-                                                 FROM  dbo.vwGetAllItems 
-                                                 WHERE (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc WHERE (StoreID = {0} AND YEAR(Date) = {1} 
-                                                         AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}))) 
-                                                         AND (IsInHospitalList = 1)", storeId, year, categoryId));
-            }
+                                                 WHERE (IsInHospitalList = 1)
+                                                       and (ID NOT IN (SELECT ItemID FROM  dbo.ReceiveDoc {0} 
+                                                           ",queryFilter));
+          
             return this.DataTable;
         }
 

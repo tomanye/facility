@@ -1893,7 +1893,7 @@ namespace PharmInventory
         private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetNeverReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetNeverReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Never Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
