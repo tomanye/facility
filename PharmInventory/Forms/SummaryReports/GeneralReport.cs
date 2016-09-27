@@ -1779,11 +1779,9 @@ namespace PharmInventory
         {
             if ((lkCategory.EditValue != null) && (cboYear.EditValue != null))
             {
-                if(cboYear.EditValue != DBNull.Value)
-                {
-                    curYear = Convert.ToInt32(cboYear.EditValue);
 
-                } 
+                curYear = (cboYear.EditValue != DBNull.Value)?Convert.ToInt32(cboYear.EditValue):0000;
+ 
 
                 storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
 
@@ -1863,7 +1861,7 @@ namespace PharmInventory
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Top 10 Most Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
