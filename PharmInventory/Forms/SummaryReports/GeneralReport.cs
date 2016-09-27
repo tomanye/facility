@@ -1869,7 +1869,7 @@ namespace PharmInventory
         private void linkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetLeastReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetLeastReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Top 10 Least Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
