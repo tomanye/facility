@@ -154,6 +154,20 @@ FROM    Items itm
                                     order by year desc");
             return itm.DataTable;
         }
+        public static DataTable AllYearsString()
+        {
+            var itm = new Items();
+            itm.FlushData();
+            itm.LoadFromRawSql(@"	SELECT Distinct YEAR(Date)as year from ReceiveDoc
+                                    union 
+                                    select distinct YEAR(date) as year from IssueDoc
+                                    union
+                                    select distinct YEAR(date) as year from Disposal
+                                    union
+                                    select distinct null as year  
+                                    order by year asc");
+            return itm.DataTable;
+        }
         public static DataTable AllYearsReport()
         {
             var itm = new Items();

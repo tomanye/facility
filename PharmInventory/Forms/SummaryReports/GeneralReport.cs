@@ -57,7 +57,7 @@ namespace PharmInventory
             curMont = dtCurrent.Month; // (dtCurrent.Month < 11) ? dtCurrent.Month + 2 : ((dtCurrent.Month == 11) ? 1 : 2);
             curYear = dtCurrent.Year;// (dtCurrent.Month < 11) ? dtCurrent.Year : dtCurrent.Year - 1;
 
-            var dtyears = Items.AllYears();
+            var dtyears = Items.AllYearsString();
             cboYear.Properties.DataSource = dtyears;
             cboYear.EditValue = curYear;
 
@@ -1779,7 +1779,11 @@ namespace PharmInventory
         {
             if ((lkCategory.EditValue != null) && (cboYear.EditValue != null))
             {
-                curYear = Convert.ToInt32(cboYear.EditValue);
+                if(cboYear.EditValue != DBNull.Value)
+                {
+                    curYear = Convert.ToInt32(cboYear.EditValue);
+
+                } 
 
                 storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
 
