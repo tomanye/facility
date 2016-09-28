@@ -403,41 +403,21 @@ namespace BLL
         public DateTime GetLastReceivedDateByCategoryAndYear(int storeId, int categoryId, int year)
         {
             this.FlushData();
+            string queryFilter =
+           (storeId != 0 && categoryId != 0 && year != 0000) ? string.Format(" WHERE YEAR(Date) = {0} AND TypeID = {1} AND StoreID = {2}", year, categoryId, storeId) :
+            (categoryId != 0 && year != 0000) ? string.Format("WHERE YEAR(Date) = {0}  AND TypeID = {1}", year, categoryId) :
+            (storeId != 0 && categoryId != 0) ? string.Format("WHERE StoreID = {0}  AND TypeID = {1}", storeId, categoryId) :
+              (storeId != 0 && year != 0000) ? string.Format("WHERE StoreID = {0} AND YEAR(Date) = {1}", storeId, year) :
+              (storeId != 0) ? string.Format("WHERE StoreID = {0}", storeId) :
+                (categoryId != 0) ? string.Format("WHERE TypeID = {0}", categoryId) :
+                 (year != 0000) ? string.Format("WHERE YEAR(Date) = {0}", year) : "";
 
-            if (storeId == 0)
-            {
-                if (categoryId != 0)
-                {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
-                                                 FROM ReceiveDoc 
-                                                 WHERE (YEAR(Date) = {0} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {1}) 
-                                                 ORDER BY Date DESC", year, categoryId));
-                }
-                else
-                {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
-                                                 FROM ReceiveDoc 
-                                                 WHERE (YEAR(Date) = {0}) 
-                                                 ORDER BY Date DESC", year));
-                }
-            }
-            else
-            {
-                if (categoryId != 0)
-                {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
-                                                 FROM ReceiveDoc 
-                                                 WHERE (StoreID = {0} AND YEAR(Date) = {1} AND (select top 1 TypeID from vwGetAllItems where ID = ItemId) = {2}) 
-                                                 ORDER BY Date DESC", storeId, year, categoryId));
-                }
-                else
-                {
-                    this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
-                                                 FROM ReceiveDoc 
-                                                 WHERE (StoreID = {0} AND YEAR(Date) = {1}) 
-                                                 ORDER BY Date DESC", storeId, year));
-                }
-            }
+            this.LoadFromRawSql(String.Format(@" SELECT TOP (1) Date 
+                                                 FROM ReceiveDoc rd
+                                                      JOIN vwGetAllItems va on rd.ItemID = va.ID
+                                                 {0} ORDER BY [Date] desc", queryFilter));
+
+            
             DateTime dt = (this.DataTable.Rows.Count > 0) ? Convert.ToDateTime(this.DataTable.Rows[0]["Date"]) : new DateTime();
 
             return dt;

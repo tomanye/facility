@@ -988,7 +988,7 @@ namespace PharmInventory
             }
             else {
                 ReceiveDoc rec = new ReceiveDoc();
-                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid,curYear);
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid,curYear); 
 
             }
         }
@@ -1256,6 +1256,15 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue),curYear);
+                //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
             }
         }
 
@@ -1405,6 +1414,16 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+                 //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays; 
+                
             }
         }
 
@@ -1538,6 +1557,15 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, categoryid,  curYear);
+                 //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
             }
         }
 
@@ -1668,6 +1696,14 @@ namespace PharmInventory
                 {
                     linkLabel10.Visible = true;
                 }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, categoryid,curYear);
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays; 
             }
         }
 
