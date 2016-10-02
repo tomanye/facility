@@ -1276,7 +1276,7 @@ namespace PharmInventory
                 lblIssuedDays.Text = noDays;
 
                 lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId,  Convert.ToInt32(lkCategory.EditValue), curYear).ToString();
-                if (rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId,categoryid,  curYear) == 0)
+                if (rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue),  curYear) == 0)
                 {
                     linkLabel21.Visible = false;
                 }
@@ -2075,7 +2075,8 @@ namespace PharmInventory
         private void linkLabel17_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             IssueDoc iss = new IssueDoc();
-            DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            categoryid = (lkCategory.EditValue != DBNull.Value) ? Convert.ToInt32(lkCategory.EditValue) : 0;
+            DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
             //groupIssued.Text = "Top 10 Most Issued Items";
             PopulateList(dtIss, listIssued);
         }
@@ -2083,7 +2084,8 @@ namespace PharmInventory
         private void linkLabel16_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             IssueDoc iss = new IssueDoc();
-            DataTable dtIss = iss.GetLeastIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            categoryid = (lkCategory.EditValue != DBNull.Value) ? Convert.ToInt32(lkCategory.EditValue) : 0;
+            DataTable dtIss = iss.GetLeastIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
             //groupIssued.Text = "Top 10 Least Issued Items";
             PopulateList(dtIss, listIssued);
         }
