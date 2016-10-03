@@ -28,13 +28,14 @@ namespace PharmInventory
         string streamType;
 
         int storeId = 0;
+        int categoryid = 0;
         private void GeneralReport_Load(object sender, EventArgs e)
         {
             Stores stor = new Stores();
             DataTable dtStor = stor.GetActiveStores();
             DataRow dtStorRow = dtStor.NewRow();
             dtStorRow["ID"] = "0";
-            dtStorRow["StoreName"] = "All Strore";
+            dtStorRow["StoreName"] = "All Stores";
             dtStor.Rows.InsertAt(dtStorRow, 0);
 
             cboStores.DataSource = dtStor;
@@ -43,7 +44,7 @@ namespace PharmInventory
             DataTable alltypes = type.GetAllCategory();
             DataRow alltypesRow = alltypes.NewRow();
             alltypesRow["ID"] = "0";
-            alltypesRow["Name"] = "All Category";
+            alltypesRow["Name"] = "All Categories";
             alltypes.Rows.InsertAt(alltypesRow, 0);
 
             lkCategory.Properties.DataSource = alltypes;
@@ -57,7 +58,7 @@ namespace PharmInventory
             curMont = dtCurrent.Month; // (dtCurrent.Month < 11) ? dtCurrent.Month + 2 : ((dtCurrent.Month == 11) ? 1 : 2);
             curYear = dtCurrent.Year;// (dtCurrent.Month < 11) ? dtCurrent.Year : dtCurrent.Year - 1;
 
-            var dtyears = Items.AllYears();
+            var dtyears = Items.AllYearsString();
             cboYear.Properties.DataSource = dtyears;
             cboYear.EditValue = curYear;
 
@@ -146,7 +147,7 @@ namespace PharmInventory
                 DataTable dtItm = itm.GetItemsByProgram(prog.ID);
                 int totalECLS = dtItm.Rows.Count;
                 lblNoECLS.Text = totalECLS.ToString();
-                int neverRec = rec.CountNeverReceivedItems(storeId, curYear);
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear);
                 int stockin = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
                                && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
@@ -463,6 +464,11 @@ namespace PharmInventory
 
                 GenerateStockStatusPieChart(obj);
             }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+             }
         }
 
         private void PopulateSStatusByCategoryAndYearForAllStore()
@@ -630,6 +636,12 @@ namespace PharmInventory
                 //lblEclsStock.Text = eclsStockout.ToString() + " (" + percen.ToString("#.0") + "%)"; 
 
                 GenerateStockStatusPieChart(obj);
+            }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+
             }
         }
 
@@ -800,6 +812,12 @@ namespace PharmInventory
 
                 GenerateStockStatusPieChart(obj);
             }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid, curYear);
+
+            }
         }
 
         private void PopulateSStatusByYearForAllStore()
@@ -820,10 +838,10 @@ namespace PharmInventory
                 DataTable dtItm = itm.GetItemsByProgram(prog.ID);
                 int totalECLS = dtItm.Rows.Count;
                 lblNoECLS.Text = totalECLS.ToString();
-                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(0, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
                 int stockin = (from m in dtbl.AsEnumerable()
                                where m["Status"].ToString() == "Normal"
-                               && ((ckExclude.Checked)? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                               && ((ckExclude.Checked) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
                                select m).Count();
                 if (stockin == 0)
                 {
@@ -833,7 +851,7 @@ namespace PharmInventory
                 {
                     listInStock.Visible = true;
                 }
-                
+
                 //progressBar1.PerformStep();
                 int stockout = (from m in dtbl.AsEnumerable()
                                 where m["Status"].ToString() == "Stock Out"
@@ -870,9 +888,9 @@ namespace PharmInventory
                 {
                     listNearEOP.Visible = false;
                 }
-                else 
-                { 
-                    listNearEOP.Visible = true; 
+                else
+                {
+                    listNearEOP.Visible = true;
                 }
                 //progressBar1.PerformStep();
                 int belowEOP = (from m in dtbl.AsEnumerable()
@@ -968,6 +986,11 @@ namespace PharmInventory
 
                 GenerateStockStatusPieChart(obj);
             }
+            else {
+                ReceiveDoc rec = new ReceiveDoc();
+                int neverRec = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid,curYear); 
+
+            }
         }
 
         private void PopulateStockStatus()
@@ -1015,7 +1038,7 @@ namespace PharmInventory
                 DataTable dtRec = rec.GetTopReceivedItems(storeId);
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
-                lblNeverRecived.Text = rec.CountNeverReceivedItems(storeId, curYear).ToString();
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear).ToString();
                 if (lblNeverRecived.Text == "0")
                 {
                     linkLabel10.Visible = false;
@@ -1149,7 +1172,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid,curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1218,11 +1241,59 @@ namespace PharmInventory
                 chartIssueCost.Series.Add(serIss);
 
             }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+                // groupRecSummary.Text = "Top 10 Most Received Items";
+                PopulateList(dtRec, listReceiveSum);
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue),  curYear).ToString();
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else
+                {
+                    linkLabel10.Visible = true;
+                }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue),curYear);
+                //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+
+                IssueDoc iss = new IssueDoc(); 
+                DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+              
+                //progressBar1.PerformStep();
+                tt = new TimeSpan(dtCurrent.Ticks - lastIss.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+                lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
+                lblIssuedDays.Text = noDays;
+
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId,  Convert.ToInt32(lkCategory.EditValue), curYear).ToString();
+                if (rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue),  curYear) == 0)
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
+                // groupIssued.Text = "Top 10 Most Issued Items";
+                PopulateList(dtIss, listIssued);
+            }
         }
 
         private void PopulateStockStatusByCategoryAndYearForAllStore()
         {
-           // progressBar1.Visible = true;
+            // progressBar1.Visible = true;
 
             if (curMont != 0 && curYear != 0)
             {
@@ -1234,7 +1305,7 @@ namespace PharmInventory
 
                 DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
                 DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               //time here
+                //time here
                 TimeSpan tt = new TimeSpan();
                 string noDays = "";
                 tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
@@ -1252,9 +1323,9 @@ namespace PharmInventory
                 try
                 {
                     dtStockout = (from m in dtbl.AsEnumerable()
-                                            where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
-                                            && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
-                                            select m).CopyToDataTable();
+                                  where m["Status"].ToString() == "Normal" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                  && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                  select m).CopyToDataTable();
                 }
                 catch (InvalidOperationException)
                 {
@@ -1267,9 +1338,9 @@ namespace PharmInventory
                 try
                 {
                     dtFreeStockOut = (from m in dtbl.AsEnumerable()
-                                                where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
-                                                && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
-                                                select m).CopyToDataTable();
+                                      where m["Status"].ToString() == "Stock Out" && Convert.ToInt32(m["TypeID"]) == Convert.ToInt32(lkCategory.EditValue)
+                                      && ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                      select m).CopyToDataTable();
                 }
                 catch (InvalidOperationException)
                 {
@@ -1279,14 +1350,14 @@ namespace PharmInventory
                 PopulateList(dtFreeStockOut, listStatused);
 
                 DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               // groupRecSummary.Text = "Top 10 Most Received Items";
+                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
-                else 
+                else
                 {
                     linkLabel10.Visible = true;
                 }
@@ -1299,9 +1370,9 @@ namespace PharmInventory
                 {
                     linkLabel21.Visible = true;
                 }
-               // progressBar1.PerformStep();
+                // progressBar1.PerformStep();
                 DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               // groupIssued.Text = "Top 10 Most Issued Items";
+                // groupIssued.Text = "Top 10 Most Issued Items";
                 PopulateList(dtIss, listIssued);
 
                 //Balance bal = new Balance();
@@ -1325,9 +1396,9 @@ namespace PharmInventory
                 double[] cos = new double[12];
                 DataTable dtBal = new DataTable();
                 Items recd = new Items();
-               //time here
+                //time here
                 int year = dtCurrent.Year;
-                
+
                 chartReceiveCost.Series.Clear();
 
                 Series ser = new Series("Received Cost In Birr", ViewType.Line);
@@ -1335,7 +1406,7 @@ namespace PharmInventory
                 ser.ArgumentScaleType = ScaleType.Qualitative;
                 ser.ArgumentDataMember = "Month";
                 ser.ValueScaleType = ScaleType.Numerical;
-                
+
                 ser.ValueDataMembers.AddRange(new string[] { "Value" });
                 chartReceiveCost.Series.Add(ser);
 
@@ -1349,6 +1420,55 @@ namespace PharmInventory
 
                 serIss.ValueDataMembers.AddRange(new string[] { "Value" });
                 chartIssueCost.Series.Add(serIss);
+
+            }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+                // groupRecSummary.Text = "Top 10 Most Received Items";
+                PopulateList(dtRec, listReceiveSum);
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear).ToString();
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid, curYear) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else
+                {
+                    linkLabel10.Visible = true;
+                }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
+                 //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+
+                IssueDoc iss = new IssueDoc(); 
+               DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, categoryid,curYear);
+                
+                tt = new TimeSpan(dtCurrent.Ticks - lastIss.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+                lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
+                lblIssuedDays.Text = noDays;
+
+               lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, categoryid, curYear).ToString();
+                if (lblNeverIssued.Text == "0")
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
+                // groupIssued.Text = "Top 10 Most Issued Items";
+                PopulateList(dtIss, listIssued);
+
 
             }
         }
@@ -1399,7 +1519,7 @@ namespace PharmInventory
                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
@@ -1468,11 +1588,46 @@ namespace PharmInventory
                 chartIssueCost.Series.Add(serIss);
 
             }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, categoryid, curYear);
+                // groupRecSummary.Text = "Top 10 Most Received Items";
+                PopulateList(dtRec, listReceiveSum);
+                lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid,curYear).ToString();
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else
+                {
+                    linkLabel10.Visible = true;
+                }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, categoryid,  curYear);
+                 //time here
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, categoryid, curYear).ToString();
+                if (rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId, categoryid, curYear) == 0)
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+            }
         }
 
         private void PopulateStockStatusByYearForAllStore()
         {
-           // progressBar1.Visible = true;
+            // progressBar1.Visible = true;
 
             if (curMont != 0 && curYear != 0)
             {
@@ -1484,7 +1639,7 @@ namespace PharmInventory
 
                 DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
                 DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               //time here
+                //time here
                 TimeSpan tt = new TimeSpan();
                 string noDays = "";
                 tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
@@ -1502,8 +1657,8 @@ namespace PharmInventory
                 try
                 {
                     dtAllItems = (from m in dtbl.AsEnumerable()
-                                            where ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
-                                            select m).CopyToDataTable();
+                                  where ((ckExclude.Checked == true) ? Convert.ToInt32(m["EverReceived"]) == 1 : true)
+                                  select m).CopyToDataTable();
                 }
                 catch (InvalidOperationException)
                 {
@@ -1513,14 +1668,14 @@ namespace PharmInventory
                 PopulateList(dtAllItems, listStatused);
 
                 DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               // groupRecSummary.Text = "Top 10 Most Received Items";
+                // groupRecSummary.Text = "Top 10 Most Received Items";
                 PopulateList(dtRec, listReceiveSum);
                 lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue)).ToString();
-                if (rec.CountNeverReceivedItems(storeId, curYear) == 0)
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear) == 0)
                 {
                     linkLabel10.Visible = false;
                 }
-                else 
+                else
                 {
                     linkLabel10.Visible = true;
                 }
@@ -1533,9 +1688,9 @@ namespace PharmInventory
                 {
                     linkLabel21.Visible = true;
                 }
-               // progressBar1.PerformStep();
+                // progressBar1.PerformStep();
                 DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
-               // groupIssued.Text = "Top 10 Most Issued Items";
+                // groupIssued.Text = "Top 10 Most Issued Items";
                 PopulateList(dtIss, listIssued);
 
                 //Balance bal = new Balance();
@@ -1559,9 +1714,9 @@ namespace PharmInventory
                 double[] cos = new double[12];
                 DataTable dtBal = new DataTable();
                 Items recd = new Items();
-               //time here
+                //time here
                 int year = dtCurrent.Year;
-                
+
                 chartReceiveCost.Series.Clear();
 
                 Series ser = new Series("Received Cost In Birr", ViewType.Line);
@@ -1569,7 +1724,7 @@ namespace PharmInventory
                 ser.ArgumentScaleType = ScaleType.Qualitative;
                 ser.ArgumentDataMember = "Month";
                 ser.ValueScaleType = ScaleType.Numerical;
-                
+
                 ser.ValueDataMembers.AddRange(new string[] { "Value" });
                 chartReceiveCost.Series.Add(ser);
 
@@ -1583,6 +1738,50 @@ namespace PharmInventory
 
                 serIss.ValueDataMembers.AddRange(new string[] { "Value" });
                 chartIssueCost.Series.Add(serIss);
+
+            }
+            else
+            {
+                ReceiveDoc rec = new ReceiveDoc();
+                     lblNeverRecived.Text = rec.CountNeverReceivedItemsByCateogryAndYear(storeId, categoryid, curYear).ToString();
+                if (rec.CountNeverReceivedItemsByCateogryAndYear(storeId,categoryid, curYear) == 0)
+                {
+                    linkLabel10.Visible = false;
+                }
+                else
+                {
+                    linkLabel10.Visible = true;
+                }
+                DateTime lastRec = rec.GetLastReceivedDateByCategoryAndYear(storeId, categoryid,curYear);
+                TimeSpan tt = new TimeSpan();
+                string noDays = "";
+                tt = new TimeSpan(dtCurrent.Ticks - lastRec.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+
+                lblLastReceived.Text = (tt.TotalDays < 30000) ? lastRec.ToString("MM dd,yyyy") : "Never";
+                lblRecDays.Text = noDays;
+
+                IssueDoc iss = new IssueDoc();
+                DateTime lastIss = iss.GetLastIssuedDateByCategoryAndYear(storeId, categoryid, curYear);
+                 
+                tt = new TimeSpan(dtCurrent.Ticks - lastIss.Ticks);
+                noDays = (tt.TotalDays < 30000) ? tt.TotalDays.ToString() + " Days" : "Never";
+                lblLastIssued.Text = (tt.TotalDays < 30000) ? lastIss.ToString("MM dd,yyyy") : "Never";
+                lblIssuedDays.Text = noDays;
+          
+                lblNeverIssued.Text = rec.CountReceivedNotIssuedItemsByCategoryAndYear(storeId,categoryid,curYear).ToString();
+                if (lblNeverIssued.Text == "0")
+                {
+                    linkLabel21.Visible = false;
+                }
+                else
+                {
+                    linkLabel21.Visible = true;
+                }
+                // progressBar1.PerformStep();
+                DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
+                // groupIssued.Text = "Top 10 Most Issued Items";
+                PopulateList(dtIss, listIssued);
 
             }
         }
@@ -1779,7 +1978,8 @@ namespace PharmInventory
         {
             if ((lkCategory.EditValue != null) && (cboYear.EditValue != null))
             {
-                curYear = Convert.ToInt32(cboYear.EditValue);
+
+                curYear = (cboYear.EditValue != DBNull.Value)?Convert.ToInt32(cboYear.EditValue):0; 
 
                 storeId = (cboStores.SelectedValue != null) ? Convert.ToInt32(cboStores.SelectedValue) : 1;
 
@@ -1859,7 +2059,7 @@ namespace PharmInventory
         private void linkLabel8_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetTopReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Top 10 Most Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
@@ -1867,7 +2067,7 @@ namespace PharmInventory
         private void linkLabel9_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetLeastReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetLeastReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Top 10 Least Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
@@ -1875,7 +2075,8 @@ namespace PharmInventory
         private void linkLabel17_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             IssueDoc iss = new IssueDoc();
-            DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            categoryid = (lkCategory.EditValue != DBNull.Value) ? Convert.ToInt32(lkCategory.EditValue) : 0;
+            DataTable dtIss = iss.GetTopIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
             //groupIssued.Text = "Top 10 Most Issued Items";
             PopulateList(dtIss, listIssued);
         }
@@ -1883,7 +2084,8 @@ namespace PharmInventory
         private void linkLabel16_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             IssueDoc iss = new IssueDoc();
-            DataTable dtIss = iss.GetLeastIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            categoryid = (lkCategory.EditValue != DBNull.Value) ? Convert.ToInt32(lkCategory.EditValue) : 0;
+            DataTable dtIss = iss.GetLeastIssuedItemsByCategoryAndYear(storeId, categoryid, curYear);
             //groupIssued.Text = "Top 10 Least Issued Items";
             PopulateList(dtIss, listIssued);
         }
@@ -1891,7 +2093,7 @@ namespace PharmInventory
         private void linkLabel10_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetNeverReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            DataTable dtRec = rec.GetNeverReceivedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), curYear);
             //groupRecSummary.Text = "Never Received Items";
             PopulateList(dtRec, listReceiveSum);
         }
@@ -1989,7 +2191,8 @@ namespace PharmInventory
         private void linkLabel21_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ReceiveDoc rec = new ReceiveDoc();
-            DataTable dtRec = rec.GetReceivedNotIssuedItemsByCategoryAndYear(storeId, Convert.ToInt32(lkCategory.EditValue), Convert.ToInt32(cboYear.EditValue));
+            categoryid = (lkCategory.EditValue != DBNull.Value) ? Convert.ToInt32(lkCategory.EditValue) : 0;
+            DataTable dtRec = rec.GetReceivedNotIssuedItemsByCategoryAndYear(storeId,categoryid , curYear);
             //groupIssued.Text = "Received But Never Issued Items";
             PopulateList(dtRec, listIssued);
         }
@@ -2100,8 +2303,9 @@ namespace PharmInventory
         {
             var info = new GeneralInfo();
             info.LoadAll();
-
-            int year = Convert.ToInt32(cboYear.EditValue);
+            cboYear.EditValue = (cboYear.EditValue != DBNull.Value) ? cboYear.EditValue : dtCurrent.Year;
+            int year = Convert.ToInt32(cboYear.EditValue) ;
+           
             int month = 10;
             int day = 30;
             if (year == dtCurrent.Year)

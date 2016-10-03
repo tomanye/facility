@@ -43,7 +43,6 @@ namespace PharmInventory
             DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel3 = new DevExpress.XtraCharts.PointSeriesLabel();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralCostChart));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
@@ -108,7 +107,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(pointSeriesLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -509,12 +507,12 @@ namespace PharmInventory
             this.chartReceiveCost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Title.Text = "Axis of arguments";
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram1.AxisY.Title.Text = "Axis of values";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.WholeRange.AutoSideMargins = true;
             this.chartReceiveCost.Diagram = xyDiagram1;
             this.chartReceiveCost.EmptyChartText.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartReceiveCost.EmptyChartText.Text = "Data is not available for the selected Store and Year. ";
@@ -522,21 +520,22 @@ namespace PharmInventory
             this.chartReceiveCost.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
             this.chartReceiveCost.Location = new System.Drawing.Point(12, 41);
             this.chartReceiveCost.Name = "chartReceiveCost";
-            pointSeriesLabel1.LineVisible = true;
+            pointSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Label = pointSeriesLabel1;
             series1.Name = "Series 1";
             series1.View = lineSeriesView1;
-            pointSeriesLabel2.LineVisible = true;
+            pointSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series2.Label = pointSeriesLabel2;
             series2.Name = "Series 2";
             series2.View = lineSeriesView2;
             this.chartReceiveCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,
         series2};
-            pointSeriesLabel3.LineVisible = true;
+            pointSeriesLabel3.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartReceiveCost.SeriesTemplate.Label = pointSeriesLabel3;
             this.chartReceiveCost.SeriesTemplate.View = lineSeriesView3;
             this.chartReceiveCost.Size = new System.Drawing.Size(849, 527);
+            this.chartReceiveCost.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartReceiveCost.TabIndex = 25;
             // 
             // printingSystem1
@@ -547,14 +546,9 @@ namespace PharmInventory
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.chartReceiveCost;
-            // 
-            // 
-            // 
-            this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(20, 20, 100, 100);
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // cboYear
@@ -567,7 +561,9 @@ namespace PharmInventory
             this.cboYear.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "year")});
             this.cboYear.Properties.DisplayMember = "year";
-            this.cboYear.Properties.NullText = "";
+            this.cboYear.Properties.NullText = "Year";
+            this.cboYear.Properties.NullValuePrompt = "Year";
+            this.cboYear.Properties.NullValuePromptShowForEmptyValue = true;
             this.cboYear.Properties.ValueMember = "year";
             this.cboYear.Size = new System.Drawing.Size(77, 20);
             this.cboYear.TabIndex = 26;
@@ -591,7 +587,6 @@ namespace PharmInventory
             // 
             // GeneralCostChart
             // 
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -602,6 +597,7 @@ namespace PharmInventory
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.dtDate);
             this.Controls.Add(this.cboStores);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GeneralCostChart";
             this.Text = "GeneralReport";
             this.Load += new System.EventHandler(this.GeneralReport_Load);
@@ -619,7 +615,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartReceiveCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

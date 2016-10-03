@@ -53,7 +53,7 @@ namespace PharmInventory
             DataTable alltypes = type.GetAllCategory();
             DataRow row = alltypes.NewRow();
             row["ID"] = "0";
-            row["Name"] = "All";
+            row["Name"] = "All Categories";
             alltypes.Rows.InsertAt(row, 0);
 
             lkCategory.Properties.DataSource = alltypes;
@@ -66,7 +66,7 @@ namespace PharmInventory
             DataTable dtStor = stor.DefaultView.ToTable();
             DataRow rowStore = dtStor.NewRow();
             rowStore["ID"] = "0";
-            rowStore["StoreName"] = "All";
+            rowStore["StoreName"] = "All Stores";
             dtStor.Rows.InsertAt(rowStore, 0);
 
             cboStores.Properties.DataSource = dtStor;
@@ -121,7 +121,11 @@ namespace PharmInventory
             Int64 expAmount = Convert.ToInt64(objExp[0]);
             Double expCost = Convert.ToDouble(objExp[1]);
 
-           // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
+            object[] objlossadj = itm.CountExpiredItemsAndAmountLossAdjByCategory(storeId, typeID, dt1, dt2);
+            Int64 lossandadjAmount = Convert.ToInt64(objlossadj[0]);
+            Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
+
+            // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
             object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID ,dt1 ,dt2);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
@@ -134,6 +138,7 @@ namespace PharmInventory
             Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
             Int64 expired = expAmount;
+            Int64 disposed = lossandadjAmount;
 
 
             object[] obj = { normal, nearExpiry, expired };
@@ -144,13 +149,15 @@ namespace PharmInventory
             dtSOHList.Columns[1].DataType = typeof(Int64);
             double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired;
+            Int64 totItm = normal + nearExpiry + expired + disposed;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
 
             object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
             dtSOHList.Rows.Add(oo3);
+            object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
+            dtSOHList.Rows.Add(oo4);
 
             object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
             dtSOHList.Rows.Add(oo2);
@@ -172,6 +179,12 @@ namespace PharmInventory
             string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), expCost.ToString("C") };
             ListViewItem lstItmNor2 = new ListViewItem(str2);
             lstExpStatus.Items.Add(lstItmNor2);
+
+            per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
+            per = Decimal.Round(per, 0);
+            string[] str3 = { "Disposed", per.ToString() + "%", obj[3].ToString(), lossandadjexpCost.ToString("C") };
+            ListViewItem lstItmNor3 = new ListViewItem(str3);
+            lstExpStatus.Items.Add(lstItmNor3);
 
             Series serExpired = new Series("pie", ViewType.Pie3D);
             serExpired.DataSource = dtSOHList;
@@ -226,7 +239,12 @@ namespace PharmInventory
             Int64 expAmount = Convert.ToInt64(objExp[0]);
             Double expCost = Convert.ToDouble(objExp[1]);
 
-           // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
+            //object[] objlossadj  Items that are on Disposal with Expired Reason
+            object[] objlossadj = itm.CountExpiredItemsAndAmountLossandAdjByCategoryForAllStores(typeID, dt1, dt2);
+            Int64 lossandadjAmount = Convert.ToInt64(objlossadj[0]);
+            Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
+
+            // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
             object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
@@ -239,9 +257,10 @@ namespace PharmInventory
             Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
             Int64 expired = expAmount;
+            Int64 disposed = lossandadjAmount;
 
 
-            object[] obj = { normal, nearExpiry, expired };
+            object[] obj = { normal, nearExpiry, expired, disposed };
 
             DataTable dtSOHList = new DataTable();
             dtSOHList.Columns.Add("Type");
@@ -249,7 +268,7 @@ namespace PharmInventory
             dtSOHList.Columns[1].DataType = typeof(Int64);
             double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired;
+            Int64 totItm = normal + nearExpiry + expired + disposed;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
@@ -259,6 +278,10 @@ namespace PharmInventory
 
             object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
             dtSOHList.Rows.Add(oo2);
+
+            object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
+            dtSOHList.Rows.Add(oo4);
+
 
             decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
             per = Decimal.Round(per, 0);
@@ -277,6 +300,12 @@ namespace PharmInventory
             string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), expCost.ToString("C") };
             ListViewItem lstItmNor2 = new ListViewItem(str2);
             lstExpStatus.Items.Add(lstItmNor2);
+
+            per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
+            per = Decimal.Round(per, 0);
+            string[] str3 = { "Disposed", per.ToString() + "%", obj[2].ToString(), lossandadjexpCost.ToString("C") };
+            ListViewItem lstItmNor3 = new ListViewItem(str3);
+            lstExpStatus.Items.Add(lstItmNor3);
 
             Series serExpired = new Series("pie", ViewType.Pie3D);
             serExpired.DataSource = dtSOHList;

@@ -154,6 +154,20 @@ FROM    Items itm
                                     order by year desc");
             return itm.DataTable;
         }
+        public static DataTable AllYearsString()
+        {
+            var itm = new Items();
+            itm.FlushData();
+            itm.LoadFromRawSql(@"	SELECT Distinct YEAR(Date)as year from ReceiveDoc
+                                    union 
+                                    select distinct YEAR(date) as year from IssueDoc
+                                    union
+                                    select distinct YEAR(date) as year from Disposal
+                                    union
+                                    select distinct null as year  
+                                    order by year asc");
+            return itm.DataTable;
+        }
         public static DataTable AllYearsReport()
         {
             var itm = new Items();
@@ -828,6 +842,42 @@ FROM    Items itm
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
             return obj;
         }
+        public object[] CountExpiredItemsAndAmountLossAdjByCategory(int storeId, int typeID, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(@"SELECT count(*) QTY
+		                                  , Sum(d.quantity * rd.Cost) as Price
+                                   FROM Disposal d
+                                       JOIN DisposalReasons dr on d.ReasonId = dr.ID 
+                                        JOIN ReceiveDoc rd on  rd.ID =d.RecID
+		                                 JOIN vwGetAllItems va on va.ID = d.ItemID 
+                                where dr.Reason like 'Expired' AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.Date between '{2}' and '{3}'",
+                        storeId, typeID, dt1, dt2);
+            }
+            else
+            {
+                query =
+                    string.Format(@"SELECT count(*) QTY
+		                                  , Sum(d.quantity * rd.Cost) as Price
+                                   FROM Disposal d
+                                       JOIN DisposalReasons dr on d.ReasonId = dr.ID 
+                                        JOIN ReceiveDoc rd on  rd.ID =d.RecID
+		                                 JOIN vwGetAllItems vw on vw.ID = d.ItemID 
+                                where dr.Reason like 'Expired' AND StoreID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                        storeId, dt1, dt2);
+            }
+
+            this.LoadFromRawSql(query);
+            object[] obj = new object[2];
+            obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
+            obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+            return obj;
+
+        }
 
         public object[] CountExpiredItemsAndAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
         {
@@ -847,6 +897,41 @@ FROM    Items itm
                     string.Format(
                         "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
                         "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND vw.IsInHospitalList = 1 and rd.Date between '{0}' and '{1}'",
+                        dt1, dt2);
+            }
+
+            this.LoadFromRawSql(query);
+            object[] obj = new object[2];
+            obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
+            obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+            return obj;
+        }
+      public object[] CountExpiredItemsAndAmountLossandAdjByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(@"SELECT count(*) QTY
+                               , Sum(d.quantity * rd.Cost) as Price
+                                 FROM Disposal d
+                                    JOIN DisposalReasons dr on d.ReasonId = dr.ID
+                                    JOIN ReceiveDoc rd on  rd.ID = d.RecID 
+                                    JOIN vwGetAllItems vw on vw.ID = d.ItemID
+                                WHERE dr.Reason like 'Expired' AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                        typeID, dt1, dt2);
+            }
+            else
+            {
+                query =
+                    string.Format(@"SELECT count(*) QTY
+                                           , Sum(d.quantity * rd.Cost) as Price
+                                             FROM Disposal d
+                                                JOIN DisposalReasons dr on d.ReasonId = dr.ID
+                                                JOIN ReceiveDoc rd on  rd.ID = d.RecID 
+                                                JOIN vwGetAllItems vw on vw.ID = d.ItemID
+                                         WHERE dr.Reason like 'Expired'AND vw.IsInHospitalList = 1 and rd.Date between '{0}' and '{1}'",
                         dt1, dt2);
             }
 
@@ -1184,17 +1269,29 @@ FROM    Items itm
         public DataTable GetNearlyExpiredItemsByBatchReport(int storeId)
         {
             this.FlushData();
-            var query = (string.Format("SELECT isnull(Cost,0) Cost, isnull(QuantityLeft,0) QuantityLeft, ib.*,  (isnull(Cost,0) * QuantityLeft) As Price FROM vwGetReceivedItems ib " +
-                                       "WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0) ORDER BY Price Desc", storeId));
+            var query = (string.Format(@"SELECT isnull(Cost,0) Cost
+                                             , isnull(QuantityLeft,0) QuantityLeft
+                                             , ib.*
+	                                         , (isnull(Cost,0) * QuantityLeft) As Price 
+	                                         , amc.AmcWithDos 
+                                             , CASE 
+	                                           WHEN isNull(AmcWithDos, 0) = 0 
+	                                           THEN 0 
+	                                           ELSE QuantityLeft/AmcWithDos END AS MOS
+                                            , (DATEDIFF(MONTH,GetDate(),ib.expDate) * amc.AmcWithDos ) RedistributionQty
+                                        FROM vwGetReceivedItems ib 
+                                             LEFT JOIN AmcReport amc on ib.ItemID = amc.ItemID and ib.StoreID = amc.StoreID
+                                        WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0)
+                                        ORDER BY Price Desc", storeId));
             this.LoadFromRawSql(query);
-            this.DataTable.Columns.Add("MOS");
-            this.DataTable.Columns.Add("AMC"); 
+            //this.DataTable.Columns.Add("MOS");
+            //this.DataTable.Columns.Add("AMC"); 
 
-            for (int i = 0; i < this.DataTable.Rows.Count; i++)
-            {
-                this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]));
-                this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)),2);
-            }
+            //for (int i = 0; i < this.DataTable.Rows.Count; i++)
+            //{
+            //    this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]));
+            //    this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)),2);
+            //}
             return this.DataTable;
         }
 

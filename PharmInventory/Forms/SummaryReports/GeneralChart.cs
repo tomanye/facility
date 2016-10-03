@@ -34,7 +34,7 @@ namespace PharmInventory
             DataTable dtStor = stor.DefaultView.ToTable();
             DataRow rowStore = dtStor.NewRow();
             rowStore["ID"] = "0";
-            rowStore["StoreName"] = "All";
+            rowStore["StoreName"] = "All Stores";
             dtStor.Rows.InsertAt(rowStore, 0);
             cboStores.Properties.DataSource = dtStor;
 
@@ -45,7 +45,7 @@ namespace PharmInventory
             DataTable alltypes = type.GetAllCategory();
             DataRow row = alltypes.NewRow();
             row["ID"] = "0";
-            row["Name"] = "All";
+            row["Name"] = "All Categories";
             alltypes.Rows.InsertAt(row, 0);
 
             lkCategory.Properties.DataSource = alltypes;

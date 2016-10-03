@@ -38,11 +38,9 @@ namespace PharmInventory
             DevExpress.XtraCharts.SimpleDiagram3D simpleDiagram3D1 = new DevExpress.XtraCharts.SimpleDiagram3D();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel1 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
-            DevExpress.XtraCharts.PiePointOptions piePointOptions1 = new DevExpress.XtraCharts.PiePointOptions();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView1 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel2 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView2 = new DevExpress.XtraCharts.Pie3DSeriesView();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralChart));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
@@ -132,7 +130,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -492,7 +489,7 @@ namespace PharmInventory
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.chartPie.BorderOptions.Visible = false;
+            this.chartPie.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             simpleDiagram3D1.RotationMatrixSerializable = "1;0;0;0;0;0.5;-0.866025403784439;0;0;0.866025403784439;0.5;0;0;0;0;1";
             this.chartPie.Diagram = simpleDiagram3D1;
             this.chartPie.EmptyChartText.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -526,19 +523,21 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(172)))), ((int)(((byte)(104))))), System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(202)))), ((int)(((byte)(134)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
-            pie3DSeriesLabel1.LineVisible = true;
-            piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            pie3DSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Label = pie3DSeriesLabel1;
             series1.Name = "Series 1";
+            pie3DSeriesView1.SizeAsPercentage = 100D;
+            pie3DSeriesView1.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             series1.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            pie3DSeriesLabel2.LineVisible = true;
+            pie3DSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
+            pie3DSeriesView2.SizeAsPercentage = 100D;
+            pie3DSeriesView2.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
             this.chartPie.Size = new System.Drawing.Size(919, 507);
+            this.chartPie.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartPie.TabIndex = 20;
             // 
             // cboStores
@@ -652,7 +651,9 @@ namespace PharmInventory
             this.cboYear.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "year")});
             this.cboYear.Properties.DisplayMember = "year";
-            this.cboYear.Properties.NullText = "";
+            this.cboYear.Properties.NullText = "Year";
+            this.cboYear.Properties.NullValuePrompt = "Year";
+            this.cboYear.Properties.NullValuePromptShowForEmptyValue = true;
             this.cboYear.Properties.ValueMember = "year";
             this.cboYear.Size = new System.Drawing.Size(56, 20);
             this.cboYear.StyleController = this.layoutControl1;
@@ -799,10 +800,6 @@ namespace PharmInventory
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.chartPie;
-            // 
-            // 
-            // 
-            this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(10, 10, 100, 40);
             this.printableComponentLink1.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -813,7 +810,6 @@ namespace PharmInventory
                 "[Page # of Pages #]",
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
-            this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
             // 
@@ -852,7 +848,6 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }

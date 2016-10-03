@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraLayout.Utils;
 
 namespace PharmInventory.Forms.Profiles
 {
@@ -24,6 +25,7 @@ namespace PharmInventory.Forms.Profiles
         /// <param name="e"></param>
         private void HospitalSettings_Load(object sender, EventArgs e)
         {
+            lgrpStoreEdit.Visibility = (MainWindow.IsAdmin) ?LayoutVisibility.Always: LayoutVisibility.Never;
             Supplier sup = new Supplier();
             sup.LoadAll();
             PopulateSupplier(sup);
@@ -53,6 +55,8 @@ namespace PharmInventory.Forms.Profiles
             dtdumin.Rows.Add(objdumin2);
             object[] objdumin3 = { 2, (2 + " Month") };
             dtdumin.Rows.Add(objdumin3);
+            object[] objdumin4 = { 2.25, ("") };
+            dtdumin.Rows.Add(objdumin4);
             cboDUMin.DataSource = dtdumin;
 
             DataTable dtdumax = new DataTable();
@@ -68,6 +72,8 @@ namespace PharmInventory.Forms.Profiles
             dtdumax.Rows.Add(objdumax012);
             object[] objdumax013 = { 2, (2 + " Month") };
             dtdumax.Rows.Add(objdumax013);
+            object[] objdumax014 = { 2.25, ("") };
+            dtdumax.Rows.Add(objdumax014);
             cboDUMax.DataSource = dtdumax;
 
         }

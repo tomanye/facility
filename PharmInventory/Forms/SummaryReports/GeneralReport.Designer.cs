@@ -32,25 +32,21 @@ namespace PharmInventory
             DevExpress.XtraCharts.SimpleDiagram3D simpleDiagram3D1 = new DevExpress.XtraCharts.SimpleDiagram3D();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel1 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
-            DevExpress.XtraCharts.PiePointOptions piePointOptions1 = new DevExpress.XtraCharts.PiePointOptions();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView1 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel2 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView2 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel1 = new DevExpress.XtraCharts.PointSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions1 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel2 = new DevExpress.XtraCharts.PointSeriesLabel();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel3 = new DevExpress.XtraCharts.PointSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions2 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.PointSeriesLabel pointSeriesLabel4 = new DevExpress.XtraCharts.PointSeriesLabel();
             DevExpress.XtraCharts.LineSeriesView lineSeriesView4 = new DevExpress.XtraCharts.LineSeriesView();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralReport));
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.lstDetail = new DevExpress.XtraGrid.GridControl();
@@ -296,13 +292,9 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemSSSummary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcl.ImageCollection)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pclReceive.ImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemReceiveSummary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemIssueSummary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pclIssue.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -868,6 +860,7 @@ namespace PharmInventory
     "16389656067;-0.46860808134079;0;0.00272014550864697;0.647088348865509;0.76241779" +
     "3273926;0;0;0;0;1";
             this.chartPie.Diagram = simpleDiagram3D1;
+            this.chartPie.EmptyChartText.Text = "";
             this.chartPie.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Left;
             this.chartPie.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Bottom;
             this.chartPie.Legend.EquallySpacedItems = false;
@@ -895,19 +888,21 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(172)))), ((int)(((byte)(104))))), System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(202)))), ((int)(((byte)(134)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
-            pie3DSeriesLabel1.LineVisible = true;
-            piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            pie3DSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Label = pie3DSeriesLabel1;
             series1.Name = "Series 1";
+            pie3DSeriesView1.SizeAsPercentage = 100D;
+            pie3DSeriesView1.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             series1.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            pie3DSeriesLabel2.LineVisible = true;
+            pie3DSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
+            pie3DSeriesView2.SizeAsPercentage = 100D;
+            pie3DSeriesView2.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
             this.chartPie.Size = new System.Drawing.Size(397, 272);
+            this.chartPie.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartPie.TabIndex = 19;
             // 
             // listBelowMin
@@ -1179,7 +1174,7 @@ namespace PharmInventory
             this.label20.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(27, 192);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(145, 16);
+            this.label20.Size = new System.Drawing.Size(144, 16);
             this.label20.TabIndex = 4;
             this.label20.Text = "Trend (No. of Items)";
             this.label20.Visible = false;
@@ -1191,7 +1186,7 @@ namespace PharmInventory
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label22, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
@@ -1590,13 +1585,14 @@ namespace PharmInventory
             // 
             // chartReceiveCost
             // 
-            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Title.Text = "Axis of arguments";
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram1.AxisY.Title.Text = "Axis of values";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.WholeRange.AutoSideMargins = true;
             this.chartReceiveCost.Diagram = xyDiagram1;
+            this.chartReceiveCost.EmptyChartText.Text = "";
             this.chartReceiveCost.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             this.chartReceiveCost.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside;
             this.chartReceiveCost.Legend.EquallySpacedItems = false;
@@ -1615,19 +1611,17 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(172)))), ((int)(((byte)(104))))), System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(202)))), ((int)(((byte)(134)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
-            pointSeriesLabel1.LineVisible = true;
-            pointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pointSeriesLabel1.PointOptions = pointOptions1;
+            pointSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series2.Label = pointSeriesLabel1;
             series2.Name = "Series 1";
             series2.View = lineSeriesView1;
             this.chartReceiveCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
-            pointSeriesLabel2.LineVisible = true;
+            pointSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartReceiveCost.SeriesTemplate.Label = pointSeriesLabel2;
             this.chartReceiveCost.SeriesTemplate.View = lineSeriesView2;
             this.chartReceiveCost.Size = new System.Drawing.Size(393, 272);
+            this.chartReceiveCost.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartReceiveCost.TabIndex = 28;
             this.chartReceiveCost.Visible = false;
             // 
@@ -1647,7 +1641,7 @@ namespace PharmInventory
             this.linkLabel9.AutoSize = true;
             this.linkLabel9.Location = new System.Drawing.Point(36, 183);
             this.linkLabel9.Name = "linkLabel9";
-            this.linkLabel9.Size = new System.Drawing.Size(177, 13);
+            this.linkLabel9.Size = new System.Drawing.Size(176, 13);
             this.linkLabel9.TabIndex = 20;
             this.linkLabel9.TabStop = true;
             this.linkLabel9.Text = "Top 10 Least Received Items ";
@@ -1658,7 +1652,7 @@ namespace PharmInventory
             this.linkLabel8.AutoSize = true;
             this.linkLabel8.Location = new System.Drawing.Point(36, 154);
             this.linkLabel8.Name = "linkLabel8";
-            this.linkLabel8.Size = new System.Drawing.Size(173, 13);
+            this.linkLabel8.Size = new System.Drawing.Size(172, 13);
             this.linkLabel8.TabIndex = 20;
             this.linkLabel8.TabStop = true;
             this.linkLabel8.Text = "Top 10 Most Received Items ";
@@ -1809,13 +1803,14 @@ namespace PharmInventory
             // 
             // chartIssueCost
             // 
-            xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.Title.Text = "Axis of arguments";
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram2.AxisY.Title.Text = "Axis of values";
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.WholeRange.AutoSideMargins = true;
             this.chartIssueCost.Diagram = xyDiagram2;
+            this.chartIssueCost.EmptyChartText.Text = "";
             this.chartIssueCost.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             this.chartIssueCost.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.TopOutside;
             this.chartIssueCost.Legend.EquallySpacedItems = false;
@@ -1834,19 +1829,17 @@ namespace PharmInventory
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(172)))), ((int)(((byte)(104))))), System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(202)))), ((int)(((byte)(134)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(192)))), ((int)(((byte)(192))))), System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(227)))), ((int)(((byte)(181)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(147)))), ((int)(((byte)(115))))), System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(149))))))}));
-            pointSeriesLabel3.LineVisible = true;
-            pointOptions2.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            pointOptions2.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pointSeriesLabel3.PointOptions = pointOptions2;
+            pointSeriesLabel3.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series3.Label = pointSeriesLabel3;
             series3.Name = "Series 1";
             series3.View = lineSeriesView3;
             this.chartIssueCost.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3};
-            pointSeriesLabel4.LineVisible = true;
+            pointSeriesLabel4.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartIssueCost.SeriesTemplate.Label = pointSeriesLabel4;
             this.chartIssueCost.SeriesTemplate.View = lineSeriesView4;
             this.chartIssueCost.Size = new System.Drawing.Size(402, 272);
+            this.chartIssueCost.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartIssueCost.TabIndex = 38;
             this.chartIssueCost.Visible = false;
             // 
@@ -1884,7 +1877,7 @@ namespace PharmInventory
             this.linkLabel16.AutoSize = true;
             this.linkLabel16.Location = new System.Drawing.Point(36, 193);
             this.linkLabel16.Name = "linkLabel16";
-            this.linkLabel16.Size = new System.Drawing.Size(163, 13);
+            this.linkLabel16.Size = new System.Drawing.Size(162, 13);
             this.linkLabel16.TabIndex = 29;
             this.linkLabel16.TabStop = true;
             this.linkLabel16.Text = "Top 10 Least Issued Items ";
@@ -1895,7 +1888,7 @@ namespace PharmInventory
             this.linkLabel17.AutoSize = true;
             this.linkLabel17.Location = new System.Drawing.Point(36, 164);
             this.linkLabel17.Name = "linkLabel17";
-            this.linkLabel17.Size = new System.Drawing.Size(159, 13);
+            this.linkLabel17.Size = new System.Drawing.Size(158, 13);
             this.linkLabel17.TabIndex = 28;
             this.linkLabel17.TabStop = true;
             this.linkLabel17.Text = "Top 10 Most Issued Items ";
@@ -2342,9 +2335,11 @@ namespace PharmInventory
             this.cboYear.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("year", "Year")});
             this.cboYear.Properties.DisplayMember = "year";
-            this.cboYear.Properties.NullText = "";
+            this.cboYear.Properties.NullText = "Never/Ever";
+            this.cboYear.Properties.NullValuePrompt = "Never/Ever";
+            this.cboYear.Properties.NullValuePromptShowForEmptyValue = true;
             this.cboYear.Properties.ValueMember = "year";
-            this.cboYear.Size = new System.Drawing.Size(73, 20);
+            this.cboYear.Size = new System.Drawing.Size(86, 20);
             this.cboYear.TabIndex = 29;
             this.cboYear.EditValueChanged += new System.EventHandler(this.cboStores_SelectedValueChanged);
             // 
@@ -2366,10 +2361,6 @@ namespace PharmInventory
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.chartPie;
-            // 
-            // 
-            // 
-            this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(10, 10, 150, 50);
             this.printableComponentLink1.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -2381,7 +2372,6 @@ namespace PharmInventory
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.printableComponentLink1.PrintingSystem = this.printingSystemChart;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystemChart;
             // 
             // printingSystemSSSummary
@@ -2392,10 +2382,6 @@ namespace PharmInventory
             // pcl
             // 
             this.pcl.Component = this.listStatused;
-            // 
-            // 
-            // 
-            this.pcl.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("pcl.ImageCollection.ImageStream")));
             this.pcl.Landscape = true;
             this.pcl.Margins = new System.Drawing.Printing.Margins(10, 10, 150, 50);
             this.pcl.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -2407,16 +2393,11 @@ namespace PharmInventory
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.pcl.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.pcl.PrintingSystem = this.printingSystemSSSummary;
             this.pcl.PrintingSystemBase = this.printingSystemSSSummary;
             // 
             // pclReceive
             // 
             this.pclReceive.Component = this.listReceiveSum;
-            // 
-            // 
-            // 
-            this.pclReceive.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("pclReceive.ImageCollection.ImageStream")));
             this.pclReceive.Landscape = true;
             this.pclReceive.Margins = new System.Drawing.Printing.Margins(10, 10, 150, 50);
             this.pclReceive.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -2428,8 +2409,7 @@ namespace PharmInventory
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.pclReceive.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.pclReceive.PrintingSystem = this.printingSystemIssueSummary;
-            this.pclReceive.PrintingSystemBase = this.printingSystemIssueSummary;
+            this.pclReceive.PrintingSystemBase = this.printingSystemReceiveSummary;
             // 
             // printingSystemReceiveSummary
             // 
@@ -2446,10 +2426,6 @@ namespace PharmInventory
             // pclIssue
             // 
             this.pclIssue.Component = this.listIssued;
-            // 
-            // 
-            // 
-            this.pclIssue.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("pclIssue.ImageCollection.ImageStream")));
             this.pclIssue.Landscape = true;
             this.pclIssue.Margins = new System.Drawing.Printing.Margins(10, 10, 150, 50);
             this.pclIssue.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
@@ -2461,7 +2437,6 @@ namespace PharmInventory
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.pclIssue.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.pclIssue.PrintingSystem = this.printingSystemIssueSummary;
             this.pclIssue.PrintingSystemBase = this.printingSystemIssueSummary;
             // 
             // printDialog1
@@ -2470,7 +2445,6 @@ namespace PharmInventory
             // 
             // GeneralReport
             // 
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2481,6 +2455,7 @@ namespace PharmInventory
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.cboStores);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GeneralReport";
             this.Text = "GeneralReport";
             this.Load += new System.EventHandler(this.GeneralReport_Load);
@@ -2535,13 +2510,9 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.lkCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemSSSummary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcl.ImageCollection)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pclReceive.ImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemReceiveSummary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystemIssueSummary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pclIssue.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }
