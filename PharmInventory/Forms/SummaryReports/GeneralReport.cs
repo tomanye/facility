@@ -2303,8 +2303,9 @@ namespace PharmInventory
         {
             var info = new GeneralInfo();
             info.LoadAll();
-
-            int year = Convert.ToInt32(cboYear.EditValue);
+            cboYear.EditValue = (cboYear.EditValue != DBNull.Value) ? cboYear.EditValue : dtCurrent.Year;
+            int year = Convert.ToInt32(cboYear.EditValue) ;
+           
             int month = 10;
             int day = 30;
             if (year == dtCurrent.Year)
