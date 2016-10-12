@@ -30,14 +30,15 @@ namespace PharmInventory
             switch (usType)
             {
                 case 1://Reader
-                    menuStrip2.Items[0].Visible = true;
+                    menuStrip2.Items[0].Visible = false;
                     menuStrip2.Items[1].Visible = false;
                     menuStrip2.Items[2].Visible = true;
                     menuStrip2.Items[3].Visible = true;
                     menuStrip2.Items[4].Visible = false;
-                    menuStrip2.Items[5].Visible = false;
+                    menuStrip2.Items[5].Visible = true;
                     menuStrip2.Items[6].Visible = false;
                     menuStrip2.Items[7].Visible = true;
+                    menuStrip2.Items[8].Visible = true;
                     navBarFacilitySettings.Visible = false;
                     navBarPipeline.Visible = false;
                     break;
@@ -47,9 +48,15 @@ namespace PharmInventory
                     menuStrip2.Items[2].Visible = true;
                     menuStrip2.Items[3].Visible = true;
                     menuStrip2.Items[4].Visible = true;
-                    menuStrip2.Items[5].Visible = false;
+                    menuStrip2.Items[5].Visible = true;
                     menuStrip2.Items[6].Visible = false;
                     menuStrip2.Items[7].Visible = true;
+                    menuStrip2.Items[8].Visible = true;
+
+                    hospitalSettingsToolStripMenuItem1.Visible = false;
+                    pipelineToolStripMenuItem.Visible = false;
+                    changePasswordToolStripMenuItem.Visible = false;
+
                     navBarFacilitySettings.Visible = false;
                     navBarPipeline.Visible = false;
                     break;
@@ -58,8 +65,8 @@ namespace PharmInventory
                     menuStrip2.Items[1].Visible = true;
                     menuStrip2.Items[2].Visible = true;
                     menuStrip2.Items[3].Visible = true;
-                    menuStrip2.Items[4].Visible = true;
-                    menuStrip2.Items[5].Visible = false;
+                    menuStrip2.Items[4].Visible = false;
+                    menuStrip2.Items[5].Visible = true;
                     menuStrip2.Items[6].Visible = false;
                     menuStrip2.Items[7].Visible = true;
                     navBarFacilitySettings.Visible = true;
