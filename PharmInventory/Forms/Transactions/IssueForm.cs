@@ -514,7 +514,7 @@ namespace PharmInventory.Forms.Transactions
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
                                 DateTime? dtx = new DateTime();
-                                var internaldrugcode =  (_dtRec.Rows[j]["internaldrugcode"] != DBNull.Value) ?(_dtRec.Rows[j]["internaldrugcode"].ToString()) : "";
+                                var internaldrugcode =  (_dtRec.Rows[j]["internaldrugcode"] != DBNull.Value) ?(_dtRec.Rows[j]["internaldrugcode"].ToString()) : "_";
 
                                 switch (VisibilitySetting.HandleUnits)
                                 {
