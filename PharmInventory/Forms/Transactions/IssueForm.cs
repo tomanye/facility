@@ -391,7 +391,7 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode" };
                 foreach (string col in strr)
                 {
                     dtIssueConf.Columns.Add(col);
@@ -514,6 +514,7 @@ namespace PharmInventory.Forms.Transactions
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
                                 DateTime? dtx = new DateTime();
+                                var internaldrugcode =  (_dtRec.Rows[j]["internaldrugcode"] != DBNull.Value) ?(_dtRec.Rows[j]["internaldrugcode"].ToString()) : "";
 
                                 switch (VisibilitySetting.HandleUnits)
                                 {
@@ -550,7 +551,7 @@ namespace PharmInventory.Forms.Transactions
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"]};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
