@@ -953,7 +953,7 @@ namespace PharmInventory.Forms.Transactions
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Mask.EditMask = "c";
+            this.repositoryItemTextEdit1.Mask.EditMask = "#,###.###";
             this.repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
