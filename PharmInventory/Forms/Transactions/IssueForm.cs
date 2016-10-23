@@ -96,8 +96,7 @@ namespace PharmInventory.Forms.Transactions
                     duamc.Visible = true;
                     unitcolumn3.Visible = false;
                     break;
-            }
-            ((GridView)gridItemsChoice.MainView).Columns[15].Visible = false;
+            } 
 
             PopulateCatTree(_selectedType);
             var stor = new Stores();
