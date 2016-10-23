@@ -93,7 +93,6 @@ namespace PharmInventory.Forms.Transactions
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
             this.chkExcludeStockedOut = new DevExpress.XtraEditors.CheckEdit();
             this.legend1 = new PharmInventory.UserControls.Legend();
             this.ckStockOut = new DevExpress.XtraEditors.CheckEdit();
@@ -156,7 +155,6 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem10 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -292,7 +290,6 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckStockOut.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
@@ -327,7 +324,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem10)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1031,7 +1027,6 @@ namespace PharmInventory.Forms.Transactions
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.chkIntDrugCode);
             this.layoutControl1.Controls.Add(this.chkExcludeStockedOut);
             this.layoutControl1.Controls.Add(this.legend1);
             this.layoutControl1.Controls.Add(this.ckStockOut);
@@ -1054,22 +1049,12 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControl1.TabIndex = 39;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // chkIntDrugCode
-            // 
-            this.chkIntDrugCode.Location = new System.Drawing.Point(282, 79);
-            this.chkIntDrugCode.Name = "chkIntDrugCode";
-            this.chkIntDrugCode.Properties.Caption = "Show Internal Drug Code";
-            this.chkIntDrugCode.Size = new System.Drawing.Size(148, 19);
-            this.chkIntDrugCode.StyleController = this.layoutControl1;
-            this.chkIntDrugCode.TabIndex = 42;
-            this.chkIntDrugCode.CheckedChanged += new System.EventHandler(this.chkIntDrugCode_CheckedChanged);
-            // 
             // chkExcludeStockedOut
             // 
-            this.chkExcludeStockedOut.Location = new System.Drawing.Point(165, 79);
+            this.chkExcludeStockedOut.Location = new System.Drawing.Point(257, 79);
             this.chkExcludeStockedOut.Name = "chkExcludeStockedOut";
             this.chkExcludeStockedOut.Properties.Caption = "Exclude Stock Out";
-            this.chkExcludeStockedOut.Size = new System.Drawing.Size(113, 19);
+            this.chkExcludeStockedOut.Size = new System.Drawing.Size(173, 19);
             this.chkExcludeStockedOut.StyleController = this.layoutControl1;
             this.chkExcludeStockedOut.TabIndex = 41;
             this.chkExcludeStockedOut.CheckedChanged += new System.EventHandler(this.chkExcludeStockedOut_CheckedChanged);
@@ -1804,7 +1789,6 @@ namespace PharmInventory.Forms.Transactions
             this.layoutControlItem27,
             this.layoutControlItem4,
             this.emptySpaceItem11,
-            this.layoutControlItem32,
             this.emptySpaceItem10});
             this.layoutControlGroup3.Location = new System.Drawing.Point(28, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
@@ -1926,10 +1910,10 @@ namespace PharmInventory.Forms.Transactions
             // 
             this.layoutControlItem27.Control = this.chkExcludeStockedOut;
             this.layoutControlItem27.CustomizationFormText = "layoutControlItem27";
-            this.layoutControlItem27.Location = new System.Drawing.Point(125, 48);
+            this.layoutControlItem27.Location = new System.Drawing.Point(217, 48);
             this.layoutControlItem27.MinSize = new System.Drawing.Size(113, 23);
             this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(117, 23);
+            this.layoutControlItem27.Size = new System.Drawing.Size(177, 23);
             this.layoutControlItem27.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem27.Text = "layoutControlItem27";
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
@@ -1959,25 +1943,13 @@ namespace PharmInventory.Forms.Transactions
             this.emptySpaceItem11.Text = "emptySpaceItem11";
             this.emptySpaceItem11.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // layoutControlItem32
-            // 
-            this.layoutControlItem32.Control = this.chkIntDrugCode;
-            this.layoutControlItem32.CustomizationFormText = "layoutControlItem32";
-            this.layoutControlItem32.Location = new System.Drawing.Point(242, 48);
-            this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(152, 23);
-            this.layoutControlItem32.Text = "layoutControlItem32";
-            this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem32.TextToControlDistance = 0;
-            this.layoutControlItem32.TextVisible = false;
-            // 
             // emptySpaceItem10
             // 
             this.emptySpaceItem10.AllowHotTrack = false;
             this.emptySpaceItem10.CustomizationFormText = "emptySpaceItem10";
             this.emptySpaceItem10.Location = new System.Drawing.Point(115, 48);
             this.emptySpaceItem10.Name = "emptySpaceItem10";
-            this.emptySpaceItem10.Size = new System.Drawing.Size(10, 23);
+            this.emptySpaceItem10.Size = new System.Drawing.Size(102, 23);
             this.emptySpaceItem10.Text = "emptySpaceItem10";
             this.emptySpaceItem10.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -3356,7 +3328,6 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExcludeStockedOut.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckStockOut.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
@@ -3391,7 +3362,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem10)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -3700,7 +3670,5 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem10;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn71;
-        private CheckEdit chkIntDrugCode;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
     }
 }

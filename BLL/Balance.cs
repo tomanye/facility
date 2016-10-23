@@ -1410,15 +1410,7 @@ namespace BLL
 
             this.LoadFromSql("SOH", ld, CommandType.StoredProcedure);
 
-            this.DataTable.Columns.Add("IsSelected", typeof(bool));
-            this.DataTable.Columns.Add("Internal Drug Code", typeof(string));
-            foreach (DataRow dr in this.DataTable.Rows)
-            {
-                ReceiveDoc rd = new ReceiveDoc();
-                rd.GetTransactionByItemId(storeId, Convert.ToInt32(dr["ID"]), Convert.ToInt32(dtCurrent.Year));
-                   dr["Internal Drug Code"] = (rd.RowCount ==0 || rd.IsColumnNull("InternalDrugCode")) ? "_": rd.InternalDrugCode;
-                
-            }
+            this.DataTable.Columns.Add("IsSelected", typeof(bool)); 
                 return this.DataTable;
         }
 

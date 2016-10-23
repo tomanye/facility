@@ -1240,10 +1240,6 @@ namespace PharmInventory.Forms.Transactions
         {
 
         }
-
-        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
-        {
-            ((GridView)gridItemsChoice.MainView).Columns[15].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
-        }
+ 
     }
 }
