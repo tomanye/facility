@@ -96,8 +96,7 @@ namespace PharmInventory.Forms.Transactions
                     duamc.Visible = true;
                     unitcolumn3.Visible = false;
                     break;
-            }
-            ((GridView)gridItemsChoice.MainView).Columns[15].Visible = false;
+            } 
 
             PopulateCatTree(_selectedType);
             var stor = new Stores();
@@ -392,10 +391,14 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode" };
                 foreach (string col in strr)
                 {
-                    dtIssueConf.Columns.Add(col);
+                    if (col == "Expiry Date")
+                    {
+                        dtIssueConf.Columns.Add(col, typeof(DateTime));
+                    }
+                   else  dtIssueConf.Columns.Add(col);
                 }
 
                 DUs.LoadByPrimaryKey(Convert.ToInt32(cboReceivingUnits.EditValue));
@@ -515,6 +518,14 @@ namespace PharmInventory.Forms.Transactions
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
                                 DateTime? dtx = new DateTime();
+                                bool interCodeExist = false;
+                                var internaldrugcode = "_";
+                                if (_dtRec.Rows[j]["internaldrugcode"] != DBNull.Value)
+                                {
+                                     internaldrugcode =  _dtRec.Rows[j]["internaldrugcode"].ToString();
+                                    interCodeExist = true;
+                                }
+                                ((GridView)gridConfirmation.MainView).Columns[18].Visible = interCodeExist;
 
                                 switch (VisibilitySetting.HandleUnits)
                                 {
@@ -534,7 +545,7 @@ namespace PharmInventory.Forms.Transactions
 
                                 if (itm.NeedExpiryBatch)
                                 {
-                                    dtx = Convert.ToDateTime(_dtRec.Rows[j]["ExpDate"]);
+                                    dtx =  Convert.ToDateTime(_dtRec.Rows[j]["ExpDate"]); 
                                     if (dtx <= DateTime.Now.AddDays(duMaxDays))
                                         nearExp = true;
                                 }
@@ -545,13 +556,13 @@ namespace PharmInventory.Forms.Transactions
                                 }
                                 int rowNo = j + 1;
 
-                                object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"], 
+                                object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"],
                                                      dtIssueGrid.Rows[i]["Item Name"], qu, batch,dtx, 
                                                      packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"]};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -1240,10 +1251,6 @@ namespace PharmInventory.Forms.Transactions
         {
 
         }
-
-        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
-        {
-            ((GridView)gridItemsChoice.MainView).Columns[15].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
-        }
+ 
     }
 }
