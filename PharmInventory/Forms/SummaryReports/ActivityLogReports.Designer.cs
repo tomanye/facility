@@ -172,7 +172,7 @@
             // 
             // dtTo
             // 
-            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
             this.dtTo.DayOfWeekCharacters = 1;
             this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
@@ -185,7 +185,7 @@
             // 
             // dtFrom
             // 
-            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
             this.dtFrom.DayOfWeekCharacters = 1;
             this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
@@ -354,7 +354,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Price/Pack";
-            this.gridColumn8.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn8.DisplayFormat.FormatString = "n3";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn8.FieldName = "PackPrice";
             this.gridColumn8.Name = "gridColumn8";
@@ -365,12 +365,12 @@
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Total Price";
-            this.gridColumn9.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn9.DisplayFormat.FormatString = "n3";
             this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.gridColumn9.FieldName = "TotalPrice";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalPrice", "{0:#,##0.#0}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalPrice", "{0:n3}")});
             this.gridColumn9.UnboundExpression = "iif([Cost]==0,0,[QtyPerPack] * [NoOfPack] * [Cost])";
             this.gridColumn9.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn9.Visible = true;
@@ -633,7 +633,7 @@
             // gridColumn21
             // 
             this.gridColumn21.Caption = "Price/Pack";
-            this.gridColumn21.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn21.DisplayFormat.FormatString = "n3";
             this.gridColumn21.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn21.FieldName = "gridColumn12";
             this.gridColumn21.Name = "gridColumn21";
@@ -657,12 +657,12 @@
             // gridColumn23
             // 
             this.gridColumn23.Caption = "Total Price";
-            this.gridColumn23.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn23.DisplayFormat.FormatString = "n3";
             this.gridColumn23.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn23.FieldName = "gridColumn8";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:#,##0.00}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:n3}")});
             this.gridColumn23.UnboundExpression = "[Quantity] * [Cost]";
             this.gridColumn23.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn23.Visible = true;
