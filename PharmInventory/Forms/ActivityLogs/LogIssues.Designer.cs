@@ -346,7 +346,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn12
             // 
             this.gridColumn12.Caption = "Price/Pack";
-            this.gridColumn12.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn12.DisplayFormat.FormatString = "n3";
             this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn12.FieldName = "gridColumn12";
             this.gridColumn12.Name = "gridColumn12";
@@ -370,7 +370,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Total Price";
-            this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn8.DisplayFormat.FormatString = "n3";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "gridColumn8";
             this.gridColumn8.Name = "gridColumn8";
