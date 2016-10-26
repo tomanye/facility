@@ -29,10 +29,10 @@ namespace PharmInventory.Forms.Transactions
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule5 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule4 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -717,9 +717,9 @@ namespace PharmInventory.Forms.Transactions
             this.cboProgram.Size = new System.Drawing.Size(306, 20);
             this.cboProgram.StyleController = this.layoutControl2;
             this.cboProgram.TabIndex = 15;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "Please select program";
-            this.dxValidationProvider1.SetValidationRule(this.cboProgram, conditionValidationRule1);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule5.ErrorText = "Please select program";
+            this.dxValidationProvider1.SetValidationRule(this.cboProgram, conditionValidationRule5);
             // 
             // cboSupplier
             // 
@@ -735,9 +735,9 @@ namespace PharmInventory.Forms.Transactions
             this.cboSupplier.Size = new System.Drawing.Size(258, 20);
             this.cboSupplier.StyleController = this.layoutControl2;
             this.cboSupplier.TabIndex = 14;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Please select a supplier";
-            this.dxValidationProvider1.SetValidationRule(this.cboSupplier, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Please select a supplier";
+            this.dxValidationProvider1.SetValidationRule(this.cboSupplier, conditionValidationRule1);
             // 
             // txtRemark
             // 
@@ -953,8 +953,9 @@ namespace PharmInventory.Forms.Transactions
             // repositoryItemTextEdit1
             // 
             this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Mask.EditMask = "#,###.###";
+            this.repositoryItemTextEdit1.Mask.EditMask = "n3";
             this.repositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.repositoryItemTextEdit1.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // gridTotalPrice
@@ -1143,9 +1144,9 @@ namespace PharmInventory.Forms.Transactions
             this.cboStores.Size = new System.Drawing.Size(258, 20);
             this.cboStores.StyleController = this.layoutControl2;
             this.cboStores.TabIndex = 13;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "Please Select a store";
-            this.dxValidationProvider1.SetValidationRule(this.cboStores, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "Please Select a store";
+            this.dxValidationProvider1.SetValidationRule(this.cboStores, conditionValidationRule2);
             this.cboStores.EditValueChanged += new System.EventHandler(this.cboStores_EditValueChanged);
             // 
             // txtRefNo
@@ -1156,9 +1157,9 @@ namespace PharmInventory.Forms.Transactions
             this.txtRefNo.Size = new System.Drawing.Size(234, 20);
             this.txtRefNo.StyleController = this.layoutControl2;
             this.txtRefNo.TabIndex = 0;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule4.ErrorText = "Please enter a Reference Number";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule4);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule3.ErrorText = "Please enter a Reference Number";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule3);
             // 
             // layoutControlGroup4
             // 

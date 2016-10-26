@@ -558,8 +558,8 @@ namespace PharmInventory.Forms.Transactions
 
                                 object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"],
                                                      dtIssueGrid.Rows[i]["Item Name"], qu, batch,dtx, 
-                                                     packPrice.ToString("#,##0.#0"), ((totPrice != double.NaN) ? totPrice.ToString("#,##0.#0") : "0"), 
-                                                     Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("#,##0.00"), 
+                                                     packPrice.ToString("n3"), ((totPrice != double.NaN) ? totPrice.ToString("n3") : "0"), 
+                                                     Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode};

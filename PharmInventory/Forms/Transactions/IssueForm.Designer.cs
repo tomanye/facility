@@ -31,22 +31,22 @@ namespace PharmInventory.Forms.Transactions
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition14 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition15 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition16 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition17 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition18 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition19 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition5 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition6 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition20 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition7 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition8 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition9 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition10 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition11 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition12 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition13 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn68 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -1211,45 +1211,45 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn1,
             this.gridColumn26,
             this.gridColumn70});
-            styleFormatCondition14.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            styleFormatCondition14.Appearance.Options.UseBackColor = true;
-            styleFormatCondition14.ApplyToRow = true;
-            styleFormatCondition14.Column = this.gridColumn1;
-            styleFormatCondition14.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition14.Value1 = "Stock Out";
-            styleFormatCondition15.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            styleFormatCondition15.Appearance.Options.UseBackColor = true;
-            styleFormatCondition15.ApplyToRow = true;
-            styleFormatCondition15.Column = this.gridColumn1;
-            styleFormatCondition15.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition15.Value1 = "Below EOP";
-            styleFormatCondition16.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
-            styleFormatCondition16.Appearance.Options.UseBackColor = true;
-            styleFormatCondition16.ApplyToRow = true;
-            styleFormatCondition16.Column = this.gridColumn1;
-            styleFormatCondition16.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition16.Value1 = "Near EOP";
-            styleFormatCondition17.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
-            styleFormatCondition17.Appearance.Options.UseBackColor = true;
-            styleFormatCondition17.ApplyToRow = true;
-            styleFormatCondition17.Column = this.gridColumn1;
-            styleFormatCondition17.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition17.Value1 = "Over Stocked";
-            styleFormatCondition18.Column = this.gridColumn1;
-            styleFormatCondition18.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition18.Value1 = "Normal";
-            styleFormatCondition19.Appearance.BackColor = System.Drawing.Color.Red;
-            styleFormatCondition19.Appearance.Options.UseBackColor = true;
-            styleFormatCondition19.Column = this.gridColumn15;
-            styleFormatCondition19.Condition = DevExpress.XtraGrid.FormatConditionEnum.NotEqual;
-            styleFormatCondition19.Value1 = "0";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Column = this.gridColumn1;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition1.Value1 = "Stock Out";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Column = this.gridColumn1;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition2.Value1 = "Below EOP";
+            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
+            styleFormatCondition3.Appearance.Options.UseBackColor = true;
+            styleFormatCondition3.ApplyToRow = true;
+            styleFormatCondition3.Column = this.gridColumn1;
+            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition3.Value1 = "Near EOP";
+            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
+            styleFormatCondition4.Appearance.Options.UseBackColor = true;
+            styleFormatCondition4.ApplyToRow = true;
+            styleFormatCondition4.Column = this.gridColumn1;
+            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition4.Value1 = "Over Stocked";
+            styleFormatCondition5.Column = this.gridColumn1;
+            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition5.Value1 = "Normal";
+            styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition6.Appearance.Options.UseBackColor = true;
+            styleFormatCondition6.Column = this.gridColumn15;
+            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.NotEqual;
+            styleFormatCondition6.Value1 = "0";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition14,
-            styleFormatCondition15,
-            styleFormatCondition16,
-            styleFormatCondition17,
-            styleFormatCondition18,
-            styleFormatCondition19});
+            styleFormatCondition1,
+            styleFormatCondition2,
+            styleFormatCondition3,
+            styleFormatCondition4,
+            styleFormatCondition5,
+            styleFormatCondition6});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -1459,50 +1459,50 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn67,
             this.gridColumn68,
             this.gridColumn69});
-            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            styleFormatCondition1.Appearance.Options.UseBackColor = true;
-            styleFormatCondition1.ApplyToRow = true;
-            styleFormatCondition1.Column = this.gridColumn68;
-            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition1.Value1 = "Stock Out";
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.ApplyToRow = true;
-            styleFormatCondition2.Column = this.gridColumn68;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition2.Value1 = "Below EOP";
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Column = this.gridColumn68;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition3.Value1 = "Near EOP";
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Column = this.gridColumn68;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition4.Value1 = "Over Stocked";
-            styleFormatCondition5.Appearance.BackColor = System.Drawing.Color.White;
-            styleFormatCondition5.Appearance.Options.UseBackColor = true;
-            styleFormatCondition5.ApplyToRow = true;
-            styleFormatCondition5.Column = this.gridColumn68;
-            styleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
-            styleFormatCondition5.Value1 = "Normal";
-            styleFormatCondition6.Appearance.BackColor = System.Drawing.Color.Red;
-            styleFormatCondition6.Appearance.Options.UseBackColor = true;
-            styleFormatCondition6.ApplyToRow = true;
-            styleFormatCondition6.Column = this.gridColumn65;
-            styleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition6.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
+            styleFormatCondition7.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            styleFormatCondition7.Appearance.Options.UseBackColor = true;
+            styleFormatCondition7.ApplyToRow = true;
+            styleFormatCondition7.Column = this.gridColumn68;
+            styleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition7.Value1 = "Stock Out";
+            styleFormatCondition8.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            styleFormatCondition8.Appearance.Options.UseBackColor = true;
+            styleFormatCondition8.ApplyToRow = true;
+            styleFormatCondition8.Column = this.gridColumn68;
+            styleFormatCondition8.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition8.Value1 = "Below EOP";
+            styleFormatCondition9.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(153)))));
+            styleFormatCondition9.Appearance.Options.UseBackColor = true;
+            styleFormatCondition9.ApplyToRow = true;
+            styleFormatCondition9.Column = this.gridColumn68;
+            styleFormatCondition9.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition9.Value1 = "Near EOP";
+            styleFormatCondition10.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
+            styleFormatCondition10.Appearance.Options.UseBackColor = true;
+            styleFormatCondition10.ApplyToRow = true;
+            styleFormatCondition10.Column = this.gridColumn68;
+            styleFormatCondition10.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition10.Value1 = "Over Stocked";
+            styleFormatCondition11.Appearance.BackColor = System.Drawing.Color.White;
+            styleFormatCondition11.Appearance.Options.UseBackColor = true;
+            styleFormatCondition11.ApplyToRow = true;
+            styleFormatCondition11.Column = this.gridColumn68;
+            styleFormatCondition11.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal;
+            styleFormatCondition11.Value1 = "Normal";
+            styleFormatCondition12.Appearance.BackColor = System.Drawing.Color.Red;
+            styleFormatCondition12.Appearance.Options.UseBackColor = true;
+            styleFormatCondition12.ApplyToRow = true;
+            styleFormatCondition12.Column = this.gridColumn65;
+            styleFormatCondition12.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition12.Expression = "[SOH] ==  [Expired]  And [Expired] != 0";
             this.gridView3.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition1,
-            styleFormatCondition2,
-            styleFormatCondition3,
-            styleFormatCondition4,
-            styleFormatCondition5,
-            styleFormatCondition6,
-            styleFormatCondition20});
+            styleFormatCondition7,
+            styleFormatCondition8,
+            styleFormatCondition9,
+            styleFormatCondition10,
+            styleFormatCondition11,
+            styleFormatCondition12,
+            styleFormatCondition13});
             this.gridView3.GridControl = this.gridItemsChoice;
             this.gridView3.IndicatorWidth = 40;
             this.gridView3.Name = "gridView3";
@@ -2201,9 +2201,9 @@ namespace PharmInventory.Forms.Transactions
             this.txtRefNo.Size = new System.Drawing.Size(202, 20);
             this.txtRefNo.StyleController = this.layoutControl2;
             this.txtRefNo.TabIndex = 4;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule3.ErrorText = "*";
-            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule3);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "*";
+            this.dxValidationProvider1.SetValidationRule(this.txtRefNo, conditionValidationRule1);
             // 
             // txtIssuedBy
             // 
@@ -2229,9 +2229,9 @@ namespace PharmInventory.Forms.Transactions
             this.cboReceivingUnits.Size = new System.Drawing.Size(262, 20);
             this.cboReceivingUnits.StyleController = this.layoutControl2;
             this.cboReceivingUnits.TabIndex = 0;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "*";
-            this.dxValidationProvider1.SetValidationRule(this.cboReceivingUnits, conditionValidationRule1);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "*";
+            this.dxValidationProvider1.SetValidationRule(this.cboReceivingUnits, conditionValidationRule2);
             this.cboReceivingUnits.EditValueChanged += new System.EventHandler(this.cboReceivingUnits_SelectedValueChanged);
             // 
             // btnSave
@@ -2691,7 +2691,7 @@ namespace PharmInventory.Forms.Transactions
             // gridColumn48
             // 
             this.gridColumn48.Caption = "Unit Price";
-            this.gridColumn48.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn48.DisplayFormat.FormatString = "n3";
             this.gridColumn48.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn48.FieldName = "Unit Price";
             this.gridColumn48.Name = "gridColumn48";
@@ -2706,7 +2706,7 @@ namespace PharmInventory.Forms.Transactions
             // gridColumn42
             // 
             this.gridColumn42.Caption = "Total Price/ETB";
-            this.gridColumn42.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn42.DisplayFormat.FormatString = "n3";
             this.gridColumn42.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn42.FieldName = "Total Price";
             this.gridColumn42.Name = "gridColumn42";
@@ -2721,6 +2721,8 @@ namespace PharmInventory.Forms.Transactions
             // gridColumn41
             // 
             this.gridColumn41.Caption = "Pack Price/ETB";
+            this.gridColumn41.DisplayFormat.FormatString = "n3";
+            this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn41.FieldName = "Pack Price";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.AllowEdit = false;
@@ -3276,8 +3278,8 @@ namespace PharmInventory.Forms.Transactions
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn1.HeaderText = "Column1";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
