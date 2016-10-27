@@ -91,6 +91,7 @@ namespace PharmInventory.Forms.Modals
 
                 txtRefNo.Text = rec.RefNo;
                 txtBatchNo.Text = rec.BatchNo;
+                txtInternalDrugCode.Text = rec.InternalDrugCode;
                 try
                 {
                     txtPack.Text = rec.NoOfPack.ToString();
@@ -232,6 +233,7 @@ namespace PharmInventory.Forms.Modals
                     if ((iss.RowCount != 0) && (iss.RecievDocID != null && iss.RecievDocID == rec.ID))
                         {
                             rec.BatchNo = txtBatchNo.Text;
+                             rec.InternalDrugCode = txtInternalDrugCode.Text;
                             rec.ExpDate = dtExpiryDate.Value;
                             rec.Remark = txtRemark.Text;
                             rec.ReceivedBy = txtReceivedBy.Text;
@@ -265,6 +267,7 @@ namespace PharmInventory.Forms.Modals
                     else if (iss.RowCount == 0)
                     {
                         rec.BatchNo = txtBatchNo.Text;
+                        rec.InternalDrugCode = txtInternalDrugCode.Text;
                         rec.ExpDate = dtExpiryDate.Value;
                         rec.Remark = txtRemark.Text;
                         rec.ReceivedBy = txtReceivedBy.Text;
@@ -323,5 +326,7 @@ namespace PharmInventory.Forms.Modals
             dtRecDate.CustomFormat = "MM/dd/yyyy";
             txtDate.Text = dtRecDate.Text;
         }
+
+        
     }
 }

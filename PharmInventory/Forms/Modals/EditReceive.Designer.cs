@@ -75,6 +75,8 @@ namespace PharmInventory.Forms.Modals
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lkPrograms = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtInternalDrugCode = new DevExpress.XtraEditors.TextEdit();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPack.Properties)).BeginInit();
@@ -88,6 +90,7 @@ namespace PharmInventory.Forms.Modals
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkItemUnit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkPrograms.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInternalDrugCode.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -109,7 +112,7 @@ namespace PharmInventory.Forms.Modals
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(172, 114);
+            this.label2.Location = new System.Drawing.Point(172, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 0;
@@ -118,7 +121,7 @@ namespace PharmInventory.Forms.Modals
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(172, 212);
+            this.label3.Location = new System.Drawing.Point(171, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 0;
@@ -126,7 +129,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtBatchNo
             // 
-            this.txtBatchNo.Location = new System.Drawing.Point(291, 208);
+            this.txtBatchNo.Location = new System.Drawing.Point(291, 192);
             this.txtBatchNo.Name = "txtBatchNo";
             this.txtBatchNo.Size = new System.Drawing.Size(184, 20);
             this.txtBatchNo.TabIndex = 1;
@@ -134,7 +137,7 @@ namespace PharmInventory.Forms.Modals
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(172, 296);
+            this.label4.Location = new System.Drawing.Point(172, 307);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 0;
@@ -143,7 +146,7 @@ namespace PharmInventory.Forms.Modals
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(172, 323);
+            this.label5.Location = new System.Drawing.Point(172, 334);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 0;
@@ -151,7 +154,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtPack
             // 
-            this.txtPack.Location = new System.Drawing.Point(291, 319);
+            this.txtPack.Location = new System.Drawing.Point(291, 330);
             this.txtPack.Name = "txtPack";
             this.txtPack.Size = new System.Drawing.Size(184, 20);
             this.txtPack.TabIndex = 1;
@@ -160,7 +163,7 @@ namespace PharmInventory.Forms.Modals
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(172, 357);
+            this.label6.Location = new System.Drawing.Point(172, 368);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 0;
@@ -168,7 +171,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtQtyPack
             // 
-            this.txtQtyPack.Location = new System.Drawing.Point(291, 353);
+            this.txtQtyPack.Location = new System.Drawing.Point(291, 364);
             this.txtQtyPack.Name = "txtQtyPack";
             this.txtQtyPack.Size = new System.Drawing.Size(184, 20);
             this.txtQtyPack.TabIndex = 1;
@@ -177,7 +180,7 @@ namespace PharmInventory.Forms.Modals
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(172, 391);
+            this.label7.Location = new System.Drawing.Point(172, 402);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 13);
             this.label7.TabIndex = 0;
@@ -185,7 +188,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(291, 387);
+            this.txtQuantity.Location = new System.Drawing.Point(291, 398);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Properties.Appearance.BackColor = System.Drawing.SystemColors.Info;
             this.txtQuantity.Properties.Appearance.Options.UseBackColor = true;
@@ -196,7 +199,7 @@ namespace PharmInventory.Forms.Modals
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(172, 148);
+            this.label8.Location = new System.Drawing.Point(172, 133);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 0;
@@ -205,7 +208,7 @@ namespace PharmInventory.Forms.Modals
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(172, 182);
+            this.label9.Location = new System.Drawing.Point(172, 164);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 0;
@@ -254,11 +257,10 @@ namespace PharmInventory.Forms.Modals
             // 
             // dtRecDate
             // 
-            this.dtRecDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtRecDate.DayOfWeekCharacters = 2;
+            this.dtRecDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dtRecDate.DayOfWeekCharacters = 1;
             this.dtRecDate.Location = new System.Drawing.Point(10, 22);
             this.dtRecDate.Name = "dtRecDate";
-            this.dtRecDate.PopUpFontSize = 9.75F;
             this.dtRecDate.Size = new System.Drawing.Size(184, 20);
             this.dtRecDate.TabIndex = 11;
             this.dtRecDate.TextSelect = System.Drawing.SystemColors.GradientActiveCaption;
@@ -268,7 +270,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.cboSupplier.DisplayMember = "CompanyName";
             this.cboSupplier.FormattingEnabled = true;
-            this.cboSupplier.Location = new System.Drawing.Point(291, 144);
+            this.cboSupplier.Location = new System.Drawing.Point(291, 129);
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Size = new System.Drawing.Size(184, 21);
             this.cboSupplier.TabIndex = 13;
@@ -278,7 +280,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.cboStores.DisplayMember = "StoreName";
             this.cboStores.FormattingEnabled = true;
-            this.cboStores.Location = new System.Drawing.Point(291, 178);
+            this.cboStores.Location = new System.Drawing.Point(291, 161);
             this.cboStores.Name = "cboStores";
             this.cboStores.Size = new System.Drawing.Size(184, 21);
             this.cboStores.TabIndex = 12;
@@ -288,7 +290,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.dtExpiryDate.CustomFormat = "MMMM dd, yyyy";
             this.dtExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtExpiryDate.Location = new System.Drawing.Point(291, 292);
+            this.dtExpiryDate.Location = new System.Drawing.Point(291, 303);
             this.dtExpiryDate.Name = "dtExpiryDate";
             this.dtExpiryDate.Size = new System.Drawing.Size(184, 21);
             this.dtExpiryDate.TabIndex = 14;
@@ -296,7 +298,7 @@ namespace PharmInventory.Forms.Modals
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(172, 422);
+            this.label11.Location = new System.Drawing.Point(172, 433);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 0;
@@ -304,7 +306,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(291, 418);
+            this.txtPrice.Location = new System.Drawing.Point(291, 429);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(184, 20);
             this.txtPrice.TabIndex = 1;
@@ -313,7 +315,7 @@ namespace PharmInventory.Forms.Modals
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(172, 458);
+            this.label12.Location = new System.Drawing.Point(172, 469);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(78, 13);
             this.label12.TabIndex = 0;
@@ -321,7 +323,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtReceivedBy
             // 
-            this.txtReceivedBy.Location = new System.Drawing.Point(291, 454);
+            this.txtReceivedBy.Location = new System.Drawing.Point(291, 465);
             this.txtReceivedBy.Name = "txtReceivedBy";
             this.txtReceivedBy.Size = new System.Drawing.Size(184, 20);
             this.txtReceivedBy.TabIndex = 1;
@@ -330,7 +332,7 @@ namespace PharmInventory.Forms.Modals
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(172, 494);
+            this.label13.Location = new System.Drawing.Point(172, 505);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 0;
@@ -338,7 +340,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(291, 490);
+            this.txtRemark.Location = new System.Drawing.Point(291, 501);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(305, 20);
             this.txtRemark.TabIndex = 1;
@@ -346,7 +348,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(291, 111);
+            this.txtDate.Location = new System.Drawing.Point(291, 103);
             this.txtDate.Name = "txtDate";
             this.txtDate.Properties.ReadOnly = true;
             this.txtDate.Size = new System.Drawing.Size(184, 20);
@@ -488,7 +490,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // lkItemUnit
             // 
-            this.lkItemUnit.Location = new System.Drawing.Point(291, 236);
+            this.lkItemUnit.Location = new System.Drawing.Point(291, 247);
             this.lkItemUnit.Name = "lkItemUnit";
             this.lkItemUnit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -500,7 +502,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(175, 239);
+            this.labelControl1.Location = new System.Drawing.Point(175, 250);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(19, 13);
             this.labelControl1.TabIndex = 19;
@@ -508,7 +510,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // lkPrograms
             // 
-            this.lkPrograms.Location = new System.Drawing.Point(291, 266);
+            this.lkPrograms.Location = new System.Drawing.Point(291, 277);
             this.lkPrograms.Name = "lkPrograms";
             this.lkPrograms.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -520,11 +522,27 @@ namespace PharmInventory.Forms.Modals
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(174, 269);
+            this.labelControl2.Location = new System.Drawing.Point(174, 280);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(43, 13);
             this.labelControl2.TabIndex = 21;
             this.labelControl2.Text = "Program ";
+            // 
+            // txtInternalDrugCode
+            // 
+            this.txtInternalDrugCode.Location = new System.Drawing.Point(290, 221);
+            this.txtInternalDrugCode.Name = "txtInternalDrugCode";
+            this.txtInternalDrugCode.Size = new System.Drawing.Size(184, 20);
+            this.txtInternalDrugCode.TabIndex = 23;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(168, 224);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(118, 13);
+            this.label24.TabIndex = 22;
+            this.label24.Text = "Internal Drug Code";
             // 
             // EditReceive
             // 
@@ -532,6 +550,8 @@ namespace PharmInventory.Forms.Modals
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
             this.ClientSize = new System.Drawing.Size(709, 585);
+            this.Controls.Add(this.txtInternalDrugCode);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.lkPrograms);
             this.Controls.Add(this.labelControl1);
@@ -594,6 +614,7 @@ namespace PharmInventory.Forms.Modals
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkItemUnit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkPrograms.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInternalDrugCode.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,5 +668,7 @@ namespace PharmInventory.Forms.Modals
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit lkPrograms;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtInternalDrugCode;
+        private System.Windows.Forms.Label label24;
     }
 }
