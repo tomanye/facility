@@ -54,6 +54,7 @@ namespace PharmInventory.Forms.SummaryReports
             dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
             gridIssues.DataSource = dtiss;
+            grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -94,6 +95,11 @@ namespace PharmInventory.Forms.SummaryReports
             else
                 grdViewIssued.ActiveFilterString = "";
         }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        { 
+            grdViewIssued.Columns["InternalDrugCode"].Visible= grdViewReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+         }
 
         private void lkSupplier_EditValueChanged(object sender, EventArgs e)
         {

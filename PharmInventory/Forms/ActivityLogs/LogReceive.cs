@@ -88,6 +88,7 @@ namespace PharmInventory.Forms.ActivityLogs
             {
                 
             }
+            grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void PopulateDocuments(DataTable dtRec)
@@ -122,7 +123,7 @@ namespace PharmInventory.Forms.ActivityLogs
             var us = new User();
             var userID = MainWindow.LoggedinId;
             us.LoadByPrimaryKey(userID);
-            var dr = gridView1.GetFocusedDataRow();
+            var dr = grdLogReceive.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -145,13 +146,13 @@ namespace PharmInventory.Forms.ActivityLogs
             //{
                 if ((iss.RowCount != 0) && (iss.RecievDocID != null && iss.RecievDocID == rec.ID))
                 {
-                    var edRec = new EditReceive(tranId, true);
+                    var edRec = new EditReceive(tranId, true,Convert.ToBoolean(chkIntDrugCode.EditValue));
                     MainWindow.ShowForms(edRec);
                 }
             //}
             else if(iss.RowCount ==0)
             {
-                var edRec = new EditReceive(tranId, false);
+                var edRec = new EditReceive(tranId, false, Convert.ToBoolean(chkIntDrugCode.EditValue));
                 MainWindow.ShowForms(edRec);
             }
 
@@ -163,7 +164,7 @@ namespace PharmInventory.Forms.ActivityLogs
             var userID = MainWindow.LoggedinId;
             us.LoadByPrimaryKey(userID);
 
-            var dr = gridView1.GetFocusedDataRow();
+            var dr = grdLogReceive.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -282,7 +283,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            DataRow dr = gridView1.GetFocusedDataRow();
+            DataRow dr = grdLogReceive.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -299,12 +300,12 @@ namespace PharmInventory.Forms.ActivityLogs
             if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
             {
                 //XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                EditReceive edRec = new EditReceive(tranId, true);
+                EditReceive edRec = new EditReceive(tranId, true, Convert.ToBoolean(chkIntDrugCode.EditValue));
                 MainWindow.ShowForms(edRec);
             }
             else
             {
-                EditReceive edRec = new EditReceive(tranId, false);
+                EditReceive edRec = new EditReceive(tranId, false, Convert.ToBoolean(chkIntDrugCode.EditValue));
                 MainWindow.ShowForms(edRec);
             }
         }
@@ -452,6 +453,11 @@ namespace PharmInventory.Forms.ActivityLogs
         private void unitrepositoryItemLookUpEdit_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }

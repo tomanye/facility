@@ -869,7 +869,7 @@ namespace BLL
         public DataTable GetItemsWithPrice(int storeId, int selectedType)
         {
             string sqlQuery = String.Format(@"
-                                            SELECT vw.TypeId, YEAR(EurDate) Year, MONTH(EurDate) Month, FullItemName, BatchNo Batch, NoOfPack, QtyPerPack, (rd.Cost * rd.QtyPerPack) [Price Per Pack], (Quantity * rd.Cost) [Total Cost] 
+                                            SELECT vw.TypeId, YEAR(EurDate) Year, MONTH(EurDate) Month, FullItemName, BatchNo Batch, NoOfPack, QtyPerPack, (rd.Cost * rd.QtyPerPack) [Price Per Pack], (Quantity * rd.Cost) [Total Cost] ,ISNULL(rd.InternalDrugCode,'_') InternalDrugCode
                                             FROM ReceiveDoc rd INNER JOIN vwGetAllItems vw on rd.ItemID = vw.ID
                                             WHERE StoreId= {0} AND vw.TypeId = {1} AND QuantityLeft > 0
                                             ORDER BY FullItemName ", storeId, selectedType);

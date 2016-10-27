@@ -93,7 +93,7 @@ namespace PharmInventory.Forms.ActivityLogs
             {
                 // do nothing
             }
-            
+            grdLogIssue.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -141,7 +141,7 @@ namespace PharmInventory.Forms.ActivityLogs
             var userID = MainWindow.LoggedinId;
             us.LoadByPrimaryKey(userID);
 
-            DataRow dr = gridView1.GetFocusedDataRow();
+            DataRow dr = grdLogIssue.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -215,7 +215,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            DataRow dr = gridView1.GetFocusedDataRow();
+            DataRow dr = grdLogIssue.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -277,7 +277,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void detailToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dr = gridView1.GetFocusedDataRow();
+            var dr = grdLogIssue.GetFocusedDataRow();
 
             if (dr == null) return;
 
@@ -409,6 +409,11 @@ namespace PharmInventory.Forms.ActivityLogs
             isdelete.RecievDocID = (int) dataRow["RecievDocID"];
             isdelete.RecomendedQty = (long) dataRow["RecomendedQty"];
             isdelete.Save();
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            grdLogIssue.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }

@@ -72,6 +72,7 @@ namespace PharmInventory.Forms.Reports
 
             IsReady = true;
             PopulateGrid();
+            gridItemChoiceView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void PopulateGrid()
@@ -318,6 +319,11 @@ namespace PharmInventory.Forms.Reports
             PopulateGrid();
             gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",
                                                                     txtItemName.Text, (int)(lkCommodityTypes.EditValue ?? 0));
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            gridItemChoiceView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }
