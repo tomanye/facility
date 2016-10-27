@@ -89,6 +89,7 @@ namespace PharmInventory.Forms.ActivityLogs
             {
                 
             }
+            grdLogAdjustment.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -227,7 +228,7 @@ namespace PharmInventory.Forms.ActivityLogs
             var userID = MainWindow.LoggedinId;
             us.LoadByPrimaryKey(userID);
 
-            var dataRow = gridView1.GetFocusedDataRow();
+            var dataRow = grdLogAdjustment.GetFocusedDataRow();
             if (dataRow == null) return;
 
             if (us.UserName != "admin")
@@ -388,6 +389,11 @@ namespace PharmInventory.Forms.ActivityLogs
             {
                 e.Cancel = true;
             }
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            grdLogAdjustment.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }

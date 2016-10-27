@@ -33,7 +33,6 @@ namespace PharmInventory.Forms.Modals
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions1 = new DevExpress.XtraCharts.PointOptions();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel3 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
@@ -66,7 +65,6 @@ namespace PharmInventory.Forms.Modals
             DevExpress.XtraCharts.SimpleDiagram3D simpleDiagram3D1 = new DevExpress.XtraCharts.SimpleDiagram3D();
             DevExpress.XtraCharts.Series series11 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel1 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
-            DevExpress.XtraCharts.PiePointOptions piePointOptions1 = new DevExpress.XtraCharts.PiePointOptions();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView1 = new DevExpress.XtraCharts.Pie3DSeriesView();
             DevExpress.XtraCharts.Pie3DSeriesLabel pie3DSeriesLabel2 = new DevExpress.XtraCharts.Pie3DSeriesLabel();
             DevExpress.XtraCharts.Pie3DSeriesView pie3DSeriesView2 = new DevExpress.XtraCharts.Pie3DSeriesView();
@@ -279,7 +277,6 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn7
@@ -348,31 +345,30 @@ namespace PharmInventory.Forms.Modals
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            xyDiagram1.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.Title.Text = "Axis of arguments";
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram1.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram1.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram1.AxisY.Title.Text = "Axis of values";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.WholeRange.AutoSideMargins = true;
             this.chartBar.Diagram = xyDiagram1;
+            this.chartBar.EmptyChartText.Text = "";
             this.chartBar.Location = new System.Drawing.Point(3, 38);
             this.chartBar.Name = "chartBar";
             this.chartBar.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
-            sideBySideBarSeriesLabel1.LineVisible = true;
-            pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Number;
-            pointOptions1.ValueNumericOptions.Precision = 3;
-            sideBySideBarSeriesLabel1.PointOptions = pointOptions1;
+            sideBySideBarSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series1.Label = sideBySideBarSeriesLabel1;
             series1.Name = "Series 1";
-            sideBySideBarSeriesLabel2.LineVisible = true;
+            sideBySideBarSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series2.Label = sideBySideBarSeriesLabel2;
             series2.Name = "Series 2";
             this.chartBar.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,
         series2};
-            sideBySideBarSeriesLabel3.LineVisible = true;
+            sideBySideBarSeriesLabel3.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartBar.SeriesTemplate.Label = sideBySideBarSeriesLabel3;
             this.chartBar.Size = new System.Drawing.Size(894, 487);
+            this.chartBar.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartBar.TabIndex = 2;
             // 
             // tabControl1
@@ -765,7 +761,7 @@ namespace PharmInventory.Forms.Modals
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label5.Location = new System.Drawing.Point(142, 205);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 13);
+            this.label5.Size = new System.Drawing.Size(97, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Maximum Value";
             // 
@@ -775,7 +771,7 @@ namespace PharmInventory.Forms.Modals
             this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label4.Location = new System.Drawing.Point(146, 175);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Minimum Value";
             // 
@@ -878,6 +874,7 @@ namespace PharmInventory.Forms.Modals
             this.gridItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridItemsList.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridItemsList.Location = new System.Drawing.Point(11, 68);
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
@@ -971,7 +968,7 @@ namespace PharmInventory.Forms.Modals
             this.gridColumn10.AppearanceCell.Options.UseTextOptions = true;
             this.gridColumn10.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.gridColumn10.Caption = "Unit Price";
-            this.gridColumn10.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn10.DisplayFormat.FormatString = "n3";
             this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn10.FieldName = "UnitPrice";
             this.gridColumn10.Name = "gridColumn10";
@@ -1140,7 +1137,7 @@ namespace PharmInventory.Forms.Modals
             this.lkShowTable.AutoSize = true;
             this.lkShowTable.Location = new System.Drawing.Point(1094, 12);
             this.lkShowTable.Name = "lkShowTable";
-            this.lkShowTable.Size = new System.Drawing.Size(73, 13);
+            this.lkShowTable.Size = new System.Drawing.Size(72, 13);
             this.lkShowTable.TabIndex = 12;
             this.lkShowTable.TabStop = true;
             this.lkShowTable.Text = "Show Table";
@@ -1152,7 +1149,7 @@ namespace PharmInventory.Forms.Modals
             this.label29.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(7, 12);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(231, 23);
+            this.label29.Size = new System.Drawing.Size(229, 23);
             this.label29.TabIndex = 11;
             this.label29.Text = "Trend - Stock On Hand";
             // 
@@ -1174,7 +1171,7 @@ namespace PharmInventory.Forms.Modals
             this.lkDetailCons.AutoSize = true;
             this.lkDetailCons.Location = new System.Drawing.Point(1100, 17);
             this.lkDetailCons.Name = "lkDetailCons";
-            this.lkDetailCons.Size = new System.Drawing.Size(73, 13);
+            this.lkDetailCons.Size = new System.Drawing.Size(72, 13);
             this.lkDetailCons.TabIndex = 16;
             this.lkDetailCons.TabStop = true;
             this.lkDetailCons.Text = "Show Table";
@@ -1185,7 +1182,7 @@ namespace PharmInventory.Forms.Modals
             this.label33.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(7, 12);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(214, 23);
+            this.label33.Size = new System.Drawing.Size(212, 23);
             this.label33.TabIndex = 12;
             this.label33.Text = "Trend - Consumption";
             // 
@@ -1195,28 +1192,30 @@ namespace PharmInventory.Forms.Modals
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.consuTrend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            xyDiagram2.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.Title.Text = "Axis of arguments";
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram2.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram2.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram2.AxisY.Title.Text = "Axis of values";
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.WholeRange.AutoSideMargins = true;
             this.consuTrend.Diagram = xyDiagram2;
+            this.consuTrend.EmptyChartText.Text = "";
             this.consuTrend.Location = new System.Drawing.Point(3, 38);
             this.consuTrend.Name = "consuTrend";
             this.consuTrend.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
-            sideBySideBarSeriesLabel4.LineVisible = true;
+            sideBySideBarSeriesLabel4.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series3.Label = sideBySideBarSeriesLabel4;
             series3.Name = "Series 1";
-            sideBySideBarSeriesLabel5.LineVisible = true;
+            sideBySideBarSeriesLabel5.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series4.Label = sideBySideBarSeriesLabel5;
             series4.Name = "Series 2";
             this.consuTrend.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3,
         series4};
-            sideBySideBarSeriesLabel6.LineVisible = true;
+            sideBySideBarSeriesLabel6.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.consuTrend.SeriesTemplate.Label = sideBySideBarSeriesLabel6;
             this.consuTrend.Size = new System.Drawing.Size(901, 487);
+            this.consuTrend.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.consuTrend.TabIndex = 3;
             // 
             // tabPage2
@@ -1237,7 +1236,7 @@ namespace PharmInventory.Forms.Modals
             this.lkDetailAmc.AutoSize = true;
             this.lkDetailAmc.Location = new System.Drawing.Point(1101, 22);
             this.lkDetailAmc.Name = "lkDetailAmc";
-            this.lkDetailAmc.Size = new System.Drawing.Size(73, 13);
+            this.lkDetailAmc.Size = new System.Drawing.Size(72, 13);
             this.lkDetailAmc.TabIndex = 14;
             this.lkDetailAmc.TabStop = true;
             this.lkDetailAmc.Text = "Show Table";
@@ -1248,7 +1247,7 @@ namespace PharmInventory.Forms.Modals
             this.label34.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(7, 12);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(455, 23);
+            this.label34.Size = new System.Drawing.Size(453, 23);
             this.label34.TabIndex = 12;
             this.label34.Text = "Trend - Average Monthly Consumption (AMC) ";
             // 
@@ -1257,28 +1256,30 @@ namespace PharmInventory.Forms.Modals
             this.chartAmc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            xyDiagram3.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram3.AxisX.Title.Text = "Axis of arguments";
             xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram3.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram3.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram3.AxisY.Title.Text = "Axis of values";
             xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisY.WholeRange.AutoSideMargins = true;
             this.chartAmc.Diagram = xyDiagram3;
+            this.chartAmc.EmptyChartText.Text = "";
             this.chartAmc.Location = new System.Drawing.Point(3, 38);
             this.chartAmc.Name = "chartAmc";
             this.chartAmc.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
-            sideBySideBarSeriesLabel7.LineVisible = true;
+            sideBySideBarSeriesLabel7.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series5.Label = sideBySideBarSeriesLabel7;
             series5.Name = "Series 1";
-            sideBySideBarSeriesLabel8.LineVisible = true;
+            sideBySideBarSeriesLabel8.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series6.Label = sideBySideBarSeriesLabel8;
             series6.Name = "Series 2";
             this.chartAmc.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series5,
         series6};
-            sideBySideBarSeriesLabel9.LineVisible = true;
+            sideBySideBarSeriesLabel9.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartAmc.SeriesTemplate.Label = sideBySideBarSeriesLabel9;
             this.chartAmc.Size = new System.Drawing.Size(899, 487);
+            this.chartAmc.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartAmc.TabIndex = 3;
             // 
             // tabPage3
@@ -1299,7 +1300,7 @@ namespace PharmInventory.Forms.Modals
             this.lkDetailMos.AutoSize = true;
             this.lkDetailMos.Location = new System.Drawing.Point(1100, 24);
             this.lkDetailMos.Name = "lkDetailMos";
-            this.lkDetailMos.Size = new System.Drawing.Size(73, 13);
+            this.lkDetailMos.Size = new System.Drawing.Size(72, 13);
             this.lkDetailMos.TabIndex = 16;
             this.lkDetailMos.TabStop = true;
             this.lkDetailMos.Text = "Show Table";
@@ -1310,7 +1311,7 @@ namespace PharmInventory.Forms.Modals
             this.label35.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(7, 12);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(250, 23);
+            this.label35.Size = new System.Drawing.Size(248, 23);
             this.label35.TabIndex = 12;
             this.label35.Text = "Trend - Months of Stock ";
             // 
@@ -1320,28 +1321,30 @@ namespace PharmInventory.Forms.Modals
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartMOS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            xyDiagram4.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram4.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram4.AxisX.Title.Text = "Axis of arguments";
             xyDiagram4.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram4.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram4.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram4.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram4.AxisY.Title.Text = "Axis of values";
             xyDiagram4.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram4.AxisY.WholeRange.AutoSideMargins = true;
             this.chartMOS.Diagram = xyDiagram4;
+            this.chartMOS.EmptyChartText.Text = "";
             this.chartMOS.Location = new System.Drawing.Point(3, 38);
             this.chartMOS.Name = "chartMOS";
             this.chartMOS.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
-            sideBySideBarSeriesLabel10.LineVisible = true;
+            sideBySideBarSeriesLabel10.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series7.Label = sideBySideBarSeriesLabel10;
             series7.Name = "Series 1";
-            sideBySideBarSeriesLabel11.LineVisible = true;
+            sideBySideBarSeriesLabel11.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series8.Label = sideBySideBarSeriesLabel11;
             series8.Name = "Series 2";
             this.chartMOS.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series7,
         series8};
-            sideBySideBarSeriesLabel12.LineVisible = true;
+            sideBySideBarSeriesLabel12.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartMOS.SeriesTemplate.Label = sideBySideBarSeriesLabel12;
             this.chartMOS.Size = new System.Drawing.Size(898, 490);
+            this.chartMOS.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartMOS.TabIndex = 4;
             // 
             // tabPage6
@@ -1361,7 +1364,7 @@ namespace PharmInventory.Forms.Modals
             this.label36.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(7, 12);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(166, 23);
+            this.label36.Size = new System.Drawing.Size(164, 23);
             this.label36.TabIndex = 12;
             this.label36.Text = "Trend - Activity ";
             // 
@@ -1371,28 +1374,30 @@ namespace PharmInventory.Forms.Modals
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartComp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            xyDiagram5.AxisX.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram5.AxisX.Range.SideMarginsEnabled = true;
+            xyDiagram5.AxisX.Title.Text = "Axis of arguments";
             xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram5.AxisY.Range.ScrollingRange.SideMarginsEnabled = true;
-            xyDiagram5.AxisY.Range.SideMarginsEnabled = true;
+            xyDiagram5.AxisX.WholeRange.AutoSideMargins = true;
+            xyDiagram5.AxisY.Title.Text = "Axis of values";
             xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram5.AxisY.WholeRange.AutoSideMargins = true;
             this.chartComp.Diagram = xyDiagram5;
+            this.chartComp.EmptyChartText.Text = "";
             this.chartComp.Location = new System.Drawing.Point(3, 38);
             this.chartComp.Name = "chartComp";
             this.chartComp.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
-            sideBySideBarSeriesLabel13.LineVisible = true;
+            sideBySideBarSeriesLabel13.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series9.Label = sideBySideBarSeriesLabel13;
             series9.Name = "Series 1";
-            sideBySideBarSeriesLabel14.LineVisible = true;
+            sideBySideBarSeriesLabel14.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series10.Label = sideBySideBarSeriesLabel14;
             series10.Name = "Series 2";
             this.chartComp.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series9,
         series10};
-            sideBySideBarSeriesLabel15.LineVisible = true;
+            sideBySideBarSeriesLabel15.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartComp.SeriesTemplate.Label = sideBySideBarSeriesLabel15;
             this.chartComp.Size = new System.Drawing.Size(899, 487);
+            this.chartComp.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartComp.TabIndex = 3;
             // 
             // tabPage7
@@ -1415,7 +1420,7 @@ namespace PharmInventory.Forms.Modals
             this.label20.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(35, 106);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(143, 16);
+            this.label20.Size = new System.Drawing.Size(142, 16);
             this.label20.TabIndex = 1;
             this.label20.Text = "Trend (No. of times)";
             // 
@@ -1451,7 +1456,7 @@ namespace PharmInventory.Forms.Modals
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 209F));
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label12, 2, 0);
@@ -1775,10 +1780,11 @@ namespace PharmInventory.Forms.Modals
             // 
             this.chartPie.AppearanceNameSerializable = "Chameleon";
             this.chartPie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
-            this.chartPie.BorderOptions.Visible = false;
+            this.chartPie.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             simpleDiagram3D1.RotationMatrixSerializable = "1;0;0;0;0;0.5;-0.866025403784439;0;0;0.866025403784439;0.5;0;0;0;0;1";
             this.chartPie.Diagram = simpleDiagram3D1;
             this.chartPie.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartPie.EmptyChartText.Text = "";
             this.chartPie.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Right;
             this.chartPie.Location = new System.Drawing.Point(3, 3);
             this.chartPie.Name = "chartPie";
@@ -1787,19 +1793,21 @@ namespace PharmInventory.Forms.Modals
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(170)))), ((int)(((byte)(15))))), System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(170)))), ((int)(((byte)(15)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(67)))), ((int)(((byte)(4))))), System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(67)))), ((int)(((byte)(4)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(188)))), ((int)(((byte)(254))))), System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(188)))), ((int)(((byte)(254))))))}));
-            pie3DSeriesLabel1.LineVisible = true;
-            piePointOptions1.PointView = DevExpress.XtraCharts.PointView.SeriesName;
-            piePointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Percent;
-            pie3DSeriesLabel1.PointOptions = piePointOptions1;
+            pie3DSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             series11.Label = pie3DSeriesLabel1;
             series11.Name = "Series 1";
+            pie3DSeriesView1.SizeAsPercentage = 100D;
+            pie3DSeriesView1.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             series11.View = pie3DSeriesView1;
             this.chartPie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series11};
-            pie3DSeriesLabel2.LineVisible = true;
+            pie3DSeriesLabel2.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartPie.SeriesTemplate.Label = pie3DSeriesLabel2;
+            pie3DSeriesView2.SizeAsPercentage = 100D;
+            pie3DSeriesView2.SweepDirection = DevExpress.XtraCharts.PieSweepDirection.Counterclockwise;
             this.chartPie.SeriesTemplate.View = pie3DSeriesView2;
             this.chartPie.Size = new System.Drawing.Size(896, 526);
+            this.chartPie.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartPie.TabIndex = 21;
             // 
             // lblStatus
@@ -1824,12 +1832,11 @@ namespace PharmInventory.Forms.Modals
             // dtDate
             // 
             this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dtDate.CustomFormat = "MM/dd/ yy";
-            this.dtDate.DayOfWeekCharacters = 2;
+            this.dtDate.DayOfWeekCharacters = 1;
             this.dtDate.Location = new System.Drawing.Point(611, 10);
             this.dtDate.Name = "dtDate";
-            this.dtDate.PopUpFontSize = 9.75F;
             this.dtDate.Size = new System.Drawing.Size(114, 20);
             this.dtDate.TabIndex = 17;
             this.dtDate.Value = new System.DateTime(2008, 10, 21, 0, 0, 0, 0);
@@ -1873,12 +1880,14 @@ namespace PharmInventory.Forms.Modals
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(231)))), ((int)(((byte)(253)))));
+            this.chartControl1.EmptyChartText.Text = "";
             this.chartControl1.Location = new System.Drawing.Point(7, 25);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            sideBySideBarSeriesLabel16.LineVisible = true;
+            sideBySideBarSeriesLabel16.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.SeriesTemplate.Label = sideBySideBarSeriesLabel16;
             this.chartControl1.Size = new System.Drawing.Size(974, 411);
+            this.chartControl1.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
             this.chartControl1.TabIndex = 2;
             // 
             // printDoc
@@ -1955,13 +1964,8 @@ namespace PharmInventory.Forms.Modals
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.chartComp;
-            // 
-            // 
-            // 
-            this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.printableComponentLink1.PrintingSystem = this.printingSystem2;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem2;
             // 
             // ItemDetailReport
@@ -2071,7 +2075,6 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
