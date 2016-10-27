@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using BLL;
+using DevExpress.XtraPrinting;
 
 namespace PharmInventory.Forms.SummaryReports
 {
@@ -15,6 +16,7 @@ namespace PharmInventory.Forms.SummaryReports
         private DataTable dtRec,dtiss;
         private ReceiveDoc rec = new ReceiveDoc();
         private IssueDoc iss = new IssueDoc();
+        bool isIssue = false;
         public ActivityLogReports()
         {
             InitializeComponent();
@@ -100,6 +102,73 @@ namespace PharmInventory.Forms.SummaryReports
         { 
             grdViewIssued.Columns["InternalDrugCode"].Visible= grdViewReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
          }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
+            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
+            isIssue = true;
+
+            pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
+
+            pcl.Component = gridIssues;
+            pcl.Landscape = true;
+
+            pcl.CreateDocument();
+            ps.PreviewFormEx.ShowDialog();
+        }
+        private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            {
+                Value = DateTime.Now,
+                CustomFormat = "MM/dd/yyyy"
+            };
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            // original header
+            // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+            // header with reference number
+
+            //  string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
+           
+            string header = (isIssue) ?info.HospitalName + " Issue Activity Log \n" + dtCurrent.ToString("MMM dd,yyyy"): info.HospitalName + " Issue Activity Log \n" + dtCurrent.ToString("MM dd,yyyy");
+
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 100),
+                                                 DevExpress.XtraPrinting.BorderSide.None);
+            brick.Font = new Font("Arial", 16);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
+            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
+            isIssue = true;
+
+            pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
+
+            pcl.Component = gridReceives;
+            pcl.Landscape = false;
+
+            pcl.CreateDocument();
+            ps.PreviewFormEx.ShowDialog();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            gridReceives.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            gridIssues.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
 
         private void lkSupplier_EditValueChanged(object sender, EventArgs e)
         {
