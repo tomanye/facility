@@ -29,7 +29,6 @@ namespace PharmInventory.Forms.Reports
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BalanceReport));
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.rdDrug = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -111,18 +110,16 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // dtDate
             // 
             this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtDate.BackColor = System.Drawing.Color.LightBlue;
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
-            this.dtDate.DayOfWeekCharacters = 2;
+            this.dtDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.dtDate.DayOfWeekCharacters = 1;
             this.dtDate.Location = new System.Drawing.Point(935, 39);
             this.dtDate.Name = "dtDate";
-            this.dtDate.PopUpFontSize = 9.75F;
             this.dtDate.Size = new System.Drawing.Size(189, 20);
             this.dtDate.TabIndex = 12;
             this.dtDate.Visible = false;
@@ -268,6 +265,7 @@ namespace PharmInventory.Forms.Reports
             this.gridItemsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridItemsList.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridItemsList.Location = new System.Drawing.Point(237, 114);
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
@@ -368,7 +366,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn3
             // 
             this.gridColumn3.Caption = "BB Amount";
-            this.gridColumn3.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn3.DisplayFormat.FormatString = "n3";
             this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn3.FieldName = "BBAmount";
             this.gridColumn3.Name = "gridColumn3";
@@ -404,7 +402,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Received Amount";
-            this.gridColumn6.DisplayFormat.FormatString = "##,##0.#0";
+            this.gridColumn6.DisplayFormat.FormatString = "n3";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "ReceivedAmount";
             this.gridColumn6.Name = "gridColumn6";
@@ -434,7 +432,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Issued Amount";
-            this.gridColumn1.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn1.DisplayFormat.FormatString = "n3";
             this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn1.FieldName = "IssuedAmount";
             this.gridColumn1.Name = "gridColumn1";
@@ -454,7 +452,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn9
             // 
             this.gridColumn9.Caption = "Losses Amount";
-            this.gridColumn9.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn9.DisplayFormat.FormatString = "n3";
             this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn9.FieldName = "LossesAmount";
             this.gridColumn9.Name = "gridColumn9";
@@ -474,7 +472,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Adjusted Amount";
-            this.gridColumn11.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn11.DisplayFormat.FormatString = "n3";
             this.gridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn11.FieldName = "AdjustedAmount";
             this.gridColumn11.Name = "gridColumn11";
@@ -494,7 +492,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn13
             // 
             this.gridColumn13.Caption = "SOH Amount";
-            this.gridColumn13.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn13.DisplayFormat.FormatString = "n3";
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "SOHAmount";
             this.gridColumn13.Name = "gridColumn13";
@@ -759,10 +757,6 @@ namespace PharmInventory.Forms.Reports
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.gridItemsList;
-            // 
-            // 
-            // 
-            this.printableComponentLink1.ImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("printableComponentLink1.ImageCollection.ImageStream")));
             this.printableComponentLink1.Landscape = true;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(20, 20, 100, 40);
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
@@ -773,7 +767,6 @@ namespace PharmInventory.Forms.Reports
                 "",
                 "[Date Printed]"}, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near));
             this.printableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4;
-            this.printableComponentLink1.PrintingSystem = this.printingSystem1;
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // BalanceReport
@@ -816,7 +809,6 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.ResumeLayout(false);
 
         }
