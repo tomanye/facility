@@ -24,7 +24,7 @@ namespace PharmInventory.Forms.Modals
         /// </summary>
         /// <param name="tId">The Receive ID</param>
         /// <param name="allowOnlyPartialEdit">True to allow only partial edit</param>
-        public EditReceive(int tId,bool allowOnlyPartialEdit)
+        public EditReceive(int tId,bool allowOnlyPartialEdit,bool showInternalDrugCode)
         {
            
             InitializeComponent();
@@ -40,8 +40,9 @@ namespace PharmInventory.Forms.Modals
             }
             //var itemunit = new ItemUnit();
             //var units = itemunit.GetAllUnits();
-           
+
             //itemUnitBindingSource.DataSource = units.DefaultView;
+            txtInternalDrugCode.Enabled = showInternalDrugCode;
         }
         
         private void btnCancel_Click(object sender, EventArgs e)
