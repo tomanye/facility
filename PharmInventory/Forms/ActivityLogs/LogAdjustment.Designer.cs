@@ -59,6 +59,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.reasonBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblAdjDate = new System.Windows.Forms.Label();
@@ -78,7 +79,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -340,7 +340,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityDetail", "{0:#,##0}")});
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 78;
             // 
             // gridColumn6
@@ -351,11 +351,11 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn6.FieldName = "gridColumn6";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn6", "{0:#,##0.#0}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn6", "{0:n3}")});
             this.gridColumn6.UnboundExpression = "[Cost]*[Quantity]";
             this.gridColumn6.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 85;
             // 
             // gridColumn10
@@ -364,7 +364,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn10.FieldName = "ExpDate";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 5;
+            this.gridColumn10.VisibleIndex = 6;
             this.gridColumn10.Width = 100;
             // 
             // gridColumn8
@@ -373,7 +373,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn8.FieldName = "ApprovedBy";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             this.gridColumn8.Width = 100;
             // 
             // gridColumn7
@@ -384,7 +384,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // gridColumn9
             // 
@@ -392,7 +392,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn9.FieldName = "Remark";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             this.gridColumn9.Width = 290;
             // 
             // gridColumn11
@@ -417,6 +417,14 @@ namespace PharmInventory.Forms.ActivityLogs
             this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
             this.repositoryItemLookUpEdit1.NullText = "No Unit";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Internal Drug Code";
+            this.gridColumn12.FieldName = "InternalDrugCode";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 3;
             // 
             // repositoryItemLookUpEdit2
             // 
@@ -631,14 +639,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Internal Drug Code";
-            this.gridColumn12.FieldName = "InternalDrugCode";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 2;
             // 
             // LogAdjustment
             // 

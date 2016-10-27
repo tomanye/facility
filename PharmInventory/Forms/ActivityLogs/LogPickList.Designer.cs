@@ -352,7 +352,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn8.FieldName = "gridColumn8";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:#,##0.#0}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:n3}")});
             this.gridColumn8.UnboundExpression = "[Quantity] * [Cost]";
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn8.Visible = true;

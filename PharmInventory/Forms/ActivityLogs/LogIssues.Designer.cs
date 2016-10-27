@@ -64,6 +64,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -79,7 +80,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -350,7 +350,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5.UnboundExpression = "[Quantity]/[QtyPerPack]";
             this.gridColumn5.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 4;
             // 
             // gridColumn6
             // 
@@ -360,7 +360,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn6.FieldName = "QtyPerPack";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             // 
             // gridColumn12
             // 
@@ -372,7 +372,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn12.UnboundExpression = "[QtyPerPack] * [Cost]";
             this.gridColumn12.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 5;
+            this.gridColumn12.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -384,7 +384,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn7.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", "{0:#,##0}")});
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // gridColumn8
             // 
@@ -394,11 +394,11 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn8.FieldName = "gridColumn8";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:#,##0.00}")});
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "gridColumn8", "{0:n3}")});
             this.gridColumn8.UnboundExpression = "[Quantity] * [Cost]";
             this.gridColumn8.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             // 
             // gridColumn9
             // 
@@ -426,7 +426,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn10.FieldName = "DBEI";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             // 
             // gridColumn11
             // 
@@ -434,7 +434,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn11.FieldName = "IssuedBy";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 11;
             // 
             // gridColumn1
             // 
@@ -465,7 +465,15 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn13.FieldName = "IssuedTo";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
+            this.gridColumn13.VisibleIndex = 13;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Internal Drug Code";
+            this.gridColumn14.FieldName = "InternalDrugCode";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 3;
             // 
             // layoutControlGroup1
             // 
@@ -646,14 +654,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextToControlDistance = 0;
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "Internal Drug Code";
-            this.gridColumn14.FieldName = "InternalDrugCode";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
             // 
             // LogIssues
             // 
