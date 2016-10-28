@@ -61,6 +61,7 @@ namespace PharmInventory.Forms.Reports
             dtYear.Rows.InsertAt(roww, 0);
             cboYear.Properties.DataSource = dtYear;
             cboYear.ItemIndex = 0;
+            gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void PopulateCatTree(String type)
@@ -247,6 +248,12 @@ namespace PharmInventory.Forms.Reports
         private void xpButton2_ClientSizeChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+
+            gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }
