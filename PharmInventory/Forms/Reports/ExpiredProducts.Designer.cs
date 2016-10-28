@@ -415,7 +415,7 @@ namespace PharmInventory.Forms.Reports
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Expired Amount in Birr";
-            this.gridColumn6.DisplayFormat.FormatString = "#,##0.#0";
+            this.gridColumn6.DisplayFormat.FormatString = "n3";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";
