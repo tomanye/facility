@@ -30,6 +30,7 @@ namespace PharmInventory.Forms.ActivityLogs
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
             cboStores.ItemIndex = 0;
+            gridViewIssue.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -166,6 +167,10 @@ namespace PharmInventory.Forms.ActivityLogs
             }
             gridIssues.DataSource = dtRec;
         }
-    
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            gridViewIssue.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+        }
     }
 }

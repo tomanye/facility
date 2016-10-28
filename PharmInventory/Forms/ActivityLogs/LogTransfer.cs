@@ -38,7 +38,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             // bind the supplier lookup for the grid.
             
-            var unitcolumn = ((GridView)gridControl1.MainView).Columns[4];
+            var unitcolumn = ((GridView)grdTransferlog.MainView).Columns[4];
             switch (VisibilitySetting.HandleUnits)
             {
                 case 1:
@@ -75,12 +75,13 @@ namespace PharmInventory.Forms.ActivityLogs
                     dtRec = rec.GetTransactionByRefNo(dr["RefNo"].ToString(), Convert.ToInt32(lkToStore.EditValue), dr["Date"].ToString());
                     lblTransferedDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
                 }
-                gridControl1.DataSource = dtRec;
+                grdTransferlog.DataSource = dtRec;
             }
             catch (Exception ex)
             {
 
             }
+            gridItemsListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         
@@ -143,7 +144,7 @@ namespace PharmInventory.Forms.ActivityLogs
               lblTransferedDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
             }
 
-            gridControl1.DataSource = dtRec;
+            grdTransferlog.DataSource = dtRec;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -153,7 +154,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
 
-            pcl.Component = gridControl1;
+            pcl.Component = grdTransferlog;
             pcl.Landscape = true;
 
             pcl.CreateDocument();
@@ -186,9 +187,14 @@ namespace PharmInventory.Forms.ActivityLogs
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             var fileName = MainWindow.GetNewFileName("xls");
-            gridControl1.ExportToXls(fileName);
+            grdTransferlog.ExportToXls(fileName);
             MainWindow.OpenInExcel(fileName);
 
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            gridItemsListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }
