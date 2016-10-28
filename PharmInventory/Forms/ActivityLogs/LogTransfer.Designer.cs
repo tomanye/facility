@@ -35,7 +35,7 @@
             this.lkToStore = new DevExpress.XtraEditors.LookUpEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTransferedDate = new System.Windows.Forms.Label();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.grdTransferlog = new DevExpress.XtraGrid.GridControl();
             this.gridItemsListView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,10 +61,14 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.cboToStore = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lkToStore.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTransferlog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsListView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
@@ -82,28 +86,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.chkIntDrugCode);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Controls.Add(this.lkToStore);
             this.layoutControl1.Controls.Add(this.label2);
             this.layoutControl1.Controls.Add(this.lblTransferedDate);
-            this.layoutControl1.Controls.Add(this.gridControl1);
+            this.layoutControl1.Controls.Add(this.grdTransferlog);
             this.layoutControl1.Controls.Add(this.lstTree);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1165, 542);
+            this.layoutControl1.Size = new System.Drawing.Size(1165, 572);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(994, 508);
+            this.btnPrint.Location = new System.Drawing.Point(994, 538);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(77, 22);
             this.btnPrint.StyleController = this.layoutControl1;
@@ -113,7 +121,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(1075, 508);
+            this.simpleButton1.Location = new System.Drawing.Point(1075, 538);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(78, 22);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -156,18 +164,18 @@
             this.lblTransferedDate.TabIndex = 10;
             this.lblTransferedDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // gridControl1
+            // grdTransferlog
             // 
-            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControl1.Location = new System.Drawing.Point(311, 60);
-            this.gridControl1.MainView = this.gridItemsListView;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.grdTransferlog.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grdTransferlog.Location = new System.Drawing.Point(311, 60);
+            this.grdTransferlog.MainView = this.gridItemsListView;
+            this.grdTransferlog.Name = "grdTransferlog";
+            this.grdTransferlog.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.gridControl1.Size = new System.Drawing.Size(842, 444);
-            this.gridControl1.TabIndex = 5;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdTransferlog.Size = new System.Drawing.Size(842, 474);
+            this.grdTransferlog.TabIndex = 5;
+            this.grdTransferlog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridItemsListView});
             // 
             // gridItemsListView
@@ -178,8 +186,9 @@
             this.gridColumn3,
             this.gridColumn6,
             this.gridColumn12,
-            this.gridColumn13});
-            this.gridItemsListView.GridControl = this.gridControl1;
+            this.gridColumn13,
+            this.gridColumn4});
+            this.gridItemsListView.GridControl = this.grdTransferlog;
             this.gridItemsListView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridItemsListView.Name = "gridItemsListView";
             this.gridItemsListView.OptionsBehavior.Editable = false;
@@ -203,7 +212,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 256;
             // 
             // gridColumn3
@@ -213,7 +222,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 4;
             this.gridColumn3.Width = 95;
             // 
             // gridColumn6
@@ -223,7 +232,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 84;
             // 
             // gridColumn12
@@ -235,7 +244,7 @@
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.OptionsColumn.ReadOnly = true;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 5;
+            this.gridColumn12.VisibleIndex = 6;
             this.gridColumn12.Width = 88;
             // 
             // repositoryItemLookUpEdit1
@@ -259,7 +268,7 @@
             this.gridColumn13.OptionsColumn.AllowEdit = false;
             this.gridColumn13.OptionsColumn.ReadOnly = true;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.VisibleIndex = 3;
             this.gridColumn13.Width = 114;
             // 
             // repositoryItemLookUpEdit2
@@ -321,10 +330,11 @@
             this.layoutControlItem9,
             this.layoutControlItem10,
             this.emptySpaceItem1,
-            this.cboToStore});
+            this.cboToStore,
+            this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1165, 542);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1165, 572);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
             // 
@@ -336,7 +346,7 @@
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(299, 522);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(299, 522);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(299, 522);
+            this.layoutControlItem1.Size = new System.Drawing.Size(299, 552);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -345,11 +355,11 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.gridControl1;
+            this.layoutControlItem2.Control = this.grdTransferlog;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(299, 48);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(846, 448);
+            this.layoutControlItem2.Size = new System.Drawing.Size(846, 478);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextToControlDistance = 0;
@@ -359,10 +369,10 @@
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(556, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(850, 0);
             this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(589, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(295, 24);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -401,7 +411,7 @@
             // 
             this.layoutControlItem9.Control = this.simpleButton1;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
-            this.layoutControlItem9.Location = new System.Drawing.Point(1063, 496);
+            this.layoutControlItem9.Location = new System.Drawing.Point(1063, 526);
             this.layoutControlItem9.MaxSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem9.MinSize = new System.Drawing.Size(82, 26);
             this.layoutControlItem9.Name = "layoutControlItem9";
@@ -416,7 +426,7 @@
             // 
             this.layoutControlItem10.Control = this.btnPrint;
             this.layoutControlItem10.CustomizationFormText = "layoutControlItem10";
-            this.layoutControlItem10.Location = new System.Drawing.Point(982, 496);
+            this.layoutControlItem10.Location = new System.Drawing.Point(982, 526);
             this.layoutControlItem10.MaxSize = new System.Drawing.Size(81, 26);
             this.layoutControlItem10.MinSize = new System.Drawing.Size(81, 26);
             this.layoutControlItem10.Name = "layoutControlItem10";
@@ -431,7 +441,7 @@
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(299, 496);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(299, 526);
             this.emptySpaceItem1.MaxSize = new System.Drawing.Size(683, 26);
             this.emptySpaceItem1.MinSize = new System.Drawing.Size(683, 26);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
@@ -463,11 +473,53 @@
             this.simpleLabelItem1.Text = "Items Received On";
             this.simpleLabelItem1.TextSize = new System.Drawing.Size(91, 13);
             // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Internal Drug Code";
+            this.gridColumn4.FieldName = "InternalDrugCode";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.chkIntDrugCode;
+            this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
+            this.layoutControlItem3.Location = new System.Drawing.Point(324, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(173, 24);
+            this.layoutControlItem3.Text = "layoutControlItem3";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextToControlDistance = 0;
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // chkIntDrugCode
+            // 
+            this.chkIntDrugCode.Location = new System.Drawing.Point(568, 12);
+            this.chkIntDrugCode.Name = "chkIntDrugCode";
+            this.chkIntDrugCode.Properties.Caption = "Show Internal Drug Code";
+            this.chkIntDrugCode.Size = new System.Drawing.Size(290, 19);
+            this.chkIntDrugCode.StyleController = this.layoutControl1;
+            this.chkIntDrugCode.TabIndex = 33;
+            this.chkIntDrugCode.CheckedChanged += new System.EventHandler(this.chkIntDrugCode_CheckedChanged);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.chkIntDrugCode;
+            this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
+            this.layoutControlItem4.Location = new System.Drawing.Point(556, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(294, 24);
+            this.layoutControlItem4.Text = "layoutControlItem4";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextToControlDistance = 0;
+            this.layoutControlItem4.TextVisible = false;
+            // 
             // LogTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 542);
+            this.ClientSize = new System.Drawing.Size(1165, 572);
             this.Controls.Add(this.layoutControl1);
             this.Name = "LogTransfer";
             this.Text = "Stock Report";
@@ -475,7 +527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lkToStore.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTransferlog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsListView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
@@ -493,6 +545,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -503,7 +558,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraTreeList.TreeList lstTree;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl grdTransferlog;
         private DevExpress.XtraGrid.Views.Grid.GridView gridItemsListView;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private System.Windows.Forms.Label lblTransferedDate;
@@ -531,5 +586,9 @@
         private System.Windows.Forms.BindingSource storeBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.CheckEdit chkIntDrugCode;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

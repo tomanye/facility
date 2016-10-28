@@ -329,7 +329,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn3.FieldName = "FullItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 218;
             // 
             // gridColumn4
@@ -338,7 +338,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn4.FieldName = "BatchNo";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 3;
             // 
             // gridColumn5
             // 
@@ -473,7 +473,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn14.FieldName = "InternalDrugCode";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 3;
+            this.gridColumn14.VisibleIndex = 1;
             // 
             // layoutControlGroup1
             // 
