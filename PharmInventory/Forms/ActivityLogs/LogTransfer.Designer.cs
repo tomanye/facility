@@ -107,6 +107,7 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(201, 130, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(1165, 572);
             this.layoutControl1.TabIndex = 0;
@@ -124,9 +125,10 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(994, 538);
+            this.btnPrint.Image = global::PharmInventory.Properties.Resources.printer;
+            this.btnPrint.Location = new System.Drawing.Point(947, 538);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(77, 22);
+            this.btnPrint.Size = new System.Drawing.Size(101, 22);
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 14;
             this.btnPrint.Text = "Print";
@@ -134,9 +136,10 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(1075, 538);
+            this.simpleButton1.Image = global::PharmInventory.Properties.Resources.Excel;
+            this.simpleButton1.Location = new System.Drawing.Point(1052, 538);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(78, 22);
+            this.simpleButton1.Size = new System.Drawing.Size(101, 22);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 13;
             this.simpleButton1.Text = "Export";
@@ -432,11 +435,11 @@
             // 
             this.layoutControlItem9.Control = this.simpleButton1;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
-            this.layoutControlItem9.Location = new System.Drawing.Point(1063, 526);
-            this.layoutControlItem9.MaxSize = new System.Drawing.Size(82, 26);
-            this.layoutControlItem9.MinSize = new System.Drawing.Size(82, 26);
+            this.layoutControlItem9.Location = new System.Drawing.Point(1040, 526);
+            this.layoutControlItem9.MaxSize = new System.Drawing.Size(105, 26);
+            this.layoutControlItem9.MinSize = new System.Drawing.Size(105, 26);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(82, 26);
+            this.layoutControlItem9.Size = new System.Drawing.Size(105, 26);
             this.layoutControlItem9.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem9.Text = "layoutControlItem9";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
@@ -447,11 +450,11 @@
             // 
             this.layoutControlItem10.Control = this.btnPrint;
             this.layoutControlItem10.CustomizationFormText = "layoutControlItem10";
-            this.layoutControlItem10.Location = new System.Drawing.Point(982, 526);
-            this.layoutControlItem10.MaxSize = new System.Drawing.Size(81, 26);
-            this.layoutControlItem10.MinSize = new System.Drawing.Size(81, 26);
+            this.layoutControlItem10.Location = new System.Drawing.Point(935, 526);
+            this.layoutControlItem10.MaxSize = new System.Drawing.Size(105, 26);
+            this.layoutControlItem10.MinSize = new System.Drawing.Size(105, 26);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(81, 26);
+            this.layoutControlItem10.Size = new System.Drawing.Size(105, 26);
             this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem10.Text = "layoutControlItem10";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
@@ -463,11 +466,8 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(299, 526);
-            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(683, 26);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(683, 26);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(683, 26);
-            this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.emptySpaceItem1.Size = new System.Drawing.Size(636, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
