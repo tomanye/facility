@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -114,6 +115,9 @@
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
@@ -167,6 +171,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -266,7 +271,7 @@
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(397, 213, 250, 350);
+            this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(390, 213, 250, 350);
             this.layoutControl2.Root = this.layoutControlGroup2;
             this.layoutControl2.Size = new System.Drawing.Size(976, 363);
             this.layoutControl2.TabIndex = 29;
@@ -275,9 +280,9 @@
             // simpleButton2
             // 
             this.simpleButton2.Image = global::PharmInventory.Properties.Resources.Excel;
-            this.simpleButton2.Location = new System.Drawing.Point(862, 326);
+            this.simpleButton2.Location = new System.Drawing.Point(863, 326);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(102, 25);
+            this.simpleButton2.Size = new System.Drawing.Size(101, 25);
             this.simpleButton2.StyleController = this.layoutControl2;
             this.simpleButton2.TabIndex = 33;
             this.simpleButton2.Text = "E&xport";
@@ -286,9 +291,9 @@
             // simpleButton1
             // 
             this.simpleButton1.Image = global::PharmInventory.Properties.Resources.printer;
-            this.simpleButton1.Location = new System.Drawing.Point(745, 326);
+            this.simpleButton1.Location = new System.Drawing.Point(758, 326);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(113, 22);
+            this.simpleButton1.Size = new System.Drawing.Size(101, 25);
             this.simpleButton1.StyleController = this.layoutControl2;
             this.simpleButton1.TabIndex = 32;
             this.simpleButton1.Text = "&Print";
@@ -513,11 +518,12 @@
             // 
             // gridColumn30
             // 
-            this.gridColumn30.Caption = "Internal Drug Code";
+            this.gridColumn30.Caption = "Int. Drug Code";
             this.gridColumn30.FieldName = "InternalDrugCode";
             this.gridColumn30.Name = "gridColumn30";
             this.gridColumn30.Visible = true;
             this.gridColumn30.VisibleIndex = 1;
+            this.gridColumn30.Width = 80;
             // 
             // lkEditSupplier
             // 
@@ -586,7 +592,7 @@
             this.emptySpaceItem5.CustomizationFormText = "emptySpaceItem5";
             this.emptySpaceItem5.Location = new System.Drawing.Point(0, 314);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(733, 29);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(746, 29);
             this.emptySpaceItem5.Text = "emptySpaceItem5";
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -594,9 +600,12 @@
             // 
             this.layoutControlItem22.Control = this.simpleButton2;
             this.layoutControlItem22.CustomizationFormText = "layoutControlItem22";
-            this.layoutControlItem22.Location = new System.Drawing.Point(850, 314);
+            this.layoutControlItem22.Location = new System.Drawing.Point(851, 314);
+            this.layoutControlItem22.MaxSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem22.MinSize = new System.Drawing.Size(105, 29);
             this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(106, 29);
+            this.layoutControlItem22.Size = new System.Drawing.Size(105, 29);
+            this.layoutControlItem22.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem22.Text = "layoutControlItem22";
             this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem22.TextToControlDistance = 0;
@@ -606,9 +615,12 @@
             // 
             this.layoutControlItem17.Control = this.simpleButton1;
             this.layoutControlItem17.CustomizationFormText = "layoutControlItem17";
-            this.layoutControlItem17.Location = new System.Drawing.Point(733, 314);
+            this.layoutControlItem17.Location = new System.Drawing.Point(746, 314);
+            this.layoutControlItem17.MaxSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem17.MinSize = new System.Drawing.Size(105, 29);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(117, 29);
+            this.layoutControlItem17.Size = new System.Drawing.Size(105, 29);
+            this.layoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem17.Text = "layoutControlItem17";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem17.TextToControlDistance = 0;
@@ -630,6 +642,7 @@
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
             this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(390, 104, 250, 350);
             this.layoutControl3.Root = this.layoutControlGroup3;
             this.layoutControl3.Size = new System.Drawing.Size(976, 363);
             this.layoutControl3.TabIndex = 0;
@@ -638,9 +651,9 @@
             // btnExport
             // 
             this.btnExport.Image = global::PharmInventory.Properties.Resources.Excel;
-            this.btnExport.Location = new System.Drawing.Point(852, 326);
+            this.btnExport.Location = new System.Drawing.Point(863, 326);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(112, 25);
+            this.btnExport.Size = new System.Drawing.Size(101, 25);
             this.btnExport.StyleController = this.layoutControl3;
             this.btnExport.TabIndex = 33;
             this.btnExport.Text = "E&xport";
@@ -649,9 +662,9 @@
             // btnPrint
             // 
             this.btnPrint.Image = global::PharmInventory.Properties.Resources.printer;
-            this.btnPrint.Location = new System.Drawing.Point(741, 326);
+            this.btnPrint.Location = new System.Drawing.Point(758, 326);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(107, 22);
+            this.btnPrint.Size = new System.Drawing.Size(101, 25);
             this.btnPrint.StyleController = this.layoutControl3;
             this.btnPrint.TabIndex = 32;
             this.btnPrint.Text = "&Print";
@@ -872,11 +885,12 @@
             // 
             // gridColumn29
             // 
-            this.gridColumn29.Caption = "Internal Drug Code";
+            this.gridColumn29.Caption = "Int. Drug Code";
             this.gridColumn29.FieldName = "InternalDrugCode";
             this.gridColumn29.Name = "gridColumn29";
             this.gridColumn29.Visible = true;
             this.gridColumn29.VisibleIndex = 1;
+            this.gridColumn29.Width = 80;
             // 
             // layoutControlGroup3
             // 
@@ -934,7 +948,7 @@
             this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 314);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(729, 29);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(746, 29);
             this.emptySpaceItem4.Text = "emptySpaceItem4";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -942,9 +956,12 @@
             // 
             this.layoutControlItem19.Control = this.btnExport;
             this.layoutControlItem19.CustomizationFormText = "layoutControlItem19";
-            this.layoutControlItem19.Location = new System.Drawing.Point(840, 314);
+            this.layoutControlItem19.Location = new System.Drawing.Point(851, 314);
+            this.layoutControlItem19.MaxSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem19.MinSize = new System.Drawing.Size(105, 29);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(116, 29);
+            this.layoutControlItem19.Size = new System.Drawing.Size(105, 29);
+            this.layoutControlItem19.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem19.Text = "layoutControlItem19";
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextToControlDistance = 0;
@@ -954,9 +971,12 @@
             // 
             this.layoutControlItem15.Control = this.btnPrint;
             this.layoutControlItem15.CustomizationFormText = "layoutControlItem15";
-            this.layoutControlItem15.Location = new System.Drawing.Point(729, 314);
+            this.layoutControlItem15.Location = new System.Drawing.Point(746, 314);
+            this.layoutControlItem15.MaxSize = new System.Drawing.Size(105, 29);
+            this.layoutControlItem15.MinSize = new System.Drawing.Size(105, 29);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(111, 29);
+            this.layoutControlItem15.Size = new System.Drawing.Size(105, 29);
+            this.layoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem15.Text = "layoutControlItem15";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem15.TextToControlDistance = 0;
@@ -1185,6 +1205,26 @@
             this.layoutControlItem21.TextToControlDistance = 0;
             this.layoutControlItem21.TextVisible = false;
             // 
+            // printingSystem1
+            // 
+            this.printingSystem1.Links.AddRange(new object[] {
+            this.printableComponentLink1,
+            this.printableComponentLink2});
+            // 
+            // printableComponentLink1
+            // 
+            this.printableComponentLink1.Component = this.gridReceives;
+            this.printableComponentLink1.Landscape = true;
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
+            // 
+            // printableComponentLink2
+            // 
+            this.printableComponentLink2.Component = this.gridIssues;
+            this.printableComponentLink2.Landscape = true;
+            this.printableComponentLink2.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
+            // 
             // ActivityLogReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1248,6 +1288,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1340,5 +1381,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
+        private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
+        private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink2;
     }
 }

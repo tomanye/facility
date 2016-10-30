@@ -16,7 +16,8 @@ namespace PharmInventory.Forms.SummaryReports
         private DataTable dtRec,dtiss;
         private ReceiveDoc rec = new ReceiveDoc();
         private IssueDoc iss = new IssueDoc();
-        bool isIssue = false;
+        bool isIssue = false; 
+
         public ActivityLogReports()
         {
             InitializeComponent();
@@ -105,20 +106,22 @@ namespace PharmInventory.Forms.SummaryReports
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
-            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
             isIssue = true;
-
-            pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
-
-            pcl.Component = gridIssues;
-            pcl.Landscape = true;
-
-            pcl.CreateDocument();
-            ps.PreviewFormEx.ShowDialog();
+            printableComponentLink2.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink2.CreateDocument();
+            printableComponentLink2.ShowPreview();
         }
-        private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
+ 
+
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
+            isIssue = false;
+            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateDocument();
+            printableComponentLink1.ShowPreview();
+        }
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        { 
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
             CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
@@ -126,34 +129,17 @@ namespace PharmInventory.Forms.SummaryReports
                 Value = DateTime.Now,
                 CustomFormat = "MM/dd/yyyy"
             };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            // original header
-            // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
-            // header with reference number
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
 
-            //  string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-           
-            string header = (isIssue) ?info.HospitalName + " Issue Activity Log \n" + dtCurrent.ToString("MMM dd,yyyy"): info.HospitalName + " Issue Activity Log \n" + dtCurrent.ToString("MM dd,yyyy");
+            string header = (isIssue) ? info.HospitalName + "\n Issue Log \n" + dtCurrent.ToString("MMM dd,yyyy") : info.HospitalName + " \n Receive Log \n" + dtCurrent.ToString("MMM dd,yyyy");
 
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 500, 100),
-                                                 DevExpress.XtraPrinting.BorderSide.None);
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.PageHeaderFooter = header; 
+             
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 100),
+                                                DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Arial", 16);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
-            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
-            isIssue = true;
-
-            pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
-
-            pcl.Component = gridReceives;
-            pcl.Landscape = false;
-
-            pcl.CreateDocument();
-            ps.PreviewFormEx.ShowDialog();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
