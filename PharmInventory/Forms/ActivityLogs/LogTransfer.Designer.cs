@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.lkToStore = new DevExpress.XtraEditors.LookUpEdit();
@@ -47,6 +48,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -60,13 +62,14 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.cboToStore = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.simpleLabelItem1 = new DevExpress.XtraLayout.SimpleLabelItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkToStore.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransferlog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsListView)).BeginInit();
@@ -85,10 +88,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -108,6 +111,16 @@
             this.layoutControl1.Size = new System.Drawing.Size(1165, 572);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // chkIntDrugCode
+            // 
+            this.chkIntDrugCode.Location = new System.Drawing.Point(568, 12);
+            this.chkIntDrugCode.Name = "chkIntDrugCode";
+            this.chkIntDrugCode.Properties.Caption = "Show Internal Drug Code";
+            this.chkIntDrugCode.Size = new System.Drawing.Size(290, 19);
+            this.chkIntDrugCode.StyleController = this.layoutControl1;
+            this.chkIntDrugCode.TabIndex = 33;
+            this.chkIntDrugCode.CheckedChanged += new System.EventHandler(this.chkIntDrugCode_CheckedChanged);
             // 
             // btnPrint
             // 
@@ -282,6 +295,14 @@
             this.repositoryItemLookUpEdit2.DisplayMember = "StoreName";
             this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
             this.repositoryItemLookUpEdit2.ValueMember = "ID";
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Internal Drug Code";
+            this.gridColumn4.FieldName = "InternalDrugCode";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
             // 
             // lstTree
             // 
@@ -463,6 +484,18 @@
             this.cboToStore.Text = "To Store";
             this.cboToStore.TextSize = new System.Drawing.Size(41, 13);
             // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.chkIntDrugCode;
+            this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
+            this.layoutControlItem4.Location = new System.Drawing.Point(556, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(294, 24);
+            this.layoutControlItem4.Text = "layoutControlItem4";
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextToControlDistance = 0;
+            this.layoutControlItem4.TextVisible = false;
+            // 
             // simpleLabelItem1
             // 
             this.simpleLabelItem1.AllowHotTrack = false;
@@ -472,14 +505,6 @@
             this.simpleLabelItem1.Size = new System.Drawing.Size(111, 24);
             this.simpleLabelItem1.Text = "Items Received On";
             this.simpleLabelItem1.TextSize = new System.Drawing.Size(91, 13);
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Internal Drug Code";
-            this.gridColumn4.FieldName = "InternalDrugCode";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
             // 
             // layoutControlItem3
             // 
@@ -493,27 +518,16 @@
             this.layoutControlItem3.TextToControlDistance = 0;
             this.layoutControlItem3.TextVisible = false;
             // 
-            // chkIntDrugCode
+            // printingSystem1
             // 
-            this.chkIntDrugCode.Location = new System.Drawing.Point(568, 12);
-            this.chkIntDrugCode.Name = "chkIntDrugCode";
-            this.chkIntDrugCode.Properties.Caption = "Show Internal Drug Code";
-            this.chkIntDrugCode.Size = new System.Drawing.Size(290, 19);
-            this.chkIntDrugCode.StyleController = this.layoutControl1;
-            this.chkIntDrugCode.TabIndex = 33;
-            this.chkIntDrugCode.CheckedChanged += new System.EventHandler(this.chkIntDrugCode_CheckedChanged);
+            this.printingSystem1.Links.AddRange(new object[] {
+            this.printableComponentLink1});
             // 
-            // layoutControlItem4
+            // printableComponentLink1
             // 
-            this.layoutControlItem4.Control = this.chkIntDrugCode;
-            this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(556, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(294, 24);
-            this.layoutControlItem4.Text = "layoutControlItem4";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextToControlDistance = 0;
-            this.layoutControlItem4.TextVisible = false;
+            this.printableComponentLink1.Component = this.grdTransferlog;
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // LogTransfer
             // 
@@ -526,6 +540,7 @@
             this.Load += new System.EventHandler(this.LogTransfer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkToStore.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransferlog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsListView)).EndInit();
@@ -544,10 +559,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboToStore)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleLabelItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -590,5 +605,7 @@
         private DevExpress.XtraEditors.CheckEdit chkIntDrugCode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
+        private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
     }
 }
