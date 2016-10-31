@@ -435,7 +435,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Image = global::PharmInventory.Properties.Resources.Excel1;
             this.button1.Location = new System.Drawing.Point(830, 541);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 22);
