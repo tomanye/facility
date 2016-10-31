@@ -79,6 +79,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -108,6 +110,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -146,6 +149,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(96, 115, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(1270, 625);
             this.layoutControl1.TabIndex = 33;
@@ -153,7 +157,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // chkIntDrugCode
             // 
-            this.chkIntDrugCode.Location = new System.Drawing.Point(658, 38);
+            this.chkIntDrugCode.Location = new System.Drawing.Point(602, 38);
             this.chkIntDrugCode.Name = "chkIntDrugCode";
             this.chkIntDrugCode.Properties.Caption = "Show Internal Drug Code";
             this.chkIntDrugCode.Size = new System.Drawing.Size(143, 19);
@@ -163,9 +167,10 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(956, 584);
+            this.btnPrint.Image = global::PharmInventory.Properties.Resources.printer;
+            this.btnPrint.Location = new System.Drawing.Point(1045, 584);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(130, 22);
+            this.btnPrint.Size = new System.Drawing.Size(101, 22);
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 36;
             this.btnPrint.Text = "&Print";
@@ -173,9 +178,10 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(1090, 584);
+            this.btnExport.Image = global::PharmInventory.Properties.Resources.Excel;
+            this.btnExport.Location = new System.Drawing.Point(1150, 584);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(161, 22);
+            this.btnExport.Size = new System.Drawing.Size(101, 22);
             this.btnExport.StyleController = this.layoutControl1;
             this.btnExport.TabIndex = 35;
             this.btnExport.Text = "E&xport";
@@ -183,7 +189,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // cboStores
             // 
-            this.cboStores.Location = new System.Drawing.Point(447, 38);
+            this.cboStores.Location = new System.Drawing.Point(391, 38);
             this.cboStores.Name = "cboStores";
             this.cboStores.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -211,7 +217,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree.OptionsView.ShowIndicator = false;
             this.lstTree.PreviewFieldName = "RefNo";
             this.lstTree.RootValue = null;
-            this.lstTree.Size = new System.Drawing.Size(305, 586);
+            this.lstTree.Size = new System.Drawing.Size(249, 586);
             this.lstTree.TabIndex = 34;
             this.lstTree.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.lstTree_FocusedNodeChanged);
             this.lstTree.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.lstTree_ShowingEditor);
@@ -262,13 +268,13 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.gridAdjustments.ContextMenuStrip = this.contextMenuStrip1;
             this.gridAdjustments.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridAdjustments.Location = new System.Drawing.Point(334, 86);
+            this.gridAdjustments.Location = new System.Drawing.Point(278, 86);
             this.gridAdjustments.MainView = this.grdLogAdjustment;
             this.gridAdjustments.Name = "gridAdjustments";
             this.gridAdjustments.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.gridAdjustments.Size = new System.Drawing.Size(917, 494);
+            this.gridAdjustments.Size = new System.Drawing.Size(973, 494);
             this.gridAdjustments.TabIndex = 33;
             this.gridAdjustments.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdLogAdjustment});
@@ -442,7 +448,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // lblAdjDate
             // 
             this.lblAdjDate.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdjDate.Location = new System.Drawing.Point(450, 62);
+            this.lblAdjDate.Location = new System.Drawing.Point(394, 62);
             this.lblAdjDate.Name = "lblAdjDate";
             this.lblAdjDate.Size = new System.Drawing.Size(559, 20);
             this.lblAdjDate.TabIndex = 30;
@@ -484,7 +490,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(315, 615);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(259, 615);
             this.layoutControlGroup3.Text = "Reference Numbers";
             // 
             // layoutControlItem10
@@ -493,7 +499,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem10.CustomizationFormText = "layoutControlItem10";
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(309, 590);
+            this.layoutControlItem10.Size = new System.Drawing.Size(253, 590);
             this.layoutControlItem10.Text = "layoutControlItem10";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextToControlDistance = 0;
@@ -513,9 +519,9 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem8,
             this.layoutControlItem11,
             this.layoutControlItem2});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(315, 0);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(259, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(945, 615);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(1001, 615);
             this.layoutControlGroup4.Text = "Items";
             // 
             // layoutControlItem1
@@ -556,7 +562,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
             this.emptySpaceItem4.Location = new System.Drawing.Point(679, 24);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(242, 24);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(298, 24);
             this.emptySpaceItem4.Text = "emptySpaceItem4";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -566,7 +572,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem9";
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(921, 498);
+            this.layoutControlItem9.Size = new System.Drawing.Size(977, 498);
             this.layoutControlItem9.Text = "layoutControlItem9";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextToControlDistance = 0;
@@ -578,7 +584,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem6.CustomizationFormText = "emptySpaceItem6";
             this.emptySpaceItem6.Location = new System.Drawing.Point(0, 546);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(622, 26);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(767, 26);
             this.emptySpaceItem6.Text = "emptySpaceItem6";
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -588,7 +594,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
             this.emptySpaceItem2.Location = new System.Drawing.Point(471, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(450, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(506, 24);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -596,9 +602,12 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem8.Control = this.btnExport;
             this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
-            this.layoutControlItem8.Location = new System.Drawing.Point(756, 546);
+            this.layoutControlItem8.Location = new System.Drawing.Point(872, 546);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(105, 26);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(105, 26);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(165, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(105, 26);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.Text = "layoutControlItem8";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextToControlDistance = 0;
@@ -608,9 +617,12 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.layoutControlItem11.Control = this.btnPrint;
             this.layoutControlItem11.CustomizationFormText = "layoutControlItem11";
-            this.layoutControlItem11.Location = new System.Drawing.Point(622, 546);
+            this.layoutControlItem11.Location = new System.Drawing.Point(767, 546);
+            this.layoutControlItem11.MaxSize = new System.Drawing.Size(105, 26);
+            this.layoutControlItem11.MinSize = new System.Drawing.Size(105, 26);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(134, 26);
+            this.layoutControlItem11.Size = new System.Drawing.Size(105, 26);
+            this.layoutControlItem11.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem11.Text = "layoutControlItem11";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextToControlDistance = 0;
@@ -639,6 +651,17 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextToControlDistance = 0;
             this.layoutControlItem4.TextVisible = false;
+            // 
+            // printingSystem1
+            // 
+            this.printingSystem1.Links.AddRange(new object[] {
+            this.printableComponentLink1});
+            // 
+            // printableComponentLink1
+            // 
+            this.printableComponentLink1.Component = this.gridAdjustments;
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // LogAdjustment
             // 
@@ -680,6 +703,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -735,5 +759,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
+        private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
     }
 }

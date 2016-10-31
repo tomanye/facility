@@ -215,17 +215,33 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            DevExpress.XtraPrinting.PrintingSystem ps = new DevExpress.XtraPrinting.PrintingSystem();
-            DevExpress.XtraPrinting.PrintableComponentLink pcl = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
+            printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateDocument();
+            printableComponentLink1.ShowPreview();
+        }
+        private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            {
+                Value = DateTime.Now,
+                CustomFormat = "MM/dd/yyyy"
+            };
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            // original header
+            // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+            // header with reference number
+            string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
+            string header = info.HospitalName + " \nReceive Activity Log \n" + dtCurrent.ToString("MMM dd,yyyy") +
+                            " \n  Ref Number " + refNumber;
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.PageHeaderFooter = header;
 
-            pcl.CreateReportHeaderArea += this.pcl_CreateReportHeaderArea;
-
-            pcl.Component = gridReceives;
-            pcl.Landscape = true;
-
-            pcl.CreateDocument();
-            ps.PreviewFormEx.ShowDialog();
-
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
+                                                DevExpress.XtraPrinting.BorderSide.None);
+            brick.Font = new Font("Arial", 16);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)

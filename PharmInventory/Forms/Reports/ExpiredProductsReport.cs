@@ -70,6 +70,8 @@ namespace PharmInventory.Forms.Reports
 
             lkCommodityTypes.Properties.DataSource = table;
             lkCommodityTypes.ItemIndex = 0;
+
+            gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
         /// <summary>
@@ -261,6 +263,11 @@ namespace PharmInventory.Forms.Reports
         private void cboReasons_EditValueChanged(object sender, EventArgs e)
         {
             gridItemListView.ActiveFilterString = string.Format("ReasonID={0}", Convert.ToInt32(cboReasons.EditValue));
+        }
+
+        private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
+        {
+            gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
     }
 }
