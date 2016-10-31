@@ -49,6 +49,7 @@ namespace PharmInventory
             this.lossesTrendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rRFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lossAdjReportViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.activityLogReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consumptionTrendToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.consumptionByUnitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +118,7 @@ namespace PharmInventory
             this.lbiRRFForm = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiBalance = new DevExpress.XtraNavBar.NavBarItem();
             this.LossReport = new DevExpress.XtraNavBar.NavBarItem();
+            this.Activitylog = new DevExpress.XtraNavBar.NavBarItem();
             this.CostReport = new DevExpress.XtraNavBar.NavBarItem();
             this.ConsumptionTrend = new DevExpress.XtraNavBar.NavBarItem();
             this.ConsumptionByUnit = new DevExpress.XtraNavBar.NavBarItem();
@@ -146,8 +148,6 @@ namespace PharmInventory
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bwDOSCalculator = new System.ComponentModel.BackgroundWorker();
-            this.activityLogReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Activitylog = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
@@ -365,6 +365,15 @@ namespace PharmInventory
             this.lossAdjReportViewToolStripMenuItem.Text = "Loss/Adj Report View";
             this.lossAdjReportViewToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
+            // activityLogReportsToolStripMenuItem
+            // 
+            this.activityLogReportsToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
+            this.activityLogReportsToolStripMenuItem.Name = "activityLogReportsToolStripMenuItem";
+            this.activityLogReportsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.activityLogReportsToolStripMenuItem.Tag = "Activity Log Reports";
+            this.activityLogReportsToolStripMenuItem.Text = "Activity Log Reports";
+            this.activityLogReportsToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
+            // 
             // costReportToolStripMenuItem
             // 
             this.costReportToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.GridDataSummaries;
@@ -435,7 +444,7 @@ namespace PharmInventory
             // 
             this.summaryReportToolStripMenuItem1.Image = global::PharmInventory.Properties.Resources._1287390603_text_enriched;
             this.summaryReportToolStripMenuItem1.Name = "summaryReportToolStripMenuItem1";
-            this.summaryReportToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
+            this.summaryReportToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
             this.summaryReportToolStripMenuItem1.Tag = "Summary Report";
             this.summaryReportToolStripMenuItem1.Text = "Summary Report";
             this.summaryReportToolStripMenuItem1.Click += new System.EventHandler(this.OpenMenuItem);
@@ -444,7 +453,7 @@ namespace PharmInventory
             // 
             this.summaryChartsToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287389366_pie_chart;
             this.summaryChartsToolStripMenuItem.Name = "summaryChartsToolStripMenuItem";
-            this.summaryChartsToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.summaryChartsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.summaryChartsToolStripMenuItem.Tag = "Summary Report";
             this.summaryChartsToolStripMenuItem.Text = "Summary Chart";
             this.summaryChartsToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -453,7 +462,7 @@ namespace PharmInventory
             // 
             this.stockExpiryStatusToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287389359_pie_chart;
             this.stockExpiryStatusToolStripMenuItem.Name = "stockExpiryStatusToolStripMenuItem";
-            this.stockExpiryStatusToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.stockExpiryStatusToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.stockExpiryStatusToolStripMenuItem.Tag = "Stock Expiry Status";
             this.stockExpiryStatusToolStripMenuItem.Text = "Stock Expiry Status";
             this.stockExpiryStatusToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -462,7 +471,7 @@ namespace PharmInventory
             // 
             this.costSummaryToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
             this.costSummaryToolStripMenuItem.Name = "costSummaryToolStripMenuItem";
-            this.costSummaryToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.costSummaryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.costSummaryToolStripMenuItem.Tag = "Cost Summary";
             this.costSummaryToolStripMenuItem.Text = "Cost Summary";
             this.costSummaryToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -1049,6 +1058,13 @@ namespace PharmInventory
             this.LossReport.SmallImage = global::PharmInventory.Properties.Resources.GridFilter;
             this.LossReport.Tag = "LossReport";
             // 
+            // Activitylog
+            // 
+            this.Activitylog.Caption = "Activity Log Reports";
+            this.Activitylog.Name = "Activitylog";
+            this.Activitylog.SmallImage = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
+            this.Activitylog.Tag = "Activity Log Reports";
+            // 
             // CostReport
             // 
             this.CostReport.Caption = "Cost Report";
@@ -1276,22 +1292,6 @@ namespace PharmInventory
             // 
             this.bwDOSCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDOSCalculator_DoWork);
             this.bwDOSCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDOSCalculator_RunWorkerCompleted);
-            // 
-            // activityLogReportsToolStripMenuItem
-            // 
-            this.activityLogReportsToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
-            this.activityLogReportsToolStripMenuItem.Name = "activityLogReportsToolStripMenuItem";
-            this.activityLogReportsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.activityLogReportsToolStripMenuItem.Tag = "Activity Log Reports";
-            this.activityLogReportsToolStripMenuItem.Text = "Activity Log Reports";
-            this.activityLogReportsToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
-            // 
-            // Activitylog
-            // 
-            this.Activitylog.Caption = "Activity Log Reports";
-            this.Activitylog.Name = "Activitylog";
-            this.Activitylog.SmallImage = global::PharmInventory.Properties.Resources._1287390819_diagram_02;
-            this.Activitylog.Tag = "Activity Log Reports";
             // 
             // MainWindow
             // 
