@@ -1273,12 +1273,15 @@ FROM    Items itm
                                              , isnull(QuantityLeft,0) QuantityLeft
                                              , ib.*
 	                                         , (isnull(Cost,0) * QuantityLeft) As Price 
-	                                         , amc.AmcWithDos 
+	                                         , ISNULL(amc.AmcWithDos ,0) AmcWithDos
                                              , CASE 
 	                                           WHEN isNull(AmcWithDos, 0) = 0 
 	                                           THEN 0 
 	                                           ELSE QuantityLeft/AmcWithDos END AS MOS
-                                            , ISNULL(Quantity,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos,0) ) RedistributionQty
+                                             , CASE 
+	                                           WHEN ISNULL(Quantity,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) < 0 
+	                                           THEN 0 
+	                                           ELSE ISNULL(Quantity,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) END AS RedistributionQty 
                                         FROM vwGetReceivedItems ib 
                                              LEFT JOIN AmcReport amc on ib.ItemID = amc.ItemID and ib.StoreID = amc.StoreID
                                         WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0)
@@ -1290,7 +1293,7 @@ FROM    Items itm
             //for (int i = 0; i < this.DataTable.Rows.Count; i++)
             //{
             //    this.DataTable.Rows[i]["MOS"] = this.GetMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToInt32(this.DataTable.Rows[i]["QuantityLeft"]), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]));
-            //    this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)),2);
+             //   this.DataTable.Rows[i]["AMC"] = Decimal.Round(Convert.ToDecimal(Builder.CalculateAverageConsumptionForMOS(Convert.ToInt32(this.DataTable.Rows[i]["ItemID"]), storeId, Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]).Subtract(TimeSpan.FromDays(180)), Convert.ToDateTime(this.DataTable.Rows[i]["ExpDate"]), CalculationOptions.Monthly)),2);
             //}
             return this.DataTable;
         }
