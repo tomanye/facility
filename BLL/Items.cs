@@ -1279,9 +1279,9 @@ FROM    Items itm
 	                                           THEN 0 
 	                                           ELSE QuantityLeft/AmcWithDos END AS MOS
                                              , CASE 
-	                                           WHEN ISNULL(Quantity,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) < 0 
+	                                           WHEN ISNULL(QuantityLeft,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) < 0 
 	                                           THEN 0 
-	                                           ELSE ISNULL(Quantity,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) END AS RedistributionQty 
+	                                           ELSE ISNULL(QuantityLeft,0)-(DATEDIFF(MONTH,GetDate(),ib.expDate) * ISNULL(amc.AmcWithDos ,0)) END AS RedistributionQty 
                                         FROM vwGetReceivedItems ib 
                                              LEFT JOIN AmcReport amc on ib.ItemID = amc.ItemID and ib.StoreID = amc.StoreID
                                         WHERE ib.StoreId = {0} AND ib.ExpDate BETWEEN getdate() and dateadd(MONTH,6,GetDate()) AND (ib.Out = 0)
