@@ -96,7 +96,8 @@ namespace PharmInventory.Forms.Transactions
                     duamc.Visible = true;
                     unitcolumn3.Visible = false;
                     break;
-            } 
+            }
+             ((GridView)gridConfirmation.MainView).Columns[18].Visible = false;
 
             PopulateCatTree(_selectedType);
             var stor = new Stores();
@@ -517,15 +518,13 @@ namespace PharmInventory.Forms.Transactions
                                 double reqPackQty = Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"]);
                                 double totPrice = unitPrice * qu;
                                 bool nearExp = false;
-                                DateTime? dtx = new DateTime();
-                                bool interCodeExist = false;
+                                DateTime? dtx = new DateTime(); 
                                 var internaldrugcode = "_";
                                 if (_dtRec.Rows[j]["internaldrugcode"] != DBNull.Value)
                                 {
-                                     internaldrugcode =  _dtRec.Rows[j]["internaldrugcode"].ToString();
-                                    interCodeExist = true;
-                                }
-                                ((GridView)gridConfirmation.MainView).Columns[18].Visible = interCodeExist;
+                                     internaldrugcode =  _dtRec.Rows[j]["internaldrugcode"].ToString(); 
+                                    ((GridView)gridConfirmation.MainView).Columns[18].Visible = true;
+                                } 
 
                                 switch (VisibilitySetting.HandleUnits)
                                 {
