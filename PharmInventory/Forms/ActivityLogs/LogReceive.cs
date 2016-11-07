@@ -233,8 +233,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
             // header with reference number
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            string header = info.HospitalName + " \nReceive Activity Log \n" + dtCurrent.ToString("MMM dd,yyyy") +
-                            " \n  Ref Number " + refNumber;
+            string header = info.HospitalName + " \nReceive Activity Log, Store:" + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy");
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
