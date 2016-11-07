@@ -210,6 +210,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("StoreName", "Stores"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default)});
             this.cboStores.Properties.DisplayMember = "StoreName";
+            this.cboStores.Properties.NullText = "All Stores";
             this.cboStores.Properties.NullValuePrompt = "All Stores";
             this.cboStores.Properties.ShowFooter = false;
             this.cboStores.Properties.ValueMember = "ID";

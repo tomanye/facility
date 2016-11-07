@@ -129,16 +129,19 @@ namespace PharmInventory.Forms.SummaryReports
                 Value = DateTime.Now,
                 CustomFormat = "MM/dd/yyyy"
             };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            var comHeader = info.HospitalName + "\n Store: " + cboStores.Text;
+            string header = (!isIssue) ? comHeader + "\n Received From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Supplier: " + lkSupplier.Text :
+                     comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Issue Location: " + lklocation.Text;
 
-            string header = (isIssue) ? info.HospitalName + "\n Issue Log \n" + dtCurrent.ToString("MMM dd,yyyy") : info.HospitalName + " \n Receive Log \n" + dtCurrent.ToString("MMM dd,yyyy");
+               // + "\n Issue Log \n" + dtCurrent.ToString("MMM dd,yyyy") : info.HospitalName + " \n Receive Log \n" + dtCurrent.ToString("MMM dd,yyyy");
 
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header; 
              
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-            brick.Font = new Font("Arial", 16);
+           // brick.Font = new Font("Arial", 16);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 

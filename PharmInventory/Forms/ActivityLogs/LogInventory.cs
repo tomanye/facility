@@ -94,12 +94,14 @@ namespace PharmInventory.Forms.ActivityLogs
                 CustomFormat = "MM/dd/yyyy"
             };
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            string header = info.HospitalName + "Inventory Log of " + lblAdjDate.Text + "    " + dtCurrent.ToString("MM dd,yyyy");
+            string header = info.HospitalName + "\n Inventory Log of " + lblAdjDate.Text + "   ,Year " + dtCurrent.ToString("yyyy") + " E.C\n Store: " + cboStores.Text ;
+            printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString("", Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header, Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString("", Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
+                                                DevExpress.XtraPrinting.BorderSide.None);
+            // brick.Font = new Font("Arial", 16);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 
         private void gridView2_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)

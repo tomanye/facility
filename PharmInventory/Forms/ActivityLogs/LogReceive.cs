@@ -233,13 +233,13 @@ namespace PharmInventory.Forms.ActivityLogs
             // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
             // header with reference number
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            string header = info.HospitalName + " \nReceive Activity Log, Store:" + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy");
+            string header = info.HospitalName + " \nReceive Activity Log\n Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy") + " E.C";
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-            brick.Font = new Font("Arial", 16);
+           // brick.Font = new Font("Arial", 16);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 
