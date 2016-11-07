@@ -9,6 +9,7 @@ using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 using EthiopianDate;
+using DevExpress.XtraCharts.Native;
 
 namespace PharmInventory.Forms.ActivityLogs
 {
@@ -243,9 +244,25 @@ namespace PharmInventory.Forms.ActivityLogs
         private void btnPrint_Click(object sender, EventArgs e)
         {
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
         }
+        private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
+        {
+            PageInfoBrick pib = new PageInfoBrick();  
+            pib.Format =  "Page {0}/{1}";  
+           
+            RectangleF r = RectangleF.Empty;
+            r.Height = 20;
+            
+            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format,  Color.Black, r, BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " +DateTime.Now.ToShortDateString() + " G.C",
+                                  Color.Black, r, BorderSide.None);
+            brick.Alignment = BrickAlignment.Far; 
+
+        }
+
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
             GeneralInfo info = new GeneralInfo();
@@ -261,13 +278,13 @@ namespace PharmInventory.Forms.ActivityLogs
 
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
             //header that includes refno
-            string header = info.HospitalName + "\n Issue Activity Log \n Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy") + " E.C"; ;
+            string header = info.HospitalName + "\n Issue Activity Log, Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy") + " E.C"; ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-            //brick.Font = new Font("Arial", 16);
+            brick.Font = new Font("Tahoma", 13);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 
