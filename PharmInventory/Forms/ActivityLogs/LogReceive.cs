@@ -246,7 +246,9 @@ namespace PharmInventory.Forms.ActivityLogs
             DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
            
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            string rcdate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString() ;
+            string rcdate = lstTree.FocusedNode.GetDisplayText("Year");
+            if ((lstTree.FocusedNode.GetDisplayText("Date")) != "")
+                 rcdate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString() ;
            
             string header = info.HospitalName + " \nReceive Activity Log Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + rcdate + " E.C";
             printableComponentLink1.Landscape = true;

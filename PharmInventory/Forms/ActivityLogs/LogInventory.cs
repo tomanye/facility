@@ -76,8 +76,23 @@ namespace PharmInventory.Forms.ActivityLogs
         private void btnPrint_Click(object sender, EventArgs e)
         {
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
+        }
+        private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
+        {
+            PageInfoBrick pib = new PageInfoBrick();
+            pib.Format = "Page {0}/{1}";
+
+            RectangleF r = RectangleF.Empty;
+            r.Height = 20;
+
+            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, r, BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " + DateTime.Now.ToShortDateString() + " G.C",
+                                  Color.Black, r, BorderSide.None);
+            brick.Alignment = BrickAlignment.Far;
+
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -93,14 +108,17 @@ namespace PharmInventory.Forms.ActivityLogs
                 Value = DateTime.Now,
                 CustomFormat = "MM/dd/yyyy"
             };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            string header = info.HospitalName + "\n Inventory Log of " + lblAdjDate.Text + "   ,Year " + dtCurrent.ToString("yyyy") + " E.C\n Store: " + cboStores.Text ;
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
+            DataRow dr = gridView2.GetFocusedDataRow();
+            string invDate = Convert.ToString(dr["Year"]);
+
+            string header = info.HospitalName + "\n Inventory Log of " + lblAdjDate.Text + "   ,Year " + invDate + " E.C\n Store: " + cboStores.Text ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-            // brick.Font = new Font("Arial", 16);
+            brick.Font = new Font("Tahoma", 13);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 

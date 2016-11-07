@@ -276,7 +276,7 @@ namespace PharmInventory.Forms.ActivityLogs
 
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
             string issdate = lstTree.FocusedNode.GetDisplayText("Date");
-            string header = info.HospitalName + "\n Issue Activity Log, Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + issdate + " E.C"; ;
+            string header = info.HospitalName + "\n Issue Activity Log, Store: " + cboStores.Text + " \n RefNo:  " + refNumber + " On " + issdate + " E.C"; ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 

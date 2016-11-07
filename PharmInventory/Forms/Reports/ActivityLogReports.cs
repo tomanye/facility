@@ -108,15 +108,30 @@ namespace PharmInventory.Forms.SummaryReports
         {
             isIssue = true;
             printableComponentLink2.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink2.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink2.CreateDocument();
             printableComponentLink2.ShowPreview();
         }
- 
 
+        private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
+        {
+            PageInfoBrick pib = new PageInfoBrick();
+            pib.Format = "Page {0}/{1}";
+
+            RectangleF r = RectangleF.Empty;
+            r.Height = 20;
+
+            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, r, BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " + DateTime.Now.ToShortDateString() + " G.C",
+                                  Color.Black, r, BorderSide.None);
+            brick.Alignment = BrickAlignment.Far;
+
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             isIssue = false;
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
         }
@@ -134,14 +149,12 @@ namespace PharmInventory.Forms.SummaryReports
             string header = (!isIssue) ? comHeader + "\n Received From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Supplier: " + lkSupplier.Text :
                      comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Issue Location: " + lklocation.Text;
 
-               // + "\n Issue Log \n" + dtCurrent.ToString("MMM dd,yyyy") : info.HospitalName + " \n Receive Log \n" + dtCurrent.ToString("MMM dd,yyyy");
-
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header; 
              
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 100),
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 120),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-           // brick.Font = new Font("Arial", 16);
+            brick.Font = new Font("Tahoma", 12);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 
