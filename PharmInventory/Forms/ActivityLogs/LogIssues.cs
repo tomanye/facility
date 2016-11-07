@@ -272,13 +272,11 @@ namespace PharmInventory.Forms.ActivityLogs
                 Value = DateTime.Now,
                 CustomFormat = "MM/dd/yyyy"
             };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            //old header
-            //string header = info.HospitalName + " Issue Activity Log " + dtCurrent.ToString("MM dd,yyyy");
+            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
 
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            //header that includes refno
-            string header = info.HospitalName + "\n Issue Activity Log, Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + dtCurrent.ToString("MM/dd/yyyy") + " E.C"; ;
+            string issdate = lstTree.FocusedNode.GetDisplayText("Date");
+            string header = info.HospitalName + "\n Issue Activity Log, Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + issdate + " E.C"; ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
