@@ -103,12 +103,12 @@ namespace PharmInventory.Forms.ActivityLogs
             //string header = info.HospitalName + "Inventory Log of " + lblAdjDate.Text;
 
             //header with reference number  and date included
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
+            //CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text); 
             DataRow dr = gridView2.GetFocusedDataRow();
             string invDate = Convert.ToString(dr["Year"]);
 

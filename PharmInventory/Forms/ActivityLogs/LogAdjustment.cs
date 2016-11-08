@@ -179,12 +179,12 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            var dtDate = new DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            //var dtDate = new DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
             string adjDate = lstTree.FocusedNode.GetDisplayText("Year");
             if ((lstTree.FocusedNode.GetDisplayText("Date"))!="")

@@ -238,12 +238,12 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            //CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
            
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
             string rcdate = lstTree.FocusedNode.GetDisplayText("Year");

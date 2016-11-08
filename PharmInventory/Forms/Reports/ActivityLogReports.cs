@@ -139,12 +139,12 @@ namespace PharmInventory.Forms.SummaryReports
         { 
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            //CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
             var comHeader = info.HospitalName + "\n Store: " + cboStores.Text;
             string header = (!isIssue) ? comHeader + "\n Received From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Supplier: " + lkSupplier.Text :
                      comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Issue Location: " + lklocation.Text;

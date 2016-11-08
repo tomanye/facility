@@ -172,12 +172,12 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            var dtDate = new CalendarLib.DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+            //var dtDate = new CalendarLib.DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
             string transferdate = lstTree.FocusedNode.GetDisplayText("Year");
             if ((lstTree.FocusedNode.GetDisplayText("Date")) != "")
                 transferdate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString();
