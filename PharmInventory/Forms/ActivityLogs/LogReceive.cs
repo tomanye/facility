@@ -216,31 +216,47 @@ namespace PharmInventory.Forms.ActivityLogs
         private void btnPrint_Click(object sender, EventArgs e)
         {
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
+        }
+        private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
+        {
+            PageInfoBrick pib = new PageInfoBrick();
+            pib.Format = "Page {0}/{1}";
+
+            RectangleF r = RectangleF.Empty;
+            r.Height = 20;
+
+            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, r, BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " + DateTime.Now.ToShortDateString() + " G.C",
+                                  Color.Black, r, BorderSide.None);
+            brick.Alignment = BrickAlignment.Far;
+
         }
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
-            {
-                Value = DateTime.Now,
-                CustomFormat = "MM/dd/yyyy"
-            };
-            DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            // original header
-            // string header = info.HospitalName + " Receive Activity Log " + dtCurrent.ToString("MM dd,yyyy");
-            // header with reference number
+            //CalendarLib.DateTimePickerEx dtDate = new CalendarLib.DateTimePickerEx
+            //{
+            //    Value = DateTime.Now,
+            //    CustomFormat = "MM/dd/yyyy"
+            //};
+            //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
+           
             string refNumber = lstTree.FocusedNode.GetDisplayText("RefNo");
-            string header = info.HospitalName + " \nReceive Activity Log \n" + dtCurrent.ToString("MMM dd,yyyy") +
-                            " \n  Ref Number " + refNumber;
+            string rcdate = lstTree.FocusedNode.GetDisplayText("Year");
+            if ((lstTree.FocusedNode.GetDisplayText("Date")) != "")
+                 rcdate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString() ;
+           
+            string header = info.HospitalName + " \nReceive Activity Log Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + rcdate + " E.C";
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
-            brick.Font = new Font("Arial", 16);
+            brick.Font = new Font("Tahoma", 13);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
         }
 

@@ -241,7 +241,7 @@ namespace PharmInventory
             // 
             // transferToolStripMenuItem
             // 
-            this.transferToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.Excel;
+            this.transferToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.Excel11;
             this.transferToolStripMenuItem.Name = "transferToolStripMenuItem";
             this.transferToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.transferToolStripMenuItem.Tag = "Transfers";
@@ -929,7 +929,7 @@ namespace PharmInventory
             // 
             this.LbTransfer.Caption = "Transfer";
             this.LbTransfer.Name = "LbTransfer";
-            this.LbTransfer.SmallImage = global::PharmInventory.Properties.Resources.Excel;
+            this.LbTransfer.SmallImage = global::PharmInventory.Properties.Resources.Excel11;
             this.LbTransfer.Tag = "Transfers";
             // 
             // navBarGroup4

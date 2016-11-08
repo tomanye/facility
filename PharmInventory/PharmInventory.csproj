@@ -574,6 +574,7 @@
     <None Include="Service References\RRFTransactionService\ServiceOrder11.disco" />
     <None Include="Service References\RRFLookUpService\ServiceRRFLookup11.disco" />
     <None Include="Resources\LoginScreenFacilityEdition7.png" />
+    <None Include="Resources\Excel1.gif" />
     <Content Include="Resources\PFSALogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
