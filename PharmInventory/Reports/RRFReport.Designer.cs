@@ -779,14 +779,16 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 1F;
+            this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrTable4});
+            this.BottomMargin.HeightF = 100F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
             // 
             // xrTable4
             // 
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(43.31309F, 10.00001F);
+            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(43.31297F, 10.00001F);
             this.xrTable4.Name = "xrTable4";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow6,
@@ -940,10 +942,10 @@
             // 
             // ReportFooter
             // 
-            this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable4});
+            this.ReportFooter.Expanded = false;
             this.ReportFooter.HeightF = 187.5F;
             this.ReportFooter.Name = "ReportFooter";
+            this.ReportFooter.Visible = false;
             // 
             // dataSet11
             // 
@@ -1053,7 +1055,7 @@
             this.DataMember = "DataTable1";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(2, 6, 37, 1);
+            this.Margins = new System.Drawing.Printing.Margins(2, 6, 37, 100);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
