@@ -118,6 +118,8 @@
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.repositoryItemMemoEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
@@ -172,6 +174,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -221,7 +225,7 @@
             // 
             // dtTo
             // 
-            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dtTo.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
             this.dtTo.DayOfWeekCharacters = 1;
             this.dtTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
@@ -234,7 +238,7 @@
             // 
             // dtFrom
             // 
-            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.dtFrom.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
             this.dtFrom.DayOfWeekCharacters = 1;
             this.dtFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(31)))), ((int)(((byte)(53)))));
@@ -326,7 +330,8 @@
             this.gridReceives.Name = "gridReceives";
             this.gridReceives.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lkEditSupplier,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemMemoEdit1});
             this.gridReceives.Size = new System.Drawing.Size(952, 286);
             this.gridReceives.TabIndex = 28;
             this.gridReceives.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -356,6 +361,7 @@
             this.grdViewReceive.OptionsBehavior.Editable = false;
             this.grdViewReceive.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grdViewReceive.OptionsView.ColumnAutoWidth = false;
+            this.grdViewReceive.OptionsView.RowAutoHeight = true;
             this.grdViewReceive.OptionsView.ShowFooter = true;
             this.grdViewReceive.OptionsView.ShowGroupPanel = false;
             // 
@@ -378,6 +384,7 @@
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Item Name";
+            this.gridColumn3.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn3.FieldName = "FullItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -697,7 +704,8 @@
             this.gridIssues.Name = "gridIssues";
             this.gridIssues.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lkEditReceivingUnis,
-            this.repositoryItemLookUpEdit2});
+            this.repositoryItemLookUpEdit2,
+            this.repositoryItemMemoEdit2});
             this.gridIssues.Size = new System.Drawing.Size(952, 286);
             this.gridIssues.TabIndex = 14;
             this.gridIssues.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -726,6 +734,7 @@
             this.grdViewIssued.OptionsBehavior.Editable = false;
             this.grdViewIssued.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grdViewIssued.OptionsView.ColumnAutoWidth = false;
+            this.grdViewIssued.OptionsView.RowAutoHeight = true;
             this.grdViewIssued.OptionsView.ShowFooter = true;
             this.grdViewIssued.OptionsView.ShowGroupPanel = false;
             // 
@@ -746,6 +755,7 @@
             // gridColumn17
             // 
             this.gridColumn17.Caption = "Item Name";
+            this.gridColumn17.ColumnEdit = this.repositoryItemMemoEdit2;
             this.gridColumn17.FieldName = "FullItemName";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
@@ -1226,6 +1236,14 @@
             this.printableComponentLink2.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // repositoryItemMemoEdit2
+            // 
+            this.repositoryItemMemoEdit2.Name = "repositoryItemMemoEdit2";
+            // 
             // ActivityLogReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1290,6 +1308,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1385,5 +1405,7 @@
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit2;
     }
 }

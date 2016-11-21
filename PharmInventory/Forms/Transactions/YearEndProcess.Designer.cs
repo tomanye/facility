@@ -72,6 +72,7 @@ namespace PharmInventory.Forms.Transactions
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.pcl = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -99,6 +100,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -198,7 +200,8 @@ namespace PharmInventory.Forms.Transactions
             this.grdYearEnd.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1,
             this.repositoryItemLookUpEdit1,
-            this.repositoryItemButtonEdit2});
+            this.repositoryItemButtonEdit2,
+            this.repositoryItemMemoEdit1});
             this.grdYearEnd.Size = new System.Drawing.Size(946, 376);
             this.grdYearEnd.TabIndex = 29;
             this.grdYearEnd.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -223,6 +226,7 @@ namespace PharmInventory.Forms.Transactions
             this.grdViewYearEnd.OptionsCustomization.AllowGroup = false;
             this.grdViewYearEnd.OptionsCustomization.AllowQuickHideColumns = false;
             this.grdViewYearEnd.OptionsCustomization.AllowSort = false;
+            this.grdViewYearEnd.OptionsView.RowAutoHeight = true;
             this.grdViewYearEnd.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -239,6 +243,7 @@ namespace PharmInventory.Forms.Transactions
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Item Name";
+            this.gridColumn2.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn2.FieldName = "Item Name";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
@@ -606,6 +611,10 @@ namespace PharmInventory.Forms.Transactions
             this.pcl.Component = this.grdYearEnd;
             this.pcl.PrintingSystemBase = this.printingSystem1;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // YearEndProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,6 +651,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -693,5 +703,6 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }
