@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
             this.grdViewInPacks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -152,6 +152,8 @@
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
             this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnsubprogram = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -208,6 +210,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProgramsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             this.SuspendLayout();
             // 
             // grdViewInPacks
@@ -454,10 +457,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridItemsChoice.Cursor = System.Windows.Forms.Cursors.Default;
-            gridLevelNode2.LevelTemplate = this.grdViewInPacks;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.grdViewInPacks;
+            gridLevelNode1.RelationName = "Level1";
             this.gridItemsChoice.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridItemsChoice.Location = new System.Drawing.Point(24, 620);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -603,13 +606,13 @@
             this.gridColumn44,
             this.gridColumn33});
             this.gridItemChoiceView.FixedLineWidth = 1;
-            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Green;
-            styleFormatCondition2.Appearance.Options.UseBackColor = true;
-            styleFormatCondition2.Column = this.gridColumn40;
-            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
-            styleFormatCondition2.Expression = "[gridColumn7]<[SOH]";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Green;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Column = this.gridColumn40;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Less;
+            styleFormatCondition1.Expression = "[gridColumn7]<[SOH]";
             this.gridItemChoiceView.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition2});
+            styleFormatCondition1});
             this.gridItemChoiceView.GridControl = this.gridItemsChoice;
             this.gridItemChoiceView.IndicatorWidth = 40;
             this.gridItemChoiceView.Name = "gridItemChoiceView";
@@ -899,6 +902,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnsubprogram);
             this.layoutControl1.Controls.Add(this.btnGenerateRRF);
             this.layoutControl1.Controls.Add(this.lkorderstatus);
             this.layoutControl1.Controls.Add(this.lkCategory);
@@ -1864,7 +1868,8 @@
             this.layoutControlItem8,
             this.emptySpaceItem2,
             this.layoutControlItem15,
-            this.lcCheckingProgress});
+            this.lcCheckingProgress,
+            this.layoutControlItem20});
             this.lcRRFList.Location = new System.Drawing.Point(0, 0);
             this.lcRRFList.Name = "lcRRFList";
             this.lcRRFList.Size = new System.Drawing.Size(1078, 505);
@@ -1904,7 +1909,7 @@
             this.emptySpaceItem2.Location = new System.Drawing.Point(278, 0);
             this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(776, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(623, 26);
             this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem2.Text = "emptySpaceItem2";
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -2006,6 +2011,28 @@
             this.bwRRFSubmit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwRRFSubmit_DoWork);
             this.bwRRFSubmit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwRRFSubmit_RunWorkerCompleted);
             // 
+            // btnsubprogram
+            // 
+            this.btnsubprogram.Location = new System.Drawing.Point(925, 43);
+            this.btnsubprogram.Name = "btnsubprogram";
+            this.btnsubprogram.Size = new System.Drawing.Size(149, 22);
+            this.btnsubprogram.StyleController = this.layoutControl1;
+            this.btnsubprogram.TabIndex = 53;
+            this.btnsubprogram.Text = "Update Sub Program";
+            this.btnsubprogram.Click += new System.EventHandler(this.btnsubprogram_Click);
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.btnsubprogram;
+            this.layoutControlItem20.CustomizationFormText = "layoutControlItem20";
+            this.layoutControlItem20.Location = new System.Drawing.Point(901, 0);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(153, 26);
+            this.layoutControlItem20.Text = "layoutControlItem20";
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem20.TextToControlDistance = 0;
+            this.layoutControlItem20.TextVisible = false;
+            // 
             // RRFForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2073,6 +2100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.printableComponentLink1.ImageCollection)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProgramsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2200,5 +2228,7 @@
         private System.Windows.Forms.Button btnGenerateRRF;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
+        private DevExpress.XtraEditors.SimpleButton btnsubprogram;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
     }
 }

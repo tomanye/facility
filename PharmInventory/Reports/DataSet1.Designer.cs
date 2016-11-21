@@ -344,6 +344,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnLastDUSoh;
             
+            private global::System.Data.DataColumn columnTypeID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable1DataTable() {
@@ -499,6 +501,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TypeIDColumn {
+                get {
+                    return this.columnTypeID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -534,7 +544,23 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string StockCode, string FullItemName, string BeginingBalance, int SOH, string Issued, string Received, string Quantity, string Max, string LossAdj, string DaysOutOfStock, int MaxStockQty, string StockCodeDACA, string QtyPerPack, string Expired, string LastDUSoh) {
+            public DataTable1Row AddDataTable1Row(
+                        string StockCode, 
+                        string FullItemName, 
+                        string BeginingBalance, 
+                        int SOH, 
+                        string Issued, 
+                        string Received, 
+                        string Quantity, 
+                        string Max, 
+                        string LossAdj, 
+                        string DaysOutOfStock, 
+                        int MaxStockQty, 
+                        string StockCodeDACA, 
+                        string QtyPerPack, 
+                        string Expired, 
+                        string LastDUSoh, 
+                        string TypeID) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StockCode,
@@ -551,7 +577,8 @@ namespace PharmInventory.Reports {
                         StockCodeDACA,
                         QtyPerPack,
                         Expired,
-                        LastDUSoh};
+                        LastDUSoh,
+                        TypeID};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -589,6 +616,7 @@ namespace PharmInventory.Reports {
                 this.columnQtyPerPack = base.Columns["QtyPerPack"];
                 this.columnExpired = base.Columns["Expired"];
                 this.columnLastDUSoh = base.Columns["LastDUSoh"];
+                this.columnTypeID = base.Columns["TypeID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -624,6 +652,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnExpired);
                 this.columnLastDUSoh = new global::System.Data.DataColumn("LastDUSoh", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLastDUSoh);
+                this.columnTypeID = new global::System.Data.DataColumn("TypeID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1421,6 +1451,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TypeID {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.TypeIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TypeID\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.TypeIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsStockCodeNull() {
                 return this.IsNull(this.tableDataTable1.StockCodeColumn);
             }
@@ -1597,6 +1643,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLastDUSohNull() {
                 this[this.tableDataTable1.LastDUSohColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTypeIDNull() {
+                return this.IsNull(this.tableDataTable1.TypeIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTypeIDNull() {
+                this[this.tableDataTable1.TypeIDColumn] = global::System.Convert.DBNull;
             }
         }
         

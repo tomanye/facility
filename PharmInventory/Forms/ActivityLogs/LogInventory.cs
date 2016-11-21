@@ -112,7 +112,7 @@ namespace PharmInventory.Forms.ActivityLogs
             DataRow dr = gridView2.GetFocusedDataRow();
             string invDate = Convert.ToString(dr["Year"]);
 
-            string header = info.HospitalName + "\n Inventory Log of " + lblAdjDate.Text + "   ,Year " + invDate + " E.C\n Store: " + cboStores.Text ;
+            string header = info.HospitalName + "\n Inventory Log of Year " + invDate + " E.C\n Store: " + cboStores.Text ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 

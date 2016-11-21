@@ -1222,6 +1222,13 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
+        private void btnsubprogram_Click(object sender, EventArgs e)
+        {
+            RRF r = new RRF();
+
+            r.UpdateSubProgram();
+            XtraMessageBox.Show("Sub Programs Updated Successfully", "Confirmation");
+        }
     }
 }
 

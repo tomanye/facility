@@ -41,6 +41,12 @@ namespace PharmInventory.Forms.Reports
 
             var type = new BLL.Type();
             var alltypes = type.GetAllCategory();
+
+            DataRow row = alltypes.NewRow();
+            row["ID"] = "0";
+            row["Name"] = "All";
+            alltypes.Rows.InsertAt(row, 0);
+
             lkCategory.Properties.DataSource = alltypes;
             lkCategory.Properties.DisplayMember = "Name";
             lkCategory.Properties.ValueMember = "ID";
@@ -130,8 +136,8 @@ namespace PharmInventory.Forms.Reports
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             gridItemsList.DataSource = (DataTable)e.Result;
-            if (ckExclude.Checked)
-                gridItemListView.ActiveFilterString = string.Format("[Received] != '0'and [TypeID]={0} AND [FullItemName] like '{1}%'", Convert.ToInt32(lkCategory.EditValue), txtItemName.Text);
+            if (ckExclude.Checked) 
+                gridItemListView.ActiveFilterString = (Convert.ToInt16(lkCategory.EditValue) != 0)?string.Format("[Received] != '0'and [TypeID]={0} AND [FullItemName] like '{1}%'", Convert.ToInt32(lkCategory.EditValue), txtItemName.Text):string.Format("[Received] != '0' AND [FullItemName] like '{0}%'", txtItemName.Text);
         }
 
         /// <summary>
