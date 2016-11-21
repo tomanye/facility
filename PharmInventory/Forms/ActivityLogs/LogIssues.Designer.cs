@@ -82,6 +82,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -110,6 +111,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -282,7 +284,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridIssues.Name = "gridIssues";
             this.gridIssues.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.lkEditReceivingUnis,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemMemoEdit1});
             this.gridIssues.Size = new System.Drawing.Size(805, 451);
             this.gridIssues.TabIndex = 13;
             this.gridIssues.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -311,6 +314,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.grdLogIssue.OptionsBehavior.Editable = false;
             this.grdLogIssue.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grdLogIssue.OptionsView.ColumnAutoWidth = false;
+            this.grdLogIssue.OptionsView.RowAutoHeight = true;
             this.grdLogIssue.OptionsView.ShowFooter = true;
             this.grdLogIssue.OptionsView.ShowGroupPanel = false;
             // 
@@ -331,6 +335,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Item Name";
+            this.gridColumn3.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn3.FieldName = "FullItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -678,6 +683,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // LogIssues
             // 
             this.Appearance.Options.UseFont = true;
@@ -717,6 +726,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -775,5 +785,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }
