@@ -69,6 +69,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -93,6 +94,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -217,11 +219,13 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // gridInventory
             // 
+            this.gridInventory.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridInventory.Location = new System.Drawing.Point(240, 58);
             this.gridInventory.MainView = this.gridView1;
             this.gridInventory.Name = "gridInventory";
             this.gridInventory.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemMemoEdit1});
             this.gridInventory.Size = new System.Drawing.Size(847, 635);
             this.gridInventory.TabIndex = 35;
             this.gridInventory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -241,6 +245,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridView1.GridControl = this.gridInventory;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -264,6 +269,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Item Name";
+            this.gridColumn3.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn3.FieldName = "FullItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -535,6 +541,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // LogInventory
             // 
             this.Appearance.Options.UseFont = true;
@@ -571,6 +581,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -617,5 +628,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private System.Windows.Forms.BindingSource unitbindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

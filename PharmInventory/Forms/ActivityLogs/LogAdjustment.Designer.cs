@@ -81,6 +81,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -111,6 +112,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -273,7 +275,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridAdjustments.Name = "gridAdjustments";
             this.gridAdjustments.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
-            this.repositoryItemLookUpEdit2});
+            this.repositoryItemLookUpEdit2,
+            this.repositoryItemMemoEdit1});
             this.gridAdjustments.Size = new System.Drawing.Size(973, 494);
             this.gridAdjustments.TabIndex = 33;
             this.gridAdjustments.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -299,6 +302,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.grdLogAdjustment.OptionsBehavior.Editable = false;
             this.grdLogAdjustment.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.grdLogAdjustment.OptionsView.ColumnAutoWidth = false;
+            this.grdLogAdjustment.OptionsView.RowAutoHeight = true;
             this.grdLogAdjustment.OptionsView.ShowFooter = true;
             this.grdLogAdjustment.OptionsView.ShowGroupPanel = false;
             // 
@@ -321,6 +325,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Item Name";
+            this.gridColumn3.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn3.FieldName = "FullItemName";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
@@ -663,6 +668,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // LogAdjustment
             // 
             this.Appearance.Options.UseFont = true;
@@ -704,6 +713,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -761,5 +771,6 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraPrinting.PrintingSystem printingSystem1;
         private DevExpress.XtraPrinting.PrintableComponentLink printableComponentLink1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }
