@@ -45,6 +45,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,7 +70,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -77,6 +77,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmpty.Properties)).BeginInit();
@@ -94,7 +95,6 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -255,7 +255,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 38;
+            this.gridColumn1.Width = 33;
             // 
             // gridColumn2
             // 
@@ -264,7 +264,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 61;
+            this.gridColumn2.Width = 53;
             // 
             // gridColumn3
             // 
@@ -274,7 +274,11 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 156;
+            this.gridColumn3.Width = 317;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // gridColumn4
             // 
@@ -285,7 +289,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 151;
+            this.gridColumn4.Width = 93;
             // 
             // gridColumn5
             // 
@@ -296,7 +300,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 151;
+            this.gridColumn5.Width = 93;
             // 
             // gridColumn6
             // 
@@ -307,7 +311,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 151;
+            this.gridColumn6.Width = 93;
             // 
             // gridColumn7
             // 
@@ -316,7 +320,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 7;
-            this.gridColumn7.Width = 155;
+            this.gridColumn7.Width = 101;
             // 
             // gridColumn9
             // 
@@ -326,6 +330,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 6;
+            this.gridColumn9.Width = 46;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -541,10 +546,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.MinMargins = new System.Drawing.Printing.Margins(5, 5, 20, 20);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
-            // repositoryItemMemoEdit1
-            // 
-            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
-            // 
             // LogInventory
             // 
             this.Appearance.Options.UseFont = true;
@@ -564,6 +565,7 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridInventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmpty.Properties)).EndInit();
@@ -581,7 +583,6 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
