@@ -85,7 +85,7 @@ namespace BLL
 
                                                     UPDATE ReceiveDoc
                                                 SET SubProgramID = 1001
-                                                    WHERE storeid = 9
+                                                    WHERE storeid = 9F
 
                                             UPDATE a
                                                 SET a.ProgramID = subprogramID
@@ -125,7 +125,7 @@ namespace BLL
                                                                       500288, 500314, 500330, 500435, 500436, 500437,
                                                                       500507, 500508, 500514, 500515, 500517, 500553,
                                                                       500554, 500555, 500556, 500557, 500568, 500569,
-                                                                      500572, 500573)
+                                                                      500578, 500579)
                                              --// for recentil  recieved 
                                                 UPDATE  ReceiveDoc
                                                 SET     SubProgramID = 22
