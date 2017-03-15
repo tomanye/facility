@@ -143,9 +143,9 @@ Drugs and medical supplies with the same receiver will be prepared in a similar 
     <value>የአስረካቢው ስም: ______________________________________	ፊርማ__________________________
 Issued by Name  
            	                                                 	Signature                                         
-የተረካበው 
-1. ስም____________________________________ፊርማ_______________________________2. ስም____________________________________ፊርማ___________________________________ 
-Received by Name                                                                 Signature                                                Received by Name                                                   Signature  
+የተረካበው /Received by
+1. ስም____________________________________ፊርማ___________________________________2. ስም____________________________________ፊርማ___________________________________ 
+ Name                                                                      Signature                                                                     Name                                                                       Signature  
 3. ስም____________________________________ፊርማ___________________________________ 4. ስም____________________________________ፊርማ_______________________________</value>
   </data>
   <metadata name="dataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

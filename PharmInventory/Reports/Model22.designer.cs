@@ -127,7 +127,7 @@ namespace PharmInventory.Reports
             this.xrTableCell13.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell13.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Item Name")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Item Name")});
             this.xrTableCell13.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -149,7 +149,7 @@ namespace PharmInventory.Reports
             this.xrTableCell22.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell22.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell22.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Internal Drug Code")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.InternalDrugCode")});
             this.xrTableCell22.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StylePriority.UseBorderColor = false;
@@ -164,7 +164,7 @@ namespace PharmInventory.Reports
             this.xrTableCell23.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell23.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell23.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Item Name")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Item Name")});
             this.xrTableCell23.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell23.Name = "xrTableCell23";
             this.xrTableCell23.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -174,14 +174,14 @@ namespace PharmInventory.Reports
             this.xrTableCell23.StylePriority.UsePadding = false;
             this.xrTableCell23.StylePriority.UseTextAlignment = false;
             this.xrTableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell23.Weight = 0.91326599787719231D;
+            this.xrTableCell23.Weight = 0.88656646242679893D;
             // 
             // xrTableCell24
             // 
             this.xrTableCell24.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell24.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell24.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Unit")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Unit")});
             this.xrTableCell24.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell24.Name = "xrTableCell24";
             this.xrTableCell24.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -191,14 +191,14 @@ namespace PharmInventory.Reports
             this.xrTableCell24.StylePriority.UsePadding = false;
             this.xrTableCell24.StylePriority.UseTextAlignment = false;
             this.xrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell24.Weight = 0.17540639699566188D;
+            this.xrTableCell24.Weight = 0.20210593244605524D;
             // 
             // xrTableCell25
             // 
             this.xrTableCell25.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell25.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Pack Qty", "{0:#,###.##}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Quantity", "{0:#,###.##}")});
             this.xrTableCell25.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 100F);
@@ -215,7 +215,7 @@ namespace PharmInventory.Reports
             this.xrTableCell28.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell28.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell28.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Price/Pack", "{0:#,###.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Unit Cost", "{0:#,###.00}")});
             this.xrTableCell28.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell28.Name = "xrTableCell28";
             this.xrTableCell28.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -232,7 +232,7 @@ namespace PharmInventory.Reports
             this.xrTableCell29.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell29.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell29.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Total Price", "{0:#,###.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Total Cost", "{0:#,###.00}")});
             this.xrTableCell29.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StylePriority.UseBorderColor = false;
@@ -247,7 +247,7 @@ namespace PharmInventory.Reports
             this.xrTableCell30.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell30.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell30.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Batch No")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Unit Price")});
             this.xrTableCell30.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -264,7 +264,7 @@ namespace PharmInventory.Reports
             this.xrTableCell31.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell31.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell31.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Expiry Date", "{0:MMM dd,yyy}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Retail Price")});
             this.xrTableCell31.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
@@ -281,11 +281,11 @@ namespace PharmInventory.Reports
             this.xrTable2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.xrTable2.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0.0001589457F, 0F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(1027F, 83.54167F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(1027F, 62.08334F);
             this.xrTable2.StylePriority.UseBorderColor = false;
             this.xrTable2.StylePriority.UseBorders = false;
             this.xrTable2.StylePriority.UseFont = false;
@@ -359,9 +359,9 @@ namespace PharmInventory.Reports
             this.xrTableCell2.StylePriority.UseTextAlignment = false;
             this.xrTableCell2.Text = "መግለጫ፡ (የመድሀኒቱ/የቅመሙ/የህክምና መሳሪያ/መገልገያ ስም፣ የይዘት መጠን፣ የዝግጅት አይነት፣ የንግድ ስም ካለ በተጨማሪ ይጠ" +
     "ቀስ)\r\nDescription: (Drug/Reagent/Supplies/Equipment Name Strength, Dosage Form, (" +
-    "Mention brand name, if any)\r\n";
+    "Mention brand name, if any)";
             this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell2.Weight = 0.91326647459116783D;
+            this.xrTableCell2.Weight = 0.886566768599007D;
             // 
             // xrTableCell14
             // 
@@ -377,9 +377,9 @@ namespace PharmInventory.Reports
             this.xrTableCell14.StylePriority.UseFont = false;
             this.xrTableCell14.StylePriority.UsePadding = false;
             this.xrTableCell14.StylePriority.UseTextAlignment = false;
-            this.xrTableCell14.Text = "መለኪያ\r\n\r\n\r\n\r\nUnit\r\n\r\n";
+            this.xrTableCell14.Text = "መለኪያ\r\n\r\n\r\nUnit\r\n\r\n";
             this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell14.Weight = 0.17540587605211536D;
+            this.xrTableCell14.Weight = 0.20210558204427626D;
             // 
             // xrTableCell3
             // 
@@ -413,7 +413,7 @@ namespace PharmInventory.Reports
             this.xrTableCell7.StylePriority.UseFont = false;
             this.xrTableCell7.StylePriority.UsePadding = false;
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.Text = "የአንዱ የመግዣ ዋጋ\r\n\r\n\r\nUnit Cost\r\n";
+            this.xrTableCell7.Text = "የአንዱ የመግዣ ዋጋ\r\n\r\nUnit Cost\r\n";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell7.Weight = 0.22694851588226572D;
             // 
@@ -429,7 +429,7 @@ namespace PharmInventory.Reports
             this.xrTableCell8.StylePriority.UseBorders = false;
             this.xrTableCell8.StylePriority.UseFont = false;
             this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.Text = "ጠቅላላ የመግዢያ ዋጋ\r\n\r\n\r\nTotal  Cost\r\n";
+            this.xrTableCell8.Text = "ጠቅላላ የመግዢያ ዋጋ\r\n\r\nTotal  Cost\r\n";
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell8.Weight = 0.21756109221268172D;
             // 
@@ -465,7 +465,7 @@ namespace PharmInventory.Reports
             this.xrTableCell10.StylePriority.UseFont = false;
             this.xrTableCell10.StylePriority.UsePadding = false;
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
-            this.xrTableCell10.Text = "የችርቻሮዋጋ\r\n\r\n\r\n\r\nRetail Price\r\n";
+            this.xrTableCell10.Text = "የችርቻሮዋጋ\r\n\r\n\r\nRetail Price\r\n";
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell10.Weight = 0.21341358907882321D;
             // 
@@ -473,7 +473,7 @@ namespace PharmInventory.Reports
             // 
             this.xrLabel11.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Total Price")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model22.Total Cost")});
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(774.4841F, 0F);
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -506,7 +506,7 @@ namespace PharmInventory.Reports
             this.xrLabel1,
             this.xrModel,
             this.xrLabel2});
-            this.TopMargin.HeightF = 161F;
+            this.TopMargin.HeightF = 146.4167F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -597,7 +597,7 @@ namespace PharmInventory.Reports
             this.xrTable2});
             this.tableTitle.GroupFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
             new DevExpress.XtraReports.UI.GroupField("", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
-            this.tableTitle.HeightF = 85.00004F;
+            this.tableTitle.HeightF = 62.08334F;
             this.tableTitle.KeepTogether = true;
             this.tableTitle.Name = "tableTitle";
             // 
@@ -695,10 +695,10 @@ namespace PharmInventory.Reports
             this.GroupFooter1,
             this.headerGroup});
             this.ComponentStorage.Add(this.dataSet11);
-            this.DataMember = "Model19";
+            this.DataMember = "Model22";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(74, 68, 161, 49);
+            this.Margins = new System.Drawing.Printing.Margins(74, 68, 146, 49);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
