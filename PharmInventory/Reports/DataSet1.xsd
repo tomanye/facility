@@ -80,6 +80,7 @@
               <xs:element name="Unit_x0020_Cost" msprop:Generator_ColumnVarNameInTable="columnUnit_Cost" msprop:Generator_ColumnPropNameInRow="Unit_Cost" msprop:Generator_ColumnPropNameInTable="Unit_CostColumn" msprop:Generator_UserColumnName="Unit Cost" type="xs:string" minOccurs="0" />
               <xs:element name="Total_x0020_Cost" msprop:Generator_ColumnVarNameInTable="columnTotal_Cost" msprop:Generator_ColumnPropNameInRow="Total_Cost" msprop:Generator_ColumnPropNameInTable="Total_CostColumn" msprop:Generator_UserColumnName="Total Cost" type="xs:string" minOccurs="0" />
               <xs:element name="Retail_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnRetail_Price" msprop:Generator_ColumnPropNameInRow="Retail_Price" msprop:Generator_ColumnPropNameInTable="Retail_PriceColumn" msprop:Generator_UserColumnName="Retail Price" type="xs:string" minOccurs="0" />
+              <xs:element name="Total_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnTotal_Price" msprop:Generator_ColumnPropNameInRow="Total_Price" msprop:Generator_ColumnPropNameInTable="Total_PriceColumn" msprop:Generator_UserColumnName="Total Price" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
