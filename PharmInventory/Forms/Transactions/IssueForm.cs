@@ -14,7 +14,8 @@ using StockoutIndexBuilder;
 using IssueDoc = BLL.IssueDoc;
 using ItemUnit = BLL.ItemUnit;
 using ReceiveDoc = BLL.ReceiveDoc;
-
+using PharmInventory.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace PharmInventory.Forms.Transactions
 {
@@ -390,7 +391,7 @@ namespace PharmInventory.Forms.Transactions
                 var DUs = new ReceivingUnits();
 
                 var dtIssueConf = new DataTable();
-                string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
+                string[] strr = { "No", "Stock Code", "Item Name","Unit", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
                                     "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode" };
                 foreach (string col in strr)
@@ -556,7 +557,7 @@ namespace PharmInventory.Forms.Transactions
                                 int rowNo = j + 1;
 
                                 object[] obj = { rowNo, dtIssueGrid.Rows[i]["Stock Code"],
-                                                     dtIssueGrid.Rows[i]["Item Name"], qu, batch,dtx, 
+                                                     dtIssueGrid.Rows[i]["Item Name"],dtIssueGrid.Rows[i]["Unit"], qu, batch,dtx, 
                                                      packPrice.ToString("n3"), ((totPrice != double.NaN) ? totPrice.ToString("n3") : "0"), 
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
@@ -776,6 +777,24 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    int userID = MainWindow.LoggedinId;
+                    User us = new User();
+                    us.LoadByPrimaryKey(userID);
+                    string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
+
+                    var modelprint = new Model22
+                    {
+                        PrintedBy = { Text = printedby }
+                    };
+
+                    var tbl1 = ((DataTable)gridConfirmation.DataSource);
+                    tbl1.TableName = "Model22";
+                    var dtset = new DataSet();
+                    dtset.Tables.Add(tbl1.Copy());
+                    modelprint.DataSource = dtset;
+                    modelprint.Landscape = true;
+                    modelprint.ShowPreviewDialog();
 
                     xpButton2_Click(sender, e);
                     issueGrid.DataSource = null;
