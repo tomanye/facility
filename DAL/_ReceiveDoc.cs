@@ -259,19 +259,19 @@ namespace DAL
                 }
             }
 
-            public static SqlParameter BoxLevel
-            {
-                get
-                {
-                    return new SqlParameter("@BoxLevel", SqlDbType.Int, 0);
-                }
-            }
-
             public static SqlParameter EurDate
             {
                 get
                 {
                     return new SqlParameter("@EurDate", SqlDbType.DateTime, 0);
+                }
+            }
+
+            public static SqlParameter BoxLevel
+            {
+                get
+                {
+                    return new SqlParameter("@BoxLevel", SqlDbType.Int, 0);
                 }
             }
 
@@ -295,7 +295,15 @@ namespace DAL
             {
                 get
                 {
-                    return new SqlParameter("@InternalDrugCode", SqlDbType.NVarChar, 50);
+                    return new SqlParameter("@InternalDrugCode", SqlDbType.NVarChar, 30);
+                }
+            }
+
+            public static SqlParameter ItemUnit
+            {
+                get
+                {
+                    return new SqlParameter("@ItemUnit", SqlDbType.NVarChar, 30);
                 }
             }
 
@@ -325,11 +333,12 @@ namespace DAL
             public const string QuantityLeft = "QuantityLeft";
             public const string NoOfPack = "NoOfPack";
             public const string QtyPerPack = "QtyPerPack";
-            public const string BoxLevel = "BoxLevel";
             public const string EurDate = "EurDate";
+            public const string BoxLevel = "BoxLevel";
             public const string SubProgramID = "SubProgramID";
             public const string UnitID = "UnitID";
             public const string InternalDrugCode = "InternalDrugCode";
+            public const string ItemUnit = "ItemUnit";
 
             static public string ToPropertyName(string columnName)
             {
@@ -357,11 +366,12 @@ namespace DAL
                     ht[QuantityLeft] = _ReceiveDoc.PropertyNames.QuantityLeft;
                     ht[NoOfPack] = _ReceiveDoc.PropertyNames.NoOfPack;
                     ht[QtyPerPack] = _ReceiveDoc.PropertyNames.QtyPerPack;
-                    ht[BoxLevel] = _ReceiveDoc.PropertyNames.BoxLevel;
                     ht[EurDate] = _ReceiveDoc.PropertyNames.EurDate;
+                    ht[BoxLevel] = _ReceiveDoc.PropertyNames.BoxLevel;
                     ht[SubProgramID] = _ReceiveDoc.PropertyNames.SubProgramID;
                     ht[UnitID] = _ReceiveDoc.PropertyNames.UnitID;
                     ht[InternalDrugCode] = _ReceiveDoc.PropertyNames.InternalDrugCode;
+                    ht[ItemUnit] = _ReceiveDoc.PropertyNames.ItemUnit;
 
                 }
                 return (string)ht[columnName];
@@ -394,11 +404,12 @@ namespace DAL
             public const string QuantityLeft = "QuantityLeft";
             public const string NoOfPack = "NoOfPack";
             public const string QtyPerPack = "QtyPerPack";
-            public const string BoxLevel = "BoxLevel";
             public const string EurDate = "EurDate";
+            public const string BoxLevel = "BoxLevel";
             public const string SubProgramID = "SubProgramID";
             public const string UnitID = "UnitID";
             public const string InternalDrugCode = "InternalDrugCode";
+            public const string ItemUnit = "ItemUnit";
 
             static public string ToColumnName(string propertyName)
             {
@@ -426,11 +437,12 @@ namespace DAL
                     ht[QuantityLeft] = _ReceiveDoc.ColumnNames.QuantityLeft;
                     ht[NoOfPack] = _ReceiveDoc.ColumnNames.NoOfPack;
                     ht[QtyPerPack] = _ReceiveDoc.ColumnNames.QtyPerPack;
-                    ht[BoxLevel] = _ReceiveDoc.ColumnNames.BoxLevel;
                     ht[EurDate] = _ReceiveDoc.ColumnNames.EurDate;
+                    ht[BoxLevel] = _ReceiveDoc.ColumnNames.BoxLevel;
                     ht[SubProgramID] = _ReceiveDoc.ColumnNames.SubProgramID;
                     ht[UnitID] = _ReceiveDoc.ColumnNames.UnitID;
                     ht[InternalDrugCode] = _ReceiveDoc.ColumnNames.InternalDrugCode;
+                    ht[ItemUnit] = _ReceiveDoc.ColumnNames.ItemUnit;
 
                 }
                 return (string)ht[propertyName];
@@ -463,11 +475,12 @@ namespace DAL
             public const string QuantityLeft = "s_QuantityLeft";
             public const string NoOfPack = "s_NoOfPack";
             public const string QtyPerPack = "s_QtyPerPack";
-            public const string BoxLevel = "s_BoxLevel";
             public const string EurDate = "s_EurDate";
+            public const string BoxLevel = "s_BoxLevel";
             public const string SubProgramID = "s_SubProgramID";
             public const string UnitID = "s_UnitID";
             public const string InternalDrugCode = "s_InternalDrugCode";
+            public const string ItemUnit = "s_ItemUnit";
 
         }
         #endregion
@@ -714,18 +727,6 @@ namespace DAL
             }
         }
 
-        public virtual int BoxLevel
-        {
-            get
-            {
-                return base.Getint(ColumnNames.BoxLevel);
-            }
-            set
-            {
-                base.Setint(ColumnNames.BoxLevel, value);
-            }
-        }
-
         public virtual DateTime EurDate
         {
             get
@@ -735,6 +736,18 @@ namespace DAL
             set
             {
                 base.SetDateTime(ColumnNames.EurDate, value);
+            }
+        }
+
+        public virtual int BoxLevel
+        {
+            get
+            {
+                return base.Getint(ColumnNames.BoxLevel);
+            }
+            set
+            {
+                base.Setint(ColumnNames.BoxLevel, value);
             }
         }
 
@@ -771,6 +784,18 @@ namespace DAL
             set
             {
                 base.Setstring(ColumnNames.InternalDrugCode, value);
+            }
+        }
+
+        public virtual string ItemUnit
+        {
+            get
+            {
+                return base.Getstring(ColumnNames.ItemUnit);
+            }
+            set
+            {
+                base.Setstring(ColumnNames.ItemUnit, value);
             }
         }
 
@@ -1079,21 +1104,6 @@ namespace DAL
             }
         }
 
-        public virtual string s_BoxLevel
-        {
-            get
-            {
-                return this.IsColumnNull(ColumnNames.BoxLevel) ? string.Empty : base.GetintAsString(ColumnNames.BoxLevel);
-            }
-            set
-            {
-                if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.BoxLevel);
-                else
-                    this.BoxLevel = base.SetintAsString(ColumnNames.BoxLevel, value);
-            }
-        }
-
         public virtual string s_EurDate
         {
             get
@@ -1106,6 +1116,21 @@ namespace DAL
                     this.SetColumnNull(ColumnNames.EurDate);
                 else
                     this.EurDate = base.SetDateTimeAsString(ColumnNames.EurDate, value);
+            }
+        }
+
+        public virtual string s_BoxLevel
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.BoxLevel) ? string.Empty : base.GetintAsString(ColumnNames.BoxLevel);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.BoxLevel);
+                else
+                    this.BoxLevel = base.SetintAsString(ColumnNames.BoxLevel, value);
             }
         }
 
@@ -1151,6 +1176,21 @@ namespace DAL
                     this.SetColumnNull(ColumnNames.InternalDrugCode);
                 else
                     this.InternalDrugCode = base.SetstringAsString(ColumnNames.InternalDrugCode, value);
+            }
+        }
+
+        public virtual string s_ItemUnit
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.ItemUnit) ? string.Empty : base.GetstringAsString(ColumnNames.ItemUnit);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.ItemUnit);
+                else
+                    this.ItemUnit = base.SetstringAsString(ColumnNames.ItemUnit, value);
             }
         }
 
@@ -1387,21 +1427,21 @@ namespace DAL
                     }
                 }
 
-                public WhereParameter BoxLevel
-                {
-                    get
-                    {
-                        WhereParameter where = new WhereParameter(ColumnNames.BoxLevel, Parameters.BoxLevel);
-                        this._clause._entity.Query.AddWhereParameter(where);
-                        return where;
-                    }
-                }
-
                 public WhereParameter EurDate
                 {
                     get
                     {
                         WhereParameter where = new WhereParameter(ColumnNames.EurDate, Parameters.EurDate);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter BoxLevel
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.BoxLevel, Parameters.BoxLevel);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1432,6 +1472,16 @@ namespace DAL
                     get
                     {
                         WhereParameter where = new WhereParameter(ColumnNames.InternalDrugCode, Parameters.InternalDrugCode);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter ItemUnit
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.ItemUnit, Parameters.ItemUnit);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1682,18 +1732,6 @@ namespace DAL
                 }
             }
 
-            public WhereParameter BoxLevel
-            {
-                get
-                {
-                    if (_BoxLevel_W == null)
-                    {
-                        _BoxLevel_W = TearOff.BoxLevel;
-                    }
-                    return _BoxLevel_W;
-                }
-            }
-
             public WhereParameter EurDate
             {
                 get
@@ -1703,6 +1741,18 @@ namespace DAL
                         _EurDate_W = TearOff.EurDate;
                     }
                     return _EurDate_W;
+                }
+            }
+
+            public WhereParameter BoxLevel
+            {
+                get
+                {
+                    if (_BoxLevel_W == null)
+                    {
+                        _BoxLevel_W = TearOff.BoxLevel;
+                    }
+                    return _BoxLevel_W;
                 }
             }
 
@@ -1742,6 +1792,18 @@ namespace DAL
                 }
             }
 
+            public WhereParameter ItemUnit
+            {
+                get
+                {
+                    if (_ItemUnit_W == null)
+                    {
+                        _ItemUnit_W = TearOff.ItemUnit;
+                    }
+                    return _ItemUnit_W;
+                }
+            }
+
             private WhereParameter _ID_W = null;
             private WhereParameter _BatchNo_W = null;
             private WhereParameter _ItemID_W = null;
@@ -1762,11 +1824,12 @@ namespace DAL
             private WhereParameter _QuantityLeft_W = null;
             private WhereParameter _NoOfPack_W = null;
             private WhereParameter _QtyPerPack_W = null;
-            private WhereParameter _BoxLevel_W = null;
             private WhereParameter _EurDate_W = null;
+            private WhereParameter _BoxLevel_W = null;
             private WhereParameter _SubProgramID_W = null;
             private WhereParameter _UnitID_W = null;
             private WhereParameter _InternalDrugCode_W = null;
+            private WhereParameter _ItemUnit_W = null;
 
             public void WhereClauseReset()
             {
@@ -1790,11 +1853,12 @@ namespace DAL
                 _QuantityLeft_W = null;
                 _NoOfPack_W = null;
                 _QtyPerPack_W = null;
-                _BoxLevel_W = null;
                 _EurDate_W = null;
+                _BoxLevel_W = null;
                 _SubProgramID_W = null;
                 _UnitID_W = null;
                 _InternalDrugCode_W = null;
+                _ItemUnit_W = null;
 
                 this._entity.Query.FlushWhereParameters();
 
@@ -2051,21 +2115,21 @@ namespace DAL
                     }
                 }
 
-                public AggregateParameter BoxLevel
-                {
-                    get
-                    {
-                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.BoxLevel, Parameters.BoxLevel);
-                        this._clause._entity.Query.AddAggregateParameter(aggregate);
-                        return aggregate;
-                    }
-                }
-
                 public AggregateParameter EurDate
                 {
                     get
                     {
                         AggregateParameter aggregate = new AggregateParameter(ColumnNames.EurDate, Parameters.EurDate);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter BoxLevel
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.BoxLevel, Parameters.BoxLevel);
                         this._clause._entity.Query.AddAggregateParameter(aggregate);
                         return aggregate;
                     }
@@ -2096,6 +2160,16 @@ namespace DAL
                     get
                     {
                         AggregateParameter aggregate = new AggregateParameter(ColumnNames.InternalDrugCode, Parameters.InternalDrugCode);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter ItemUnit
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.ItemUnit, Parameters.ItemUnit);
                         this._clause._entity.Query.AddAggregateParameter(aggregate);
                         return aggregate;
                     }
@@ -2346,18 +2420,6 @@ namespace DAL
                 }
             }
 
-            public AggregateParameter BoxLevel
-            {
-                get
-                {
-                    if (_BoxLevel_W == null)
-                    {
-                        _BoxLevel_W = TearOff.BoxLevel;
-                    }
-                    return _BoxLevel_W;
-                }
-            }
-
             public AggregateParameter EurDate
             {
                 get
@@ -2367,6 +2429,18 @@ namespace DAL
                         _EurDate_W = TearOff.EurDate;
                     }
                     return _EurDate_W;
+                }
+            }
+
+            public AggregateParameter BoxLevel
+            {
+                get
+                {
+                    if (_BoxLevel_W == null)
+                    {
+                        _BoxLevel_W = TearOff.BoxLevel;
+                    }
+                    return _BoxLevel_W;
                 }
             }
 
@@ -2406,6 +2480,18 @@ namespace DAL
                 }
             }
 
+            public AggregateParameter ItemUnit
+            {
+                get
+                {
+                    if (_ItemUnit_W == null)
+                    {
+                        _ItemUnit_W = TearOff.ItemUnit;
+                    }
+                    return _ItemUnit_W;
+                }
+            }
+
             private AggregateParameter _ID_W = null;
             private AggregateParameter _BatchNo_W = null;
             private AggregateParameter _ItemID_W = null;
@@ -2426,11 +2512,12 @@ namespace DAL
             private AggregateParameter _QuantityLeft_W = null;
             private AggregateParameter _NoOfPack_W = null;
             private AggregateParameter _QtyPerPack_W = null;
-            private AggregateParameter _BoxLevel_W = null;
             private AggregateParameter _EurDate_W = null;
+            private AggregateParameter _BoxLevel_W = null;
             private AggregateParameter _SubProgramID_W = null;
             private AggregateParameter _UnitID_W = null;
             private AggregateParameter _InternalDrugCode_W = null;
+            private AggregateParameter _ItemUnit_W = null;
 
             public void AggregateClauseReset()
             {
@@ -2454,11 +2541,12 @@ namespace DAL
                 _QuantityLeft_W = null;
                 _NoOfPack_W = null;
                 _QtyPerPack_W = null;
-                _BoxLevel_W = null;
                 _EurDate_W = null;
+                _BoxLevel_W = null;
                 _SubProgramID_W = null;
                 _UnitID_W = null;
                 _InternalDrugCode_W = null;
+                _ItemUnit_W = null;
 
                 this._entity.Query.FlushAggregateParameters();
 
@@ -2613,12 +2701,12 @@ namespace DAL
             p.SourceColumn = ColumnNames.QtyPerPack;
             p.SourceVersion = DataRowVersion.Current;
 
-            p = cmd.Parameters.Add(Parameters.BoxLevel);
-            p.SourceColumn = ColumnNames.BoxLevel;
-            p.SourceVersion = DataRowVersion.Current;
-
             p = cmd.Parameters.Add(Parameters.EurDate);
             p.SourceColumn = ColumnNames.EurDate;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.BoxLevel);
+            p.SourceColumn = ColumnNames.BoxLevel;
             p.SourceVersion = DataRowVersion.Current;
 
             p = cmd.Parameters.Add(Parameters.SubProgramID);
@@ -2631,6 +2719,10 @@ namespace DAL
 
             p = cmd.Parameters.Add(Parameters.InternalDrugCode);
             p.SourceColumn = ColumnNames.InternalDrugCode;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.ItemUnit);
+            p.SourceColumn = ColumnNames.ItemUnit;
             p.SourceVersion = DataRowVersion.Current;
 
 
