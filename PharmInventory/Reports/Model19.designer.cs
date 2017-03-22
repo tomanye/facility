@@ -590,7 +590,7 @@ namespace PharmInventory.Reports
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.PrintedBy,
             this.xrPageInfo1});
-            this.BottomMargin.HeightF = 46.91677F;
+            this.BottomMargin.HeightF = 68.16679F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -599,7 +599,7 @@ namespace PharmInventory.Reports
             // 
             this.PrintedBy.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.PrintedBy.ForeColor = System.Drawing.Color.DarkGray;
-            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(502.8932F, 0F);
+            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(489.3515F, 0F);
             this.PrintedBy.Name = "PrintedBy";
             this.PrintedBy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
             this.PrintedBy.SizeF = new System.Drawing.SizeF(369.9872F, 18.83336F);
@@ -612,10 +612,10 @@ namespace PharmInventory.Reports
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(943.6667F, 9.999974F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(917.0002F, 10.00001F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(73.33331F, 19.875F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(48.3335F, 19.875F);
             // 
             // xrLabel3
             // 
@@ -754,7 +754,7 @@ namespace PharmInventory.Reports
             this.DataMember = "Model19";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(74, 68, 161, 47);
+            this.Margins = new System.Drawing.Printing.Margins(74, 68, 161, 68);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
