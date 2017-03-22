@@ -553,25 +553,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Reports\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Model22.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\Model22.designer.cs">
-      <DependentUpon>Model22.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Model19.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\Model19.designer.cs">
-      <DependentUpon>Model19.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\RRFReport.cs">
       <SubType>Component</SubType>
@@ -1031,21 +1016,6 @@
     <Content Include="Scripts\9958-proc_VRFDetailLoadByPrimaryKey.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9966-proc_AlterReceiveDocInsert.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9967-proc_AlterReceiveDocLoadAll.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9968-proc_AlterReceiveDocLoadbyPrimaryKey.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9969-proc_AlterReceiveDocUpdate.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Scripts\9965-ReceiveDocColumnAddItemUnit.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\9962-proc_AlterReceiveDocLoadAll.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1278,12 +1248,6 @@
       <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Reports\Model22.resx">
-      <DependentUpon>Model22.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Model19.resx">
-      <DependentUpon>Model19.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RRFReport.resx">
       <DependentUpon>RRFReport.cs</DependentUpon>
     </EmbeddedResource>
