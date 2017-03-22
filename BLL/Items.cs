@@ -1956,13 +1956,13 @@ FROM    Items itm
             //var query = string.Format("SELECT  ItemID ID,SUM(Quantity) AS Quantity FROM ReceiveDoc rd WHERE   [Date] BETWEEN '{0}' AND '{1}'AND StoreID = {2} GROUP BY ItemID ", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
-
+            var isdt = new DateTime(fromYear, fromMonth + 1, 01);
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
                                   "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc " +
                                   "where [Date] between '{0}' and '{1}' and StoreID = {2} and IsTransfer = 0 " +
                                   "group by ItemID ) as A on Items.ID = A.ItemID "
-                                  , dt1, dt2, storeId);
+                                  , isdt, dt2, storeId);
 
             //query = string.Format(" SELECT ItemID ID ,SUM(Quantity) Quantity FROM IssueDoc WHERE   [Date] BETWEEN '{0}' AND '{1}' AND StoreID = {2} AND IsTransfer = 0 GROUP BY ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
@@ -2264,13 +2264,13 @@ FROM    Items itm
                                          " A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
-
+            var isdt = new DateTime(fromYear, fromMonth+1, 01);
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
                                   "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc " +
                                   "where [Date] between '{0}' and '{1}' and StoreID = {2} and IsTransfer = 0 " +
                                   "group by ItemID ) as A on Items.ID = A.ItemID "
-                                  , dt1, dt2, storeId);
+                                  , isdt, dt2, storeId);
             this.LoadFromRawSql(query);
             var issued = this.DataTable;
 
