@@ -14,8 +14,7 @@ using StockoutIndexBuilder;
 using IssueDoc = BLL.IssueDoc;
 using ItemUnit = BLL.ItemUnit;
 using ReceiveDoc = BLL.ReceiveDoc;
-using PharmInventory.Reports;
-using DevExpress.XtraReports.UI;
+
 
 namespace PharmInventory.Forms.Transactions
 {
@@ -777,24 +776,6 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    int userID = MainWindow.LoggedinId;
-                    User us = new User();
-                    us.LoadByPrimaryKey(userID);
-                    string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
-
-                    var modelprint = new Model22
-                    {
-                        PrintedBy = { Text = printedby }
-                    };
-
-                    var tbl1 = ((DataTable)issueGrid.DataSource);
-                    tbl1.TableName = "Model22";
-                    var dtset = new DataSet();
-                    dtset.Tables.Add(tbl1.Copy());
-                    modelprint.DataSource = dtset;
-                    modelprint.Landscape = true;
-                    modelprint.ShowPreviewDialog();
 
                     xpButton2_Click(sender, e);
                     issueGrid.DataSource = null;
