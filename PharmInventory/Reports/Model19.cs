@@ -12,7 +12,7 @@ namespace PharmInventory.Reports
         public Model19()
         {
             InitializeComponent();
-         }
+        }
          
     }
 }
