@@ -444,8 +444,8 @@
             this.gridColumn41.FieldName = "gridColumn41";
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.OptionsColumn.AllowEdit = false;
-            this.gridColumn41.UnboundExpression = "Floor(Iif(([gridColumn19] -[Ending Balance ] - [gridColumn47])<0,0,([gridColumn19" +
-    "] -[Ending Balance ] - [gridColumn47])))";
+            this.gridColumn41.UnboundExpression = "Floor(Iif([gridColumn19] - [gridColumn16] - [gridColumn47]<0,0,[gridColumn19] - [" +
+    "gridColumn16] - [gridColumn47]))";
             this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 11;
