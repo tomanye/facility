@@ -2145,7 +2145,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH;
+                    drv["Quantity"] = (v.Max - v.SOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
@@ -2222,7 +2222,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH; ;
+                    drv["Quantity"] = (v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
@@ -2459,7 +2459,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH;
+                    drv["Quantity"] = (v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                    
                     drv["Doses"] = 1;
@@ -2556,7 +2556,7 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH < 0) ? 0 : v.Max - v.SOH; ;
+                    drv["Quantity"] = (v.Max - v.SOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2)  < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
