@@ -2152,7 +2152,8 @@ FROM    Items itm
                     drv["Status"] = v.Status;
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
-                    drv["TotalSOH"] = v.USOH + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["TotalSOH"] = v.USOH;
+                      //  + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                 }
 
                 return value;
@@ -2228,7 +2229,8 @@ FROM    Items itm
                     drv["Status"] = v.Status;
                     drv["TypeID"] = v.TypeID;
                     drv["LastDUSoh"] = issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
-                    drv["TotalSOH"] = v.USOH + issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["TotalSOH"] = v.USOH;
+                        //+ issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                 }
 
                 return value;
