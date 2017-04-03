@@ -420,7 +420,7 @@
             // gridColumn20
             // 
             this.gridColumn20.Caption = "Quantity Ordered";
-            this.gridColumn20.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn20.DisplayFormat.FormatString = "#,##0";
             this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn20.FieldName = "gridColumn20";
             this.gridColumn20.Name = "gridColumn20";
@@ -796,7 +796,7 @@
             this.gridColumn8.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn8.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridColumn8.Caption = "Qty Ordered";
-            this.gridColumn8.DisplayFormat.FormatString = "#,##0.00";
+            this.gridColumn8.DisplayFormat.FormatString = "#,##0";
             this.gridColumn8.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
