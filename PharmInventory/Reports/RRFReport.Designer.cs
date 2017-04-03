@@ -381,7 +381,7 @@
             this.xrTableCell43.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell43.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell43.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField8", "{0:#,##0.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField8", "{0:#,#0}")});
             this.xrTableCell43.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTableCell43.Name = "xrTableCell43";
             this.xrTableCell43.StylePriority.UseBorderColor = false;
