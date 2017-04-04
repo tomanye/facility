@@ -2073,8 +2073,9 @@ FROM    Items itm
                          Issued = n.Issued,
                          Status =n.Status,
                          LossAdj = z["Quantity"],
-                         Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                         TypeID=n.TypeID
+                         // Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                         Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
+                         TypeID =n.TypeID
                          }).ToArray();
             if (t.Length == 0)
             {
@@ -2097,8 +2098,9 @@ FROM    Items itm
                                       LossAdj = 0,
                                       ProgramID = n.ProgramID,
                                       Status = n.Status,
-                                      Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                      DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                                      //Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                                        Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
+                                  DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                      // MaxStockQty =((120*n.Issued)/(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
@@ -2145,7 +2147,8 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                   // drv["Quantity"] = (v.Max - v.SOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["Quantity"] = (v.Max - v.USOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.USOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;
@@ -2179,7 +2182,8 @@ FROM    Items itm
                                   LossAdj = n.LossAdj,
                                   ProgramID = n.ProgramID,
                                   Status = n.Status,
-                                  Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
+                                  //Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
+                                  Quantity = n.Quantity,
                                   DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   TypeID = n.TypeID
                               }).ToArray();
@@ -2222,7 +2226,8 @@ FROM    Items itm
                     drv["Issued"] = v.Issued;
                     drv["Received"] = v.Received;
                     drv["LossAdj"] = v.LossAdj;
-                    drv["Quantity"] = (v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                    drv["Quantity"] = (((120*v.Issued)/(60-v.DaysOutOfStock)) - v.USOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : ((120 * v.Issued) / (60 - v.DaysOutOfStock)) - v.USOH - issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
+                   // drv["Quantity"] = (v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2) < 0) ? 0 : v.Max - v.SOH- issue.GetDULastSOH1(Convert.ToInt32(v.ID), dt1, dt2);
                     drv["ProgramID"] = v.ProgramID;
                     drv["DaysOutOfStock"] = v.DaysOutOfStock;
                     //drv["MaxStockQty"] = v.MaxStockQty;

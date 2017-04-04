@@ -818,8 +818,8 @@
             this.gridColumn40.FieldName = "gridColumn40";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.OptionsColumn.AllowEdit = false;
-            this.gridColumn40.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
-    "] - [LastDUSoh])))";
+            this.gridColumn40.UnboundExpression = "Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH] - [L" +
+    "astDUSoh]))";
             this.gridColumn40.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn40.Width = 64;
             // 
@@ -864,8 +864,8 @@
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.OptionsColumn.AllowEdit = false;
             this.gridColumn33.OptionsColumn.ReadOnly = true;
-            this.gridColumn33.UnboundExpression = "Floor(Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH" +
-    "] - [LastDUSoh])))";
+            this.gridColumn33.UnboundExpression = "Iif(([gridColumn7] -[TotalSOH] - [LastDUSoh])<0,0,([gridColumn7] -[TotalSOH] - [L" +
+    "astDUSoh]))";
             this.gridColumn33.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 11;
