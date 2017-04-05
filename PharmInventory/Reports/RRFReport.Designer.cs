@@ -233,7 +233,7 @@
             this.xrTableCell2.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell2.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell2.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "calculatedField10", "{0:#,##0}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "calculatedField10", "{0:#,##0.00}")});
             this.xrTableCell2.Font = new System.Drawing.Font("Times New Roman", 8.5F);
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 3, 0, 0, 100F);
@@ -251,7 +251,7 @@
             this.xrTableCell33.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell33.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell33.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField3", "{0:#,##0}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField3", "{0:#,##0.00}")});
             this.xrTableCell33.Font = new System.Drawing.Font("Times New Roman", 8.5F);
             this.xrTableCell33.Name = "xrTableCell33";
             this.xrTableCell33.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 3, 0, 0, 100F);
@@ -269,7 +269,7 @@
             this.xrTableCell34.BorderColor = System.Drawing.Color.LightGray;
             this.xrTableCell34.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell34.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField4", "{0:#,##0}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.calculatedField4", "{0:#,##0.00}")});
             this.xrTableCell34.Font = new System.Drawing.Font("Times New Roman", 8.5F);
             this.xrTableCell34.Name = "xrTableCell34";
             this.xrTableCell34.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 3, 0, 0, 100F);
