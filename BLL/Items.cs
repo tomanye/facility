@@ -106,6 +106,60 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+        public int GetDaysOutOfStock(DateTime startdate, DateTime enddate, int itemid, int storeid)
+        {
+         
+            var query = String.Format(@"SELECT DISTINCT
+                                             y.DaysOutOfStock
+                                     FROM    Items itm
+                                             LEFT JOIN ( SELECT  ItemID ,
+		                                                CASE WHEN MAX(Date) > '{0}' THEN  
+							                            DATEDIFF(dd,max(Date),'{1}') 
+							                            Else
+		                                                 DATEDIFF(dd,'{0}','{1}') 
+							                             END DaysOutOfStock, 
+							                            x.StoreId
+                                                FROM    ( SELECT    ItemID ,
+                                                                    Date,
+										                            storeid
+                                                          FROM      ( SELECT    id.ItemID ItemID ,
+                                                                                MAX(id.EurDate) Date,
+													                            storeid
+                                                                      FROM      IssueDoc id
+                                                                      WHERE    
+										                               id.ItemID IN (
+                                                                                SELECT  ItemID
+                                                                                FROM    ReceiveDoc rd
+                                                                                GROUP BY ItemID
+                                                                                HAVING  SUM(rd.QuantityLeft) = 0 )
+													
+                                                                      GROUP BY  id.ItemID,storeid
+                                                                    ) x
+                                                          UNION
+                                                          ( SELECT  d.ItemID ItemID ,
+                                                                    MAX(d.EurDate) Date,
+										                            d.StoreId
+                                                            FROM    Disposal d
+                                                            WHERE   ItemID IN (
+                                                                    SELECT  ItemID
+                                                                    FROM    ReceiveDoc rd
+                                                                    GROUP BY ItemID
+                                                                    HAVING  SUM(rd.QuantityLeft) = 0 )
+                                                            GROUP BY d.ItemID,d.StoreId
+                                                          )
+                                                        ) x
+                                                GROUP BY x.ItemID, x.StoreId
+                                              ) AS y ON itm.ID = y.ItemID
+				                              WHERE itemid = {2}   AND y.StoreId ={3}", startdate, enddate, itemid, storeid);
+            this.LoadFromRawSql(query); 
+            int DaysOutOfStock = 0;
+            if (this.DataTable.Rows.Count>0)
+            {
+                DaysOutOfStock = Convert.ToInt16(this.DataTable.Rows[0]["DaysOutOfStock"]);
+            }
+            return DaysOutOfStock;
+          
+        }
 
         public DataTable GetItemsWithLastIssuedOrDisposedDateForUnitBased()
         {
@@ -2082,25 +2136,26 @@ FROM    Items itm
                 var t2 = (from n in l
                           select
                               new
-                                  {
-                                      ID = n.ID,
-                                      FullItemName = n.FullItemName,
-                                      Unit = n.Unit,
-                                      StockCode = n.StockCode,
-                                      BeginingBalance = n.BeginingBalance,
-                                      SOH = n.SOH,
-                                      USOH = n.USOH,
-                                      Max = n.Max,
-                                      StockCodeDACA = n.StockCodeDACA,
-                                      QtyPerPack = n.QtyPerPack,
-                                      Received = n.Received,
-                                      Issued = n.Issued,
-                                      LossAdj = 0,
-                                      ProgramID = n.ProgramID,
-                                      Status = n.Status,
-                                      //Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
-                                        Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
-                                  DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                              {
+                                  ID = n.ID,
+                                  FullItemName = n.FullItemName,
+                                  Unit = n.Unit,
+                                  StockCode = n.StockCode,
+                                  BeginingBalance = n.BeginingBalance,
+                                  SOH = n.SOH,
+                                  USOH = n.USOH,
+                                  Max = n.Max,
+                                  StockCodeDACA = n.StockCodeDACA,
+                                  QtyPerPack = n.QtyPerPack,
+                                  Received = n.Received,
+                                  Issued = n.Issued,
+                                  LossAdj = 0,
+                                  ProgramID = n.ProgramID,
+                                  Status = n.Status,
+                                  //Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
+                                  Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
+                                  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate,Convert.ToInt32(n.ID), storeId),
+                                //  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                       //TODO: This is a quick fix.  We need to take stock status from the last three months.
                                      // MaxStockQty =((120*n.Issued)/(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
@@ -2184,7 +2239,8 @@ FROM    Items itm
                                   Status = n.Status,
                                   //Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
                                   Quantity = n.Quantity,
-                                  DaysOutOfStock =Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                                  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId),
+                                  //Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   TypeID = n.TypeID
                               }).ToArray();
 
