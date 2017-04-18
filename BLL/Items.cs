@@ -106,59 +106,228 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+        public int GetDOSNoBegginingBalance(DateTime startdate,DateTime enddate, int itemid, int storeid)
+        {
+            var query = string.Format(@"SELECT TOP 1 
+                                       DATEDIFF(dd,'{0}',eurdate )DOS
+ 
+                                FROM    (SELECT    rd.ID ,
+                                                    rd.ItemID  ,
+                                                    rd.Quantity Received ,  
+					                                rd.EurDate 
+                                          FROM      ReceiveDoc rd
+                                          WHERE     ItemID = {2}
+                                                    AND StoreID = {3}
+                                                    AND rd.[EurDate]   BETWEEN '{0}' and'{1}' 
+                                          UNION 
+                                -- select the Found/Adjusted
+                                          SELECT    d.ID ,
+                                                    rd.ItemID , 
+                                                    ISNULL(d.Quantity, 0) AS Received , 
+                                                    d.EurDate
+                                          FROM      Disposal d
+                                                    JOIN ReceiveDoc rd ON d.RecID = rd.ID
+                                          WHERE     d.ItemID = {2}
+                                                    AND d.StoreId = {3}
+                                                    AND d.Losses = 0
+                                                    AND d.[EurDate] BETWEEN '{0}' and'{1}' 
+					                                    ) results
+                                          ORDER BY EurDate asc",startdate,enddate,itemid,storeid);
+            this.LoadFromRawSql(query);
+            int DOS = 59;
+            if (this.DataTable.Rows.Count > 0)
+            {
+                DOS = Convert.ToInt16(this.DataTable.Rows[0]["DOS"]);
+            }
+            return DOS;
+        }
+            public int GetDaysOutOfStockBinCard(DateTime startdate, DateTime enddate, int itemid, int storeid, double  bb )
+        {
+            var  query = string.Format(@"SELECT  *
+                                                    INTO    #tmp
+                                                    FROM    (
+                                                    -- select the received item
+                                                              SELECT    rd.ID ,
+                                                                        rd.ItemID ,
+                                                                        ISNULL(rd.RefNo, '') AS RefNo ,
+                                                                        ISNULL(rd.EurDate, '') AS [Date] ,
+                                                                        ISNULL(rd.BatchNo, '') AS [BatchNo] ,
+                                                                        rd.Quantity Received ,
+                                                                        Issued = 0 ,
+                                                                        ISNULL(rd.Cost, 0) UnitPrice ,
+                                                                        ISNULL(rd.Cost * rd.Quantity, 0) AS TotalPrice ,
+                                                                        Balance = 0 ,
+                                                                        ISNULL(ExpDate, '') ExpDate ,
+                                                                        Precedance = 1 ,
+                                                                        ToFrom = ( SELECT   CompanyName
+                                                                                   FROM     Supplier
+                                                                                   WHERE    ID = rd.SupplierID
+                                                                                 )
+                                                              FROM      ReceiveDoc rd
+                                                              WHERE     ItemID = {2}
+                                                                        AND StoreID = {3}
+                                                                        AND rd.[EurDate] BETWEEN '{0}' AND '{1}'
+					  
+                                                              UNION
+                                                    -- select the issued item
+                                                              SELECT    id.ID ,
+                                                                        rd.ItemID ,
+                                                                        ISNULL(id.RefNo, '') ,
+                                                                        ISNULL(id.EurDate, '') ,
+                                                                        ISNULL(rd.BatchNo, '') ,
+                                                                        Received = 0 ,
+                                                                        ISNULL(id.Quantity, '') AS Issued ,
+                                                                        ISNULL(rd.Cost, 0) UnitPrice ,
+                                                                        ISNULL(rd.Cost * id.Quantity, 0) AS TotalPrice ,
+                                                                        Balance = 0 ,
+                                                                        ISNULL(ExpDate, '') ,
+                                                                        Precedance = 3 ,
+                                                                        ToFrom = ( SELECT   Name
+                                                                                   FROM     ReceivingUnits
+                                                                                   WHERE    ID = id.ReceivingUnitID
+                                                                                 )
+                                                              FROM      IssueDoc id
+                                                                        JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
+                                                              WHERE     id.ItemID = {2}
+                                                                        AND id.StoreId = {3}
+                                                                        AND rd.StoreID = {3}
+                                                                        AND id.[EurDate] BETWEEN '{0}' AND '{1}'
+                                                              UNION
+                                                    -- select the Lost
+                                                              SELECT    d.ID ,
+                                                                        rd.ItemID ,
+                                                                        ISNULL(d.RefNo, '') ,
+                                                                        ISNULL(d.EurDate, '') ,
+                                                                        ISNULL(rd.BatchNo, '') ,
+                                                                        Received = 0 ,
+                                                                        ISNULL(d.Quantity, 0) AS Issued ,
+                                                                        ISNULL(rd.Cost, 0) UnitPrice ,
+                                                                        ISNULL(rd.Cost * d.Quantity, 0) AS TotalPrice ,
+                                                                        Balance = 0 ,
+                                                                        ExpDate ,
+                                                                        Precedance = 4 ,
+                                                                        ToFrom = ( SELECT   CAST (Reason AS VARCHAR)
+                                                                                   FROM     DisposalReasons
+                                                                                   WHERE    ID = d.ReasonId
+                                                                                 )
+                                                              FROM      Disposal d
+                                                                        JOIN ReceiveDoc rd ON d.RecID = rd.ID
+                                                              WHERE     d.ItemID = {2}
+                                                                        AND d.StoreId = {3}
+                                                                        AND d.Losses = 1
+                                                                        AND d.[EurDate] BETWEEN '{0}' AND '{1}'
+                                                              UNION
+                                                    -- select the Found/Adjusted
+                                                              SELECT    d.ID ,
+                                                                        rd.ItemID ,
+                                                                        ISNULL(d.RefNo, '') ,
+                                                                        ISNULL(d.EurDate, '') ,
+                                                                        ISNULL(rd.BatchNo, '') ,
+                                                                        ISNULL(d.Quantity, 0) AS Received ,
+                                                                        Issued = NULL ,
+                                                                        ISNULL(rd.Cost, 0) UnitPrice ,
+                                                                        ISNULL(rd.Cost * d.Quantity, 0) AS TotalPrice ,
+                                                                        Balance = 0 ,
+                                                                        ExpDate ,
+                                                                        Precedance = 2 ,
+                                                                        ToFrom = ( SELECT   CAST(Reason AS VARCHAR)
+                                                                                   FROM     DisposalReasons
+                                                                                   WHERE    ID = d.ReasonId
+                                                                                 )
+                                                              FROM      Disposal d
+                                                                        JOIN ReceiveDoc rd ON d.RecID = rd.ID
+                                                              WHERE     d.ItemID = {2}
+                                                                        AND d.StoreId = {3}
+                                                                        AND d.Losses = 0
+                                                                        AND d.[EurDate] BETWEEN '{0}' AND '{1}'
+                                                    -- return the table.
+                                                            ) results
+                                                    ORDER BY [Date] ,
+                                                            Precedance 
+                                                    update t set  Balance = ISNULL(Received,0)+Balance - ISNULL(Issued, 0) from #tmp t  
+                                                    select * from #tmp
+                                                    order by [Date],Precedance", startdate, enddate, itemid, storeid);
+              
+            this.LoadFromRawSql(query);
+            while (!EOF)
+            {
+                bb += Convert.ToInt32(GetColumn("Balance"));
+                SetColumn("Balance", bb);
+                MoveNext();
+            } 
+            DataTable dt = this.DataTable;
+            int dos = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (i == 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                {
+                    dos += Convert.ToInt32((enddate-Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
+                }
+                else if (i >= 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                {
+                    dos += Convert.ToInt32((Convert.ToDateTime(dt.Rows[i]["Date"]) - Convert.ToDateTime(dt.Rows[i - 1]["Date"])).TotalDays);
+                }
+                else if (i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                {
+                    dos += Convert.ToInt32((enddate - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
+                }
+                else if(i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) > 0 && dos ==0)
+                {
+                    dos += Convert.ToInt32((enddate - startdate).TotalDays);
+                } 
+            }
+            return dos;
+
+     }
         public int GetDaysOutOfStock(DateTime startdate, DateTime enddate, int itemid, int storeid)
         {
-         
-            var query = String.Format(@"SELECT DISTINCT
-                                             y.DaysOutOfStock
-                                     FROM    Items itm
-                                             LEFT JOIN ( SELECT  ItemID ,
-		                                                CASE WHEN MAX(Date) > '{0}' THEN  
-							                            DATEDIFF(dd,max(Date),'{1}') 
-							                            Else
-		                                                 DATEDIFF(dd,'{0}','{1}') 
-							                             END DaysOutOfStock, 
-							                            x.StoreId
+            var    query = String.Format(@"SELECT DISTINCT   y.DaysOutOfStock
+                                     FROM     
+                                            ( SELECT  ItemID ,
+                                                  CASE WHEN MAX(Date) IS NOT NULL THEN  
+                                   DATEDIFF(dd,max(Date),'{1}') 
+                                   Else
+                                                   DATEDIFF(dd,'{0}','{1}') 
+                                    END DaysOutOfStock  
                                                 FROM    ( SELECT    ItemID ,
-                                                                    Date,
-										                            storeid
+                                                                    Date 
                                                           FROM      ( SELECT    id.ItemID ItemID ,
-                                                                                MAX(id.EurDate) Date,
-													                            storeid
-                                                                      FROM      IssueDoc id
+                                                                                 min(id.EurDate) Date  
+                                                                      FROM      IssueDoc id 
+            					          JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                                                       WHERE    
-										                               id.ItemID IN (
-                                                                                SELECT  ItemID
-                                                                                FROM    ReceiveDoc rd
-                                                                                GROUP BY ItemID
-                                                                                HAVING  SUM(rd.QuantityLeft) = 0 )
-													
-                                                                      GROUP BY  id.ItemID,storeid
+            					     id.[EurDate]BETWEEN    '{0}' and'{1}' 
+            						AND  id.ItemID = {2}
+            						AND id.StoreId = {3}
+                                         AND rd.QuantityLeft = 0
+                                                                      GROUP BY  id.ItemID,rd.QuantityLeft 
                                                                     ) x
                                                           UNION
                                                           ( SELECT  d.ItemID ItemID ,
-                                                                    MAX(d.EurDate) Date,
-										                            d.StoreId
-                                                            FROM    Disposal d
-                                                            WHERE   ItemID IN (
-                                                                    SELECT  ItemID
-                                                                    FROM    ReceiveDoc rd
-                                                                    GROUP BY ItemID
-                                                                    HAVING  SUM(rd.QuantityLeft) = 0 )
-                                                            GROUP BY d.ItemID,d.StoreId
+                                                                    Min(d.EurDate) Date  
+                                                            FROM    Disposal d 
+            		        	JOIN ReceiveDoc rd ON d.RecID = rd.ID
+                                                            WHERE d.EurDate BETWEEN    '{0}' and'{1}' 
+            			 AND d.ItemID = {2}
+                                                             AND d.StoreID = {3}
+                                                             AND d.Losses = 1
+            			and   rd.QuantityLeft = 0 
+                                                            GROUP BY d.ItemID
                                                           )
-                                                        ) x
-                                                GROUP BY x.ItemID, x.StoreId
-                                              ) AS y ON itm.ID = y.ItemID
-				                              WHERE itemid = {2}   AND y.StoreId ={3}", startdate, enddate, itemid, storeid);
+                                                        ) x 
+                                                GROUP BY x.ItemID 
+                                              )y", startdate, enddate, itemid, storeid);
+
+
             this.LoadFromRawSql(query); 
             int DaysOutOfStock = 0;
-            if (this.DataTable.Rows.Count>0)
+            if (this.DataTable.Rows.Count > 0)
             {
                 DaysOutOfStock = Convert.ToInt16(this.DataTable.Rows[0]["DaysOutOfStock"]);
             }
             return DaysOutOfStock;
-          
+
+
         }
 
         public DataTable GetItemsWithLastIssuedOrDisposedDateForUnitBased()
@@ -2154,13 +2323,14 @@ FROM    Items itm
                                   Status = n.Status,
                                   //Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
-                                  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate,Convert.ToInt32(n.ID), storeId),
-                                //  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
-                                      //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                                      //TODO: This is a quick fix.  We need to take stock status from the last three months.
-                                     // MaxStockQty =((120*n.Issued)/(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
-                                                                             // endDate)))),
-                                      TypeID = n.TypeID
+                                  DaysOutOfStock = ( n.BeginingBalance == 0 )? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
+                                 // DaysOutOfStock = GetDaysOutOfStock(startDate, endDate,Convert.ToInt32(n.ID), storeId),
+                                 //  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
+                                 //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                 //TODO: This is a quick fix.  We need to take stock status from the last three months.
+                                 // MaxStockQty =((120*n.Issued)/(60 -Convert.ToInt32(Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate,
+                                 // endDate)))),
+                                  TypeID = n.TypeID
                                   }).ToArray();
 
                 var value = new DataTable();
@@ -2239,7 +2409,8 @@ FROM    Items itm
                                   Status = n.Status,
                                   //Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
                                   Quantity = n.Quantity,
-                                  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId),
+                                  DaysOutOfStock = (n.BeginingBalance == 0) ? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
+                                //  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId),
                                   //Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   TypeID = n.TypeID
                               }).ToArray();
