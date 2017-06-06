@@ -45,7 +45,12 @@ namespace PharmInventory
                     navBarGroup3.Visible = false;
                     navBarGroup5.Visible = false;
                     navBarGroup6.Visible = false;
-
+                    rRFToolStripMenuItem.Visible = false;
+                    consumptionTrendToolStripMenuItem1.Visible = false;
+                    consumptionByUnitToolStripMenuItem.Visible = false;
+                    aMCReportToolStripMenuItem.Visible = false;
+                    priceOnlyReportToolStripMenuItem.Visible = false;
+                    vRFFormToolStripMenuItem.Visible = false;
                     break;
                 case 2://Editor
                     menuStrip2.Items[0].Visible = true;
@@ -96,7 +101,9 @@ namespace PharmInventory
             //f = new ReceivingForm();
             //AddTab("Receiving Form", f);
 
-            
+            if (usType == 1)
+                LoadForm("Receive Log");
+            else
             LoadForm("Receives");
             
 
