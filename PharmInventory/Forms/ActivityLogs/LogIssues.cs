@@ -31,6 +31,12 @@ namespace PharmInventory.Forms.ActivityLogs
         /// <param name="e"></param>
         private void ManageItems_Load(object sender, EventArgs e)
         {
+            var usr = new User();
+            var userID = MainWindow.LoggedinId;
+            usr.LoadByPrimaryKey(userID);
+            if (usr.UserType == 1)
+                contextMenuStrip1.Enabled = false;
+
             var rec = new ReceivingUnits();
             DataTable drRec = rec.GetAllApplicableDU();
             //cboIssuedTo.Properties.DataSource = drRec;
