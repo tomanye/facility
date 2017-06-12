@@ -45,12 +45,14 @@ namespace PharmInventory
                     navBarGroup3.Visible = false;
                     navBarGroup5.Visible = false;
                     navBarGroup6.Visible = false;
-                    rRFToolStripMenuItem.Visible = false;
-                    consumptionTrendToolStripMenuItem1.Visible = false;
-                    consumptionByUnitToolStripMenuItem.Visible = false;
-                    aMCReportToolStripMenuItem.Visible = false;
-                    priceOnlyReportToolStripMenuItem.Visible = false;
-                    vRFFormToolStripMenuItem.Visible = false;
+                    lbiRRFForm.Visible= rRFToolStripMenuItem.Visible = false;
+                    ConsumptionTrend.Visible= consumptionTrendToolStripMenuItem1.Visible = false;
+                    ConsumptionByUnit.Visible= consumptionByUnitToolStripMenuItem.Visible = false;
+                    navBarItem6.Visible= aMCReportToolStripMenuItem.Visible = false;
+                    menuItemPriceOnlyReport.Visible= priceOnlyReportToolStripMenuItem.Visible = false;
+                    navBarItem10.Visible = vRFFormToolStripMenuItem.Visible = false;
+
+                     
                     break;
                 case 2://Editor
                     menuStrip2.Items[0].Visible = true;
