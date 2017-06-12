@@ -725,6 +725,7 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(197, 116);
             this.layoutControlGroup1.Text = "Item Unit";
+            this.layoutControlGroup1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // z
             // 
