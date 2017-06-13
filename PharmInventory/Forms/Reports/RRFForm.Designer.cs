@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RRFForm));
@@ -66,7 +65,7 @@
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.unitsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.unitsBindingSource = new System.Windows.Forms.BindingSource();
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -77,9 +76,9 @@
             this.btnsubprogram = new DevExpress.XtraEditors.SimpleButton();
             this.btnGenerateRRF = new System.Windows.Forms.Button();
             this.lkorderstatus = new DevExpress.XtraEditors.LookUpEdit();
-            this.orderbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderbindingSource = new System.Windows.Forms.BindingSource();
             this.lkCategory = new DevExpress.XtraEditors.LookUpEdit();
-            this.categorybindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.categorybindingSource = new System.Windows.Forms.BindingSource();
             this.btnSendEmergencyOrder = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.picSync = new System.Windows.Forms.PictureBox();
@@ -146,15 +145,15 @@
             this.lcCheckingProgress = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.bwRRFStatusCheck = new System.ComponentModel.BackgroundWorker();
             this.bwRRFSubmit = new System.ComponentModel.BackgroundWorker();
-            this.ProgramsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ProgramsBindingSource = new System.Windows.Forms.BindingSource();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewInPacks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsChoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemChoiceView)).BeginInit();
@@ -956,6 +955,7 @@
             this.btnsubprogram.StyleController = this.layoutControl1;
             this.btnsubprogram.TabIndex = 53;
             this.btnsubprogram.Text = "Update Sub Program";
+            this.btnsubprogram.Visible = false;
             this.btnsubprogram.Click += new System.EventHandler(this.btnsubprogram_Click);
             // 
             // btnGenerateRRF
@@ -1980,6 +1980,7 @@
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextToControlDistance = 0;
             this.layoutControlItem20.TextVisible = false;
+            this.layoutControlItem20.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // simpleButton2
             // 
