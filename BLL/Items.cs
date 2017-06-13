@@ -292,7 +292,7 @@ namespace BLL
                                                 FROM    ( SELECT    ItemID ,
                                                                     Date 
                                                           FROM      ( SELECT    id.ItemID ItemID ,
-                                                                                 min(id.EurDate) Date  
+                                                                                 max(id.EurDate) Date  
                                                                       FROM      IssueDoc id 
             					          JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                                                       WHERE    
@@ -304,7 +304,7 @@ namespace BLL
                                                                     ) x
                                                           UNION
                                                           ( SELECT  d.ItemID ItemID ,
-                                                                    Min(d.EurDate) Date  
+                                                                    max(d.EurDate) Date  
                                                             FROM    Disposal d 
             		        	JOIN ReceiveDoc rd ON d.RecID = rd.ID
                                                             WHERE d.EurDate BETWEEN    '{0}' and'{1}' 
