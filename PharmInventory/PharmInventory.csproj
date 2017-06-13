@@ -902,9 +902,7 @@
     <Content Include="Scripts\9923_AlterProgramProduct.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9924_InsertIntoProgramProduct.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Scripts\9924_InsertIntoProgramProduct.sql" />
     <Content Include="Scripts\9925_DeleteDuplicateForProgramProduct.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1020,6 +1018,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9962-proc_AlterReceiveDocUpdate.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9965-proc_AlterSOHByProgram.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9964-proc_AlterReceiveDocLoadbyPrimaryKey.sql">

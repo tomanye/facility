@@ -45,6 +45,10 @@ namespace PharmInventory
                     navBarGroup3.Visible = false;
                     navBarGroup5.Visible = false;
                     navBarGroup6.Visible = false;
+                    overStockedProductsToolStripMenuItem.Visible = false;
+                    stockOutProductsToolStripMenuItem.Visible = false;
+                    lbiOverStocked.Visible = false;
+                    lbiStockOut.Visible = false;
                     lbiRRFForm.Visible= rRFToolStripMenuItem.Visible = false;
                     ConsumptionTrend.Visible= consumptionTrendToolStripMenuItem1.Visible = false;
                     ConsumptionByUnit.Visible= consumptionByUnitToolStripMenuItem.Visible = false;
