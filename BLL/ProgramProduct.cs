@@ -49,6 +49,12 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+        public DataTable LoadByProgramProductByItemId(int ItemId,int storeID)
+        {
+            string query = String.Format(@"Select * from ProgramProduct where ItemID = {0} and StoreID = {1}", ItemId, storeID);
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
 
 
 

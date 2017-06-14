@@ -49,7 +49,8 @@ namespace PharmInventory.Forms.Modals
             DataTable dtItem = itm.GetItemById(_itemId);
             txtItemName.Text = dtItem.Rows[0]["ItemName"].ToString() + " - " + dtItem.Rows[0]["Unit"].ToString() + " - " + dtItem.Rows[0]["Strength"].ToString();
             ckExculed.Checked =itm.IsInHospitalList;
-            chkNeedExpiryBatch.Checked = itm.NeedExpiryBatch;
+            chkNeedExpiryBatch.Checked = itm.NeedExpiryBatch; 
+            if(dtItem.Rows[0]["Pediatric"]!=DBNull.Value)
             chkIsVaccine.Checked = itm.Pediatric;
             txtText.Text = itm.StockCodeDACA ?? string.Empty;
             txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
@@ -284,6 +285,7 @@ namespace PharmInventory.Forms.Modals
                 progItm.AddNew();
                 progItm.ItemID = itm.ID;
                 progItm.ProgramID = prog.ID;
+                progItm.StoreID = (progItm.ProgramID == 1000) ? 8 : 9;
                 progItm.Save();
             }
 

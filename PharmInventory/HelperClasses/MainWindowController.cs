@@ -31,16 +31,32 @@ namespace PharmInventory
             {
                 case 1://Reader
                     menuStrip2.Items[0].Visible = false;
-                    menuStrip2.Items[1].Visible = false;
+                    menuStrip2.Items[1].Visible = true;
                     menuStrip2.Items[2].Visible = true;
-                    menuStrip2.Items[3].Visible = true;
+                    menuStrip2.Items[3].Visible = false;
                     menuStrip2.Items[4].Visible = false;
-                    menuStrip2.Items[5].Visible = true;
+                    menuStrip2.Items[5].Visible = false;
                     menuStrip2.Items[6].Visible = false;
-                    menuStrip2.Items[7].Visible = true;
+                    menuStrip2.Items[7].Visible = false;
                     menuStrip2.Items[8].Visible = true;
                     navBarFacilitySettings.Visible = false;
                     navBarPipeline.Visible = false;
+                    navBarGroup1.Visible = false; 
+                    navBarGroup3.Visible = false;
+                    navBarGroup5.Visible = false;
+                    navBarGroup6.Visible = false;
+                    overStockedProductsToolStripMenuItem.Visible = false;
+                    stockOutProductsToolStripMenuItem.Visible = false;
+                    lbiOverStocked.Visible = false;
+                    lbiStockOut.Visible = false;
+                    lbiRRFForm.Visible= rRFToolStripMenuItem.Visible = false;
+                    ConsumptionTrend.Visible= consumptionTrendToolStripMenuItem1.Visible = false;
+                    ConsumptionByUnit.Visible= consumptionByUnitToolStripMenuItem.Visible = false;
+                    navBarItem6.Visible= aMCReportToolStripMenuItem.Visible = false;
+                    menuItemPriceOnlyReport.Visible= priceOnlyReportToolStripMenuItem.Visible = false;
+                    navBarItem10.Visible = vRFFormToolStripMenuItem.Visible = false;
+
+                     
                     break;
                 case 2://Editor
                     menuStrip2.Items[0].Visible = true;
@@ -91,7 +107,9 @@ namespace PharmInventory
             //f = new ReceivingForm();
             //AddTab("Receiving Form", f);
 
-            
+            if (usType == 1)
+                LoadForm("Receive Log");
+            else
             LoadForm("Receives");
             
 
