@@ -29,6 +29,11 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void ManageItems_Load(object sender, EventArgs e)
         {
+            var usr = new User();
+            var userID = MainWindow.LoggedinId;
+            usr.LoadByPrimaryKey(userID);
+            if(usr.UserType ==1)
+            contextMenuStrip1.Enabled = false; 
             var stor = new Stores();
             stor.GetActiveStores();
             cboStores.Properties.DataSource = stor.DefaultView;
@@ -315,31 +320,39 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void gridView1_DoubleClick(object sender, EventArgs e)
         {
-            DataRow dr = grdLogReceive.GetFocusedDataRow();
 
-            if (dr == null) return;
-
-            int tranId = Convert.ToInt32(dr["ID"]);
-            ReceiveDoc rec = new ReceiveDoc();
-            rec.LoadByPrimaryKey(tranId);
-
-            _dtDate.Value = DateTime.Now;
-            _dtDate.CustomFormat = "MM/dd/yyyy";
-            IssueDoc iss = new IssueDoc();
-            iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
-            DateTime dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
-
-            if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
+            var us = new User();
+            var userID = MainWindow.LoggedinId;
+            us.LoadByPrimaryKey(userID); 
+            if (us.UserType != 1)
             {
-                //XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                EditReceive edRec = new EditReceive(tranId, true, Convert.ToBoolean(chkIntDrugCode.EditValue));
-                MainWindow.ShowForms(edRec);
+                DataRow dr = grdLogReceive.GetFocusedDataRow();
+
+                if (dr == null) return;
+
+                int tranId = Convert.ToInt32(dr["ID"]);
+                ReceiveDoc rec = new ReceiveDoc();
+                rec.LoadByPrimaryKey(tranId);
+
+                _dtDate.Value = DateTime.Now;
+                _dtDate.CustomFormat = "MM/dd/yyyy";
+                IssueDoc iss = new IssueDoc();
+                iss.GetIssueByBatchAndId(rec.ItemID, rec.BatchNo, rec.ID);
+                DateTime dtCurrent = ConvertDate.DateConverter(_dtDate.Text);
+
+                if ((rec.Date.Year != dtCurrent.Year && rec.Date.Month < 11) || (iss.RowCount != 0))
+                {
+                    //XtraMessageBox.Show("Unable to edit, This Transaction has been processed. Try Loss and Adjustment.", "Unable to Edit", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    EditReceive edRec = new EditReceive(tranId, true, Convert.ToBoolean(chkIntDrugCode.EditValue));
+                    MainWindow.ShowForms(edRec);
+                }
+                else
+                {
+                    EditReceive edRec = new EditReceive(tranId, false, Convert.ToBoolean(chkIntDrugCode.EditValue));
+                    MainWindow.ShowForms(edRec);
+                }
             }
-            else
-            {
-                EditReceive edRec = new EditReceive(tranId, false, Convert.ToBoolean(chkIntDrugCode.EditValue));
-                MainWindow.ShowForms(edRec);
-            }
+               
         }
 
         private void btnDeleteWithRfNo_Click(object sender, EventArgs e)

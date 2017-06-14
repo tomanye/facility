@@ -7,6 +7,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraEditors;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using DevExpress.XtraGrid.Columns;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -62,6 +63,8 @@ namespace PharmInventory.Forms.Reports
             cboYear.Properties.DataSource = dtYear;
             cboYear.ItemIndex = 0;
             gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+
+            gridItemListView.Columns["QuantityLeft"].FilterInfo = new ColumnFilterInfo("[QuantityLeft] <> '0'");
         }
 
         private void PopulateCatTree(String type)
