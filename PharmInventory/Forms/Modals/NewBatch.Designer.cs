@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQtyPerPack.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPackQty.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
@@ -163,7 +163,7 @@
             this.dateEditExpiryDate.Name = "dateEditExpiryDate";
             this.dateEditExpiryDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditExpiryDate.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEditExpiryDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dateEditExpiryDate.Size = new System.Drawing.Size(166, 20);
             this.dateEditExpiryDate.StyleController = this.layoutControl1;
@@ -306,7 +306,7 @@
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 96);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(458, 24);
-            this.layoutControlItem8.Text = "Price";
+            this.layoutControlItem8.Text = "Unit Price";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(56, 13);
             // 
             // NewBatch
@@ -328,7 +328,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtQtyPerPack.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPackQty.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditExpiryDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBatchNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();

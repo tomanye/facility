@@ -285,6 +285,7 @@ namespace PharmInventory.Forms.Modals
                 progItm.AddNew();
                 progItm.ItemID = itm.ID;
                 progItm.ProgramID = prog.ID;
+                progItm.StoreID = (progItm.ProgramID == 1000) ? 8 : 9;
                 progItm.Save();
             }
 
