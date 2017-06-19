@@ -113,12 +113,21 @@ namespace PharmInventory.Forms.Modals
             Programs prog = new Programs();
             prog.GetSubPrograms();
             ProgramProduct progItem = new ProgramProduct();
-            lstPrograms.Items.Clear();
-            foreach (DataRowView dv in prog.DefaultView)
+            //lstPrograms.Items.Clear();
+            //foreach (DataRowView dv in prog.DefaultView)
+            //{
+            //    bool check = false;
+            //    check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dv["ID"]));
+            //    lstPrograms.Items.Add(dv["Name"], check);
+            //}
+            foreach (DataRow dr in prog.DefaultView.ToTable().Rows)
             {
                 bool check = false;
-                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dv["ID"]));
-                lstPrograms.Items.Add(dv["Name"], check);
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]));
+                if (Convert.ToString(dr["Name"]) != "All Programs")
+                    rdSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
+                if (check)
+                    rdSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
             }
 
             ReceivingUnits dus = new ReceivingUnits();
@@ -279,15 +288,20 @@ namespace PharmInventory.Forms.Modals
             //prog.Name = cboPrograms.Text;
             //prog.Save();
 
-            foreach (object t in lstPrograms.CheckedItems)
-            {
-                prog.GetProgramByName(t.ToString());
-                progItm.AddNew();
-                progItm.ItemID = itm.ID;
-                progItm.ProgramID = prog.ID;
-                progItm.StoreID = (progItm.ProgramID == 1000) ? 8 : 9;
-                progItm.Save();
-            }
+            //foreach (object t in lstPrograms.CheckedItems)
+            //{
+            //    prog.GetProgramByName(t.ToString());
+            //    progItm.AddNew();
+            //    progItm.ItemID = itm.ID;
+            //    progItm.ProgramID = prog.ID;
+            //    progItm.StoreID = (progItm.ProgramID == 1000) ? 8 : 9;
+            //    progItm.Save();
+            //}
+            progItm.AddNew();
+            progItm.ItemID = itm.ID;
+            progItm.ProgramID = Convert.ToInt32(rdSubProgram.EditValue);
+            progItm.StoreID = 9;
+            progItm.Save();
 
             var duItem = new DUsItemList();
             var dus = new ReceivingUnits();
@@ -319,7 +333,7 @@ namespace PharmInventory.Forms.Modals
         /// <param name="e"></param>
         private void cboPrograms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstPrograms.Items.Clear();
+          //  lstPrograms.Items.Clear(); 
             Programs prog = new Programs();
             ProgramProduct progItem = new ProgramProduct();
             if (cboPrograms.SelectedValue != null)
@@ -330,12 +344,22 @@ namespace PharmInventory.Forms.Modals
             {
                 prog.GetSubPrograms();
             }
-            foreach (DataRowView dv in prog.DefaultView)
+            //foreach (DataRowView dv in prog.DefaultView)
+            //{
+            //    bool check = false;
+            //    check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dv["ID"]));
+            //    lstPrograms.Items.Add(dv["Name"], check);
+            //}
+            foreach (DataRow dr in prog.DefaultView.ToTable().Rows)
             {
                 bool check = false;
-                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dv["ID"]));
-                lstPrograms.Items.Add(dv["Name"], check);
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]));
+                if (Convert.ToString(dr["Name"]) != "All Programs")
+                    rdSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
+                if (check)
+                    rdSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
             }
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

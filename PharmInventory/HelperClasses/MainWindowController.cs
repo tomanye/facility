@@ -55,8 +55,9 @@ namespace PharmInventory
                     navBarItem6.Visible= aMCReportToolStripMenuItem.Visible = false;
                     menuItemPriceOnlyReport.Visible= priceOnlyReportToolStripMenuItem.Visible = false;
                     navBarItem10.Visible = vRFFormToolStripMenuItem.Visible = false;
+                    CostReport.Visible =  costReportToolStripMenuItem.Visible = false;
 
-                     
+
                     break;
                 case 2://Editor
                     menuStrip2.Items[0].Visible = true;
