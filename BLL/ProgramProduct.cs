@@ -38,8 +38,11 @@ namespace BLL
             foreach (DataRowView dv in this.DataTable.DefaultView)
             {
                 this.LoadByPrimaryKey(Convert.ToInt32(dv["ID"]));
-                this.MarkAsDeleted();
-                this.Save();
+                if(Convert.ToInt32(dv["StoreID"]) != 8)
+                {
+                    this.MarkAsDeleted();
+                    this.Save();
+                }  
             }
         }
 
