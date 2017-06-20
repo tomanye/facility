@@ -26,7 +26,7 @@ namespace BLL
         public DataTable GetSubPrograms()
         {
             this.FlushData();
-            this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0"));
+            this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0 Order By Name"));
             return this.DataTable;
         }
         public DataTable GetAllPrograms()
