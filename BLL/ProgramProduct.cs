@@ -38,7 +38,7 @@ namespace BLL
             foreach (DataRowView dv in this.DataTable.DefaultView)
             {
                 this.LoadByPrimaryKey(Convert.ToInt32(dv["ID"]));
-                if(Convert.ToInt32(dv["StoreID"]) != 8)
+                if(dv["StoreID"]!= DBNull.Value && Convert.ToInt32(dv["StoreID"]) != 8)
                 {
                     this.MarkAsDeleted();
                     this.Save();
