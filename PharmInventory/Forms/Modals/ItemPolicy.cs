@@ -297,11 +297,15 @@ namespace PharmInventory.Forms.Modals
             //    progItm.StoreID = (progItm.ProgramID == 1000) ? 8 : 9;
             //    progItm.Save();
             //}
-            progItm.AddNew();
-            progItm.ItemID = itm.ID;
-            progItm.ProgramID = Convert.ToInt32(rdSubProgram.EditValue);
-            progItm.StoreID = 9;
-            progItm.Save();
+            if (rdSubProgram.EditValue != null)
+            {
+                progItm.AddNew();
+                progItm.ItemID = itm.ID;
+                progItm.ProgramID = Convert.ToInt32(rdSubProgram.EditValue);
+                progItm.StoreID = 9;
+                progItm.Save();
+            }
+        
 
             var duItem = new DUsItemList();
             var dus = new ReceivingUnits();
