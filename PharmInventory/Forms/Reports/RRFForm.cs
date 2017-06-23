@@ -1229,6 +1229,12 @@ namespace PharmInventory.Forms.Reports
             r.UpdateSubProgram();
             XtraMessageBox.Show("Sub Programs Updated Successfully", "Confirmation");
         }
+
+        private void gridItemChoiceView_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
+        {
+            if (e.IsGetData)
+                e.Value = e.ListSourceRowIndex + 1;
+        }
     }
 }
 
