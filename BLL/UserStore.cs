@@ -25,5 +25,15 @@ namespace BLL
                 this.Save();
             }
         }
+        public DataTable GetUserStore(int userid)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@"SELECT   st.ID, st.StoreName
+                                                FROM     vwGetUsers vu
+                                                JOIN dbo.UserStore ut ON ut.UserID = vu.id
+                                                JOIN dbo.[Stores] st ON st.id = ut.StoreID
+                                                WHERE ut.UserID =  {0}", userid));
+            return this.DataTable;
+        }
     }
 }

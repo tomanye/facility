@@ -171,7 +171,7 @@ namespace PharmInventory.Forms.Profiles
                 BLL.Type ucType = new BLL.Type();
                 ucType.LoadAll();
 
-                 UserCommodityType usc = new UserCommodityType();
+                UserCommodityType usc = new UserCommodityType();
                 DataTable comUser = usc.GetUserCommodityType(_userId); 
 
                 cbCommodity.Properties.DataSource = ucType.DefaultView.ToTable();
@@ -190,7 +190,30 @@ namespace PharmInventory.Forms.Profiles
                 {
                     result += element + separator;
                 }
-                cbCommodity.SetEditValue(result);  
+                cbCommodity.SetEditValue(result);
+
+                UserStore ust = new UserStore();
+                DataTable storeUser = ust.GetUserStore(_userId);
+                Stores stuser = new Stores();
+                stuser.LoadAll();
+                cbStore.Properties.DataSource = stuser.DefaultView;
+                cbStore.Properties.DisplayMember = "StoreName";
+                cbStore.Properties.ValueMember = "ID";
+                string[] arrst = new string[storeUser.DefaultView.ToTable().Rows.Count];
+                int rowindex = 0;
+                foreach (DataRow drs in storeUser.DefaultView.ToTable().Rows)
+                {
+                    arrst[rowindex] = Convert.ToString(drs["ID"]);
+                    index++;
+                }
+                char separatorst = cbStore.Properties.SeparatorChar;
+                string resultst = string.Empty;
+                foreach (var element in arrst)
+                {
+                    resultst += element + separatorst;
+                }
+                cbStore.SetEditValue(resultst);
+
 
             }
         }
