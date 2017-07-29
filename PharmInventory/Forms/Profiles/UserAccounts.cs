@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BLL;
 using DevExpress.XtraEditors;
+using System.Collections.Generic;
 
 namespace PharmInventory.Forms.Profiles
 {
@@ -12,13 +13,15 @@ namespace PharmInventory.Forms.Profiles
     /// </summary>
     public partial class UserAccounts : XtraForm
     {
+      
         public UserAccounts()
         {
             InitializeComponent();
         }
 
         int _userId = 0;
-        
+        string dispMember = "Name";
+        string valMember = "ID";
         /// <summary>
         /// Loads lookups
         /// </summary>
@@ -57,6 +60,18 @@ namespace PharmInventory.Forms.Profiles
             UserType uType = new UserType();
             uType.LoadAll();
             cboUserType.DataSource = uType.DefaultView;
+
+            BLL.Type comUser = new BLL.Type();
+            comUser.LoadAll();
+           cbCommodity.Properties.DataSource = comUser.DefaultView;
+            cbCommodity.Properties.DisplayMember = "Name";
+            cbCommodity.Properties.ValueMember = "ID";
+
+            Stores storeUser = new Stores();
+            storeUser.LoadAll();
+            cbStore.Properties.DataSource = storeUser.DefaultView;
+            cbStore.Properties.DisplayMember = "StoreName";
+            cbStore.Properties.ValueMember = "ID";
         }
 
         /// <summary>
@@ -81,8 +96,33 @@ namespace PharmInventory.Forms.Profiles
                 us.Address = txtAddress.Text;
                 us.Mobile = txtMobile.Text;
                 us.Active = ckActive.Checked;
-                us.UserType = Convert.ToInt32(cboUserType.SelectedValue);
+                us.UserType = Convert.ToInt32(cboUserType.SelectedValue); 
                 us.Save();
+
+
+                string selectedCommodity = cbCommodity.EditValue.ToString();
+                string[] comArr = selectedCommodity.Split(',');
+                UserCommodityType uc = new UserCommodityType();
+                uc.DeleteAllTypeForUser(us.ID);
+                foreach (var t in comArr)
+                {
+                    uc.AddNew();
+                    uc.TypeID = Convert.ToInt16(t);
+                    uc.UserID = us.ID;
+                    uc.Save();
+                }
+
+                string selectedStore = cbStore.EditValue.ToString();
+                string[] storeArr = selectedStore.Split(',');
+                UserStore ustr = new UserStore();
+                ustr.DeleteAllTStoreForUser(us.ID);
+                foreach (var t in storeArr)
+                {
+                    ustr.AddNew();
+                    ustr.StoreID = Convert.ToInt16(t);
+                    ustr.UserID = us.ID;
+                    ustr.Save();
+                }
                 PopulateUser();
             }
             else
@@ -105,7 +145,7 @@ namespace PharmInventory.Forms.Profiles
             txtUsername.Text = "";
             ckActive.Checked = true;
             cboUserType.SelectedIndex = -1;
-            groupBox3.Enabled = true;
+            grpLoginInfo.Enabled = true;
         }
 
         /// <summary>
@@ -126,7 +166,32 @@ namespace PharmInventory.Forms.Profiles
                 ckActive.Checked = us.Active;
                 cboUserType.SelectedValue = us.UserType.ToString();
                 _userId = us.ID;
-                groupBox3.Enabled = false;
+                grpLoginInfo.Enabled = false;
+
+                BLL.Type ucType = new BLL.Type();
+                ucType.LoadAll();
+
+                 UserCommodityType usc = new UserCommodityType();
+                DataTable comUser = usc.GetUserCommodityType(_userId); 
+
+                cbCommodity.Properties.DataSource = ucType.DefaultView.ToTable();
+                cbCommodity.Properties.DisplayMember = "Name";
+                cbCommodity.Properties.ValueMember = "ID";
+                string[] arr = new string[comUser.DefaultView.ToTable().Rows.Count];
+                int index = 0;
+                foreach (DataRow dr in comUser.DefaultView.ToTable().Rows)
+                {
+                    arr[index] = Convert.ToString(dr["ID"]);
+                    index++;
+                }
+                char separator = cbCommodity.Properties.SeparatorChar;
+                string result = string.Empty;
+                foreach (var element in arr)
+                {
+                    result += element + separator;
+                }
+                cbCommodity.SetEditValue(result);  
+
             }
         }
 
@@ -146,7 +211,7 @@ namespace PharmInventory.Forms.Profiles
             txtUsername.Text = "";
             ckActive.Checked = true;
             cboUserType.SelectedIndex = -1;
-            groupBox3.Enabled = true;
+            grpLoginInfo.Enabled = true;
         }
 
         private int _sortColumn = -1;
@@ -172,5 +237,6 @@ namespace PharmInventory.Forms.Profiles
             lstUsers.Sort();
         }
 
+      
     }
 }

@@ -158,6 +158,8 @@
     <Compile Include="_Type.cs" />
     <Compile Include="_Unit.cs" />
     <Compile Include="_User.cs" />
+    <Compile Include="_UserCommodityType.cs" />
+    <Compile Include="_UserStore.cs" />
     <Compile Include="_UserType.cs" />
     <Compile Include="_VEN.cs" />
     <Compile Include="_VRF.cs" />
