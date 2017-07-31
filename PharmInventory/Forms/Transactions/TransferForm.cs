@@ -31,7 +31,10 @@ namespace PharmInventory.Forms.Transactions
             var store = new Stores();
             store.GetActiveStores();
             lkFromStore.Properties.DataSource = store.DefaultView;
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+            UserCommodityType ucs = new UserCommodityType();
+            DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
+            lkCategories.Properties.DataSource = dt;
+           // lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
 
             var units = new ItemUnit();
             var allunits = units.GetAllUnits();

@@ -48,7 +48,10 @@ namespace PharmInventory.Forms.Transactions
         {
             var ethDate = new EthiopianDate.EthiopianDate();
 
-            lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            //lkCommodityTypes.Properties.DataSource = BLL.Type.GetAllTypes();
+            UserCommodityType ucs = new UserCommodityType();
+            DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
+            lkCommodityTypes.Properties.DataSource = dt;
             lkCommodityTypes.ItemIndex = 0;
             btnSave.Enabled = false;
             var unit = new ItemUnit();
