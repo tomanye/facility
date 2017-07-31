@@ -116,6 +116,7 @@ namespace PharmInventory.Forms.Profiles
                 string[] storeArr = selectedStore.Split(',');
                 UserStore ustr = new UserStore();
                 ustr.DeleteAllTStoreForUser(us.ID);
+                if (selectedStore != "") 
                 foreach (var t in storeArr)
                 {
                     ustr.AddNew();

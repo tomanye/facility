@@ -108,7 +108,10 @@ namespace PharmInventory.Forms.Transactions
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
             cboStoreConf.Properties.DataSource = stor.DefaultView;
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+            UserCommodityType ucs = new UserCommodityType();
+            DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
+            //  lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCategories.Properties.DataSource = dt;
             lkCategories.ItemIndex = 0;
 
             var unit = new ItemUnit();
