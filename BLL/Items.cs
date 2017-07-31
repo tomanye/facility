@@ -458,6 +458,19 @@ FROM    Items itm
             itms.LoadFromRawSql(query);
             return itms.DataTable;
         }
+        public static DataTable GetActiveItemsByCommodityTypeids(string commodityTypeids)
+        {
+            string     query = string.Format(@"select v.Name as CommodityType, v.TypeID, *,
+                                   CASE WHEN(SELECT COUNT(*) from ItemManufacturer i where i.ItemID = v.ID) > 0 then 1 else 0 end as HasManufacturer, IsSelected = cast(0 as bit)
+                                    from vwGetAllItems v
+                                    where v.IsInHospitalList = 1 and v.TypeID in ({0}) ORDER BY v.FullItemName",
+                                commodityTypeids); 
+             
+
+            Items itms = new Items();
+            itms.LoadFromRawSql(query);
+            return itms.DataTable;
+        }
 
         public DataTable GetAllItems(int inList)
         {
