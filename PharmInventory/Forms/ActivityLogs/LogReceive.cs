@@ -107,8 +107,17 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             if (cboStores.EditValue == null) return;
             var rec = new ReceiveDoc();
-             dtRec = rec.GetDistinctRecDocments(Convert.ToInt32(cboStores.EditValue));
+            // dtRec = rec.GetDistinctRecDocments(Convert.ToInt32(cboStores.EditValue));
+            UserCommodityType ucs = new UserCommodityType();
+            DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
 
+            int[] typeid = new int[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                typeid[i] = Convert.ToInt32(dt.Rows[i]["ID"]);
+            }
+            var typeids = string.Join(",", typeid);
+            dtRec = rec.GetDistinctRecDocmentbyUsers(Convert.ToInt32(cboStores.EditValue), typeids);
             PopulateDocuments(dtRec);
 
         }
