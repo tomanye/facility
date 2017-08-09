@@ -261,15 +261,15 @@ namespace BLL
             {
                 if (i == 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
                 {
-                    dos += Convert.ToInt32((enddate-Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
+                    dos += Convert.ToInt32((enddate-Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
                 }
-                else if (i >= 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                else if (i >= 0 && i!= (dt.Rows.Count-1) && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
                 {
-                    dos += Convert.ToInt32((Convert.ToDateTime(dt.Rows[i]["Date"]) - Convert.ToDateTime(dt.Rows[i - 1]["Date"])).TotalDays);
+                    dos += Convert.ToInt32((Convert.ToDateTime(dt.Rows[i + 1]["Date"]) - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
                 }
                 else if (i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
                 {
-                    dos += Convert.ToInt32((enddate - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
+                    dos += Convert.ToInt32((enddate - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
                 }
                 else if(i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) > 0 && dos ==0)
                 {
@@ -2336,7 +2336,7 @@ FROM    Items itm
                                   Status = n.Status,
                                   //Quantity = (n.Max - n.SOH < 0) ? 0 : n.Max - n.SOH,
                                   Quantity = (n.Max - n.USOH < 0) ? 0 : n.Max - n.USOH,
-                                  DaysOutOfStock = ( n.BeginingBalance == 0 )? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
+                                  DaysOutOfStock = ( n.BeginingBalance == 0 )? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId, n.BeginingBalance) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
                                  // DaysOutOfStock = GetDaysOutOfStock(startDate, endDate,Convert.ToInt32(n.ID), storeId),
                                  //  Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                  //TODO: This is a quick fix.  We need to take stock status from the last three months.
@@ -2422,7 +2422,7 @@ FROM    Items itm
                                   Status = n.Status,
                                   //Quantity = n.Max - n.SOH < 0 ? 0 : n.Max - n.SOH,
                                   Quantity = n.Quantity,
-                                  DaysOutOfStock = (n.BeginingBalance == 0) ? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
+                                  DaysOutOfStock = (n.BeginingBalance == 0) ? GetDOSNoBegginingBalance(startDate, endDate, Convert.ToInt32(n.ID), storeId) + GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId, n.BeginingBalance) : GetDaysOutOfStockBinCard(startDate, endDate, Convert.ToInt32(n.ID), storeId,n.BeginingBalance),
                                 //  DaysOutOfStock = GetDaysOutOfStock(startDate, endDate, Convert.ToInt32(n.ID), storeId),
                                   //Builder.CalculateStockoutDays(Convert.ToInt32(n.ID), storeId, startDate, endDate),
                                   TypeID = n.TypeID
