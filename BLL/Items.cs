@@ -259,17 +259,17 @@ namespace BLL
             int dos = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                if (i == 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                //if (i == 0 && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
+                //{
+                //    dos += Convert.ToInt32((enddate-Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
+                //}
+                  if (i >= 0 && i!= (dt.Rows.Count-1) && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
                 {
-                    dos += Convert.ToInt32((enddate-Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
-                }
-                else if (i >= 0 && i!= (dt.Rows.Count-1) && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
-                {
-                    dos += Convert.ToInt32((Convert.ToDateTime(dt.Rows[i + 1]["Date"]) - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
+                    dos += Convert.ToInt32((Convert.ToDateTime(dt.Rows[i + 1]["Date"]) - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
                 }
                 else if (i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) == 0)
                 {
-                    dos += Convert.ToInt32((enddate - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays)-1;
+                    dos += Convert.ToInt32((enddate - Convert.ToDateTime(dt.Rows[i]["Date"])).TotalDays);
                 }
                 else if(i == dt.Rows.Count && Convert.ToInt32(dt.Rows[i]["Balance"]) > 0 && dos ==0)
                 {
