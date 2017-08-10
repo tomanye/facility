@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[UserCommodityType](
+ CREATE TABLE [dbo].[UserCommodityType](
 	[ID] INT IDENTITY(1,1) NOT NULL,
 	[UserID] INT NOT NULL,
 	[TypeID] INT NOT NULL,
@@ -13,8 +13,3 @@ CREATE TABLE [dbo].[UserCommodityType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] 
  
-
-
-
-
-
