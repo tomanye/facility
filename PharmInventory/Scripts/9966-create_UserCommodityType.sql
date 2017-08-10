@@ -1,4 +1,3 @@
- 
 CREATE TABLE [dbo].[UserCommodityType](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[UserID] [int] NOT NULL,
@@ -12,23 +11,10 @@ CREATE TABLE [dbo].[UserCommodityType](
 	[UserID] ASC,
 	[TypeID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
+) ON [PRIMARY] 
 GO
 
-ALTER TABLE [dbo].[UserCommodityType]  WITH CHECK ADD  CONSTRAINT [FK_dbo_UserCommodityType_UserID] FOREIGN KEY([UserID])
-REFERENCES [dbo].[User] ([ID])
-GO
 
-ALTER TABLE [dbo].[UserCommodityType] CHECK CONSTRAINT [FK_dbo_UserCommodityType_UserID]
-GO
-
-ALTER TABLE [dbo].[UserCommodityType]  WITH CHECK ADD  CONSTRAINT [FK_dbo_UserCommodityType_TypeID] FOREIGN KEY([TypeID])
-REFERENCES [dbo].[Type] ([ID])
-GO
-
-ALTER TABLE [dbo].[UserCommodityType] CHECK CONSTRAINT [FK_dbo_UserCommodityType_TypeID]
-GO
 
 
 

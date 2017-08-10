@@ -48,7 +48,7 @@
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>226</ApplicationRevision>
+    <ApplicationRevision>227</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1020,9 +1020,30 @@
     <Content Include="Scripts\9962-proc_AlterReceiveDocUpdate.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9966-create_UserCommodityType.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Scripts\9976-proc_UserCommodityTypeInsert.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9977-proc_UserCommodityTypeDelete.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9975-proc_UserCommodityTypeUpdate.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9974-proc_UserCommodityType LoadAll.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9978-Alter_UserCommodityTypeLoadbyPrimaryKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9968-Alter_UserCommodityType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9967-Alter_UserCommodityType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\9966-create_UserCommodityType.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Scripts\9965-proc_AlterSOHByProgram.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1041,20 +1062,35 @@
     <Content Include="Scripts\995_AlterSOHBYUNIT.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9967-create_UserStore.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Scripts\9972-Alter_UserStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9968-proc_UserCommodityType.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Scripts\9971-Alter_UserStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9969-proc_UserStore.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Scripts\9969-create_UserStore.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9973-proc_UserCommodityTypeLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9981-proc_UserStoreDelete.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9982-proc_UserStoreInsert.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9980-proc_UserStoreUpdate.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9983-proc_UserStoreLoadAll.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\996_SetIsInHospitalList.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9970-InsertUserType.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Scripts\9984-InsertUserType.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\997_InsertDisposalReasons.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

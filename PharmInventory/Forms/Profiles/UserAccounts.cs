@@ -124,6 +124,7 @@ namespace PharmInventory.Forms.Profiles
                     ustr.UserID = us.ID;
                     ustr.Save();
                 }
+                XtraMessageBox.Show("successfully Saved", "Success");
                 PopulateUser();
             }
             else
