@@ -101,13 +101,17 @@ namespace PharmInventory.Forms.Transactions
 
             PopulateCatTree(_selectedType);
             var stor = new Stores();
-            stor.GetActiveStores();
-            storebindingSource.DataSource = stor.DefaultView;
-            cboStores.Properties.DataSource = storebindingSource.DataSource;
+            UserStore ust = new UserStore();
+            DataTable dtt = ust.GetUserStore(MainWindow.LoggedinId);
+            // stor.GetActiveStores();
+            // storebindingSource.DataSource = stor.DefaultView;
+            //cboStores.Properties.DataSource = storebindingSource.DataSource;
+            cboStores.Properties.DataSource = dtt;
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
             cboStoreConf.Properties.DataSource = stor.DefaultView;
+
             UserCommodityType ucs = new UserCommodityType();
             DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
             //  lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();

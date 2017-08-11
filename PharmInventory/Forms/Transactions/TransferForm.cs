@@ -29,8 +29,11 @@ namespace PharmInventory.Forms.Transactions
         private void TransferForm_Load(object sender, EventArgs e)
         {
             var store = new Stores();
-            store.GetActiveStores();
-            lkFromStore.Properties.DataSource = store.DefaultView;
+            // store.GetActiveStores();
+            //lkFromStore.Properties.DataSource = store.DefaultView;
+            UserStore ust = new UserStore();
+            DataTable dtt = ust.GetUserStore(MainWindow.LoggedinId);
+            lkFromStore.Properties.DataSource = dtt;
             UserCommodityType ucs = new UserCommodityType();
             DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
             lkCategories.Properties.DataSource = dt;
@@ -40,9 +43,9 @@ namespace PharmInventory.Forms.Transactions
             var allunits = units.GetAllUnits();
             unitBindingSource.DataSource = allunits.DefaultView;
 
-            lkToStore.Properties.DataSource = store.DefaultView;
+            lkToStore.Properties.DataSource = dtt;
 
-           
+
             var unitcolumn0 = ((GridView)gridItemsChoice.MainView).Columns[7];
             var unitcolumn1 = ((GridView)gridItemsChoice.MainView).Columns[2];
             var unitcolumn2 = ((GridView)receivingGrid.MainView).Columns[4];

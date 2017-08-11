@@ -61,8 +61,10 @@ namespace PharmInventory
 
             var stor = new Stores();
             stor.GetActiveStores();
-
-            cboStores.Properties.DataSource = stor.DefaultView;
+            UserStore ust = new UserStore();
+            DataTable dtt = ust.GetUserStore(MainWindow.LoggedinId); 
+            cboStores.Properties.DataSource = dtt;
+            // cboStores.Properties.DataSource = stor.DefaultView;
             //lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
             UserCommodityType ucs = new UserCommodityType();
             DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);

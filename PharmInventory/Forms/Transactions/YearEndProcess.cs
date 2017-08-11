@@ -73,7 +73,10 @@ namespace PharmInventory.Forms.Transactions
             var str = new Stores();
             str.GetActiveStores();
 
-            cboStores.Properties.DataSource = str.DefaultView;
+            UserStore us = new UserStore();
+            DataTable dtt = us.GetUserStore(MainWindow.LoggedinId);
+            //cboStores.Properties.DataSource = str.DefaultView;
+            cboStores.Properties.DataSource = dtt; 
             cboStores.ItemIndex = 0;
             dtDate.CustomFormat = "MMMM dd, yyyy";
           
