@@ -206,7 +206,7 @@ namespace PharmInventory.Forms.Profiles
                 foreach (DataRow drs in storeUser.DefaultView.ToTable().Rows)
                 {
                     arrst[rowindex] = Convert.ToString(drs["ID"]);
-                    index++;
+                    rowindex++;
                 }
                 char separatorst = cbStore.Properties.SeparatorChar;
                 string resultst = string.Empty;
