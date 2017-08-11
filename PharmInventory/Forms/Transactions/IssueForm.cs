@@ -1253,6 +1253,13 @@ namespace PharmInventory.Forms.Transactions
         {
 
         }
- 
+
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "gdRowNo" && e.RowHandle > -1)
+            {
+                e.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
     }
 }
