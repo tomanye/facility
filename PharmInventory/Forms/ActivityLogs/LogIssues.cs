@@ -53,9 +53,12 @@ namespace PharmInventory.Forms.ActivityLogs
             rus.GetActiveDispensaries();
             lkEditReceivingUnis.DataSource = rus.DefaultView;
 
-            var stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
+            //var stor = new Stores();
+            //stor.GetActiveStores();
+            UserStore ucs = new UserStore();
+            DataTable dt = ucs.GetUserStore(MainWindow.LoggedinId);
+            //cboStores.Properties.DataSource = stor.DefaultView;
+            cboStores.Properties.DataSource = dt; 
             cboStores.ItemIndex = 0;
             var unitcolumn = ((GridView)gridIssues.MainView).Columns[12];
             switch (VisibilitySetting.HandleUnits)

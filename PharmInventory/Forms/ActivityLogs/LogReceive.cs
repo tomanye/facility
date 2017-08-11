@@ -33,10 +33,13 @@ namespace PharmInventory.Forms.ActivityLogs
             var userID = MainWindow.LoggedinId;
             usr.LoadByPrimaryKey(userID);
             if(usr.UserType ==1)
-            contextMenuStrip1.Enabled = false; 
-            var stor = new Stores();
-            stor.GetActiveStores();
-            cboStores.Properties.DataSource = stor.DefaultView;
+            contextMenuStrip1.Enabled = false;
+            //var stor = new Stores();
+            //stor.GetActiveStores();
+            //cboStores.Properties.DataSource = stor.DefaultView;
+            UserStore ucs = new UserStore();
+            DataTable dt = ucs.GetUserStore(MainWindow.LoggedinId);
+            cboStores.Properties.DataSource = dt;
             cboStores.ItemIndex = 0;
 
             var sup = new Supplier();
