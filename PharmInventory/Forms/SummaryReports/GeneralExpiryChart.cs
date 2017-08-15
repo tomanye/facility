@@ -96,9 +96,11 @@ namespace PharmInventory
 
             // Generate the pie Chart for the Current SOH and EXpired Drugs
             dtFrom.CustomFormat = "MM/dd/yyyy";
-            DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            // DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            DateTime dt1 = dtFrom.Value;
             dtTo.CustomFormat = "MM/dd/yyyy";
-            DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            //DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            DateTime dt2 = dtTo.Value;
             //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
             //layoutControlGroup3.Text = "Cost Report " + dRange;
             if (dt1.Year == dt2.Year)
@@ -156,8 +158,8 @@ namespace PharmInventory
 
             object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
             dtSOHList.Rows.Add(oo3);
-            object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
-            dtSOHList.Rows.Add(oo4);
+            //object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
+            //dtSOHList.Rows.Add(oo4);
 
             object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
             dtSOHList.Rows.Add(oo2);
@@ -180,11 +182,11 @@ namespace PharmInventory
             ListViewItem lstItmNor2 = new ListViewItem(str2);
             lstExpStatus.Items.Add(lstItmNor2);
 
-            per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
-            per = Decimal.Round(per, 0);
-            string[] str3 = { "Disposed", per.ToString() + "%", obj[3].ToString(), lossandadjexpCost.ToString("C") };
-            ListViewItem lstItmNor3 = new ListViewItem(str3);
-            lstExpStatus.Items.Add(lstItmNor3);
+            //per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
+            //per = Decimal.Round(per, 0);
+            //string[] str3 = { "Disposed", per.ToString() + "%", obj[3].ToString(), lossandadjexpCost.ToString("C") };
+            //ListViewItem lstItmNor3 = new ListViewItem(str3);
+            //lstExpStatus.Items.Add(lstItmNor3);
 
             Series serExpired = new Series("pie", ViewType.Pie3D);
             serExpired.DataSource = dtSOHList;
@@ -215,9 +217,11 @@ namespace PharmInventory
 
             // Generate the pie Chart for the Current SOH and EXpired Drugs
             dtFrom.CustomFormat = "MM/dd/yyyy";
-            DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            //DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text);
+            DateTime dt1 = dtFrom.Value;
             dtTo.CustomFormat = "MM/dd/yyyy";
-            DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            //  DateTime dt2 = ConvertDate.DateConverter(dtTo.Text);
+            DateTime dt2 = dtTo.Value;
             //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
             //layoutControlGroup3.Text = "Cost Report " + dRange;
             if (dt1.Year == dt2.Year)
@@ -254,33 +258,34 @@ namespace PharmInventory
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
-            Int64 normal = (soh - nearExpAmount - expAmount);
+            Int64 normal = (soh - nearExpAmount - expAmount - lossandadjAmount);
             Int64 nearExpiry = nearExpAmount;
             Int64 expired = expAmount;
             Int64 disposed = lossandadjAmount;
 
 
-            object[] obj = { normal, nearExpiry, expired, disposed };
+            //object[] obj = { normal, nearExpiry, expired, disposed };
+            object[] obj = { normal, nearExpiry, expired };
 
             DataTable dtSOHList = new DataTable();
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expCost);
+            double normalPrice = (sohPrice - nearExpCost - expCost- lossandadjexpCost);
 
             Int64 totItm = normal + nearExpiry + expired + disposed;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
 
-            object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
+            object[] oo3 = { "Expired : " + (lossandadjexpCost+expCost).ToString("C"), obj[2] };
             dtSOHList.Rows.Add(oo3);
 
             object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
             dtSOHList.Rows.Add(oo2);
 
-            object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
-            dtSOHList.Rows.Add(oo4);
+            //object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
+            //dtSOHList.Rows.Add(oo4);
 
 
             decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
@@ -295,17 +300,17 @@ namespace PharmInventory
             ListViewItem lstItmNor1 = new ListViewItem(str1);
             lstExpStatus.Items.Add(lstItmNor1);
 
-            per = Convert.ToDecimal(expired) / Convert.ToDecimal(totItm) * 100;
+            per = (Convert.ToDecimal(expired) + Convert.ToDecimal(disposed) )/ Convert.ToDecimal(totItm) * 100;
             per = Decimal.Round(per, 0);
-            string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), expCost.ToString("C") };
+            string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), (lossandadjexpCost+expCost).ToString("C") };
             ListViewItem lstItmNor2 = new ListViewItem(str2);
             lstExpStatus.Items.Add(lstItmNor2);
 
-            per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
-            per = Decimal.Round(per, 0);
-            string[] str3 = { "Disposed", per.ToString() + "%", obj[2].ToString(), lossandadjexpCost.ToString("C") };
-            ListViewItem lstItmNor3 = new ListViewItem(str3);
-            lstExpStatus.Items.Add(lstItmNor3);
+            //per = Convert.ToDecimal(disposed) / Convert.ToDecimal(totItm) * 100;
+            //per = Decimal.Round(per, 0);
+            //string[] str3 = { "Disposed", per.ToString() + "%", obj[2].ToString(), lossandadjexpCost.ToString("C") };
+            //ListViewItem lstItmNor3 = new ListViewItem(str3);
+            //lstExpStatus.Items.Add(lstItmNor3);
 
             Series serExpired = new Series("pie", ViewType.Pie3D);
             serExpired.DataSource = dtSOHList;

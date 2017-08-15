@@ -2608,16 +2608,18 @@ namespace PharmInventory.Forms.Transactions
             this.gridView1.OptionsView.RowAutoHeight = true;
             this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView1_CustomDrawCell);
             // 
             // gdRowNo
             // 
             this.gdRowNo.Caption = "No.";
-            this.gdRowNo.FieldName = "No";
+            this.gdRowNo.FieldName = "gdRowNo";
             this.gdRowNo.Name = "gdRowNo";
             this.gdRowNo.OptionsColumn.AllowEdit = false;
             this.gdRowNo.OptionsColumn.AllowFocus = false;
             this.gdRowNo.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gdRowNo.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gdRowNo.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gdRowNo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.gdRowNo.Visible = true;
             this.gdRowNo.VisibleIndex = 0;
             this.gdRowNo.Width = 57;

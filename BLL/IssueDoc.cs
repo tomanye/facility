@@ -299,15 +299,39 @@ namespace BLL
 			}
 			return dtbl;
 		}
+        public DataTable GetDistinctIssueDocmentsUsers(int storeId,string typeids)
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format(@"SELECT   DISTINCT id.RefNo ,
+                                                         id.StoreId ,
+                                                         id.Date ,
+                                                         CAST(YEAR(id.Date) AS VARCHAR) AS ParentID ,
+                                                         id.RefNo + CAST(Date AS VARCHAR) AS ID
+                                                FROM     IssueDoc id
+                                                JOIN dbo.vwGetAllItems va ON id.ItemID = va.ID
+                                                WHERE    ( IsTransfer = 0 )
+                                                         AND id.StoreId = {0}
+		                                                 AND va.TypeID IN ({1})
+                                                ORDER BY Date DESC", storeId,typeids));
+            DataTable dtbl = this.DataTable;
+            this.LoadFromRawSql("select distinct Year(Date) as Year from IssueDoc where (IsTransfer=0) order by year(Date) DESC");
+            while (!this.EOF)//The following is added for the benefit of tree control and having parents there.
+            {
+                DataRowView drv = dtbl.DefaultView.AddNew();
+                drv["RefNo"] = drv["ID"] = (this.DataRow["Year"].ToString());
+                this.MoveNext();
+            }
+            return dtbl;
+        }
 
-		/// <summary>
-		/// //ChangedDate:
-		/// </summary>
-		/// <param name="storeId"></param>
-		/// <param name="itemId"></param>
-		/// <param name="year"></param>
-		/// <returns></returns>
-		public DataTable GetTransactionByItemId(int storeId,int itemId,int year)
+        /// <summary>
+        /// //ChangedDate:
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="itemId"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        public DataTable GetTransactionByItemId(int storeId,int itemId,int year)
 		{
 			this.FlushData();
 			EthiopianDate.EthiopianDate ethioDate = new EthiopianDate.EthiopianDate(year, 1, 1);
