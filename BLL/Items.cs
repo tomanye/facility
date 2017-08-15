@@ -1060,7 +1060,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.Date between '{2}' and '{3}'",
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.EurDate between '{2}' and '{3}'",
                         storeId, typeID, dt1, dt2);
             }
             else
@@ -1068,7 +1068,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
                         storeId, dt1, dt2);
             }
 
@@ -1091,7 +1091,7 @@ FROM    Items itm
                                        JOIN DisposalReasons dr on d.ReasonId = dr.ID 
                                         JOIN ReceiveDoc rd on  rd.ID =d.RecID
 		                                 JOIN vwGetAllItems va on va.ID = d.ItemID 
-                                where dr.Reason like 'Expired' AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.Date between '{2}' and '{3}'",
+                                where dr.Reason like 'Expired' AND rd.StoreID = {0} and va.TypeID = {1} and va.IsInHospitalList = 1 and rd.EurDate between '{2}' and '{3}'",
                         storeId, typeID, dt1, dt2);
             }
             else
@@ -1103,7 +1103,7 @@ FROM    Items itm
                                        JOIN DisposalReasons dr on d.ReasonId = dr.ID 
                                         JOIN ReceiveDoc rd on  rd.ID =d.RecID
 		                                 JOIN vwGetAllItems vw on vw.ID = d.ItemID 
-                                where dr.Reason like 'Expired' AND StoreID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                                where dr.Reason like 'Expired' AND rd.StoreID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
                         storeId, dt1, dt2);
             }
 
@@ -1124,7 +1124,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
                         typeID, dt1, dt2);
             }
             else
@@ -1132,7 +1132,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND vw.IsInHospitalList = 1 and rd.Date between '{0}' and '{1}'",
+                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND vw.IsInHospitalList = 1 and rd.EurDate between '{0}' and '{1}'",
                         dt1, dt2);
             }
 
@@ -1155,7 +1155,7 @@ FROM    Items itm
                                     JOIN DisposalReasons dr on d.ReasonId = dr.ID
                                     JOIN ReceiveDoc rd on  rd.ID = d.RecID 
                                     JOIN vwGetAllItems vw on vw.ID = d.ItemID
-                                WHERE dr.Reason like 'Expired' AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.Date between '{1}' and '{2}'",
+                                WHERE dr.Reason like 'Expired' AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
                         typeID, dt1, dt2);
             }
             else
@@ -1167,7 +1167,7 @@ FROM    Items itm
                                                 JOIN DisposalReasons dr on d.ReasonId = dr.ID
                                                 JOIN ReceiveDoc rd on  rd.ID = d.RecID 
                                                 JOIN vwGetAllItems vw on vw.ID = d.ItemID
-                                         WHERE dr.Reason like 'Expired'AND vw.IsInHospitalList = 1 and rd.Date between '{0}' and '{1}'",
+                                         WHERE dr.Reason like 'Expired'AND vw.IsInHospitalList = 1 and rd.EurDate between '{0}' and '{1}'",
                         dt1, dt2);
             }
 
@@ -1322,7 +1322,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {0} and rd.Date between '{1}' and '{2}'",
+                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {0} and rd.EurDate between '{1}' and '{2}'",
                         typeID, dt1, dt2);
             }
             else
@@ -1330,7 +1330,7 @@ FROM    Items itm
                 query =
                     string.Format(
                         "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) and rd.Date between '{0}' and '{1}'",
+                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) and rd.EurDate between '{0}' and '{1}'",
                         dt1, dt2);
             }
 
@@ -1413,13 +1413,13 @@ FROM    Items itm
             {
                 query =
                     String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.Date between '{2}' and '{3}'", storeId, typeID, dt1, dt2);
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.EurDate between '{2}' and '{3}'", storeId, typeID, dt1, dt2);
             }
             else
             {
                 query =
                     String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and rd.Date between '{1}' and '{2}'", storeId, dt1, dt2);
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and rd.EurDate between '{1}' and '{2}'", storeId, dt1, dt2);
             }
 
             this.LoadFromRawSql(query);
@@ -1442,13 +1442,13 @@ FROM    Items itm
             {
                 query =
                     String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and TypeID ={0} and rd.Date between '{1}' and '{2}'", typeID, dt1, dt2);
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and TypeID ={0} and rd.EurDate between '{1}' and '{2}'", typeID, dt1, dt2);
             }
             else
             {
                 query =
                     String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and rd.Date between '{0}' and '{1}'", dt1, dt2);
+                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and rd.EurDate between '{0}' and '{1}'", dt1, dt2);
             }
 
             this.LoadFromRawSql(query);
