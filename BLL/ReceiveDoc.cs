@@ -178,7 +178,32 @@ namespace BLL
             }
             return dtbl;
         }
-
+        public DataTable GetDistinctRecDocmentbyUsers(int storeId, string comid)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT   DISTINCT RefNo AS RefNo ,
+                                                     Date ,
+                                                     StoreID ,
+                                                     CAST(YEAR(Date) AS VARCHAR) AS ParentID ,
+                                                     RTRIM(RefNo) + CAST(Date AS VARCHAR) AS ID
+                                            FROM     ReceiveDoc rd
+                                                   JOIN dbo.vwGetAllItems va ON rd.ItemID = va.ID 
+                                            WHERE    StoreID = {0}
+                                                    AND TypeID IN({1})
+                                                     AND BoxLevel IS NULL
+                                            ORDER BY Date DESC", storeId, comid);
+            this.LoadFromRawSql(query);
+            DataTable dtbl = this.DataTable;
+            this.LoadFromRawSql("select distinct Year(Date) as Year from ReceiveDoc order by year(Date) DESC");
+            while (!this.EOF)
+            //The following is added for the benefit of tree control and having parents there.
+            {
+                DataRowView drv = dtbl.DefaultView.AddNew();
+                drv["RefNo"] = drv["ID"] = (this.DataRow["Year"].ToString());
+                this.MoveNext();
+            }
+            return dtbl;
+        }
 
         public DataTable GetTransactionByRefNo(string refNo, int storeId, string dt)
         {

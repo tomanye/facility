@@ -37,10 +37,13 @@ namespace PharmInventory
             if (txtPassword.Text == txtConfirm.Text)
             {
                 var us = new User();
+                var usertype = new UserType();
+                
                 if (userId != 0)
                 {
                     us.LoadByPrimaryKey(userId);
-                    if (us.UserName != "admin")
+                    usertype.LoadByPrimaryKey(us.UserType);
+                    if ((us.UserName != "admin") && (usertype.Type != "Editor"))
                     {
                         XtraMessageBox.Show("You have no administative privilage to change password!", "Warning");
                         return;

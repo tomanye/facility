@@ -266,6 +266,7 @@
             this.grdViewInPacks.OptionsView.EnableAppearanceOddRow = true;
             this.grdViewInPacks.OptionsView.RowAutoHeight = true;
             this.grdViewInPacks.OptionsView.ShowGroupPanel = false;
+            this.grdViewInPacks.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.grdViewInPacks_CustomDrawRowIndicator);
             this.grdViewInPacks.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.grdViewInPacks_CustomColumnDisplayText);
             // 
             // gridColumn1
@@ -275,8 +276,6 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.OptionsFilter.AllowFilter = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 83;
             // 
             // gridColumn11
@@ -287,7 +286,7 @@
             this.gridColumn11.OptionsColumn.AllowEdit = false;
             this.gridColumn11.OptionsFilter.AllowFilter = false;
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 1;
+            this.gridColumn11.VisibleIndex = 0;
             this.gridColumn11.Width = 343;
             // 
             // gridColumn12
@@ -299,7 +298,7 @@
             this.gridColumn12.OptionsColumn.AllowEdit = false;
             this.gridColumn12.OptionsFilter.AllowFilter = false;
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 2;
+            this.gridColumn12.VisibleIndex = 1;
             this.gridColumn12.Width = 65;
             // 
             // gridColumn13
@@ -314,7 +313,7 @@
             this.gridColumn13.UnboundExpression = "[BeginingBalance]/[QtyPerPack]";
             this.gridColumn13.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 3;
+            this.gridColumn13.VisibleIndex = 2;
             this.gridColumn13.Width = 65;
             // 
             // gridColumn47
@@ -329,7 +328,7 @@
             this.gridColumn47.UnboundExpression = "[LastDUSoh]/[QtyPerPack]";
             this.gridColumn47.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn47.Visible = true;
-            this.gridColumn47.VisibleIndex = 4;
+            this.gridColumn47.VisibleIndex = 3;
             // 
             // gridColumn14
             // 
@@ -343,7 +342,7 @@
             this.gridColumn14.UnboundExpression = "Received/QtyPerPack";
             this.gridColumn14.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 5;
+            this.gridColumn14.VisibleIndex = 4;
             this.gridColumn14.Width = 65;
             // 
             // gridColumn15
@@ -358,7 +357,7 @@
             this.gridColumn15.UnboundExpression = "LossAdj/QtyPerPack";
             this.gridColumn15.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 6;
+            this.gridColumn15.VisibleIndex = 5;
             this.gridColumn15.Width = 65;
             // 
             // gridColumn16
@@ -373,7 +372,7 @@
             this.gridColumn16.UnboundExpression = "USOH/QtyPerPack";
             this.gridColumn16.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 7;
+            this.gridColumn16.VisibleIndex = 6;
             this.gridColumn16.Width = 65;
             // 
             // gridColumn17
@@ -388,7 +387,7 @@
             this.gridColumn17.UnboundExpression = "Issued/QtyPerPack";
             this.gridColumn17.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 8;
+            this.gridColumn17.VisibleIndex = 7;
             this.gridColumn17.Width = 65;
             // 
             // gridColumn18
@@ -401,7 +400,7 @@
             this.gridColumn18.OptionsColumn.AllowEdit = false;
             this.gridColumn18.OptionsFilter.AllowFilter = false;
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 9;
+            this.gridColumn18.VisibleIndex = 8;
             this.gridColumn18.Width = 58;
             // 
             // gridColumn19
@@ -416,7 +415,7 @@
             this.gridColumn19.UnboundExpression = "(120 * [gridColumn17]) / (60-[DaysOutOfStock])";
             this.gridColumn19.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 10;
+            this.gridColumn19.VisibleIndex = 9;
             this.gridColumn19.Width = 76;
             // 
             // gridColumn20
@@ -429,7 +428,7 @@
             this.gridColumn20.UnboundExpression = "Quantity/QtyPerPack";
             this.gridColumn20.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 12;
+            this.gridColumn20.VisibleIndex = 11;
             this.gridColumn20.Width = 98;
             // 
             // gridColumn21
@@ -450,7 +449,7 @@
     "lumn16] - [gridColumn47])";
             this.gridColumn41.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn41.Visible = true;
-            this.gridColumn41.VisibleIndex = 11;
+            this.gridColumn41.VisibleIndex = 10;
             this.gridColumn41.Width = 92;
             // 
             // gridItemsChoice
@@ -637,18 +636,18 @@
             this.gridItemChoiceView.OptionsView.EnableAppearanceOddRow = true;
             this.gridItemChoiceView.OptionsView.RowAutoHeight = true;
             this.gridItemChoiceView.OptionsView.ShowGroupPanel = false;
+            this.gridItemChoiceView.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridItemChoiceView_CustomDrawRowIndicator);
             this.gridItemChoiceView.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gridItemChoiceView_CustomUnboundColumnData);
             this.gridItemChoiceView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridItemChoiceView_CustomColumnDisplayText);
             // 
             // gridColumn48
             // 
             this.gridColumn48.Caption = "counter";
-            this.gridColumn48.FieldName = "gridColumn48";
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.OptionsColumn.ShowCaption = false;
+            this.gridColumn48.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FullItemName", "n0")});
             this.gridColumn48.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn48.Visible = true;
-            this.gridColumn48.VisibleIndex = 0;
             this.gridColumn48.Width = 45;
             // 
             // gridColumn10
@@ -667,7 +666,7 @@
             this.colItemName.Name = "colItemName";
             this.colItemName.OptionsColumn.AllowEdit = false;
             this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 1;
+            this.colItemName.VisibleIndex = 0;
             this.colItemName.Width = 243;
             // 
             // gridColumn29
@@ -678,7 +677,7 @@
             this.gridColumn29.OptionsColumn.AllowEdit = false;
             this.gridColumn29.OptionsFilter.AllowFilter = false;
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 2;
+            this.gridColumn29.VisibleIndex = 1;
             this.gridColumn29.Width = 48;
             // 
             // VEN
@@ -696,7 +695,7 @@
             this.VEN.OptionsColumn.AllowMove = false;
             this.VEN.OptionsFilter.AllowFilter = false;
             this.VEN.Visible = true;
-            this.VEN.VisibleIndex = 3;
+            this.VEN.VisibleIndex = 2;
             this.VEN.Width = 55;
             // 
             // gridColumn46
@@ -709,7 +708,7 @@
             this.gridColumn46.OptionsColumn.AllowEdit = false;
             this.gridColumn46.OptionsColumn.AllowFocus = false;
             this.gridColumn46.Visible = true;
-            this.gridColumn46.VisibleIndex = 4;
+            this.gridColumn46.VisibleIndex = 3;
             this.gridColumn46.Width = 69;
             // 
             // gridColumn2
@@ -724,7 +723,7 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
+            this.gridColumn2.VisibleIndex = 4;
             this.gridColumn2.Width = 55;
             // 
             // gridColumn3
@@ -739,7 +738,7 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 6;
+            this.gridColumn3.VisibleIndex = 5;
             this.gridColumn3.Width = 55;
             // 
             // gridColumn4
@@ -754,7 +753,7 @@
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
+            this.gridColumn4.VisibleIndex = 6;
             this.gridColumn4.Width = 55;
             // 
             // gridColumn5
@@ -769,7 +768,7 @@
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 8;
+            this.gridColumn5.VisibleIndex = 7;
             this.gridColumn5.Width = 70;
             // 
             // gridColumn6
@@ -784,7 +783,7 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.VisibleIndex = 8;
             this.gridColumn6.Width = 45;
             // 
             // gridColumn7
@@ -801,7 +800,7 @@
             this.gridColumn7.UnboundExpression = "(120 * [Issued]) / (60-[DaysOutOfStock])";
             this.gridColumn7.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 10;
+            this.gridColumn7.VisibleIndex = 9;
             this.gridColumn7.Width = 74;
             // 
             // gridColumn8
@@ -814,7 +813,7 @@
             this.gridColumn8.FieldName = "Quantity";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 12;
+            this.gridColumn8.VisibleIndex = 11;
             this.gridColumn8.Width = 115;
             // 
             // gridColumn9
@@ -881,7 +880,7 @@
     "astDUSoh]))";
             this.gridColumn33.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn33.Visible = true;
-            this.gridColumn33.VisibleIndex = 11;
+            this.gridColumn33.VisibleIndex = 10;
             this.gridColumn33.Width = 62;
             // 
             // repositoryItemCheckEdit1

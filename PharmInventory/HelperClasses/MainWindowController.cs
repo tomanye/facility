@@ -72,7 +72,7 @@ namespace PharmInventory
 
                     hospitalSettingsToolStripMenuItem1.Visible = false;
                     pipelineToolStripMenuItem.Visible = false;
-                    changePasswordToolStripMenuItem.Visible = false;
+                    changePasswordToolStripMenuItem.Visible = true;
 
                     navBarFacilitySettings.Visible = false;
                     navBarPipeline.Visible = false;

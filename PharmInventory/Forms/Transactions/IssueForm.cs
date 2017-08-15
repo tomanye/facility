@@ -101,14 +101,21 @@ namespace PharmInventory.Forms.Transactions
 
             PopulateCatTree(_selectedType);
             var stor = new Stores();
-            stor.GetActiveStores();
-            storebindingSource.DataSource = stor.DefaultView;
-            cboStores.Properties.DataSource = storebindingSource.DataSource;
+            UserStore ust = new UserStore();
+            DataTable dtt = ust.GetUserStore(MainWindow.LoggedinId);
+            // stor.GetActiveStores();
+            // storebindingSource.DataSource = stor.DefaultView;
+            //cboStores.Properties.DataSource = storebindingSource.DataSource;
+            cboStores.Properties.DataSource = dtt;
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
             cboStoreConf.Properties.DataSource = stor.DefaultView;
-            lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+
+            UserCommodityType ucs = new UserCommodityType();
+            DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
+            //  lkCategories.Properties.DataSource = BLL.Type.GetAllTypes();
+            lkCategories.Properties.DataSource = dt;
             lkCategories.ItemIndex = 0;
 
             var unit = new ItemUnit();
@@ -1250,6 +1257,13 @@ namespace PharmInventory.Forms.Transactions
         {
 
         }
- 
+
+        private void gridView1_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.Column.Name == "gdRowNo" && e.RowHandle > -1)
+            {
+                e.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
     }
 }

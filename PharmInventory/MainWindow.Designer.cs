@@ -298,6 +298,7 @@ namespace PharmInventory
             this.stockOutProductsToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.stockOutProductsToolStripMenuItem.Tag = "Stock Out";
             this.stockOutProductsToolStripMenuItem.Text = "Stock Out Items";
+            this.stockOutProductsToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // nearlyExpiredProductsToolStripMenuItem
             // 

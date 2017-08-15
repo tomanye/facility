@@ -1232,8 +1232,24 @@ namespace PharmInventory.Forms.Reports
 
         private void gridItemChoiceView_CustomUnboundColumnData(object sender, CustomColumnDataEventArgs e)
         {
-            if (e.IsGetData)
-                e.Value = e.ListSourceRowIndex + 1;
+            //if (e.IsGetData)
+            //    e.Value = e.ListSourceRowIndex + 1;
+        }
+
+        private void gridItemChoiceView_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
+
+        private void grdViewInPacks_CustomDrawRowIndicator(object sender, RowIndicatorCustomDrawEventArgs e)
+        {
+            if (e.Info.IsRowIndicator)
+            {
+                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            }
         }
     }
 }

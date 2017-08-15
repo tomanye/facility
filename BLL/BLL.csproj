@@ -176,6 +176,8 @@
     <Compile Include="Type.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserCommodityType.cs" />
+    <Compile Include="UserStore.cs" />
     <Compile Include="UserType.cs" />
     <Compile Include="VEN.cs" />
     <Compile Include="VRF.cs" />
