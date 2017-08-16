@@ -216,7 +216,7 @@ namespace PharmInventory
         public void GenerateExpiryChartForAllStores()
         {
             DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, (int)cboYear.EditValue-1));
-            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 1, (int)cboYear.EditValue));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 10, (int)cboYear.EditValue));
 
             dtFrom.Value = selectedStartedDate;
             dtTo.Value = selectedEndDate;
