@@ -82,14 +82,20 @@ namespace PharmInventory
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCur = ConvertDate.DateConverter(dtDate.Text);
 
-            cboYear.Properties.DataSource = Items.AllYears();
-            cboYear.EditValue = curYear;
+            //cboYear.Properties.DataSource = Items.AllYears();
+     
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            cboYear.Properties.DataSource = sortedDT;
+            //  cboYear.EditValue = curYear;
+            cboYear.ItemIndex = 0;
           }
 
         public void GenerateExpiryChart()
         {
-            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
-            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, (int)cboYear.EditValue-1));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 10, (int)cboYear.EditValue));
 
             dtFrom.Value = selectedStartedDate;
             dtTo.Value = selectedEndDate;
@@ -209,8 +215,8 @@ namespace PharmInventory
 
         public void GenerateExpiryChartForAllStores()
         {
-            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
-            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, (int)cboYear.EditValue-1));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 1, (int)cboYear.EditValue));
 
             dtFrom.Value = selectedStartedDate;
             dtTo.Value = selectedEndDate;
@@ -224,11 +230,11 @@ namespace PharmInventory
             DateTime dt2 = dtTo.Value;
             //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
             //layoutControlGroup3.Text = "Cost Report " + dRange;
-            if (dt1.Year == dt2.Year)
-            {
-                dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
-                //dRange = "For Year " + dt1.Year.ToString();
-            }
+            //if (dt1.Year == dt2.Year)
+            //{
+            //    dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
+            //    //dRange = "For Year " + dt1.Year.ToString();
+            //}
 
             ReceiveDoc rec = new ReceiveDoc();
             Balance bal = new Balance();
