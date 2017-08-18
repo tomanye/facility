@@ -143,7 +143,7 @@ namespace PharmInventory
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
-            Int64 normal = (soh - nearExpAmount - expAmount- lossandadjAmount);
+            Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
             Int64 expired = expAmount + lossandadjAmount;
             Int64 disposed = lossandadjAmount;
@@ -155,9 +155,9 @@ namespace PharmInventory
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expCost- lossandadjexpCost);
+            double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired + disposed;
+            Int64 totItm = normal + nearExpiry + expired ;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
@@ -264,7 +264,7 @@ namespace PharmInventory
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
-            Int64 normal = (soh - nearExpAmount - expAmount - lossandadjAmount);
+            Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
             Int64 expired = expAmount+ lossandadjAmount;
             Int64 disposed = lossandadjAmount;
@@ -277,9 +277,9 @@ namespace PharmInventory
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expCost- lossandadjexpCost);
+            double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired + disposed;
+            Int64 totItm = normal + nearExpiry + expired ;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
