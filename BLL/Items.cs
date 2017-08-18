@@ -961,12 +961,12 @@ FROM    Items itm
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
             whereQ = whereQ + ((typeId != 0) ? " AND vwGetAllItems.TypeID = " + typeId : "");
-
+          
             var query = string.Format(" SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
                                       " CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
                                       " ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      " AND year(Disposal.Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
+                                      " AND Disposal.Date BETWEEN '11-1-{2}' AND '10-30-{1}'" + whereQ + " ORDER BY FullItemName", storeId, year,year-1);
 
             this.LoadFromRawSql(query);
             return this.DataTable;
