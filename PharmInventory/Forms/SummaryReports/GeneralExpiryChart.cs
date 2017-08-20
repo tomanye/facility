@@ -143,9 +143,9 @@ namespace PharmInventory
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
-            Int64 normal = (soh - nearExpAmount - expAmount);
+            Int64 normal = (soh - nearExpAmount - expAmount- lossandadjAmount);
             Int64 nearExpiry = nearExpAmount;
-            Int64 expired = expAmount;
+            Int64 expired = expAmount + lossandadjAmount;
             Int64 disposed = lossandadjAmount;
 
 
@@ -155,7 +155,7 @@ namespace PharmInventory
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expCost);
+            double normalPrice = (sohPrice - nearExpCost - expCost- lossandadjexpCost);
 
             Int64 totItm = normal + nearExpiry + expired + disposed;
 
@@ -266,7 +266,7 @@ namespace PharmInventory
 
             Int64 normal = (soh - nearExpAmount - expAmount - lossandadjAmount);
             Int64 nearExpiry = nearExpAmount;
-            Int64 expired = expAmount;
+            Int64 expired = expAmount+ lossandadjAmount;
             Int64 disposed = lossandadjAmount;
 
 
