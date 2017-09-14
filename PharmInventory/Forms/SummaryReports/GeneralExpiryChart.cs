@@ -124,22 +124,22 @@ namespace PharmInventory
             int storeId = Convert.ToInt32(cboStores.EditValue);
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
-            
+            int year = Convert.ToInt32(cboYear.EditValue);
             object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID ,dt1 ,dt2);
-            Int64 expAmount = Convert.ToInt64(objExp[0]);
-            Double expCost = Convert.ToDouble(objExp[1]);
+            Int64 expAmount = (year == dtCurrent.Year) ? Convert.ToInt64(objExp[0]) : 0;
+            Double expCost = (year == dtCurrent.Year) ? Convert.ToDouble(objExp[1]):0;
 
             object[] objlossadj = itm.CountExpiredItemsAndAmountLossAdjByCategory(storeId, typeID, dt1, dt2);
             Int64 lossandadjAmount = Convert.ToInt64(objlossadj[0]);
             Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
 
             // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
-            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID ,dt1 ,dt2);
+            object[] nearObj = (year == dtCurrent.Year) ? itm.CountNearlyExpiredQtyAmountByCategoryCurrent(storeId , typeID ): itm.CountNearlyExpiredQtyAmountByCategory(storeId, typeID, year);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
            // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
-            object[] sohObj = itm.GetAllSOHQtyAmountByCategory(storeId ,typeID ,dt1 ,dt2);
+            object[] sohObj = (year == dtCurrent.Year) ? itm.GetAllSOHQtyAmountByCategoryCurrent(storeId ,typeID): itm.GetAllSOHQtyAmountByCategory(storeId, typeID, year);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
@@ -244,10 +244,11 @@ namespace PharmInventory
 
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
-            
-            object[] objExp = itm.CountExpiredItemsAndAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
-            Int64 expAmount = Convert.ToInt64(objExp[0]);
-            Double expCost = Convert.ToDouble(objExp[1]);
+            int year = Convert.ToInt32(cboYear.EditValue); 
+             
+           object[] objExp =  itm.CountExpiredItemsAndAmountByCategoryForAllStoresCurrent(typeID);
+            Int64 expAmount = (year == dtCurrent.Year) ? Convert.ToInt64(objExp[0]):0;
+            Double expCost = (year == dtCurrent.Year) ? Convert.ToDouble(objExp[1]):0;
 
             //object[] objlossadj  Items that are on Disposal with Expired Reason
             object[] objlossadj = itm.CountExpiredItemsAndAmountLossandAdjByCategoryForAllStores(typeID, dt1, dt2);
@@ -255,12 +256,12 @@ namespace PharmInventory
             Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
 
             // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
-            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            object[] nearObj = (year == dtCurrent.Year)? itm.CountNearlyExpiredQtyAmountByCategoryForAllStoresCurrent(typeID): itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID, year, dt2);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
            // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
-            object[] sohObj = itm.GetAllSOHQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            object[] sohObj = (year == dtCurrent.Year) ? itm.GetAllSOHQtyAmountByCategoryForAllStoresCurrent(typeID): itm.GetAllSOHQtyAmountByCategoryForAllStores(typeID, year);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
