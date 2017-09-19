@@ -236,7 +236,10 @@ namespace PharmInventory.Forms.Modals
                 return; //The combo has already been populated.
             }
             int i = 0;
-            foreach (DataRow dr in BLL.Items.AllFiscalYears().Rows)
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            foreach (DataRow dr in sortedDT.Rows)
             {
                 cboFiscalYear.Properties.Items.Add(dr["Year"]);
                 i++;
