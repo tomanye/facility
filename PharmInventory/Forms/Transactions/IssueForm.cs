@@ -221,9 +221,8 @@ namespace PharmInventory.Forms.Transactions
                 if (tabControl1.SelectedTabPageIndex != 1)
                     _tabPage = tabControl1.SelectedTabPageIndex;
                 if (tabControl1.SelectedTabPageIndex == 2)
-                {
-                    PopulatePickList();
-
+                { 
+                    PopulatePickList(); 
                 }
             }
             else if (_tabPage == 2)
@@ -376,10 +375,20 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            CleanPickList();
             PopulatePickList();
         }
 
-
+        private void CleanPickList()
+        { 
+            txtConfRef.Text = ""; 
+            txtIssuedTo.Text = ""; 
+            txtStore.Text = "";
+            txtConIssuedBy.Text = "";
+            txtConRemark.Text = "";
+            txtConRecipientName.Text = "";
+            gridConfirmation.DataSource = null; 
+        }
         /// <summary>
         /// Populates the picklist based on the selected issue configuration
         /// </summary>
@@ -1158,13 +1167,7 @@ namespace PharmInventory.Forms.Transactions
                     e.Cancel = true;
                 }
             }
-            else if (e.Page == tabPage3)
-            {
-                if (sender.GetType() != typeof(Button))
-                {
-                    PopulatePickList();
-                }
-            }
+       
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -1263,6 +1266,18 @@ namespace PharmInventory.Forms.Transactions
             if (e.Column.Name == "gdRowNo" && e.RowHandle > -1)
             {
                 e.DisplayText = (e.RowHandle + 1).ToString();
+            }
+        }
+
+        private void tabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (e.Page == tabPage3)
+            {
+                if (sender.GetType() != typeof(Button))
+                {
+                    CleanPickList();
+                    PopulatePickList();
+                }
             }
         }
     }

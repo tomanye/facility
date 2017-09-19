@@ -1012,6 +1012,7 @@ namespace PharmInventory.Forms.Transactions
             this.tabPage1,
             this.tabPage2,
             this.tabPage3});
+            this.tabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl1_SelectedPageChanged);
             this.tabControl1.SelectedPageChanging += new DevExpress.XtraTab.TabPageChangingEventHandler(this.tabControl1_SelectedPageChanging);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
