@@ -162,7 +162,7 @@ namespace PharmInventory
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
 
-            object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
+            object[] oo3 = { "Expired : " + (lossandadjexpCost+expCost).ToString("C"), obj[2] };
             dtSOHList.Rows.Add(oo3);
             //object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
             //dtSOHList.Rows.Add(oo4);
