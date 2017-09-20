@@ -422,7 +422,8 @@ FROM    Items itm
                             where month(date)<=10
                             union
                             select year(date)+1 as year from disposal
-                            where month(date)>10";
+                            where month(date)>10
+	                        ORDER BY YEAR DESC";
             BLL.Items itm = new Items();
             itm.LoadFromRawSql(query);
             return itm.DataTable;
