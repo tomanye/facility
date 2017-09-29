@@ -1032,7 +1032,12 @@ namespace PharmInventory.Forms.Reports
         {
             if (cboFromMonth.EditValue == null || cboFromYear.EditValue == null) return;
             SetEndingMonthAndYear(Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue));
-           // PopulateList();
+            if (cboFromMonth.EditValue == null) return;
+            RRF rrf = new RRF(); 
+           bool b = rrf.RRFForFromMonthExists(Convert.ToInt32(cboStores.EditValue), Convert.ToInt32(cboFromYear.EditValue), Convert.ToInt32(cboFromMonth.EditValue));
+            if (b)
+            XtraMessageBox.Show(String.Format("RRF Was Generated for {0}/{1}", Convert.ToInt32(cboFromMonth.EditValue), Convert.ToInt32(cboFromYear.EditValue)), "Warning");
+            // PopulateList();
         }
 
        

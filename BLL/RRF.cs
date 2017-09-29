@@ -50,6 +50,17 @@ namespace BLL
             this.Query.Load();
             return this.RowCount > 0;
         }
+        public bool RRFForFromMonthExists(int rrfType, int fromYear, int fromMonth)
+        {
+            this.FlushData();
+            //this.Where.StoreID.Value = storeID;
+            this.Where.FromYear.Value = fromYear;
+            this.Where.ToMonth.Value = fromMonth;  
+            if (rrfType !=0)
+            this.Where.RRFType.Value = rrfType;
+            this.Query.Load();
+            return this.RowCount > 0;
+        }
 
         public DataTable GetSavedRRFList()
         {
