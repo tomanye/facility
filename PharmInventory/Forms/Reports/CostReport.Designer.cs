@@ -442,10 +442,12 @@ namespace PharmInventory.Forms.Reports
             // colbbPrice
             // 
             this.colbbPrice.Caption = "BB Amount";
-            this.colbbPrice.DisplayFormat.FormatString = "#,##0";
+            this.colbbPrice.DisplayFormat.FormatString = "n3";
             this.colbbPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colbbPrice.FieldName = "BBPrice";
             this.colbbPrice.Name = "colbbPrice";
+            this.colbbPrice.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BBPrice", "{0:n3}")});
             this.colbbPrice.Visible = true;
             this.colbbPrice.VisibleIndex = 2;
             // 
