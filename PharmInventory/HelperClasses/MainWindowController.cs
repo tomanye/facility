@@ -33,7 +33,7 @@ namespace PharmInventory
                     menuStrip2.Items[0].Visible = false;
                     menuStrip2.Items[1].Visible = true;
                     menuStrip2.Items[2].Visible = true;
-                    menuStrip2.Items[3].Visible = false;
+                    menuStrip2.Items[3].Visible = true;
                     menuStrip2.Items[4].Visible = false;
                     menuStrip2.Items[5].Visible = false;
                     menuStrip2.Items[6].Visible = false;
@@ -42,7 +42,7 @@ namespace PharmInventory
                     navBarFacilitySettings.Visible = false;
                     navBarPipeline.Visible = false;
                     navBarGroup1.Visible = false; 
-                    navBarGroup3.Visible = false;
+                    navBarGroup3.Visible = true;
                     navBarGroup5.Visible = false;
                     navBarGroup6.Visible = false;
                     overStockedProductsToolStripMenuItem.Visible = false;
