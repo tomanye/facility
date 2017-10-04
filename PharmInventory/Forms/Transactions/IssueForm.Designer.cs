@@ -2586,7 +2586,6 @@ namespace PharmInventory.Forms.Transactions
             this.gdRowNo,
             this.gridColumn39,
             this.gridColumn40,
-            this.gridColumn72,
             this.gridColumn44,
             this.gridColumn45,
             this.gridColumn46,
@@ -2602,7 +2601,8 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn53,
             this.gridColumn22,
             this.gridColumn27,
-            this.gridColumn71});
+            this.gridColumn71,
+            this.gridColumn72});
             this.gridView1.GridControl = this.gridConfirmation;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowFilter = false;
