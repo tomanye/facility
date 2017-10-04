@@ -422,7 +422,8 @@ FROM    Items itm
                             where month(date)<=10
                             union
                             select year(date)+1 as year from disposal
-                            where month(date)>10";
+                            where month(date)>10
+	                        ORDER BY YEAR DESC";
             BLL.Items itm = new Items();
             itm.LoadFromRawSql(query);
             return itm.DataTable;
@@ -961,12 +962,12 @@ FROM    Items itm
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
             whereQ = whereQ + ((typeId != 0) ? " AND vwGetAllItems.TypeID = " + typeId : "");
-
+          
             var query = string.Format(" SELECT *,ROW_NUMBER() OVER (ORDER BY Disposal.Date DESC) as RowNo,(Disposal.Cost * Disposal.Quantity) AS Price," +
                                       " CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
                                       " ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      " AND year(Disposal.Date) = {1} " + whereQ + " ORDER BY FullItemName", storeId, year);
+                                      " AND Disposal.Date BETWEEN '11-1-{2}' AND '10-30-{1}'" + whereQ + " ORDER BY FullItemName", storeId, year,year-1);
 
             this.LoadFromRawSql(query);
             return this.DataTable;
@@ -1049,8 +1050,7 @@ FROM    Items itm
             obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
             return obj;
-        }
-
+        } 
         public object[] CountExpiredItemsAndAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
         {
             this.FlushData();
@@ -1058,18 +1058,27 @@ FROM    Items itm
             if (typeID != 0)
             {
                 query =
-                    string.Format(
-                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and TypeID = {1} and vw.IsInHospitalList = 1 and rd.EurDate between '{2}' and '{3}'",
-                        storeId, typeID, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                       SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                FROM   ReceiveDoc rd
+                                       JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                WHERE  QuantityLeft > 0
+                                       AND ExpDate < GETDATE()
+                                       AND StoreID =  {0}
+                                       AND TypeID =  {1}
+                                       AND vw.IsInHospitalList = 1", storeId, typeID);
             }
             else
             {
                 query =
-                    string.Format(
-                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND StoreID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
-                        storeId, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                       SUM(ISNULL(QuantityLeft, 0) * ISNULL(rd.Cost, 0)) AS Price
+                                FROM   ReceiveDoc rd
+                                       JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                WHERE  QuantityLeft > 0
+                                       AND ExpDate < GETDATE()
+                                       AND StoreID =  {0} 
+                                       AND vw.IsInHospitalList = 1",  storeId);
             }
 
             this.LoadFromRawSql(query);
@@ -1085,26 +1094,31 @@ FROM    Items itm
             if (typeID != 0)
             {
                 query =
-                    string.Format(@"SELECT count(*) QTY
-		                                  , Sum(d.quantity * rd.Cost) as Price
-                                   FROM Disposal d
-                                       JOIN DisposalReasons dr on d.ReasonId = dr.ID 
-                                        JOIN ReceiveDoc rd on  rd.ID =d.RecID
-		                                 JOIN vwGetAllItems va on va.ID = d.ItemID 
-                                where dr.Reason like 'Expired' AND rd.StoreID = {0} and va.TypeID = {1} and va.IsInHospitalList = 1 and rd.EurDate between '{2}' and '{3}'",
-                        storeId, typeID, dt1, dt2);
+                    string.Format(@" SELECT COUNT(*) QTY ,
+                                           SUM(ISNULL(d.Quantity,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   Disposal d
+                                           JOIN DisposalReasons dr ON d.ReasonId = dr.ID
+                                           JOIN ReceiveDoc rd ON rd.ID = d.RecID
+                                           JOIN vwGetAllItems va ON va.ID = d.ItemID
+                                    WHERE  dr.Reason LIKE 'Expired'
+                                           AND rd.StoreID = {0}
+                                           AND va.TypeID = {1}
+                                           AND va.IsInHospitalList = 1
+                                           AND  d.EurDate   BETWEEN   '{2}' and '{3}'",  storeId, typeID, dt1, dt2);
             }
             else
             {
                 query =
-                    string.Format(@"SELECT count(*) QTY
-		                                  , Sum(d.quantity * rd.Cost) as Price
-                                   FROM Disposal d
-                                       JOIN DisposalReasons dr on d.ReasonId = dr.ID 
-                                        JOIN ReceiveDoc rd on  rd.ID =d.RecID
-		                                 JOIN vwGetAllItems vw on vw.ID = d.ItemID 
-                                where dr.Reason like 'Expired' AND rd.StoreID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
-                        storeId, dt1, dt2);
+                    string.Format(@" SELECT COUNT(*) QTY ,
+                                           SUM(ISNULL(d.Quantity,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   Disposal d
+                                           JOIN DisposalReasons dr ON d.ReasonId = dr.ID
+                                           JOIN ReceiveDoc rd ON rd.ID = d.RecID
+                                           JOIN vwGetAllItems va ON va.ID = d.ItemID
+                                    WHERE  dr.Reason LIKE 'Expired'
+                                           AND rd.StoreID = {0} 
+                                           AND va.IsInHospitalList = 1
+                                           AND  d.EurDate   BETWEEN   '{1}' and '{2}'", storeId, dt1, dt2);
             }
 
             this.LoadFromRawSql(query);
@@ -1114,26 +1128,32 @@ FROM    Items itm
             return obj;
 
         }
-
-        public object[] CountExpiredItemsAndAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        public object[] CountExpiredItemsAndAmountByCategoryForAllStoresCurrent(int typeID)
         {
             this.FlushData();
             string query;
             if (typeID != 0)
             {
                 query =
-                    string.Format(
-                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
-                        typeID, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  QuantityLeft > 0
+                                           AND ExpDate < GETDATE()
+                                           AND TypeID = {0}
+                                           AND vw.IsInHospitalList = 1 ", typeID);
             }
             else
             {
                 query =
-                    string.Format(
-                        "Select Count(*) AS Qty ,Sum(QuantityLeft * rd.Cost) AS Price " +
-                        "From ReceiveDoc rd join vwGetAllItems vw on rd.ItemID = vw.ID where QuantityLeft > 0 And ExpDate < GETDATE() AND vw.IsInHospitalList = 1 and rd.EurDate between '{0}' and '{1}'",
-                        dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  QuantityLeft > 0
+                                           AND ExpDate < GETDATE()
+                                           AND vw.IsInHospitalList = 1");
             }
 
             this.LoadFromRawSql(query);
@@ -1141,7 +1161,7 @@ FROM    Items itm
             obj[0] = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt32(this.DataTable.Rows[0]["Qty"]) : 0);
             obj[1] = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
             return obj;
-        }
+        } 
       public object[] CountExpiredItemsAndAmountLossandAdjByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
@@ -1149,26 +1169,30 @@ FROM    Items itm
             if (typeID != 0)
             {
                 query =
-                    string.Format(@"SELECT count(*) QTY
-                               , Sum(d.quantity * rd.Cost) as Price
-                                 FROM Disposal d
-                                    JOIN DisposalReasons dr on d.ReasonId = dr.ID
-                                    JOIN ReceiveDoc rd on  rd.ID = d.RecID 
-                                    JOIN vwGetAllItems vw on vw.ID = d.ItemID
-                                WHERE dr.Reason like 'Expired' AND TypeID = {0} and vw.IsInHospitalList = 1 and rd.EurDate between '{1}' and '{2}'",
+                    string.Format(@"SELECT COUNT(*) QTY ,
+                                           SUM(ISNULL(d.Quantity,0) * ISNULL(d.Cost,0)) AS Price
+                                    FROM   Disposal d
+                                           JOIN DisposalReasons dr ON d.ReasonId = dr.ID 
+                                           JOIN vwGetAllItems vw ON vw.ID = d.ItemID
+                                    WHERE  dr.Reason LIKE 'Expired'
+                                           AND TypeID = {0}
+                                           AND vw.IsInHospitalList = 1
+                                           AND d.EurDate
+                                           BETWEEN '{1}' AND '{2}'",
                         typeID, dt1, dt2);
             }
             else
             {
                 query =
-                    string.Format(@"SELECT count(*) QTY
-                                           , Sum(d.quantity * rd.Cost) as Price
-                                             FROM Disposal d
-                                                JOIN DisposalReasons dr on d.ReasonId = dr.ID
-                                                JOIN ReceiveDoc rd on  rd.ID = d.RecID 
-                                                JOIN vwGetAllItems vw on vw.ID = d.ItemID
-                                         WHERE dr.Reason like 'Expired'AND vw.IsInHospitalList = 1 and rd.EurDate between '{0}' and '{1}'",
-                        dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) QTY ,
+                                           SUM(ISNULL(d.Quantity ,0)* ISNULL(d.Cost,0)) AS Price
+                                    FROM   Disposal d
+                                           JOIN DisposalReasons dr ON d.ReasonId = dr.ID 
+                                           JOIN vwGetAllItems vw ON vw.ID = d.ItemID
+                                    WHERE  dr.Reason LIKE 'Expired'
+                                           AND vw.IsInHospitalList = 1
+                                           AND d.EurDate
+                                           BETWEEN  '{0}' and '{1}'", dt1, dt2);
             }
 
             this.LoadFromRawSql(query);
@@ -1281,26 +1305,119 @@ FROM    Items itm
             object[] obj = { qunatity, price };
             return obj;
         }
-
-        public object[] CountNearlyExpiredQtyAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
+        public object[] CountNearlyExpiredQtyAmountByCategory(int storeId, int typeID,int year)
         {
             this.FlushData();
             string query;
             if (typeID != 0)
             {
                 query =
-                    string.Format(
-                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {1} and rd.Date between '{2}' and '{3}'",
-                        storeId, typeID, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                            AND rd.ExpDate  BETWEEN GETDATE() AND GETDATE() + 185
+                                           AND vw.IsInHospitalList = 1 
+                                          AND  TypeID ={2}
+                                          AND rd.StoreID ={1}", year, storeId, typeID);
+
             }
             else
             {
                 query =
-                    string.Format(
-                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE StoreId = {0} AND (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) and rd.Date between '{1}' and '{2}'",
-                        storeId, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                            AND rd.ExpDate  BETWEEN GETDATE() AND GETDATE() + 185
+                                           AND vw.IsInHospitalList = 1  
+                                          AND rd.StoreID ={1}", year,storeId);
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 qunatity = 0;
+            double price = 0;
+            qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+            price = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+
+            object[] obj = { qunatity, price };
+            return obj;
+        }
+        public object[] CountNearlyExpiredQtyAmountByCategoryCurrent(int storeId, int typeID)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  StoreID = {0}
+                                           AND ( ExpDate
+                                           BETWEEN GETDATE() AND GETDATE() + 185
+                                               )
+                                           AND ( QuantityLeft > 0 )
+                                           AND TypeID = {1}",  storeId, typeID );
+            }
+            else
+            {
+                query =
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  StoreID = {0}
+                                           AND ( ExpDate
+                                           BETWEEN GETDATE() AND GETDATE() + 185
+                                               )
+                                           AND ( QuantityLeft > 0 )",  storeId );
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 qunatity = 0;
+            double price = 0;
+            qunatity = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+            price = ((this.DataTable.Rows.Count > 0) ? ((this.DataTable.Rows[0]["Price"].ToString() != "") ? Convert.ToDouble(this.DataTable.Rows[0]["Price"]) : 0) : 0);
+
+            object[] obj = { qunatity, price };
+            return obj;
+        }
+        public object[] CountNearlyExpiredQtyAmountByCategoryForAllStoresCurrent(int typeID)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  ( ExpDate
+                                           BETWEEN GETDATE() AND GETDATE() + 185
+                                           )
+                                           AND ( QuantityLeft > 0 )
+                                           AND TypeID = {0}", typeID);
+            }
+            else
+            {
+                query =
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(QuantityLeft,0) * ISNULL(rd.Cost,0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  ( ExpDate
+                                           BETWEEN GETDATE() AND GETDATE() + 185
+                                           )
+                                           AND ( QuantityLeft > 0 )");
             }
 
             this.LoadFromRawSql(query);
@@ -1313,25 +1430,37 @@ FROM    Items itm
             return obj;
         }
 
-        public object[] CountNearlyExpiredQtyAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        public object[] CountNearlyExpiredQtyAmountByCategoryForAllStores(int typeID, int yr, DateTime dt2)
         {
             this.FlushData();
             string query;
             if (typeID != 0)
             {
                 query =
-                    string.Format(
-                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) AND TypeID = {0} and rd.EurDate between '{1}' and '{2}'",
-                        typeID, dt1, dt2);
+                    string.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0}
+                                         --  AND rd.ExpDate > DATEADD(DAY, 185, '{1}')
+                                            AND rd.ExpDate  BETWEEN GETDATE() AND GETDATE() + 185
+                                           AND vw.IsInHospitalList = 1 
+                                          AND  TypeID ={2}", yr,dt2,typeID );
             }
             else
             {
                 query =
-                    string.Format(
-                        "SELECT Count(*) AS Qty,Sum(QuantityLeft * rd.Cost) AS Price FROM ReceiveDoc rd " +
-                        "Join vwGetAllItems vw on rd.ItemID = vw.ID WHERE (ExpDate BETWEEN GETDATE() AND GETDATE() + 185 ) AND (QuantityLeft > 0) and rd.EurDate between '{0}' and '{1}'",
-                        dt1, dt2);
+                    string.Format(@" SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS Price
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0}
+                                           AND rd.ExpDate   BETWEEN GETDATE() AND GETDATE() + 185 
+                                           AND vw.IsInHospitalList = 1  ", yr,dt2);
             }
 
             this.LoadFromRawSql(query);
@@ -1404,22 +1533,30 @@ FROM    Items itm
             object[] obj = { soh, sohPrice };
             return obj;
         }
-
-        public object[] GetAllSOHQtyAmountByCategory(int storeId, int typeID ,DateTime dt1 ,DateTime dt2)
+        public object[] GetAllSOHQtyAmountByCategoryCurrent(int storeId, int typeID )
         {
             this.FlushData();
             string query;
             if (typeID != 0)
             {
                 query =
-                    String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and TypeID ={1} and rd.EurDate between '{2}' and '{3}'", storeId, typeID, dt1, dt2);
+                    String.Format(@"SELECT COUNT(*) AS Qty ,
+                                           ISNULL(SUM(ISNULL(rd.QuantityLeft, 0) * ISNULL(rd.Cost, 0)), 0) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  rd.StoreID ={0}
+                                           AND rd.QuantityLeft > 0
+                                           AND TypeID = {1}", storeId, typeID);
             }
             else
             {
                 query =
-                    String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.StoreID = {0} AND rd.QuantityLeft > 0 and rd.EurDate between '{1}' and '{2}'", storeId, dt1, dt2);
+                    String.Format(@"SELECT COUNT(*) AS Qty ,
+                                           ISNULL(SUM(ISNULL(rd.QuantityLeft, 0) * ISNULL(rd.Cost, 0)), 0) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  rd.StoreID ={0}
+                                           AND rd.QuantityLeft > 0", storeId);
             }
 
             this.LoadFromRawSql(query);
@@ -1433,22 +1570,112 @@ FROM    Items itm
             object[] obj = { soh, sohPrice };
             return obj;
         }
-
-        public object[] GetAllSOHQtyAmountByCategoryForAllStores(int typeID, DateTime dt1, DateTime dt2)
+        public object[] GetAllSOHQtyAmountByCategory(int storeId, int typeID ,int year)
         {
             this.FlushData();
             string query;
             if (typeID != 0)
             {
                 query =
-                    String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and TypeID ={0} and rd.EurDate between '{1}' and '{2}'", typeID, dt1, dt2);
+                    String.Format(@"SELECT COUNT(* ) AS Qty ,
+                                       SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                           AND vw.IsInHospitalList = 1 
+                                           AND rd.storeid ={1}
+                                           AND TypeID = {2} ",year, storeId, typeID);
             }
             else
             {
                 query =
-                    String.Format(
-                        "select Count( Distinct rd.ItemID) As Qty, Sum(ISNULL(rd.QuantityLeft,0) * ISNULL(rd.Cost, 0))As SOHPrice from ReceiveDoc rd Join vwGetAllItems vw on rd.ItemID =vw.ID where rd.QuantityLeft > 0 and rd.EurDate between '{0}' and '{1}'", dt1, dt2);
+                    String.Format(@"SELECT COUNT(* ) AS Qty ,
+                                       SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                           AND vw.IsInHospitalList = 1 
+                                           AND rd.storeid ={1}", year,storeId );
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 soh = 0;
+            double sohPrice = 0;
+            if (this.DataTable.Rows.Count > 0)
+            {
+                soh = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+                sohPrice = ((this.DataTable.Rows.Count > 0) ? Convert.ToDouble(this.DataTable.Rows[0]["SOHPrice"]) : 0);
+            }
+            object[] obj = { soh, sohPrice };
+            return obj;
+        }
+        public object[] GetAllSOHQtyAmountByCategoryForAllStoresCurrent(int typeID)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    String.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(rd.QuantityLeft, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  rd.QuantityLeft > 0
+                                           AND TypeID = {0}", typeID);
+            }
+            else
+            {
+                query =
+                    String.Format(@"SELECT COUNT(*) AS Qty ,
+                                           SUM(ISNULL(rd.QuantityLeft, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  rd.QuantityLeft > 0");
+            }
+
+            this.LoadFromRawSql(query);
+            Int64 soh = 0;
+            double sohPrice = 0;
+            if (this.DataTable.Rows.Count > 0)
+            {
+                soh = ((this.DataTable.Rows.Count > 0) ? Convert.ToInt64(this.DataTable.Rows[0]["Qty"]) : 0);
+                sohPrice = ((this.DataTable.Rows.Count > 0) ? Convert.ToDouble(this.DataTable.Rows[0]["SOHPrice"]) : 0);
+            }
+            object[] obj = { soh, sohPrice };
+            return obj;
+        }
+        public object[] GetAllSOHQtyAmountByCategoryForAllStores(int typeID, int year)
+        {
+            this.FlushData();
+            string query;
+            if (typeID != 0)
+            {
+                query =
+                    String.Format(@"SELECT COUNT(* ) AS Qty ,
+                                       SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                           AND vw.IsInHospitalList = 1 
+                                           AND TypeID = {1} ", year,typeID);
+            }
+            else
+            {
+                query =
+                    String.Format(@"SELECT COUNT(* ) AS Qty ,
+                                       SUM(ISNULL(yr.EBalance, 0) * ISNULL(rd.Cost, 0)) AS SOHPrice
+                                    FROM   ReceiveDoc rd
+                                           JOIN dbo.YearEnd yr ON rd.ItemID = yr.ItemID
+                                           JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                    WHERE  EBalance > 0
+                                           AND [Year] = {0} 
+                                           AND vw.IsInHospitalList = 1", year);
             }
 
             this.LoadFromRawSql(query);

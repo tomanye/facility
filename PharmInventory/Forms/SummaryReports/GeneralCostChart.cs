@@ -34,9 +34,13 @@ DateTime dtCurrent = new DateTime();
             dtDate.Value = DateTime.Now;
             dtDate.CustomFormat = "MM/dd/yyyy";
             dtCurrent = ConvertDate.DateConverter(dtDate.Text);
-            cboYear.Properties.DataSource = Items.AllYears();
-            cboYear.EditValue = dtCurrent.Year;
-
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            cboYear.Properties.DataSource = sortedDT;
+            // cboYear.Properties.DataSource = Items.AllYears();
+            //   cboYear.EditValue = dtCurrent.Year;
+            cboYear.ItemIndex = 0;
             GeneratCostChartForAllStores();            
         }
 
@@ -65,22 +69,22 @@ DateTime dtCurrent = new DateTime();
 
             for (int i = 0; i < mon.Length; i++)
             {
-                if (selectedYear == dtCurrent.Year)
-                {
-                    if (((mon[i] == 11 || mon[i] == 12) && (mon[i] <= dtCurrent.Month || year == dtCurrent.Year)) || (mon[i] < 11 && mon[i] <= dtCurrent.Month && year == dtCurrent.Year))
-                    {
-                        int yr = (mon[i] < 11) ? dtCurrent.Year : year;
+                //if (selectedYear != dtCurrent.Year)
+                //{
+                //    if (((mon[i] == 11 || mon[i] == 12) && (mon[i] <= dtCurrent.Month || year == dtCurrent.Year)) || (mon[i] < 11 && mon[i] <= dtCurrent.Month && year == dtCurrent.Year))
+                //    {
+                //        int yr = (mon[i] < 11) ? dtCurrent.Year : year;
 
-                        double recVal = recd.GetCostReceiveByItemPerMonthForAllStores(mon[i], yr);
-                        object[] objrec = { co[i], recVal };
-                        double issVal = recd.GetCostIssuedByItemPerMonthForAllStores(mon[i], yr);
-                        object[] objiss = { co[i], issVal };
-                        dtList.Rows.Add(objrec);
-                        dtCons.Rows.Add(objiss);
-                    }
-                }
-                else
-                {
+                //        double recVal = recd.GetCostReceiveByItemPerMonthForAllStores(mon[i], yr);
+                //        object[] objrec = { co[i], recVal };
+                //        double issVal = recd.GetCostIssuedByItemPerMonthForAllStores(mon[i], yr);
+                //        object[] objiss = { co[i], issVal };
+                //        dtList.Rows.Add(objrec);
+                //        dtCons.Rows.Add(objiss);
+                //    }
+                //}
+                //else
+                //{
                         int yr = (mon[i] < 11) ? selectedYear : selectedYear - 1 ;
 
                         double recVal = recd.GetCostReceiveByItemPerMonthForAllStores(mon[i], yr);
@@ -89,7 +93,7 @@ DateTime dtCurrent = new DateTime();
                         object[] objiss = { co[i], issVal };
                         dtList.Rows.Add(objrec);
                         dtCons.Rows.Add(objiss);
-                }
+                //}
             }
             chartReceiveCost.Series.Clear();
             Series ser = new Series("Received Cost In Birr", ViewType.Line) { DataSource = dtList, ArgumentScaleType = ScaleType.Qualitative, ArgumentDataMember = "Month", ValueScaleType = ScaleType.Numerical };
@@ -135,22 +139,22 @@ DateTime dtCurrent = new DateTime();
 
             for (int i = 0; i < mon.Length; i++)
             {
-                if (selectedYear == dtCurrent.Year)
-                {
-                    if (((mon[i] == 11 || mon[i] == 12) && (mon[i] <= dtCurrent.Month || year == dtCurrent.Year)) || (mon[i] < 11 && mon[i] <= dtCurrent.Month && year == dtCurrent.Year))
-                    {
-                        int yr = (mon[i] < 11) ? dtCurrent.Year : year;
+                //if (selectedYear == dtCurrent.Year)
+                //{
+                //    if (((mon[i] == 11 || mon[i] == 12) && (mon[i] <= dtCurrent.Month || year == dtCurrent.Year)) || (mon[i] < 11 && mon[i] <= dtCurrent.Month && year == dtCurrent.Year))
+                //    {
+                //        int yr = (mon[i] < 11) ? dtCurrent.Year : year;
 
-                        double recVal = recd.GetCostReceiveByItemPerMonth(mon[i], storeId, yr);
-                        object[] objrec = { co[i], recVal };
-                        double issVal = recd.GetCostIssuedByItemPerMonth(mon[i], storeId, yr);
-                        object[] objiss = { co[i], issVal };
-                        dtList.Rows.Add(objrec);
-                        dtCons.Rows.Add(objiss);
-                    }
-                }
-                else
-                {
+                //        double recVal = recd.GetCostReceiveByItemPerMonth(mon[i], storeId, yr);
+                //        object[] objrec = { co[i], recVal };
+                //        double issVal = recd.GetCostIssuedByItemPerMonth(mon[i], storeId, yr);
+                //        object[] objiss = { co[i], issVal };
+                //        dtList.Rows.Add(objrec);
+                //        dtCons.Rows.Add(objiss);
+                //    }
+                //}
+                //else
+               // {
                     int yr = (mon[i] < 11) ? selectedYear : selectedYear - 1;
 
                     double recVal = recd.GetCostReceiveByItemPerMonth(mon[i], storeId, yr);
@@ -159,7 +163,7 @@ DateTime dtCurrent = new DateTime();
                     object[] objiss = { co[i], issVal };
                     dtList.Rows.Add(objrec);
                     dtCons.Rows.Add(objiss);
-                }
+             //   }
             }
             chartReceiveCost.Series.Clear();
             Series ser = new Series("Received Cost In Birr", ViewType.Line) { DataSource = dtList, ArgumentScaleType = ScaleType.Qualitative, ArgumentDataMember = "Month", ValueScaleType = ScaleType.Numerical };

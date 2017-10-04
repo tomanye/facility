@@ -221,9 +221,8 @@ namespace PharmInventory.Forms.Transactions
                 if (tabControl1.SelectedTabPageIndex != 1)
                     _tabPage = tabControl1.SelectedTabPageIndex;
                 if (tabControl1.SelectedTabPageIndex == 2)
-                {
-                    PopulatePickList();
-
+                { 
+                    PopulatePickList(); 
                 }
             }
             else if (_tabPage == 2)
@@ -376,10 +375,20 @@ namespace PharmInventory.Forms.Transactions
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            CleanPickList();
             PopulatePickList();
         }
 
-
+        private void CleanPickList()
+        { 
+            txtConfRef.Text = ""; 
+            txtIssuedTo.Text = ""; 
+            txtStore.Text = "";
+            txtConIssuedBy.Text = "";
+            txtConRemark.Text = "";
+            txtConRecipientName.Text = "";
+            gridConfirmation.DataSource = null; 
+        }
         /// <summary>
         /// Populates the picklist based on the selected issue configuration
         /// </summary>
@@ -399,7 +408,7 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -568,7 +577,7 @@ namespace PharmInventory.Forms.Transactions
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"]};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -1158,13 +1167,7 @@ namespace PharmInventory.Forms.Transactions
                     e.Cancel = true;
                 }
             }
-            else if (e.Page == tabPage3)
-            {
-                if (sender.GetType() != typeof(Button))
-                {
-                    PopulatePickList();
-                }
-            }
+       
         }
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
@@ -1264,6 +1267,23 @@ namespace PharmInventory.Forms.Transactions
             {
                 e.DisplayText = (e.RowHandle + 1).ToString();
             }
+        }
+
+        private void tabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (e.Page == tabPage3)
+            {
+                if (sender.GetType() != typeof(Button))
+                {
+                    CleanPickList();
+                    PopulatePickList();
+                }
+            }
+        }
+
+        private void gridConfirmation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
