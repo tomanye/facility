@@ -430,7 +430,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // colBB
             // 
-            this.colBB.Caption = "BB Qty";
+            this.colBB.Caption = "Beggining Balance Qty";
             this.colBB.DisplayFormat.FormatString = "#,##0";
             this.colBB.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBB.FieldName = "BBQty";
@@ -441,7 +441,7 @@ namespace PharmInventory.Forms.Reports
             // 
             // colbbPrice
             // 
-            this.colbbPrice.Caption = "BB Amount";
+            this.colbbPrice.Caption = "Beggining Balance Amt";
             this.colbbPrice.DisplayFormat.FormatString = "n3";
             this.colbbPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colbbPrice.FieldName = "BBPrice";
