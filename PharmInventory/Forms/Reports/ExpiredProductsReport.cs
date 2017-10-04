@@ -51,9 +51,15 @@ namespace PharmInventory.Forms.Reports
             if (month < 11) year = dtCur.Year;
             else year = dtCur.Year + 1;
 
-            DataTable dtyears = Items.AllYears();
-            cmbYear.Properties.DataSource = dtyears;
-            cmbYear.EditValue = year;
+            //DataTable dtyears = Items.AllYears();
+            //cmbYear.Properties.DataSource = dtyears;
+            //cmbYear.EditValue = year;
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            cmbYear.Properties.DataSource = sortedDT;
+            //  cboYear.EditValue = curYear;
+            cmbYear.ItemIndex = 0;
             if (cmbYear.Properties.Columns.Count > 0)
                 cmbYear.Properties.Columns[0].Alignment = DevExpress.Utils.HorzAlignment.Near;
             //cmbYear.EditValue 

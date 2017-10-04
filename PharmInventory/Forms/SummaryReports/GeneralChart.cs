@@ -59,8 +59,13 @@ namespace PharmInventory
             curMont = dtCurrent.Month;
             curYear = dtCurrent.Year;
 
-            cboYear.Properties.DataSource = Items.AllYears();
-            cboYear.EditValue = dtCurrent.Year;
+            //cboYear.Properties.DataSource = Items.AllYears();
+            //cboYear.EditValue = dtCurrent.Year;
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            cboYear.Properties.DataSource = sortedDT;
+            cboYear.ItemIndex = 0;
             if (cboYear.Properties.Columns.Count > 0)
                 cboYear.Properties.Columns[0].Alignment = DevExpress.Utils.HorzAlignment.Near;
         }

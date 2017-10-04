@@ -82,14 +82,20 @@ namespace PharmInventory
             dtDate.CustomFormat = "MM/dd/yyyy";
             _dtCur = ConvertDate.DateConverter(dtDate.Text);
 
-            cboYear.Properties.DataSource = Items.AllYears();
-            cboYear.EditValue = curYear;
+            //cboYear.Properties.DataSource = Items.AllYears();
+     
+            DataView dv = Items.AllFiscalYears().DefaultView;
+            dv.Sort = "year desc";
+            DataTable sortedDT = dv.ToTable();
+            cboYear.Properties.DataSource = sortedDT;
+            //  cboYear.EditValue = curYear;
+            cboYear.ItemIndex = 0;
           }
 
         public void GenerateExpiryChart()
         {
-            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
-            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, (int)cboYear.EditValue-1));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 10, (int)cboYear.EditValue));
 
             dtFrom.Value = selectedStartedDate;
             dtTo.Value = selectedEndDate;
@@ -118,28 +124,28 @@ namespace PharmInventory
             int storeId = Convert.ToInt32(cboStores.EditValue);
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
-            
+            int year = Convert.ToInt32(cboYear.EditValue);
             object[] objExp = itm.CountExpiredItemsAndAmountByCategory(storeId,typeID ,dt1 ,dt2);
-            Int64 expAmount = Convert.ToInt64(objExp[0]);
-            Double expCost = Convert.ToDouble(objExp[1]);
+            Int64 expAmount = (year == dtCurrent.Year) ? Convert.ToInt64(objExp[0]) : 0;
+            Double expCost = (year == dtCurrent.Year) ? Convert.ToDouble(objExp[1]):0;
 
             object[] objlossadj = itm.CountExpiredItemsAndAmountLossAdjByCategory(storeId, typeID, dt1, dt2);
             Int64 lossandadjAmount = Convert.ToInt64(objlossadj[0]);
             Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
 
             // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
-            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategory(storeId , typeID ,dt1 ,dt2);
+            object[] nearObj = (year == dtCurrent.Year) ? itm.CountNearlyExpiredQtyAmountByCategoryCurrent(storeId , typeID ): itm.CountNearlyExpiredQtyAmountByCategory(storeId, typeID, year);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
            // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
-            object[] sohObj = itm.GetAllSOHQtyAmountByCategory(storeId ,typeID ,dt1 ,dt2);
+            object[] sohObj = (year == dtCurrent.Year) ? itm.GetAllSOHQtyAmountByCategoryCurrent(storeId ,typeID): itm.GetAllSOHQtyAmountByCategory(storeId, typeID, year);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
             Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
-            Int64 expired = expAmount;
+            Int64 expired = expAmount + lossandadjAmount;
             Int64 disposed = lossandadjAmount;
 
 
@@ -151,12 +157,12 @@ namespace PharmInventory
             dtSOHList.Columns[1].DataType = typeof(Int64);
             double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired + disposed;
+            Int64 totItm = normal + nearExpiry + expired ;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
 
-            object[] oo3 = { "Expired : " + expCost.ToString("C"), obj[2] };
+            object[] oo3 = { "Expired : " + (lossandadjexpCost+expCost).ToString("C"), obj[2] };
             dtSOHList.Rows.Add(oo3);
             //object[] oo4 = { "Disposed : " + lossandadjexpCost.ToString("C"), obj[3] };
             //dtSOHList.Rows.Add(oo4);
@@ -209,8 +215,8 @@ namespace PharmInventory
 
         public void GenerateExpiryChartForAllStores()
         {
-            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 1, (int)cboYear.EditValue));
-            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 12, (int)cboYear.EditValue));
+            DateTime selectedStartedDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 1, 11, (int)cboYear.EditValue-1));
+            DateTime selectedEndDate = EthiopianDate.EthiopianDate.EthiopianToGregorian(String.Format("{0}/{1}/{2}", 30, 10, (int)cboYear.EditValue));
 
             dtFrom.Value = selectedStartedDate;
             dtTo.Value = selectedEndDate;
@@ -224,11 +230,11 @@ namespace PharmInventory
             DateTime dt2 = dtTo.Value;
             //string dRange = "From " + dtFrom.Text + " to " + dtTo.Text;
             //layoutControlGroup3.Text = "Cost Report " + dRange;
-            if (dt1.Year == dt2.Year)
-            {
-                dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
-                //dRange = "For Year " + dt1.Year.ToString();
-            }
+            //if (dt1.Year == dt2.Year)
+            //{
+            //    dt1 = ((dt1.Month == 11 || dt1.Month == 12) ? new DateTime(dt1.Year, 11, 1) : new DateTime(dt1.Year - 1, 11, 1));
+            //    //dRange = "For Year " + dt1.Year.ToString();
+            //}
 
             ReceiveDoc rec = new ReceiveDoc();
             Balance bal = new Balance();
@@ -238,10 +244,11 @@ namespace PharmInventory
 
             int typeID = Convert.ToInt32(lkCategory.EditValue);
             //object[] objExp = itm.CountExpiredItemsAndAmount(storeId);
-            
-            object[] objExp = itm.CountExpiredItemsAndAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
-            Int64 expAmount = Convert.ToInt64(objExp[0]);
-            Double expCost = Convert.ToDouble(objExp[1]);
+            int year = Convert.ToInt32(cboYear.EditValue); 
+             
+           object[] objExp =  itm.CountExpiredItemsAndAmountByCategoryForAllStoresCurrent(typeID);
+            Int64 expAmount = (year == dtCurrent.Year) ? Convert.ToInt64(objExp[0]):0;
+            Double expCost = (year == dtCurrent.Year) ? Convert.ToDouble(objExp[1]):0;
 
             //object[] objlossadj  Items that are on Disposal with Expired Reason
             object[] objlossadj = itm.CountExpiredItemsAndAmountLossandAdjByCategoryForAllStores(typeID, dt1, dt2);
@@ -249,18 +256,18 @@ namespace PharmInventory
             Double lossandadjexpCost = Convert.ToDouble(objlossadj[1]);
 
             // object[] nearObj = itm.CountNearlyExpiredQtyAmount(storeId);
-            object[] nearObj = itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            object[] nearObj = (year == dtCurrent.Year)? itm.CountNearlyExpiredQtyAmountByCategoryForAllStoresCurrent(typeID): itm.CountNearlyExpiredQtyAmountByCategoryForAllStores(typeID, year, dt2);
             Int64 nearExpAmount = Convert.ToInt64(nearObj[0]);
             double nearExpCost = Convert.ToDouble(nearObj[1]);
 
            // object[] sohObj = itm.GetAllSOHQtyAmount(storeId);
-            object[] sohObj = itm.GetAllSOHQtyAmountByCategoryForAllStores(typeID ,dt1 ,dt2);
+            object[] sohObj = (year == dtCurrent.Year) ? itm.GetAllSOHQtyAmountByCategoryForAllStoresCurrent(typeID): itm.GetAllSOHQtyAmountByCategoryForAllStores(typeID, year);
             Int64 soh = Convert.ToInt64(sohObj[0]);
             double sohPrice = Convert.ToDouble(sohObj[1]);
 
-            Int64 normal = (soh - nearExpAmount - expAmount - lossandadjAmount);
+            Int64 normal = (soh - nearExpAmount - expAmount);
             Int64 nearExpiry = nearExpAmount;
-            Int64 expired = expAmount;
+            Int64 expired = expAmount+ lossandadjAmount;
             Int64 disposed = lossandadjAmount;
 
 
@@ -271,9 +278,9 @@ namespace PharmInventory
             dtSOHList.Columns.Add("Type");
             dtSOHList.Columns.Add("Value");
             dtSOHList.Columns[1].DataType = typeof(Int64);
-            double normalPrice = (sohPrice - nearExpCost - expCost- lossandadjexpCost);
+            double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired + disposed;
+            Int64 totItm = normal + nearExpiry + expired ;
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
@@ -437,17 +444,18 @@ namespace PharmInventory
             string strStartDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(startDate);
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
             string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
+            //string[] header = { info.HospitalName, "General Expiry For Current Year", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
 
-            string[] header = { info.HospitalName, "General Expiry For Current Year", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
+            string[] header = { info.HospitalName, "General Expiry For: "+ cboYear.Text +" E.C", "From Start Date: " + strStartDate+ " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
-            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
-           }
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 600, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40,1200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0,80, 600, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 120, 800, 100), BorderSide.None);
+            //TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(600, 60,600, 100), BorderSide.None);
+        }
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)
         {
@@ -455,6 +463,7 @@ namespace PharmInventory
             {
                 if (cboYear.EditValue != null)
                 {
+                    lblGExpiry.Text = cboYear.Text + " E.C";
                     if (cboStores.ItemIndex == 0)
                     {
                         GenerateExpiryChartForAllStores();
