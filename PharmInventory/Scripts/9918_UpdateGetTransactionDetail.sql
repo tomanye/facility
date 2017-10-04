@@ -24,8 +24,8 @@ select t.*
 		(SELECT ItemID , SUM(Quantity) Quantity, SUM(QuantityLeft) QuantityLeft, SUM(Quantity * Cost) Price ,SUM(QuantityLeft*Cost) price1 
 		FROM ReceiveDoc WHERE StoreID = @storeid AND (date BETWEEN @fromdate AND @todate) GROUP BY ItemID ) AS rd ON rd.ItemID = vw.ID 
 	LEFT JOIN 
-		(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price  
-		FROM ReceiveDoc WHERE StoreID = @storeid AND (date =  @fromdate  ) GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
+		(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price ,MAX(Date) receivedate
+		FROM ReceiveDoc WHERE StoreID = @storeid AND (date <=  @fromdate  ) GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
 	--	LEFT JOIN 
 			--(SELECT ItemID , SUM(PhysicalInventory) Quantity FROM YearEnd WHERE StoreID = @storeid AND Year = YEAR(@fromdate)  GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
 	      LEFT JOIN
