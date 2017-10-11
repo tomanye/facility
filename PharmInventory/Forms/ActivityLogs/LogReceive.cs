@@ -69,8 +69,8 @@ namespace PharmInventory.Forms.ActivityLogs
             }
 
             // bind the current dates
-
-           try
+            grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+            try
             {
                 var dr = (DataRowView) lstTree.GetDataRecordByNode(lstTree.Nodes[0].FirstNode);
                 if (dr == null) return;
@@ -96,7 +96,7 @@ namespace PharmInventory.Forms.ActivityLogs
             {
                 
             }
-            grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+       
         }
 
         private void PopulateDocuments(DataTable dtRec)
