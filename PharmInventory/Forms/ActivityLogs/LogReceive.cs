@@ -234,7 +234,9 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
             printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
-            printableComponentLink1.CreateDocument();
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.CreateDocument(); 
+           // printableComponentLink1.Landscape = ((PrintingSystem)sender).PageSettings.Landscape;
             printableComponentLink1.ShowPreview();
         }
         private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
@@ -266,15 +268,22 @@ namespace PharmInventory.Forms.ActivityLogs
             string rcdate = lstTree.FocusedNode.GetDisplayText("Year");
             if ((lstTree.FocusedNode.GetDisplayText("Date")) != "")
                  rcdate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString() ;
-           
-            string header = info.HospitalName + " \nReceive Activity Log Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + rcdate + " E.C";
+
+            // string header = info.HospitalName + " \nReceive Activity Log Store: " + cboStores.Text + " \n RefNo:  " + refNumber + "  On " + rcdate + " E.C";
+            string header = info.HospitalName + " \nReceive Activity Log \nStore: " + cboStores.Text;
+            string headerRight = " \n RefNo:  " + refNumber + "  \nOn " + rcdate + " E.C"; ;
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
             TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Tahoma", 13);
-            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
+            TextBrick brickright = e.Graph.DrawString(headerRight, Color.Navy, new RectangleF(1400, 0, 400, 100),
+                                                DevExpress.XtraPrinting.BorderSide.None);
+            brickright.Font = new Font("Tahoma", 13);
+            brickright.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Far);
+
         }
 
         private void pcl_CreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
