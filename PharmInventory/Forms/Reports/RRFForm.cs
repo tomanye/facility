@@ -282,7 +282,7 @@ namespace PharmInventory.Forms.Reports
                                     Period =
                                         {
                                             Text =
-                                                string.Format("{0}, {1} - {2}, {3}", ethioDateFrom.GetMonthName(),
+                                                string.Format("{0} 01, {1} - {2} 30, {3}", ethioDateFrom.GetMonthName(),
                                                               ethioDateFrom.Year, ethioDateTo.GetMonthName(),
                                                               ethioDateTo.Year)
                                         },
