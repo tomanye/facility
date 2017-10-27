@@ -240,7 +240,7 @@ namespace PharmInventory.Forms.ActivityLogs
             printableComponentLink1.CreateDocument();
             printableComponentLink1.Landscape = true;
             printableComponentLink1.ShowPreview();
-            colSOH.Visible = true;
+           // colSOH.Visible = true;
             colDBER.Visible = true;
         }
         private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)

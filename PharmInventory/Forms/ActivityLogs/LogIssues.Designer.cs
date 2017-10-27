@@ -296,7 +296,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             this.grdLogIssue.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
             this.grdLogIssue.AppearancePrint.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.grdLogIssue.ColumnPanelRowHeight = 45;
+            this.grdLogIssue.ColumnPanelRowHeight = 40;
             this.grdLogIssue.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.No,
             this.gridColumn2,

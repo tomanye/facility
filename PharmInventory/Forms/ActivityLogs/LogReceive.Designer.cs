@@ -464,8 +464,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colSOH.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSOH.FieldName = "QuantityLeft";
             this.colSOH.Name = "colSOH";
-            this.colSOH.Visible = true;
-            this.colSOH.VisibleIndex = 11;
             this.colSOH.Width = 45;
             // 
             // gridColumn12
@@ -481,7 +479,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colDBER.FieldName = "DBER";
             this.colDBER.Name = "colDBER";
             this.colDBER.Visible = true;
-            this.colDBER.VisibleIndex = 12;
+            this.colDBER.VisibleIndex = 11;
             this.colDBER.Width = 44;
             // 
             // gridColumn14
@@ -498,7 +496,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn15.FieldName = "UnitID";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 13;
+            this.gridColumn15.VisibleIndex = 12;
             this.gridColumn15.Width = 92;
             // 
             // repositoryItemLookUpEdit1
