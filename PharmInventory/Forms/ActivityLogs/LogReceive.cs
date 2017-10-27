@@ -247,8 +247,8 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             PageInfoBrick pib = new PageInfoBrick();
             pib.Format = "Page {0}/{1}";
-            string Suppliername =  "Supplied by: " + dtRec.AsDataView()[0]["SupplierName"] as string;
-            string Receivername = "Received by: " + dtRec.AsDataView()[0]["ReceivedBy"] as string;
+            string Suppliername =  "Supplied By: " + dtRec.AsDataView()[0]["SupplierName"] as string;
+            string Receivername = "Received By: " + dtRec.AsDataView()[0]["ReceivedBy"] as string;
             //RectangleF r = RectangleF.Empty;
             //r.Height = 20;
             //r.X = 800;
@@ -291,17 +291,17 @@ namespace PharmInventory.Forms.ActivityLogs
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brickcenter = e.Graph.DrawString(headercenter, Color.Navy, new RectangleF(400, 20, 400, 100),
+            TextBrick brickcenter = e.Graph.DrawString(headercenter, Color.Navy, new RectangleF(400, 40, 400, 100),
                                                DevExpress.XtraPrinting.BorderSide.None);
             brickcenter.Font = new Font("Tahoma", 13); 
             brickcenter.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
 
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 20, 400, 100),
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 40, 400, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Tahoma", 13);
             brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
 
-            TextBrick brickright = e.Graph.DrawString(headerRight, Color.Navy, new RectangleF(800, 0, 400, 100),
+            TextBrick brickright = e.Graph.DrawString(headerRight, Color.Navy, new RectangleF(800, 20, 400, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brickright.Font = new Font("Tahoma", 13);
             brickright.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
@@ -547,5 +547,7 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
+
+     
     }
 }

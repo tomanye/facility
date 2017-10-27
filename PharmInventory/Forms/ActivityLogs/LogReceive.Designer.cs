@@ -320,7 +320,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.grdLogReceive.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.grdLogReceive.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
             this.grdLogReceive.AppearancePrint.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.grdLogReceive.ColumnPanelRowHeight = 80;
+            this.grdLogReceive.ColumnPanelRowHeight = 40;
             this.grdLogReceive.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -357,7 +357,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 37;
+            this.gridColumn1.Width = 35;
             // 
             // gridColumn2
             // 
@@ -374,7 +374,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 277;
+            this.gridColumn3.Width = 280;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -455,7 +455,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 10;
-            this.gridColumn10.Width = 74;
+            this.gridColumn10.Width = 60;
             // 
             // colSOH
             // 
@@ -750,7 +750,7 @@ namespace PharmInventory.Forms.ActivityLogs
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.gridReceives;
-            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 60);
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(25, 30, 120, 60);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // LogReceive
