@@ -558,14 +558,14 @@ namespace PharmInventory.Forms.Reports
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
 
 
-            TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 0, 200, 100), BorderSide.None);
-            TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 20, 200, 100), BorderSide.None);
-            TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 40, 200, 100), BorderSide.None);
+            TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 200, 100), BorderSide.None);
+            TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 40, 200, 100), BorderSide.None);
+            TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 200, 100), BorderSide.None);
         }
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
