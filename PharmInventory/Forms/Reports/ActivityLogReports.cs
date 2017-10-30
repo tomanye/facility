@@ -145,17 +145,18 @@ namespace PharmInventory.Forms.SummaryReports
             //    CustomFormat = "MM/dd/yyyy"
             //};
             //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            var comHeader = info.HospitalName + "\n Store: " + cboStores.Text;
-            string header = (!isIssue) ? comHeader + "\n Received From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Supplier: " + lkSupplier.Text :
-                     comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Issue Location: " + lklocation.Text;
+         
+            var comHeader = info.HospitalName + "\nStore: " + cboStores.Text;
+            string header = (!isIssue) ? comHeader + "\nReceived From " + dtFrom.Text + " To " + dtTo.Text + " E.C \nSupplier: " + lkSupplier.Text :
+                     comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \nIssue Location: " + lklocation.Text;
 
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header; 
              
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 120),
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 20, 1000, 120),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Tahoma", 12);
-            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
