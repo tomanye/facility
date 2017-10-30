@@ -374,14 +374,14 @@ namespace PharmInventory.Forms.Reports
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString(), "To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text };
+            string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString() + " To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text,"Category:" + lkCategory.Text };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3= e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 400, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick3= e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 80, 200, 100), BorderSide.None);
         }
 
       

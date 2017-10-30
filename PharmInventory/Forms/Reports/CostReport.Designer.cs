@@ -838,10 +838,10 @@ namespace PharmInventory.Forms.Reports
             // 
             this.printableComponentLink1.Component = this.gridItemsList;
             this.printableComponentLink1.Landscape = true;
-            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 120, 40);
             this.printableComponentLink1.PageHeaderFooter = new DevExpress.XtraPrinting.PageHeaderFooter(new DevExpress.XtraPrinting.PageHeaderArea(new string[] {
                 "",
-                "Cost Report",
+                "\r\n\r\nCost Report",
                 ""}, new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))), DevExpress.XtraPrinting.BrickAlignment.Near), new DevExpress.XtraPrinting.PageFooterArea(new string[] {
                 "[Page # of Pages #]",
                 "",
