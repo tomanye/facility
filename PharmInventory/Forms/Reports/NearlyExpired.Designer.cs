@@ -389,8 +389,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn28.OptionsColumn.AllowEdit = false;
             this.gridColumn28.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn28.OptionsFilter.AllowFilter = false;
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 0;
             this.gridColumn28.Width = 90;
             // 
             // colItemName
@@ -403,7 +401,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
-            this.colItemName.VisibleIndex = 2;
+            this.colItemName.VisibleIndex = 1;
             this.colItemName.Width = 253;
             // 
             // repositoryItemMemoEdit1
@@ -436,7 +434,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2.OptionsColumn.AllowMove = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 113;
             // 
             // gridColumn3
@@ -451,7 +449,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.OptionsColumn.AllowMove = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 113;
             // 
             // gridColumn4
@@ -466,7 +464,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsColumn.AllowMove = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 86;
             // 
             // gridColumn5
@@ -489,7 +487,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn6.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", "Total Birr: {0:n3}")});
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 153;
             // 
             // gridColumn8
@@ -504,7 +502,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn8.OptionsColumn.AllowMove = false;
             this.gridColumn8.OptionsFilter.AllowFilter = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -519,7 +517,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.UnboundExpression = "Min([QuantityLeft] / [AMC],0 )";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.VisibleIndex = 7;
             this.gridColumn7.Width = 81;
             // 
             // gridColumn9
@@ -530,7 +528,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn9.FieldName = "RedistributionQty";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.VisibleIndex = 8;
             // 
             // gridColumn10
             // 
@@ -538,7 +536,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn10.FieldName = "InternalDrugCode";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.VisibleIndex = 0;
             // 
             // repositoryItemCheckEdit1
             // 
