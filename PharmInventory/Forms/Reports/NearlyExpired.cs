@@ -23,6 +23,8 @@ namespace PharmInventory.Forms.Reports
         string _selectedType = "Drug";
         DateTime _dtCurrent = new DateTime();
 
+        public bool ColName { get; private set; }
+
         /// <summary>
         /// Loads the lookups
         /// </summary>
@@ -151,13 +153,7 @@ namespace PharmInventory.Forms.Reports
             //PopulateCatTree(selectedType);
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText =  (e.RowHandle + 1).ToString();
-            }
-        }
+    
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
@@ -170,7 +166,7 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
             string  headerright = "Printed Date: " + dtDate.Text;
-            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(800, 60, 200, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(865, 60, 200, 100), BorderSide.None);
             brick3.HorzAlignment = DevExpress.Utils.HorzAlignment.Far;
         }
 
@@ -261,5 +257,23 @@ namespace PharmInventory.Forms.Reports
 
             gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
+
+        
+
+        private void gridItemListView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {  
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex );
+                
+                e.DisplayText = (rowIndex +1).ToString();
+
+            }
+
+        }
+ 
     }
 }
