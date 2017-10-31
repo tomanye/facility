@@ -622,12 +622,16 @@ namespace PharmInventory.Forms.Transactions
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            if (chkExcludeStockedOut.Checked)
-                gridItemChoiceView.ActiveFilterString = string.Format("[Status] != 'Stock Out' AND [FullItemName] Like '{0}%' and [TypeID]={1}", txtItemName.Text, (int)lkCategories.EditValue);
-            else if (!ckStockOut.Checked)
+            if (lkCategories.EditValue != null)
             {
-                gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ", txtItemName.Text, (int)lkCategories.EditValue);
+                if (chkExcludeStockedOut.Checked)
+                    gridItemChoiceView.ActiveFilterString = string.Format("[Status] != 'Stock Out' AND [FullItemName] Like '{0}%' and [TypeID]={1}", txtItemName.Text, (int)lkCategories.EditValue);
+                else if (!ckStockOut.Checked)
+                {
+                    gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ", txtItemName.Text, (int)lkCategories.EditValue);
+                }
             }
+          
         }
 
         /// <summary>
@@ -1182,6 +1186,7 @@ namespace PharmInventory.Forms.Transactions
                 XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
             }
+            ResetValues();
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)
