@@ -957,7 +957,7 @@ FROM    Items itm
             return this.DataTable;
         }
 
-        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeId)
+        public DataTable GetAllExpiredItemsByBatch(int storeId, DateTime from, DateTime to, int reasonId ,int typeId)
         {
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
@@ -967,7 +967,7 @@ FROM    Items itm
                                       " CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
                                       " ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      " AND Disposal.Date BETWEEN '11-1-{2}' AND '10-30-{1}'" + whereQ + " ORDER BY FullItemName", storeId, year,year-1);
+                                      " AND Disposal.EurDate BETWEEN '{1}' AND '{2}'" + whereQ + " ORDER BY FullItemName", storeId, from.ToShortDateString(),to.ToShortDateString());
 
             this.LoadFromRawSql(query);
             return this.DataTable;
