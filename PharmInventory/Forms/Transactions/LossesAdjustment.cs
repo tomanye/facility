@@ -479,6 +479,7 @@ namespace PharmInventory
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
+            dtSelectedTable = null;
             string strStartDate;
             EthiopianDate.EthiopianDate startDate = EthiopianDate.EthiopianDate.Now;
             strStartDate = "11/1/" + (startDate.Year - 5).ToString();
