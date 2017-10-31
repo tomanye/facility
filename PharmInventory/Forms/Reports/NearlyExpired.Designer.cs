@@ -361,6 +361,7 @@ namespace PharmInventory.Forms.Reports
             this.gridItemListView.OptionsView.RowAutoHeight = true;
             this.gridItemListView.OptionsView.ShowFooter = true;
             this.gridItemListView.OptionsView.ShowGroupPanel = false;
+            this.gridItemListView.OptionsView.ShowIndicator = false;
             this.gridItemListView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridItemListView_CustomColumnDisplayText);
             this.gridItemListView.DoubleClick += new System.EventHandler(this.gridItemListView_DoubleClick);
             // 

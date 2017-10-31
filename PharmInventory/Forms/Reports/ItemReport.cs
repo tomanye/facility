@@ -455,10 +455,10 @@ namespace PharmInventory.Forms.Reports
 
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
+            //if (e.Info.IsRowIndicator)
+            //{
+            //    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            //}
         }
 
         /// <summary>
@@ -558,14 +558,15 @@ namespace PharmInventory.Forms.Reports
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0,20, 600, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 600, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
 
 
-            TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 200, 100), BorderSide.None);
-            TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 40, 200, 100), BorderSide.None);
-            TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 200, 100), BorderSide.None);
+            TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 600, 100), BorderSide.None);
+            TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800,40, 600, 100), BorderSide.None);
+            TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800,60, 600, 100), BorderSide.None);
+            brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
         }
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
@@ -601,6 +602,20 @@ namespace PharmInventory.Forms.Reports
                     criteria = string.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
                     gridItemChoiceView.ActiveFilterString = criteria;
                 }
+            }
+        }
+
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
             }
         }
     }
