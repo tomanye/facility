@@ -266,6 +266,7 @@ namespace PharmInventory.Forms.ActivityLogs
             colIssuedBy.Visible = false;
             colIssuedTo.Visible = false;
             colDBEI.Visible = false;
+            colIssuedToto.Visible = false;
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
             printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
@@ -273,6 +274,7 @@ namespace PharmInventory.Forms.ActivityLogs
             colIssuedBy.Visible = true;
             colIssuedTo.Visible = true;
             colDBEI.Visible = true;
+            colIssuedToto.Visible = true;
         }
         private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
         {
@@ -294,11 +296,11 @@ namespace PharmInventory.Forms.ActivityLogs
                                   Color.Black, new RectangleF(100, 0, 200, 40), BorderSide.None);
 
             brick.Alignment = BrickAlignment.Far;
-            TextBrick brickleft = e.Graph.DrawString(Issuedto, Color.Navy, new RectangleF(0, 0, 200, 40),
+            TextBrick brickleft = e.Graph.DrawString(Issuedto, Color.Navy, new RectangleF(0, 0, 600, 40),
                                         DevExpress.XtraPrinting.BorderSide.None);
             brickleft.Font = new Font("Tahoma", 10);
             brickleft.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
-            TextBrick brickrb = e.Graph.DrawString(Issuedby, Color.Navy, new RectangleF(0, 20, 200, 40),
+            TextBrick brickrb = e.Graph.DrawString(Issuedby, Color.Navy, new RectangleF(0, 20, 600, 40),
                                    DevExpress.XtraPrinting.BorderSide.None);
             brickrb.Font = new Font("Tahoma", 10);
             brickrb.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);

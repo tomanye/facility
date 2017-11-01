@@ -234,6 +234,7 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             colSOH.Visible = false;
             colDBER.Visible = false;
+            colSupplier.Visible = false;
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
             printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.Landscape = true;
@@ -242,6 +243,7 @@ namespace PharmInventory.Forms.ActivityLogs
             printableComponentLink1.ShowPreview();
            // colSOH.Visible = true;
             colDBER.Visible = true;
+            colSupplier.Visible = true;
         }
         private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
         {

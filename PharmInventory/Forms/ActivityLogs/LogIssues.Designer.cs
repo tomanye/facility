@@ -64,7 +64,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIssuedToto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colExpiryDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -311,7 +311,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colDBEI,
             this.colIssuedBy,
             this.gridColumn1,
-            this.gridColumn13,
+            this.colIssuedToto,
             this.gridColumn14,
             this.colExpiryDate});
             this.grdLogIssue.GridControl = this.gridIssues;
@@ -348,7 +348,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 218;
+            this.gridColumn3.Width = 348;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -428,8 +428,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colIssuedTo.ColumnEdit = this.lkEditReceivingUnis;
             this.colIssuedTo.FieldName = "ReceivingUnitID";
             this.colIssuedTo.Name = "colIssuedTo";
-            this.colIssuedTo.Visible = true;
-            this.colIssuedTo.VisibleIndex = 9;
             // 
             // lkEditReceivingUnis
             // 
@@ -448,7 +446,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colDBEI.FieldName = "DBEI";
             this.colDBEI.Name = "colDBEI";
             this.colDBEI.Visible = true;
-            this.colDBEI.VisibleIndex = 10;
+            this.colDBEI.VisibleIndex = 9;
             // 
             // colIssuedBy
             // 
@@ -456,7 +454,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colIssuedBy.FieldName = "IssuedBy";
             this.colIssuedBy.Name = "colIssuedBy";
             this.colIssuedBy.Visible = true;
-            this.colIssuedBy.VisibleIndex = 11;
+            this.colIssuedBy.VisibleIndex = 10;
             // 
             // gridColumn1
             // 
@@ -466,7 +464,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 12;
+            this.gridColumn1.VisibleIndex = 11;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -481,13 +479,13 @@ namespace PharmInventory.Forms.ActivityLogs
             this.repositoryItemLookUpEdit1.NullText = "No Unit";
             this.repositoryItemLookUpEdit1.ValueMember = "ID";
             // 
-            // gridColumn13
+            // colIssuedToto
             // 
-            this.gridColumn13.Caption = "Issued To";
-            this.gridColumn13.FieldName = "IssuedTo";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 13;
+            this.colIssuedToto.Caption = "Issued To";
+            this.colIssuedToto.FieldName = "IssuedTo";
+            this.colIssuedToto.Name = "colIssuedToto";
+            this.colIssuedToto.Visible = true;
+            this.colIssuedToto.VisibleIndex = 12;
             // 
             // gridColumn14
             // 
@@ -500,11 +498,13 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // colExpiryDate
             // 
+            this.colExpiryDate.AppearanceCell.Options.UseTextOptions = true;
+            this.colExpiryDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.colExpiryDate.Caption = "Expiry Date";
             this.colExpiryDate.FieldName = "ExpDate";
             this.colExpiryDate.Name = "colExpiryDate";
             this.colExpiryDate.Visible = true;
-            this.colExpiryDate.VisibleIndex = 14;
+            this.colExpiryDate.VisibleIndex = 13;
             // 
             // layoutControlGroup1
             // 
@@ -795,7 +795,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private System.Windows.Forms.BindingSource unitbindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraGrid.Columns.GridColumn colIssuedToto;
         private DevExpress.XtraEditors.CheckEdit chkIntDrugCode;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
