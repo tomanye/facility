@@ -2323,16 +2323,16 @@ namespace PharmInventory
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
             string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
 
-            string[] header = { info.HospitalName, "Summary Report", "Store " + cboStores.Text ,"From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
+            string[] header = { info.HospitalName,  "Store: " + cboStores.Text ,"From Start Date: " + strStartDate + " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 400, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20,400, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 400, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 400, 100), BorderSide.None);
-            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 400, 100), BorderSide.None);
-            TextBrick brick5 = e.Graph.DrawString(header[5], Color.DarkBlue, new RectangleF(0, 80, 400, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 400, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40,400, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 400, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 80, 400, 100), BorderSide.None);
+            //TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0,80, 400, 100), BorderSide.None);
+            //TextBrick brick5 = e.Graph.DrawString(header[5], Color.DarkBlue, new RectangleF(0, 80, 400, 100), BorderSide.None);
         }
 
         private void btnPrintGrid_Click(object sender, EventArgs e)
