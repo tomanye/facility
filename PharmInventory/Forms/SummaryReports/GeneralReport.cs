@@ -2293,6 +2293,7 @@ namespace PharmInventory
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            chartPie.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
             printableComponentLink1.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
             printableComponentLink1.CreateDocument(false);
             //printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
