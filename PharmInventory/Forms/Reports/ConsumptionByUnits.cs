@@ -8,6 +8,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -355,13 +356,7 @@ namespace PharmInventory.Forms.Reports
             con.ShowDialog();
         }
         
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-        }
+ 
 
         /// <summary>
         /// Gets the balance of all items
@@ -458,6 +453,20 @@ namespace PharmInventory.Forms.Reports
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = string.Format("[TypeID] = '{0}'", (int)(lkCommodityTypes.EditValue));
+        }
+
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
+            }
         }
     }
 }

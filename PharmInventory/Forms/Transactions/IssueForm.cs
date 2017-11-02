@@ -878,12 +878,14 @@ namespace PharmInventory.Forms.Transactions
 
         private void xpButton2_Click(object sender, EventArgs e)
         {
+            gridView1.ActiveFilterString = String.Format("Quantity<>0");
             if (printableComponentLink2 == null)
                 printableComponentLink2 = new PrintableComponentLink();
             printableComponentLink2.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
             printableComponentLink2.CreateDocument();
             printableComponentLink2.Landscape = false;
             printableComponentLink2.ShowPreviewDialog();
+            gridView1.ActiveFilterString = "";
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
