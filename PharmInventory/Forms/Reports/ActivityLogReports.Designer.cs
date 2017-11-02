@@ -1234,7 +1234,7 @@
             // 
             this.printableComponentLink1.Component = this.gridReceives;
             this.printableComponentLink1.Landscape = true;
-            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 120, 40);
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 140, 40);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             // 
             // printableComponentLink2
