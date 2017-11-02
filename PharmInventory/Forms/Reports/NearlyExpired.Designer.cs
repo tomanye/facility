@@ -382,7 +382,7 @@ namespace PharmInventory.Forms.Reports
             this.colRowNo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
             this.colRowNo.Visible = true;
             this.colRowNo.VisibleIndex = 0;
-            this.colRowNo.Width = 52;
+            this.colRowNo.Width = 48;
             // 
             // gridColumn28
             // 
@@ -405,7 +405,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 2;
-            this.colItemName.Width = 253;
+            this.colItemName.Width = 362;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -438,7 +438,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 113;
+            this.gridColumn2.Width = 70;
             // 
             // gridColumn3
             // 
@@ -453,7 +453,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 113;
+            this.gridColumn3.Width = 70;
             // 
             // gridColumn4
             // 
@@ -468,7 +468,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 86;
+            this.gridColumn4.Width = 67;
             // 
             // gridColumn5
             // 
@@ -491,7 +491,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", "Total Birr: {0:n3}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 6;
-            this.gridColumn6.Width = 153;
+            this.gridColumn6.Width = 77;
             // 
             // gridColumn8
             // 
@@ -506,6 +506,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn8.OptionsFilter.AllowFilter = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 60;
             // 
             // gridColumn7
             // 
@@ -521,7 +522,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.UnboundExpression = "Min([QuantityLeft] / [AMC],0 )";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 8;
-            this.gridColumn7.Width = 81;
+            this.gridColumn7.Width = 59;
             // 
             // gridColumn9
             // 
@@ -532,6 +533,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.Width = 109;
             // 
             // gridColumn10
             // 
@@ -540,6 +542,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.Width = 69;
             // 
             // repositoryItemCheckEdit1
             // 

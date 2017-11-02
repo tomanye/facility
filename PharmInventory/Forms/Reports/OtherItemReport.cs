@@ -340,13 +340,7 @@ namespace PharmInventory.Forms.Reports
             }
         }
 
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-        }
+    
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -593,6 +587,20 @@ namespace PharmInventory.Forms.Reports
                         }
                     }
                 }
+        }
+
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
+            }
         }
     }
 }
