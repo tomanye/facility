@@ -422,7 +422,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
-            this.colItemName.Width = 310;
+            this.colItemName.Width = 441;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -495,7 +495,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReceivedPrice", "{0:n3}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 120;
+            this.gridColumn6.Width = 87;
             // 
             // gridColumn7
             // 
@@ -524,7 +524,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "IssuedPrice", "{0:n3}")});
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 6;
-            this.gridColumn1.Width = 120;
+            this.gridColumn1.Width = 87;
             // 
             // gridColumn2
             // 
@@ -541,7 +541,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 7;
-            this.gridColumn3.Width = 85;
+            this.gridColumn3.Width = 86;
             // 
             // gridColumn8
             // 
@@ -554,7 +554,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityLeftPrice", "{0:n3}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 8;
-            this.gridColumn8.Width = 120;
+            this.gridColumn8.Width = 87;
             // 
             // gridColumn9
             // 
