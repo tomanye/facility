@@ -97,6 +97,7 @@ namespace PharmInventory.Forms.ActivityLogs
                     lblIssDate.Text = Convert.ToDateTime(dr["Date"]).ToString("MM dd,yyyy");
                 }
                 gridIssues.DataSource = dtRec;
+                grdLogIssue.ActiveFilterString = String.Format("Quantity<>0");
             }
 
             catch (Exception ex)

@@ -57,6 +57,7 @@ namespace PharmInventory.Forms.SummaryReports
             dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
             gridIssues.DataSource = dtiss;
+            grdViewIssued.ActiveFilterString = String.Format("Quantity<>0");
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
         }
 
