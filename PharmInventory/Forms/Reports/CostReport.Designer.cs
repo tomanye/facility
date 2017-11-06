@@ -28,7 +28,6 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.rdDrug = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -87,8 +86,8 @@ namespace PharmInventory.Forms.Reports
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
             this.bw = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.rdDrug.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -449,7 +448,7 @@ namespace PharmInventory.Forms.Reports
             this.colBB.Caption = "Beggining Balance Qty";
             this.colBB.DisplayFormat.FormatString = "#,##0";
             this.colBB.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colBB.FieldName = "BBQty";
+            this.colBB.FieldName = "SOH";
             this.colBB.Name = "colBB";
             this.colBB.Visible = true;
             this.colBB.VisibleIndex = 2;
@@ -460,10 +459,12 @@ namespace PharmInventory.Forms.Reports
             this.colbbPrice.Caption = "Beggining Balance Amt";
             this.colbbPrice.DisplayFormat.FormatString = "n3";
             this.colbbPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colbbPrice.FieldName = "BBPrice";
+            this.colbbPrice.FieldName = "SOHPrice";
             this.colbbPrice.Name = "colbbPrice";
             this.colbbPrice.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BBPrice", "{0:n3}")});
+            this.colbbPrice.Visible = true;
+            this.colbbPrice.VisibleIndex = 3;
             // 
             // gridColumn4
             // 

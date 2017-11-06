@@ -19,6 +19,7 @@ select t.*
 		 ISNULL(eb.QuantityLeft,0) AS QuantityLeft,
 		ISNULL(eb.Price,0) AS QuantityLeftPrice,
 	    ISNULL(rd.Quantity,0) + ISNULL(adj.Quantity,0) - ISNULL(id.Quantity,0) - ISNULL(loss.Quantity,0) AS SOH, 
+		ISNULL(rd.Price,0) * (ISNULL(rd.Quantity,0) + ISNULL(adj.Quantity,0) - ISNULL(id.Quantity,0) - ISNULL(loss.Quantity,0)) AS SOHPrice,
 		vw.ID, vw.FullItemName,vw.StockCode, 
 		vw.Unit,vw.Name ,vw.TypeID AS TypeID
 		FROM vwGetAllItems vw  

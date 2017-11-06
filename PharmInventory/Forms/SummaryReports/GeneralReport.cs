@@ -234,7 +234,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -403,7 +403,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -576,7 +576,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -751,7 +751,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -925,7 +925,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -1824,7 +1824,7 @@ namespace PharmInventory
             ser.PointOptions.PointView = PointView.Argument;
             ser.LegendText = "Key";
            
-            ser.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+            ser.PointOptions.ValueNumericOptions.Format =  NumericFormat.Percent;
             ((PieSeriesLabel)ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
             ((PiePointOptions)ser.PointOptions).PointView = PointView.ArgumentAndValues;
             ser.PointOptions.ValueNumericOptions.Precision = 0;
