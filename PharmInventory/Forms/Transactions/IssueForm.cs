@@ -252,7 +252,7 @@ namespace PharmInventory.Forms.Transactions
             if (issueGrid.DataSource != null)
             {
                 var dt = new DataTable();
-                issueGrid.DataSource = dt;
+                issueGrid.DataSource = dt; 
                 _dtRecGrid.Rows.Clear();
                 _dtRecGrid.Columns.Clear();
             }
@@ -832,7 +832,7 @@ namespace PharmInventory.Forms.Transactions
             txtRemark.Text = "";
             txtStore.Text = "";
             cboReceivingUnits.ItemIndex = -1;
-            cboStores.ItemIndex = 0;
+            cboStores.ItemIndex = (cboStores.ItemIndex != 0 )? cboStores.ItemIndex :  0;
             PopulateItemList();
             _tabPage = 0;
             tabControl1.SelectedTabPageIndex = 0;
