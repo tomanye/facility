@@ -110,7 +110,7 @@ namespace PharmInventory.Forms.Transactions
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
-            cboStoreConf.Properties.DataSource = stor.DefaultView;
+            //cboStoreConf.Properties.DataSource = stor.DefaultView;
 
             UserCommodityType ucs = new UserCommodityType();
             DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
@@ -362,7 +362,8 @@ namespace PharmInventory.Forms.Transactions
                 }
 
             issueGrid.DataSource = _dtRecGrid;
-            cboStoreConf.EditValue = cboStores.EditValue;
+            // cboStoreConf.EditValue = cboStores.EditValue;
+            cboStoreConf.Text = cboStores.Text;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
             var recUnit = new ReceivingUnits();
