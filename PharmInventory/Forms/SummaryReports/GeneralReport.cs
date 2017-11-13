@@ -234,7 +234,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -403,7 +403,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -576,7 +576,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -751,7 +751,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -925,7 +925,7 @@ namespace PharmInventory
                 //int eclsStockout = bal.CountECLSItemsStockOut(storeId, curMont, curYear);
                 // progressBar1.PerformStep();
                 object[] obj = { stockin, stockout, overstock, nearEOP, belowEOP };
-                int totalItm = stockin + stockout + nearEOP + overstock;
+                int totalItm = stockin + stockout + nearEOP + overstock + belowEOP;
 
                 decimal percen = ((totalItm != 0) ? (Convert.ToDecimal(stockin) / Convert.ToDecimal(totalItm)) * 100 : 0);
                 percen = Decimal.Round(percen, 0);
@@ -1824,7 +1824,7 @@ namespace PharmInventory
             ser.PointOptions.PointView = PointView.Argument;
             ser.LegendText = "Key";
            
-            ser.PointOptions.ValueNumericOptions.Format = NumericFormat.Percent;
+            ser.PointOptions.ValueNumericOptions.Format =  NumericFormat.Percent;
             ((PieSeriesLabel)ser.Label).Position = PieSeriesLabelPosition.TwoColumns;
             ((PiePointOptions)ser.PointOptions).PointView = PointView.ArgumentAndValues;
             ser.PointOptions.ValueNumericOptions.Precision = 0;
@@ -2293,6 +2293,7 @@ namespace PharmInventory
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            chartPie.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
             printableComponentLink1.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
             printableComponentLink1.CreateDocument(false);
             //printableComponentLink1.PrintingSystem.Document.AutoFitToPagesWidth = 1;
@@ -2322,15 +2323,16 @@ namespace PharmInventory
             string strEndDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(endDate);
             string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
 
-            string[] header = { info.HospitalName, "Summary Report", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
+            string[] header = { info.HospitalName,  "Store: " + cboStores.Text ,"From Start Date: " + strStartDate + " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(160, 40, 200, 100), BorderSide.None);
-            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 400, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40,400, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 400, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 80, 400, 100), BorderSide.None);
+            //TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0,80, 400, 100), BorderSide.None);
+            //TextBrick brick5 = e.Graph.DrawString(header[5], Color.DarkBlue, new RectangleF(0, 80, 400, 100), BorderSide.None);
         }
 
         private void btnPrintGrid_Click(object sender, EventArgs e)

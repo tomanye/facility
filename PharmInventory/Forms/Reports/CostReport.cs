@@ -218,10 +218,10 @@ namespace PharmInventory.Forms.Reports
         
         private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
         {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
+            //if (e.Info.IsRowIndicator)
+            //{
+            //    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+            //}
         }
 
         /// <summary>
@@ -357,10 +357,7 @@ namespace PharmInventory.Forms.Reports
            // PopulateByProgram();
         }
 
-        private void gridItemsList_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
         {
@@ -374,16 +371,27 @@ namespace PharmInventory.Forms.Reports
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString(), "To Date:" + dtTo.Text, "Store: " + cboStores.Text, "Printed Date:" + dtTo.Text };
+            string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString() + " To Date:" + dtTo.Text, "Store: " + cboStores.Text,"Category:" + lkCategory.Text };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
-
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-            TextBrick brick3= e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+             
+            TextBrick brick1 = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 400, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 400, 100), BorderSide.None);
+            TextBrick brick3= e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 400, 100), BorderSide.None);
         }
 
-      
+        private void gridItemListView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
+            }
+        }
     }
 }

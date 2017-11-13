@@ -8,6 +8,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace PharmInventory.Forms.Reports
 {
@@ -355,13 +356,7 @@ namespace PharmInventory.Forms.Reports
             con.ShowDialog();
         }
         
-        private void gridView1_CustomDrawRowIndicator(object sender, DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventArgs e)
-        {
-            if (e.Info.IsRowIndicator)
-            {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
-            }
-        }
+ 
 
         /// <summary>
         /// Gets the balance of all items
@@ -436,7 +431,7 @@ namespace PharmInventory.Forms.Reports
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName, "Date:" + dtDate.Text, "Store: " + cboStores.Text, "Dispensing Unit: " + cboDUnits.Text };
+            string[] header = { info.HospitalName, "Date:" + dtDate.Text, "Store: " + cboStores.Text, "Year: " + cboYear.Text, "Category: " + lkCommodityTypes.Text };
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
@@ -444,6 +439,10 @@ namespace PharmInventory.Forms.Reports
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
             TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 60, 200, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 80, 200, 100), BorderSide.None);
+            string headright =   "Dispensing Unit: " + cboDUnits.Text ;
+            TextBrick brick5= e.Graph.DrawString(headright, Color.DarkBlue, new RectangleF(800, 80, 200, 100), BorderSide.None);
+
         }
 
         private void cboDUnits_EditValueChanged(object sender, EventArgs e)
@@ -454,6 +453,20 @@ namespace PharmInventory.Forms.Reports
         private void lkCommodityTypes_EditValueChanged(object sender, EventArgs e)
         {
             gridItemChoiceView.ActiveFilterString = string.Format("[TypeID] = '{0}'", (int)(lkCommodityTypes.EditValue));
+        }
+
+        private void gridItemChoiceView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
+            }
         }
     }
 }

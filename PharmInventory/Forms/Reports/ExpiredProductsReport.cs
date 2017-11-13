@@ -120,7 +120,7 @@ namespace PharmInventory.Forms.Reports
                 int reasonId = cboReasons.EditValue == null ? 0 : Convert.ToInt32(cboReasons.EditValue);
 
                 var itm = new Items();
-                DataTable dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), year, reasonId ,Convert.ToInt32(lkCommodityTypes.EditValue));
+                DataTable dtItem = itm.GetAllExpiredItemsByBatch(Convert.ToInt32(cboStores.EditValue), dtFrom.Value,dtTo.Value, reasonId ,Convert.ToInt32(lkCommodityTypes.EditValue));
                 DataView view = dtItem.AsDataView();
                 view.RowFilter = "[FullItemName] like '" + txtItemName.Text + "%'";
 
@@ -257,14 +257,15 @@ namespace PharmInventory.Forms.Reports
         {
             var info = new GeneralInfo();
             info.LoadAll();
-            string[] header = { info.HospitalName ,"Store: " + cboStores.Text , "Printed Date: " + dtDate.Text  };
+            string[] header = { info.HospitalName ,"Store: " + cboStores.Text , "From " + dtFrom.Text + " To " + dtTo.Text + " E.C", "Category: "+lkCommodityTypes.Text  };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 0, 200, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
-         }
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 20, 200, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40, 200, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 80, 200, 100), BorderSide.None);
+        }
 
         private void cboReasons_EditValueChanged(object sender, EventArgs e)
         {
@@ -274,6 +275,20 @@ namespace PharmInventory.Forms.Reports
         private void chkIntDrugCode_CheckedChanged(object sender, EventArgs e)
         {
             gridItemListView.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
+        }
+
+        private void gridItemListView_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            GridView view = sender as GridView;
+
+            //int rowIndex = e.RowHandle;  
+            if (e.Column.Name == "colRowNo")
+            {
+                int rowIndex = view.GetRowHandle(e.ListSourceRowIndex);
+
+                e.DisplayText = (rowIndex + 1).ToString();
+
+            }
         }
     }
 }

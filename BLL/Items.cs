@@ -957,7 +957,7 @@ FROM    Items itm
             return this.DataTable;
         }
 
-        public DataTable GetAllExpiredItemsByBatch(int storeId, int year, int reasonId ,int typeId)
+        public DataTable GetAllExpiredItemsByBatch(int storeId, DateTime from, DateTime to, int reasonId ,int typeId)
         {
             this.FlushData();
             var whereQ = ((reasonId != 0) ? " AND ReasonId = " + reasonId : "");
@@ -967,7 +967,7 @@ FROM    Items itm
                                       " CASE Losses WHEN 1 then cast(0-Disposal.Quantity as nvarchar) else '+' + cast(Disposal.Quantity as nvarchar) end as" +
                                       " QuantityDetail FROM Disposal JOIN DisposalReasons on Disposal.ReasonId = DisposalReasons.ID JOIN ReceiveDoc on " +
                                       " ReceiveDoc.ID =Disposal.RecID JOIN vwGetAllItems on vwGetAllItems.ID = Disposal.ItemID WHERE Disposal.StoreId = {0} " +
-                                      " AND Disposal.Date BETWEEN '11-1-{2}' AND '10-30-{1}'" + whereQ + " ORDER BY FullItemName", storeId, year,year-1);
+                                      " AND Disposal.EurDate BETWEEN '{1}' AND '{2}'" + whereQ + " ORDER BY FullItemName", storeId, from.ToShortDateString(),to.ToShortDateString());
 
             this.LoadFromRawSql(query);
             return this.DataTable;
@@ -2418,8 +2418,12 @@ FROM    Items itm
                                          " A on Items.ID = A.ItemID", dt1, dt2, storeId);
             //var query = string.Format("SELECT  ItemID ID,SUM(Quantity) AS Quantity FROM ReceiveDoc rd WHERE   [Date] BETWEEN '{0}' AND '{1}'AND StoreID = {2} GROUP BY ItemID ", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
-            var received = this.DataTable;
-            var isdt = new DateTime(fromYear, fromMonth + 1, 01);
+            var received = this.DataTable;  
+            var isdt = new DateTime(fromYear, fromMonth, 01);
+            if (fromMonth < 12)
+                isdt = new DateTime(fromYear, fromMonth + 1, 01);
+            else if (fromMonth == 12)
+                isdt = new DateTime(fromYear + 1, 01, 01);
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
                                   "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc " +
@@ -2738,7 +2742,11 @@ FROM    Items itm
                                          " A on Items.ID = A.ItemID", dt1, dt2, storeId);
             this.LoadFromRawSql(query);
             var received = this.DataTable;
-            var isdt = new DateTime(fromYear, fromMonth+1, 01);
+            var isdt = new DateTime(fromYear, fromMonth , 01);
+            if (fromMonth < 12)
+               isdt = new DateTime(fromYear, fromMonth+1, 01);
+            else if (fromMonth == 12)
+                isdt = new DateTime(fromYear + 1, 01, 01);
             query = string.Format("select distinct Items.ID, isnull(Quantity,0) as Quantity " +
                                   "from Items left join (select ItemID,sum(Quantity) Quantity " +
                                   "from IssueDoc " +

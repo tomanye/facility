@@ -120,6 +120,7 @@ namespace PharmInventory.Forms.Reports
 
         private void SetEndingMonthAndYear(int startingMonth, int startingYear)
         {
+
             if (startingMonth <= 11)
             {
                 cboToMonth.EditValue = startingMonth + 1;
@@ -140,6 +141,14 @@ namespace PharmInventory.Forms.Reports
             if (currentMonth > 2)
             {
                 startingMonth = currentMonth - 2;
+            }
+            else if (currentMonth == 2)
+            {
+                startingMonth = 12;
+            }
+            else if (currentMonth == 1)
+            {
+                startingMonth = 11;
             }
             else
             {
@@ -282,7 +291,7 @@ namespace PharmInventory.Forms.Reports
                                     Period =
                                         {
                                             Text =
-                                                string.Format("{0}, {1} - {2}, {3}", ethioDateFrom.GetMonthName(),
+                                                string.Format("{0} 01, {1} - {2} 30, {3}", ethioDateFrom.GetMonthName(),
                                                               ethioDateFrom.Year, ethioDateTo.GetMonthName(),
                                                               ethioDateTo.Year)
                                         },

@@ -96,6 +96,7 @@ namespace PharmInventory
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.ckExclude = new DevExpress.XtraEditors.CheckEdit();
             this.chartPie = new DevExpress.XtraCharts.ChartControl();
             this.listBelowMin = new System.Windows.Forms.LinkLabel();
@@ -255,6 +256,7 @@ namespace PharmInventory
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listStatused)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D1)).BeginInit();
@@ -600,14 +602,13 @@ namespace PharmInventory
             // dtDate
             // 
             this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 10.75F);
+            this.dtDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.dtDate.CalendarForeColor = System.Drawing.Color.Black;
             this.dtDate.CustomFormat = "dd/MM/ yy";
-            this.dtDate.DayOfWeekCharacters = 2;
+            this.dtDate.DayOfWeekCharacters = 1;
             this.dtDate.ForeColor = System.Drawing.Color.Black;
             this.dtDate.Location = new System.Drawing.Point(106, 20);
             this.dtDate.Name = "dtDate";
-            this.dtDate.PopUpFontSize = 9.75F;
             this.dtDate.Size = new System.Drawing.Size(114, 20);
             this.dtDate.TabIndex = 16;
             this.dtDate.Value = new System.DateTime(2008, 10, 3, 0, 0, 0, 0);
@@ -807,9 +808,12 @@ namespace PharmInventory
             this.listStatused.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listStatused.Cursor = System.Windows.Forms.Cursors.Default;
             this.listStatused.Location = new System.Drawing.Point(416, 14);
             this.listStatused.MainView = this.gridView2;
             this.listStatused.Name = "listStatused";
+            this.listStatused.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemMemoEdit1});
             this.listStatused.Size = new System.Drawing.Size(629, 468);
             this.listStatused.TabIndex = 39;
             this.listStatused.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -824,6 +828,7 @@ namespace PharmInventory
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.RowAutoHeight = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn3
@@ -838,11 +843,16 @@ namespace PharmInventory
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Item Name";
+            this.gridColumn4.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn4.FieldName = "FullItemName";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
             this.gridColumn4.Width = 537;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // ckExclude
             // 
@@ -992,7 +1002,7 @@ namespace PharmInventory
             // lblBelowMin
             // 
             this.lblBelowMin.AutoSize = true;
-            this.lblBelowMin.Location = new System.Drawing.Point(194, 176);
+            this.lblBelowMin.Location = new System.Drawing.Point(209, 176);
             this.lblBelowMin.Name = "lblBelowMin";
             this.lblBelowMin.Size = new System.Drawing.Size(14, 13);
             this.lblBelowMin.TabIndex = 6;
@@ -1011,7 +1021,7 @@ namespace PharmInventory
             // lblBelowEOP
             // 
             this.lblBelowEOP.AutoSize = true;
-            this.lblBelowEOP.Location = new System.Drawing.Point(194, 152);
+            this.lblBelowEOP.Location = new System.Drawing.Point(209, 152);
             this.lblBelowEOP.Name = "lblBelowEOP";
             this.lblBelowEOP.Size = new System.Drawing.Size(14, 13);
             this.lblBelowEOP.TabIndex = 6;
@@ -1029,7 +1039,7 @@ namespace PharmInventory
             // lblOverStocked
             // 
             this.lblOverStocked.AutoSize = true;
-            this.lblOverStocked.Location = new System.Drawing.Point(194, 128);
+            this.lblOverStocked.Location = new System.Drawing.Point(209, 128);
             this.lblOverStocked.Name = "lblOverStocked";
             this.lblOverStocked.Size = new System.Drawing.Size(14, 13);
             this.lblOverStocked.TabIndex = 6;
@@ -1038,7 +1048,7 @@ namespace PharmInventory
             // lblNearEOP
             // 
             this.lblNearEOP.AutoSize = true;
-            this.lblNearEOP.Location = new System.Drawing.Point(194, 104);
+            this.lblNearEOP.Location = new System.Drawing.Point(209, 104);
             this.lblNearEOP.Name = "lblNearEOP";
             this.lblNearEOP.Size = new System.Drawing.Size(14, 13);
             this.lblNearEOP.TabIndex = 9;
@@ -1047,7 +1057,7 @@ namespace PharmInventory
             // lblStockOut
             // 
             this.lblStockOut.AutoSize = true;
-            this.lblStockOut.Location = new System.Drawing.Point(194, 80);
+            this.lblStockOut.Location = new System.Drawing.Point(209, 80);
             this.lblStockOut.Name = "lblStockOut";
             this.lblStockOut.Size = new System.Drawing.Size(14, 13);
             this.lblStockOut.TabIndex = 8;
@@ -1056,7 +1066,7 @@ namespace PharmInventory
             // lblInStock
             // 
             this.lblInStock.AutoSize = true;
-            this.lblInStock.Location = new System.Drawing.Point(194, 56);
+            this.lblInStock.Location = new System.Drawing.Point(209, 56);
             this.lblInStock.Name = "lblInStock";
             this.lblInStock.Size = new System.Drawing.Size(14, 13);
             this.lblInStock.TabIndex = 7;
@@ -1186,7 +1196,7 @@ namespace PharmInventory
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 129F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237F));
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label22, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label23, 2, 0);
@@ -2469,6 +2479,7 @@ namespace PharmInventory
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listStatused)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckExclude.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(simpleDiagram3D1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(pie3DSeriesLabel1)).EndInit();
@@ -2720,6 +2731,6 @@ namespace PharmInventory
         private DevExpress.XtraPrinting.PrintingSystem printingSystemReceiveSummary;
         private DevExpress.XtraEditors.SimpleButton btnPrintReceiveSummaryGrid;
         private DevExpress.XtraEditors.SimpleButton btnPrintIssueSummaryGrid;
-
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }
