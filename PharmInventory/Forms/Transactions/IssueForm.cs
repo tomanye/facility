@@ -110,7 +110,7 @@ namespace PharmInventory.Forms.Transactions
             cboStores.ItemIndex = 0;
             cboStores.Properties.DisplayMember = "StoreName";
             cboStores.Properties.ValueMember = "ID";
-            cboStoreConf.Properties.DataSource = stor.DefaultView;
+            //cboStoreConf.Properties.DataSource = stor.DefaultView;
 
             UserCommodityType ucs = new UserCommodityType();
             DataTable dt = ucs.GetUserCommodityType(MainWindow.LoggedinId);
@@ -252,7 +252,7 @@ namespace PharmInventory.Forms.Transactions
             if (issueGrid.DataSource != null)
             {
                 var dt = new DataTable();
-                issueGrid.DataSource = dt;
+                issueGrid.DataSource = dt; 
                 _dtRecGrid.Rows.Clear();
                 _dtRecGrid.Columns.Clear();
             }
@@ -362,7 +362,8 @@ namespace PharmInventory.Forms.Transactions
                 }
 
             issueGrid.DataSource = _dtRecGrid;
-            cboStoreConf.EditValue = cboStores.EditValue;
+            // cboStoreConf.EditValue = cboStores.EditValue;
+            cboStoreConf.Text = cboStores.Text;
             dtIssueDate.CustomFormat = "MMM dd,yyyy";
 
             var recUnit = new ReceivingUnits();
@@ -622,12 +623,16 @@ namespace PharmInventory.Forms.Transactions
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-            if (chkExcludeStockedOut.Checked)
-                gridItemChoiceView.ActiveFilterString = string.Format("[Status] != 'Stock Out' AND [FullItemName] Like '{0}%' and [TypeID]={1}", txtItemName.Text, (int)lkCategories.EditValue);
-            else if (!ckStockOut.Checked)
+            if (lkCategories.EditValue != null)
             {
-                gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ", txtItemName.Text, (int)lkCategories.EditValue);
+                if (chkExcludeStockedOut.Checked)
+                    gridItemChoiceView.ActiveFilterString = string.Format("[Status] != 'Stock Out' AND [FullItemName] Like '{0}%' and [TypeID]={1}", txtItemName.Text, (int)lkCategories.EditValue);
+                else if (!ckStockOut.Checked)
+                {
+                    gridItemChoiceView.ActiveFilterString = string.Format("[FullItemName] Like '{0}%' and TypeID ={1} ", txtItemName.Text, (int)lkCategories.EditValue);
+                }
             }
+          
         }
 
         /// <summary>
@@ -827,7 +832,7 @@ namespace PharmInventory.Forms.Transactions
             txtRemark.Text = "";
             txtStore.Text = "";
             cboReceivingUnits.ItemIndex = -1;
-            cboStores.ItemIndex = 0;
+            cboStores.ItemIndex = (cboStores.ItemIndex != 0 )? cboStores.ItemIndex :  0;
             PopulateItemList();
             _tabPage = 0;
             tabControl1.SelectedTabPageIndex = 0;
@@ -874,12 +879,14 @@ namespace PharmInventory.Forms.Transactions
 
         private void xpButton2_Click(object sender, EventArgs e)
         {
+            gridView1.ActiveFilterString = String.Format("Quantity<>0");
             if (printableComponentLink2 == null)
                 printableComponentLink2 = new PrintableComponentLink();
             printableComponentLink2.CreateMarginalHeaderArea += Link_CreateMarginalHeaderArea;
             printableComponentLink2.CreateDocument();
             printableComponentLink2.Landscape = false;
             printableComponentLink2.ShowPreviewDialog();
+            gridView1.ActiveFilterString = "";
         }
 
         private void Link_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -1182,6 +1189,7 @@ namespace PharmInventory.Forms.Transactions
                 XtraMessageBox.Show("Please First Finish All Inventory and come back!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 btnSave.Enabled = false;
             }
+            ResetValues();
         }
 
         private void repositoryItemButtonEdit1_Click(object sender, EventArgs e)

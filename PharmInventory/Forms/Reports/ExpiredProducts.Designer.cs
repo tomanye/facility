@@ -41,9 +41,10 @@ namespace PharmInventory.Forms.Reports
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridItemsList = new DevExpress.XtraGrid.GridControl();
             this.gridItemListView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRowNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colItemName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn66 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn67 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -85,6 +86,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
@@ -266,7 +268,8 @@ namespace PharmInventory.Forms.Reports
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
             this.gridItemsList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemMemoEdit1});
             this.gridItemsList.Size = new System.Drawing.Size(985, 415);
             this.gridItemsList.TabIndex = 31;
             this.gridItemsList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -275,7 +278,7 @@ namespace PharmInventory.Forms.Reports
             // gridItemListView
             // 
             this.gridItemListView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
+            this.colRowNo,
             this.gridColumn28,
             this.colItemName,
             this.gridColumn66,
@@ -301,27 +304,29 @@ namespace PharmInventory.Forms.Reports
             this.gridItemListView.OptionsSelection.EnableAppearanceHideSelection = false;
             this.gridItemListView.OptionsView.EnableAppearanceEvenRow = true;
             this.gridItemListView.OptionsView.EnableAppearanceOddRow = true;
+            this.gridItemListView.OptionsView.RowAutoHeight = true;
             this.gridItemListView.OptionsView.ShowFooter = true;
             this.gridItemListView.OptionsView.ShowGroupPanel = false;
-            this.gridItemListView.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridItemListView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridItemListView_CustomColumnDisplayText);
             this.gridItemListView.DoubleClick += new System.EventHandler(this.gridItemListView_DoubleClick);
             // 
-            // gridColumn1
+            // colRowNo
             // 
-            this.gridColumn1.Caption = "No.";
-            this.gridColumn1.FieldName = "No";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn1.OptionsColumn.AllowIncrementalSearch = false;
-            this.gridColumn1.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn1.OptionsColumn.AllowMove = false;
-            this.gridColumn1.OptionsColumn.ReadOnly = true;
-            this.gridColumn1.OptionsFilter.AllowFilter = false;
-            this.gridColumn1.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
-            this.gridColumn1.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
-            this.gridColumn1.Width = 52;
+            this.colRowNo.AppearanceCell.Options.UseTextOptions = true;
+            this.colRowNo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colRowNo.Caption = "No.";
+            this.colRowNo.Name = "colRowNo";
+            this.colRowNo.OptionsColumn.AllowEdit = false;
+            this.colRowNo.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.colRowNo.OptionsColumn.AllowIncrementalSearch = false;
+            this.colRowNo.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.colRowNo.OptionsColumn.AllowMove = false;
+            this.colRowNo.OptionsColumn.ReadOnly = true;
+            this.colRowNo.OptionsFilter.AllowFilter = false;
+            this.colRowNo.UnboundType = DevExpress.Data.UnboundColumnType.Integer;
+            this.colRowNo.Visible = true;
+            this.colRowNo.VisibleIndex = 0;
+            this.colRowNo.Width = 63;
             // 
             // gridColumn28
             // 
@@ -331,13 +336,12 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn28.OptionsColumn.AllowEdit = false;
             this.gridColumn28.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn28.OptionsFilter.AllowFilter = false;
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 0;
             this.gridColumn28.Width = 90;
             // 
             // colItemName
             // 
             this.colItemName.Caption = "Item Name";
+            this.colItemName.ColumnEdit = this.repositoryItemMemoEdit1;
             this.colItemName.FieldName = "FullItemName";
             this.colItemName.Name = "colItemName";
             this.colItemName.OptionsColumn.AllowEdit = false;
@@ -345,7 +349,11 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
-            this.colItemName.Width = 253;
+            this.colItemName.Width = 447;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // gridColumn66
             // 
@@ -374,7 +382,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 113;
+            this.gridColumn2.Width = 101;
             // 
             // gridColumn3
             // 
@@ -389,7 +397,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 113;
+            this.gridColumn3.Width = 95;
             // 
             // gridColumn4
             // 
@@ -404,7 +412,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 86;
+            this.gridColumn4.Width = 97;
             // 
             // gridColumn5
             // 
@@ -427,7 +435,7 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", "{0:n3}")});
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 153;
+            this.gridColumn6.Width = 140;
             // 
             // gridColumn7
             // 
@@ -732,6 +740,7 @@ namespace PharmInventory.Forms.Reports
             ((System.ComponentModel.ISupportInitialize)(this.treeCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemsList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridItemListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboStores.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
@@ -768,7 +777,7 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraGrid.GridControl gridItemsList;
         private DevExpress.XtraGrid.Views.Grid.GridView gridItemListView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn colRowNo;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private DevExpress.XtraGrid.Columns.GridColumn colItemName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn66;
@@ -808,5 +817,6 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraEditors.SimpleButton xpButton1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

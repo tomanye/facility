@@ -160,24 +160,45 @@ namespace PharmInventory.Forms.ActivityLogs
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            colApprovedBy.Visible = false;
+            colReason.Visible = false;
             printableComponentLink1.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
             printableComponentLink1.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
             printableComponentLink1.CreateDocument();
             printableComponentLink1.ShowPreview();
+
+            colApprovedBy.Visible = true;
+            colReason.Visible = true;
         }
         private void printableComponentLink1_CreateMarginalFooterArea(object sender, CreateAreaEventArgs e)
         {
+            DataTable dt = (DataTable)gridAdjustments.DataSource;
+            DataView dv = new DataView(dt);
+            string Reason = "Reason: " + dv[0]["Reason"] as string;
+            string ApprovedBy = "Approved By: " + dv[0]["ApprovedBy"] as string;
             PageInfoBrick pib = new PageInfoBrick();
             pib.Format = "Page {0}/{1}";
 
-            RectangleF r = RectangleF.Empty;
-            r.Height = 20;
+            //RectangleF r = RectangleF.Empty;
+            //r.Height = 20;
 
-            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, r, BorderSide.None);
-            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " + DateTime.Now.ToShortDateString() + " G.C",
-                                  Color.Black, r, BorderSide.None);
+            //pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, r, BorderSide.None);
+            //PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Print Date " + DateTime.Now.ToShortDateString() + " G.C",
+            //                      Color.Black, r, BorderSide.None);
+            //brick.Alignment = BrickAlignment.Far;
+            pib = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format, Color.Black, new RectangleF(100, 0, 200, 20), BorderSide.None);
+            PageInfoBrick brick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, pib.Format + "\n Print Date " + DateTime.Now.ToShortDateString() + " G.C",
+                                  Color.Black, new RectangleF(100, 0, 200, 40), BorderSide.None);
+
             brick.Alignment = BrickAlignment.Far;
+            TextBrick brickleft = e.Graph.DrawString(Reason, Color.Navy, new RectangleF(0, 0, 200, 40),
+                                        DevExpress.XtraPrinting.BorderSide.None);
+            brickleft.Font = new Font("Tahoma", 10);
+            brickleft.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
+            TextBrick brickrb = e.Graph.DrawString(ApprovedBy, Color.Navy, new RectangleF(0, 20, 200, 40),
+                                   DevExpress.XtraPrinting.BorderSide.None);
+            brickrb.Font = new Font("Tahoma", 10);
+            brickrb.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
 
         }
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
@@ -195,15 +216,36 @@ namespace PharmInventory.Forms.ActivityLogs
             if ((lstTree.FocusedNode.GetDisplayText("Date"))!="")
                 adjDate = (Convert.ToDateTime(lstTree.FocusedNode.GetDisplayText("Date"))).ToShortDateString();
 
-            string header = info.HospitalName + "\n Loss/Adjustment Activity Log Store: " +cboStores.Text+ " \n RefNo:  " + refNumber + " On " + adjDate + " E.C";
+            //string header = info.HospitalName + "\n Loss/Adjustment Activity Log Store: " +cboStores.Text+ " \n RefNo:  " + refNumber + " On " + adjDate + " E.C";
 
-            printableComponentLink1.Landscape = true;
-            printableComponentLink1.PageHeaderFooter = header;
+            //printableComponentLink1.Landscape = true;
+            //printableComponentLink1.PageHeaderFooter = header;
 
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 80),
+            //TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 800, 80),
+            //                                    DevExpress.XtraPrinting.BorderSide.None);
+            //brick.Font = new Font("Tahoma", 13);
+            //brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+            string header = info.HospitalName + "\nStore: " + cboStores.Text;
+            string headercenter = "Loss/Adjustment Activity Log";
+            string headerRight = " \n RefNo:  " + refNumber + "  \nDate: " + adjDate + " E.C";
+          
+
+            TextBrick brickcenter = e.Graph.DrawString(headercenter, Color.Navy, new RectangleF(400, 40, 400, 100),
+                                               DevExpress.XtraPrinting.BorderSide.None);
+            brickcenter.Font = new Font("Tahoma", 13);
+            brickcenter.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
+
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 40, 300, 100),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Tahoma", 13);
-            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
+
+            TextBrick brickright = e.Graph.DrawString(headerRight, Color.Navy, new RectangleF(800, 20, 400, 100),
+                                                DevExpress.XtraPrinting.BorderSide.None);
+            brickright.Font = new Font("Tahoma", 13);
+            brickright.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
+            printableComponentLink1.Landscape = true;
+            printableComponentLink1.PageHeaderFooter = header;
         }
         private static void PclCreateReportHeaderArea(object sender, DevExpress.XtraPrinting.CreateAreaEventArgs e)
         {

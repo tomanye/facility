@@ -57,6 +57,7 @@ namespace PharmInventory.Forms.SummaryReports
             dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
             gridReceives.DataSource = dtRec;
             gridIssues.DataSource = dtiss;
+            grdViewIssued.ActiveFilterString = String.Format("Quantity<>0");
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
         }
 
@@ -145,17 +146,23 @@ namespace PharmInventory.Forms.SummaryReports
             //    CustomFormat = "MM/dd/yyyy"
             //};
             //DateTime dtCurrent = Convert.ToDateTime(dtDate.Text);
-            var comHeader = info.HospitalName + "\n Store: " + cboStores.Text;
-            string header = (!isIssue) ? comHeader + "\n Received From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Supplier: " + lkSupplier.Text :
-                     comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \n Issue Location: " + lklocation.Text;
+            var headCenter = "Activity Log Report";
+            TextBrick brickcenter = e.Graph.DrawString(headCenter, Color.Navy, new RectangleF(0, 20, 1000, 120),
+                                              DevExpress.XtraPrinting.BorderSide.None);
+            brickcenter.Font = new Font("Tahoma", 13);
+            brickcenter.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+
+            var comHeader = info.HospitalName + "\nStore: " + cboStores.Text;
+            string header = (!isIssue) ? comHeader + "\nReceived From " + dtFrom.Text + " To " + dtTo.Text + " E.C \nSupplier: " + lkSupplier.Text :
+                     comHeader+ "\nIssued From " + dtFrom.Text + " To " + dtTo.Text + " E.C \nIssue Location: " + lklocation.Text;
 
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header; 
              
-            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 0, 1000, 120),
+            TextBrick brick = e.Graph.DrawString(header, Color.Navy, new RectangleF(0, 40, 1000, 120),
                                                 DevExpress.XtraPrinting.BorderSide.None);
             brick.Font = new Font("Tahoma", 12);
-            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Center);
+            brick.StringFormat = new DevExpress.XtraPrinting.BrickStringFormat(StringAlignment.Near);
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)

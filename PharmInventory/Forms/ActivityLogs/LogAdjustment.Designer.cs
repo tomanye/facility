@@ -50,13 +50,14 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colApprovedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colReason = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -82,7 +83,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -285,6 +285,13 @@ namespace PharmInventory.Forms.ActivityLogs
             // 
             // grdLogAdjustment
             // 
+            this.grdLogAdjustment.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.grdLogAdjustment.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.grdLogAdjustment.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.grdLogAdjustment.AppearancePrint.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.grdLogAdjustment.AppearancePrint.Row.Options.UseTextOptions = true;
+            this.grdLogAdjustment.AppearancePrint.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.grdLogAdjustment.ColumnPanelRowHeight = 40;
             this.grdLogAdjustment.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
@@ -294,15 +301,16 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn10,
-            this.gridColumn8,
+            this.colApprovedBy,
             this.gridColumn7,
-            this.gridColumn9,
+            this.colReason,
             this.gridColumn11,
             this.gridColumn12});
             this.grdLogAdjustment.GridControl = this.gridAdjustments;
             this.grdLogAdjustment.Name = "grdLogAdjustment";
             this.grdLogAdjustment.OptionsBehavior.Editable = false;
             this.grdLogAdjustment.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdLogAdjustment.OptionsView.AllowHtmlDrawHeaders = true;
             this.grdLogAdjustment.OptionsView.ColumnAutoWidth = false;
             this.grdLogAdjustment.OptionsView.RowAutoHeight = true;
             this.grdLogAdjustment.OptionsView.ShowFooter = true;
@@ -337,6 +345,16 @@ namespace PharmInventory.Forms.ActivityLogs
             // repositoryItemMemoEdit1
             // 
             this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Unit";
+            this.gridColumn13.FieldName = "Unit";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.OptionsColumn.AllowFocus = false;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 3;
             // 
             // gridColumn4
             // 
@@ -382,16 +400,16 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 100;
+            this.gridColumn10.Width = 65;
             // 
-            // gridColumn8
+            // colApprovedBy
             // 
-            this.gridColumn8.Caption = "Approved By";
-            this.gridColumn8.FieldName = "ApprovedBy";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 9;
-            this.gridColumn8.Width = 100;
+            this.colApprovedBy.Caption = "Approved By";
+            this.colApprovedBy.FieldName = "ApprovedBy";
+            this.colApprovedBy.Name = "colApprovedBy";
+            this.colApprovedBy.Visible = true;
+            this.colApprovedBy.VisibleIndex = 9;
+            this.colApprovedBy.Width = 100;
             // 
             // gridColumn7
             // 
@@ -403,14 +421,14 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 8;
             // 
-            // gridColumn9
+            // colReason
             // 
-            this.gridColumn9.Caption = "Remark";
-            this.gridColumn9.FieldName = "Remark";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 10;
-            this.gridColumn9.Width = 290;
+            this.colReason.Caption = "Remark";
+            this.colReason.FieldName = "Remark";
+            this.colReason.Name = "colReason";
+            this.colReason.Visible = true;
+            this.colReason.VisibleIndex = 10;
+            this.colReason.Width = 290;
             // 
             // gridColumn11
             // 
@@ -419,8 +437,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn11.FieldName = "UnitID";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.OptionsColumn.ReadOnly = true;
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 11;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -442,6 +458,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 72;
             // 
             // repositoryItemLookUpEdit2
             // 
@@ -671,18 +688,9 @@ namespace PharmInventory.Forms.ActivityLogs
             // printableComponentLink1
             // 
             this.printableComponentLink1.Component = this.gridAdjustments;
-            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 100, 40);
+            this.printableComponentLink1.Landscape = true;
+            this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(30, 30, 120, 60);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Unit";
-            this.gridColumn13.FieldName = "Unit";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.OptionsColumn.AllowEdit = false;
-            this.gridColumn13.OptionsColumn.AllowFocus = false;
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 3;
             // 
             // LogAdjustment
             // 
@@ -748,7 +756,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn colApprovedBy;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraTreeList.TreeList lstTree;
@@ -766,7 +774,7 @@ namespace PharmInventory.Forms.ActivityLogs
         private DevExpress.XtraEditors.SimpleButton btnExport;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn colReason;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;

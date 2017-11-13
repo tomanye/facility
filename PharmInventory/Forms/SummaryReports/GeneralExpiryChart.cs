@@ -446,7 +446,7 @@ namespace PharmInventory
             string strCurrentDate = EthiopianDate.EthiopianDate.GregorianToEthiopian(currentDate);
             //string[] header = { info.HospitalName, "General Expiry For Current Year", "From Start Date: " + strStartDate, "To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
 
-            string[] header = { info.HospitalName, "General Expiry For: "+ cboYear.Text +" E.C", "From Start Date: " + strStartDate+ " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
+            string[] header = { info.HospitalName, "General Expiry For: "+ cboYear.Text +" E.C", "Store: " + cboStores.Text , "From Start Date: " + strStartDate+ " To End Date: " + strEndDate, "Printed Date: " + strCurrentDate };
             printableComponentLink1.Landscape = true;
             printableComponentLink1.PageHeaderFooter = header;
 
@@ -454,7 +454,7 @@ namespace PharmInventory
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 40,1200, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0,80, 600, 100), BorderSide.None);
             TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 120, 800, 100), BorderSide.None);
-            //TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(600, 60,600, 100), BorderSide.None);
+            TextBrick brick4 = e.Graph.DrawString(header[4], Color.DarkBlue, new RectangleF(0, 160,600, 100), BorderSide.None);
         }
 
         private void cboYear_EditValueChanged(object sender, EventArgs e)
