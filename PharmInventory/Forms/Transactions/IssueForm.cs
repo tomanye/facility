@@ -794,8 +794,6 @@ namespace PharmInventory.Forms.Transactions
                     dtset.Tables.Add(tbl1.Copy());
                     modelprint.DataSource = dtset;
                     modelprint.Landscape = true;
-                    XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
-                                         MessageBoxIcon.Information);
                     modelprint.ShowPreviewDialog();
 
                     xpButton2_Click(sender, e);
