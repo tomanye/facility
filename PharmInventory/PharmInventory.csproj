@@ -558,6 +558,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Model19.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\Model19.designer.cs">
+      <DependentUpon>Model19.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RRFReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1303,6 +1309,9 @@
       <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\Model19.resx">
+      <DependentUpon>Model19.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RRFReport.resx">
       <DependentUpon>RRFReport.cs</DependentUpon>
     </EmbeddedResource>
