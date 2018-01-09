@@ -71,7 +71,8 @@ namespace PharmInventory.Forms.Profiles
             //cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
             //cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
             _hospitalId = _hospInfo.ID;
-           //  chkNormal.EditValue = _hospInfo.NormalFacility;
+            //  chkNormal.EditValue = _hospInfo.NormalFacility;
+            chkUsesModel.EditValue =  _hospInfo.UsesModel;
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
@@ -199,6 +200,7 @@ namespace PharmInventory.Forms.Profiles
                 catch { }
             }
 
+            _hospInfo.UsesModel = (bool)chkUsesModel.EditValue;
             _hospInfo.Save();
             XtraMessageBox.Show("Facility Setting Successfully Saved.", "Success",
                                 MessageBoxButtons.OK);
