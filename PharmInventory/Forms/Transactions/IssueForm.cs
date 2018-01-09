@@ -798,25 +798,30 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    int userID = MainWindow.LoggedinId;
-                    User us = new User();
-                    us.LoadByPrimaryKey(userID);
-                    string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
-
-                    var modelprint = new Model22
+                    GeneralInfo gn = new GeneralInfo();
+                    gn.LoadAll();
+                    if (gn.UsesModel)
                     {
-                        PrintedBy = { Text = printedby }
-                    };
+                        int userID = MainWindow.LoggedinId;
+                        User us = new User();
+                        us.LoadByPrimaryKey(userID);
+                        string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
 
-                    var tbl1 = ((DataTable)gridConfirmation.DataSource);
-                    tbl1.TableName = "Model22";
-                    var dtset = new DataSet();
-                    dtset.Tables.Add(tbl1.Copy());
-                    modelprint.DataSource = dtset;
-                    modelprint.Landscape = true;
-                    XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
-                                         MessageBoxIcon.Information);
-                    modelprint.ShowPreviewDialog();
+                        var modelprint = new Model22
+                        {
+                            PrintedBy = { Text = printedby }
+                        };
+
+                        var tbl1 = ((DataTable)gridConfirmation.DataSource);
+                        tbl1.TableName = "Model22";
+                        var dtset = new DataSet();
+                        dtset.Tables.Add(tbl1.Copy());
+                        modelprint.DataSource = dtset;
+                        modelprint.Landscape = true;
+                        XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count +1), "Success", MessageBoxButtons.OK,
+                                             MessageBoxIcon.Information);
+                        modelprint.ShowPreviewDialog();
+                    }
                     xpButton2_Click(sender, e);
                     issueGrid.DataSource = null;
                     issueGridView.RefreshData();
