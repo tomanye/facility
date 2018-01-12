@@ -330,6 +330,14 @@ namespace DAL
                 }
             }
 
+            public static SqlParameter PriceRate
+            {
+                get
+                {
+                    return new SqlParameter("@PriceRate", SqlDbType.Decimal, 0);
+                }
+            }
+
         }
         #endregion
 
@@ -365,6 +373,7 @@ namespace DAL
             public const string ScmsWSUserName = "ScmsWSUserName";
             public const string ScmsWSPassword = "scmsWSPassword";
             public const string UsesModel = "usesModel";
+            public const string PriceRate = "priceRate";
 
             static public string ToPropertyName(string columnName)
             {
@@ -401,6 +410,7 @@ namespace DAL
                     ht[ScmsWSUserName] = _GeneralInfo.PropertyNames.ScmsWSUserName;
                     ht[ScmsWSPassword] = _GeneralInfo.PropertyNames.ScmsWSPassword;
                     ht[UsesModel] = _GeneralInfo.PropertyNames.UsesModel;
+                    ht[PriceRate] = _GeneralInfo.PropertyNames.PriceRate;
 
                 }
                 return (string)ht[columnName];
@@ -442,6 +452,7 @@ namespace DAL
             public const string ScmsWSUserName = "ScmsWSUserName";
             public const string ScmsWSPassword = "ScmsWSPassword";
             public const string UsesModel = "UsesModel";
+            public const string PriceRate = "PriceRate";
 
             static public string ToColumnName(string propertyName)
             {
@@ -478,6 +489,7 @@ namespace DAL
                     ht[ScmsWSUserName] = _GeneralInfo.ColumnNames.ScmsWSUserName;
                     ht[ScmsWSPassword] = _GeneralInfo.ColumnNames.ScmsWSPassword;
                     ht[UsesModel] = _GeneralInfo.ColumnNames.UsesModel;
+                    ht[PriceRate] = _GeneralInfo.ColumnNames.PriceRate;
 
                 }
                 return (string)ht[propertyName];
@@ -519,6 +531,7 @@ namespace DAL
             public const string ScmsWSUserName = "s_ScmsWSUserName";
             public const string ScmsWSPassword = "s_ScmsWSPassword";
             public const string UsesModel = "s_UsesModel";
+            public const string PriceRate = "s_PriceRate";
 
         }
         #endregion
@@ -870,6 +883,18 @@ namespace DAL
             set
             {
                 base.Setbool(ColumnNames.UsesModel, value);
+            }
+        }
+
+        public virtual decimal PriceRate
+        {
+            get
+            {
+                return base.Getdecimal(ColumnNames.PriceRate);
+            }
+            set
+            {
+                base.Setdecimal(ColumnNames.PriceRate, value);
             }
         }
 
@@ -1313,6 +1338,21 @@ namespace DAL
             }
         }
 
+        public virtual string s_PriceRate
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.PriceRate) ? string.Empty : base.GetdecimalAsString(ColumnNames.PriceRate);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.PriceRate);
+                else
+                    this.PriceRate = base.SetdecimalAsString(ColumnNames.PriceRate, value);
+            }
+        }
+
 
         #endregion
 
@@ -1631,6 +1671,16 @@ namespace DAL
                     get
                     {
                         WhereParameter where = new WhereParameter(ColumnNames.UsesModel, Parameters.UsesModel);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter PriceRate
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.PriceRate, Parameters.PriceRate);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1989,6 +2039,18 @@ namespace DAL
                 }
             }
 
+            public WhereParameter PriceRate
+            {
+                get
+                {
+                    if (_PriceRate_W == null)
+                    {
+                        _PriceRate_W = TearOff.PriceRate;
+                    }
+                    return _PriceRate_W;
+                }
+            }
+
             private WhereParameter _ID_W = null;
             private WhereParameter _HospitalName_W = null;
             private WhereParameter _Woreda_W = null;
@@ -2018,6 +2080,7 @@ namespace DAL
             private WhereParameter _ScmsWSUserName_W = null;
             private WhereParameter _ScmsWSPassword_W = null;
             private WhereParameter _UsesModel_W = null;
+            private WhereParameter _PriceRate_W = null;
 
             public void WhereClauseReset()
             {
@@ -2050,6 +2113,7 @@ namespace DAL
                 _ScmsWSUserName_W = null;
                 _ScmsWSPassword_W = null;
                 _UsesModel_W = null;
+                _PriceRate_W = null;
 
                 this._entity.Query.FlushWhereParameters();
 
@@ -2391,6 +2455,16 @@ namespace DAL
                     get
                     {
                         AggregateParameter aggregate = new AggregateParameter(ColumnNames.UsesModel, Parameters.UsesModel);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter PriceRate
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.PriceRate, Parameters.PriceRate);
                         this._clause._entity.Query.AddAggregateParameter(aggregate);
                         return aggregate;
                     }
@@ -2749,6 +2823,18 @@ namespace DAL
                 }
             }
 
+            public AggregateParameter PriceRate
+            {
+                get
+                {
+                    if (_PriceRate_W == null)
+                    {
+                        _PriceRate_W = TearOff.PriceRate;
+                    }
+                    return _PriceRate_W;
+                }
+            }
+
             private AggregateParameter _ID_W = null;
             private AggregateParameter _HospitalName_W = null;
             private AggregateParameter _Woreda_W = null;
@@ -2778,6 +2864,7 @@ namespace DAL
             private AggregateParameter _ScmsWSUserName_W = null;
             private AggregateParameter _ScmsWSPassword_W = null;
             private AggregateParameter _UsesModel_W = null;
+            private AggregateParameter _PriceRate_W = null;
 
             public void AggregateClauseReset()
             {
@@ -2810,6 +2897,7 @@ namespace DAL
                 _ScmsWSUserName_W = null;
                 _ScmsWSPassword_W = null;
                 _UsesModel_W = null;
+                _PriceRate_W = null;
 
                 this._entity.Query.FlushAggregateParameters();
 
@@ -3000,10 +3088,12 @@ namespace DAL
             p.SourceColumn = ColumnNames.UsesModel;
             p.SourceVersion = DataRowVersion.Current;
 
+            p = cmd.Parameters.Add(Parameters.PriceRate);
+            p.SourceColumn = ColumnNames.PriceRate;
+            p.SourceVersion = DataRowVersion.Current;
+
 
             return cmd;
         }
     }
 }
-
-

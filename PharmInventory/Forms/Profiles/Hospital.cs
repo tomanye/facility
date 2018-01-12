@@ -201,6 +201,10 @@ namespace PharmInventory.Forms.Profiles
             }
 
             _hospInfo.UsesModel = (bool)chkUsesModel.EditValue;
+            if (cbEPriceRate.EditValue != null) {
+                _hospInfo.PriceRate = Convert.ToDecimal(cbEPriceRate.EditValue);
+            }
+           
             _hospInfo.Save();
             XtraMessageBox.Show("Facility Setting Successfully Saved.", "Success",
                                 MessageBoxButtons.OK);

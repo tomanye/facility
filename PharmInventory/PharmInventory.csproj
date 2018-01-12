@@ -1033,6 +1033,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9970-AddColumn-GeneralInfo.sql" />
+    <Content Include="Scripts\9986-AddColumnPriceRate-GeneralInfo.sql" />
     <Content Include="Scripts\9976-proc_UserCommodityTypeInsert.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
