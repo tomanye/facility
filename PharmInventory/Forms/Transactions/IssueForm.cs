@@ -44,6 +44,8 @@ namespace PharmInventory.Forms.Transactions
         int _catID = 0;
         String _selectedType = "Drug";
         DataTable _dtSelectedTable = null;
+        GeneralInfo gn = new GeneralInfo();
+     
 
         #endregion
 
@@ -55,6 +57,7 @@ namespace PharmInventory.Forms.Transactions
         /// <param name="e"></param>
         private void IssuingForm_Load(object sender, EventArgs e)
         {
+            gn.LoadAll();
             var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[4];
             var unitid = ((GridView)issueGrid.MainView).Columns[14];
             var unitcolumn1 = ((GridView)issueGrid.MainView).Columns[2];
@@ -410,7 +413,7 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -579,7 +582,7 @@ namespace PharmInventory.Forms.Transactions
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"]};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],(unitPrice +  (unitPrice *Convert.ToDouble(gn.PriceRate))).ToString("n3"),((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(gn.PriceRate))).ToString("n3") : "0")};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -700,8 +703,7 @@ namespace PharmInventory.Forms.Transactions
                     long currentSOH = 0;
                     var storeId = 0;
                     var itemId = 0;
-                    GeneralInfo gn = new GeneralInfo();
-                    gn.LoadAll();
+
                     using (dtConfirm = (DataTable)gridConfirmation.DataSource)
                     {
                         for (int i = 0; i < dtConfirm.Rows.Count; i++)
@@ -814,7 +816,8 @@ namespace PharmInventory.Forms.Transactions
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
-                        tbl1.TableName = "Model22";
+                        tbl1.TableName = "Model22";  
+                      
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
