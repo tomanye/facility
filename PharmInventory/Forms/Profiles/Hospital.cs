@@ -73,6 +73,7 @@ namespace PharmInventory.Forms.Profiles
             _hospitalId = _hospInfo.ID;
             //  chkNormal.EditValue = _hospInfo.NormalFacility;
             chkUsesModel.EditValue =  _hospInfo.UsesModel;
+            cbEPriceRate.Text = _hospInfo.PriceRate.ToString();
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
@@ -201,7 +202,8 @@ namespace PharmInventory.Forms.Profiles
             }
 
             _hospInfo.UsesModel = (bool)chkUsesModel.EditValue;
-            if (cbEPriceRate.EditValue != null) {
+            if (cbEPriceRate.EditValue != null)
+            {
                 _hospInfo.PriceRate = Convert.ToDecimal(cbEPriceRate.EditValue);
             }
            

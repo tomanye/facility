@@ -700,7 +700,8 @@ namespace PharmInventory.Forms.Transactions
                     long currentSOH = 0;
                     var storeId = 0;
                     var itemId = 0;
-
+                    GeneralInfo gn = new GeneralInfo();
+                    gn.LoadAll();
                     using (dtConfirm = (DataTable)gridConfirmation.DataSource)
                     {
                         for (int i = 0; i < dtConfirm.Rows.Count; i++)
@@ -756,6 +757,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.Cost = Convert.ToDouble(dtConfirm.Rows[i]["Unit Price"]);
                             issDoc.RecomendedQty = Convert.ToInt32(dtConfirm.Rows[i]["DURecomended"]);// ((recQty > 0) ? Convert.ToInt64(recQty) : 0);
                             //End DU
+                            issDoc.PriceRate = gn.PriceRate;
                             issDoc.Save();
                             //updating the receiving doc
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
@@ -798,8 +800,7 @@ namespace PharmInventory.Forms.Transactions
                         }
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GeneralInfo gn = new GeneralInfo();
-                    gn.LoadAll();
+                   
                     if (gn.UsesModel)
                     {
                         int userID = MainWindow.LoggedinId;

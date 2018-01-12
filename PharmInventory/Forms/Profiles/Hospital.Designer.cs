@@ -31,6 +31,7 @@ namespace PharmInventory.Forms.Profiles
             this.components = new System.ComponentModel.Container();
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
+            this.cbEPriceRate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.chkUsesModel = new DevExpress.XtraEditors.CheckEdit();
             this.txtRegionZoneWoreda = new System.Windows.Forms.TextBox();
             this.txtSurvivingInfants = new System.Windows.Forms.TextBox();
@@ -62,6 +63,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -81,11 +83,10 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cbEPriceRate = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbEPriceRate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUsesModel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirths.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmonthstosupply.Properties)).BeginInit();
@@ -113,6 +114,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
@@ -130,8 +132,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbEPriceRate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,6 +175,26 @@ namespace PharmInventory.Forms.Profiles
             this.groupBox1ConvertedLayout.Root = this.layoutControlGroup1;
             this.groupBox1ConvertedLayout.Size = new System.Drawing.Size(887, 548);
             this.groupBox1ConvertedLayout.TabIndex = 1;
+            // 
+            // cbEPriceRate
+            // 
+            this.cbEPriceRate.Location = new System.Drawing.Point(304, 141);
+            this.cbEPriceRate.Name = "cbEPriceRate";
+            this.cbEPriceRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbEPriceRate.Properties.Items.AddRange(new object[] {
+            "0.0",
+            "0.05",
+            "0.1",
+            "0.125",
+            "0.175",
+            "0.15",
+            "0.225",
+            "0.35"});
+            this.cbEPriceRate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbEPriceRate.Size = new System.Drawing.Size(112, 20);
+            this.cbEPriceRate.StyleController = this.groupBox1ConvertedLayout;
+            this.cbEPriceRate.TabIndex = 24;
             // 
             // chkUsesModel
             // 
@@ -538,6 +558,18 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem19.TextToControlDistance = 0;
             this.layoutControlItem19.TextVisible = false;
             // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.cbEPriceRate;
+            this.layoutControlItem21.CustomizationFormText = "Price Rate%";
+            this.layoutControlItem21.Location = new System.Drawing.Point(215, 98);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(181, 24);
+            this.layoutControlItem21.Text = "Price Rate%";
+            this.layoutControlItem21.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(60, 13);
+            this.layoutControlItem21.TextToControlDistance = 5;
+            // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.CustomizationFormText = "Directory Services Configuration";
@@ -726,36 +758,6 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem20.TextSize = new System.Drawing.Size(123, 13);
             this.layoutControlItem20.TextToControlDistance = 5;
             // 
-            // cbEPriceRate
-            // 
-            this.cbEPriceRate.Location = new System.Drawing.Point(304, 141);
-            this.cbEPriceRate.Name = "cbEPriceRate";
-            this.cbEPriceRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbEPriceRate.Properties.Items.AddRange(new object[] {
-            "0.05",
-            "0.1",
-            "0.125",
-            "0.175",
-            "0.15",
-            "0.225",
-            "0.35"});
-            this.cbEPriceRate.Size = new System.Drawing.Size(112, 20);
-            this.cbEPriceRate.StyleController = this.groupBox1ConvertedLayout;
-            this.cbEPriceRate.TabIndex = 24;
-            // 
-            // layoutControlItem21
-            // 
-            this.layoutControlItem21.Control = this.cbEPriceRate;
-            this.layoutControlItem21.CustomizationFormText = "Price Rate%";
-            this.layoutControlItem21.Location = new System.Drawing.Point(215, 98);
-            this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(181, 24);
-            this.layoutControlItem21.Text = "Price Rate%";
-            this.layoutControlItem21.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem21.TextSize = new System.Drawing.Size(60, 13);
-            this.layoutControlItem21.TextToControlDistance = 5;
-            // 
             // settingbindingSource
             // 
             this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
@@ -772,6 +774,7 @@ namespace PharmInventory.Forms.Profiles
             this.Load += new System.EventHandler(this.Hospital_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).EndInit();
             this.groupBox1ConvertedLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbEPriceRate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUsesModel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBirths.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmonthstosupply.Properties)).EndInit();
@@ -799,6 +802,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
@@ -816,8 +820,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbEPriceRate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             this.ResumeLayout(false);
 

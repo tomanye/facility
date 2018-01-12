@@ -810,10 +810,18 @@
     <Content Include="Scripts\60_DisposalUpdate.sql" />
     <Content Include="Scripts\61_AlterIssuedAddUnitId.sql" />
     <Content Include="Scripts\62_AlterIssueDocAddRecipientName.sql" />
-    <Content Include="Scripts\63_AlterIssueDocInsert.sql" />
-    <Content Include="Scripts\64_AlterIssueDocLoadAll.sql" />
-    <Content Include="Scripts\65_AlterIssueDocLoadByPrimaryKey.sql" />
-    <Content Include="Scripts\66_AlterIssueDocUpdate.sql" />
+    <Content Include="Scripts\63_AlterIssueDocInsert.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\64_AlterIssueDocLoadAll.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\65_AlterIssueDocLoadByPrimaryKey.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\66_AlterIssueDocUpdate.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\67_CreateItemUnitLoadByPrimaryKey.sql" />
     <Content Include="Scripts\68_ItemUnitUpdate.sql" />
     <Content Include="Scripts\71_UpdateReceiving Unit.sql" />
@@ -1033,7 +1041,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9970-AddColumn-GeneralInfo.sql" />
-    <Content Include="Scripts\9986-AddColumnPriceRate-GeneralInfo.sql" />
+    <Content Include="Scripts\9987-AddColumnPriceRate-IssueDoc.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9986-AddColumnPriceRate-GeneralInfo.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\9976-proc_UserCommodityTypeInsert.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
