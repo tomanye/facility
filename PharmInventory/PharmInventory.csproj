@@ -1040,7 +1040,7 @@
     <Content Include="Scripts\9962-proc_AlterReceiveDocUpdate.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9970-AddColumn-GeneralInfo.sql">
+    <Content Include="Scripts\9909_AddColumn-GeneralInfo.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9987-AddColumnPriceRate-IssueDoc.sql">
