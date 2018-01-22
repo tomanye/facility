@@ -1667,6 +1667,12 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnTotal_PriceT;
             
+            private global::System.Data.DataColumn columnBatchNo;
+            
+            private global::System.Data.DataColumn columnExpiry_Date;
+            
+            private global::System.Data.DataColumn columnUnit_Price;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Model22DataTable() {
@@ -1774,6 +1780,30 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BatchNoColumn {
+                get {
+                    return this.columnBatchNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Expiry_DateColumn {
+                get {
+                    return this.columnExpiry_Date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Unit_PriceColumn {
+                get {
+                    return this.columnUnit_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1809,7 +1839,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Model22Row AddModel22Row(string InternalDrugCode, string Item_Name, string Unit, string Quantity, string Unit_PriceT, string Unit_Cost, string Total_Cost, string Retail_Price, string Total_PriceT) {
+            public Model22Row AddModel22Row(string InternalDrugCode, string Item_Name, string Unit, string Quantity, string Unit_PriceT, string Unit_Cost, string Total_Cost, string Retail_Price, string Total_PriceT, string BatchNo, string Expiry_Date, string Unit_Price) {
                 Model22Row rowModel22Row = ((Model22Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InternalDrugCode,
@@ -1820,7 +1850,10 @@ namespace PharmInventory.Reports {
                         Unit_Cost,
                         Total_Cost,
                         Retail_Price,
-                        Total_PriceT};
+                        Total_PriceT,
+                        BatchNo,
+                        Expiry_Date,
+                        Unit_Price};
                 rowModel22Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModel22Row);
                 return rowModel22Row;
@@ -1852,6 +1885,9 @@ namespace PharmInventory.Reports {
                 this.columnTotal_Cost = base.Columns["Total Cost"];
                 this.columnRetail_Price = base.Columns["Retail Price"];
                 this.columnTotal_PriceT = base.Columns["Total PriceT"];
+                this.columnBatchNo = base.Columns["BatchNo"];
+                this.columnExpiry_Date = base.Columns["Expiry Date"];
+                this.columnUnit_Price = base.Columns["Unit Price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1875,6 +1911,12 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnRetail_Price);
                 this.columnTotal_PriceT = new global::System.Data.DataColumn("Total PriceT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_PriceT);
+                this.columnBatchNo = new global::System.Data.DataColumn("BatchNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBatchNo);
+                this.columnExpiry_Date = new global::System.Data.DataColumn("Expiry Date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExpiry_Date);
+                this.columnUnit_Price = new global::System.Data.DataColumn("Unit Price", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnit_Price);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3298,6 +3340,54 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BatchNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.BatchNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BatchNo\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.BatchNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Expiry_Date {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Expiry_DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Expiry Date\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Expiry_DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Unit_Price {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Unit_PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Unit Price\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Unit_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInternalDrugCodeNull() {
                 return this.IsNull(this.tableModel22.InternalDrugCodeColumn);
             }
@@ -3402,6 +3492,42 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotal_PriceTNull() {
                 this[this.tableModel22.Total_PriceTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBatchNoNull() {
+                return this.IsNull(this.tableModel22.BatchNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBatchNoNull() {
+                this[this.tableModel22.BatchNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsExpiry_DateNull() {
+                return this.IsNull(this.tableModel22.Expiry_DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetExpiry_DateNull() {
+                this[this.tableModel22.Expiry_DateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUnit_PriceNull() {
+                return this.IsNull(this.tableModel22.Unit_PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUnit_PriceNull() {
+                this[this.tableModel22.Unit_PriceColumn] = global::System.Convert.DBNull;
             }
         }
         
