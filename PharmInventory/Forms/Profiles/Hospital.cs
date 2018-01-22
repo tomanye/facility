@@ -70,11 +70,11 @@ namespace PharmInventory.Forms.Profiles
             //cboDSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("DSUpdateFrequency")?"": _hospInfo.DSUpdateFrequency;
             //cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
             //cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
-           var generalInfo = new GeneralInfo();
-            generalInfo.LoadAll();
+          
             _hospitalId = _hospInfo.ID;
             //  chkNormal.EditValue = _hospInfo.NormalFacility;
             chkUsesModel.EditValue =  _hospInfo.UsesModel;
+            if(!_hospInfo.IsColumnNull("PriceRate"))
             cbEPriceRate.Text = _hospInfo.PriceRate.ToString();
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
