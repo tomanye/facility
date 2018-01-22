@@ -1,3 +1,4 @@
+
 /*
 '===============================================================================
 '  Generated From - CSharp_dOOdads_BusinessEntity.vbgen
@@ -234,11 +235,11 @@ namespace DAL
                 }
             }
 
-            public static SqlParameter DUMin
+            public static SqlParameter DUAMCRange
             {
                 get
                 {
-                    return new SqlParameter("@DUMin", SqlDbType.Float, 0);
+                    return new SqlParameter("@DUAMCRange", SqlDbType.Int, 0);
                 }
             }
 
@@ -250,11 +251,11 @@ namespace DAL
                 }
             }
 
-            public static SqlParameter DUAMCRange
+            public static SqlParameter DUMin
             {
                 get
                 {
-                    return new SqlParameter("@DUAMCRange", SqlDbType.Int, 0);
+                    return new SqlParameter("@DUMin", SqlDbType.Float, 0);
                 }
             }
 
@@ -361,9 +362,9 @@ namespace DAL
             public const string Description = "Description";
             public const string IsEven = "IsEven";
             public const string Logo = "Logo";
-            public const string DUMin = "DUMin";
-            public const string DUMax = "DUMax";
             public const string DUAMCRange = "DUAMCRange";
+            public const string DUMax = "DUMax";
+            public const string DUMin = "DUMin";
             public const string LastBackUp = "LastBackUp";
             public const string FacilityID = "FacilityID";
             public const string LastSync = "LastSync";
@@ -398,9 +399,9 @@ namespace DAL
                     ht[Description] = _GeneralInfo.PropertyNames.Description;
                     ht[IsEven] = _GeneralInfo.PropertyNames.IsEven;
                     ht[Logo] = _GeneralInfo.PropertyNames.Logo;
-                    ht[DUMin] = _GeneralInfo.PropertyNames.DUMin;
-                    ht[DUMax] = _GeneralInfo.PropertyNames.DUMax;
                     ht[DUAMCRange] = _GeneralInfo.PropertyNames.DUAMCRange;
+                    ht[DUMax] = _GeneralInfo.PropertyNames.DUMax;
+                    ht[DUMin] = _GeneralInfo.PropertyNames.DUMin;
                     ht[LastBackUp] = _GeneralInfo.PropertyNames.LastBackUp;
                     ht[FacilityID] = _GeneralInfo.PropertyNames.FacilityID;
                     ht[LastSync] = _GeneralInfo.PropertyNames.LastSync;
@@ -440,9 +441,9 @@ namespace DAL
             public const string Description = "Description";
             public const string IsEven = "IsEven";
             public const string Logo = "Logo";
-            public const string DUMin = "DUMin";
-            public const string DUMax = "DUMax";
             public const string DUAMCRange = "DUAMCRange";
+            public const string DUMax = "DUMax";
+            public const string DUMin = "DUMin";
             public const string LastBackUp = "LastBackUp";
             public const string FacilityID = "FacilityID";
             public const string LastSync = "LastSync";
@@ -477,9 +478,9 @@ namespace DAL
                     ht[Description] = _GeneralInfo.ColumnNames.Description;
                     ht[IsEven] = _GeneralInfo.ColumnNames.IsEven;
                     ht[Logo] = _GeneralInfo.ColumnNames.Logo;
-                    ht[DUMin] = _GeneralInfo.ColumnNames.DUMin;
-                    ht[DUMax] = _GeneralInfo.ColumnNames.DUMax;
                     ht[DUAMCRange] = _GeneralInfo.ColumnNames.DUAMCRange;
+                    ht[DUMax] = _GeneralInfo.ColumnNames.DUMax;
+                    ht[DUMin] = _GeneralInfo.ColumnNames.DUMin;
                     ht[LastBackUp] = _GeneralInfo.ColumnNames.LastBackUp;
                     ht[FacilityID] = _GeneralInfo.ColumnNames.FacilityID;
                     ht[LastSync] = _GeneralInfo.ColumnNames.LastSync;
@@ -519,9 +520,9 @@ namespace DAL
             public const string Description = "s_Description";
             public const string IsEven = "s_IsEven";
             public const string Logo = "s_Logo";
-            public const string DUMin = "s_DUMin";
-            public const string DUMax = "s_DUMax";
             public const string DUAMCRange = "s_DUAMCRange";
+            public const string DUMax = "s_DUMax";
+            public const string DUMin = "s_DUMin";
             public const string LastBackUp = "s_LastBackUp";
             public const string FacilityID = "s_FacilityID";
             public const string LastSync = "s_LastSync";
@@ -742,15 +743,15 @@ namespace DAL
             }
         }
 
-        public virtual double DUMin
+        public virtual int DUAMCRange
         {
             get
             {
-                return base.Getdouble(ColumnNames.DUMin);
+                return base.Getint(ColumnNames.DUAMCRange);
             }
             set
             {
-                base.Setdouble(ColumnNames.DUMin, value);
+                base.Setint(ColumnNames.DUAMCRange, value);
             }
         }
 
@@ -766,15 +767,15 @@ namespace DAL
             }
         }
 
-        public virtual int DUAMCRange
+        public virtual double DUMin
         {
             get
             {
-                return base.Getint(ColumnNames.DUAMCRange);
+                return base.Getdouble(ColumnNames.DUMin);
             }
             set
             {
-                base.Setint(ColumnNames.DUAMCRange, value);
+                base.Setdouble(ColumnNames.DUMin, value);
             }
         }
 
@@ -1158,18 +1159,18 @@ namespace DAL
             }
         }
 
-        public virtual string s_DUMin
+        public virtual string s_DUAMCRange
         {
             get
             {
-                return this.IsColumnNull(ColumnNames.DUMin) ? string.Empty : base.GetdoubleAsString(ColumnNames.DUMin);
+                return this.IsColumnNull(ColumnNames.DUAMCRange) ? string.Empty : base.GetintAsString(ColumnNames.DUAMCRange);
             }
             set
             {
                 if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.DUMin);
+                    this.SetColumnNull(ColumnNames.DUAMCRange);
                 else
-                    this.DUMin = base.SetdoubleAsString(ColumnNames.DUMin, value);
+                    this.DUAMCRange = base.SetintAsString(ColumnNames.DUAMCRange, value);
             }
         }
 
@@ -1188,18 +1189,18 @@ namespace DAL
             }
         }
 
-        public virtual string s_DUAMCRange
+        public virtual string s_DUMin
         {
             get
             {
-                return this.IsColumnNull(ColumnNames.DUAMCRange) ? string.Empty : base.GetintAsString(ColumnNames.DUAMCRange);
+                return this.IsColumnNull(ColumnNames.DUMin) ? string.Empty : base.GetdoubleAsString(ColumnNames.DUMin);
             }
             set
             {
                 if (string.Empty == value)
-                    this.SetColumnNull(ColumnNames.DUAMCRange);
+                    this.SetColumnNull(ColumnNames.DUMin);
                 else
-                    this.DUAMCRange = base.SetintAsString(ColumnNames.DUAMCRange, value);
+                    this.DUMin = base.SetdoubleAsString(ColumnNames.DUMin, value);
             }
         }
 
@@ -1556,11 +1557,11 @@ namespace DAL
                     }
                 }
 
-                public WhereParameter DUMin
+                public WhereParameter DUAMCRange
                 {
                     get
                     {
-                        WhereParameter where = new WhereParameter(ColumnNames.DUMin, Parameters.DUMin);
+                        WhereParameter where = new WhereParameter(ColumnNames.DUAMCRange, Parameters.DUAMCRange);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1576,11 +1577,11 @@ namespace DAL
                     }
                 }
 
-                public WhereParameter DUAMCRange
+                public WhereParameter DUMin
                 {
                     get
                     {
-                        WhereParameter where = new WhereParameter(ColumnNames.DUAMCRange, Parameters.DUAMCRange);
+                        WhereParameter where = new WhereParameter(ColumnNames.DUMin, Parameters.DUMin);
                         this._clause._entity.Query.AddWhereParameter(where);
                         return where;
                     }
@@ -1895,15 +1896,15 @@ namespace DAL
                 }
             }
 
-            public WhereParameter DUMin
+            public WhereParameter DUAMCRange
             {
                 get
                 {
-                    if (_DUMin_W == null)
+                    if (_DUAMCRange_W == null)
                     {
-                        _DUMin_W = TearOff.DUMin;
+                        _DUAMCRange_W = TearOff.DUAMCRange;
                     }
-                    return _DUMin_W;
+                    return _DUAMCRange_W;
                 }
             }
 
@@ -1919,15 +1920,15 @@ namespace DAL
                 }
             }
 
-            public WhereParameter DUAMCRange
+            public WhereParameter DUMin
             {
                 get
                 {
-                    if (_DUAMCRange_W == null)
+                    if (_DUMin_W == null)
                     {
-                        _DUAMCRange_W = TearOff.DUAMCRange;
+                        _DUMin_W = TearOff.DUMin;
                     }
-                    return _DUAMCRange_W;
+                    return _DUMin_W;
                 }
             }
 
@@ -2068,9 +2069,9 @@ namespace DAL
             private WhereParameter _Description_W = null;
             private WhereParameter _IsEven_W = null;
             private WhereParameter _Logo_W = null;
-            private WhereParameter _DUMin_W = null;
-            private WhereParameter _DUMax_W = null;
             private WhereParameter _DUAMCRange_W = null;
+            private WhereParameter _DUMax_W = null;
+            private WhereParameter _DUMin_W = null;
             private WhereParameter _LastBackUp_W = null;
             private WhereParameter _FacilityID_W = null;
             private WhereParameter _LastSync_W = null;
@@ -2101,9 +2102,9 @@ namespace DAL
                 _Description_W = null;
                 _IsEven_W = null;
                 _Logo_W = null;
-                _DUMin_W = null;
-                _DUMax_W = null;
                 _DUAMCRange_W = null;
+                _DUMax_W = null;
+                _DUMin_W = null;
                 _LastBackUp_W = null;
                 _FacilityID_W = null;
                 _LastSync_W = null;
@@ -2340,11 +2341,11 @@ namespace DAL
                     }
                 }
 
-                public AggregateParameter DUMin
+                public AggregateParameter DUAMCRange
                 {
                     get
                     {
-                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.DUMin, Parameters.DUMin);
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.DUAMCRange, Parameters.DUAMCRange);
                         this._clause._entity.Query.AddAggregateParameter(aggregate);
                         return aggregate;
                     }
@@ -2360,11 +2361,11 @@ namespace DAL
                     }
                 }
 
-                public AggregateParameter DUAMCRange
+                public AggregateParameter DUMin
                 {
                     get
                     {
-                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.DUAMCRange, Parameters.DUAMCRange);
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.DUMin, Parameters.DUMin);
                         this._clause._entity.Query.AddAggregateParameter(aggregate);
                         return aggregate;
                     }
@@ -2679,15 +2680,15 @@ namespace DAL
                 }
             }
 
-            public AggregateParameter DUMin
+            public AggregateParameter DUAMCRange
             {
                 get
                 {
-                    if (_DUMin_W == null)
+                    if (_DUAMCRange_W == null)
                     {
-                        _DUMin_W = TearOff.DUMin;
+                        _DUAMCRange_W = TearOff.DUAMCRange;
                     }
-                    return _DUMin_W;
+                    return _DUAMCRange_W;
                 }
             }
 
@@ -2703,15 +2704,15 @@ namespace DAL
                 }
             }
 
-            public AggregateParameter DUAMCRange
+            public AggregateParameter DUMin
             {
                 get
                 {
-                    if (_DUAMCRange_W == null)
+                    if (_DUMin_W == null)
                     {
-                        _DUAMCRange_W = TearOff.DUAMCRange;
+                        _DUMin_W = TearOff.DUMin;
                     }
-                    return _DUAMCRange_W;
+                    return _DUMin_W;
                 }
             }
 
@@ -2852,9 +2853,9 @@ namespace DAL
             private AggregateParameter _Description_W = null;
             private AggregateParameter _IsEven_W = null;
             private AggregateParameter _Logo_W = null;
-            private AggregateParameter _DUMin_W = null;
-            private AggregateParameter _DUMax_W = null;
             private AggregateParameter _DUAMCRange_W = null;
+            private AggregateParameter _DUMax_W = null;
+            private AggregateParameter _DUMin_W = null;
             private AggregateParameter _LastBackUp_W = null;
             private AggregateParameter _FacilityID_W = null;
             private AggregateParameter _LastSync_W = null;
@@ -2885,9 +2886,9 @@ namespace DAL
                 _Description_W = null;
                 _IsEven_W = null;
                 _Logo_W = null;
-                _DUMin_W = null;
-                _DUMax_W = null;
                 _DUAMCRange_W = null;
+                _DUMax_W = null;
+                _DUMin_W = null;
                 _LastBackUp_W = null;
                 _FacilityID_W = null;
                 _LastSync_W = null;
@@ -3040,16 +3041,16 @@ namespace DAL
             p.SourceColumn = ColumnNames.Logo;
             p.SourceVersion = DataRowVersion.Current;
 
-            p = cmd.Parameters.Add(Parameters.DUMin);
-            p.SourceColumn = ColumnNames.DUMin;
+            p = cmd.Parameters.Add(Parameters.DUAMCRange);
+            p.SourceColumn = ColumnNames.DUAMCRange;
             p.SourceVersion = DataRowVersion.Current;
 
             p = cmd.Parameters.Add(Parameters.DUMax);
             p.SourceColumn = ColumnNames.DUMax;
             p.SourceVersion = DataRowVersion.Current;
 
-            p = cmd.Parameters.Add(Parameters.DUAMCRange);
-            p.SourceColumn = ColumnNames.DUAMCRange;
+            p = cmd.Parameters.Add(Parameters.DUMin);
+            p.SourceColumn = ColumnNames.DUMin;
             p.SourceVersion = DataRowVersion.Current;
 
             p = cmd.Parameters.Add(Parameters.LastBackUp);
@@ -3097,3 +3098,5 @@ namespace DAL
         }
     }
 }
+
+

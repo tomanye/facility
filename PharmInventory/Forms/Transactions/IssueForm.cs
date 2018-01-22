@@ -44,8 +44,8 @@ namespace PharmInventory.Forms.Transactions
         int _catID = 0;
         String _selectedType = "Drug";
         DataTable _dtSelectedTable = null;
-        GeneralInfo gn = new GeneralInfo();
-     
+        double _priceRate = 0;
+        bool _usesModel = false;
 
         #endregion
 
@@ -57,7 +57,10 @@ namespace PharmInventory.Forms.Transactions
         /// <param name="e"></param>
         private void IssuingForm_Load(object sender, EventArgs e)
         {
+            GeneralInfo gn = new GeneralInfo();
             gn.LoadAll();
+            _priceRate= gn.IsColumnNull("PriceRate") ? 0 : Convert.ToDouble(gn.PriceRate);
+            _usesModel = gn.IsColumnNull("UsesModel") ? false:  gn.UsesModel;
             var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[4];
             var unitid = ((GridView)issueGrid.MainView).Columns[14];
             var unitcolumn1 = ((GridView)issueGrid.MainView).Columns[2];
@@ -582,7 +585,7 @@ namespace PharmInventory.Forms.Transactions
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],(unitPrice +  (unitPrice *Convert.ToDouble(gn.PriceRate))).ToString("n3"),((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(gn.PriceRate))).ToString("n3") : "0")};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],(unitPrice +  (unitPrice *Convert.ToDouble(_priceRate))).ToString("n3"),((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0")};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -759,7 +762,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.Cost = Convert.ToDouble(dtConfirm.Rows[i]["Unit Price"]);
                             issDoc.RecomendedQty = Convert.ToInt32(dtConfirm.Rows[i]["DURecomended"]);// ((recQty > 0) ? Convert.ToInt64(recQty) : 0);
                             //End DU
-                            issDoc.PriceRate = gn.PriceRate;
+                            issDoc.PriceRate = Convert.ToDecimal(_priceRate);
                             issDoc.Save();
                             //updating the receiving doc
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
@@ -803,7 +806,7 @@ namespace PharmInventory.Forms.Transactions
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
-                    if (gn.UsesModel)
+                    if (_usesModel)
                     {
                         int userID = MainWindow.LoggedinId;
                         User us = new User();
