@@ -88,6 +88,8 @@
               <xs:element name="Pack_x0020_Qty" msprop:Generator_ColumnVarNameInTable="columnPack_Qty" msprop:Generator_ColumnPropNameInRow="Pack_Qty" msprop:Generator_ColumnPropNameInTable="Pack_QtyColumn" msprop:Generator_UserColumnName="Pack Qty" type="xs:string" minOccurs="0" />
               <xs:element name="Qty_x0020_Per_x0020_Pack" msprop:Generator_ColumnVarNameInTable="columnQty_Per_Pack" msprop:Generator_ColumnPropNameInRow="Qty_Per_Pack" msprop:Generator_ColumnPropNameInTable="Qty_Per_PackColumn" msprop:Generator_UserColumnName="Qty Per Pack" type="xs:string" minOccurs="0" />
               <xs:element name="Pack_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnPack_Price" msprop:Generator_ColumnPropNameInRow="Pack_Price" msprop:Generator_ColumnPropNameInTable="Pack_PriceColumn" msprop:Generator_UserColumnName="Pack Price" type="xs:string" minOccurs="0" />
+              <xs:element name="PackSellingPrice" msprop:Generator_ColumnVarNameInTable="columnPackSellingPrice" msprop:Generator_ColumnPropNameInRow="PackSellingPrice" msprop:Generator_ColumnPropNameInTable="PackSellingPriceColumn" msprop:Generator_UserColumnName="PackSellingPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalPackSellingPrice" msprop:Generator_ColumnVarNameInTable="columnTotalPackSellingPrice" msprop:Generator_ColumnPropNameInRow="TotalPackSellingPrice" msprop:Generator_ColumnPropNameInTable="TotalPackSellingPriceColumn" msprop:Generator_UserColumnName="TotalPackSellingPrice" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

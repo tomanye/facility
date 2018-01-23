@@ -416,7 +416,7 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT","PackSellingPrice","TotalPackSellingPrice" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -585,7 +585,9 @@ namespace PharmInventory.Forms.Transactions
                                                      Convert.ToInt32(dtIssueGrid.Rows[i]["ID"]), Convert.ToInt32(_dtRec.Rows[j]["ID"]), unitPrice.ToString("n3"), 
                                                      dtIssueGrid.Rows[i]["Pack Qty"], dtIssueGrid.Rows[i]["Qty Per Pack"], dtIssueGrid.Rows[i]["DU Remaining SOH"],
                                                      dtIssueGrid.Rows[i]["DU AMC"], ((nearExp) ? "Yes" : "No"), dtIssueGrid.Rows[i]["Recommended Qty"],
-                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],(unitPrice +  (unitPrice *Convert.ToDouble(_priceRate))).ToString("n3"),((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0")};
+                                                     sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],(unitPrice +  (unitPrice *Convert.ToDouble(_priceRate))).ToString("n3"),
+                                    ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
+                                    (packPrice +  (packPrice *Convert.ToDouble(_priceRate))).ToString("n3"), (qu*(packPrice +  (packPrice *Convert.ToDouble(_priceRate)))).ToString("n3")};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
