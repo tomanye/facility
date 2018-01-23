@@ -189,7 +189,7 @@ namespace PharmInventory.Reports
             this.xrTableCell23.StylePriority.UsePadding = false;
             this.xrTableCell23.StylePriority.UseTextAlignment = false;
             this.xrTableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell23.Weight = 0.77636869215690041D;
+            this.xrTableCell23.Weight = 0.80573841581851058D;
             // 
             // xrTableCell24
             // 
@@ -206,7 +206,7 @@ namespace PharmInventory.Reports
             this.xrTableCell24.StylePriority.UsePadding = false;
             this.xrTableCell24.StylePriority.UseTextAlignment = false;
             this.xrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell24.Weight = 0.13616919523818888D;
+            this.xrTableCell24.Weight = 0.10679947157657874D;
             // 
             // xrTableCell17
             // 
