@@ -1292,6 +1292,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnPack_Qty;
             
+            private global::System.Data.DataColumn columnBU_Qty;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Model19DataTable() {
@@ -1407,6 +1409,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BU_QtyColumn {
+                get {
+                    return this.columnBU_Qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1442,7 +1452,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Model19Row AddModel19Row(string Internal_Drug_Code, string Item_Name, string Unit, string _Qty_pack, string _Price_Pack, string Total_Price, string Batch_No, string Expiry_Date, string Remark, string Pack_Qty) {
+            public Model19Row AddModel19Row(string Internal_Drug_Code, string Item_Name, string Unit, string _Qty_pack, string _Price_Pack, string Total_Price, string Batch_No, string Expiry_Date, string Remark, string Pack_Qty, string BU_Qty) {
                 Model19Row rowModel19Row = ((Model19Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Internal_Drug_Code,
@@ -1454,7 +1464,8 @@ namespace PharmInventory.Reports {
                         Batch_No,
                         Expiry_Date,
                         Remark,
-                        Pack_Qty};
+                        Pack_Qty,
+                        BU_Qty};
                 rowModel19Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModel19Row);
                 return rowModel19Row;
@@ -1487,6 +1498,7 @@ namespace PharmInventory.Reports {
                 this.columnExpiry_Date = base.Columns["Expiry Date"];
                 this.columnRemark = base.Columns["Remark"];
                 this.columnPack_Qty = base.Columns["Pack Qty"];
+                this.columnBU_Qty = base.Columns["BU Qty"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1516,6 +1528,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnRemark);
                 this.columnPack_Qty = new global::System.Data.DataColumn("Pack Qty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPack_Qty);
+                this.columnBU_Qty = new global::System.Data.DataColumn("BU Qty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBU_Qty);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1673,6 +1687,12 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnUnit_Price;
             
+            private global::System.Data.DataColumn columnPack_Qty;
+            
+            private global::System.Data.DataColumn columnQty_Per_Pack;
+            
+            private global::System.Data.DataColumn columnPack_Price;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Model22DataTable() {
@@ -1804,6 +1824,30 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Pack_QtyColumn {
+                get {
+                    return this.columnPack_Qty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Qty_Per_PackColumn {
+                get {
+                    return this.columnQty_Per_Pack;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Pack_PriceColumn {
+                get {
+                    return this.columnPack_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1839,7 +1883,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Model22Row AddModel22Row(string InternalDrugCode, string Item_Name, string Unit, string Quantity, string Unit_PriceT, string Unit_Cost, string Total_Cost, string Retail_Price, string Total_PriceT, string BatchNo, string Expiry_Date, string Unit_Price) {
+            public Model22Row AddModel22Row(string InternalDrugCode, string Item_Name, string Unit, string Quantity, string Unit_PriceT, string Unit_Cost, string Total_Cost, string Retail_Price, string Total_PriceT, string BatchNo, string Expiry_Date, string Unit_Price, string Pack_Qty, string Qty_Per_Pack, string Pack_Price) {
                 Model22Row rowModel22Row = ((Model22Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InternalDrugCode,
@@ -1853,7 +1897,10 @@ namespace PharmInventory.Reports {
                         Total_PriceT,
                         BatchNo,
                         Expiry_Date,
-                        Unit_Price};
+                        Unit_Price,
+                        Pack_Qty,
+                        Qty_Per_Pack,
+                        Pack_Price};
                 rowModel22Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModel22Row);
                 return rowModel22Row;
@@ -1888,6 +1935,9 @@ namespace PharmInventory.Reports {
                 this.columnBatchNo = base.Columns["BatchNo"];
                 this.columnExpiry_Date = base.Columns["Expiry Date"];
                 this.columnUnit_Price = base.Columns["Unit Price"];
+                this.columnPack_Qty = base.Columns["Pack Qty"];
+                this.columnQty_Per_Pack = base.Columns["Qty Per Pack"];
+                this.columnPack_Price = base.Columns["Pack Price"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1917,6 +1967,12 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnExpiry_Date);
                 this.columnUnit_Price = new global::System.Data.DataColumn("Unit Price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnit_Price);
+                this.columnPack_Qty = new global::System.Data.DataColumn("Pack Qty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPack_Qty);
+                this.columnQty_Per_Pack = new global::System.Data.DataColumn("Qty Per Pack", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQty_Per_Pack);
+                this.columnPack_Price = new global::System.Data.DataColumn("Pack Price", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPack_Price);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3061,6 +3117,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string BU_Qty {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel19.BU_QtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BU Qty\' in table \'Model19\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel19.BU_QtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInternal_Drug_CodeNull() {
                 return this.IsNull(this.tableModel19.Internal_Drug_CodeColumn);
             }
@@ -3177,6 +3249,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPack_QtyNull() {
                 this[this.tableModel19.Pack_QtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBU_QtyNull() {
+                return this.IsNull(this.tableModel19.BU_QtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBU_QtyNull() {
+                this[this.tableModel19.BU_QtyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3388,6 +3472,54 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Pack_Qty {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Pack_QtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Pack Qty\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Pack_QtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Qty_Per_Pack {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Qty_Per_PackColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Qty Per Pack\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Qty_Per_PackColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Pack_Price {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Pack_PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Pack Price\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Pack_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInternalDrugCodeNull() {
                 return this.IsNull(this.tableModel22.InternalDrugCodeColumn);
             }
@@ -3528,6 +3660,42 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUnit_PriceNull() {
                 this[this.tableModel22.Unit_PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPack_QtyNull() {
+                return this.IsNull(this.tableModel22.Pack_QtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPack_QtyNull() {
+                this[this.tableModel22.Pack_QtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQty_Per_PackNull() {
+                return this.IsNull(this.tableModel22.Qty_Per_PackColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQty_Per_PackNull() {
+                this[this.tableModel22.Qty_Per_PackColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPack_PriceNull() {
+                return this.IsNull(this.tableModel22.Pack_PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPack_PriceNull() {
+                this[this.tableModel22.Pack_PriceColumn] = global::System.Convert.DBNull;
             }
         }
         

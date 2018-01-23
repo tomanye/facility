@@ -66,6 +66,7 @@
               <xs:element name="Expiry_x0020_Date" msprop:Generator_ColumnVarNameInTable="columnExpiry_Date" msprop:Generator_ColumnPropNameInRow="Expiry_Date" msprop:Generator_ColumnPropNameInTable="Expiry_DateColumn" msprop:Generator_UserColumnName="Expiry Date" type="xs:string" minOccurs="0" />
               <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" type="xs:string" minOccurs="0" />
               <xs:element name="Pack_x0020_Qty" msprop:Generator_ColumnVarNameInTable="columnPack_Qty" msprop:Generator_ColumnPropNameInRow="Pack_Qty" msprop:Generator_ColumnPropNameInTable="Pack_QtyColumn" msprop:Generator_UserColumnName="Pack Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="BU_x0020_Qty" msprop:Generator_ColumnVarNameInTable="columnBU_Qty" msprop:Generator_ColumnPropNameInRow="BU_Qty" msprop:Generator_ColumnPropNameInTable="BU_QtyColumn" msprop:Generator_UserColumnName="BU Qty" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -84,6 +85,9 @@
               <xs:element name="BatchNo" msprop:Generator_ColumnVarNameInTable="columnBatchNo" msprop:Generator_ColumnPropNameInRow="BatchNo" msprop:Generator_ColumnPropNameInTable="BatchNoColumn" msprop:Generator_UserColumnName="BatchNo" type="xs:string" minOccurs="0" />
               <xs:element name="Expiry_x0020_Date" msprop:Generator_ColumnVarNameInTable="columnExpiry_Date" msprop:Generator_ColumnPropNameInRow="Expiry_Date" msprop:Generator_ColumnPropNameInTable="Expiry_DateColumn" msprop:Generator_UserColumnName="Expiry Date" type="xs:string" minOccurs="0" />
               <xs:element name="Unit_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnUnit_Price" msprop:Generator_ColumnPropNameInRow="Unit_Price" msprop:Generator_ColumnPropNameInTable="Unit_PriceColumn" msprop:Generator_UserColumnName="Unit Price" type="xs:string" minOccurs="0" />
+              <xs:element name="Pack_x0020_Qty" msprop:Generator_ColumnVarNameInTable="columnPack_Qty" msprop:Generator_ColumnPropNameInRow="Pack_Qty" msprop:Generator_ColumnPropNameInTable="Pack_QtyColumn" msprop:Generator_UserColumnName="Pack Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty_x0020_Per_x0020_Pack" msprop:Generator_ColumnVarNameInTable="columnQty_Per_Pack" msprop:Generator_ColumnPropNameInRow="Qty_Per_Pack" msprop:Generator_ColumnPropNameInTable="Qty_Per_PackColumn" msprop:Generator_UserColumnName="Qty Per Pack" type="xs:string" minOccurs="0" />
+              <xs:element name="Pack_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnPack_Price" msprop:Generator_ColumnPropNameInRow="Pack_Price" msprop:Generator_ColumnPropNameInTable="Pack_PriceColumn" msprop:Generator_UserColumnName="Pack Price" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
