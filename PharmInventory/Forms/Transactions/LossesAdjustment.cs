@@ -12,6 +12,8 @@ using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using PharmInventory.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace PharmInventory
 {
@@ -413,8 +415,39 @@ namespace PharmInventory
 
                         dtAdjustDate.Value = xx;
                     }
+
                     XtraMessageBox.Show("Transaction successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ResetFields();
+                    GeneralInfo gn = new GeneralInfo();
+                    gn.LoadAll();
+                    if (gn.UsesModel)
+                    {
+                        int userID = MainWindow.LoggedinId;
+                        User us = new User();
+                        us.LoadByPrimaryKey(userID);
+                        string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
+                        var modelprint = new LossAdjustmentModel22
+                        {
+                            PrintedBy = { Text = printedby }
+                        };
+                        gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                        var dt =  (DataView)gridAdjView.DataSource;
+                       DataTable tbl1 = dt.ToTable();
+                        tbl1.TableName = "Model22";
+                        var dtset = new DataSet();
+                        dtset.Tables.Add(tbl1.Copy());
+                        modelprint.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
+                        modelprint.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+                        //modelprint.PageHeight = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperHeightCredit);
+                        // modelprint.PageWidth = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperWidthCredit);
+                        modelprint.DataSource = dtset;
+                        modelprint.Landscape = true;
+
+                        XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
+                                         MessageBoxIcon.Information);
+
+                        modelprint.ShowPreviewDialog();
+                    }
+                        ResetFields();
                 }
             }
             else
@@ -705,14 +738,14 @@ namespace PharmInventory
             }
           else  if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
             {
-                int pqty = (dr["PackQty"]!= null)? Convert.ToInt32(dr["PackQty"]):0 ;
+                int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]):0 ;
                 int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]):0 ;
                 dr["Losses"] = pqty * qtyperPack;
             }
             else
             {
-                ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
-                ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+                //((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                //((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
                // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
                 return;
             }

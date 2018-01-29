@@ -553,6 +553,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -563,6 +566,12 @@
     </Compile>
     <Compile Include="Reports\Model19.designer.cs">
       <DependentUpon>Model19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\LossAdjustmentModel22.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\LossAdjustmentModel22.designer.cs">
+      <DependentUpon>LossAdjustmentModel22.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\Model22.cs">
       <SubType>Component</SubType>
@@ -1331,6 +1340,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\Model19.resx">
       <DependentUpon>Model19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\LossAdjustmentModel22.resx">
+      <DependentUpon>LossAdjustmentModel22.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Model22.resx">
       <DependentUpon>Model22.cs</DependentUpon>

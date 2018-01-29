@@ -93,6 +93,21 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="LossAdjModel22" msprop:Generator_TableClassName="LossAdjModel22DataTable" msprop:Generator_TableVarName="tableLossAdjModel22" msprop:Generator_TablePropName="LossAdjModel22" msprop:Generator_RowDeletingName="LossAdjModel22RowDeleting" msprop:Generator_RowChangingName="LossAdjModel22RowChanging" msprop:Generator_RowEvHandlerName="LossAdjModel22RowChangeEventHandler" msprop:Generator_RowDeletedName="LossAdjModel22RowDeleted" msprop:Generator_UserTableName="LossAdjModel22" msprop:Generator_RowChangedName="LossAdjModel22RowChanged" msprop:Generator_RowEvArgName="LossAdjModel22RowChangeEvent" msprop:Generator_RowClassName="LossAdjModel22Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnItem_Name" msprop:Generator_ColumnPropNameInRow="Item_Name" msprop:Generator_ColumnPropNameInTable="Item_NameColumn" msprop:Generator_UserColumnName="Item Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:string" minOccurs="0" />
+              <xs:element name="Batch_x0020_No" msdata:Caption="BatchNo" msprop:Generator_ColumnVarNameInTable="columnBatch_No" msprop:Generator_ColumnPropNameInRow="Batch_No" msprop:Generator_ColumnPropNameInTable="Batch_NoColumn" msprop:Generator_UserColumnName="Batch No" type="xs:string" minOccurs="0" />
+              <xs:element name="Expiry_x0020_Date" msprop:Generator_ColumnVarNameInTable="columnExpiry_Date" msprop:Generator_ColumnPropNameInRow="Expiry_Date" msprop:Generator_ColumnPropNameInTable="Expiry_DateColumn" msprop:Generator_UserColumnName="Expiry Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnUnit_Price" msprop:Generator_ColumnPropNameInRow="Unit_Price" msprop:Generator_ColumnPropNameInTable="Unit_PriceColumn" msprop:Generator_UserColumnName="Unit Price" type="xs:string" minOccurs="0" />
+              <xs:element name="PackQty" msdata:Caption="No of Pack" msprop:Generator_ColumnVarNameInTable="columnPackQty" msprop:Generator_ColumnPropNameInRow="PackQty" msprop:Generator_ColumnPropNameInTable="PackQtyColumn" msprop:Generator_UserColumnName="PackQty" type="xs:string" minOccurs="0" />
+              <xs:element name="QtyPerPack" msdata:Caption="Qty Per Pack" msprop:Generator_ColumnVarNameInTable="columnQtyPerPack" msprop:Generator_ColumnPropNameInRow="QtyPerPack" msprop:Generator_ColumnPropNameInTable="QtyPerPackColumn" msprop:Generator_UserColumnName="QtyPerPack" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
