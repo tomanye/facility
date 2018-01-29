@@ -254,7 +254,7 @@ namespace PharmInventory.Reports
             this.xrTableCell11.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell11.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Price/Pack", "{0:#,###.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Price/Pack", "{0:#.00}")});
             this.xrTableCell11.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell11.Name = "xrTableCell11";
             this.xrTableCell11.StylePriority.UseBorderColor = false;
@@ -269,7 +269,7 @@ namespace PharmInventory.Reports
             this.xrTableCell29.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell29.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell29.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Total Price", "{0:#,###.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "Model19.Total Price", "{0:#,###.000}")});
             this.xrTableCell29.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StylePriority.UseBorderColor = false;

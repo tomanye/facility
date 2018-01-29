@@ -1452,7 +1452,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Model19Row AddModel19Row(string Internal_Drug_Code, string Item_Name, string Unit, string _Qty_pack, string _Price_Pack, string Total_Price, string Batch_No, string Expiry_Date, string Remark, string Pack_Qty, string BU_Qty) {
+            public Model19Row AddModel19Row(string Internal_Drug_Code, string Item_Name, string Unit, string _Qty_pack, double _Price_Pack, decimal Total_Price, string Batch_No, string Expiry_Date, string Remark, string Pack_Qty, string BU_Qty) {
                 Model19Row rowModel19Row = ((Model19Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Internal_Drug_Code,
@@ -1514,11 +1514,11 @@ namespace PharmInventory.Reports {
                 this._columnQty_pack.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnQty_pack");
                 this._columnQty_pack.ExtendedProperties.Add("Generator_UserColumnName", "Qty/pack");
                 base.Columns.Add(this._columnQty_pack);
-                this._columnPrice_Pack = new global::System.Data.DataColumn("Price/Pack", typeof(string), null, global::System.Data.MappingType.Element);
+                this._columnPrice_Pack = new global::System.Data.DataColumn("Price/Pack", typeof(double), null, global::System.Data.MappingType.Element);
                 this._columnPrice_Pack.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPrice_Pack");
                 this._columnPrice_Pack.ExtendedProperties.Add("Generator_UserColumnName", "Price/Pack");
                 base.Columns.Add(this._columnPrice_Pack);
-                this.columnTotal_Price = new global::System.Data.DataColumn("Total Price", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotal_Price = new global::System.Data.DataColumn("Total Price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal_Price);
                 this.columnBatch_No = new global::System.Data.DataColumn("Batch No", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBatch_No);
@@ -3066,10 +3066,10 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string _Price_Pack {
+            public double _Price_Pack {
                 get {
                     try {
-                        return ((string)(this[this.tableModel19._Price_PackColumn]));
+                        return ((double)(this[this.tableModel19._Price_PackColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Price/Pack\' in table \'Model19\' is DBNull.", e);
@@ -3082,10 +3082,10 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Total_Price {
+            public decimal Total_Price {
                 get {
                     try {
-                        return ((string)(this[this.tableModel19.Total_PriceColumn]));
+                        return ((decimal)(this[this.tableModel19.Total_PriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Total Price\' in table \'Model19\' is DBNull.", e);

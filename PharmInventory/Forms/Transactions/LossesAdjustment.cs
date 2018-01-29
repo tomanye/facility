@@ -92,7 +92,8 @@ namespace PharmInventory
             {
                 btnSave.Enabled = true;
             }
-
+          ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
         }
 
         public void PopulateItemList(DataTable dtItem)
@@ -169,7 +170,7 @@ namespace PharmInventory
             if (dtRecGrid.Columns.Count == 0)
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason",
-                               "UnitID"};
+                               "UnitID","PackQty","QtyPerPack"};
                 foreach (string col in str)
                 {
                     dtRecGrid.Columns.Add(col);
@@ -436,6 +437,8 @@ namespace PharmInventory
             dtAdjustDate.Value = DateTime.Now;
 
             Items itm = new Items();
+            ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
         }
 
         private void tabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
@@ -682,5 +685,34 @@ namespace PharmInventory
             edit.Properties.ValueMember = "ID";
         }
 
+        private void gridAdjView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]);
+            if (view.FocusedColumn.FieldName == "Reason")
+            {
+              
+                if (dr["Reason"].ToString() == "11")
+                {
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 2;
+                   ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 3;
+                }
+            
+            }
+          else  if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
+            {
+                int pqty = (dr["PackQty"]!= null)? Convert.ToInt32(dr["PackQty"]):0 ;
+                int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]):0 ;
+                dr["Losses"] = pqty * qtyperPack;
+            }
+            else
+            {
+                ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
+                return;
+            }
+        }
     }
 }
