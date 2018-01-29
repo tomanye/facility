@@ -136,6 +136,7 @@ namespace PharmInventory
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
@@ -198,6 +199,7 @@ namespace PharmInventory
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControlItem10
@@ -325,7 +327,8 @@ namespace PharmInventory
             this.repositoryItemTextEdit2,
             this.ReasonLookup,
             this.unitrepositoryItemLookUpEdit,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemTextEdit3});
             this.AdjustmentGrid.Size = new System.Drawing.Size(1027, 486);
             this.AdjustmentGrid.TabIndex = 14;
             this.AdjustmentGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -529,14 +532,18 @@ namespace PharmInventory
             // colPackQty
             // 
             this.colPackQty.Caption = "Pack Qty";
+            this.colPackQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colPackQty.FieldName = "PackQty";
             this.colPackQty.Name = "colPackQty";
+            this.colPackQty.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             // 
             // colQtyperPack
             // 
             this.colQtyperPack.Caption = "Qty/Pack";
+            this.colQtyperPack.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colQtyperPack.FieldName = "QtyPerPack";
             this.colQtyperPack.Name = "colQtyperPack";
+            this.colQtyperPack.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             // 
             // ExpireDateEditor
             // 
@@ -1421,6 +1428,11 @@ namespace PharmInventory
             this.tabPage2});
             this.tabControl1.SelectedPageChanging += new DevExpress.XtraTab.TabPageChangingEventHandler(this.tabControl1_SelectedPageChanging);
             // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
             // LossesAdjustment
             // 
             this.Appearance.Options.UseFont = true;
@@ -1495,6 +1507,7 @@ namespace PharmInventory
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabControl1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1606,5 +1619,6 @@ namespace PharmInventory
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colPackQty;
         private DevExpress.XtraGrid.Columns.GridColumn colQtyperPack;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
     }
 }

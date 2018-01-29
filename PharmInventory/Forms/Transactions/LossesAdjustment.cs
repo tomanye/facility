@@ -438,7 +438,8 @@ namespace PharmInventory
 
             Items itm = new Items();
             ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
-            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
+            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+            //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
         }
 
         private void tabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
@@ -695,9 +696,10 @@ namespace PharmInventory
                 if (dr["Reason"].ToString() == "11")
                 {
                     ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
-                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 2;
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
                    ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
-                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 3;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2; 
+                    //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
                 }
             
             }
@@ -710,7 +712,8 @@ namespace PharmInventory
             else
             {
                 ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
-                ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
+                ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+               // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
                 return;
             }
         }
