@@ -751,11 +751,11 @@ namespace PharmInventory.Reports
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(9.999998F, 0F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 0F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 74.37507F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 43.12506F);
             this.xrLabel3.StylePriority.UseFont = false;
             this.xrLabel3.Text = resources.GetString("xrLabel3.Text");
             // 
@@ -778,7 +778,6 @@ namespace PharmInventory.Reports
             this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 15.70834F);
             this.xrLabel8.StylePriority.UseFont = false;
             this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለስቶክ ካርድ ጸሀፊ እና አራተኛው ከሰነዱ ጋር ይቀመጣል";
-            this.xrLabel8.Visible = false;
             // 
             // xrLabel7
             // 
@@ -789,7 +788,6 @@ namespace PharmInventory.Reports
             this.xrLabel7.SizeF = new System.Drawing.SizeF(64.58334F, 23F);
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.Text = "Note：";
-            this.xrLabel7.Visible = false;
             // 
             // xrLabel6
             // 
@@ -800,7 +798,6 @@ namespace PharmInventory.Reports
             this.xrLabel6.SizeF = new System.Drawing.SizeF(64.58334F, 15.70834F);
             this.xrLabel6.StylePriority.UseFont = false;
             this.xrLabel6.Text = "ማሳሰቢያ፡ ";
-            this.xrLabel6.Visible = false;
             // 
             // xrLabel5
             // 
@@ -812,7 +809,6 @@ namespace PharmInventory.Reports
             this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 44.54159F);
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
-            this.xrLabel5.Visible = false;
             // 
             // xrLabel4
             // 
@@ -824,7 +820,6 @@ namespace PharmInventory.Reports
             this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 85.79166F);
             this.xrLabel4.StylePriority.UseFont = false;
             this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
-            this.xrLabel4.Visible = false;
             // 
             // dataSet11
             // 
@@ -880,10 +875,10 @@ namespace PharmInventory.Reports
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel3});
-            this.headerGroup.HeightF = 97.91666F;
+            this.headerGroup.HeightF = 48.95833F;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
-            this.headerGroup.Visible = false;
+            this.headerGroup.StylePriority.UseTextAlignment = false;
             // 
             // Model22
             // 
