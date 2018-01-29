@@ -696,7 +696,6 @@ namespace PharmInventory.Reports
             this.xrLabel8.StylePriority.UseFont = false;
             this.xrLabel8.Text = "ዋናው ለአምጪዉ፣ 2ኛው ሂሳብ ክፍል፣ 3ኛዉ ቅጠል ለንብረት አስተዳደር፣ 4ኛዉ ቅጠል ለስቶክ ካርድ ጸሀፊ እና 5ኛዉ ከጥራሁ ጋር" +
     " ይቀመጣል";
-            this.xrLabel8.Visible = false;
             // 
             // xrLabel7
             // 
@@ -707,7 +706,6 @@ namespace PharmInventory.Reports
             this.xrLabel7.SizeF = new System.Drawing.SizeF(64.58334F, 23F);
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.Text = "Note：";
-            this.xrLabel7.Visible = false;
             // 
             // xrLabel6
             // 
@@ -718,24 +716,22 @@ namespace PharmInventory.Reports
             this.xrLabel6.SizeF = new System.Drawing.SizeF(64.58334F, 15.70834F);
             this.xrLabel6.StylePriority.UseFont = false;
             this.xrLabel6.Text = "ማሳሰቢያ፡ ";
-            this.xrLabel6.Visible = false;
             // 
             // xrLabel5
             // 
             this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 8.75F);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(69.79168F, 80.58332F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(69.79168F, 80.58335F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 64.54162F);
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
-            this.xrLabel5.Visible = false;
             // 
             // xrLabel4
             // 
             this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(5.208381F, 10.00001F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(5.208381F, 28.33331F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -769,7 +765,7 @@ namespace PharmInventory.Reports
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel10,
             this.xrLabel11});
-            this.GroupFooter1.HeightF = 200.7084F;
+            this.GroupFooter1.HeightF = 201.7501F;
             this.GroupFooter1.KeepTogether = true;
             this.GroupFooter1.Name = "GroupFooter1";
             // 
