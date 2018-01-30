@@ -757,7 +757,8 @@ namespace PharmInventory.Reports
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 43.12506F);
             this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = resources.GetString("xrLabel3.Text");
+            this.xrLabel3.Text = "እኔ ……………………………………………በ……ቀን 20… ዓ.ም ከ…………………………. በ………… ደረሰኝ ቁጥር ለ………………………………….ከታች " +
+    "የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ";
             // 
             // tableTitle
             // 

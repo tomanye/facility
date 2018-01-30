@@ -74,6 +74,7 @@ namespace PharmInventory.Reports
             this.totalGroup = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
+            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -207,7 +208,7 @@ namespace PharmInventory.Reports
             this.xrTableCell25.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell25.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.Quantity", "{0:#,###.##}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.BU Qty", "{0:#,###.##}")});
             this.xrTableCell25.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 100F);
@@ -421,7 +422,7 @@ namespace PharmInventory.Reports
             this.xrLabel1,
             this.xrModel,
             this.xrLabel2});
-            this.TopMargin.HeightF = 146.4167F;
+            this.TopMargin.HeightF = 152.6667F;
             this.TopMargin.Name = "TopMargin";
             this.TopMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.TopMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -500,13 +501,14 @@ namespace PharmInventory.Reports
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(5.208588F, 0F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 0F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 43.12506F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 36.25005F);
             this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = resources.GetString("xrLabel3.Text");
+            this.xrLabel3.Text = "እኔ ……………………………………………በ……ቀን 20… ዓ.ም ከ…………………………. በ………… ደረሰኝ ቁጥር ለ………………………………….ከታች " +
+    "የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ";
             // 
             // tableTitle
             // 
@@ -602,11 +604,26 @@ namespace PharmInventory.Reports
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel9,
             this.xrLabel3});
-            this.headerGroup.HeightF = 43.12506F;
+            this.headerGroup.HeightF = 47.08339F;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
             this.headerGroup.StylePriority.UseTextAlignment = false;
+            // 
+            // xrLabel9
+            // 
+            this.xrLabel9.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 36.25005F);
+            this.xrLabel9.Multiline = true;
+            this.xrLabel9.Name = "xrLabel9";
+            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel9.SizeF = new System.Drawing.SizeF(1007F, 10.83334F);
+            this.xrLabel9.StylePriority.UseFont = false;
+            this.xrLabel9.Text = "In accordance with order No. …………………..Dated ………………of 20 …… Here by certify that I" +
+    " have counted correctly and received the article enumerated below for the use of" +
+    " ……………………………………………\r\n\r\n";
+            this.xrLabel9.Visible = false;
             // 
             // LossAdjustmentModel22
             // 
@@ -622,7 +639,7 @@ namespace PharmInventory.Reports
             this.DataMember = "Model22";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(74, 68, 146, 39);
+            this.Margins = new System.Drawing.Printing.Margins(74, 68, 153, 39);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
@@ -678,5 +695,6 @@ namespace PharmInventory.Reports
         private XRTableCell xrTableCell12;
         private XRTableCell xrTableCell17;
         private XRTableCell xrTableCell18;
+        private XRLabel xrLabel9;
     }
 }
