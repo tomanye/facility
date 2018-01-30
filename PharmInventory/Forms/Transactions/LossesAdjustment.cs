@@ -430,8 +430,10 @@ namespace PharmInventory
                             PrintedBy = { Text = printedby }
                         };
                         gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
-                        var dt =  (DataView)gridAdjView.DataSource;
-                       DataTable tbl1 = dt.ToTable();
+                        gridAdjView.RefreshData();
+                        DataView dt =  (DataView)gridAdjView.DataSource;
+                        dt.RowFilter =(String.Format("[Reason]=11"));
+                        DataTable tbl1 = dt.ToTable(); 
                         tbl1.TableName = "Model22";
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
@@ -722,11 +724,12 @@ namespace PharmInventory
         private void gridAdjView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             GridView view = sender as GridView;
-            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]);
+            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]); 
             if (view.FocusedColumn.FieldName == "Reason")
             {
-              
-                if (dr["Reason"].ToString() == "11")
+                gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                gridAdjView.RefreshData();
+                if (gridAdjView.RowCount != 0)
                 {
                     ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
                     ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
@@ -734,7 +737,14 @@ namespace PharmInventory
                     ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2; 
                     //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
                 }
-            
+                else
+                {
+                     ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                     ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+                     //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+                }
+                gridAdjView.ActiveFilterString = String.Format("");
+                gridAdjView.RefreshData();
             }
           else  if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
             {
