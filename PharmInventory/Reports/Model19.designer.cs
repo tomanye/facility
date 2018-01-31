@@ -104,12 +104,14 @@ namespace PharmInventory.Reports
             // xrTable1
             // 
             this.xrTable1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.xrTable1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
             this.xrTable1.SizeF = new System.Drawing.SizeF(1027F, 22.99998F);
             this.xrTable1.StylePriority.UseBorderColor = false;
+            this.xrTable1.StylePriority.UseBorders = false;
             // 
             // xrTableRow3
             // 
@@ -146,7 +148,7 @@ namespace PharmInventory.Reports
             xrSummary1.FormatString = "{0:#,#}";
             xrSummary1.Func = DevExpress.XtraReports.UI.SummaryFunc.RecordNumber;
             xrSummary1.IgnoreNullValues = true;
-            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Page;
             this.xrTableCell13.Summary = xrSummary1;
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell13.Weight = 0.115488472505162D;
@@ -554,7 +556,7 @@ namespace PharmInventory.Reports
             this.xrLabel11.StylePriority.UseTextAlignment = false;
             xrSummary2.FormatString = "{0:#,###.00}";
             xrSummary2.IgnoreNullValues = true;
-            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Page;
             this.xrLabel11.Summary = xrSummary2;
             this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
@@ -674,6 +676,7 @@ namespace PharmInventory.Reports
             this.tableTitle.HeightF = 83.54168F;
             this.tableTitle.KeepTogether = true;
             this.tableTitle.Name = "tableTitle";
+            this.tableTitle.RepeatEveryPage = true;
             // 
             // xrLabel9
             // 
@@ -765,17 +768,20 @@ namespace PharmInventory.Reports
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel10,
             this.xrLabel11});
-            this.GroupFooter1.HeightF = 201.7501F;
+            this.GroupFooter1.HeightF = 43.41679F;
             this.GroupFooter1.KeepTogether = true;
             this.GroupFooter1.Name = "GroupFooter1";
+            this.GroupFooter1.RepeatEveryPage = true;
             // 
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel3});
             this.headerGroup.HeightF = 45.20829F;
+            this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
+            this.headerGroup.RepeatEveryPage = true;
             // 
             // Model19
             // 
