@@ -444,8 +444,8 @@ namespace PharmInventory
                         modelprint.DataSource = dtset;
                         modelprint.Landscape = true;
 
-                        XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
-                                         MessageBoxIcon.Information);
+                        //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
+                        //                 MessageBoxIcon.Information);
 
                         modelprint.ShowPreviewDialog();
                     }

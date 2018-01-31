@@ -655,6 +655,7 @@ namespace PharmInventory.Reports
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(73.33331F, 19.875F);
+            this.xrPageInfo1.Visible = false;
             // 
             // xrLabel3
             // 

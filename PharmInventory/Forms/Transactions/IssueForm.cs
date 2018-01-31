@@ -829,10 +829,11 @@ namespace PharmInventory.Forms.Transactions
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
-                        modelprint.Landscape = true;
-                        XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count +1), "Success", MessageBoxButtons.OK,
-                                             MessageBoxIcon.Information);
-                        modelprint.ShowPreviewDialog();
+                        modelprint.Landscape = true; 
+                        //var pagecount = modelprint.Pages.Count;  
+                        //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", pagecount), "Success", MessageBoxButtons.OK,
+                        //                     MessageBoxIcon.Information);
+                       modelprint.ShowPreviewDialog();
                     }
                     xpButton2_Click(sender, e);
                     issueGrid.DataSource = null;
