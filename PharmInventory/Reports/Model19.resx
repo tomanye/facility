@@ -124,25 +124,19 @@ Addis Ababa City Administration Finance and Economic Development Bureau
 Receiving Voucher for Drugs and Medical Supplies/Equipment 
 </value>
   </data>
-  <data name="xrLabel3.Text" xml:space="preserve">
-    <value>እኔ ……………………………………………በ……ቀን 20… ዓ.ም ከ…………………………. በ………… ደረሰኝ ቁጥር ለ………………………………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ
-In accordance with order No. …………………..Dated ………………of 20 …… Here by certify that I have counted correctly and received the article enumerated below for the use of ……………………………………………
-</value>
-  </data>
-  <data name="xrLabel5.Text" xml:space="preserve">
-    <value>Original to the Delivere, 2nd copy to the Account, 3rd to Property Administration, 4th Copy to Stock card clerk and 5th copy to Pad              
-መደባቸውና የበጀት ምንጫቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች በአንድ ቅጠል ይዘጋጃል፡፡ ዋጋ ያልተተመነላቸው መድሀኒቶችና የህክምና መገልገያዎች በውስጥ ኤክስፐርቶች ዋጋ ይተመንላቸዋል፡፡Drugs and medical supplies with same category and budget source will be prepared on the same page of voucher. Drugs and medicals supplies which don’t have cost will be estimated by expertsin the facility
-
-</value>
-  </data>
-  <data name="xrLabel4.Text" xml:space="preserve">
-    <value>የአስረካቢው ስም: ______________________________________	ፊርማ__________________________የተረካበው ስም____________________________________ፊርማ_______________________________
-Delivered by Name             	                                                 	Signature                                               Received by Name                                                                 Signature
-</value>
-  </data>
   <metadata name="dataSet11.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 56</value>
   </metadata>
+  <data name="xrLabel4.Text" xml:space="preserve">
+    <value>የአስረካቢው ስም/Issued by Name  :  _________________________________________________________________________________ ፊርማ/Signature______________________________________
+			                     
+የተረካበው ስም/Received by Name: _________________________________________________________________________________ፊርማ/Signature_______________________________________</value>
+  </data>
+  <data name="xrLabel5.Text" xml:space="preserve">
+    <value>Original to the Account, Second Copy to Deliverer, Third Copy to Pharmacy Accountant, Fourth Copy to Stock card clerk and Fifth Copy to Pad      
+Drugs and medical supplies with the same receiver will be prepared in a similar page of voucher. 
+</value>
+  </data>
   <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

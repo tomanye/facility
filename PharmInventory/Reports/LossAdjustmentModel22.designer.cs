@@ -62,18 +62,17 @@ namespace PharmInventory.Reports
             this.PrintedBy = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.bindingSource1 = new System.Windows.Forms.BindingSource();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.tableTitle = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.dataSet11 = new PharmInventory.Reports.DataSet1();
             this.totalGroup = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -498,18 +497,6 @@ namespace PharmInventory.Reports
             this.xrPageInfo1.SizeF = new System.Drawing.SizeF(48.3335F, 19.875F);
             this.xrPageInfo1.Visible = false;
             // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 0F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(1007F, 36.25005F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = "እኔ ……………………………………………በ……ቀን 20… ዓ.ም ከ…………………………. በ………… ደረሰኝ ቁጥር ለ………………………………….ከታች " +
-    "የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ";
-            // 
             // tableTitle
             // 
             this.tableTitle.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -521,20 +508,10 @@ namespace PharmInventory.Reports
             this.tableTitle.Name = "tableTitle";
             this.tableTitle.RepeatEveryPage = true;
             // 
-            // xrLabel8
-            // 
-            this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 8.75F);
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(69.79179F, 94.12498F);
-            this.xrLabel8.Name = "xrLabel8";
-            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 15.70834F);
-            this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለስቶክ ካርድ ጸሀፊ እና አራተኛው ከሰነዱ ጋር ይቀመጣል";
-            // 
             // xrLabel7
             // 
             this.xrLabel7.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(5.208588F, 109.8333F);
+            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(9.999657F, 79.62494F);
             this.xrLabel7.Name = "xrLabel7";
             this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel7.SizeF = new System.Drawing.SizeF(64.58334F, 23F);
@@ -544,34 +521,12 @@ namespace PharmInventory.Reports
             // xrLabel6
             // 
             this.xrLabel6.Font = new System.Drawing.Font("Times New Roman", 8.75F, System.Drawing.FontStyle.Bold);
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(5.208588F, 94.12498F);
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(9.999657F, 51.41665F);
             this.xrLabel6.Name = "xrLabel6";
             this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel6.SizeF = new System.Drawing.SizeF(64.58334F, 15.70834F);
             this.xrLabel6.StylePriority.UseFont = false;
             this.xrLabel6.Text = "ማሳሰቢያ፡ ";
-            // 
-            // xrLabel5
-            // 
-            this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 8.75F);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(69.79181F, 109.8333F);
-            this.xrLabel5.Multiline = true;
-            this.xrLabel5.Name = "xrLabel5";
-            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 44.54159F);
-            this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
-            // 
-            // xrLabel4
-            // 
-            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(9.999721F, 0F);
-            this.xrLabel4.Multiline = true;
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 85.79166F);
-            this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
             // 
             // dataSet11
             // 
@@ -581,12 +536,12 @@ namespace PharmInventory.Reports
             // totalGroup
             // 
             this.totalGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel6,
-            this.xrLabel8,
-            this.xrLabel7,
             this.xrLabel5,
-            this.xrLabel4});
-            this.totalGroup.HeightF = 154.3749F;
+            this.xrLabel8,
+            this.xrLabel4,
+            this.xrLabel6,
+            this.xrLabel7});
+            this.totalGroup.HeightF = 114.7915F;
             this.totalGroup.KeepTogether = true;
             this.totalGroup.Level = 1;
             this.totalGroup.Name = "totalGroup";
@@ -606,28 +561,60 @@ namespace PharmInventory.Reports
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel9,
             this.xrLabel3});
-            this.headerGroup.HeightF = 47.08339F;
+            this.headerGroup.HeightF = 15.83341F;
             this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
             this.headerGroup.RepeatEveryPage = true;
             this.headerGroup.StylePriority.UseTextAlignment = false;
             // 
-            // xrLabel9
+            // xrLabel3
             // 
-            this.xrLabel9.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(10.00002F, 36.25005F);
-            this.xrLabel9.Multiline = true;
-            this.xrLabel9.Name = "xrLabel9";
-            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(1007F, 10.83334F);
-            this.xrLabel9.StylePriority.UseFont = false;
-            this.xrLabel9.Text = "In accordance with order No. …………………..Dated ………………of 20 …… Here by certify that I" +
-    " have counted correctly and received the article enumerated below for the use of" +
-    " ……………………………………………\r\n\r\n";
-            this.xrLabel9.Visible = false;
+            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(14.79174F, 0F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(1012.208F, 13.95839F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….…ለ…………………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን " +
+    "አረጋግጣለሁ";
+            // 
+            // xrLabel4
+            // 
+            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0.0001589457F, 0F);
+            this.xrLabel4.Multiline = true;
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 43.08332F);
+            this.xrLabel4.StylePriority.UseFont = false;
+            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
+            // 
+            // xrLabel5
+            // 
+            this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 8.75F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 79.62494F);
+            this.xrLabel5.Multiline = true;
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 34.54153F);
+            this.xrLabel5.StylePriority.UseFont = false;
+            this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
+            // 
+            // xrLabel8
+            // 
+            this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 8.75F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 51.41665F);
+            this.xrLabel8.Multiline = true;
+            this.xrLabel8.Name = "xrLabel8";
+            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 28.20832F);
+            this.xrLabel8.StylePriority.UseFont = false;
+            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለፋርማሲ አካዉንታን አራተኛው  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛው" +
+    "  ቅጠል ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡" +
+    "፡ ";
             // 
             // LossAdjustmentModel22
             // 
@@ -681,13 +668,9 @@ namespace PharmInventory.Reports
         private XRTableCell xrTableCell8;
         private XRLabel xrLabel1;
         private XRLabel xrModel;
-        private XRLabel xrLabel3;
         private GroupHeaderBand tableTitle;
-        private XRLabel xrLabel8;
         private XRLabel xrLabel7;
         private XRLabel xrLabel6;
-        private XRLabel xrLabel5;
-        private XRLabel xrLabel4;
         private DataSet1 dataSet11;
         private XRLabel xrLabel11;
         private XRLabel xrLabel10;
@@ -699,6 +682,9 @@ namespace PharmInventory.Reports
         private XRTableCell xrTableCell12;
         private XRTableCell xrTableCell17;
         private XRTableCell xrTableCell18;
-        private XRLabel xrLabel9;
+        private XRLabel xrLabel3;
+        private XRLabel xrLabel4;
+        private XRLabel xrLabel5;
+        private XRLabel xrLabel8;
     }
 }
