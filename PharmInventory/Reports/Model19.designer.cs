@@ -76,12 +76,12 @@ namespace PharmInventory.Reports
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.dataSet11 = new PharmInventory.Reports.DataSet1();
             this.totalGroup = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.bindingSource1 = new System.Windows.Forms.BindingSource();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
@@ -628,7 +628,7 @@ namespace PharmInventory.Reports
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.PrintedBy,
             this.xrPageInfo1});
-            this.BottomMargin.HeightF = 27.75008F;
+            this.BottomMargin.HeightF = 21.70836F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -637,7 +637,7 @@ namespace PharmInventory.Reports
             // 
             this.PrintedBy.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.PrintedBy.ForeColor = System.Drawing.Color.DarkGray;
-            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(502.8932F, 0F);
+            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(629.5128F, 0F);
             this.PrintedBy.Name = "PrintedBy";
             this.PrintedBy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
             this.PrintedBy.SizeF = new System.Drawing.SizeF(369.9872F, 18.83336F);
@@ -650,10 +650,10 @@ namespace PharmInventory.Reports
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(943.6667F, 0F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(999.5F, 0F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(73.33331F, 19.875F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(27.49988F, 19.875F);
             this.xrPageInfo1.Visible = false;
             // 
             // xrLabel3
@@ -731,25 +731,16 @@ namespace PharmInventory.Reports
             this.totalGroup.PrintAtBottom = true;
             this.totalGroup.RepeatEveryPage = true;
             // 
-            // GroupFooter1
+            // xrLabel4
             // 
-            this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel10,
-            this.xrLabel11});
-            this.GroupFooter1.HeightF = 43.41679F;
-            this.GroupFooter1.KeepTogether = true;
-            this.GroupFooter1.Name = "GroupFooter1";
-            this.GroupFooter1.RepeatEveryPage = true;
-            // 
-            // headerGroup
-            // 
-            this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel3});
-            this.headerGroup.HeightF = 38.95829F;
-            this.headerGroup.KeepTogether = true;
-            this.headerGroup.Level = 1;
-            this.headerGroup.Name = "headerGroup";
-            this.headerGroup.RepeatEveryPage = true;
+            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(5.208397F, 10.00001F);
+            this.xrLabel4.Multiline = true;
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 43.08332F);
+            this.xrLabel4.StylePriority.UseFont = false;
+            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
             // 
             // xrLabel8
             // 
@@ -775,16 +766,25 @@ namespace PharmInventory.Reports
             this.xrLabel5.StylePriority.UseFont = false;
             this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
             // 
-            // xrLabel4
+            // GroupFooter1
             // 
-            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(5.208397F, 10.00001F);
-            this.xrLabel4.Multiline = true;
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 43.08332F);
-            this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
+            this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel10,
+            this.xrLabel11});
+            this.GroupFooter1.HeightF = 43.41679F;
+            this.GroupFooter1.KeepTogether = true;
+            this.GroupFooter1.Name = "GroupFooter1";
+            this.GroupFooter1.RepeatEveryPage = true;
+            // 
+            // headerGroup
+            // 
+            this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel3});
+            this.headerGroup.HeightF = 38.95829F;
+            this.headerGroup.KeepTogether = true;
+            this.headerGroup.Level = 1;
+            this.headerGroup.Name = "headerGroup";
+            this.headerGroup.RepeatEveryPage = true;
             // 
             // Model19
             // 
@@ -801,7 +801,7 @@ namespace PharmInventory.Reports
             this.DataMember = "Model19";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(74, 68, 161, 28);
+            this.Margins = new System.Drawing.Printing.Margins(74, 68, 161, 22);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;

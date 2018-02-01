@@ -67,12 +67,12 @@ namespace PharmInventory.Reports
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.dataSet11 = new PharmInventory.Reports.DataSet1();
             this.totalGroup = new DevExpress.XtraReports.UI.GroupFooterBand();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -469,7 +469,7 @@ namespace PharmInventory.Reports
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.PrintedBy,
             this.xrPageInfo1});
-            this.BottomMargin.HeightF = 29.20853F;
+            this.BottomMargin.HeightF = 23.58376F;
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -478,7 +478,7 @@ namespace PharmInventory.Reports
             // 
             this.PrintedBy.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.PrintedBy.ForeColor = System.Drawing.Color.DarkGray;
-            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(489.3515F, 0F);
+            this.PrintedBy.LocationFloat = new DevExpress.Utils.PointFloat(626.3872F, 1.041635F);
             this.PrintedBy.Name = "PrintedBy";
             this.PrintedBy.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
             this.PrintedBy.SizeF = new System.Drawing.SizeF(369.9872F, 18.83336F);
@@ -491,10 +491,10 @@ namespace PharmInventory.Reports
             // 
             // xrPageInfo1
             // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(917.0002F, 0F);
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(996.3745F, 0F);
             this.xrPageInfo1.Name = "xrPageInfo1";
             this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(48.3335F, 19.875F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(30.62512F, 19.875F);
             this.xrPageInfo1.Visible = false;
             // 
             // tableTitle
@@ -548,6 +548,41 @@ namespace PharmInventory.Reports
             this.totalGroup.PrintAtBottom = true;
             this.totalGroup.RepeatEveryPage = true;
             // 
+            // xrLabel5
+            // 
+            this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 8.75F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 79.62494F);
+            this.xrLabel5.Multiline = true;
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 34.54153F);
+            this.xrLabel5.StylePriority.UseFont = false;
+            this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
+            // 
+            // xrLabel8
+            // 
+            this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 8.75F);
+            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 51.41665F);
+            this.xrLabel8.Multiline = true;
+            this.xrLabel8.Name = "xrLabel8";
+            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 28.20832F);
+            this.xrLabel8.StylePriority.UseFont = false;
+            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለፋርማሲ አካዉንታን አራተኛው  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛው" +
+    "  ቅጠል ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡" +
+    "፡ ";
+            // 
+            // xrLabel4
+            // 
+            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0.0001589457F, 0F);
+            this.xrLabel4.Multiline = true;
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 43.08332F);
+            this.xrLabel4.StylePriority.UseFont = false;
+            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
+            // 
             // GroupFooter1
             // 
             this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
@@ -581,41 +616,6 @@ namespace PharmInventory.Reports
             this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….…ለ…………………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን " +
     "አረጋግጣለሁ";
             // 
-            // xrLabel4
-            // 
-            this.xrLabel4.Font = new System.Drawing.Font("Times New Roman", 8F);
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0.0001589457F, 0F);
-            this.xrLabel4.Multiline = true;
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(1017F, 43.08332F);
-            this.xrLabel4.StylePriority.UseFont = false;
-            this.xrLabel4.Text = resources.GetString("xrLabel4.Text");
-            // 
-            // xrLabel5
-            // 
-            this.xrLabel5.Font = new System.Drawing.Font("Times New Roman", 8.75F);
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 79.62494F);
-            this.xrLabel5.Multiline = true;
-            this.xrLabel5.Name = "xrLabel5";
-            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel5.SizeF = new System.Drawing.SizeF(952.4167F, 34.54153F);
-            this.xrLabel5.StylePriority.UseFont = false;
-            this.xrLabel5.Text = resources.GetString("xrLabel5.Text");
-            // 
-            // xrLabel8
-            // 
-            this.xrLabel8.Font = new System.Drawing.Font("Times New Roman", 8.75F);
-            this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(74.58301F, 51.41665F);
-            this.xrLabel8.Multiline = true;
-            this.xrLabel8.Name = "xrLabel8";
-            this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 28.20832F);
-            this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለፋርማሲ አካዉንታን አራተኛው  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛው" +
-    "  ቅጠል ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡" +
-    "፡ ";
-            // 
             // LossAdjustmentModel22
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -630,7 +630,7 @@ namespace PharmInventory.Reports
             this.DataMember = "Model22";
             this.DataSource = this.dataSet11;
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(74, 68, 153, 29);
+            this.Margins = new System.Drawing.Printing.Margins(74, 68, 153, 24);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;

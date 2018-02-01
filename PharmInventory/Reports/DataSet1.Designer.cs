@@ -1722,7 +1722,7 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnUnit_Price;
             
-            private global::System.Data.DataColumn columnNo_of_Pack;
+            private global::System.Data.DataColumn columnPackQtyT;
             
             private global::System.Data.DataColumn columnQty_Per_Pack;
             
@@ -1863,9 +1863,9 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn No_of_PackColumn {
+            public global::System.Data.DataColumn PackQtyTColumn {
                 get {
-                    return this.columnNo_of_Pack;
+                    return this.columnPackQtyT;
                 }
             }
             
@@ -1951,7 +1951,7 @@ namespace PharmInventory.Reports {
                         string BatchNo, 
                         string Expiry_Date, 
                         string Unit_Price, 
-                        string No_of_Pack, 
+                        string PackQtyT, 
                         string Qty_Per_Pack, 
                         string Pack_Price, 
                         string PackSellingPrice, 
@@ -1970,7 +1970,7 @@ namespace PharmInventory.Reports {
                         BatchNo,
                         Expiry_Date,
                         Unit_Price,
-                        No_of_Pack,
+                        PackQtyT,
                         Qty_Per_Pack,
                         Pack_Price,
                         PackSellingPrice,
@@ -2009,7 +2009,7 @@ namespace PharmInventory.Reports {
                 this.columnBatchNo = base.Columns["BatchNo"];
                 this.columnExpiry_Date = base.Columns["Expiry Date"];
                 this.columnUnit_Price = base.Columns["Unit Price"];
-                this.columnNo_of_Pack = base.Columns["No of Pack"];
+                this.columnPackQtyT = base.Columns["PackQtyT"];
                 this.columnQty_Per_Pack = base.Columns["Qty Per Pack"];
                 this.columnPack_Price = base.Columns["Pack Price"];
                 this.columnPackSellingPrice = base.Columns["PackSellingPrice"];
@@ -2043,8 +2043,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnExpiry_Date);
                 this.columnUnit_Price = new global::System.Data.DataColumn("Unit Price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUnit_Price);
-                this.columnNo_of_Pack = new global::System.Data.DataColumn("No of Pack", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNo_of_Pack);
+                this.columnPackQtyT = new global::System.Data.DataColumn("PackQtyT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPackQtyT);
                 this.columnQty_Per_Pack = new global::System.Data.DataColumn("Qty Per Pack", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQty_Per_Pack);
                 this.columnPack_Price = new global::System.Data.DataColumn("Pack Price", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3926,17 +3926,17 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string No_of_Pack {
+            public string PackQtyT {
                 get {
                     try {
-                        return ((string)(this[this.tableModel22.No_of_PackColumn]));
+                        return ((string)(this[this.tableModel22.PackQtyTColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'No of Pack\' in table \'Model22\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PackQtyT\' in table \'Model22\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableModel22.No_of_PackColumn] = value;
+                    this[this.tableModel22.PackQtyTColumn] = value;
                 }
             }
             
@@ -4150,14 +4150,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNo_of_PackNull() {
-                return this.IsNull(this.tableModel22.No_of_PackColumn);
+            public bool IsPackQtyTNull() {
+                return this.IsNull(this.tableModel22.PackQtyTColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNo_of_PackNull() {
-                this[this.tableModel22.No_of_PackColumn] = global::System.Convert.DBNull;
+            public void SetPackQtyTNull() {
+                this[this.tableModel22.PackQtyTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
