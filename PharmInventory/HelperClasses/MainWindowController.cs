@@ -70,11 +70,11 @@ namespace PharmInventory
                     menuStrip2.Items[7].Visible = true;
                     menuStrip2.Items[8].Visible = true;
 
-                    hospitalSettingsToolStripMenuItem1.Visible = false;
+                    hospitalSettingsToolStripMenuItem1.Visible = true;
                     pipelineToolStripMenuItem.Visible = false;
                     changePasswordToolStripMenuItem.Visible = true;
 
-                    navBarFacilitySettings.Visible = false;
+                    navBarFacilitySettings.Visible = true;
                     navBarPipeline.Visible = false;
                     break;
                 case 4://Hospital Admin
