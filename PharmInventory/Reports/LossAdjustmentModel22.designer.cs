@@ -73,8 +73,8 @@ namespace PharmInventory.Reports
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -225,7 +225,7 @@ namespace PharmInventory.Reports
             this.xrTableCell29.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell29.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell29.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.Price", "{0:#,###.00}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.LossPrice", "{0:#,###.00}")});
             this.xrTableCell29.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StylePriority.UseBorderColor = false;
@@ -388,7 +388,7 @@ namespace PharmInventory.Reports
             this.xrLabel11.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLabel11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.Price")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.LossPrice")});
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(917.0002F, 0F);
             this.xrLabel11.Name = "xrLabel11";
             this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -600,24 +600,12 @@ namespace PharmInventory.Reports
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrFacilityName,
             this.xrLabel3});
-            this.headerGroup.HeightF = 15.83341F;
+            this.headerGroup.HeightF = 28.33341F;
             this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
             this.headerGroup.RepeatEveryPage = true;
             this.headerGroup.StylePriority.UseTextAlignment = false;
-            // 
-            // xrLabel3
-            // 
-            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.xrLabel3.Multiline = true;
-            this.xrLabel3.Name = "xrLabel3";
-            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(1022.208F, 13.95839F);
-            this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….………… ለ……………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤ" +
-    "ን አረጋግጣለሁ";
             // 
             // xrFacilityName
             // 
@@ -626,7 +614,7 @@ namespace PharmInventory.Reports
             this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrFacilityName.BorderWidth = 1F;
             this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(367.7606F, 0F);
+            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(367.7606F, 14.37502F);
             this.xrFacilityName.Name = "xrFacilityName";
             this.xrFacilityName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrFacilityName.SizeF = new System.Drawing.SizeF(189.2992F, 13.95839F);
@@ -638,6 +626,18 @@ namespace PharmInventory.Reports
             this.xrFacilityName.StylePriority.UseTextAlignment = false;
             this.xrFacilityName.Text = " ";
             this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel3
+            // 
+            this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 14.37502F);
+            this.xrLabel3.Multiline = true;
+            this.xrLabel3.Name = "xrLabel3";
+            this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(1022.208F, 13.95839F);
+            this.xrLabel3.StylePriority.UseFont = false;
+            this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….………… ለ……………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤ" +
+    "ን አረጋግጣለሁ";
             // 
             // LossAdjustmentModel22
             // 

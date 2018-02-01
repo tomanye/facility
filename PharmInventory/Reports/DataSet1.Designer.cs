@@ -2206,6 +2206,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnBU_Qty;
             
+            private global::System.Data.DataColumn columnLossPrice;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public LossAdjModel22DataTable() {
@@ -2321,6 +2323,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LossPriceColumn {
+                get {
+                    return this.columnLossPrice;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2356,7 +2366,7 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LossAdjModel22Row AddLossAdjModel22Row(string Item_Name, string Unit, string Quantity, string Batch_No, string Expiry_Date, string Unit_Price, string PackQty, string QtyPerPack, string Price, string BU_Qty) {
+            public LossAdjModel22Row AddLossAdjModel22Row(string Item_Name, string Unit, string Quantity, string Batch_No, string Expiry_Date, string Unit_Price, string PackQty, string QtyPerPack, string Price, string BU_Qty, string LossPrice) {
                 LossAdjModel22Row rowLossAdjModel22Row = ((LossAdjModel22Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Item_Name,
@@ -2368,7 +2378,8 @@ namespace PharmInventory.Reports {
                         PackQty,
                         QtyPerPack,
                         Price,
-                        BU_Qty};
+                        BU_Qty,
+                        LossPrice};
                 rowLossAdjModel22Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowLossAdjModel22Row);
                 return rowLossAdjModel22Row;
@@ -2401,6 +2412,7 @@ namespace PharmInventory.Reports {
                 this.columnQtyPerPack = base.Columns["QtyPerPack"];
                 this.columnPrice = base.Columns["Price"];
                 this.columnBU_Qty = base.Columns["BU Qty"];
+                this.columnLossPrice = base.Columns["LossPrice"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2426,6 +2438,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnPrice);
                 this.columnBU_Qty = new global::System.Data.DataColumn("BU Qty", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBU_Qty);
+                this.columnLossPrice = new global::System.Data.DataColumn("LossPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLossPrice);
                 this.columnBatch_No.Caption = "BatchNo";
             }
             
@@ -4385,6 +4399,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LossPrice {
+                get {
+                    try {
+                        return ((string)(this[this.tableLossAdjModel22.LossPriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LossPrice\' in table \'LossAdjModel22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLossAdjModel22.LossPriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsItem_NameNull() {
                 return this.IsNull(this.tableLossAdjModel22.Item_NameColumn);
             }
@@ -4501,6 +4531,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBU_QtyNull() {
                 this[this.tableLossAdjModel22.BU_QtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLossPriceNull() {
+                return this.IsNull(this.tableLossAdjModel22.LossPriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLossPriceNull() {
+                this[this.tableLossAdjModel22.LossPriceColumn] = global::System.Convert.DBNull;
             }
         }
         

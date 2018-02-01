@@ -172,7 +172,7 @@ namespace PharmInventory
             if (dtRecGrid.Columns.Count == 0)
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason",
-                               "UnitID","PackQty","QtyPerPack"};
+                               "UnitID","PackQty","QtyPerPack","LossPrice"};
                 foreach (string col in str)
                 {
                     dtRecGrid.Columns.Add(col);
@@ -753,7 +753,9 @@ namespace PharmInventory
             {
                 int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]):0 ;
                 int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]):0 ;
-                dr["Losses"] = pqty * qtyperPack;
+                double loss = pqty * qtyperPack;
+                dr["Losses"] = loss;
+                dr["LossPrice"] = loss * (Convert.ToDouble(dr["Price"]) / Convert.ToDouble(dr["BU Qty"])); 
             }
             else
             {

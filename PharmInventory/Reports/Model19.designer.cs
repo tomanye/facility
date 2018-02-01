@@ -30,6 +30,7 @@ namespace PharmInventory.Reports
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Model19));
@@ -81,8 +82,8 @@ namespace PharmInventory.Reports
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
             this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
@@ -792,7 +793,7 @@ namespace PharmInventory.Reports
             // 
             this.xrFacilityName.BorderColor = System.Drawing.Color.DarkGray;
             this.xrFacilityName.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
-            this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrFacilityName.BorderWidth = 1F;
             this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(781.25F, 0F);
