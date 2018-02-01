@@ -208,7 +208,7 @@ namespace PharmInventory.Reports
             this.xrTableCell25.BorderColor = System.Drawing.Color.Silver;
             this.xrTableCell25.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell25.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.BU Qty", "{0:#,###.##}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "LossAdjModel22.Losses", "{0:#,###.##}")});
             this.xrTableCell25.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 100F);
@@ -614,10 +614,10 @@ namespace PharmInventory.Reports
             this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrFacilityName.BorderWidth = 1F;
             this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(367.7606F, 14.37502F);
+            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(367.7606F, 10.00001F);
             this.xrFacilityName.Name = "xrFacilityName";
             this.xrFacilityName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrFacilityName.SizeF = new System.Drawing.SizeF(189.2992F, 13.95839F);
+            this.xrFacilityName.SizeF = new System.Drawing.SizeF(189.2992F, 18.3334F);
             this.xrFacilityName.StylePriority.UseBorderColor = false;
             this.xrFacilityName.StylePriority.UseBorderDashStyle = false;
             this.xrFacilityName.StylePriority.UseBorders = false;
