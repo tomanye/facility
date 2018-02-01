@@ -30,6 +30,7 @@ namespace PharmInventory.Forms.Transactions
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
@@ -75,7 +76,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn13 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.unitrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.UnitsbindingSource = new System.Windows.Forms.BindingSource();
+            this.UnitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn23 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -88,7 +89,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn21 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnRemove = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.storebindingSource = new System.Windows.Forms.BindingSource();
+            this.storebindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -180,6 +181,7 @@ namespace PharmInventory.Forms.Transactions
             this.cboReceivingUnits = new DevExpress.XtraEditors.LookUpEdit();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.cboStoreConf = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem30 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -268,15 +270,14 @@ namespace PharmInventory.Forms.Transactions
             this.lblNearExpiryComment = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.xpButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bw = new System.ComponentModel.BackgroundWorker();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController();
-            this.cboStoreConf = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink2 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewToVaccine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
@@ -336,6 +337,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
@@ -389,7 +391,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn1
@@ -2245,6 +2246,18 @@ namespace PharmInventory.Forms.Transactions
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // cboStoreConf
+            // 
+            this.cboStoreConf.Location = new System.Drawing.Point(84, 31);
+            this.cboStoreConf.Name = "cboStoreConf";
+            this.cboStoreConf.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
+            this.cboStoreConf.Properties.Appearance.Options.UseBackColor = true;
+            this.cboStoreConf.Properties.PopupSizeable = true;
+            this.cboStoreConf.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cboStoreConf.Size = new System.Drawing.Size(262, 20);
+            this.cboStoreConf.StyleController = this.layoutControl2;
+            this.cboStoreConf.TabIndex = 14;
+            // 
             // layoutControlItem30
             // 
             this.layoutControlItem30.Control = this.chkVaccine;
@@ -3319,18 +3332,6 @@ namespace PharmInventory.Forms.Transactions
             this.printableComponentLink2.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink2.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink2_CreateMarginalHeaderArea);
             // 
-            // cboStoreConf
-            // 
-            this.cboStoreConf.Location = new System.Drawing.Point(84, 31);
-            this.cboStoreConf.Name = "cboStoreConf";
-            this.cboStoreConf.Properties.Appearance.BackColor = System.Drawing.Color.LemonChiffon;
-            this.cboStoreConf.Properties.Appearance.Options.UseBackColor = true;
-            this.cboStoreConf.Properties.PopupSizeable = true;
-            this.cboStoreConf.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cboStoreConf.Size = new System.Drawing.Size(262, 20);
-            this.cboStoreConf.StyleController = this.layoutControl2;
-            this.cboStoreConf.TabIndex = 14;
-            // 
             // IssueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3401,6 +3402,7 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIssuedBy.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboReceivingUnits.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
@@ -3455,7 +3457,6 @@ namespace PharmInventory.Forms.Transactions
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStoreConf.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

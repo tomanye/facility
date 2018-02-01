@@ -82,6 +82,7 @@ namespace PharmInventory.Reports
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
@@ -665,8 +666,8 @@ namespace PharmInventory.Reports
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel3.SizeF = new System.Drawing.SizeF(1017F, 38.95829F);
             this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = "እኔ ………………………………………….…በ……ቀን 20… ዓ.ም ከ………………………በ ደረሰኝ ቁጥር……………….….ለ……………….……………….ከታ" +
-    "ች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ\r\n";
+            this.xrLabel3.Text = "እኔ ………………………………………….…በ……ቀን 20… ዓ.ም ከ………………………በ ደረሰኝ ቁጥር……………….….ለ……………….……………….  " +
+    "ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን አረጋግጣለሁ\r\n";
             // 
             // tableTitle
             // 
@@ -779,12 +780,33 @@ namespace PharmInventory.Reports
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrFacilityName,
             this.xrLabel3});
             this.headerGroup.HeightF = 38.95829F;
             this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
             this.headerGroup.RepeatEveryPage = true;
+            // 
+            // xrFacilityName
+            // 
+            this.xrFacilityName.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrFacilityName.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.xrFacilityName.BorderWidth = 1F;
+            this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(781.25F, 0F);
+            this.xrFacilityName.Name = "xrFacilityName";
+            this.xrFacilityName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrFacilityName.SizeF = new System.Drawing.SizeF(193.4659F, 18.87496F);
+            this.xrFacilityName.StylePriority.UseBorderColor = false;
+            this.xrFacilityName.StylePriority.UseBorderDashStyle = false;
+            this.xrFacilityName.StylePriority.UseBorders = false;
+            this.xrFacilityName.StylePriority.UseBorderWidth = false;
+            this.xrFacilityName.StylePriority.UseFont = false;
+            this.xrFacilityName.StylePriority.UseTextAlignment = false;
+            this.xrFacilityName.Text = " ";
+            this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // Model19
             // 
@@ -866,5 +888,6 @@ namespace PharmInventory.Reports
         private XRLabel xrLabel8;
         private XRLabel xrLabel5;
         private XRLabel xrLabel4;
+        public XRLabel xrFacilityName;
     }
 }

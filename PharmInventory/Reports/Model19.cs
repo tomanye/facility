@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
+using BLL;
 
 namespace PharmInventory.Reports
 {
@@ -12,7 +13,10 @@ namespace PharmInventory.Reports
         public Model19()
         {
             InitializeComponent();
-         }
+            var gn = new GeneralInfo();
+            gn.LoadAll();
+            xrFacilityName.Text = gn.HospitalName;
+        }
          
     }
 }

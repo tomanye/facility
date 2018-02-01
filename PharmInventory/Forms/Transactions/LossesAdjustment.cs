@@ -433,21 +433,24 @@ namespace PharmInventory
                         gridAdjView.RefreshData();
                         DataView dt =  (DataView)gridAdjView.DataSource;
                         dt.RowFilter =(String.Format("[Reason]=11"));
-                        DataTable tbl1 = dt.ToTable(); 
-                        tbl1.TableName = "Model22";
-                        var dtset = new DataSet();
-                        dtset.Tables.Add(tbl1.Copy());
-                        modelprint.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
-                        modelprint.PaperKind = System.Drawing.Printing.PaperKind.Custom;
-                        //modelprint.PageHeight = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperHeightCredit);
-                        // modelprint.PageWidth = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperWidthCredit);
-                        modelprint.DataSource = dtset;
-                        modelprint.Landscape = true;
+                        DataTable tbl1 = dt.ToTable();
+                        if (tbl1.Rows.Count > 0)
+                        {
+                            tbl1.TableName = "Model22";
+                            var dtset = new DataSet();
+                            dtset.Tables.Add(tbl1.Copy());
+                            modelprint.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
+                            modelprint.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+                            //modelprint.PageHeight = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperHeightCredit);
+                            // modelprint.PageWidth = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperWidthCredit);
+                            modelprint.DataSource = dtset;
+                            modelprint.Landscape = true;
 
-                        //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
-                        //                 MessageBoxIcon.Information);
+                            //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
+                            //                 MessageBoxIcon.Information);
 
-                        modelprint.ShowPreviewDialog();
+                            modelprint.ShowPreviewDialog();
+                        }
                     }
                         ResetFields();
                 }

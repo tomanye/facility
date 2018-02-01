@@ -30,6 +30,7 @@ namespace PharmInventory.Reports
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LossAdjustmentModel22));
@@ -61,7 +62,7 @@ namespace PharmInventory.Reports
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.PrintedBy = new DevExpress.XtraReports.UI.XRLabel();
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tableTitle = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
@@ -73,6 +74,7 @@ namespace PharmInventory.Reports
             this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel3 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -596,6 +598,7 @@ namespace PharmInventory.Reports
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrFacilityName,
             this.xrLabel3});
             this.headerGroup.HeightF = 15.83341F;
             this.headerGroup.KeepTogether = true;
@@ -607,14 +610,34 @@ namespace PharmInventory.Reports
             // xrLabel3
             // 
             this.xrLabel3.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(14.79174F, 0F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(1012.208F, 13.95839F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(1022.208F, 13.95839F);
             this.xrLabel3.StylePriority.UseFont = false;
-            this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….…ለ…………………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤን " +
-    "አረጋግጣለሁ";
+            this.xrLabel3.Text = "እኔ …………………………………በ……ቀን 20… ዓ.ም ከ……………………….………… ለ……………….ከታች የተዘረዘረውን በትክክል ቆጥሬ መረከቤ" +
+    "ን አረጋግጣለሁ";
+            // 
+            // xrFacilityName
+            // 
+            this.xrFacilityName.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrFacilityName.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Solid;
+            this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.xrFacilityName.BorderWidth = 1F;
+            this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(367.7606F, 0F);
+            this.xrFacilityName.Name = "xrFacilityName";
+            this.xrFacilityName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrFacilityName.SizeF = new System.Drawing.SizeF(189.2992F, 13.95839F);
+            this.xrFacilityName.StylePriority.UseBorderColor = false;
+            this.xrFacilityName.StylePriority.UseBorderDashStyle = false;
+            this.xrFacilityName.StylePriority.UseBorders = false;
+            this.xrFacilityName.StylePriority.UseBorderWidth = false;
+            this.xrFacilityName.StylePriority.UseFont = false;
+            this.xrFacilityName.StylePriority.UseTextAlignment = false;
+            this.xrFacilityName.Text = " ";
+            this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // LossAdjustmentModel22
             // 
@@ -682,9 +705,10 @@ namespace PharmInventory.Reports
         private XRTableCell xrTableCell12;
         private XRTableCell xrTableCell17;
         private XRTableCell xrTableCell18;
-        private XRLabel xrLabel3;
         private XRLabel xrLabel4;
         private XRLabel xrLabel5;
         private XRLabel xrLabel8;
+        private XRLabel xrLabel3;
+        public XRLabel xrFacilityName;
     }
 }
