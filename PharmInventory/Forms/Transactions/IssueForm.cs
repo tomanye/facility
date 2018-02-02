@@ -607,7 +607,7 @@ namespace PharmInventory.Forms.Transactions
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],unitSellingPrice.ToString("n1"),
                                    // ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
                                    (packPrice *  Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"])).ToString("n3"),
-                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("n0"),qtyPerPack};
+                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);

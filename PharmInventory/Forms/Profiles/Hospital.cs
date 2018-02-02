@@ -135,10 +135,15 @@ namespace PharmInventory.Forms.Profiles
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
 
-            if (user.UserName != "admin" || user.UserType !=2)
+            if (user.UserName != "admin")
             {
-                XtraMessageBox.Show("You have no privilege to change FE setting!", "Error");
-                return;
+             if      (user.UserType != 2)
+                {
+                    XtraMessageBox.Show("You have no privilege to change FE setting!", "Error");
+                    return;
+
+                } 
+                 
                
             }
             switch (Convert.ToInt32(lookUpEdit1.EditValue))
