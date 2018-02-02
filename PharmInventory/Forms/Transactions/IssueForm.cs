@@ -416,7 +416,8 @@ namespace PharmInventory.Forms.Transactions
                 var dtIssueConf = new DataTable();
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
-                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT","PackSellingPrice","TotalPackSellingPrice","PackQtyT" };
+                                    "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT","PackSellingPrice"
+                                    ,"TotalPackSellingPrice","PackQtyT","QtyPerPackT" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -578,10 +579,10 @@ namespace PharmInventory.Forms.Transactions
                                     // nearExp = false;
                                 }
                                 int rowNo = j + 1;
-                                double qntyPerPack = Convert.ToDouble(dtIssueGrid.Rows[i]["Qty Per Pack"]);
+                                //double qntyPerPack = Convert.ToDouble(dtIssueGrid.Rows[i]["Qty Per Pack"]);
                                 //double unitSellingPrice = (packPrice / qntyPerPack) + ((packPrice / qntyPerPack) * Convert.ToDouble(_priceRate));
                                 double packSellingPrice = packPrice + (packPrice * Convert.ToDouble(_priceRate));
-                                double unitSellingPrice = packSellingPrice/qntyPerPack;
+                                double unitSellingPrice = packSellingPrice/ qtyPerPack;
                                
                                
                                 if(packPrice != 0)
@@ -593,7 +594,7 @@ namespace PharmInventory.Forms.Transactions
                                    
                                 }
                                 double packSelligPriceT = Convert.ToDouble(unitSellingPrice.ToString("n1")) * qu;
-                                double packqtyT = qu / qntyPerPack;
+                                double packqtyT = qu / qtyPerPack;
                                  //double adjustment = Math.Pow(10, 1);
                                  //unitSellingPrice= Math.Ceiling(unitSellingPrice * adjustment) / adjustment; 
                                  //double packSellingPrice = unitSellingPrice * qntyPerPack;
@@ -606,7 +607,7 @@ namespace PharmInventory.Forms.Transactions
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],unitSellingPrice.ToString("n1"),
                                    // ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
                                    (packPrice *  Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"])).ToString("n3"),
-                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("n0")};
+                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("n0"),qtyPerPack};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -1342,9 +1343,6 @@ namespace PharmInventory.Forms.Transactions
             }
         }
 
-        private void gridConfirmation_Click(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }

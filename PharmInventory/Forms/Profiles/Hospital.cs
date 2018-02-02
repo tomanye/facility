@@ -135,7 +135,7 @@ namespace PharmInventory.Forms.Profiles
                                 MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
 
-            if (user.UserName != "admin")
+            if (user.UserName != "admin" || user.UserType !=2)
             {
                 XtraMessageBox.Show("You have no privilege to change FE setting!", "Error");
                 return;

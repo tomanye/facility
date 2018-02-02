@@ -2573,8 +2573,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridConfirmation.TabIndex = 19;
             this.gridConfirmation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1,
-            this.gridRecieveView1});
-            this.gridConfirmation.Click += new System.EventHandler(this.gridConfirmation_Click);
+            this.gridRecieveView1}); 
             // 
             // gridView1
             // 

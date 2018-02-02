@@ -1732,6 +1732,8 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnTotalPackSellingPrice;
             
+            private global::System.Data.DataColumn columnQtyPerPackT;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Model22DataTable() {
@@ -1903,6 +1905,14 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QtyPerPackTColumn {
+                get {
+                    return this.columnQtyPerPackT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1955,7 +1965,8 @@ namespace PharmInventory.Reports {
                         string Qty_Per_Pack, 
                         string Pack_Price, 
                         string PackSellingPrice, 
-                        string TotalPackSellingPrice) {
+                        string TotalPackSellingPrice, 
+                        string QtyPerPackT) {
                 Model22Row rowModel22Row = ((Model22Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InternalDrugCode,
@@ -1974,7 +1985,8 @@ namespace PharmInventory.Reports {
                         Qty_Per_Pack,
                         Pack_Price,
                         PackSellingPrice,
-                        TotalPackSellingPrice};
+                        TotalPackSellingPrice,
+                        QtyPerPackT};
                 rowModel22Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModel22Row);
                 return rowModel22Row;
@@ -2014,6 +2026,7 @@ namespace PharmInventory.Reports {
                 this.columnPack_Price = base.Columns["Pack Price"];
                 this.columnPackSellingPrice = base.Columns["PackSellingPrice"];
                 this.columnTotalPackSellingPrice = base.Columns["TotalPackSellingPrice"];
+                this.columnQtyPerPackT = base.Columns["QtyPerPackT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2053,6 +2066,8 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnPackSellingPrice);
                 this.columnTotalPackSellingPrice = new global::System.Data.DataColumn("TotalPackSellingPrice", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalPackSellingPrice);
+                this.columnQtyPerPackT = new global::System.Data.DataColumn("QtyPerPackT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtyPerPackT);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4034,6 +4049,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QtyPerPackT {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.QtyPerPackTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtyPerPackT\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.QtyPerPackTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInternalDrugCodeNull() {
                 return this.IsNull(this.tableModel22.InternalDrugCodeColumn);
             }
@@ -4234,6 +4265,18 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalPackSellingPriceNull() {
                 this[this.tableModel22.TotalPackSellingPriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQtyPerPackTNull() {
+                return this.IsNull(this.tableModel22.QtyPerPackTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQtyPerPackTNull() {
+                this[this.tableModel22.QtyPerPackTColumn] = global::System.Convert.DBNull;
             }
         }
         
