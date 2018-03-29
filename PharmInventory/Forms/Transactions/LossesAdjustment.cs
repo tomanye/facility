@@ -12,6 +12,8 @@ using DevExpress.XtraEditors;
 using DevExpress.Data.Filtering;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
+using PharmInventory.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace PharmInventory
 {
@@ -92,7 +94,8 @@ namespace PharmInventory
             {
                 btnSave.Enabled = true;
             }
-
+          ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
         }
 
         public void PopulateItemList(DataTable dtItem)
@@ -169,7 +172,7 @@ namespace PharmInventory
             if (dtRecGrid.Columns.Count == 0)
             {
                 string[] str = { "ID", "Stock Code", "Item Name", "Batch No", "Unit", "BU Qty", "Price", "Losses", "Adjustment", "RecID", "Reason",
-                               "UnitID"};
+                               "UnitID","PackQty","QtyPerPack","LossPrice"};
                 foreach (string col in str)
                 {
                     dtRecGrid.Columns.Add(col);
@@ -412,8 +415,44 @@ namespace PharmInventory
 
                         dtAdjustDate.Value = xx;
                     }
+
                     XtraMessageBox.Show("Transaction successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ResetFields();
+                    GeneralInfo gn = new GeneralInfo();
+                    gn.LoadAll();
+                    if (gn.UsesModel)
+                    {
+                        int userID = MainWindow.LoggedinId;
+                        User us = new User();
+                        us.LoadByPrimaryKey(userID);
+                        string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
+                        var modelprint = new LossAdjustmentModel22
+                        {
+                            PrintedBy = { Text = printedby }
+                        };
+                        gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                        gridAdjView.RefreshData();
+                        DataView dt =  (DataView)gridAdjView.DataSource;
+                        dt.RowFilter =(String.Format("[Reason]=11"));
+                        DataTable tbl1 = dt.ToTable();
+                        if (tbl1.Rows.Count > 0)
+                        {
+                            tbl1.TableName = "Model22";
+                            var dtset = new DataSet();
+                            dtset.Tables.Add(tbl1.Copy());
+                            modelprint.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
+                            modelprint.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+                            //modelprint.PageHeight = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperHeightCredit);
+                            // modelprint.PageWidth = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperWidthCredit);
+                            modelprint.DataSource = dtset;
+                            modelprint.Landscape = true;
+
+                            //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", modelprint.PrintingSystem.Pages.Count), "Success", MessageBoxButtons.OK,
+                            //                 MessageBoxIcon.Information);
+
+                            modelprint.ShowPreviewDialog();
+                        }
+                    }
+                        ResetFields();
                 }
             }
             else
@@ -436,6 +475,9 @@ namespace PharmInventory
             dtAdjustDate.Value = DateTime.Now;
 
             Items itm = new Items();
+            ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+            ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+            //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
         }
 
         private void tabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
@@ -682,5 +724,46 @@ namespace PharmInventory
             edit.Properties.ValueMember = "ID";
         }
 
+        private void gridAdjView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            GridView view = sender as GridView;
+            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]); 
+            if (view.FocusedColumn.FieldName == "Reason")
+            {
+                gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                gridAdjView.RefreshData();
+                if (gridAdjView.RowCount != 0)
+                {
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
+                   ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2; 
+                    //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
+                }
+                else
+                {
+                     ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                     ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+                     //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+                }
+                gridAdjView.ActiveFilterString = String.Format("");
+                gridAdjView.RefreshData();
+            }
+          else  if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
+            {
+                int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]):0 ;
+                int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]):0 ;
+                double loss = pqty * qtyperPack;
+                dr["Losses"] = loss;
+                dr["LossPrice"] = loss * (Convert.ToDouble(dr["Price"]) / Convert.ToDouble(dr["BU Qty"])); 
+            }
+            else
+            {
+                //((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                //((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+               // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+                return;
+            }
+        }
     }
 }
