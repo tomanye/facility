@@ -70,8 +70,12 @@ namespace PharmInventory.Forms.Profiles
             //cboDSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("DSUpdateFrequency")?"": _hospInfo.DSUpdateFrequency;
             //cboHCTSUpdateFrequency.EditValue = _hospInfo.IsColumnNull("RRFStatusUpdateFrequency")?"":_hospInfo.RRFStatusUpdateFrequency;
             //cboHCTSFirstUpdate.EditValue = _hospInfo.IsColumnNull("RRFStatusFirstUpdateAfter") ? "" : _hospInfo.RRFStatusFirstUpdateAfter;
+          
             _hospitalId = _hospInfo.ID;
-           //  chkNormal.EditValue = _hospInfo.NormalFacility;
+            //  chkNormal.EditValue = _hospInfo.NormalFacility;
+            chkUsesModel.EditValue =  _hospInfo.UsesModel;
+            if(!_hospInfo.IsColumnNull("PriceRate"))
+            cbEPriceRate.Text = _hospInfo.PriceRate.ToString();
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
@@ -133,8 +137,13 @@ namespace PharmInventory.Forms.Profiles
 
             if (user.UserName != "admin")
             {
-                XtraMessageBox.Show("You have no privilege to change FE setting!", "Error");
-                return;
+             if      (user.UserType != 2)
+                {
+                    XtraMessageBox.Show("You have no privilege to change FE setting!", "Error");
+                    return;
+
+                } 
+                 
                
             }
             switch (Convert.ToInt32(lookUpEdit1.EditValue))
@@ -199,6 +208,12 @@ namespace PharmInventory.Forms.Profiles
                 catch { }
             }
 
+            _hospInfo.UsesModel = (bool)chkUsesModel.EditValue;
+            if (cbEPriceRate.EditValue != null)
+            {
+                _hospInfo.PriceRate = Convert.ToDecimal(cbEPriceRate.EditValue);
+            }
+           
             _hospInfo.Save();
             XtraMessageBox.Show("Facility Setting Successfully Saved.", "Success",
                                 MessageBoxButtons.OK);

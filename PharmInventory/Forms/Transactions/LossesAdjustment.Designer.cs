@@ -60,10 +60,13 @@ namespace PharmInventory
             this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.unitrepositoryItemLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colPackQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colQtyperPack = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.ReasonLookup = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridRecieveView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -134,6 +137,7 @@ namespace PharmInventory
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.tabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.colQty = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRefNo.Properties)).BeginInit();
@@ -150,10 +154,11 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.unitrepositoryItemLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonLookup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -312,6 +317,7 @@ namespace PharmInventory
             this.AdjustmentGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdjustmentGrid.Cursor = System.Windows.Forms.Cursors.Default;
             this.AdjustmentGrid.Location = new System.Drawing.Point(12, 60);
             this.AdjustmentGrid.MainView = this.gridAdjView;
             this.AdjustmentGrid.Name = "AdjustmentGrid";
@@ -322,7 +328,8 @@ namespace PharmInventory
             this.repositoryItemTextEdit2,
             this.ReasonLookup,
             this.unitrepositoryItemLookUpEdit,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemTextEdit3});
             this.AdjustmentGrid.Size = new System.Drawing.Size(1027, 486);
             this.AdjustmentGrid.TabIndex = 14;
             this.AdjustmentGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -342,7 +349,10 @@ namespace PharmInventory
             this.gridColumn17,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn25});
+            this.gridColumn25,
+            this.colPackQty,
+            this.colQtyperPack,
+            this.colQty});
             this.gridAdjView.GridControl = this.AdjustmentGrid;
             this.gridAdjView.Name = "gridAdjView";
             this.gridAdjView.OptionsCustomization.AllowFilter = false;
@@ -350,6 +360,7 @@ namespace PharmInventory
             this.gridAdjView.OptionsMenu.EnableColumnMenu = false;
             this.gridAdjView.OptionsView.AllowCellMerge = true;
             this.gridAdjView.OptionsView.ShowGroupPanel = false;
+            this.gridAdjView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridAdjView_CellValueChanged);
             // 
             // gridColumn11
             // 
@@ -520,19 +531,35 @@ namespace PharmInventory
             this.unitrepositoryItemLookUpEdit.ValueMember = "ID";
             this.unitrepositoryItemLookUpEdit.Enter += new System.EventHandler(this.unitrepositoryItemLookUpEdit_Enter_1);
             // 
+            // colPackQty
+            // 
+            this.colPackQty.Caption = "Pack Qty";
+            this.colPackQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colPackQty.FieldName = "PackQty";
+            this.colPackQty.Name = "colPackQty";
+            this.colPackQty.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // colQtyperPack
+            // 
+            this.colQtyperPack.Caption = "Qty/Pack";
+            this.colQtyperPack.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colQtyperPack.FieldName = "QtyPerPack";
+            this.colQtyperPack.Name = "colQtyperPack";
+            this.colQtyperPack.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            // 
             // ExpireDateEditor
             // 
             this.ExpireDateEditor.AutoHeight = false;
             this.ExpireDateEditor.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ExpireDateEditor.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.ExpireDateEditor.DisplayFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.EditFormat.FormatString = "mm-DD-YYYY";
             this.ExpireDateEditor.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.ExpireDateEditor.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.Value;
             this.ExpireDateEditor.Name = "ExpireDateEditor";
-            this.ExpireDateEditor.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
             // 
             // repositoryItemButtonEdit2
             // 
@@ -575,6 +602,11 @@ namespace PharmInventory
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.OptionsView.ShowIndicator = false;
             // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
             // gridRecieveView1
             // 
             this.gridRecieveView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
@@ -610,6 +642,7 @@ namespace PharmInventory
             this.gridBand1.Columns.Add(this.gridColumn12);
             this.gridBand1.Columns.Add(this.gridColumn9);
             this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
             this.gridBand1.Width = 1117;
             // 
             // bandedGridColumn1
@@ -988,6 +1021,7 @@ namespace PharmInventory
             this.gridItemsChoice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridItemsChoice.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridItemsChoice.Location = new System.Drawing.Point(12, 102);
             this.gridItemsChoice.MainView = this.gridItemChoiceView;
             this.gridItemsChoice.Name = "gridItemsChoice";
@@ -1402,14 +1436,20 @@ namespace PharmInventory
             this.tabPage2});
             this.tabControl1.SelectedPageChanging += new DevExpress.XtraTab.TabPageChangingEventHandler(this.tabControl1_SelectedPageChanging);
             // 
+            // colQty
+            // 
+            this.colQty.Caption = "LossPrice";
+            this.colQty.FieldName = "LossPrice";
+            this.colQty.Name = "colQty";
+            // 
             // LossesAdjustment
             // 
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1063, 652);
             this.Controls.Add(this.tabControl1);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "LossesAdjustment";
             this.Text = "LossesAdjustment";
             this.Load += new System.EventHandler(this.LossesAdjustment_Load);
@@ -1428,11 +1468,12 @@ namespace PharmInventory
             ((System.ComponentModel.ISupportInitialize)(this.reasonBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitrepositoryItemLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitsbindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.VistaTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpireDateEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonLookup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridRecieveView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -1585,5 +1626,9 @@ namespace PharmInventory
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private System.Windows.Forms.BindingSource reasonBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn colPackQty;
+        private DevExpress.XtraGrid.Columns.GridColumn colQtyperPack;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn colQty;
     }
 }
