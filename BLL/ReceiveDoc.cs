@@ -216,7 +216,27 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-
+        public DataTable GetModel19RefNo(string refNo, int storeId, string dt)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT  rd.InternalDrugCode
+		                                            ,vw.FullItemName [Item Name]
+                                                    ,vw.Unit
+		                                            ,rd.NoOfPack [Pack Qty]
+		                                            ,rd.QtyPerPack [Qty/Pack]
+		                                            ,(rd.QtyPerPack * rd.NoOfPack)[BU Qty] 
+		                                            ,rd.Quantity
+		                                            ,rd.BatchNo [Batch No]
+		                                            ,rd.ExpDate [Expiry Date]
+		                                            ,rd.Cost [Price/Pack] 
+                                                    ,(rd.NoOfPack *rd.Cost) [Total Price]
+                                            FROM    ReceiveDoc rd
+                                                    JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                                    JOIN Supplier sp ON rd.SupplierID = sp.ID  
+                                                                                     WHERE (RefNo = '{0}' AND Date = '{2}') AND StoreId = {1} ORDER BY Date DESC", refNo, storeId, dt);
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public DataTable GetTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();

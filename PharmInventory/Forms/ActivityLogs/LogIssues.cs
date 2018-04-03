@@ -44,8 +44,7 @@ namespace PharmInventory.Forms.ActivityLogs
             _priceRate = gn.IsColumnNull("PriceRate") ? 0 : Convert.ToDouble(gn.PriceRate);
             _usesModel = gn.IsColumnNull("UsesModel") ? false : gn.UsesModel;
             _printedby = usr.FullName;
-            if (_usesModel)
-            { printModel.Visible = true; }
+            layoutPrintModel.Visibility = _usesModel ? DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             var rec = new ReceivingUnits();
             DataTable drRec = rec.GetAllApplicableDU();
             //cboIssuedTo.Properties.DataSource = drRec;
