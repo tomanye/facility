@@ -34,7 +34,13 @@ namespace BLL
             var query =
                 String.Format(@"SELECT  id.* ,
                                         ru.Name IssuedTo,
-                                        md.* ,
+                                        md.ID ,
+										md.PackQty PackQtyT,
+										md.IssueDocID,
+										md.QtyPerPack [Qty Per Pack],
+										md.PackPrice [Pack Price],
+										md.TotalPrice [Total Price],
+										md.TotalPackSellingPrice [TotalPackSellingPrice], 
                                         va.FullItemName [Item Name] ,
                                         va.Unit
                                 FROM    IssueDoc id
