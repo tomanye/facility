@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Model22](
 ADD CONSTRAINT [FK_Model22_IssueDocID]
     FOREIGN KEY ( [IssueDocID] )
     REFERENCES [dbo].[IssueDoc] ( [ID] )
-GO
+ 
 
 ALTER TABLE [dbo].[Model22] CHECK CONSTRAINT [FK_Model22_IssueDocID]
-GO
+ 
