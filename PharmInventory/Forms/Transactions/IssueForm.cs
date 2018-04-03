@@ -831,14 +831,14 @@ namespace PharmInventory.Forms.Transactions
                    
                     if (_usesModel)
                     { 
-                        var modelprint = new Model22
+                        var modelprint = new PharmInventory.Reports.Model22
                         {
                             PrintedBy = { Text = _printedby }
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
                         tbl1.TableName = "Model22";
-
+                        SaveModel22(tbl1);
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
@@ -860,6 +860,22 @@ namespace PharmInventory.Forms.Transactions
             else
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+        private void SaveModel22(DataTable dt)
+        {
+            var model = new BLL.Model22();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                model.AddNew();
+                model.IssueDocID = Convert.ToInt32(dt.Rows[i]["ID"]);
+                model.PackQty = Convert.ToInt32(dt.Rows[i]["PackQtyT"]);
+                model.QtyPerPack = Convert.ToDecimal(dt.Rows[i]["Qty Per Pack"]);
+                model.PackPrice = Convert.ToDecimal(dt.Rows[i]["Pack Price"]);
+                model.TotalPrice = Convert.ToDecimal(dt.Rows[i]["Total Price"]);
+                model.TotalPackSellingPrice = Convert.ToDecimal(dt.Rows[i]["TotalPackSellingPrice"]);
+                model.PriceRate = Convert.ToDecimal(_priceRate);
+                model.Save();
             }
         }
         private void PrintPickList()
