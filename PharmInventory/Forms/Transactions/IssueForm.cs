@@ -418,7 +418,7 @@ namespace PharmInventory.Forms.Transactions
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
                                     "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT","PackSellingPrice"
-                                    ,"TotalPackSellingPrice","PackQtyT","QtyPerPackT","ID" };
+                                    ,"TotalPackSellingPrice","PackQtyT","QtyPerPackT" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -608,7 +608,7 @@ namespace PharmInventory.Forms.Transactions
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],unitSellingPrice.ToString("n1"),
                                    // ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
                                    (packPrice *  Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"])).ToString("n3"),
-                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack,Convert.ToInt32(dtIssueGrid.Rows[i]["ID"])};
+                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack };
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -787,6 +787,20 @@ namespace PharmInventory.Forms.Transactions
                             //End DU
                             issDoc.PriceRate = Convert.ToDecimal(_priceRate);
                             issDoc.Save();
+
+                            var model = new BLL.Model22();
+                           
+                                model.AddNew();
+                                model.IssueDocID = issDoc.ID;
+                                model.PackQty = (dtConfirm.Rows[i]["PackQtyT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackQtyT"]) : 0;
+                                model.QtyPerPack = (dtConfirm.Rows[i]["Qty Per Pack"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Qty Per Pack"]) : 0;
+                                model.PackPrice = (dtConfirm.Rows[i]["Pack Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Pack Price"]) : 0;
+                                model.TotalPrice = (dtConfirm.Rows[i]["Total Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Total Price"]) : 0;
+                                model.TotalPackSellingPrice = (dtConfirm.Rows[i]["TotalPackSellingPrice"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["TotalPackSellingPrice"]) : 0;
+                                model.PriceRate = Convert.ToDecimal(_priceRate);
+                                model.Save();
+                           
+
                             //updating the receiving doc
                             recDoc.LoadByPrimaryKey(Convert.ToInt32(dtConfirm.Rows[i]["RecId"]));
                             //this line calculates the current SOH
@@ -813,6 +827,8 @@ namespace PharmInventory.Forms.Transactions
                             //Log Activity
                             dtIssueDate.Value = xx;
                             Builder.RefreshAMCValues(storeId, confirmedItemsQuantity, unitId);
+
+
                         }
 
                         //save stockout information for the current item in current store
@@ -838,7 +854,7 @@ namespace PharmInventory.Forms.Transactions
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
                         tbl1.TableName = "Model22";
-                        SaveModel22(tbl1);
+                      
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
@@ -861,23 +877,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-        }
-        private void SaveModel22(DataTable dt)
-        {
-            var model = new BLL.Model22();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                model.AddNew();
-                model.IssueDocID = Convert.ToInt32(dt.Rows[i]["ID"]);
-                model.PackQty = Convert.ToInt32(dt.Rows[i]["PackQtyT"]);
-                model.QtyPerPack = Convert.ToDecimal(dt.Rows[i]["Qty Per Pack"]);
-                model.PackPrice = Convert.ToDecimal(dt.Rows[i]["Pack Price"]);
-                model.TotalPrice = Convert.ToDecimal(dt.Rows[i]["Total Price"]);
-                model.TotalPackSellingPrice = Convert.ToDecimal(dt.Rows[i]["TotalPackSellingPrice"]);
-                model.PriceRate = Convert.ToDecimal(_priceRate);
-                model.Save();
-            }
-        }
+        } 
         private void PrintPickList()
         {
           

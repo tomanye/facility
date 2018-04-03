@@ -118,7 +118,7 @@ namespace DAL
             {
                 get
                 {
-                    return new SqlParameter("@PackQty", SqlDbType.Int, 0);
+                    return new SqlParameter("@PackQty", SqlDbType.Decimal, 0);
                 }
             }
 
@@ -276,15 +276,15 @@ namespace DAL
             }
         }
 
-        public virtual int PackQty
+        public virtual decimal PackQty
         {
             get
             {
-                return base.Getint(ColumnNames.PackQty);
+                return base.Getdecimal(ColumnNames.PackQty);
             }
             set
             {
-                base.Setint(ColumnNames.PackQty, value);
+                base.Setdecimal(ColumnNames.PackQty, value);
             }
         }
 
@@ -387,14 +387,14 @@ namespace DAL
         {
             get
             {
-                return this.IsColumnNull(ColumnNames.PackQty) ? string.Empty : base.GetintAsString(ColumnNames.PackQty);
+                return this.IsColumnNull(ColumnNames.PackQty) ? string.Empty : base.GetdecimalAsString(ColumnNames.PackQty);
             }
             set
             {
                 if (string.Empty == value)
                     this.SetColumnNull(ColumnNames.PackQty);
                 else
-                    this.PackQty = base.SetintAsString(ColumnNames.PackQty, value);
+                    this.PackQty = base.SetdecimalAsString(ColumnNames.PackQty, value);
             }
         }
 

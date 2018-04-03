@@ -1,7 +1,8 @@
+
 CREATE TABLE [dbo].[Model22](
 	 [ID] INT IDENTITY(1, 1) NOT NULL ,
         [IssueDocID] INT NOT NULL ,
-        [PackQty] INT NULL ,
+        [PackQty] DECIMAL NULL ,
         [QtyPerPack] DECIMAL NULL ,
         [PackPrice] DECIMAL(16, 4) NULL ,
         [TotalPrice] DECIMAL(16, 4) NULL ,

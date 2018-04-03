@@ -1,8 +1,8 @@
 CREATE PROCEDURE [proc_Model22Update]
 (
-	@ID int,
+    @ID int,
 	@IssueDocID int,
-	@PackQty int = NULL,
+	@PackQty decimal(18,0) = NULL,
 	@QtyPerPack decimal(18,0) = NULL,
 	@PackPrice decimal(16,4) = NULL,
 	@TotalPrice decimal(16,4) = NULL,

@@ -230,7 +230,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn71 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn73 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ExpireDateEditor = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.editManufacturer = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -2598,8 +2597,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn22,
             this.gridColumn27,
             this.gridColumn71,
-            this.gridColumn72,
-            this.gridColumn73});
+            this.gridColumn72});
             this.gridView1.GridControl = this.gridConfirmation;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsCustomization.AllowFilter = false;
@@ -2846,12 +2844,6 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn72.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumn72.Visible = true;
             this.gridColumn72.VisibleIndex = 3;
-            // 
-            // gridColumn73
-            // 
-            this.gridColumn73.Caption = "ID";
-            this.gridColumn73.FieldName = "ID";
-            this.gridColumn73.Name = "gridColumn73";
             // 
             // ExpireDateEditor
             // 
@@ -3707,6 +3699,5 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
         private ComboBoxEdit cboStoreConf;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn73;
     }
 }
