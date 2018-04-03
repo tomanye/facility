@@ -28,7 +28,26 @@ namespace BLL
 			return this.DataTable;
 		}
 
+        public DataTable GetModel22ByRefNo(string refNo, System.DateTime date)
+        {
+            this.FlushData();
+            var query =
+                String.Format(@"SELECT  id.* ,
+                                        ru.Name IssuedTo,
+                                        md.* ,
+                                        va.FullItemName [Item Name] ,
+                                        va.Unit
+                                FROM    IssueDoc id
+                                        JOIN Model22 md ON md.IssueDocID = id.ID
+                                        JOIN vwGetAllItems va ON id.ItemID = va.ID
+                                        JOIN ReceivingUnits ru ON id.ReceivingUnitID = ru.ID
+                                WHERE   ( id.IsTransfer = 0 ) 
+		                                 AND id.RefNo = '{0}' AND id.Date = '{1}'",
+                        refNo, date.ToShortDateString());
 
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public DataTable GetTransactionByRefNo(string refNo)
         {
             this.FlushData();

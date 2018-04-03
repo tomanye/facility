@@ -10,6 +10,7 @@ using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
 using EthiopianDate;
 using DevExpress.XtraCharts.Native;
+using DevExpress.XtraReports.UI;
 
 namespace PharmInventory.Forms.ActivityLogs
 {
@@ -23,7 +24,9 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             InitializeComponent();
         }
-
+        double _priceRate = 0;
+        bool _usesModel = false;
+        string _printedby = "";
         /// <summary>
         /// Populate the lookups
         /// </summary>
@@ -36,7 +39,11 @@ namespace PharmInventory.Forms.ActivityLogs
             usr.LoadByPrimaryKey(userID);
             if (usr.UserType == 1)
                 contextMenuStrip1.Enabled = false;
-
+            GeneralInfo gn = new GeneralInfo();
+            gn.LoadAll();
+            _priceRate = gn.IsColumnNull("PriceRate") ? 0 : Convert.ToDouble(gn.PriceRate);
+            _usesModel = gn.IsColumnNull("UsesModel") ? false : gn.UsesModel;
+            _printedby = usr.FullName;
             var rec = new ReceivingUnits();
             DataTable drRec = rec.GetAllApplicableDU();
             //cboIssuedTo.Properties.DataSource = drRec;
@@ -437,6 +444,29 @@ namespace PharmInventory.Forms.ActivityLogs
                 
             }
             gridIssues.DataSource = dtRec;
+           
+
+            if (_usesModel)
+            {
+                DataTable dt = iss.GetModel22ByRefNo(dr["RefNo"].ToString(), Convert.ToDateTime(dr["Date"]));
+                var modelprint = new PharmInventory.Reports.Model22
+                {
+                    PrintedBy = { Text = _printedby }
+                };
+
+                var tbl1 =  dt;
+                tbl1.TableName = "Model22";
+
+                var dtset = new DataSet();
+                dtset.Tables.Add(tbl1.Copy());
+                modelprint.DataSource = dtset;
+                modelprint.Landscape = true;
+                //var pagecount = modelprint.Pages.Count;  
+                //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", pagecount), "Success", MessageBoxButtons.OK,
+                //                     MessageBoxIcon.Information);
+                modelprint.ShowPreviewDialog();
+            }
+
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
