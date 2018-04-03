@@ -46,6 +46,7 @@ namespace PharmInventory.Forms.Transactions
         DataTable _dtSelectedTable = null;
         double _priceRate = 0;
         bool _usesModel = false;
+        string _printedby = "";
 
         #endregion
 
@@ -133,7 +134,7 @@ namespace PharmInventory.Forms.Transactions
             var us = new User();
             us.LoadByPrimaryKey(userID);
             txtIssuedBy.Text = us.FullName;
-
+            _printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
             if (!chkExcludeStockedOut.Checked)
                 gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCategories.EditValue));
 
@@ -733,7 +734,7 @@ namespace PharmInventory.Forms.Transactions
                     {
                         for (int i = 0; i < dtConfirm.Rows.Count; i++)
                         {
-                           var receivedocid = Convert.ToInt32(dtConfirm.Rows[i]["RecId"]);
+                            var receivedocid = Convert.ToInt32(dtConfirm.Rows[i]["RecId"]);
                             issDoc.GetDULastIssue(Convert.ToInt32(dtConfirm.Rows[i]["ItemID"]), Convert.ToInt32(cboReceivingUnits.EditValue));
                             confirmedItems.Add(Convert.ToInt32(dtConfirm.Rows[i]["ItemID"]));
                             if (issDoc.RowCount > 0)
@@ -754,7 +755,7 @@ namespace PharmInventory.Forms.Transactions
                             dtIssueDate.IsGregorianCurrentCalendar = true;
                             issDoc.EurDate = dtIssueDate.Value;
                             dtIssueDate.IsGregorianCurrentCalendar = false;
-                            issDoc.RecievDocID =Convert.ToInt32(dtConfirm.Rows[i]["RecId"]); // Used to have 8 as an index
+                            issDoc.RecievDocID = Convert.ToInt32(dtConfirm.Rows[i]["RecId"]); // Used to have 8 as an index
                             recDoc.LoadByPrimaryKey(receivedocid);
                             issDoc.IsApproved = true;
                             issDoc.IsTransfer = false;
@@ -765,7 +766,7 @@ namespace PharmInventory.Forms.Transactions
                             issDoc.DUSOH = Convert.ToInt32(dtConfirm.Rows[i]["DUSOH"]);
                             issDoc.ItemID = Convert.ToInt32(dtConfirm.Rows[i]["ItemId"]);
                             issDoc.Quantity = Convert.ToInt64(dtConfirm.Rows[i]["Quantity"]);
-                            
+
                             issDoc.NoOfPack = Convert.ToInt32(dtConfirm.Rows[i]["No Of Pack"]);
                             issDoc.QtyPerPack = Convert.ToInt32(dtConfirm.Rows[i]["Qty Per Pack"]);
                             switch (VisibilitySetting.HandleUnits)
@@ -811,7 +812,7 @@ namespace PharmInventory.Forms.Transactions
 
                             //Log Activity
                             dtIssueDate.Value = xx;
-                            Builder.RefreshAMCValues(storeId, confirmedItemsQuantity,unitId);
+                            Builder.RefreshAMCValues(storeId, confirmedItemsQuantity, unitId);
                         }
 
                         //save stockout information for the current item in current store
@@ -829,30 +830,27 @@ namespace PharmInventory.Forms.Transactions
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
                     if (_usesModel)
-                    {
-                        int userID = MainWindow.LoggedinId;
-                        User us = new User();
-                        us.LoadByPrimaryKey(userID);
-                        string printedby = string.Format("Printed by {0} on {1} , HCMIS {2}", us.FullName, DateTime.Today.ToShortDateString(), Program.HCMISVersionString);
-
+                    { 
                         var modelprint = new Model22
                         {
-                            PrintedBy = { Text = printedby }
+                            PrintedBy = { Text = _printedby }
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
-                        tbl1.TableName = "Model22";  
-                      
+                        tbl1.TableName = "Model22";
+
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
-                        modelprint.Landscape = true; 
+                        modelprint.Landscape = true;
                         //var pagecount = modelprint.Pages.Count;  
                         //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", pagecount), "Success", MessageBoxButtons.OK,
                         //                     MessageBoxIcon.Information);
-                       modelprint.ShowPreviewDialog();
+                        modelprint.ShowPreviewDialog();
                     }
-                    xpButton2_Click(sender, e);
+
+                    //xpButton2_Click(sender, e);
+                    PrintPickList();
                     issueGrid.DataSource = null;
                     issueGridView.RefreshData();
                     RefreshItems();
@@ -863,8 +861,34 @@ namespace PharmInventory.Forms.Transactions
             {
                 XtraMessageBox.Show(valid, "Validation", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-        }       
+        }
+        private void PrintPickList()
+        {
+          
+            dtIssueDate.CustomFormat = "MM/dd/yyyy";
+            var dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
 
+            var pickList = new PharmInventory.Reports.PickList
+            {
+                PrintedBy = { Text = _printedby },
+                IssueDate = { Text = dtCurrent.ToShortDateString() },
+                RefNo = { Text = txtConfRef.Text },
+                From = { Text = txtStore.Text },
+                To = { Text = txtIssuedTo.Text }
+            };
+
+            var tbl1 = ((DataTable)gridConfirmation.DataSource);
+            tbl1.TableName = "Model22";
+
+            var dtset = new DataSet();
+            dtset.Tables.Add(tbl1.Copy());
+            pickList.DataSource = dtset;
+            pickList.Landscape = true;
+            //var pagecount = modelprint.Pages.Count;  
+            //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", pagecount), "Success", MessageBoxButtons.OK,
+            //                     MessageBoxIcon.Information);
+            pickList.ShowPreviewDialog();
+        }
         /// <summary>
         /// The issue form is reset so that every input is cleared out.
         /// </summary>
