@@ -15,7 +15,10 @@ BEGIN
 		[PackPrice],
 		[TotalPrice],
 		[TotalPackSellingPrice],
-		[priceRate]
+		[priceRate],
+		[PackSellingPrice],
+		[UnitSellingPrice],
+		[ExpiryDate]
 	FROM [Model22]
 	WHERE
 		([ID] = @ID)

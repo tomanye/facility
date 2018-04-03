@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
 '===============================================================================
 '  Generated From - CSharp_dOOdads_BusinessEntity.vbgen
 ' 
@@ -162,6 +163,30 @@ namespace DAL
                 }
             }
 
+            public static SqlParameter PackSellingPrice
+            {
+                get
+                {
+                    return new SqlParameter("@PackSellingPrice", SqlDbType.Decimal, 0);
+                }
+            }
+
+            public static SqlParameter UnitSellingPrice
+            {
+                get
+                {
+                    return new SqlParameter("@UnitSellingPrice", SqlDbType.Decimal, 0);
+                }
+            }
+
+            public static SqlParameter ExpiryDate
+            {
+                get
+                {
+                    return new SqlParameter("@ExpiryDate", SqlDbType.DateTime, 0);
+                }
+            }
+
         }
         #endregion
 
@@ -176,6 +201,9 @@ namespace DAL
             public const string TotalPrice = "TotalPrice";
             public const string TotalPackSellingPrice = "TotalPackSellingPrice";
             public const string PriceRate = "priceRate";
+            public const string PackSellingPrice = "PackSellingPrice";
+            public const string UnitSellingPrice = "UnitSellingPrice";
+            public const string ExpiryDate = "ExpiryDate";
 
             static public string ToPropertyName(string columnName)
             {
@@ -191,6 +219,9 @@ namespace DAL
                     ht[TotalPrice] = _Model22.PropertyNames.TotalPrice;
                     ht[TotalPackSellingPrice] = _Model22.PropertyNames.TotalPackSellingPrice;
                     ht[PriceRate] = _Model22.PropertyNames.PriceRate;
+                    ht[PackSellingPrice] = _Model22.PropertyNames.PackSellingPrice;
+                    ht[UnitSellingPrice] = _Model22.PropertyNames.UnitSellingPrice;
+                    ht[ExpiryDate] = _Model22.PropertyNames.ExpiryDate;
 
                 }
                 return (string)ht[columnName];
@@ -211,6 +242,9 @@ namespace DAL
             public const string TotalPrice = "TotalPrice";
             public const string TotalPackSellingPrice = "TotalPackSellingPrice";
             public const string PriceRate = "PriceRate";
+            public const string PackSellingPrice = "PackSellingPrice";
+            public const string UnitSellingPrice = "UnitSellingPrice";
+            public const string ExpiryDate = "ExpiryDate";
 
             static public string ToColumnName(string propertyName)
             {
@@ -226,6 +260,9 @@ namespace DAL
                     ht[TotalPrice] = _Model22.ColumnNames.TotalPrice;
                     ht[TotalPackSellingPrice] = _Model22.ColumnNames.TotalPackSellingPrice;
                     ht[PriceRate] = _Model22.ColumnNames.PriceRate;
+                    ht[PackSellingPrice] = _Model22.ColumnNames.PackSellingPrice;
+                    ht[UnitSellingPrice] = _Model22.ColumnNames.UnitSellingPrice;
+                    ht[ExpiryDate] = _Model22.ColumnNames.ExpiryDate;
 
                 }
                 return (string)ht[propertyName];
@@ -246,6 +283,9 @@ namespace DAL
             public const string TotalPrice = "s_TotalPrice";
             public const string TotalPackSellingPrice = "s_TotalPackSellingPrice";
             public const string PriceRate = "s_PriceRate";
+            public const string PackSellingPrice = "s_PackSellingPrice";
+            public const string UnitSellingPrice = "s_UnitSellingPrice";
+            public const string ExpiryDate = "s_ExpiryDate";
 
         }
         #endregion
@@ -345,6 +385,42 @@ namespace DAL
             set
             {
                 base.Setdecimal(ColumnNames.PriceRate, value);
+            }
+        }
+
+        public virtual decimal PackSellingPrice
+        {
+            get
+            {
+                return base.Getdecimal(ColumnNames.PackSellingPrice);
+            }
+            set
+            {
+                base.Setdecimal(ColumnNames.PackSellingPrice, value);
+            }
+        }
+
+        public virtual decimal UnitSellingPrice
+        {
+            get
+            {
+                return base.Getdecimal(ColumnNames.UnitSellingPrice);
+            }
+            set
+            {
+                base.Setdecimal(ColumnNames.UnitSellingPrice, value);
+            }
+        }
+
+        public virtual DateTime ExpiryDate
+        {
+            get
+            {
+                return base.GetDateTime(ColumnNames.ExpiryDate);
+            }
+            set
+            {
+                base.SetDateTime(ColumnNames.ExpiryDate, value);
             }
         }
 
@@ -473,6 +549,51 @@ namespace DAL
             }
         }
 
+        public virtual string s_PackSellingPrice
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.PackSellingPrice) ? string.Empty : base.GetdecimalAsString(ColumnNames.PackSellingPrice);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.PackSellingPrice);
+                else
+                    this.PackSellingPrice = base.SetdecimalAsString(ColumnNames.PackSellingPrice, value);
+            }
+        }
+
+        public virtual string s_UnitSellingPrice
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.UnitSellingPrice) ? string.Empty : base.GetdecimalAsString(ColumnNames.UnitSellingPrice);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.UnitSellingPrice);
+                else
+                    this.UnitSellingPrice = base.SetdecimalAsString(ColumnNames.UnitSellingPrice, value);
+            }
+        }
+
+        public virtual string s_ExpiryDate
+        {
+            get
+            {
+                return this.IsColumnNull(ColumnNames.ExpiryDate) ? string.Empty : base.GetDateTimeAsString(ColumnNames.ExpiryDate);
+            }
+            set
+            {
+                if (string.Empty == value)
+                    this.SetColumnNull(ColumnNames.ExpiryDate);
+                else
+                    this.ExpiryDate = base.SetDateTimeAsString(ColumnNames.ExpiryDate, value);
+            }
+        }
+
 
         #endregion
 
@@ -586,6 +707,36 @@ namespace DAL
                     }
                 }
 
+                public WhereParameter PackSellingPrice
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.PackSellingPrice, Parameters.PackSellingPrice);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter UnitSellingPrice
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.UnitSellingPrice, Parameters.UnitSellingPrice);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
+                public WhereParameter ExpiryDate
+                {
+                    get
+                    {
+                        WhereParameter where = new WhereParameter(ColumnNames.ExpiryDate, Parameters.ExpiryDate);
+                        this._clause._entity.Query.AddWhereParameter(where);
+                        return where;
+                    }
+                }
+
 
                 private WhereClause _clause;
             }
@@ -687,6 +838,42 @@ namespace DAL
                 }
             }
 
+            public WhereParameter PackSellingPrice
+            {
+                get
+                {
+                    if (_PackSellingPrice_W == null)
+                    {
+                        _PackSellingPrice_W = TearOff.PackSellingPrice;
+                    }
+                    return _PackSellingPrice_W;
+                }
+            }
+
+            public WhereParameter UnitSellingPrice
+            {
+                get
+                {
+                    if (_UnitSellingPrice_W == null)
+                    {
+                        _UnitSellingPrice_W = TearOff.UnitSellingPrice;
+                    }
+                    return _UnitSellingPrice_W;
+                }
+            }
+
+            public WhereParameter ExpiryDate
+            {
+                get
+                {
+                    if (_ExpiryDate_W == null)
+                    {
+                        _ExpiryDate_W = TearOff.ExpiryDate;
+                    }
+                    return _ExpiryDate_W;
+                }
+            }
+
             private WhereParameter _ID_W = null;
             private WhereParameter _IssueDocID_W = null;
             private WhereParameter _PackQty_W = null;
@@ -695,6 +882,9 @@ namespace DAL
             private WhereParameter _TotalPrice_W = null;
             private WhereParameter _TotalPackSellingPrice_W = null;
             private WhereParameter _PriceRate_W = null;
+            private WhereParameter _PackSellingPrice_W = null;
+            private WhereParameter _UnitSellingPrice_W = null;
+            private WhereParameter _ExpiryDate_W = null;
 
             public void WhereClauseReset()
             {
@@ -706,6 +896,9 @@ namespace DAL
                 _TotalPrice_W = null;
                 _TotalPackSellingPrice_W = null;
                 _PriceRate_W = null;
+                _PackSellingPrice_W = null;
+                _UnitSellingPrice_W = null;
+                _ExpiryDate_W = null;
 
                 this._entity.Query.FlushWhereParameters();
 
@@ -842,6 +1035,36 @@ namespace DAL
                     }
                 }
 
+                public AggregateParameter PackSellingPrice
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.PackSellingPrice, Parameters.PackSellingPrice);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter UnitSellingPrice
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.UnitSellingPrice, Parameters.UnitSellingPrice);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
+                public AggregateParameter ExpiryDate
+                {
+                    get
+                    {
+                        AggregateParameter aggregate = new AggregateParameter(ColumnNames.ExpiryDate, Parameters.ExpiryDate);
+                        this._clause._entity.Query.AddAggregateParameter(aggregate);
+                        return aggregate;
+                    }
+                }
+
 
                 private AggregateClause _clause;
             }
@@ -943,6 +1166,42 @@ namespace DAL
                 }
             }
 
+            public AggregateParameter PackSellingPrice
+            {
+                get
+                {
+                    if (_PackSellingPrice_W == null)
+                    {
+                        _PackSellingPrice_W = TearOff.PackSellingPrice;
+                    }
+                    return _PackSellingPrice_W;
+                }
+            }
+
+            public AggregateParameter UnitSellingPrice
+            {
+                get
+                {
+                    if (_UnitSellingPrice_W == null)
+                    {
+                        _UnitSellingPrice_W = TearOff.UnitSellingPrice;
+                    }
+                    return _UnitSellingPrice_W;
+                }
+            }
+
+            public AggregateParameter ExpiryDate
+            {
+                get
+                {
+                    if (_ExpiryDate_W == null)
+                    {
+                        _ExpiryDate_W = TearOff.ExpiryDate;
+                    }
+                    return _ExpiryDate_W;
+                }
+            }
+
             private AggregateParameter _ID_W = null;
             private AggregateParameter _IssueDocID_W = null;
             private AggregateParameter _PackQty_W = null;
@@ -951,6 +1210,9 @@ namespace DAL
             private AggregateParameter _TotalPrice_W = null;
             private AggregateParameter _TotalPackSellingPrice_W = null;
             private AggregateParameter _PriceRate_W = null;
+            private AggregateParameter _PackSellingPrice_W = null;
+            private AggregateParameter _UnitSellingPrice_W = null;
+            private AggregateParameter _ExpiryDate_W = null;
 
             public void AggregateClauseReset()
             {
@@ -962,6 +1224,9 @@ namespace DAL
                 _TotalPrice_W = null;
                 _TotalPackSellingPrice_W = null;
                 _PriceRate_W = null;
+                _PackSellingPrice_W = null;
+                _UnitSellingPrice_W = null;
+                _ExpiryDate_W = null;
 
                 this._entity.Query.FlushAggregateParameters();
 
@@ -1066,6 +1331,18 @@ namespace DAL
 
             p = cmd.Parameters.Add(Parameters.PriceRate);
             p.SourceColumn = ColumnNames.PriceRate;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.PackSellingPrice);
+            p.SourceColumn = ColumnNames.PackSellingPrice;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.UnitSellingPrice);
+            p.SourceColumn = ColumnNames.UnitSellingPrice;
+            p.SourceVersion = DataRowVersion.Current;
+
+            p = cmd.Parameters.Add(Parameters.ExpiryDate);
+            p.SourceColumn = ColumnNames.ExpiryDate;
             p.SourceVersion = DataRowVersion.Current;
 
 

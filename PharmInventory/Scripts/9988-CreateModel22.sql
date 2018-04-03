@@ -1,6 +1,6 @@
 
 CREATE TABLE [dbo].[Model22](
-	 [ID] INT IDENTITY(1, 1) NOT NULL ,
+	    [ID] INT IDENTITY(1, 1) NOT NULL ,
         [IssueDocID] INT NOT NULL ,
         [PackQty] DECIMAL NULL ,
         [QtyPerPack] DECIMAL NULL ,
@@ -8,6 +8,9 @@ CREATE TABLE [dbo].[Model22](
         [TotalPrice] DECIMAL(16, 4) NULL ,
         [TotalPackSellingPrice] DECIMAL(16, 4) NULL ,
         [priceRate] DECIMAL(16, 4) NULL ,
+	    [PackSellingPrice] DECIMAL(16, 4) NULL ,
+	    [UnitSellingPrice] DECIMAL(16, 4) NULL ,
+		[ExpiryDate] DATETIME NULL,
  CONSTRAINT [PK_Model22] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC

@@ -7,7 +7,10 @@ CREATE PROCEDURE [proc_Model22Insert]
 	@PackPrice decimal(16,4) = NULL,
 	@TotalPrice decimal(16,4) = NULL,
 	@TotalPackSellingPrice decimal(16,4) = NULL,
-	@priceRate decimal(16,4) = NULL
+	@priceRate decimal(16,4) = NULL,
+	@PackSellingPrice decimal(16,4) = NULL,
+	@UnitSellingPrice decimal(16,4) = NULL,
+	@ExpiryDate datetime = NULL
 )
 AS
 BEGIN
@@ -24,7 +27,8 @@ BEGIN
 		[PackPrice],
 		[TotalPrice],
 		[TotalPackSellingPrice],
-		[priceRate]
+		[priceRate],	[PackSellingPrice],
+		[UnitSellingPrice],[ExpiryDate]
 	)
 	VALUES
 	(
@@ -34,9 +38,11 @@ BEGIN
 		@PackPrice,
 		@TotalPrice,
 		@TotalPackSellingPrice,
-		@priceRate
-	)
-
+		@priceRate,
+		@PackSellingPrice,
+		@UnitSellingPrice,
+		@ExpiryDate
+)
 	SET @Err = @@Error
 
 	SELECT @ID = SCOPE_IDENTITY()

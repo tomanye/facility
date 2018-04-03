@@ -793,11 +793,14 @@ namespace PharmInventory.Forms.Transactions
                                 model.AddNew();
                                 model.IssueDocID = issDoc.ID;
                                 model.PackQty = (dtConfirm.Rows[i]["PackQtyT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackQtyT"]) : 0;
-                                model.QtyPerPack = (dtConfirm.Rows[i]["Qty Per Pack"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Qty Per Pack"]) : 0;
+                                model.QtyPerPack = (dtConfirm.Rows[i]["QtyPerPackT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["QtyPerPackT"]) : 0;
                                 model.PackPrice = (dtConfirm.Rows[i]["Pack Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Pack Price"]) : 0;
                                 model.TotalPrice = (dtConfirm.Rows[i]["Total Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Total Price"]) : 0;
                                 model.TotalPackSellingPrice = (dtConfirm.Rows[i]["TotalPackSellingPrice"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["TotalPackSellingPrice"]) : 0;
                                 model.PriceRate = Convert.ToDecimal(_priceRate);
+                                model.PackSellingPrice = (dtConfirm.Rows[i]["PackSellingPrice"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackSellingPrice"]) : 0;
+                                model.UnitSellingPrice = (dtConfirm.Rows[i]["Unit PriceT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Unit PriceT"]) : 0;
+                                model.ExpiryDate =  Convert.ToDateTime(dtConfirm.Rows[i]["Expiry Date"]) ;
                                 model.Save();
                            
 

@@ -37,11 +37,14 @@ namespace BLL
                                         md.ID ,
 										md.PackQty PackQtyT,
 										md.IssueDocID,
-										md.QtyPerPack [Qty Per Pack],
+										md.QtyPerPack [QtyPerPackT],
 										md.PackPrice [Pack Price],
 										md.TotalPrice [Total Price],
 										md.TotalPackSellingPrice [TotalPackSellingPrice], 
+                                        md.PackSellingPrice,
+                                        md.UnitSellingPrice [Unit PriceT],
                                         va.FullItemName [Item Name] ,
+                                        md.ExpiryDate [Expiry Date],
                                         va.Unit
                                 FROM    IssueDoc id
                                         JOIN Model22 md ON md.IssueDocID = id.ID
