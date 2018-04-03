@@ -418,7 +418,7 @@ namespace PharmInventory.Forms.Transactions
                 string[] strr = { "No", "Stock Code", "Item Name", "Quantity", "BatchNo", "Expiry Date", "Pack Price", "Total Price",
                                     "ItemId", "RecId", "Unit Price", "No of Pack", "Qty per pack",
                                     "DUSOH", "DUAMC", "Near Expiry", "DURecomended","SOH Left","UnitID","InternalDrugCode","Unit","Unit PriceT","Total PriceT","PackSellingPrice"
-                                    ,"TotalPackSellingPrice","PackQtyT","QtyPerPackT" };
+                                    ,"TotalPackSellingPrice","PackQtyT","QtyPerPackT","ID" };
                 foreach (string col in strr)
                 {
                     if (col == "Expiry Date")
@@ -608,7 +608,7 @@ namespace PharmInventory.Forms.Transactions
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],unitSellingPrice.ToString("n1"),
                                    // ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
                                    (packPrice *  Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"])).ToString("n3"),
-                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack};
+                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack,Convert.ToInt32(dtIssueGrid.Rows[i]["ID"])};
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
