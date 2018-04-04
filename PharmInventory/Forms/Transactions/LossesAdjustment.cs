@@ -79,6 +79,8 @@ namespace PharmInventory
             var disRes = new DisposalReasons();
             var allreasons = disRes.GetAllReasons();
             reasonBindingSource.DataSource = allreasons.DefaultView;
+            lkReason.Properties.DataSource = allreasons;
+
 
             lkCategories.ItemIndex = 0;
             cboStores.ItemIndex = 0;
@@ -299,11 +301,11 @@ namespace PharmInventory
                         return valid;
                     }
 
-                    else if (dtAdjVal.Rows[i]["Reason"].ToString() == "0")
-                    {
-                        valid = "Adjustment Reason has to be picked!";
-                        return valid;
-                    }
+                    //else if (dtAdjVal.Rows[i]["Reason"].ToString() == "0")
+                    //{
+                    //    valid = "Adjustment Reason has to be picked!";
+                    //    return valid;
+                    //}
                 }
                 catch
                 {
@@ -366,7 +368,8 @@ namespace PharmInventory
                             dis.Losses = false;
                             dis.Quantity = Convert.ToInt64(dtAdjVal.Rows[i]["Adjustment"]);
                         }
-                        dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
+                        // dis.ReasonId = Convert.ToInt32(dtAdjVal.Rows[i]["Reason"]);
+                        dis.ReasonId =Convert.ToInt16(lkReason.EditValue);
                         if (VisibilitySetting.HandleUnits == 1)
                         {
                             dis.UnitID = 0;
@@ -429,10 +432,10 @@ namespace PharmInventory
                         {
                             PrintedBy = { Text = printedby }
                         };
-                        gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
-                        gridAdjView.RefreshData();
+                       // gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                       // gridAdjView.RefreshData();
                         DataView dt =  (DataView)gridAdjView.DataSource;
-                        dt.RowFilter =(String.Format("[Reason]=11"));
+                       // dt.RowFilter =(String.Format("[Reason]=11"));
                         DataTable tbl1 = dt.ToTable();
                         if (tbl1.Rows.Count > 0)
                         {
@@ -726,44 +729,91 @@ namespace PharmInventory
 
         private void gridAdjView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            GridView view = sender as GridView;
-            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]); 
-            if (view.FocusedColumn.FieldName == "Reason")
+          GridView view = sender as GridView;
+          DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]); 
+          //  if (view.FocusedColumn.FieldName == "Reason")
+          //  {
+          //      gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+          //      gridAdjView.RefreshData();
+          //      if (gridAdjView.RowCount != 0)
+          //      {
+          //          ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
+          //          ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
+          //         ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
+          //          ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2; 
+          //          //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
+          //      }
+          //      else
+          //      {
+          //           ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+          //           ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+          //           //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+          //      }
+          //      gridAdjView.ActiveFilterString = String.Format("");
+          //      gridAdjView.RefreshData();
+          //  }
+            if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
             {
-                gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
-                gridAdjView.RefreshData();
-                if (gridAdjView.RowCount != 0)
-                {
-                    ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
-                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
-                   ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
-                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2; 
-                    //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
-                }
-                else
-                {
-                     ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
-                     ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
-                     //((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
-                }
-                gridAdjView.ActiveFilterString = String.Format("");
-                gridAdjView.RefreshData();
-            }
-          else  if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
-            {
-                int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]):0 ;
-                int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]):0 ;
+                int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]) : 0;
+                int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]) : 0;
                 double loss = pqty * qtyperPack;
                 dr["Losses"] = loss;
                 dr["LossPrice"] = loss * (Convert.ToDouble(dr["Price"]) / Convert.ToDouble(dr["BU Qty"])); 
             }
             else
             {
-                //((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
-                //((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
-               // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+                 //((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                 //((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+                // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
                 return;
             }
+        }
+
+        private void lkReason_EditValueChanged(object sender, EventArgs e)
+           {
+            GridView view = sender as GridView;
+            DataRow dr = gridAdjView.GetDataRow(gridAdjView.GetSelectedRows()[0]);
+            if (Convert.ToInt16(lkReason.EditValue) == 11)
+            {
+               // gridAdjView.ActiveFilterString = String.Format("[Reason] ==11");
+                //gridAdjView.RefreshData();
+               // if (gridAdjView.RowCount != 0)
+               // {
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].VisibleIndex = 1;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = true;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].VisibleIndex = 2;
+                    ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = false;
+                int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]) : 0;
+                int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]) : 0;
+                double loss = pqty * qtyperPack;
+                dr["Losses"] = loss;
+                dr["LossPrice"] = loss * (Convert.ToDouble(dr["Price"]) / Convert.ToDouble(dr["BU Qty"]));
+            }
+          else
+              {
+                    ((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+                    ((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false;
+                   ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+               }
+             //   gridAdjView.ActiveFilterString = String.Format("");
+             //   gridAdjView.RefreshData();
+            //}
+            //else if ((view.FocusedColumn.Caption == "Pack Qty") || (view.FocusedColumn.Caption == "Qty/Pack"))
+            //{
+        //  int pqty = (dr["PackQty"] != DBNull.Value) ? Convert.ToInt32(dr["PackQty"]) : 0;
+            //int qtyperPack = (dr["QtyPerPack"] != DBNull.Value) ? Convert.ToInt32(dr["QtyPerPack"]) : 0;
+            //   double loss = pqty * qtyperPack;
+            //   dr["Losses"] = loss;
+            // dr["LossPrice"] = loss * (Convert.ToDouble(dr["Price"]) / Convert.ToDouble(dr["BU Qty"]));
+            //}
+            //else 
+            //{
+            //    //((GridView)AdjustmentGrid.MainView).Columns[11].Visible = false;
+            //    //((GridView)AdjustmentGrid.MainView).Columns[12].Visible = false; 
+            //    // ((GridView)AdjustmentGrid.MainView).Columns[5].OptionsColumn.AllowEdit = true;
+            //    return;
+            //}
         }
     }
 }
