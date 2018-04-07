@@ -91,6 +91,8 @@ namespace PharmInventory.Reports
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrStore = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -374,7 +376,7 @@ namespace PharmInventory.Reports
             this.xrTable2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.xrTable2.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTable2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 9.375F);
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
@@ -772,7 +774,7 @@ namespace PharmInventory.Reports
             this.xrTable2});
             this.tableTitle.GroupFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
             new DevExpress.XtraReports.UI.GroupField("", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
-            this.tableTitle.HeightF = 97.50001F;
+            this.tableTitle.HeightF = 88.12501F;
             this.tableTitle.KeepTogether = true;
             this.tableTitle.Name = "tableTitle";
             this.tableTitle.RepeatEveryPage = true;
@@ -858,7 +860,7 @@ namespace PharmInventory.Reports
             this.xrLabel9,
             this.xrLabel10,
             this.xrLabel11});
-            this.GroupFooter1.HeightF = 41.3334F;
+            this.GroupFooter1.HeightF = 81.9584F;
             this.GroupFooter1.KeepTogether = true;
             this.GroupFooter1.Name = "GroupFooter1";
             this.GroupFooter1.RepeatEveryPage = true;
@@ -887,8 +889,10 @@ namespace PharmInventory.Reports
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrFacilityName,
-            this.xrLabel3});
-            this.headerGroup.HeightF = 28.87497F;
+            this.xrLabel3,
+            this.xrStore,
+            this.xrLabel12});
+            this.headerGroup.HeightF = 63.24997F;
             this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
@@ -914,6 +918,33 @@ namespace PharmInventory.Reports
             this.xrFacilityName.StylePriority.UseTextAlignment = false;
             this.xrFacilityName.Text = " ";
             this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel12
+            // 
+            this.xrLabel12.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(5.20846F, 49.16661F);
+            this.xrLabel12.Multiline = true;
+            this.xrLabel12.Name = "xrLabel12";
+            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel12.SizeF = new System.Drawing.SizeF(52.36731F, 14.08335F);
+            this.xrLabel12.StylePriority.UseFont = false;
+            this.xrLabel12.StylePriority.UseTextAlignment = false;
+            this.xrLabel12.Text = "Store:";
+            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrStore
+            // 
+            this.xrStore.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.xrStore.ForeColor = System.Drawing.Color.Black;
+            this.xrStore.LocationFloat = new DevExpress.Utils.PointFloat(57.57577F, 49.16661F);
+            this.xrStore.Name = "xrStore";
+            this.xrStore.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
+            this.xrStore.SizeF = new System.Drawing.SizeF(187.6956F, 14.08335F);
+            this.xrStore.StylePriority.UseFont = false;
+            this.xrStore.StylePriority.UseForeColor = false;
+            this.xrStore.StylePriority.UsePadding = false;
+            this.xrStore.StylePriority.UseTextAlignment = false;
+            this.xrStore.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // Model22
             // 
@@ -1001,5 +1032,7 @@ namespace PharmInventory.Reports
         private XRTableCell xrTableCell19;
         private XRLabel xrLabel9;
         public XRLabel xrFacilityName;
+        private XRLabel xrLabel12;
+        public XRLabel xrStore;
     }
 }

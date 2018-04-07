@@ -608,7 +608,7 @@ namespace PharmInventory.Forms.Transactions
                                                      sohbalance,dtIssueGrid.Rows[i]["UnitID"],internaldrugcode,dtIssueGrid.Rows[i]["Unit"],unitSellingPrice.ToString("n1"),
                                    // ((totPrice != double.NaN) ?(totPrice+ (totPrice*Convert.ToDouble(_priceRate))).ToString("n3") : "0"),
                                    (packPrice *  Convert.ToDouble(dtIssueGrid.Rows[i]["Pack Qty"])).ToString("n3"),
-                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,###.##"),qtyPerPack };
+                                    packSellingPrice.ToString("n2"),packSelligPriceT.ToString("n2"),packqtyT.ToString("#,##0.0#"),qtyPerPack };
                                 dtIssueConf.Rows.Add(obj);
 
                                 quantity = quantity - Convert.ToInt64(_dtRec.Rows[j]["QuantityLeft"]);
@@ -792,7 +792,7 @@ namespace PharmInventory.Forms.Transactions
                            
                                 model.AddNew();
                                 model.IssueDocID = issDoc.ID;
-                                model.PackQty = (dtConfirm.Rows[i]["PackQtyT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackQtyT"]) : 0;
+                                model.PackQty = (dtConfirm.Rows[i]["PackQtyT"] !=DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackQtyT"]) : 0;
                                 model.QtyPerPack = (dtConfirm.Rows[i]["QtyPerPackT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["QtyPerPackT"]) : 0;
                                 model.PackPrice = (dtConfirm.Rows[i]["Pack Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Pack Price"]) : 0;
                                 model.TotalPrice = (dtConfirm.Rows[i]["Total Price"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Total Price"]) : 0;
@@ -852,7 +852,8 @@ namespace PharmInventory.Forms.Transactions
                     { 
                         var modelprint = new PharmInventory.Reports.Model22
                         {
-                            PrintedBy = { Text = _printedby }
+                            PrintedBy = { Text = _printedby },
+                            xrStore = {Text = cboStoreConf.Text}
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
