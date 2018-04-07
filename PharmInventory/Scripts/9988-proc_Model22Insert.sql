@@ -10,7 +10,8 @@ CREATE PROCEDURE [proc_Model22Insert]
 	@priceRate decimal(16,4) = NULL,
 	@PackSellingPrice decimal(16,4) = NULL,
 	@UnitSellingPrice decimal(16,4) = NULL,
-	@ExpiryDate datetime = NULL
+	@ExpiryDate datetime = NULL,
+	@IssuedBy NVARCHAR(100) = NULL
 )
 AS
 BEGIN
@@ -28,7 +29,7 @@ BEGIN
 		[TotalPrice],
 		[TotalPackSellingPrice],
 		[priceRate],	[PackSellingPrice],
-		[UnitSellingPrice],[ExpiryDate]
+		[UnitSellingPrice],[ExpiryDate],[IssuedBy]
 	)
 	VALUES
 	(
@@ -41,7 +42,8 @@ BEGIN
 		@priceRate,
 		@PackSellingPrice,
 		@UnitSellingPrice,
-		@ExpiryDate
+		@ExpiryDate,
+		@IssuedBy
 )
 	SET @Err = @@Error
 

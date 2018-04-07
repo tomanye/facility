@@ -11,6 +11,7 @@ CREATE TABLE [dbo].[Model22](
 	    [PackSellingPrice] DECIMAL(16, 4) NULL ,
 	    [UnitSellingPrice] DECIMAL(16, 4) NULL ,
 		[ExpiryDate] DATETIME NULL,
+		[IssuedBy] NVARCHAR(100) NULL,
  CONSTRAINT [PK_Model22] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC

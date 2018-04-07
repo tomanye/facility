@@ -18,7 +18,8 @@ BEGIN
 		[priceRate],
 		[PackSellingPrice],
 		[UnitSellingPrice],
-		[ExpiryDate]
+		[ExpiryDate],
+		[IssuedBy]
 	FROM [Model22]
 	WHERE
 		([ID] = @ID)

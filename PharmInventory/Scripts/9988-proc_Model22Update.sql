@@ -10,7 +10,8 @@ CREATE PROCEDURE [proc_Model22Update]
 	@priceRate decimal(16,4) = NULL,
 	@PackSellingPrice decimal(16,4) = NULL,
 	@UnitSellingPrice decimal(16,4) = NULL,
-	@ExpiryDate datetime = NULL
+	@ExpiryDate datetime = NULL,
+	@IssuedBy NVARCHAR(100)= NULL
 )
 AS
 BEGIN
@@ -29,7 +30,8 @@ BEGIN
 		[priceRate] = @priceRate,
 	    [PackSellingPrice] = @PackSellingPrice,
 		[UnitSellingPrice] = @UnitSellingPrice,
-		[ExpiryDate] = @ExpiryDate  
+		[ExpiryDate] = @ExpiryDate ,
+		[IssuedBy] =@IssuedBy
 	WHERE
 		[ID] = @ID
 
