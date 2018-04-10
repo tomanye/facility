@@ -54,7 +54,7 @@ namespace PharmInventory.Forms.Modals
             chkIsVaccine.Checked = itm.Pediatric;
             txtText.Text = itm.StockCodeDACA ?? string.Empty;
             txtQuantityPerPack.Text = itm.Cost ?? string.Empty;
-           
+            chkIsPFSAVital.Checked = itm.IsPFSAVital;
             try
             {
                 if (dtItem.Rows[0]["ABC"].ToString() == "A")
@@ -243,8 +243,8 @@ namespace PharmInventory.Forms.Modals
                itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
           
                 itm.IsInHospitalList = ckExculed.Checked;
-                //itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
-            
+            //itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
+            itm.IsPFSAVital = chkIsPFSAVital.Checked;
             string valid = ValidateFields();
             if (valid == "true")
             {
