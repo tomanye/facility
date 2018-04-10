@@ -533,9 +533,11 @@ namespace PharmInventory.Forms.ActivityLogs
             //lstTransactions.Items.Clear();                
             var iss = new IssueDoc();
             DataTable dt = iss.GetModel22ByRefNo(dr["RefNo"].ToString(), Convert.ToDateTime(dr["Date"]));
+            var issuedBy = dt.Rows[0]["IssuedBy"].ToString();
             var modelprint = new PharmInventory.Reports.Model22
             {
-                PrintedBy = { Text = _printedby }
+                PrintedBy = { Text = _printedby } ,
+                xrIssuedBy = { Text = issuedBy }
             };
 
             var tbl1 = dt;

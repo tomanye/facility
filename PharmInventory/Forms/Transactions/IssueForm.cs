@@ -62,6 +62,7 @@ namespace PharmInventory.Forms.Transactions
             gn.LoadAll();
             _priceRate= gn.IsColumnNull("PriceRate") ? 0 : Convert.ToDouble(gn.PriceRate);
             _usesModel = gn.IsColumnNull("UsesModel") ? false:  gn.UsesModel;
+            modelIssuedBy.Visibility = _usesModel ? DevExpress.XtraLayout.Utils.LayoutVisibility.Always : DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             var unitcolumn = ((GridView)gridItemsChoice.MainView).Columns[4];
             var unitid = ((GridView)issueGrid.MainView).Columns[14];
             var unitcolumn1 = ((GridView)issueGrid.MainView).Columns[2];
@@ -801,6 +802,7 @@ namespace PharmInventory.Forms.Transactions
                                 model.PackSellingPrice = (dtConfirm.Rows[i]["PackSellingPrice"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackSellingPrice"]) : 0;
                                 model.UnitSellingPrice = (dtConfirm.Rows[i]["Unit PriceT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Unit PriceT"]) : 0;
                                 model.ExpiryDate =  Convert.ToDateTime(dtConfirm.Rows[i]["Expiry Date"]) ;
+                                model.IssuedBy = txtModelIssuedBy.Text;
                                 model.Save();
                            
 
@@ -853,7 +855,8 @@ namespace PharmInventory.Forms.Transactions
                         var modelprint = new PharmInventory.Reports.Model22
                         {
                             PrintedBy = { Text = _printedby },
-                            xrStore = {Text = cboStoreConf.Text}
+                            xrStore = {Text = cboStoreConf.Text},
+                            xrIssuedBy = {Text = txtModelIssuedBy.Text}
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);

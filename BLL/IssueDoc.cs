@@ -45,6 +45,7 @@ namespace BLL
                                         md.UnitSellingPrice [Unit PriceT],
                                         va.FullItemName [Item Name] ,
                                         md.ExpiryDate [Expiry Date],
+                                        md.IssuedBy,
                                         va.Unit
                                 FROM    IssueDoc id
                                         JOIN Model22 md ON md.IssueDocID = id.ID
