@@ -1,7 +1,6 @@
  
 
-ALTER PROCEDURE [dbo].[SOH]
-    @storeid INT ,
+ALTER PROCEDURE [dbo].[SOHForAllStores]
     @month INT ,
     @year INT ,
     @days INT
@@ -48,9 +47,7 @@ AS
                 ( t.SOH - ( t.Expired ) ) AS Dispatchable
         FROM    ( SELECT    CASE WHEN vw.ID IN ( SELECT DISTINCT
                                                         ItemID
-                                                 FROM   ReceiveDoc
-                                                 WHERE  StoreID = @storeid )
-                                 THEN 1
+                                                 FROM   ReceiveDoc ) THEN 1
                                  ELSE 0
                             END AS EverReceived ,
                             ISNULL(rd.Quantity, 0) AS Received ,
@@ -75,56 +72,49 @@ AS
                             vw.StockCode ,
                             vw.Unit ,
                             vw.Name AS Type ,
-                            vw.TypeID,
-							vw.VEN,
-							ISNULL(vw.isPFSAVital,0) isPFSAVital
+                            vw.TypeID ,
+                            vw.VEN ,
+                            ISNULL(vw.isPFSAVital, 0) isPFSAVital
                   FROM      vwGetAllItems vw
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity ,
                                                 SUM(QuantityLeft) QuantityLeft
                                         FROM    ReceiveDoc
-                                        WHERE   StoreID = @storeid
-                                                AND ( Date BETWEEN @fromdate AND @todate )
+                                        WHERE   ( Date BETWEEN @fromdate AND @todate )
                                         GROUP BY ItemID
                                       ) AS rd ON rd.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity
                                         FROM    IssueDoc
-                                        WHERE   StoreId = @storeid
-                                                AND ( Date BETWEEN @fromdate AND @todate )
+                                        WHERE   ( Date BETWEEN @fromdate AND @todate )
                                         GROUP BY ItemID
                                       ) AS id ON id.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity
                                         FROM    IssueDoc
-                                        WHERE   StoreId = @storeid
-                                                AND ( YEAR(Date) = @year
-                                                      AND MONTH(Date) = @month
-                                                    )
+                                        WHERE   ( YEAR(Date) = @year
+                                                  AND MONTH(Date) = @month
+                                                )
                                         GROUP BY ItemID
                                       ) AS id2 ON id2.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(PhysicalInventory) Quantity
                                         FROM    YearEnd
-                                        WHERE   StoreID = @storeid
-                                                AND Year = YEAR(@fromdate)
+                                        WHERE   Year = YEAR(@fromdate)
                                         GROUP BY ItemID
                                       ) AS bb ON bb.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(QuantityLeft) Quantity
                                         FROM    ReceiveDoc
-                                        WHERE   StoreID = @storeid
-                                                AND ExpDate < GETDATE()
+                                        WHERE   ExpDate < GETDATE()
                                         GROUP BY ItemID
                                       ) AS ed ON ed.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(QuantityLeft) Quantity
                                         FROM    ReceiveDoc rd
                                                 JOIN vwGetAllItems v ON rd.ItemID = v.ID
-                                        WHERE   StoreID = @storeid
-                                                AND ExpDate BETWEEN GETDATE()
-                                                            AND
-                                                              DATEADD(DAY,
+                                        WHERE   ExpDate BETWEEN GETDATE()
+                                                        AND   DATEADD(DAY,
                                                               v.NearExpiryTrigger,
                                                               GETDATE())
                                         GROUP BY ItemID
@@ -132,33 +122,29 @@ AS
                             LEFT JOIN ( SELECT  MAX(AmcWithDos) AS Quantity ,
                                                 ar.ItemID
                                         FROM    AmcReport ar
-                                        WHERE   ar.StoreID = @storeid
                                         GROUP BY ItemID
                                       ) AS amc ON amc.ItemID = vw.ID
                             LEFT JOIN ( SELECT  MAX(DaysOutOfStock) AS Quantity ,
                                                 ar.ItemID
                                         FROM    AmcReport ar
-                                        WHERE   ar.StoreID = @storeid
                                         GROUP BY ItemID
                                       ) AS dos ON dos.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity
                                         FROM    Disposal
-                                        WHERE   StoreId = @storeid
-                                                AND ( Date BETWEEN @fromdate AND @todate )
+                                        WHERE   ( Date BETWEEN @fromdate AND @todate )
                                                 AND Losses = 1
                                         GROUP BY ItemID
                                       ) AS loss ON loss.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity
                                         FROM    Disposal
-                                        WHERE   StoreId = @storeid
-                                                AND ( Date BETWEEN @fromdate AND @todate )
+                                        WHERE   ( Date BETWEEN @fromdate AND @todate )
                                                 AND Losses = 0
                                         GROUP BY ItemID
                                       ) AS adj ON adj.ItemID = vw.ID
                   WHERE     vw.IsInHospitalList = 1
                 ) t
-        ORDER BY t.FullItemName
-    END
+        ORDER BY t.FullItemName;
+    END 
 

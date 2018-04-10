@@ -76,7 +76,8 @@ AS
                             vw.Unit ,
                             vw.Name AS Type ,
                             vw.TypeID ,
-                            vw.VEN
+                            vw.VEN,
+							ISNULL(vw.isPFSAVital,0) isPFSAVital
                             --p.ID AS ProgramID ,
                             --p.Name AS ProgramName
                   FROM      vwGetAllItems vw --LEFT JOIN ProgramProduct pp ON vw.ID = pp.ItemID

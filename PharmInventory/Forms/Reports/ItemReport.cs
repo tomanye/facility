@@ -618,5 +618,10 @@ namespace PharmInventory.Forms.Reports
 
             }
         }
+
+        private void chkIsPFSAVital_CheckedChanged(object sender, EventArgs e)
+        {
+              gridItemChoiceView.ActiveFilterString = String.Format("IsPFSAVital={0}", Convert.ToBoolean(chkIsPFSAVital.EditValue)); 
+        }
     }
 }

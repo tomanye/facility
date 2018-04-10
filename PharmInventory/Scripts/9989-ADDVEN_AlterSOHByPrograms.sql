@@ -78,7 +78,8 @@ AS
                             vw.TypeID ,
                             p.ID AS ProgramID ,
                             p.Name AS ProgramName,
-							vw.VEN 
+							vw.VEN ,
+							ISNULL(vw.isPFSAVital,0) isPFSAVital
                   FROM      vwGetAllItems vw
                             LEFT JOIN ProgramProduct pp ON vw.ID = pp.ItemID
                             RIGHT JOIN ( SELECT *
