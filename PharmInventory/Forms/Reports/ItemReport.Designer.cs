@@ -69,6 +69,7 @@ namespace PharmInventory.Forms.Reports
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.cboYear = new DevExpress.XtraEditors.LookUpEdit();
             this.treeCategory = new DevExpress.XtraTreeList.TreeList();
@@ -107,7 +108,6 @@ namespace PharmInventory.Forms.Reports
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.pcl = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -757,6 +757,12 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn1.VisibleIndex = 3;
             this.gridColumn1.Width = 45;
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "isPFSAVital";
+            this.gridColumn13.FieldName = "isPFSAVital";
+            this.gridColumn13.Name = "gridColumn13";
+            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -1195,14 +1201,6 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem27.TextToControlDistance = 0;
             this.layoutControlItem27.TextVisible = false;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "isPFSAVital";
-            this.gridColumn13.FieldName = "isPFSAVital";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
             // 
             // ItemReport
             // 

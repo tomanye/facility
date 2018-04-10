@@ -74,7 +74,7 @@ AS
                             vw.Name AS Type ,
                             vw.TypeID ,
                             vw.VEN ,
-                            ISNULL(vw.isPFSAVital, 0) isPFSAVital
+                            vw.isPFSAVital
                   FROM      vwGetAllItems vw
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity ,

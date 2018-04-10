@@ -1067,10 +1067,10 @@
     <Content Include="Scripts\9988-proc_Model22Insert.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9989-AddVEN_AlterSOHForAllStores.sql">
+    <Content Include="Scripts\9991-AddVEN_AlterSOHForAllStores.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9989-ADDVEN_AlterSOHByPrograms.sql">
+    <Content Include="Scripts\9991-ADDVEN_AlterSOHByPrograms.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9990-AlterItem_InsertProcedure.sql">
@@ -1091,10 +1091,10 @@
     <Content Include="Scripts\9990-AlterItem_AddisPFSAVital.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9989-AddVEN_AlterSOHByUnit.sql">
+    <Content Include="Scripts\9991-AddVEN_AlterSOHByUnit.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9989-AddVEN_AlterSOH.sql">
+    <Content Include="Scripts\9991-AddVEN_AlterSOH.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\9988-proc_Model22Update.sql">

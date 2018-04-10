@@ -1,6 +1,7 @@
  
 
-ALTER PROCEDURE [dbo].[SOH]
+ALTER PROCEDURE [dbo].[SOHByPrograms]
+    @progID INT ,
     @storeid INT ,
     @month INT ,
     @year INT ,
@@ -60,7 +61,6 @@ AS
                             ISNULL(loss.Quantity, 0) AS Lost ,
                             ISNULL(adj.Quantity, 0) AS Adjusted ,
                             ISNULL(amc.Quantity, 0) AS AMC ,
-                            ISNULL(dos.Quantity, 0) AS DOS ,
                             ( ISNULL(bb.Quantity, 0) + ISNULL(rd.Quantity, 0)
                               + ISNULL(adj.Quantity, 0) - ISNULL(id.Quantity,
                                                               0)
@@ -75,10 +75,17 @@ AS
                             vw.StockCode ,
                             vw.Unit ,
                             vw.Name AS Type ,
-                            vw.TypeID,
-							vw.VEN,
-							ISNULL(vw.isPFSAVital,0) isPFSAVital
+                            vw.TypeID ,
+                            p.ID AS ProgramID ,
+                            p.Name AS ProgramName,
+							vw.VEN ,
+							 vw.isPFSAVital
                   FROM      vwGetAllItems vw
+                            LEFT JOIN ProgramProduct pp ON vw.ID = pp.ItemID
+                            RIGHT JOIN ( SELECT *
+                                         FROM   Programs
+                                         WHERE  ID = @progID
+                                       ) AS p ON pp.ProgramID = p.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity ,
                                                 SUM(QuantityLeft) QuantityLeft
@@ -135,12 +142,6 @@ AS
                                         WHERE   ar.StoreID = @storeid
                                         GROUP BY ItemID
                                       ) AS amc ON amc.ItemID = vw.ID
-                            LEFT JOIN ( SELECT  MAX(DaysOutOfStock) AS Quantity ,
-                                                ar.ItemID
-                                        FROM    AmcReport ar
-                                        WHERE   ar.StoreID = @storeid
-                                        GROUP BY ItemID
-                                      ) AS dos ON dos.ItemID = vw.ID
                             LEFT JOIN ( SELECT  ItemID ,
                                                 SUM(Quantity) Quantity
                                         FROM    Disposal
@@ -161,4 +162,6 @@ AS
                 ) t
         ORDER BY t.FullItemName
     END
+
+
 
