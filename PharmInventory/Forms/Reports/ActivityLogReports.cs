@@ -186,6 +186,22 @@ namespace PharmInventory.Forms.SummaryReports
             MainWindow.OpenInExcel(fileName);
         }
 
+        private void btnTotalReceivePrnt_Click(object sender, EventArgs e)
+        {  
+            isIssue = false;
+            printableComponentLink3.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink3.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
+            printableComponentLink3.CreateDocument();
+            printableComponentLink3.ShowPreview();
+        }
+
+        private void btnTotalReceiveExport_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            grdVwTotalReceived.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
+
         private void lkSupplier_EditValueChanged(object sender, EventArgs e)
         {
             if (lkSupplier.Text != "All Suppliers")

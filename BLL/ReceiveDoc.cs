@@ -320,7 +320,7 @@ namespace BLL
                                                             vw.Unit ,
                                                             vw.Cost ,
                                                             rd.Cost ,
-                                                            vw.FullItemName'", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                            vw.FullItemName", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
