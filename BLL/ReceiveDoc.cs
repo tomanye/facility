@@ -265,6 +265,28 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
+        public DataTable GetTotalReceiveByDateRange(DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName ) AS RowNo ,
+                                                            ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+                                                            SUM(rd.Quantity) totalQuantity ,
+                                                            vw.FullItemName ,
+                                                            vw.Unit ,
+                                                            vw.Cost  ,
+                                                            rd.Cost rdCost 
+                                                    FROM    ReceiveDoc rd
+                                                            JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                                            JOIN Supplier sp ON rd.SupplierID = sp.ID
+                                                    WHERE rd.EurDate  BETWEEN '{0}' AND '{1}'
+                                                    GROUP BY rd.ItemID ,
+                                                            vw.Unit ,
+                                                            vw.Cost ,
+                                                            rd.Cost ,
+                                                            vw.FullItemName  ", dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public DataTable GetAllReceiveByStoreDateRange(int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
@@ -277,6 +299,28 @@ namespace BLL
                                                  JOIN vwGetAllItems vw on rd.ItemID = vw.ID 
 	                                             JOIN Supplier sp on rd.SupplierID = sp.ID
                                             WHERE rd.StoreID = {0} AND rd.EurDate  BETWEEN '{1}' AND '{2}'", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
+        public DataTable GetTotalReceiveByStoreDateRange(int storeId, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName  ) AS RowNo ,
+                                                            ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+                                                            SUM(rd.Quantity) totalQuantity ,
+                                                            vw.FullItemName ,
+                                                            vw.Unit ,
+                                                            vw.Cost  ,
+                                                            rd.Cost rdCost 
+                                                    FROM    ReceiveDoc rd
+                                                            JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
+                                                            JOIN Supplier sp ON rd.SupplierID = sp.ID
+                                                   WHERE rd.StoreID = {0} AND rd.EurDate  BETWEEN '{1}' AND '{2}'
+                                                            GROUP BY rd.ItemID ,
+                                                            vw.Unit ,
+                                                            vw.Cost ,
+                                                            rd.Cost ,
+                                                            vw.FullItemName'", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

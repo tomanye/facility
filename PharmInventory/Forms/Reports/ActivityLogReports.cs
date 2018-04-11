@@ -59,6 +59,9 @@ namespace PharmInventory.Forms.SummaryReports
             gridIssues.DataSource = dtiss;
             grdViewIssued.ActiveFilterString = String.Format("Quantity<>0");
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
+
+            grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dateFrom, dateTo);
+            grdVwTotalReceived.ActiveFilterString = String.Format("totalQuantity<>0");
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -76,11 +79,15 @@ namespace PharmInventory.Forms.SummaryReports
             {
                 dtRec = rec.GetAllReceiveByDateRange(dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetIssuedByDateRange(dtFrom.Value, dtTo.Value);
+
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value);
             }
             else
             {
                 dtRec = rec.GetAllReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value); 
             }
                 
             gridReceives.DataSource = dtRec;

@@ -70,8 +70,8 @@
             this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
             this.tabTotalReceived = new DevExpress.XtraTab.XtraTabPage();
             this.tabTotalReceivedConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdTotalReceived = new DevExpress.XtraGrid.GridControl();
+            this.grdVwTotalReceived = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
@@ -142,8 +142,8 @@
             this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdTotalIssued = new DevExpress.XtraGrid.GridControl();
+            this.grdVwTotalIssued = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
@@ -186,8 +186,8 @@
             this.tabTotalReceived.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalReceivedConvertedLayout)).BeginInit();
             this.tabTotalReceivedConvertedLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalReceived)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalReceived)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).BeginInit();
@@ -233,8 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalIssued)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalIssued)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit6)).BeginInit();
@@ -721,7 +721,7 @@
             // tabTotalReceivedConvertedLayout
             // 
             this.tabTotalReceivedConvertedLayout.Controls.Add(this.lookUpEdit1);
-            this.tabTotalReceivedConvertedLayout.Controls.Add(this.gridControl1);
+            this.tabTotalReceivedConvertedLayout.Controls.Add(this.grdTotalReceived);
             this.tabTotalReceivedConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTotalReceivedConvertedLayout.Location = new System.Drawing.Point(0, 0);
             this.tabTotalReceivedConvertedLayout.Name = "tabTotalReceivedConvertedLayout";
@@ -730,38 +730,39 @@
             this.tabTotalReceivedConvertedLayout.Size = new System.Drawing.Size(1066, 389);
             this.tabTotalReceivedConvertedLayout.TabIndex = 30;
             // 
-            // gridControl1
+            // grdTotalReceived
             // 
-            this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControl1.Location = new System.Drawing.Point(12, 36);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.grdTotalReceived.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grdTotalReceived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdTotalReceived.Location = new System.Drawing.Point(12, 36);
+            this.grdTotalReceived.MainView = this.grdVwTotalReceived;
+            this.grdTotalReceived.Name = "grdTotalReceived";
+            this.grdTotalReceived.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit4,
             this.repositoryItemLookUpEdit3,
             this.repositoryItemMemoEdit3});
-            this.gridControl1.Size = new System.Drawing.Size(1042, 341);
-            this.gridControl1.TabIndex = 29;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.grdTotalReceived.Size = new System.Drawing.Size(1042, 341);
+            this.grdTotalReceived.TabIndex = 29;
+            this.grdTotalReceived.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdVwTotalReceived});
             // 
-            // gridView1
+            // grdVwTotalReceived
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdVwTotalReceived.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn31,
             this.gridColumn33,
-            this.gridColumn37,
-            this.gridColumn39,
             this.gridColumn32,
-            this.gridColumn34});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ColumnAutoWidth = false;
-            this.gridView1.OptionsView.RowAutoHeight = true;
-            this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridColumn34,
+            this.gridColumn37,
+            this.gridColumn39});
+            this.grdVwTotalReceived.GridControl = this.grdTotalReceived;
+            this.grdVwTotalReceived.Name = "grdVwTotalReceived";
+            this.grdVwTotalReceived.OptionsBehavior.Editable = false;
+            this.grdVwTotalReceived.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdVwTotalReceived.OptionsView.ColumnAutoWidth = false;
+            this.grdVwTotalReceived.OptionsView.RowAutoHeight = true;
+            this.grdVwTotalReceived.OptionsView.ShowFooter = true;
+            this.grdVwTotalReceived.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn31
             // 
@@ -770,7 +771,7 @@
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 0;
-            this.gridColumn31.Width = 37;
+            this.gridColumn31.Width = 45;
             // 
             // gridColumn33
             // 
@@ -780,7 +781,7 @@
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 1;
-            this.gridColumn33.Width = 400;
+            this.gridColumn33.Width = 600;
             // 
             // repositoryItemMemoEdit3
             // 
@@ -788,15 +789,16 @@
             // 
             // gridColumn37
             // 
-            this.gridColumn37.Caption = "Quantity";
+            this.gridColumn37.Caption = "Total Quantity";
             this.gridColumn37.DisplayFormat.FormatString = "#,##0";
             this.gridColumn37.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn37.FieldName = "Quantity";
+            this.gridColumn37.FieldName = "totalQuantity";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", "{0:#,##0}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 2;
+            this.gridColumn37.VisibleIndex = 4;
+            this.gridColumn37.Width = 100;
             // 
             // gridColumn39
             // 
@@ -807,11 +809,10 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalPrice", "{0:n3}")});
-            this.gridColumn39.UnboundExpression = "iif([Cost]==0,0,[QtyPerPack] * [NoOfPack] * [Cost])";
             this.gridColumn39.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 3;
-            this.gridColumn39.Width = 92;
+            this.gridColumn39.VisibleIndex = 5;
+            this.gridColumn39.Width = 100;
             // 
             // gridColumn32
             // 
@@ -819,7 +820,8 @@
             this.gridColumn32.FieldName = "Unit";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.Visible = true;
-            this.gridColumn32.VisibleIndex = 4;
+            this.gridColumn32.VisibleIndex = 2;
+            this.gridColumn32.Width = 120;
             // 
             // gridColumn34
             // 
@@ -827,7 +829,7 @@
             this.gridColumn34.FieldName = "Cost";
             this.gridColumn34.Name = "gridColumn34";
             this.gridColumn34.Visible = true;
-            this.gridColumn34.VisibleIndex = 5;
+            this.gridColumn34.VisibleIndex = 3;
             // 
             // repositoryItemLookUpEdit4
             // 
@@ -869,7 +871,7 @@
             // 
             // layoutControlItem24
             // 
-            this.layoutControlItem24.Control = this.gridControl1;
+            this.layoutControlItem24.Control = this.grdTotalReceived;
             this.layoutControlItem24.CustomizationFormText = "gridControl1item";
             this.layoutControlItem24.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem24.Name = "gridControl1item";
@@ -1494,7 +1496,7 @@
             // 
             // layoutControlItem23
             // 
-            this.layoutControlItem23.Control = this.gridControl1;
+            this.layoutControlItem23.Control = this.grdTotalReceived;
             this.layoutControlItem23.CustomizationFormText = "layoutControlItem7";
             this.layoutControlItem23.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem23.Name = "layoutControlItem7";
@@ -1552,38 +1554,38 @@
             this.layoutControlItem26.Text = "Supplier: ";
             this.layoutControlItem26.TextSize = new System.Drawing.Size(45, 13);
             // 
-            // gridControl2
+            // grdTotalIssued
             // 
-            this.gridControl2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.gridControl2.Location = new System.Drawing.Point(12, 36);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.grdTotalIssued.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grdTotalIssued.Location = new System.Drawing.Point(12, 36);
+            this.grdTotalIssued.MainView = this.grdVwTotalIssued;
+            this.grdTotalIssued.Name = "grdTotalIssued";
+            this.grdTotalIssued.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit5,
             this.repositoryItemLookUpEdit6,
             this.repositoryItemMemoEdit4});
-            this.gridControl2.Size = new System.Drawing.Size(1042, 341);
-            this.gridControl2.TabIndex = 15;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.grdTotalIssued.Size = new System.Drawing.Size(1042, 341);
+            this.grdTotalIssued.TabIndex = 15;
+            this.grdTotalIssued.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdVwTotalIssued});
             // 
-            // gridView2
+            // grdVwTotalIssued
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdVwTotalIssued.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn35,
             this.gridColumn38,
             this.gridColumn44,
             this.gridColumn45,
             this.gridColumn40,
             this.gridColumn41});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView2.OptionsView.ColumnAutoWidth = false;
-            this.gridView2.OptionsView.RowAutoHeight = true;
-            this.gridView2.OptionsView.ShowFooter = true;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.grdVwTotalIssued.GridControl = this.grdTotalIssued;
+            this.grdVwTotalIssued.Name = "grdVwTotalIssued";
+            this.grdVwTotalIssued.OptionsBehavior.Editable = false;
+            this.grdVwTotalIssued.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdVwTotalIssued.OptionsView.ColumnAutoWidth = false;
+            this.grdVwTotalIssued.OptionsView.RowAutoHeight = true;
+            this.grdVwTotalIssued.OptionsView.ShowFooter = true;
+            this.grdVwTotalIssued.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn35
             // 
@@ -1617,7 +1619,7 @@
             this.gridColumn44.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Quantity", "{0:#,##0}")});
             this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 7;
+            this.gridColumn44.VisibleIndex = 3;
             // 
             // gridColumn45
             // 
@@ -1631,7 +1633,7 @@
             this.gridColumn45.UnboundExpression = "[Quantity] * [Cost]";
             this.gridColumn45.UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
             this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 8;
+            this.gridColumn45.VisibleIndex = 4;
             // 
             // repositoryItemLookUpEdit5
             // 
@@ -1658,7 +1660,7 @@
             // 
             // layoutControlItem27
             // 
-            this.layoutControlItem27.Control = this.gridControl2;
+            this.layoutControlItem27.Control = this.grdTotalIssued;
             this.layoutControlItem27.CustomizationFormText = "layoutControlItem10";
             this.layoutControlItem27.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem27.Name = "layoutControlItem10";
@@ -1671,7 +1673,7 @@
             // tabTotalIssuedConvertedLayout
             // 
             this.tabTotalIssuedConvertedLayout.Controls.Add(this.lookUpEdit2);
-            this.tabTotalIssuedConvertedLayout.Controls.Add(this.gridControl2);
+            this.tabTotalIssuedConvertedLayout.Controls.Add(this.grdTotalIssued);
             this.tabTotalIssuedConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTotalIssuedConvertedLayout.Location = new System.Drawing.Point(0, 0);
             this.tabTotalIssuedConvertedLayout.Name = "tabTotalIssuedConvertedLayout";
@@ -1696,7 +1698,7 @@
             // 
             // layoutControlItem28
             // 
-            this.layoutControlItem28.Control = this.gridControl2;
+            this.layoutControlItem28.Control = this.grdTotalIssued;
             this.layoutControlItem28.CustomizationFormText = "gridControl2item";
             this.layoutControlItem28.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem28.Name = "gridControl2item";
@@ -1805,8 +1807,8 @@
             this.tabTotalReceived.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalReceivedConvertedLayout)).EndInit();
             this.tabTotalReceivedConvertedLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalReceived)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalReceived)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).EndInit();
@@ -1852,8 +1854,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalIssued)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalIssued)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit6)).EndInit();
@@ -1965,8 +1967,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraTab.XtraTabPage tabTotalReceived;
         private DevExpress.XtraTab.XtraTabPage tabTotalIssued;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl grdTotalReceived;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdVwTotalReceived;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit3;
@@ -1986,8 +1988,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
         private DevExpress.XtraLayout.LayoutControl tabTotalIssuedConvertedLayout;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl grdTotalIssued;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdVwTotalIssued;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit4;
