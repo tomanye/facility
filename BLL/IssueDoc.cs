@@ -288,6 +288,27 @@ namespace BLL
 			this.LoadFromRawSql(query);
 			return this.DataTable;
 		}
+        public DataTable GetTotalTransactionByDateRange(int storeId, DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            var query =
+                String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY vw.FullItemName DESC ) AS RowNo ,
+                                        (id.Cost * SUM(id.Quantity)) TotalPrice,
+                                        SUM(id.Quantity) TotalQuantity,
+                                        vw.FullItemName,
+                                        vw.Cost,
+                                        vw.Unit
+                                FROM    IssueDoc id
+                                        JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
+                                        JOIN vwGetAllItems vw ON id.ItemID = vw.ID
+                                WHERE(id.IsTransfer = 0) and id.StoreId = { 0}    AND(id.EurDate BETWEEN '{1}' AND '{2}')
+                                GROUP BY vw.FullItemName,
+                                        vw.Cost,
+                                        vw.Unit,
+                                        id.Cost ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public DataTable GetIssuedByDateRange(DateTime dt1, DateTime dt2)
         {
             this.FlushData();
@@ -306,7 +327,27 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-
+        public DataTable GetTotalIssuedByDateRange(DateTime dt1, DateTime dt2)
+        {
+            this.FlushData();
+            var query =
+                String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY vw.FullItemName DESC ) AS RowNo ,
+                                        ( id.Cost * SUM(id.Quantity) ) TotalPrice ,
+                                        SUM(id.Quantity) TotalQuantity ,
+                                        vw.FullItemName ,
+                                        vw.Cost ,
+                                        vw.Unit
+                                FROM    IssueDoc id
+                                        JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
+                                        JOIN vwGetAllItems vw ON id.ItemID = vw.ID
+                                WHERE   ( id.IsTransfer = 0 )  AND (id.EurDate BETWEEN '{0}' AND '{1}' )
+                                GROUP BY vw.FullItemName ,
+                                        vw.Cost ,
+                                        vw.Unit ,
+                                        id.Cost", dt1.ToShortDateString(), dt2.ToShortDateString());
+            this.LoadFromRawSql(query);
+            return this.DataTable;
+        }
         public Int64 GetIssueByDateRange(int itemId,int storeId, DateTime dt1, DateTime dt2)
 		{
 			this.FlushData();

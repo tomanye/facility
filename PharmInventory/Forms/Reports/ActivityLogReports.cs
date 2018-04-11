@@ -61,7 +61,9 @@ namespace PharmInventory.Forms.SummaryReports
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
 
             grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dateFrom, dateTo);
-            grdVwTotalReceived.ActiveFilterString = String.Format("totalQuantity<>0");
+            //grdVwTotalReceived.ActiveFilterString = String.Format("totalQuantity<>0");
+            grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dateFrom, dateTo);
+            grdVwTotalIssued.ActiveFilterString = String.Format("TotalQuantity<>0");
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -81,13 +83,15 @@ namespace PharmInventory.Forms.SummaryReports
                 dtiss = iss.GetIssuedByDateRange(dtFrom.Value, dtTo.Value);
 
                 grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value);
+                grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dtFrom.Value, dtTo.Value);
             }
             else
             {
                 dtRec = rec.GetAllReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
 
-                grdTotalReceived.DataSource = rec.GetTotalReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value); 
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+                grdTotalIssued.DataSource = iss.GetTotalTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
             }
                 
             gridReceives.DataSource = dtRec;
