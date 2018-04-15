@@ -274,7 +274,8 @@ namespace BLL
                                                             vw.FullItemName ,
                                                             vw.Unit ,
                                                             vw.Cost  ,
-                                                            rd.Cost rdCost 
+                                                            rd.Cost rdCost ,
+                                                            vw.Name CommodityType
                                                     FROM    ReceiveDoc rd
                                                             JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
                                                             JOIN Supplier sp ON rd.SupplierID = sp.ID
@@ -283,7 +284,7 @@ namespace BLL
                                                             vw.Unit ,
                                                             vw.Cost ,
                                                             rd.Cost ,
-                                                            vw.FullItemName  ", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                            vw.FullItemName ,vw.Name ", dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -311,7 +312,7 @@ namespace BLL
                                                             vw.FullItemName ,
                                                             vw.Unit ,
                                                             vw.Cost  ,
-                                                            rd.Cost rdCost 
+                                                            rd.Cost rdCost ,vw.Name CommodityType
                                                     FROM    ReceiveDoc rd
                                                             JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
                                                             JOIN Supplier sp ON rd.SupplierID = sp.ID
@@ -320,7 +321,7 @@ namespace BLL
                                                             vw.Unit ,
                                                             vw.Cost ,
                                                             rd.Cost ,
-                                                            vw.FullItemName", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                            vw.FullItemName,vw.Name", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

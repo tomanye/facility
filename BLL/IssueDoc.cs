@@ -297,7 +297,7 @@ namespace BLL
                                         SUM(id.Quantity) TotalQuantity,
                                         vw.FullItemName,
                                         vw.Cost,
-                                        vw.Unit
+                                        vw.Unit,vw.Name CommodityType
                                 FROM    IssueDoc id
                                         JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                         JOIN vwGetAllItems vw ON id.ItemID = vw.ID
@@ -305,7 +305,7 @@ namespace BLL
                                 GROUP BY vw.FullItemName,
                                         vw.Cost,
                                         vw.Unit,
-                                        id.Cost ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+                                        id.Cost,vw.Name ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -336,7 +336,8 @@ namespace BLL
                                         SUM(id.Quantity) TotalQuantity ,
                                         vw.FullItemName ,
                                         vw.Cost ,
-                                        vw.Unit
+                                        vw.Unit, 
+                                        vw.Name CommodityType
                                 FROM    IssueDoc id
                                         JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                         JOIN vwGetAllItems vw ON id.ItemID = vw.ID
@@ -344,7 +345,7 @@ namespace BLL
                                 GROUP BY vw.FullItemName ,
                                         vw.Cost ,
                                         vw.Unit ,
-                                        id.Cost", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                        id.Cost,vw.Name", dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
