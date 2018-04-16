@@ -79,6 +79,7 @@
             this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -133,6 +134,7 @@
             this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -177,8 +179,6 @@
             this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem35 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem37 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
@@ -868,6 +868,16 @@
             this.gridColumn32.VisibleIndex = 2;
             this.gridColumn32.Width = 150;
             // 
+            // gridColumn36
+            // 
+            this.gridColumn36.Caption = "Commodity Type";
+            this.gridColumn36.FieldName = "CommodityType";
+            this.gridColumn36.Name = "gridColumn36";
+            this.gridColumn36.OptionsColumn.AllowEdit = false;
+            this.gridColumn36.Visible = true;
+            this.gridColumn36.VisibleIndex = 3;
+            this.gridColumn36.Width = 170;
+            // 
             // gridColumn34
             // 
             this.gridColumn34.Caption = "PPS";
@@ -1495,6 +1505,16 @@
             // 
             this.repositoryItemMemoEdit4.Name = "repositoryItemMemoEdit4";
             // 
+            // gridColumn42
+            // 
+            this.gridColumn42.Caption = "Commodity Type";
+            this.gridColumn42.FieldName = "CommodityType";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.OptionsColumn.AllowEdit = false;
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 3;
+            this.gridColumn42.Width = 170;
+            // 
             // gridColumn40
             // 
             this.gridColumn40.Caption = "Unit";
@@ -2008,26 +2028,6 @@
             this.layoutControlItem37.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem37.TextToControlDistance = 0;
             this.layoutControlItem37.TextVisible = false;
-            // 
-            // gridColumn36
-            // 
-            this.gridColumn36.Caption = "Commodity Type";
-            this.gridColumn36.FieldName = "CommodityType";
-            this.gridColumn36.Name = "gridColumn36";
-            this.gridColumn36.OptionsColumn.AllowEdit = false;
-            this.gridColumn36.Visible = true;
-            this.gridColumn36.VisibleIndex = 3;
-            this.gridColumn36.Width = 170;
-            // 
-            // gridColumn42
-            // 
-            this.gridColumn42.Caption = "Commodity Type";
-            this.gridColumn42.FieldName = "CommodityType";
-            this.gridColumn42.Name = "gridColumn42";
-            this.gridColumn42.OptionsColumn.AllowEdit = false;
-            this.gridColumn42.Visible = true;
-            this.gridColumn42.VisibleIndex = 3;
-            this.gridColumn42.Width = 170;
             // 
             // ActivityLogReports
             // 
