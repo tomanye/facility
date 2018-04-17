@@ -755,9 +755,8 @@ namespace PharmInventory.Reports
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 28.20832F);
             this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለፋርማሲ አካዉንታን አራተኛው  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛው" +
-    "  ቅጠል ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡" +
-    "፡ ";
+            this.xrLabel8.Text = "ዋና ለሂሳብ ክፍል፣ 2ኛ ለተቀባይ፣ ሦሰተኛ ቅጠል ለፋርማሲ አካዉንታን አራተኛ  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛ  ቅጠል" +
+    " ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡፡ ";
             // 
             // xrLabel5
             // 
