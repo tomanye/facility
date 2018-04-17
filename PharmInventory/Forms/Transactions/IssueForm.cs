@@ -850,6 +850,10 @@ namespace PharmInventory.Forms.Transactions
                     }
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
+     
+
+                    //xpButton2_Click(sender, e);
+                    PrintPickList();
                     if (_usesModel)
                     {
                         var modelprint = new PharmInventory.Reports.Model22
@@ -862,7 +866,7 @@ namespace PharmInventory.Forms.Transactions
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
                         tbl1.TableName = "Model22";
-                      
+
                         var dtset = new DataSet();
                         dtset.Tables.Add(tbl1.Copy());
                         modelprint.DataSource = dtset;
@@ -873,8 +877,7 @@ namespace PharmInventory.Forms.Transactions
                         modelprint.ShowPreviewDialog();
                     }
 
-                    //xpButton2_Click(sender, e);
-                    PrintPickList();
+
                     issueGrid.DataSource = null;
                     issueGridView.RefreshData();
                     RefreshItems();
