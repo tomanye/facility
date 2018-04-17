@@ -47,7 +47,7 @@ namespace PharmInventory.Forms.Transactions
         double _priceRate = 0;
         bool _usesModel = false;
         string _printedby = "";
-
+        int _selectedItem = 0;
         #endregion
 
         /// <summary>
@@ -802,7 +802,7 @@ namespace PharmInventory.Forms.Transactions
                                 model.PackSellingPrice = (dtConfirm.Rows[i]["PackSellingPrice"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["PackSellingPrice"]) : 0;
                                 model.UnitSellingPrice = (dtConfirm.Rows[i]["Unit PriceT"] != DBNull.Value) ? Convert.ToDecimal(dtConfirm.Rows[i]["Unit PriceT"]) : 0;
                                 model.ExpiryDate =  Convert.ToDateTime(dtConfirm.Rows[i]["Expiry Date"]) ;
-                                model.IssuedBy = txtModelIssuedBy.Text;
+                                model.IssuedBy = txtModelIssuedBy.Text; 
                                 model.Save();
                            
 
@@ -851,12 +851,13 @@ namespace PharmInventory.Forms.Transactions
                     XtraMessageBox.Show("Transaction Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                    
                     if (_usesModel)
-                    { 
+                    {
                         var modelprint = new PharmInventory.Reports.Model22
                         {
                             PrintedBy = { Text = _printedby },
-                            xrStore = {Text = cboStoreConf.Text},
-                            xrIssuedBy = {Text = txtModelIssuedBy.Text}
+                            xrStore = { Text = cboStoreConf.Text },
+                            xrIssuedBy = { Text = txtModelIssuedBy.Text },
+                            xrReceivedBy = { Text = txtConRecipientName.Text }
                         };
 
                         var tbl1 = ((DataTable)gridConfirmation.DataSource);
@@ -1114,8 +1115,7 @@ namespace PharmInventory.Forms.Transactions
         {
             var view = sender as GridView;
             if (view == null) return;
-            var iu = new ItemUnit();
-
+            var iu = new ItemUnit(); 
             if ((view.FocusedColumn.FieldName == "Pack Qty") || (view.FocusedColumn.FieldName == "Qty Per Pack") || (view.FocusedColumn.FieldName == "DU Remaining SOH"))
             {
                 DataRow dr = issueGridView.GetDataRow(issueGridView.GetSelectedRows()[0]);
@@ -1175,7 +1175,19 @@ namespace PharmInventory.Forms.Transactions
                 dr["Recommended Qty"] = ((recQty > 0) ? Convert.ToInt64(recQty) : 0);
             }
         }
+        private void countRow(object view)
+        {
 
+            var sender = view as GridView;
+            if (view == null) return;
+            _selectedItem = _selectedItem + 1;
+            if (_selectedItem > 9)
+            {
+                Validation();
+            }
+
+            else  return;   
+        }
         private void tabPage1_Click(object sender, EventArgs e)
         {
             _dtSelectedTable = new DataTable();
@@ -1390,6 +1402,9 @@ namespace PharmInventory.Forms.Transactions
             }
         }
 
-    
+        private void gridItemsChoice_Click(object sender, EventArgs e)
+        {
+            countRow(sender);
+        }
     }
 }
