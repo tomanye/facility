@@ -38,6 +38,7 @@ namespace PharmInventory.Forms.Profiles
             this.txtBirths = new DevExpress.XtraEditors.TextEdit();
             this.txtmonthstosupply = new DevExpress.XtraEditors.TextEdit();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chkNormal = new DevExpress.XtraEditors.CheckEdit();
             this.cboHCTSFirstUpdate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboHCTSUpdateFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -83,7 +84,6 @@ namespace PharmInventory.Forms.Profiles
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbEPriceRate.Properties)).BeginInit();
@@ -91,6 +91,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.txtBirths.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmonthstosupply.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).BeginInit();
@@ -132,7 +133,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -206,7 +206,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.chkUsesModel.Location = new System.Drawing.Point(153, 141);
             this.chkUsesModel.Name = "chkUsesModel";
-            this.chkUsesModel.Properties.Caption = "Uses Model";
+            this.chkUsesModel.Properties.Caption = "Voucher";
             this.chkUsesModel.Size = new System.Drawing.Size(82, 19);
             this.chkUsesModel.StyleController = this.groupBox1ConvertedLayout;
             this.chkUsesModel.TabIndex = 23;
@@ -258,11 +258,15 @@ namespace PharmInventory.Forms.Profiles
             this.lookUpEdit1.StyleController = this.groupBox1ConvertedLayout;
             this.lookUpEdit1.TabIndex = 18;
             // 
+            // settingbindingSource
+            // 
+            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
+            // 
             // chkNormal
             // 
             this.chkNormal.Location = new System.Drawing.Point(24, 141);
             this.chkNormal.Name = "chkNormal";
-            this.chkNormal.Properties.Caption = "Normal Facility";
+            this.chkNormal.Properties.Caption = "Non_Voucher";
             this.chkNormal.Size = new System.Drawing.Size(125, 19);
             this.chkNormal.StyleController = this.groupBox1ConvertedLayout;
             this.chkNormal.TabIndex = 14;
@@ -764,10 +768,6 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem20.TextSize = new System.Drawing.Size(123, 13);
             this.layoutControlItem20.TextToControlDistance = 5;
             // 
-            // settingbindingSource
-            // 
-            this.settingbindingSource.DataSource = typeof(PharmInventory.HelperClasses.FeSetting);
-            // 
             // Hospital
             // 
             this.Appearance.Options.UseFont = true;
@@ -785,6 +785,7 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.txtBirths.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmonthstosupply.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkNormal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSFirstUpdate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboHCTSUpdateFrequency.Properties)).EndInit();
@@ -826,7 +827,6 @@ namespace PharmInventory.Forms.Profiles
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingbindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
