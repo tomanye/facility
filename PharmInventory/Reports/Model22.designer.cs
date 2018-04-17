@@ -923,10 +923,10 @@ namespace PharmInventory.Reports
             this.xrFacilityName.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrFacilityName.BorderWidth = 1F;
             this.xrFacilityName.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(366.4347F, 10.00001F);
+            this.xrFacilityName.LocationFloat = new DevExpress.Utils.PointFloat(361.2264F, 10.00001F);
             this.xrFacilityName.Name = "xrFacilityName";
             this.xrFacilityName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrFacilityName.SizeF = new System.Drawing.SizeF(200.9466F, 13.95839F);
+            this.xrFacilityName.SizeF = new System.Drawing.SizeF(206.1548F, 13.95839F);
             this.xrFacilityName.StylePriority.UseBorderColor = false;
             this.xrFacilityName.StylePriority.UseBorderDashStyle = false;
             this.xrFacilityName.StylePriority.UseBorders = false;
@@ -934,7 +934,7 @@ namespace PharmInventory.Reports
             this.xrFacilityName.StylePriority.UseFont = false;
             this.xrFacilityName.StylePriority.UseTextAlignment = false;
             this.xrFacilityName.Text = " ";
-            this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
             // 
             // xrStore
             // 
