@@ -543,7 +543,7 @@ namespace PharmInventory.Reports
             this.xrTableCell7.StylePriority.UseFont = false;
             this.xrTableCell7.StylePriority.UsePadding = false;
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.Text = "የጥቅል መግዣ ዋጋ\r\nPack Price\r\n";
+            this.xrTableCell7.Text = "የጥቅል መግዣ ዋጋ\r\nPack Cost\r\n";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell7.Weight = 0.12913963978219734D;
             // 
