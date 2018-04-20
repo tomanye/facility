@@ -534,13 +534,19 @@ namespace PharmInventory.Forms.ActivityLogs
             var iss = new IssueDoc();
             DataTable dt = iss.GetModel22ByRefNo(dr["RefNo"].ToString(), Convert.ToDateTime(dr["Date"]));
             var issuedBy ="";
-            if (dt.Rows.Count>0)
-              issuedBy = (dt.Rows[0]["ModelIssuedBy"] !=null)?dt.Rows[0]["ModelIssuedBy"].ToString():"";
+            var receivedBy = "";
+            if (dt.Rows.Count > 0)
+            {
+                issuedBy = (dt.Rows[0]["ModelIssuedBy"] != null) ? dt.Rows[0]["ModelIssuedBy"].ToString() : "";
+                receivedBy = (dt.Rows[0]["ReceivedBy"] != null) ? dt.Rows[0]["ReceivedBy"].ToString() : "";
+            }
+             
             var modelprint = new PharmInventory.Reports.Model22
             {
                 PrintedBy = { Text = _printedby } ,
                 xrStore = {Text = cboStores.Text},
-                xrIssuedBy = { Text = issuedBy }
+                xrIssuedBy = { Text = issuedBy },
+                xrReceivedBy = {Text = receivedBy }
             };
 
             var tbl1 = dt;

@@ -28,8 +28,9 @@ namespace PharmInventory.Forms.ActivityLogs
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogIssues));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.detailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -40,7 +41,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
             this.ReferenceNo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.Date = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cboStores = new DevExpress.XtraEditors.LookUpEdit();
@@ -63,7 +64,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.colIssuedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.unitbindingSource = new System.Windows.Forms.BindingSource();
+            this.unitbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colIssuedToto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colExpiryDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,8 +84,8 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutPrintModel = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -168,7 +169,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printModel.Size = new System.Drawing.Size(112, 22);
             this.printModel.StyleController = this.layoutControl1;
             this.printModel.TabIndex = 36;
-            this.printModel.Text = "Print &Model";
+            this.printModel.Text = "Print &Voucher";
             this.printModel.Click += new System.EventHandler(this.printModel_Click);
             // 
             // chkIntDrugCode

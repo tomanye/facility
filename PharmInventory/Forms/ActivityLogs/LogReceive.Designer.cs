@@ -28,19 +28,21 @@ namespace PharmInventory.Forms.ActivityLogs
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogReceive));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.printModel = new DevExpress.XtraEditors.SimpleButton();
             this.chkIntDrugCode = new DevExpress.XtraEditors.CheckEdit();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btnExport = new DevExpress.XtraEditors.SimpleButton();
             this.lstTree = new DevExpress.XtraTreeList.TreeList();
             this.colRefNo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnEditRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteRefrenceNo = new System.Windows.Forms.ToolStripMenuItem();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecDate = new System.Windows.Forms.Label();
@@ -64,7 +66,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.unitsbindingSource = new System.Windows.Forms.BindingSource();
+            this.unitsbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUnit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lkEditSupplier = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
@@ -83,11 +85,10 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
-            this.printModel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutModelPrint = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkIntDrugCode.Properties)).BeginInit();
@@ -117,9 +118,9 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutModelPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutModelPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -140,6 +141,17 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControl1.Size = new System.Drawing.Size(1321, 584);
             this.layoutControl1.TabIndex = 27;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // printModel
+            // 
+            this.printModel.Image = global::PharmInventory.Properties.Resources.printer;
+            this.printModel.Location = new System.Drawing.Point(1002, 554);
+            this.printModel.Name = "printModel";
+            this.printModel.Size = new System.Drawing.Size(101, 22);
+            this.printModel.StyleController = this.layoutControl1;
+            this.printModel.TabIndex = 37;
+            this.printModel.Text = "Print &Voucher";
+            this.printModel.Click += new System.EventHandler(this.printModel_Click);
             // 
             // chkIntDrugCode
             // 
@@ -622,7 +634,7 @@ namespace PharmInventory.Forms.ActivityLogs
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
             this.emptySpaceItem1.Location = new System.Drawing.Point(486, 527);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(283, 26);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(272, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -732,6 +744,19 @@ namespace PharmInventory.Forms.ActivityLogs
             this.layoutControlItem3.TextToControlDistance = 0;
             this.layoutControlItem3.TextVisible = false;
             // 
+            // layoutModelPrint
+            // 
+            this.layoutModelPrint.Control = this.printModel;
+            this.layoutModelPrint.CustomizationFormText = "layoutModelPrint";
+            this.layoutModelPrint.Location = new System.Drawing.Point(758, 527);
+            this.layoutModelPrint.Name = "layoutModelPrint";
+            this.layoutModelPrint.Size = new System.Drawing.Size(105, 26);
+            this.layoutModelPrint.Text = "layoutModelPrint";
+            this.layoutModelPrint.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutModelPrint.TextToControlDistance = 0;
+            this.layoutModelPrint.TextVisible = false;
+            this.layoutModelPrint.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.Control = this.chkIntDrugCode;
@@ -754,30 +779,6 @@ namespace PharmInventory.Forms.ActivityLogs
             this.printableComponentLink1.Component = this.gridReceives;
             this.printableComponentLink1.Margins = new System.Drawing.Printing.Margins(25, 30, 120, 60);
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
-            // 
-            // printModel
-            // 
-            this.printModel.Image = global::PharmInventory.Properties.Resources.printer;
-            this.printModel.Location = new System.Drawing.Point(1013, 554);
-            this.printModel.Name = "printModel";
-            this.printModel.Size = new System.Drawing.Size(90, 22);
-            this.printModel.StyleController = this.layoutControl1;
-            this.printModel.TabIndex = 37;
-            this.printModel.Text = "Print &Model";
-            this.printModel.Click += new System.EventHandler(this.printModel_Click);
-            // 
-            // layoutModelPrint
-            // 
-            this.layoutModelPrint.Control = this.printModel;
-            this.layoutModelPrint.CustomizationFormText = "layoutModelPrint";
-            this.layoutModelPrint.Location = new System.Drawing.Point(769, 527);
-            this.layoutModelPrint.Name = "layoutModelPrint";
-            this.layoutModelPrint.Size = new System.Drawing.Size(94, 26);
-            this.layoutModelPrint.Text = "layoutModelPrint";
-            this.layoutModelPrint.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutModelPrint.TextToControlDistance = 0;
-            this.layoutModelPrint.TextVisible = false;
-            this.layoutModelPrint.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // LogReceive
             // 
@@ -819,9 +820,9 @@ namespace PharmInventory.Forms.ActivityLogs
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutModelPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.printingSystem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutModelPrint)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -333,6 +333,7 @@
             this.dtTo.PopUpFontSize = 12F;
             this.dtTo.Size = new System.Drawing.Size(150, 20);
             this.dtTo.TabIndex = 7;
+            this.dtTo.Value = new System.DateTime(2018, 4, 17, 0, 0, 0, 0);
             this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // dtFrom
@@ -346,6 +347,7 @@
             this.dtFrom.PopUpFontSize = 12F;
             this.dtFrom.Size = new System.Drawing.Size(135, 20);
             this.dtFrom.TabIndex = 6;
+            this.dtFrom.Value = new System.DateTime(2018, 4, 17, 0, 0, 0, 0);
             this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // xtraTabActivityLog
