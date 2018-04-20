@@ -911,9 +911,7 @@ namespace PharmInventory.Forms.Transactions
             dtset.Tables.Add(tbl1.Copy());
             pickList.DataSource = dtset;
             pickList.Landscape = true;
-            //var pagecount = modelprint.Pages.Count;  
-            //XtraMessageBox.Show(string.Format("You are about to print {0} pages!", pagecount), "Success", MessageBoxButtons.OK,
-            //                     MessageBoxIcon.Information);
+ 
             pickList.ShowPreviewDialog();
         }
         /// <summary>
