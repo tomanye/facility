@@ -573,6 +573,12 @@
     <Compile Include="Reports\LossAdjustmentModel22.designer.cs">
       <DependentUpon>LossAdjustmentModel22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PickListNonVoucher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\PickListNonVoucher.designer.cs">
+      <DependentUpon>PickListNonVoucher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\PickList.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -1397,6 +1403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\LossAdjustmentModel22.resx">
       <DependentUpon>LossAdjustmentModel22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\PickListNonVoucher.resx">
+      <DependentUpon>PickListNonVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\PickList.resx">
       <DependentUpon>PickList.cs</DependentUpon>

@@ -894,8 +894,37 @@ namespace PharmInventory.Forms.Transactions
           
             dtIssueDate.CustomFormat = "MM/dd/yyyy";
             var dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
+          
 
-            var pickList = new PharmInventory.Reports.PickList
+          
+            if (_usesModel)
+            {
+                var tbl1 = ((DataTable)gridConfirmation.DataSource);
+                tbl1.TableName = "PickList";
+                var dtset = new DataSet();
+                dtset.Tables.Add(tbl1.Copy());
+
+                var pickList = new PharmInventory.Reports.PickList
+                {
+                    PrintedBy = { Text = _printedby },
+                    IssueDate = { Text = dtCurrent.ToShortDateString() },
+                    RefNo = { Text = txtConfRef.Text },
+                    From = { Text = txtStore.Text },
+                    To = { Text = txtIssuedTo.Text }
+                };
+             
+          
+                pickList.DataSource = dtset;
+                pickList.Landscape = true;
+
+                pickList.ShowPreviewDialog();
+            }
+            else {
+                var tblnonvoucher = ((DataTable)gridConfirmation.DataSource);
+                tblnonvoucher.TableName = "PickListNonVoucher";
+                var dtset1 = new DataSet();
+                dtset1.Tables.Add(tblnonvoucher.Copy());
+                var NonVoucherpickList = new PharmInventory.Reports.PickListNonVoucher
             {
                 PrintedBy = { Text = _printedby },
                 IssueDate = { Text = dtCurrent.ToShortDateString() },
@@ -903,16 +932,16 @@ namespace PharmInventory.Forms.Transactions
                 From = { Text = txtStore.Text },
                 To = { Text = txtIssuedTo.Text }
             };
+                 
+                NonVoucherpickList.DataSource = dtset1;
+                NonVoucherpickList.Landscape = true;
 
-            var tbl1 = ((DataTable)gridConfirmation.DataSource);
-            tbl1.TableName = "Model22";
+                NonVoucherpickList.ShowPreviewDialog();
+            }
 
-            var dtset = new DataSet();
-            dtset.Tables.Add(tbl1.Copy());
-            pickList.DataSource = dtset;
-            pickList.Landscape = true;
- 
-            pickList.ShowPreviewDialog();
+
+
+            
         }
         /// <summary>
         /// The issue form is reset so that every input is cleared out.
