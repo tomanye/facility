@@ -893,18 +893,10 @@ namespace PharmInventory.Forms.Transactions
         {
           
             dtIssueDate.CustomFormat = "MM/dd/yyyy";
-            var dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text);
-          
-
-          
+            var dtCurrent = ConvertDate.DateConverter(dtIssueDate.Text); 
             if (_usesModel)
-            {
-                var tbl1 = ((DataTable)gridConfirmation.DataSource);
-                tbl1.TableName = "PickList";
-                var dtset = new DataSet();
-                dtset.Tables.Add(tbl1.Copy());
-
-                var pickList = new PharmInventory.Reports.PickList
+            { 
+                var modelprint = new PharmInventory.Reports.PickList
                 {
                     PrintedBy = { Text = _printedby },
                     IssueDate = { Text = dtCurrent.ToShortDateString() },
@@ -912,16 +904,19 @@ namespace PharmInventory.Forms.Transactions
                     From = { Text = txtStore.Text },
                     To = { Text = txtIssuedTo.Text }
                 };
-             
-          
-                pickList.DataSource = dtset;
-                pickList.Landscape = true;
 
-                pickList.ShowPreviewDialog();
+                var tbl1 = ((DataTable)gridConfirmation.DataSource);
+                tbl1.TableName = "Model22";
+
+                var dtset = new DataSet();
+                dtset.Tables.Add(tbl1.Copy());
+                modelprint.DataSource = dtset;
+                modelprint.Landscape = true; 
+                modelprint.ShowPreviewDialog();
             }
             else {
                 var tblnonvoucher = ((DataTable)gridConfirmation.DataSource);
-                tblnonvoucher.TableName = "PickListNonVoucher";
+                tblnonvoucher.TableName = "Model22";
                 var dtset1 = new DataSet();
                 dtset1.Tables.Add(tblnonvoucher.Copy());
                 var NonVoucherpickList = new PharmInventory.Reports.PickListNonVoucher
