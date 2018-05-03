@@ -157,7 +157,7 @@ namespace PharmInventory
             dtSOHList.Columns[1].DataType = typeof(Int64);
             double normalPrice = (sohPrice - nearExpCost - expCost);
 
-            Int64 totItm = normal + nearExpiry + expired ;
+            Int64 totItm = normal + nearExpiry + expired ; 
 
             object[] oo = { "Normal : " + normalPrice.ToString("C"), obj[0] };
             dtSOHList.Rows.Add(oo);
@@ -170,19 +170,22 @@ namespace PharmInventory
             object[] oo2 = { "Near Expiry : " + nearExpCost.ToString("C"), obj[1] };
             dtSOHList.Rows.Add(oo2);
 
-            decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
+           // decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
+            decimal per = Convert.ToDecimal(normalPrice) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str = { "Normal", per.ToString() + "%", obj[0].ToString(), normalPrice.ToString("C") };
             ListViewItem lstItmNor = new ListViewItem(str);
             lstExpStatus.Items.Add(lstItmNor);
 
-            per = Convert.ToDecimal(nearExpiry) / Convert.ToDecimal(totItm) * 100;
+           // per = Convert.ToDecimal(nearExpiry) / Convert.ToDecimal(totItm) * 100;
+            per = Convert.ToDecimal(nearExpCost) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str1 = { "Near Expiry", per.ToString() + "%", obj[1].ToString(), nearExpCost.ToString("C") };
             ListViewItem lstItmNor1 = new ListViewItem(str1);
             lstExpStatus.Items.Add(lstItmNor1);
 
-            per = Convert.ToDecimal(expired) / Convert.ToDecimal(totItm) * 100;
+          //  per = Convert.ToDecimal(expired) / Convert.ToDecimal(totItm) * 100;
+            per = Convert.ToDecimal(expCost) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), expCost.ToString("C") };
             ListViewItem lstItmNor2 = new ListViewItem(str2);
@@ -295,19 +298,22 @@ namespace PharmInventory
             //dtSOHList.Rows.Add(oo4);
 
 
-            decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
+           // decimal per = Convert.ToDecimal(normal) / Convert.ToDecimal(totItm) * 100;
+            decimal per = Convert.ToDecimal(normalPrice) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str = { "Normal", per.ToString() + "%", obj[0].ToString(), normalPrice.ToString("C") };
             ListViewItem lstItmNor = new ListViewItem(str);
             lstExpStatus.Items.Add(lstItmNor);
 
-            per = Convert.ToDecimal(nearExpiry) / Convert.ToDecimal(totItm) * 100;
+           // per = Convert.ToDecimal(nearExpiry) / Convert.ToDecimal(totItm) * 100;
+            per = Convert.ToDecimal(nearExpCost) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str1 = { "Near Expiry", per.ToString() + "%", obj[1].ToString(), nearExpCost.ToString("C") };
             ListViewItem lstItmNor1 = new ListViewItem(str1);
             lstExpStatus.Items.Add(lstItmNor1);
 
-            per = (Convert.ToDecimal(expired) + Convert.ToDecimal(disposed) )/ Convert.ToDecimal(totItm) * 100;
+            // per = (Convert.ToDecimal(expired) + Convert.ToDecimal(disposed) )/ Convert.ToDecimal(totItm) * 100;
+            per = (Convert.ToDecimal(expCost) + Convert.ToDecimal(lossandadjexpCost)) / Convert.ToDecimal(sohPrice) * 100;
             per = Decimal.Round(per, 0);
             string[] str2 = { "Expired", per.ToString() + "%", obj[2].ToString(), (lossandadjexpCost+expCost).ToString("C") };
             ListViewItem lstItmNor2 = new ListViewItem(str2);

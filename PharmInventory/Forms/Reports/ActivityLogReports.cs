@@ -59,6 +59,11 @@ namespace PharmInventory.Forms.SummaryReports
             gridIssues.DataSource = dtiss;
             grdViewIssued.ActiveFilterString = String.Format("Quantity<>0");
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
+
+            grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dateFrom, dateTo);
+            //grdVwTotalReceived.ActiveFilterString = String.Format("totalQuantity<>0");
+            grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dateFrom, dateTo);
+            grdVwTotalIssued.ActiveFilterString = String.Format("TotalQuantity<>0");
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -76,11 +81,17 @@ namespace PharmInventory.Forms.SummaryReports
             {
                 dtRec = rec.GetAllReceiveByDateRange(dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetIssuedByDateRange(dtFrom.Value, dtTo.Value);
+
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value);
+                grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dtFrom.Value, dtTo.Value);
             }
             else
             {
                 dtRec = rec.GetAllReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByStoreDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
+                grdTotalIssued.DataSource = iss.GetTotalTransactionByDateRange(Convert.ToInt32(cboStores.EditValue), dtFrom.Value, dtTo.Value);
             }
                 
             gridReceives.DataSource = dtRec;
@@ -176,6 +187,38 @@ namespace PharmInventory.Forms.SummaryReports
         {
             string fileName = MainWindow.GetNewFileName("xls");
             gridIssues.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
+
+        private void btnTotalReceivePrnt_Click(object sender, EventArgs e)
+        {  
+            isIssue = false;
+            printableComponentLink3.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink3.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
+            printableComponentLink3.CreateDocument();
+            printableComponentLink3.ShowPreview();
+        }
+
+        private void btnTotalReceiveExport_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            grdVwTotalReceived.ExportToXls(fileName);
+            MainWindow.OpenInExcel(fileName);
+        }
+
+        private void btnTotalIssuedPrint_Click(object sender, EventArgs e)
+        {
+            isIssue = false;
+            printableComponentLink4.CreateMarginalHeaderArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalHeaderArea);
+            printableComponentLink4.CreateMarginalFooterArea += new CreateAreaEventHandler(printableComponentLink1_CreateMarginalFooterArea);
+            printableComponentLink4.CreateDocument();
+            printableComponentLink4.ShowPreview();
+        }
+
+        private void btntotalIssuedExport_Click(object sender, EventArgs e)
+        {
+            string fileName = MainWindow.GetNewFileName("xls");
+            grdVwTotalIssued.ExportToXls(fileName);
             MainWindow.OpenInExcel(fileName);
         }
 

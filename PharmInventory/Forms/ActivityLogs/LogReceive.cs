@@ -9,7 +9,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPrinting;
 using PharmInventory.Forms.Modals;
 using PharmInventory.HelperClasses;
-
+using PharmInventory.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace PharmInventory.Forms.ActivityLogs
 {
@@ -24,7 +25,8 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             InitializeComponent();
         }
-
+        bool _usesModel = false;
+        string _printedby = "";
         private readonly CalendarLib.DateTimePickerEx _dtDate = new CalendarLib.DateTimePickerEx();
 
         private void ManageItems_Load(object sender, EventArgs e)
@@ -32,7 +34,12 @@ namespace PharmInventory.Forms.ActivityLogs
             var usr = new User();
             var userID = MainWindow.LoggedinId;
             usr.LoadByPrimaryKey(userID);
-            if(usr.UserType ==1)
+            _printedby = usr.FullName;
+            GeneralInfo gn = new GeneralInfo();
+            gn.LoadAll(); 
+            _usesModel = gn.IsColumnNull("UsesModel") ? false : gn.UsesModel;
+           layoutModelPrint.Visibility = _usesModel? DevExpress.XtraLayout.Utils.LayoutVisibility.Always: DevExpress.XtraLayout.Utils.LayoutVisibility.Never; 
+            if (usr.UserType ==1)
             contextMenuStrip1.Enabled = false;
             //var stor = new Stores();
             //stor.GetActiveStores();
@@ -550,6 +557,27 @@ namespace PharmInventory.Forms.ActivityLogs
             grdLogReceive.Columns["InternalDrugCode"].Visible = Convert.ToBoolean(chkIntDrugCode.EditValue);
         }
 
-     
+        private void printModel_Click(object sender, EventArgs e)
+        {
+            DataRowView dr = (DataRowView)lstTree.GetDataRecordByNode(lstTree.FocusedNode);
+            var rec = new ReceiveDoc();
+        DataTable dt =    rec.GetModel19RefNo(dr["RefNo"].ToString(), Convert.ToInt32(cboStores.EditValue), dr["Date"].ToString());
+            var modelprint = new Model19
+            {
+                PrintedBy = { Text = _printedby }
+            };
+
+            var tbl1 = dt;
+            tbl1.TableName = "Model19";
+            var dtset = new DataSet();
+            dtset.Tables.Add(tbl1.Copy());
+            modelprint.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
+            modelprint.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+            //modelprint.PageHeight = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperHeightCredit);
+            // modelprint.PageWidth = modelprint.PageHeight / 10; //Convert.ToInt32(BLL.Settings.PaperWidthCredit);
+            modelprint.DataSource = dtset;
+            modelprint.Landscape = true;
+            modelprint.ShowPreviewDialog();
+        }
     }
 }

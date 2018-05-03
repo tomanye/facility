@@ -1,0 +1,2 @@
+ALTER TABLE	 dbo.Items
+ADD  isPFSAVital BIT	NULL

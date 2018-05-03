@@ -91,6 +91,8 @@
               <xs:element name="PackSellingPrice" msprop:Generator_ColumnVarNameInTable="columnPackSellingPrice" msprop:Generator_ColumnPropNameInRow="PackSellingPrice" msprop:Generator_ColumnPropNameInTable="PackSellingPriceColumn" msprop:Generator_UserColumnName="PackSellingPrice" type="xs:string" minOccurs="0" />
               <xs:element name="TotalPackSellingPrice" msprop:Generator_ColumnVarNameInTable="columnTotalPackSellingPrice" msprop:Generator_ColumnPropNameInRow="TotalPackSellingPrice" msprop:Generator_ColumnPropNameInTable="TotalPackSellingPriceColumn" msprop:Generator_UserColumnName="TotalPackSellingPrice" type="xs:string" minOccurs="0" />
               <xs:element name="QtyPerPackT" msprop:Generator_ColumnVarNameInTable="columnQtyPerPackT" msprop:Generator_ColumnPropNameInRow="QtyPerPackT" msprop:Generator_ColumnPropNameInTable="QtyPerPackTColumn" msprop:Generator_UserColumnName="QtyPerPackT" type="xs:string" minOccurs="0" />
+              <xs:element name="SOH_x0020_Left" msprop:Generator_ColumnVarNameInTable="columnSOH_Left" msprop:Generator_ColumnPropNameInRow="SOH_Left" msprop:Generator_ColumnPropNameInTable="SOH_LeftColumn" msprop:Generator_UserColumnName="SOH Left" type="xs:string" minOccurs="0" />
+              <xs:element name="Near_x0020_Expiry" msprop:Generator_ColumnVarNameInTable="columnNear_Expiry" msprop:Generator_ColumnPropNameInRow="Near_Expiry" msprop:Generator_ColumnPropNameInTable="Near_ExpiryColumn" msprop:Generator_UserColumnName="Near Expiry" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
