@@ -292,7 +292,14 @@ namespace BLL
         {
             this.FlushData();
             var query =
-                String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY vw.FullItemName DESC ) AS RowNo ,
+                String.Format(@"SELECT ROW_NUMBER() OVER ( ORDER BY iss.FullItemName   ) AS RowNo ,
+                                        SUM(iss.TotalPrice) TotalPrice
+                                        ,SUM(iss.TotalQuantity) TotalQuantity
+                                        ,iss.FullItemName
+                                        ,iss.Unit
+                                        ,iss.Cost
+                                        ,iss.CommodityType
+                                FROM(SELECT   
                                         (id.Cost * SUM(id.Quantity)) TotalPrice,
                                         SUM(id.Quantity) TotalQuantity,
                                         vw.FullItemName,
@@ -301,11 +308,15 @@ namespace BLL
                                 FROM    IssueDoc id
                                         JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                         JOIN vwGetAllItems vw ON id.ItemID = vw.ID
-                                WHERE(id.IsTransfer = 0) and id.StoreId = { 0}    AND(id.EurDate BETWEEN '{1}' AND '{2}')
+                                WHERE(id.IsTransfer = 0) and id.StoreId = {0}    AND(id.EurDate BETWEEN '{1}' AND '{2}')
                                 GROUP BY vw.FullItemName,
                                         vw.Cost,
                                         vw.Unit,
-                                        id.Cost,vw.Name ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+                                        id.Cost,vw.Name) as iss
+                            GROUP BY  iss.FullItemName
+                                        ,iss.Unit
+                                        ,iss.Cost
+                                        ,iss.CommodityType ", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -331,8 +342,14 @@ namespace BLL
         {
             this.FlushData();
             var query =
-                String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY vw.FullItemName DESC ) AS RowNo ,
-                                        ( id.Cost * SUM(id.Quantity) ) TotalPrice ,
+                String.Format(@"SELECT ROW_NUMBER() OVER ( ORDER BY iss.FullItemName   ) AS RowNo ,
+                                        SUM(iss.TotalPrice) TotalPrice
+                                        ,SUM(iss.TotalQuantity) TotalQuantity
+                                        ,iss.FullItemName
+                                        ,iss.Unit
+                                        ,iss.Cost
+                                        ,iss.CommodityType
+                               FROM( SELECT   ( id.Cost * SUM(id.Quantity) ) TotalPrice ,
                                         SUM(id.Quantity) TotalQuantity ,
                                         vw.FullItemName ,
                                         vw.Cost ,
@@ -345,7 +362,11 @@ namespace BLL
                                 GROUP BY vw.FullItemName ,
                                         vw.Cost ,
                                         vw.Unit ,
-                                        id.Cost,vw.Name", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                        id.Cost,vw.Name)as iss
+                        GROUP BY  iss.FullItemName
+                                ,iss.Unit
+                                ,iss.Cost
+                                ,iss.CommodityType", dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

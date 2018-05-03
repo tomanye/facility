@@ -852,6 +852,7 @@
             this.gridColumn33.FieldName = "FullItemName";
             this.gridColumn33.Name = "gridColumn33";
             this.gridColumn33.OptionsColumn.AllowEdit = false;
+            this.gridColumn33.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn33.Visible = true;
             this.gridColumn33.VisibleIndex = 1;
             this.gridColumn33.Width = 520;
@@ -866,6 +867,7 @@
             this.gridColumn32.FieldName = "Unit";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.OptionsColumn.AllowEdit = false;
+            this.gridColumn32.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 2;
             this.gridColumn32.Width = 150;

@@ -269,7 +269,12 @@ namespace BLL
         {
             this.FlushData();
             string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName ) AS RowNo ,
-                                                            ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+                                                    SUM(TotalPrice) TotalPrice ,
+                                                    SUM(totalQuantity) totalQuantity ,
+                                                    rd.FullItemName ,
+                                                    rd.Unit ,
+                                                    rd.CommodityType 
+                                           FROM( SELECT    ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
                                                             SUM(rd.Quantity) totalQuantity ,
                                                             vw.FullItemName ,
                                                             vw.Unit ,
@@ -284,7 +289,10 @@ namespace BLL
                                                             vw.Unit ,
                                                             vw.Cost ,
                                                             rd.Cost ,
-                                                            vw.FullItemName ,vw.Name ", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                            vw.FullItemName ,vw.Name) as rd
+                                         GROUP BY   rd.FullItemName ,
+                                                    rd.Unit ,
+                                                    rd.CommodityType", dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
@@ -306,8 +314,13 @@ namespace BLL
         public DataTable GetTotalReceiveByStoreDateRange(int storeId, DateTime dt1, DateTime dt2)
         {
             this.FlushData();
-            string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName  ) AS RowNo ,
-                                                            ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+            string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName ) AS RowNo ,
+                                                    SUM(TotalPrice) TotalPrice ,
+                                                    SUM(totalQuantity) totalQuantity ,
+                                                    rd.FullItemName ,
+                                                    rd.Unit ,
+                                                    rd.CommodityType
+                                            FROM(SELECT   ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
                                                             SUM(rd.Quantity) totalQuantity ,
                                                             vw.FullItemName ,
                                                             vw.Unit ,
@@ -321,7 +334,10 @@ namespace BLL
                                                             vw.Unit ,
                                                             vw.Cost ,
                                                             rd.Cost ,
-                                                            vw.FullItemName,vw.Name", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                            vw.FullItemName,vw.Name) as rd
+                                        GROUP BY rd.FullItemName ,
+                                        rd.Unit ,
+                                        rd.CommodityType", storeId, dt1.ToShortDateString(), dt2.ToShortDateString());
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
