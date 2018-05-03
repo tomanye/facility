@@ -39,7 +39,6 @@ namespace PharmInventory.Forms.Profiles
            // cboWoreda.DataSource = wor.DefaultView;
             GetLookUp();
             PopulateFields();
-          
         }
 
         /// <summary>
@@ -75,7 +74,7 @@ namespace PharmInventory.Forms.Profiles
             //  chkNormal.EditValue = _hospInfo.NormalFacility;
             chkUsesModel.EditValue =  _hospInfo.UsesModel;
             if(!_hospInfo.IsColumnNull("PriceRate"))
-            cbEPriceRate.Text = _hospInfo.PriceRate.ToString();
+            cbEPriceRate.Text = (_hospInfo.PriceRate*100).ToString("###.##") + "%"; 
             if (!_hospInfo.IsColumnNull("FacilityID"))
             {
                 txtFacilityID.EditValue = _hospInfo.FacilityID;
@@ -211,7 +210,9 @@ namespace PharmInventory.Forms.Profiles
             _hospInfo.UsesModel = (bool)chkUsesModel.EditValue;
             if (cbEPriceRate.EditValue != null)
             {
-                _hospInfo.PriceRate = Convert.ToDecimal(cbEPriceRate.EditValue);
+              var pricerate =  cbEPriceRate.EditValue.ToString().Substring(0, cbEPriceRate.EditValue.ToString().LastIndexOf("%")).Trim();
+
+                _hospInfo.PriceRate = Convert.ToDecimal(pricerate)/100;
             }
            
             _hospInfo.Save();

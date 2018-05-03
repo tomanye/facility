@@ -1734,6 +1734,10 @@ namespace PharmInventory.Reports {
             
             private global::System.Data.DataColumn columnQtyPerPackT;
             
+            private global::System.Data.DataColumn columnSOH_Left;
+            
+            private global::System.Data.DataColumn columnNear_Expiry;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Model22DataTable() {
@@ -1913,6 +1917,22 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SOH_LeftColumn {
+                get {
+                    return this.columnSOH_Left;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Near_ExpiryColumn {
+                get {
+                    return this.columnNear_Expiry;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1966,7 +1986,9 @@ namespace PharmInventory.Reports {
                         string Pack_Price, 
                         string PackSellingPrice, 
                         string TotalPackSellingPrice, 
-                        string QtyPerPackT) {
+                        string QtyPerPackT, 
+                        string SOH_Left, 
+                        string Near_Expiry) {
                 Model22Row rowModel22Row = ((Model22Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         InternalDrugCode,
@@ -1986,7 +2008,9 @@ namespace PharmInventory.Reports {
                         Pack_Price,
                         PackSellingPrice,
                         TotalPackSellingPrice,
-                        QtyPerPackT};
+                        QtyPerPackT,
+                        SOH_Left,
+                        Near_Expiry};
                 rowModel22Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowModel22Row);
                 return rowModel22Row;
@@ -2027,6 +2051,8 @@ namespace PharmInventory.Reports {
                 this.columnPackSellingPrice = base.Columns["PackSellingPrice"];
                 this.columnTotalPackSellingPrice = base.Columns["TotalPackSellingPrice"];
                 this.columnQtyPerPackT = base.Columns["QtyPerPackT"];
+                this.columnSOH_Left = base.Columns["SOH Left"];
+                this.columnNear_Expiry = base.Columns["Near Expiry"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2068,6 +2094,10 @@ namespace PharmInventory.Reports {
                 base.Columns.Add(this.columnTotalPackSellingPrice);
                 this.columnQtyPerPackT = new global::System.Data.DataColumn("QtyPerPackT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQtyPerPackT);
+                this.columnSOH_Left = new global::System.Data.DataColumn("SOH Left", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSOH_Left);
+                this.columnNear_Expiry = new global::System.Data.DataColumn("Near Expiry", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNear_Expiry);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4065,6 +4095,38 @@ namespace PharmInventory.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SOH_Left {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.SOH_LeftColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SOH Left\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.SOH_LeftColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Near_Expiry {
+                get {
+                    try {
+                        return ((string)(this[this.tableModel22.Near_ExpiryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Near Expiry\' in table \'Model22\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableModel22.Near_ExpiryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsInternalDrugCodeNull() {
                 return this.IsNull(this.tableModel22.InternalDrugCodeColumn);
             }
@@ -4277,6 +4339,30 @@ namespace PharmInventory.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetQtyPerPackTNull() {
                 this[this.tableModel22.QtyPerPackTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSOH_LeftNull() {
+                return this.IsNull(this.tableModel22.SOH_LeftColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSOH_LeftNull() {
+                this[this.tableModel22.SOH_LeftColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNear_ExpiryNull() {
+                return this.IsNull(this.tableModel22.Near_ExpiryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNear_ExpiryNull() {
+                this[this.tableModel22.Near_ExpiryColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -88,6 +88,7 @@
     <Compile Include="_ItemUnit.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="_Model22.cs" />
     <Compile Include="_ReceiveDocDeleted.cs" />
     <Compile Include="_DisposalDelete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

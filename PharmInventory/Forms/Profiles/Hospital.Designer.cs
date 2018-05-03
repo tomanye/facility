@@ -28,6 +28,7 @@ namespace PharmInventory.Forms.Profiles
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.cbEPriceRate = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -37,7 +38,7 @@ namespace PharmInventory.Forms.Profiles
             this.txtBirths = new DevExpress.XtraEditors.TextEdit();
             this.txtmonthstosupply = new DevExpress.XtraEditors.TextEdit();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
-            this.settingbindingSource = new System.Windows.Forms.BindingSource();
+            this.settingbindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chkNormal = new DevExpress.XtraEditors.CheckEdit();
             this.cboHCTSFirstUpdate = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cboHCTSUpdateFrequency = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -81,7 +82,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter();
+            this.layoutConverter1 = new DevExpress.XtraLayout.Converter.LayoutConverter(this.components);
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1ConvertedLayout)).BeginInit();
             this.groupBox1ConvertedLayout.SuspendLayout();
@@ -182,16 +183,20 @@ namespace PharmInventory.Forms.Profiles
             this.cbEPriceRate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbEPriceRate.Properties.Items.AddRange(new object[] {
-            "0.0",
-            "0.05",
-            "0.1",
-            "0.125",
-            "0.175",
-            "0.15",
-            "0.225",
-            "0.25",
-            "0.3",
-            "0.35"});
+            "5%",
+            "7%",
+            "10%",
+            "12%",
+            "12.5%",
+            "15%",
+            "17%",
+            "17.5%",
+            "20%",
+            "22%",
+            "25%",
+            "27%",
+            "30%",
+            "35%"});
             this.cbEPriceRate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbEPriceRate.Size = new System.Drawing.Size(112, 20);
             this.cbEPriceRate.StyleController = this.groupBox1ConvertedLayout;
@@ -201,7 +206,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.chkUsesModel.Location = new System.Drawing.Point(153, 141);
             this.chkUsesModel.Name = "chkUsesModel";
-            this.chkUsesModel.Properties.Caption = "Uses Model";
+            this.chkUsesModel.Properties.Caption = "Voucher";
             this.chkUsesModel.Size = new System.Drawing.Size(82, 19);
             this.chkUsesModel.StyleController = this.groupBox1ConvertedLayout;
             this.chkUsesModel.TabIndex = 23;
@@ -261,7 +266,7 @@ namespace PharmInventory.Forms.Profiles
             // 
             this.chkNormal.Location = new System.Drawing.Point(24, 141);
             this.chkNormal.Name = "chkNormal";
-            this.chkNormal.Properties.Caption = "Normal Facility";
+            this.chkNormal.Properties.Caption = "Non_Voucher";
             this.chkNormal.Size = new System.Drawing.Size(125, 19);
             this.chkNormal.StyleController = this.groupBox1ConvertedLayout;
             this.chkNormal.TabIndex = 14;

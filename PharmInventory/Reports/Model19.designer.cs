@@ -84,6 +84,8 @@ namespace PharmInventory.Reports
             this.headerGroup = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrFacilityName = new DevExpress.XtraReports.UI.XRLabel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrStore = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet11)).BeginInit();
@@ -485,7 +487,7 @@ namespace PharmInventory.Reports
             this.xrTableCell7.StylePriority.UseFont = false;
             this.xrTableCell7.StylePriority.UsePadding = false;
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.Text = "የጥቅል የመግዣ ዋጋ\r\n\r\nPack Price\r\n";
+            this.xrTableCell7.Text = "የጥቅል የመግዣ ዋጋ\r\n\r\nPack Cost\r\n";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell7.Weight = 0.174406963799909D;
             // 
@@ -753,9 +755,8 @@ namespace PharmInventory.Reports
             this.xrLabel8.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel8.SizeF = new System.Drawing.SizeF(830.2084F, 28.20832F);
             this.xrLabel8.StylePriority.UseFont = false;
-            this.xrLabel8.Text = "ዋናው ለሂሳብ ክፍል፣ 2ኛው ለተቀባይ፣ ሦሰተኛው ቅጠል ለፋርማሲ አካዉንታን አራተኛው  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛው" +
-    "  ቅጠል ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡" +
-    "፡ ";
+            this.xrLabel8.Text = "ዋና ለሂሳብ ክፍል፣ 2ኛ ለተቀባይ፣ ሦሰተኛ ቅጠል ለፋርማሲ አካዉንታን አራተኛ  ቅጠል ለስቶክ ካርድ ጸሀፊ እና አምስተኛ  ቅጠል" +
+    " ከሰነዱ ጋር ይቀመጣል \r\nተቀባያቸው አንድ አይነት ለሆኑ መድሀኒቶችና የህክምና መገልገያዎች  በአንድ ቅጠል ይዘጋጃል፡፡ ";
             // 
             // xrLabel5
             // 
@@ -781,9 +782,11 @@ namespace PharmInventory.Reports
             // headerGroup
             // 
             this.headerGroup.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel12,
+            this.xrStore,
             this.xrFacilityName,
             this.xrLabel3});
-            this.headerGroup.HeightF = 38.95829F;
+            this.headerGroup.HeightF = 66.04163F;
             this.headerGroup.KeepTogether = true;
             this.headerGroup.Level = 1;
             this.headerGroup.Name = "headerGroup";
@@ -808,6 +811,33 @@ namespace PharmInventory.Reports
             this.xrFacilityName.StylePriority.UseTextAlignment = false;
             this.xrFacilityName.Text = " ";
             this.xrFacilityName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel12
+            // 
+            this.xrLabel12.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(0F, 51.95827F);
+            this.xrLabel12.Multiline = true;
+            this.xrLabel12.Name = "xrLabel12";
+            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel12.SizeF = new System.Drawing.SizeF(52.36731F, 14.08335F);
+            this.xrLabel12.StylePriority.UseFont = false;
+            this.xrLabel12.StylePriority.UseTextAlignment = false;
+            this.xrLabel12.Text = "Store:";
+            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrStore
+            // 
+            this.xrStore.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.xrStore.ForeColor = System.Drawing.Color.Black;
+            this.xrStore.LocationFloat = new DevExpress.Utils.PointFloat(52.36731F, 51.95827F);
+            this.xrStore.Name = "xrStore";
+            this.xrStore.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 5, 0, 0, 100F);
+            this.xrStore.SizeF = new System.Drawing.SizeF(265.8206F, 14.08335F);
+            this.xrStore.StylePriority.UseFont = false;
+            this.xrStore.StylePriority.UseForeColor = false;
+            this.xrStore.StylePriority.UsePadding = false;
+            this.xrStore.StylePriority.UseTextAlignment = false;
+            this.xrStore.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // Model19
             // 
@@ -890,5 +920,7 @@ namespace PharmInventory.Reports
         private XRLabel xrLabel5;
         private XRLabel xrLabel4;
         public XRLabel xrFacilityName;
+        private XRLabel xrLabel12;
+        public XRLabel xrStore;
     }
 }

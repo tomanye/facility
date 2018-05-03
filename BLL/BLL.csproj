@@ -123,6 +123,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ItemUnit.cs" />
+    <Compile Include="Model22.cs" />
     <Compile Include="Pallete.cs" />
     <Compile Include="PhysicalStore.cs" />
     <Compile Include="PickFace.cs" />

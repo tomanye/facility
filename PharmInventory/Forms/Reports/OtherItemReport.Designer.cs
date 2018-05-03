@@ -98,6 +98,7 @@ namespace PharmInventory.Forms.Reports
             this.bw = new System.ComponentModel.BackgroundWorker();
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -149,8 +150,8 @@ namespace PharmInventory.Forms.Reports
             this.colStatus.OptionsColumn.AllowEdit = false;
             this.colStatus.OptionsFilter.AllowFilter = false;
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 10;
-            this.colStatus.Width = 91;
+            this.colStatus.VisibleIndex = 11;
+            this.colStatus.Width = 99;
             // 
             // gridColumn29
             // 
@@ -162,8 +163,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn29.OptionsColumn.AllowEdit = false;
             this.gridColumn29.OptionsFilter.AllowFilter = false;
             this.gridColumn29.Visible = true;
-            this.gridColumn29.VisibleIndex = 3;
-            this.gridColumn29.Width = 56;
+            this.gridColumn29.VisibleIndex = 4;
+            this.gridColumn29.Width = 54;
             // 
             // radioGroup1
             // 
@@ -473,7 +474,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn8,
             this.gridColumn9,
             this.dos,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn1});
             this.gridItemChoiceView.FixedLineWidth = 1;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             styleFormatCondition1.Appearance.Options.UseBackColor = true;
@@ -550,7 +552,7 @@ namespace PharmInventory.Forms.Reports
             this.colRowNo.OptionsFilter.AllowFilter = false;
             this.colRowNo.Visible = true;
             this.colRowNo.VisibleIndex = 0;
-            this.colRowNo.Width = 72;
+            this.colRowNo.Width = 67;
             // 
             // colItemName
             // 
@@ -562,7 +564,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
-            this.colItemName.Width = 343;
+            this.colItemName.Width = 319;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -581,8 +583,8 @@ namespace PharmInventory.Forms.Reports
             this.VEN.OptionsColumn.AllowMove = false;
             this.VEN.OptionsFilter.AllowFilter = false;
             this.VEN.Visible = true;
-            this.VEN.VisibleIndex = 4;
-            this.VEN.Width = 63;
+            this.VEN.VisibleIndex = 5;
+            this.VEN.Width = 60;
             // 
             // gridColumn2
             // 
@@ -594,8 +596,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsFilter.AllowFilter = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 63;
+            this.gridColumn2.VisibleIndex = 6;
+            this.gridColumn2.Width = 60;
             // 
             // gridColumn3
             // 
@@ -607,8 +609,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsFilter.AllowFilter = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 6;
-            this.gridColumn3.Width = 57;
+            this.gridColumn3.VisibleIndex = 7;
+            this.gridColumn3.Width = 55;
             // 
             // gridColumn4
             // 
@@ -620,8 +622,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
-            this.gridColumn4.Width = 60;
+            this.gridColumn4.VisibleIndex = 8;
+            this.gridColumn4.Width = 57;
             // 
             // gridColumn5
             // 
@@ -633,8 +635,8 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.OptionsFilter.AllowFilter = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 8;
-            this.gridColumn5.Width = 88;
+            this.gridColumn5.VisibleIndex = 9;
+            this.gridColumn5.Width = 85;
             // 
             // gridColumn7
             // 
@@ -682,8 +684,8 @@ namespace PharmInventory.Forms.Reports
             this.dos.Name = "dos";
             this.dos.OptionsColumn.AllowEdit = false;
             this.dos.Visible = true;
-            this.dos.VisibleIndex = 9;
-            this.dos.Width = 58;
+            this.dos.VisibleIndex = 10;
+            this.dos.Width = 56;
             // 
             // gridColumn6
             // 
@@ -695,7 +697,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 83;
+            this.gridColumn6.Width = 77;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -1085,6 +1087,15 @@ namespace PharmInventory.Forms.Reports
             this.printableComponentLink1.PrintingSystemBase = this.printingSystem1;
             this.printableComponentLink1.CreateMarginalHeaderArea += new DevExpress.XtraPrinting.CreateAreaEventHandler(this.printableComponentLink1_CreateMarginalHeaderArea);
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "VEN";
+            this.gridColumn1.FieldName = "VEN";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.Width = 45;
+            // 
             // OtherItemReport
             // 
             this.Appearance.Options.UseFont = true;
@@ -1210,5 +1221,6 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraEditors.CheckEdit ckExclude;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
