@@ -166,6 +166,7 @@
     <Compile Include="_VRF.cs" />
     <Compile Include="_Woreda.cs" />
     <Compile Include="_YearEnd.cs" />
+    <Compile Include="_YearEndDetail.cs" />
     <Compile Include="_Zone.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
