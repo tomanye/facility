@@ -1196,12 +1196,24 @@
     <Content Include="Scripts\998_AlterTransfer.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\9992-AddYearEndDetail.sql" />
-    <Content Include="Scripts\9992-AddYearEndDetail_ForeignKey.sql" />
-    <Content Include="Scripts\9992-AddYearEndDetail_Insert.sql" />
-    <Content Include="Scripts\9992-AddYearEndDetail_LoadAll.sql" />
-    <Content Include="Scripts\9992-AddYearEndDetail_LoadbyPrimaryKey.sql" />
-    <Content Include="Scripts\9992-AddYearEndDetail_Update.sql" />
+    <Content Include="Scripts\9992-AddYearEndDetail.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_ForeignKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_Insert.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_LoadAll.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_LoadbyPrimaryKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_Update.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\999_AlterTranferInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
