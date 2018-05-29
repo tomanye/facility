@@ -121,18 +121,20 @@ namespace PharmInventory.Forms.Reports
         private void SetEndingMonthAndYear(int startingMonth, int startingYear)
         {
 
-            if (startingMonth <= 11)
-            {
-                cboToMonth.EditValue = startingMonth + 1;
-                cboToYear.EditValue = startingYear;
-            }
+            //if (startingMonth <= 11)
+            //{
+            //    cboToMonth.EditValue = startingMonth + 1;
+            //    cboToYear.EditValue = startingYear;
+            //}
 
-            else
-                //If the starting month is the 12th month. (The period will be from Nehassie of last year - Meskerem of the next year)
-            {
-                cboToMonth.EditValue = 1;
-                cboToYear.EditValue = startingYear + 1;
-            }
+            //else
+            //    //If the starting month is the 12th month. (The period will be from Nehassie of last year - Meskerem of the next year)
+            //{
+            //    cboToMonth.EditValue = 1;
+            //    cboToYear.EditValue = startingYear + 1;
+            //}
+            cboToMonth.EditValue = startingMonth;
+            cboToYear.EditValue = startingYear;
         }
 
         private static int GetStartingMonth(int currentMonth)

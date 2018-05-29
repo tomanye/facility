@@ -134,7 +134,8 @@ namespace BLL
 					                                    ) results
                                           ORDER BY EurDate asc",startdate,enddate,itemid,storeid);
             this.LoadFromRawSql(query);
-            int DOS = 59;
+            //      int DOS = 59;
+            int DOS = 29;
             if (this.DataTable.Rows.Count > 0)
             {
                 DOS = Convert.ToInt16(this.DataTable.Rows[0]["DOS"]);
