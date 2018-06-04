@@ -543,7 +543,7 @@ namespace PharmInventory.Reports
             this.xrTableCell7.StylePriority.UseFont = false;
             this.xrTableCell7.StylePriority.UsePadding = false;
             this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.Text = "የጥቅል መግዣ ዋጋ\r\nPack Cost\r\n";
+            this.xrTableCell7.Text = "የጥቅል መግዣ ዋጋ\r\nPack buying Cost\r\n";
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell7.Weight = 0.129139639782197D;
             // 
@@ -559,7 +559,7 @@ namespace PharmInventory.Reports
             this.xrTableCell8.StylePriority.UseBorders = false;
             this.xrTableCell8.StylePriority.UseFont = false;
             this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.Text = "የጠቅላላ መግዢያ ዋጋ\r\nTotal  Cost\r\n";
+            this.xrTableCell8.Text = "የጠቅላላ መግዢያ ዋጋ\r\nTotal  buying Cost\r\n";
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell8.Weight = 0.154967933242004D;
             // 
@@ -577,7 +577,7 @@ namespace PharmInventory.Reports
             this.xrTableCell9.StylePriority.UseFont = false;
             this.xrTableCell9.StylePriority.UsePadding = false;
             this.xrTableCell9.StylePriority.UseTextAlignment = false;
-            this.xrTableCell9.Text = "ጠቅላላ የመሸጫ ዋጋ\r\nTotal Cost";
+            this.xrTableCell9.Text = "ጠቅላላ የመሸጫ ዋጋ\r\nTotal Selling Cost";
             this.xrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell9.Weight = 0.154967784386551D;
             // 

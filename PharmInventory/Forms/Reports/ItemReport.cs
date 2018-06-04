@@ -523,11 +523,16 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void btnExport_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel | *.xls" };
+            SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel| *.xls|PDF (.pdf)|*.pdf" };
 
             if (DialogResult.OK == saveDlg.ShowDialog())
             {
-                gridItemsChoice.MainView.ExportToXls(saveDlg.FileName);
+                if(saveDlg.FilterIndex==1)
+                {
+                    gridItemsChoice.MainView.ExportToXls(saveDlg.FileName);
+                }
+              else if(saveDlg.FilterIndex == 2)
+                gridItemsChoice.MainView.ExportToPdf(saveDlg.FileName);
             }
         }
 

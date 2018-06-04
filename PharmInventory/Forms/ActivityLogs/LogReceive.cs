@@ -256,8 +256,9 @@ namespace PharmInventory.Forms.ActivityLogs
         {
             PageInfoBrick pib = new PageInfoBrick();
             pib.Format = "Page {0}/{1}";
-            string Suppliername =  "Supplied By: " + dtRec.AsDataView()[0]["SupplierName"] as string;
-            string Receivername = "Received By: " + dtRec.AsDataView()[0]["ReceivedBy"] as string;
+            var dr = grdLogReceive.GetFocusedDataRow();
+            string Suppliername =  "Supplied By: " + dr["SupplierName"] as string;
+            string Receivername = "Received By: " + dr["ReceivedBy"] as string;
             //RectangleF r = RectangleF.Empty;
             //r.Height = 20;
             //r.X = 800;

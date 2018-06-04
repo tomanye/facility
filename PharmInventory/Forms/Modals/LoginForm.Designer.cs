@@ -106,24 +106,24 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(123, 99);
+            this.txtUsername.Location = new System.Drawing.Point(122, 99);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(260, 20);
+            this.txtUsername.Size = new System.Drawing.Size(261, 20);
             this.txtUsername.StyleController = this.layoutControl1;
             this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(123, 123);
+            this.txtPassword.Location = new System.Drawing.Point(122, 123);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(260, 20);
+            this.txtPassword.Size = new System.Drawing.Size(261, 20);
             this.txtPassword.StyleController = this.layoutControl1;
             this.txtPassword.TabIndex = 2;
             // 
             // layoutControlGroup1
             // 
-            this.layoutControlGroup1.AppearanceGroup.Image = global::PharmInventory.Properties.Resources.LoginScreenFacilityEdition7;
+            this.layoutControlGroup1.AppearanceGroup.Image = global::PharmInventory.Properties.Resources.loginScreenAidsFree;
             this.layoutControlGroup1.AppearanceGroup.Options.UseImage = true;
             this.layoutControlGroup1.CustomizationFormText = "Root";
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -245,7 +245,6 @@ namespace PharmInventory.Forms.Modals
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
-            this.Appearance.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -253,6 +252,7 @@ namespace PharmInventory.Forms.Modals
             this.ClientSize = new System.Drawing.Size(449, 215);
             this.ControlBox = false;
             this.Controls.Add(this.layoutControl1);
+            this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

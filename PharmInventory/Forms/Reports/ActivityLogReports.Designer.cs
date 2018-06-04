@@ -72,7 +72,7 @@
             this.tabTotalReceivedConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.btnTotalReceiveExport = new DevExpress.XtraEditors.SimpleButton();
             this.btnTotalReceivePrnt = new DevExpress.XtraEditors.SimpleButton();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkSupplierT = new DevExpress.XtraEditors.LookUpEdit();
             this.grdTotalReceived = new DevExpress.XtraGrid.GridControl();
             this.grdVwTotalReceived = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -128,7 +128,7 @@
             this.tabTotalIssuedConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.btnTotalIssuedPrint = new DevExpress.XtraEditors.SimpleButton();
             this.btntotalIssuedExport = new DevExpress.XtraEditors.SimpleButton();
-            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lklocationT = new DevExpress.XtraEditors.LookUpEdit();
             this.grdTotalIssued = new DevExpress.XtraGrid.GridControl();
             this.grdVwTotalIssued = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -204,7 +204,7 @@
             this.tabTotalReceived.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalReceivedConvertedLayout)).BeginInit();
             this.tabTotalReceivedConvertedLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalReceived)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalReceived)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).BeginInit();
@@ -236,7 +236,7 @@
             this.tabTotalIssued.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalIssuedConvertedLayout)).BeginInit();
             this.tabTotalIssuedConvertedLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lklocationT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalIssued)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalIssued)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).BeginInit();
@@ -752,7 +752,7 @@
             // 
             this.tabTotalReceivedConvertedLayout.Controls.Add(this.btnTotalReceiveExport);
             this.tabTotalReceivedConvertedLayout.Controls.Add(this.btnTotalReceivePrnt);
-            this.tabTotalReceivedConvertedLayout.Controls.Add(this.lookUpEdit1);
+            this.tabTotalReceivedConvertedLayout.Controls.Add(this.lkSupplierT);
             this.tabTotalReceivedConvertedLayout.Controls.Add(this.grdTotalReceived);
             this.tabTotalReceivedConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTotalReceivedConvertedLayout.Location = new System.Drawing.Point(0, 0);
@@ -784,22 +784,23 @@
             this.btnTotalReceivePrnt.Text = "&Print";
             this.btnTotalReceivePrnt.Click += new System.EventHandler(this.btnTotalReceivePrnt_Click);
             // 
-            // lookUpEdit1
+            // lkSupplierT
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(862, 12);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lkSupplierT.Location = new System.Drawing.Point(862, 12);
+            this.lkSupplierT.Name = "lkSupplierT";
+            this.lkSupplierT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lkSupplierT.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CompanyName", "Supplier Name")});
-            this.lookUpEdit1.Properties.DisplayMember = "CompanyName";
-            this.lookUpEdit1.Properties.NullText = "All Suppliers";
-            this.lookUpEdit1.Properties.ShowFooter = false;
-            this.lookUpEdit1.Properties.ValueMember = "ID";
-            this.lookUpEdit1.Size = new System.Drawing.Size(253, 20);
-            this.lookUpEdit1.StyleController = this.tabTotalReceivedConvertedLayout;
-            this.lookUpEdit1.TabIndex = 30;
+            this.lkSupplierT.Properties.DisplayMember = "CompanyName";
+            this.lkSupplierT.Properties.NullText = "All Suppliers";
+            this.lkSupplierT.Properties.ShowFooter = false;
+            this.lkSupplierT.Properties.ValueMember = "ID";
+            this.lkSupplierT.Size = new System.Drawing.Size(253, 20);
+            this.lkSupplierT.StyleController = this.tabTotalReceivedConvertedLayout;
+            this.lkSupplierT.TabIndex = 30;
+            this.lkSupplierT.EditValueChanged += new System.EventHandler(this.lkSupplierT_EditValueChanged);
             // 
             // grdTotalReceived
             // 
@@ -986,7 +987,7 @@
             // 
             // layoutControlItem26
             // 
-            this.layoutControlItem26.Control = this.lookUpEdit1;
+            this.layoutControlItem26.Control = this.lkSupplierT;
             this.layoutControlItem26.CustomizationFormText = "Supplier: ";
             this.layoutControlItem26.Location = new System.Drawing.Point(802, 0);
             this.layoutControlItem26.Name = "layoutControlItem26";
@@ -1402,7 +1403,7 @@
             // 
             this.tabTotalIssuedConvertedLayout.Controls.Add(this.btnTotalIssuedPrint);
             this.tabTotalIssuedConvertedLayout.Controls.Add(this.btntotalIssuedExport);
-            this.tabTotalIssuedConvertedLayout.Controls.Add(this.lookUpEdit2);
+            this.tabTotalIssuedConvertedLayout.Controls.Add(this.lklocationT);
             this.tabTotalIssuedConvertedLayout.Controls.Add(this.grdTotalIssued);
             this.tabTotalIssuedConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTotalIssuedConvertedLayout.Location = new System.Drawing.Point(0, 0);
@@ -1433,22 +1434,23 @@
             this.btntotalIssuedExport.Text = "E&xport";
             this.btntotalIssuedExport.Click += new System.EventHandler(this.btntotalIssuedExport_Click);
             // 
-            // lookUpEdit2
+            // lklocationT
             // 
-            this.lookUpEdit2.Location = new System.Drawing.Point(866, 12);
-            this.lookUpEdit2.Name = "lookUpEdit2";
-            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lklocationT.Location = new System.Drawing.Point(866, 12);
+            this.lklocationT.Name = "lklocationT";
+            this.lklocationT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit2.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.lklocationT.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ID", "ID", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Receiving Unit")});
-            this.lookUpEdit2.Properties.DisplayMember = "Name";
-            this.lookUpEdit2.Properties.NullText = "All Receiving Units";
-            this.lookUpEdit2.Properties.ShowFooter = false;
-            this.lookUpEdit2.Properties.ValueMember = "ID";
-            this.lookUpEdit2.Size = new System.Drawing.Size(249, 20);
-            this.lookUpEdit2.StyleController = this.tabTotalIssuedConvertedLayout;
-            this.lookUpEdit2.TabIndex = 16;
+            this.lklocationT.Properties.DisplayMember = "Name";
+            this.lklocationT.Properties.NullText = "All Receiving Units";
+            this.lklocationT.Properties.ShowFooter = false;
+            this.lklocationT.Properties.ValueMember = "ID";
+            this.lklocationT.Size = new System.Drawing.Size(249, 20);
+            this.lklocationT.StyleController = this.tabTotalIssuedConvertedLayout;
+            this.lklocationT.TabIndex = 16;
+            this.lklocationT.EditValueChanged += new System.EventHandler(this.lklocationT_EditValueChanged);
             // 
             // grdTotalIssued
             // 
@@ -1633,7 +1635,7 @@
             // 
             // layoutControlItem30
             // 
-            this.layoutControlItem30.Control = this.lookUpEdit2;
+            this.layoutControlItem30.Control = this.lklocationT;
             this.layoutControlItem30.CustomizationFormText = "Issued To:";
             this.layoutControlItem30.Location = new System.Drawing.Point(800, 0);
             this.layoutControlItem30.Name = "layoutControlItem30";
@@ -1944,7 +1946,7 @@
             // 
             // layoutControlItem25
             // 
-            this.layoutControlItem25.Control = this.lookUpEdit1;
+            this.layoutControlItem25.Control = this.lkSupplierT;
             this.layoutControlItem25.CustomizationFormText = "Supplier:";
             this.layoutControlItem25.Location = new System.Drawing.Point(693, 0);
             this.layoutControlItem25.Name = "layoutControlItem8";
@@ -1967,7 +1969,7 @@
             // 
             // layoutControlItem29
             // 
-            this.layoutControlItem29.Control = this.lookUpEdit2;
+            this.layoutControlItem29.Control = this.lklocationT;
             this.layoutControlItem29.CustomizationFormText = "Issue Location:";
             this.layoutControlItem29.Location = new System.Drawing.Point(690, 0);
             this.layoutControlItem29.Name = "layoutControlItem11";
@@ -2068,7 +2070,7 @@
             this.tabTotalReceived.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalReceivedConvertedLayout)).EndInit();
             this.tabTotalReceivedConvertedLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkSupplierT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalReceived)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalReceived)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit3)).EndInit();
@@ -2100,7 +2102,7 @@
             this.tabTotalIssued.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabTotalIssuedConvertedLayout)).EndInit();
             this.tabTotalIssuedConvertedLayout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lklocationT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalIssued)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdVwTotalIssued)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit4)).EndInit();
@@ -2254,7 +2256,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
         private DevExpress.XtraLayout.Converter.LayoutConverter layoutConverter1;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.LookUpEdit lkSupplierT;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
@@ -2271,7 +2273,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem28;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
+        private DevExpress.XtraEditors.LookUpEdit lklocationT;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem30;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem29;

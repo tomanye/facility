@@ -265,15 +265,22 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-        public DataTable GetTotalReceiveByDateRange(DateTime dt1, DateTime dt2)
+        public DataTable GetTotalReceiveByDateRange(DateTime dt1, DateTime dt2, int supID)
         {
             this.FlushData();
+            string filter ="";
+            if (supID == 0)
+            {
+                filter = String.Format(@" WHERE rd.EurDate  BETWEEN '{0}' AND '{1}'", dt1.ToShortDateString(), dt2.ToShortDateString());
+            }
+            else filter = String.Format(@" WHERE rd.EurDate  BETWEEN '{0}' AND '{1}' and rd.SupplierID ={2}", dt1.ToShortDateString(), dt2.ToShortDateString(), supID);
+           
             string query = String.Format(@"SELECT  ROW_NUMBER() OVER ( ORDER BY FullItemName ) AS RowNo ,
                                                     SUM(TotalPrice) TotalPrice ,
                                                     SUM(totalQuantity) totalQuantity ,
                                                     rd.FullItemName ,
                                                     rd.Unit ,
-                                                    rd.CommodityType 
+                                                    rd.CommodityType  
                                            FROM( SELECT    ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
                                                             SUM(rd.Quantity) totalQuantity ,
                                                             vw.FullItemName ,
@@ -284,7 +291,7 @@ namespace BLL
                                                     FROM    ReceiveDoc rd
                                                             JOIN vwGetAllItems vw ON rd.ItemID = vw.ID
                                                             JOIN Supplier sp ON rd.SupplierID = sp.ID
-                                                    WHERE rd.EurDate  BETWEEN '{0}' AND '{1}'
+                                                      {0}
                                                     GROUP BY rd.ItemID ,
                                                             vw.Unit ,
                                                             vw.Cost ,
@@ -292,7 +299,7 @@ namespace BLL
                                                             vw.FullItemName ,vw.Name) as rd
                                          GROUP BY   rd.FullItemName ,
                                                     rd.Unit ,
-                                                    rd.CommodityType", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                                    rd.CommodityType", filter);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
