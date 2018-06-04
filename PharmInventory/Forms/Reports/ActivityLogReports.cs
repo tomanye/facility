@@ -44,6 +44,7 @@ namespace PharmInventory.Forms.SummaryReports
             dtrsupp["CompanyName"] = "All Suppliers";
             dtsupp.Rows.InsertAt(dtrsupp, 0);
             lkSupplier.Properties.DataSource = dtsupp;
+            lkSupplierT.Properties.DataSource = dtsupp;
 
             ReceivingUnits ru = new ReceivingUnits();
             DataTable dtru = ru.GetAllApplicableDU();
@@ -52,6 +53,7 @@ namespace PharmInventory.Forms.SummaryReports
             dtrru["Name"] = "All Receiving Units";
             dtru.Rows.InsertAt(dtrru, 0);
             lklocation.Properties.DataSource = dtru;
+            lklocationT.Properties.DataSource = dtru;
 
             dtRec = rec.GetAllReceiveByDateRange(dateFrom, dateTo);
             dtiss  = iss.GetIssuedByDateRange(dateFrom, dateTo);
@@ -60,9 +62,9 @@ namespace PharmInventory.Forms.SummaryReports
             grdViewIssued.ActiveFilterString = String.Format("Quantity<>0");
             grdViewIssued.Columns["InternalDrugCode"].Visible = grdViewReceive.Columns["InternalDrugCode"].Visible = false;
 
-            grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dateFrom, dateTo);
+            grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dateFrom, dateTo,0);
             //grdVwTotalReceived.ActiveFilterString = String.Format("totalQuantity<>0");
-            grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dateFrom, dateTo);
+            grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dateFrom, dateTo,0);
             grdVwTotalIssued.ActiveFilterString = String.Format("TotalQuantity<>0");
         }
 
@@ -77,13 +79,23 @@ namespace PharmInventory.Forms.SummaryReports
         }
         private void RefreshFilter()
         {
+            int supID = 0;
+            int lkid = 0;
+            if(lkSupplierT.EditValue != null)
+            {
+                supID = (int)lkSupplierT.EditValue;
+            }
+            if (lklocationT.EditValue != null)
+            {
+                lkid = (int)lklocationT.EditValue;
+            }
             if ((cboStores.Text == "All Stores") || (cboStores.EditValue== null))
             {
                 dtRec = rec.GetAllReceiveByDateRange(dtFrom.Value, dtTo.Value);
                 dtiss = iss.GetIssuedByDateRange(dtFrom.Value, dtTo.Value);
 
-                grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value);
-                grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dtFrom.Value, dtTo.Value);
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value, supID);
+                grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dtFrom.Value, dtTo.Value, lkid);
             }
             else
             {
@@ -220,6 +232,18 @@ namespace PharmInventory.Forms.SummaryReports
             string fileName = MainWindow.GetNewFileName("xls");
             grdVwTotalIssued.ExportToXls(fileName);
             MainWindow.OpenInExcel(fileName);
+        }
+
+        private void lkSupplierT_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lkSupplierT.Text != "All Suppliers")
+                grdTotalReceived.DataSource = rec.GetTotalReceiveByDateRange(dtFrom.Value, dtTo.Value,(int)lkSupplierT.EditValue); 
+         }
+
+        private void lklocationT_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lklocationT.Text != "All Receiving Units")
+                grdTotalIssued.DataSource = iss.GetTotalIssuedByDateRange(dtFrom.Value, dtTo.Value, (int)lklocationT.EditValue);
         }
 
         private void lkSupplier_EditValueChanged(object sender, EventArgs e)

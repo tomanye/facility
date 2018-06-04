@@ -109,7 +109,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void BuildStoreInventoryListForHandleUnit(int year, int storeId, DataTable dtItm)
         {
-            string[] str = { "Item Name", "Batch No.", "Remark" };
+            string[] str = { "Item Name", "Batch No.", "Remark", "Unit Price" };
             foreach (string co in str)
             {
                 dtBB.Columns.Add(co);
@@ -120,6 +120,7 @@ namespace PharmInventory.Forms.Transactions
             {
                 dtBB.Columns.Add(co, typeof(int));
             }
+           
             int count = 1;
             var yProcess = new YearEnd();
             var bal = new Balance();
@@ -183,6 +184,7 @@ namespace PharmInventory.Forms.Transactions
                     drv["Physical Inventory"] = Phy;
                 }
                 drv["RecID"] = -1;
+                drv["Unit Price"] =   "_";
                 drv["Remark"] = remark;
                 count++;
 
@@ -206,6 +208,7 @@ namespace PharmInventory.Forms.Transactions
 
                         theLastBalance += Convert.ToInt32(drBatch["QuantityLeft"]);
                         drv["RecID"] = drBatch["ID"];
+                        drv["Unit Price"] = drBatch["Cost"].ToString();
                     }
                 }
                 //}
@@ -218,7 +221,7 @@ namespace PharmInventory.Forms.Transactions
 
         private void BuildStoreInventoryList(int year, int storeId, DataTable dtItm)
         {
-            string[] str = { "Item Name", "Batch No.", "Remark" };
+            string[] str = { "Item Name", "Batch No.", "Remark","Unit Price" };
             foreach (string co in str)
             {
                 dtBB.Columns.Add(co);
@@ -287,6 +290,7 @@ namespace PharmInventory.Forms.Transactions
                     drv["Physical Inventory"] = Phy;
                 }
                 drv["RecID"] = -1;
+                drv["Unit Price"] = "_";
                 drv["Remark"] = remark;
                 //drv["Change Since Sene 30"] = BLL.Balance.GetChangeAfterDate(itemID, storeId, ethioDate.EndOfFiscalYear.ToGregorianDate());
                 count++;
@@ -305,6 +309,7 @@ namespace PharmInventory.Forms.Transactions
                         drv["Physical Inventory"] = drBatch["QuantityLeft"].ToString();
                     theLastBalance += Convert.ToInt32(drBatch["QuantityLeft"]);
                     drv["RecID"] = drBatch["ID"];
+                    drv["Unit Price"] = drBatch["Cost"];
                 }
                 //}
             }
@@ -364,7 +369,7 @@ namespace PharmInventory.Forms.Transactions
             var yEnd = new YearEnd();
             var rec = new ReceiveDoc();
 
-            if (IsValid())
+            if (IsValid())   
             {
                 dtDate.Value = DateTime.Now;
                 DateTime dtCurent = new DateTime();
@@ -427,6 +432,15 @@ namespace PharmInventory.Forms.Transactions
 
                                 yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
                                 yEnd.Save();
+
+
+                                var rd = new ReceiveDoc();
+                                if(cRow["Batch No."]!= DBNull.Value)
+                                {
+                                    string batchno = Convert.ToString(cRow["Batch No."]); 
+                                    rd.GetTransactionByBatch(itemID, batchno, storeID);
+                                }
+                         
                                 //}
 
 
@@ -453,11 +467,19 @@ namespace PharmInventory.Forms.Transactions
                                                 rec.UnitID = 0;
                                                 rec.Out = rec.QuantityLeft == 0;
                                                 rec.Save();
+
+                                                var yEndD = new YearEndDetail();
+                                                yEndD.AddNew(); 
+                                                yEndD.ReceiveDocID = rec.ID;  
+                                                yEndD.YearEndID = yEnd.ID; 
+                                                yEndD.Quantity = Convert.ToInt64(batchPhysicalInventory); 
+                                                yEndD.Save();
                                             }
                                             k++;
                                             if (k >= yearEndTable.Rows.Count)
                                                 break;
                                         }
+
                                     }
                                 }
                             }

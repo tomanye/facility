@@ -185,6 +185,7 @@
     <Compile Include="VRFDetail.cs" />
     <Compile Include="Woreda.cs" />
     <Compile Include="YearEnd.cs" />
+    <Compile Include="YearEndDetail.cs" />
     <Compile Include="Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

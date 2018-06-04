@@ -733,9 +733,9 @@ namespace PharmInventory
             this.logoPic.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.logoPic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logoPic.Image = ((System.Drawing.Image)(resources.GetObject("logoPic.Image")));
-            this.logoPic.Location = new System.Drawing.Point(648, 0);
+            this.logoPic.Location = new System.Drawing.Point(653, -1);
             this.logoPic.Name = "logoPic";
-            this.logoPic.Size = new System.Drawing.Size(445, 73);
+            this.logoPic.Size = new System.Drawing.Size(440, 73);
             this.logoPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPic.TabIndex = 5;
             this.logoPic.TabStop = false;

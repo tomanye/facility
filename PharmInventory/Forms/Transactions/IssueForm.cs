@@ -1205,8 +1205,8 @@ namespace PharmInventory.Forms.Transactions
 
             var sender = view as GridView;
             if (view == null) return;
-            _selectedItem = _selectedItem + 1;
-            if (_selectedItem > 9)
+            _selectedItem = _selectedItem + 1; 
+            if (_selectedItem > 9 && _usesModel)
             {
                 Validation();
             }

@@ -48,7 +48,66 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            
+            string path = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\";
+            if (folderBrowserDialog2.ShowDialog() == DialogResult.OK)
+            {
+
+                  path = folderBrowserDialog2.SelectedPath;
+            }
+                    try
+            {
+                GeneralInfo info = new GeneralInfo();
+                info.LoadAll();
+
+               
+                string connectionString = PharmInventory.HelperClasses.DatabaseHelpers.GetConnectionString();
+
+                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(connectionString);
+                System.Data.SqlClient.SqlCommand com = new System.Data.SqlClient.SqlCommand();
+                 if (!(conn.State == ConnectionState.Open))
+                    conn.Open();
+                string dbName = conn.Database;
+               var query = String.Format(@"DECLARE @name VARCHAR(50) -- database name  
+                                DECLARE @path VARCHAR(256)-- path for backup files
+                                DECLARE @fileName VARCHAR(256)-- filename for backup
+                                DECLARE @fileDate VARCHAR(20)-- used for file name
+
+                                --specify database backup directory
+                                SET @path =  '{0}'
+
+                                -- specify filename format
+                                SELECT @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112)
+
+                                DECLARE db_cursor CURSOR READ_ONLY FOR
+                                SELECT name
+                                FROM master.dbo.sysdatabases
+                                WHERE name = ('PHARMINVENTORY')-- exclude these databases
+
+                                OPEN db_cursor
+                                FETCH NEXT FROM db_cursor INTO @name
+
+                                WHILE @@FETCH_STATUS = 0
+                                BEGIN
+                                   SET @fileName = @path + @name + '_' + @fileDate + '.BAK'
+                                   BACKUP DATABASE @name TO DISK = @fileName
+
+                                FETCH NEXT FROM db_cursor INTO @name
+                                END
+
+                            CLOSE db_cursor
+                        DEALLOCATE db_cursor", path);
+                com.CommandText = query;
+                com.Connection = conn;
+                com.ExecuteNonQuery();
+                info.LoadAll();
+                info.LastBackUp = DateTime.Now;
+                info.Save();
+                XtraMessageBox.Show("Backup completed to "+ path, " Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                XtraMessageBox.Show("Backup has failed! Please Try Again.", "Try Again", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

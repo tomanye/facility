@@ -358,8 +358,22 @@ namespace BLL
             yearEnd.Where.AutomaticallyEntered.Value = true;
             yearEnd.Where.UnitID.Value = unitID;
             yearEnd.Query.Load();
+            DataTable dt = yearEnd.DefaultView.ToTable();
+            PurgeAutomaticallyEnteredInventoryDetail(dt);
             yearEnd.DeleteAll();
             yearEnd.Save();
+        }
+
+        public static void PurgeAutomaticallyEnteredInventoryDetail(DataTable yend)
+        {
+            foreach(DataRow dr in yend.Rows)
+            {
+                YearEndDetail yearEndD = new YearEndDetail();
+                yearEndD.Where.YearEndID.Value = dr["ID"];
+                yearEndD.DeleteAll();
+                yearEndD.Save();
+            }
+           
         }
         /* public Int64 GetBBalance(int year, int storeId, int itemId)
         {

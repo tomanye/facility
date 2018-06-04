@@ -338,9 +338,15 @@ namespace BLL
             this.LoadFromRawSql(query);
             return this.DataTable;
         }
-        public DataTable GetTotalIssuedByDateRange(DateTime dt1, DateTime dt2)
+        public DataTable GetTotalIssuedByDateRange(DateTime dt1, DateTime dt2, int lkid)
         {
             this.FlushData();
+            string filter = "";
+            if (lkid == 0)
+            {
+                filter = String.Format(@"  WHERE   ( id.IsTransfer = 0 )  AND (id.EurDate BETWEEN '{0}' AND '{1}' )", dt1.ToShortDateString(), dt2.ToShortDateString());
+            }
+            else filter = String.Format(@" WHERE   ( id.IsTransfer = 0 )  AND (id.EurDate BETWEEN '{0}' AND '{1}' ) AND (id.ReceivingUnitID ={2})", dt1.ToShortDateString(), dt2.ToShortDateString(),lkid);
             var query =
                 String.Format(@"SELECT ROW_NUMBER() OVER ( ORDER BY iss.FullItemName   ) AS RowNo ,
                                         SUM(iss.TotalPrice) TotalPrice
@@ -358,7 +364,7 @@ namespace BLL
                                 FROM    IssueDoc id
                                         JOIN ReceiveDoc rd ON id.RecievDocID = rd.ID
                                         JOIN vwGetAllItems vw ON id.ItemID = vw.ID
-                                WHERE   ( id.IsTransfer = 0 )  AND (id.EurDate BETWEEN '{0}' AND '{1}' )
+                               {0}
                                 GROUP BY vw.FullItemName ,
                                         vw.Cost ,
                                         vw.Unit ,
@@ -366,7 +372,7 @@ namespace BLL
                         GROUP BY  iss.FullItemName
                                 ,iss.Unit
                                 ,iss.Cost
-                                ,iss.CommodityType", dt1.ToShortDateString(), dt2.ToShortDateString());
+                                ,iss.CommodityType", filter);
             this.LoadFromRawSql(query);
             return this.DataTable;
         }

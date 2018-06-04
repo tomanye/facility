@@ -32,7 +32,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Users\ehete\Documents\Projects\HCMSFEModelRelease\ModelPring-V28-1\</PublishUrl>
+    <PublishUrl>C:\Project\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -48,7 +48,7 @@
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>228</ApplicationRevision>
+    <ApplicationRevision>229</ApplicationRevision>
     <ApplicationVersion>2.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -608,6 +608,8 @@
     <None Include="Service References\RRFLookUpService\ServiceRRFLookup11.disco" />
     <None Include="Resources\LoginScreenFacilityEdition7.png" />
     <None Include="Resources\Excel1.gif" />
+    <Content Include="Resources\DaguLog.png" />
+    <Content Include="Resources\loginScreenAidsFree.png" />
     <Content Include="Resources\PFSALogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1195,6 +1197,24 @@
     </Content>
     <Content Include="Scripts\998_AlterTransfer.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_ForeignKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_Insert.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_LoadAll.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_LoadbyPrimaryKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_Update.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\999_AlterTranferInsert.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
