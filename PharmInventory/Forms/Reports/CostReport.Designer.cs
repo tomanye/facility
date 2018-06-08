@@ -28,6 +28,7 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.rdDrug = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -86,8 +87,8 @@ namespace PharmInventory.Forms.Reports
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.bw = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.rdDrug.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -542,7 +543,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 8;
-            this.gridColumn3.Width = 86;
             // 
             // gridColumn8
             // 
@@ -555,7 +555,6 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QuantityLeftPrice", "{0:n3}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 9;
-            this.gridColumn8.Width = 87;
             // 
             // gridColumn9
             // 

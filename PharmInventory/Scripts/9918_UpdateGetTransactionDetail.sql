@@ -31,9 +31,11 @@ select t.*
 	LEFT JOIN 
 		(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price ,MAX(Date) receivedate
 		FROM ReceiveDoc WHERE StoreID = @storeid AND (date <=  @todate  ) GROUP BY ItemID ) AS eb ON eb.ItemID = vw.ID 
-	 --	LEFT JOIN 
-			--(SELECT ItemID , SUM(PhysicalInventory) Quantity FROM YearEnd WHERE StoreID = @storeid AND Year = YEAR(@fromdate)  GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
-	      LEFT JOIN
+	LEFT JOIN 
+			(SELECT ye.ItemID , SUM(yed.Quantity) QuantityLeft, Sum(yed.Quantity * rd.Cost) Price FROM YearEnd ye 
+			JOIN YearEndDetail yed ON ye.ID = yed.YearEndID JOIN ReceiveDoc rd on yed.ReceiveDocID = rd.ID
+			 WHERE ye.StoreID = @storeid AND Year = YEAR(@fromdate)  GROUP BY ye.ItemID ) AS bb ON bb.ItemID = vw.ID 
+     LEFT JOIN
 		(SELECT ItemID , SUM(Quantity) Quantity FROM Disposal WHERE StoreID = @storeid AND (date BETWEEN @fromdate AND @todate) AND Losses = 1 GROUP BY ItemID ) AS loss ON loss.ItemID = vw.ID 
 		LEFT JOIN
 		(SELECT ItemID , SUM(Quantity) Quantity FROM Disposal WHERE StoreID = @storeid AND (date BETWEEN @fromdate AND @todate) AND Losses = 0 GROUP BY ItemID ) AS adj ON adj.ItemID = vw.ID 
