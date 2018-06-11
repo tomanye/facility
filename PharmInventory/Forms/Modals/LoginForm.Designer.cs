@@ -82,7 +82,7 @@ namespace PharmInventory.Forms.Modals
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = global::PharmInventory.Properties.Resources.cross;
-            this.btnCancel.Location = new System.Drawing.Point(296, 147);
+            this.btnCancel.Location = new System.Drawing.Point(296, 156);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 22);
             this.btnCancel.StyleController = this.layoutControl1;
@@ -96,7 +96,7 @@ namespace PharmInventory.Forms.Modals
             this.btnLogin.Appearance.Options.UseFont = true;
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLogin.Image = global::PharmInventory.Properties.Resources.lock_open;
-            this.btnLogin.Location = new System.Drawing.Point(201, 147);
+            this.btnLogin.Location = new System.Drawing.Point(201, 156);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(91, 22);
             this.btnLogin.StyleController = this.layoutControl1;
@@ -106,7 +106,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(122, 99);
+            this.txtUsername.Location = new System.Drawing.Point(122, 108);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(261, 20);
             this.txtUsername.StyleController = this.layoutControl1;
@@ -114,7 +114,7 @@ namespace PharmInventory.Forms.Modals
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(122, 123);
+            this.txtPassword.Location = new System.Drawing.Point(122, 132);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Properties.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(261, 20);
@@ -148,7 +148,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.layoutControlItem2.Control = this.txtUsername;
             this.layoutControlItem2.CustomizationFormText = "User Name";
-            this.layoutControlItem2.Location = new System.Drawing.Point(55, 87);
+            this.layoutControlItem2.Location = new System.Drawing.Point(55, 96);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(320, 24);
             this.layoutControlItem2.Text = "User Name";
@@ -158,7 +158,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.layoutControlItem3.Control = this.txtPassword;
             this.layoutControlItem3.CustomizationFormText = "Password";
-            this.layoutControlItem3.Location = new System.Drawing.Point(55, 111);
+            this.layoutControlItem3.Location = new System.Drawing.Point(55, 120);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(320, 24);
             this.layoutControlItem3.Text = "Password";
@@ -168,7 +168,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.layoutControlItem4.Control = this.btnLogin;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem4";
-            this.layoutControlItem4.Location = new System.Drawing.Point(189, 135);
+            this.layoutControlItem4.Location = new System.Drawing.Point(189, 144);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(95, 26);
             this.layoutControlItem4.Text = "layoutControlItem4";
@@ -180,7 +180,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.layoutControlItem5.Control = this.btnCancel;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(284, 135);
+            this.layoutControlItem5.Location = new System.Drawing.Point(284, 144);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(91, 26);
             this.layoutControlItem5.Text = "layoutControlItem5";
@@ -192,7 +192,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(55, 135);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(55, 144);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(134, 26);
             this.emptySpaceItem1.Text = "emptySpaceItem1";
@@ -202,7 +202,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.CustomizationFormText = "emptySpaceItem2";
-            this.emptySpaceItem2.Location = new System.Drawing.Point(375, 87);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(375, 96);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
             this.emptySpaceItem2.Size = new System.Drawing.Size(54, 74);
             this.emptySpaceItem2.Text = "emptySpaceItem2";
@@ -212,7 +212,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.CustomizationFormText = "emptySpaceItem3";
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 87);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 96);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
             this.emptySpaceItem3.Size = new System.Drawing.Size(55, 74);
             this.emptySpaceItem3.Text = "emptySpaceItem3";
@@ -224,7 +224,7 @@ namespace PharmInventory.Forms.Modals
             this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem4";
             this.emptySpaceItem4.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(429, 87);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(429, 96);
             this.emptySpaceItem4.Text = "emptySpaceItem4";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
@@ -232,9 +232,9 @@ namespace PharmInventory.Forms.Modals
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.CustomizationFormText = "emptySpaceItem5";
-            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 161);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 170);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(429, 34);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(429, 25);
             this.emptySpaceItem5.Text = "emptySpaceItem5";
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 

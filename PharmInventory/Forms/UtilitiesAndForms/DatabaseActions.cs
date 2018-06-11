@@ -48,13 +48,18 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            string path = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\";
-            if (folderBrowserDialog2.ShowDialog() == DialogResult.OK)
+            string path = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup";
+            using (var fbd = new FolderBrowserDialog())
             {
+                DialogResult result = fbd.ShowDialog();
 
-                  path = folderBrowserDialog2.SelectedPath;
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                   path = fbd.SelectedPath;  
+                }
             }
-                    try
+           
+        try
             {
                 GeneralInfo info = new GeneralInfo();
                 info.LoadAll();
@@ -88,7 +93,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
                                 WHILE @@FETCH_STATUS = 0
                                 BEGIN
-                                   SET @fileName = @path + @name + '_' + @fileDate + '.BAK'
+                                   SET @fileName = @path +'\' + @name + '_' + @fileDate + '.BAK'
                                    BACKUP DATABASE @name TO DISK = @fileName
 
                                 FETCH NEXT FROM db_cursor INTO @name
