@@ -136,7 +136,7 @@ namespace PharmInventory.Forms.Reports
         private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             gridItemsList.DataSource = (DataTable)e.Result;
-            if (ckExclude.Checked) 
+                    if (ckExclude.Checked) 
                 gridItemListView.ActiveFilterString = (Convert.ToInt16(lkCategory.EditValue) != 0)?string.Format("[Received] != '0'and [TypeID]={0} AND [FullItemName] like '{1}%'", Convert.ToInt32(lkCategory.EditValue), txtItemName.Text):string.Format("[Received] != '0' AND [FullItemName] like '{0}%'", txtItemName.Text);
         }
 
@@ -363,13 +363,22 @@ namespace PharmInventory.Forms.Reports
         {
             if (cboStores.SelectedValue != null)//&& cboYear.SelectedValue != null)
             {
+                dtFrom.CustomFormat = "MM/dd/yyyy";
+                DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text); 
                 PopulateItemList();
+                if (dt1.Year >= 2010)
+                {
+                    colbbPrice.Visible = colBB.Visible = true;
+                    colBB.VisibleIndex = 1;
+                    colbbPrice.VisibleIndex = 2;
+                } 
+                else colbbPrice.Visible = colBB.Visible = false;
             }
         }
 
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
-            var info = new GeneralInfo();
+            var info = new GeneralInfo();    
             info.LoadAll();
             string[] header = { info.HospitalName, "From Date:" + selecteddate.ToShortDateString() + " To Date:" + dtTo.Text, "Store: " + cboStores.Text,"Category:" + lkCategory.Text };
             printableComponentLink1.Landscape = true;
