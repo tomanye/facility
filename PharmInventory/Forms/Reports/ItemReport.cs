@@ -596,26 +596,25 @@ namespace PharmInventory.Forms.Reports
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
             string head = "PFSA Vital Report";
-            string[] header = { info.HospitalName, "Date: " + cboMonth.Text + "/" + cboYear.Text, "Store: " + cboStores.Text };
+            string[] header = { info.HospitalName, "Date: " + cboMonth.Text + "/" + cboYear.Text, "Store: " + cboStores.Text, "Generated On: " + dtDate.Text };
 
             //string[] headerright = { "Category: " + lkCommodityTypes.Text, "Status: " + cboStatus.Text, "Program: " + cboSubProgram.Text };
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(400, 20, 600, 100), BorderSide.None);
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(200, 20, 600, 200), BorderSide.None);
             brick0.HorzAlignment     = DevExpress.Utils.HorzAlignment.Center;
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 600, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 80, 600, 100), BorderSide.None);
-
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 100, 600, 100), BorderSide.None);
+            brick0.Font = new Font("Tahoma", 16);
 
             //TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 600, 100), BorderSide.None);
             //TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 40, 600, 100), BorderSide.None);
             //TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 600, 100), BorderSide.None);
-          //  brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
-            string headerright = "Generated On: " + dtDate.Text;
-            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(700, 60, 600, 100), BorderSide.None);
-            brick3.HorzAlignment = DevExpress.Utils.HorzAlignment.Far;
+            //  brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
+
         }
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
