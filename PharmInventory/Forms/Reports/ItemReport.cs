@@ -602,7 +602,7 @@ namespace PharmInventory.Forms.Reports
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(600, 20, 600, 100), BorderSide.None);
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(400, 20, 600, 100), BorderSide.None);
             brick0.HorzAlignment     = DevExpress.Utils.HorzAlignment.Center;
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 600, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
@@ -614,7 +614,7 @@ namespace PharmInventory.Forms.Reports
             //TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 600, 100), BorderSide.None);
           //  brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
             string headerright = "Generated On: " + dtDate.Text;
-            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(865, 60, 600, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(700, 60, 600, 100), BorderSide.None);
             brick3.HorzAlignment = DevExpress.Utils.HorzAlignment.Far;
         }
 
