@@ -534,13 +534,23 @@ namespace PharmInventory.Forms.Reports
             SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel| *.xls|PDF (.pdf)|*.pdf" };
 
             if (DialogResult.OK == saveDlg.ShowDialog())
-            {
-                if(saveDlg.FilterIndex==1)
+            { 
+                PrintingSystemBase ps = new PrintingSystemBase();
+                DevExpress.XtraPrintingLinks.PrintableComponentLinkBase link = new DevExpress.XtraPrintingLinks.PrintableComponentLinkBase(ps);
+                link.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderAreaVital);
+                link.Component = gridItemsChoice;
+                link.Landscape = true;
+                link.CreateDocument();
+              
+                if (saveDlg.FilterIndex==1)
                 {
-                    gridItemsChoice.MainView.ExportToXls(saveDlg.FileName);
+                    link.PrintingSystemBase.ExportToXls(saveDlg.FileName); 
                 }
               else if(saveDlg.FilterIndex == 2)
-                gridItemsChoice.MainView.ExportToPdf(saveDlg.FileName);
+                {
+                    link.PrintingSystemBase.ExportToPdf(saveDlg.FileName); 
+                }
+               
             }
         }
 
@@ -580,6 +590,32 @@ namespace PharmInventory.Forms.Reports
             TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800,40, 600, 100), BorderSide.None);
             TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800,60, 600, 100), BorderSide.None);
             brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
+        }
+        private void Link_CreateMarginalHeaderAreaVital(object sender, CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            string head = "PFSA Vital Report";
+            string[] header = { info.HospitalName, "Date: " + cboMonth.Text + "/" + cboYear.Text, "Store: " + cboStores.Text };
+
+            //string[] headerright = { "Category: " + lkCommodityTypes.Text, "Status: " + cboStatus.Text, "Program: " + cboSubProgram.Text };
+            pcl.Landscape = true;
+            pcl.PageHeaderFooter = header;
+
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(600, 20, 600, 100), BorderSide.None);
+            brick0.HorzAlignment     = DevExpress.Utils.HorzAlignment.Center;
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 600, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 80, 600, 100), BorderSide.None);
+
+
+            //TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 600, 100), BorderSide.None);
+            //TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 40, 600, 100), BorderSide.None);
+            //TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 600, 100), BorderSide.None);
+          //  brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
+            string headerright = "Generated On: " + dtDate.Text;
+            TextBrick brick3 = e.Graph.DrawString(headerright, Color.DarkBlue, new RectangleF(865, 60, 600, 100), BorderSide.None);
+            brick3.HorzAlignment = DevExpress.Utils.HorzAlignment.Far;
         }
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
