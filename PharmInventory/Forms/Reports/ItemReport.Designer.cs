@@ -160,7 +160,6 @@ namespace PharmInventory.Forms.Reports
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.OptionsColumn.AllowEdit = false;
-            this.colStatus.OptionsFilter.AllowFilter = false;
             this.colStatus.Visible = true;
             this.colStatus.VisibleIndex = 11;
             this.colStatus.Width = 87;
@@ -753,7 +752,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn1.FieldName = "VEN";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 3;
             this.gridColumn1.Width = 45;

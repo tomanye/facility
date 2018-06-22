@@ -2518,6 +2518,7 @@ namespace PharmInventory.Forms.Transactions
             // 
             // txtConRecipientName
             // 
+            this.txtConRecipientName.Enabled = false;
             this.txtConRecipientName.Location = new System.Drawing.Point(480, 476);
             this.txtConRecipientName.Name = "txtConRecipientName";
             this.txtConRecipientName.Size = new System.Drawing.Size(349, 20);

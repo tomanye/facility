@@ -595,14 +595,14 @@ namespace PharmInventory.Forms.Reports
         {
             GeneralInfo info = new GeneralInfo();
             info.LoadAll();
-            string head = "PFSA Vital Report";
+            string head = "Facility Availability Status Report";
             string[] header = { info.HospitalName, "Date: " + cboMonth.Text + "/" + cboYear.Text, "Store: " + cboStores.Text, "Generated On: " + dtDate.Text };
 
             //string[] headerright = { "Category: " + lkCommodityTypes.Text, "Status: " + cboStatus.Text, "Program: " + cboSubProgram.Text };
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(350, 10, 600, 400), BorderSide.None); 
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(300, 10, 800, 400), BorderSide.None); 
             TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 350, 100), BorderSide.None);
             TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 350, 100), BorderSide.None);
             TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(700, 40, 400, 100), BorderSide.None);

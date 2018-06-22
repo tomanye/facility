@@ -163,7 +163,7 @@ namespace PharmInventory
             // 
             // dtFrom
             // 
-            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 7F);
+            this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.dtFrom.DayOfWeekCharacters = 2;
             this.dtFrom.Location = new System.Drawing.Point(279, 14);
             this.dtFrom.Name = "dtFrom";
@@ -174,7 +174,7 @@ namespace PharmInventory
             // 
             // dtTo
             // 
-            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 5F);
+            this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 7F);
             this.dtTo.DayOfWeekCharacters = 2;
             this.dtTo.Location = new System.Drawing.Point(223, 49);
             this.dtTo.Name = "dtTo";
@@ -621,15 +621,16 @@ namespace PharmInventory
             // lblGExpiry
             // 
             this.lblGExpiry.Appearance.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
-            this.lblGExpiry.Location = new System.Drawing.Point(197, 12);
+            this.lblGExpiry.Location = new System.Drawing.Point(178, 12);
             this.lblGExpiry.Name = "lblGExpiry";
-            this.lblGExpiry.Size = new System.Drawing.Size(182, 22);
+            this.lblGExpiry.Size = new System.Drawing.Size(201, 22);
             this.lblGExpiry.StyleController = this.layoutControl1;
             this.lblGExpiry.TabIndex = 30;
             this.lblGExpiry.Text = "labelControl1";
             // 
             // cboYear
             // 
+            this.cboYear.Enabled = false;
             this.cboYear.Location = new System.Drawing.Point(487, 12);
             this.cboYear.Name = "cboYear";
             this.cboYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -796,14 +797,14 @@ namespace PharmInventory
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem5.Control = this.lblGExpiry;
-            this.layoutControlItem5.CustomizationFormText = "General Expiry For ";
+            this.layoutControlItem5.CustomizationFormText = "Stock Status For ";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(67, 17);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(371, 26);
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem5.Text = "General Expiry For ";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(182, 23);
+            this.layoutControlItem5.Text = "Stock Status For ";
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(163, 23);
             // 
             // printDoc
             // 
