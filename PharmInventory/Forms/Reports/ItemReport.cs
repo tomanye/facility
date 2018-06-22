@@ -602,12 +602,11 @@ namespace PharmInventory.Forms.Reports
             pcl.Landscape = true;
             pcl.PageHeaderFooter = header;
 
-            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(200, 20, 600, 200), BorderSide.None);
-            brick0.HorzAlignment     = DevExpress.Utils.HorzAlignment.Center;
-            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 600, 100), BorderSide.None);
-            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 600, 100), BorderSide.None);
-            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(0, 80, 600, 100), BorderSide.None);
-            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(0, 100, 600, 100), BorderSide.None);
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(350, 10, 600, 400), BorderSide.None); 
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 350, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 350, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(700, 40, 400, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(700, 60, 400, 100), BorderSide.None);
             brick0.Font = new Font("Tahoma", 16);
 
             //TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 600, 100), BorderSide.None);
