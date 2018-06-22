@@ -281,7 +281,7 @@ namespace BLL
                                                     rd.FullItemName ,
                                                     rd.Unit ,
                                                     rd.CommodityType  
-                                           FROM( SELECT    ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+                                           FROM( SELECT    SUM( rd.Cost *  rd.Quantity  ) AS TotalPrice ,
                                                             SUM(rd.Quantity) totalQuantity ,
                                                             vw.FullItemName ,
                                                             vw.Unit ,
@@ -986,6 +986,75 @@ namespace BLL
                                             FROM ReceiveDoc rd INNER JOIN vwGetAllItems vw on rd.ItemID = vw.ID
                                             WHERE StoreId= {0} AND vw.TypeId = {1} AND QuantityLeft > 0
                                             ORDER BY FullItemName ", storeId, selectedType);
+
+            return ExecuteSqlOnDatabase(sqlQuery);
+        }
+        public DataTable GetWastageRate(int fromyear, int toyear,int storeId, int selectedType)
+        {
+            string filter = "";
+            string yearfilter = "";
+            if (fromyear != 0 & toyear != 0)
+                yearfilter = String.Format("  Year(rd.date)>={0} and Year(rd.Date)<={1}", fromyear, toyear);
+            if (fromyear != 0 & toyear == 0)
+                yearfilter = String.Format("  Year(rd.date)>={0}  ", fromyear);
+            if (fromyear == 0 & toyear != 0)
+                yearfilter = String.Format("   Year(rd.Date)<={0}", toyear);
+
+            if (storeId != 0 & selectedType !=0)
+                filter =    String.Format("  rd.StoreID = {0} and vw.TypeID = {1} and", storeId, selectedType);
+            if(storeId!=0 & selectedType ==0)
+                filter = String.Format("  rd.StoreID = {0}  and", storeId);
+            if(storeId ==0 & selectedType !=0)
+                filter = String.Format("  vw.TypeID  = {0} and ", selectedType);
+            string sqlQuery = String.Format(@"
+                                           SELECT ISNULL(wast.TotalDisposed,0) WastageQuantity ,
+                                           ISNULL(totrec.totalreceive,0) TotalReceived ,
+                                           ISNULL(ROUND(( wast.TotalDisposed / totrec.totalreceive ) * 100, 0),0) WastageRate,
+	                                       totrec.recyear YearR
+                                    FROM   (   SELECT   SUM(rd.Quantity * rd.Cost)
+                                                        + SUM(ISNULL(yed.Quantity, 0) * rd.Cost) totalreceive ,
+                                                        YEAR(rd.Date) recyear
+                                               FROM     dbo.ReceiveDoc rd
+		                                                JOIN vwGetAllItems vw on vw.ID = rd.ItemID
+                                                        LEFT JOIN dbo.YearEndDetail yed ON yed.ReceiveDocID = rd.ID
+                                                        LEFT JOIN dbo.YearEnd ye ON ye.ID = yed.YearEndID
+					                                 Where {0} {1}
+                                               GROUP BY YEAR(rd.Date)
+                                           ) totrec
+                                       LEFT   JOIN (   SELECT *
+                                                    FROM   (   SELECT   SUM(totdis.DisposedAmount) TotalDisposed ,
+                                                                        totdis.DisYear
+                                                               FROM     (   SELECT   SUM(rd.Quantity * rd.Cost) DisposedAmount ,
+                                                                                     YEAR(rd.Date) DisYear
+                                                                            FROM     dbo.Disposal rd
+										                                        JOIN vwGetAllItems vw on vw.ID = rd.ItemID
+                                                                            WHERE    ReasonId IN (   SELECT ID
+                                                                                                     FROM   DisposalReasons
+                                                                                                     WHERE  CONVERT(
+                                                                                                                       VARCHAR ,
+                                                                                                                       Reason
+                                                                                                                   ) IN ( 'Expired' ,
+                                                                                                                          'Damaged' ,
+                                                                                                                          'Low Quality'
+                                                                                                                        )
+                                                                                                 )
+															                                    and {0}{1}
+                                                                            GROUP BY YEAR(rd.Date)
+                                                                            UNION ALL
+                                                                            SELECT   SUM(rd.Quantity * rd.Cost) DisposedAmount ,
+                                                                                     YEAR(rd.Date) DisYear
+                                                                            FROM     dbo.ReceiveDoc rd
+										                                             JOIN vwGetAllItems vw on vw.ID = rd.ItemID
+												 
+                                                                         WHERE    (YEAR(rd.Date) =YEAR(GETDATE()) AND  rd.ExpDate< GETDATE()  )
+									                                              OR (YEAR(rd.Date) < YEAR(GETDATE()) AND YEAR(rd.ExpDate) <YEAR(rd.date))
+											                                     and {0}{1}
+                                                                            GROUP BY YEAR(rd.Date)
+                                                                        ) totdis
+                                                               GROUP BY totdis.DisYear
+                                                           ) totwaste
+                                                ) wast ON wast.DisYear = totrec.recyear
+			                                    ORDER BY totrec.recyear ASC	  ", filter,yearfilter );
 
             return ExecuteSqlOnDatabase(sqlQuery);
         }

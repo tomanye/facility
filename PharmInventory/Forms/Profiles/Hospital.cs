@@ -221,7 +221,8 @@ namespace PharmInventory.Forms.Profiles
 
 
             PopulateFields();
-            this.Parent.Parent.Text = _hospInfo.HospitalName + " - Ethiopian Health Commodity Management Information System(HCMS)";
+            this.Parent.Parent.Text = _hospInfo.HospitalName + " - Dagu";
+                //" - Ethiopian Health Commodity Management Information System(HCMS)";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

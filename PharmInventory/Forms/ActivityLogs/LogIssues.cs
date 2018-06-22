@@ -538,7 +538,7 @@ namespace PharmInventory.Forms.ActivityLogs
             if (dt.Rows.Count > 0)
             {
                 issuedBy = (dt.Rows[0]["ModelIssuedBy"] != null) ? dt.Rows[0]["ModelIssuedBy"].ToString() : "";
-                receivedBy = (dt.Rows[0]["ReceivedBy"] != null) ? dt.Rows[0]["ReceivedBy"].ToString() : "";
+                receivedBy = (dt.Rows[0]["RecipientName"] != null) ? dt.Rows[0]["RecipientName"].ToString() : "";
             }
              
             var modelprint = new PharmInventory.Reports.Model22
