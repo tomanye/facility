@@ -69,9 +69,9 @@ namespace PharmInventory.Forms.SummaryReports
             ((BarSeriesView)ser.View).ColorEach = true;
             ser.PointOptions.ValueNumericOptions.Precision = 0;
             ser.LegendPointOptions.PointView = PointView.ArgumentAndValues;
-            ser.LegendTextPattern = "{A}:{V:n0} %";
+            ser.LegendTextPattern = "{A}:{V:n1} %";
             ser.LabelsVisibility = DefaultBoolean.True;
-            ser.Label.TextPattern = "{V:n0} %";
+            ser.Label.TextPattern = "{V:n1} %";
 
             chrtWastageRate.Series.Add(ser);
         }
