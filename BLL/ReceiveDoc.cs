@@ -281,7 +281,7 @@ namespace BLL
                                                     rd.FullItemName ,
                                                     rd.Unit ,
                                                     rd.CommodityType  
-                                           FROM( SELECT    ( rd.Cost * SUM(rd.Quantity) ) AS TotalPrice ,
+                                           FROM( SELECT    SUM( rd.Cost *  rd.Quantity  ) AS TotalPrice ,
                                                             SUM(rd.Quantity) totalQuantity ,
                                                             vw.FullItemName ,
                                                             vw.Unit ,

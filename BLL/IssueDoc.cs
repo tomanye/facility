@@ -355,7 +355,7 @@ namespace BLL
                                         ,iss.Unit
                                         ,iss.Cost
                                         ,iss.CommodityType
-                               FROM( SELECT   ( id.Cost * SUM(id.Quantity) ) TotalPrice ,
+                               FROM( SELECT   SUM( id.Cost *   id.Quantity ) TotalPrice ,
                                         SUM(id.Quantity) TotalQuantity ,
                                         vw.FullItemName ,
                                         vw.Cost ,
