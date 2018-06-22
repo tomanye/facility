@@ -184,17 +184,17 @@ namespace PharmInventory.Forms.Reports
                 isStock = "[EverReceived] != '0' AND ";
             else
                 isStock = "";
-
+            string ispfsaVital = "and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue);
             switch (value.Substring(0, 1))
             {
                 case "S":
-                    filterString = isStock + "[SubCategoryID] = " + categoryId.ToString();
+                    filterString = isStock + "[SubCategoryID] = " + categoryId.ToString() + ispfsaVital;
                     gridItemChoiceView.ActiveFilterString = filterString;
                     // toolStripButtonAddItems.Enabled = true;
                     break;
                 case "C":
                 case "U":
-                    filterString = isStock + "[CategoryId] = " + categoryId.ToString();
+                    filterString = isStock + "[CategoryId] = " + categoryId.ToString() + ispfsaVital;
                     gridItemChoiceView.ActiveFilterString = filterString;
                     //toolStripButtonAddItems.Enabled = false;
                     break;
@@ -240,21 +240,21 @@ namespace PharmInventory.Forms.Reports
         {
             if (cboStatus.EditValue == null)
                 return;
-
+            string ispfsaVital = "and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue);
             if (cboStatus.EditValue.ToString() != "All")
             {
                 if (cboStatus.EditValue.ToString() == "Stock Out")
                 {
-                    gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'";
+                    gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0') and [Status] = 'Stock Out'" + ispfsaVital;
                 }
                 else
                 {
-                    gridItemChoiceView.ActiveFilterString = "[Status] Like '" + cboStatus.EditValue.ToString() + "'";
+                    gridItemChoiceView.ActiveFilterString = "[Status] Like '" + cboStatus.EditValue.ToString() + "'" + ispfsaVital;
                 }
             }
             else
             {
-                gridItemChoiceView.ActiveFilterString = "[SOH] != '0' or [AMC] != '0' or [EverReceived] != '0'";
+                gridItemChoiceView.ActiveFilterString = "([SOH] != '0' or [AMC] != '0' or [EverReceived] != '0')" + ispfsaVital;
             }
         }
 
@@ -332,15 +332,20 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void ckExclude_CheckedChanged(object sender, EventArgs e)
         {
+            PopulateGrid();
             ckExcNeverIssued.Enabled = ckExclude.Checked;
+            string ispfsaVital = "and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue);
+
             if (ckExclude.Checked)
                 //gridItemChoiceView.ActiveFilterString =
                 //   string.Format("[EverReceived] != '0' or SOH != '0' or TypeID={0}",
                 //                 (int) lkCommodityTypes.EditValue);
-                gridItemChoiceView.ActiveFilterString = "SOH != '0' or [EverReceived] !='0' or AMC!= '0'";
+                gridItemChoiceView.ActiveFilterString = "(SOH != '0' or [EverReceived] !='0' or AMC!= '0')" + ispfsaVital;
 
             else
-                gridItemChoiceView.ActiveFilterString = "";
+                gridItemChoiceView.ActiveFilterString = "IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue);
+
+
         }
 
         /// <summary>
@@ -350,7 +355,8 @@ namespace PharmInventory.Forms.Reports
         /// <param name="e"></param>
         private void ckExcNeverIssued_CheckedChanged_1(object sender, EventArgs e)
         {
-            gridItemChoiceView.ActiveFilterString = ckExcNeverIssued.Checked ? "Issued != 0" : "[EverReceived] != '0' or SOH != '0'";
+            PopulateGrid();
+            gridItemChoiceView.ActiveFilterString = ckExcNeverIssued.Checked ? "Issued != 0 and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue) : "[EverReceived] != '0' or SOH != '0' and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue);
         }
 
         /// <summary>
@@ -361,7 +367,7 @@ namespace PharmInventory.Forms.Reports
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
             if (lkCommodityTypes.EditValue == null)
-                gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%'", txtItemName.Text);
+                gridItemChoiceView.ActiveFilterString = (String.Format("[FullItemName] Like '{0}%'", txtItemName.Text)) + " and IsPFSAVital = " + Convert.ToBoolean(chkIsPFSAVital.EditValue); 
             else
             {
                 gridItemChoiceView.ActiveFilterString = String.Format("[FullItemName] Like '{0}%' And [TypeID] = {1}",
@@ -498,6 +504,7 @@ namespace PharmInventory.Forms.Reports
                     }
                     break;
             }
+           
         }
 
         /// <summary>
@@ -511,9 +518,10 @@ namespace PharmInventory.Forms.Reports
             cboStatus.EditValue = _filter;
             if (ckExclude.Checked)
                 gridItemChoiceView.ActiveFilterString =
-                    string.Format("[EverReceived] != '0' or SOH != '0' or AMC != '0'");
+                    string.Format("([EverReceived] != '0' or SOH != '0' or AMC != '0') and IsPFSAVital ={0} ", Convert.ToBoolean(chkIsPFSAVital.EditValue));
             else
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+                gridItemChoiceView.ActiveFilterString = string.Format("TypeID={0} and IsPFSAVital ={1}", Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToBoolean(chkIsPFSAVital.EditValue));
+            
         }
 
         /// <summary>
@@ -526,13 +534,23 @@ namespace PharmInventory.Forms.Reports
             SaveFileDialog saveDlg = new SaveFileDialog { Filter = "Microsoft Excel| *.xls|PDF (.pdf)|*.pdf" };
 
             if (DialogResult.OK == saveDlg.ShowDialog())
-            {
-                if(saveDlg.FilterIndex==1)
+            { 
+                PrintingSystemBase ps = new PrintingSystemBase();
+                DevExpress.XtraPrintingLinks.PrintableComponentLinkBase link = new DevExpress.XtraPrintingLinks.PrintableComponentLinkBase(ps);
+                link.CreateMarginalHeaderArea += new CreateAreaEventHandler(Link_CreateMarginalHeaderAreaVital);
+                link.Component = gridItemsChoice;
+                link.Landscape = true;
+                link.CreateDocument();
+              
+                if (saveDlg.FilterIndex==1)
                 {
-                    gridItemsChoice.MainView.ExportToXls(saveDlg.FileName);
+                    link.PrintingSystemBase.ExportToXls(saveDlg.FileName); 
                 }
               else if(saveDlg.FilterIndex == 2)
-                gridItemsChoice.MainView.ExportToPdf(saveDlg.FileName);
+                {
+                    link.PrintingSystemBase.ExportToPdf(saveDlg.FileName); 
+                }
+               
             }
         }
 
@@ -572,6 +590,30 @@ namespace PharmInventory.Forms.Reports
             TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800,40, 600, 100), BorderSide.None);
             TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800,60, 600, 100), BorderSide.None);
             brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
+        }
+        private void Link_CreateMarginalHeaderAreaVital(object sender, CreateAreaEventArgs e)
+        {
+            GeneralInfo info = new GeneralInfo();
+            info.LoadAll();
+            string head = "Facility Availability Status Report";
+            string[] header = { info.HospitalName, "Date: " + cboMonth.Text + "/" + cboYear.Text, "Store: " + cboStores.Text, "Generated On: " + dtDate.Text };
+
+            //string[] headerright = { "Category: " + lkCommodityTypes.Text, "Status: " + cboStatus.Text, "Program: " + cboSubProgram.Text };
+            pcl.Landscape = true;
+            pcl.PageHeaderFooter = header;
+
+            TextBrick brick0 = e.Graph.DrawString(head, Color.DarkBlue, new RectangleF(300, 10, 800, 400), BorderSide.None); 
+            TextBrick brick = e.Graph.DrawString(header[0], Color.DarkBlue, new RectangleF(0, 40, 350, 100), BorderSide.None);
+            TextBrick brick1 = e.Graph.DrawString(header[1], Color.DarkBlue, new RectangleF(0, 60, 350, 100), BorderSide.None);
+            TextBrick brick2 = e.Graph.DrawString(header[2], Color.DarkBlue, new RectangleF(700, 40, 400, 100), BorderSide.None);
+            TextBrick brick3 = e.Graph.DrawString(header[3], Color.DarkBlue, new RectangleF(700, 60, 400, 100), BorderSide.None);
+            brick0.Font = new Font("Tahoma", 16);
+
+            //TextBrick brickright = e.Graph.DrawString(headerright[0], Color.DarkBlue, new RectangleF(800, 20, 600, 100), BorderSide.None);
+            //TextBrick brickright1 = e.Graph.DrawString(headerright[1], Color.DarkBlue, new RectangleF(800, 40, 600, 100), BorderSide.None);
+            //TextBrick brickright2 = e.Graph.DrawString(headerright[2], Color.DarkBlue, new RectangleF(800, 60, 600, 100), BorderSide.None);
+            //  brickright.HorzAlignment = brickright1.HorzAlignment = brickright2.HorzAlignment = DevExpress.Utils.HorzAlignment.Near;
+
         }
 
         private void lkCategories_EditValueChanged(object sender, EventArgs e)
@@ -626,6 +668,7 @@ namespace PharmInventory.Forms.Reports
 
         private void chkIsPFSAVital_CheckedChanged(object sender, EventArgs e)
         {
+            PopulateGrid();
               gridItemChoiceView.ActiveFilterString = String.Format("IsPFSAVital={0}", Convert.ToBoolean(chkIsPFSAVital.EditValue)); 
         }
     }

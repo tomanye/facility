@@ -170,7 +170,7 @@ namespace PharmInventory
 
         public static void ShowHCMISVersionInfoMessageBox()
         {
-            XtraMessageBox.Show(string.Format("HCMIS Version: {0}", HCMISVersionString), "Version Information",
+            XtraMessageBox.Show(string.Format("Dagu Version: {0}", HCMISVersionString), "Version Information",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -215,7 +215,7 @@ namespace PharmInventory
 
             if (!e.UpdateAvailable)
             {
-                XtraMessageBox.Show("No updates found!", "HCMIS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("No updates found!", "Dagu", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -266,7 +266,7 @@ namespace PharmInventory
 
             //If it reaches here, a restart is required for the update to be applied.
             RestartRequired = true;
-            if (XtraMessageBox.Show("Update Completed! Update will not take effect until you restart HCMIS.  Restart HCMIS now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (XtraMessageBox.Show("Update Completed! Update will not take effect until you restart Dagu.  Restart Dagu now?", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Restart();
             }

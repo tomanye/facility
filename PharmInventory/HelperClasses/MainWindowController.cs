@@ -286,6 +286,10 @@ namespace PharmInventory
                     frm = new GeneralCostChart();
                     AddTab("Cost Summary", frm);
                     break;
+                case "Wastage Rate":
+                    frm = new WastageRate();
+                    AddTab("Wastage Rate", frm);
+                    break;
                 case "Summary Chart":
                     frm = new GeneralChart();
                     AddTab("General Chart", frm);

@@ -108,6 +108,7 @@ namespace PharmInventory.Forms.Reports
             this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
             this.pcl = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -159,7 +160,6 @@ namespace PharmInventory.Forms.Reports
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.OptionsColumn.AllowEdit = false;
-            this.colStatus.OptionsFilter.AllowFilter = false;
             this.colStatus.Visible = true;
             this.colStatus.VisibleIndex = 11;
             this.colStatus.Width = 87;
@@ -752,7 +752,6 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn1.FieldName = "VEN";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 3;
             this.gridColumn1.Width = 45;
@@ -1202,6 +1201,10 @@ namespace PharmInventory.Forms.Reports
             this.layoutControlItem27.TextToControlDistance = 0;
             this.layoutControlItem27.TextVisible = false;
             // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // ItemReport
             // 
             this.Appearance.Options.UseFont = true;
@@ -1339,5 +1342,6 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }

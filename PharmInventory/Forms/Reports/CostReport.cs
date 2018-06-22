@@ -367,15 +367,44 @@ namespace PharmInventory.Forms.Reports
                 DateTime dt1 = ConvertDate.DateConverter(dtFrom.Text); 
                 PopulateItemList();
                 if (dt1.Year >= 2010)
-                {
-                    colbbPrice.Visible = colBB.Visible = true;
-                    colBB.VisibleIndex = 1;
-                    colbbPrice.VisibleIndex = 2;
-                } 
-                else colbbPrice.Visible = colBB.Visible = false;
+                { 
+                    SetColumnIndex(true);
+                }
+                else
+                { 
+                    SetColumnIndex(false);
+                }
             }
         }
+     private void SetColumnIndex(bool currYear)
+        {
+            int curindex = 0;
+            colbbPrice.Visible = colBB.Visible = currYear;
+            gridItemListView.Columns[17].VisibleIndex = curindex++;
+            gridItemListView.Columns[1].VisibleIndex = curindex++;
+            if (currYear)
+            {
+                gridItemListView.Columns[4].VisibleIndex = curindex++;
+                gridItemListView.Columns[5].VisibleIndex = curindex++;
+                gridItemListView.Columns[6].VisibleIndex = curindex++;
+                gridItemListView.Columns[7].VisibleIndex = curindex++;
+                gridItemListView.Columns[8].VisibleIndex = curindex++;
+                gridItemListView.Columns[9].VisibleIndex = curindex++;
+                gridItemListView.Columns[11].VisibleIndex = curindex++;
+                gridItemListView.Columns[12].VisibleIndex = curindex++;
 
+            }
+            else
+            { 
+                gridItemListView.Columns[6].VisibleIndex = curindex++;
+                gridItemListView.Columns[7].VisibleIndex = curindex++;
+                gridItemListView.Columns[8].VisibleIndex = curindex++;
+                gridItemListView.Columns[9].VisibleIndex = curindex++;
+                gridItemListView.Columns[11].VisibleIndex = curindex++;
+                gridItemListView.Columns[12].VisibleIndex = curindex++;
+            }
+
+        }
         private void printableComponentLink1_CreateMarginalHeaderArea(object sender, CreateAreaEventArgs e)
         {
             var info = new GeneralInfo();    

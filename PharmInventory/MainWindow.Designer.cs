@@ -61,6 +61,7 @@ namespace PharmInventory
             this.summaryChartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockExpiryStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wastageRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,6 +131,7 @@ namespace PharmInventory
             this.lbiSummaryChart = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiStockExpiryStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiCostSummary = new DevExpress.XtraNavBar.NavBarItem();
+            this.WastageRate = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarFacilitySettings = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -435,7 +437,8 @@ namespace PharmInventory
             this.summaryReportToolStripMenuItem1,
             this.summaryChartsToolStripMenuItem,
             this.stockExpiryStatusToolStripMenuItem,
-            this.costSummaryToolStripMenuItem});
+            this.costSummaryToolStripMenuItem,
+            this.wastageRateToolStripMenuItem});
             this.chartsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
@@ -445,7 +448,7 @@ namespace PharmInventory
             // 
             this.summaryReportToolStripMenuItem1.Image = global::PharmInventory.Properties.Resources._1287390603_text_enriched;
             this.summaryReportToolStripMenuItem1.Name = "summaryReportToolStripMenuItem1";
-            this.summaryReportToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
+            this.summaryReportToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
             this.summaryReportToolStripMenuItem1.Tag = "Summary Report";
             this.summaryReportToolStripMenuItem1.Text = "Summary Report";
             this.summaryReportToolStripMenuItem1.Click += new System.EventHandler(this.OpenMenuItem);
@@ -454,7 +457,7 @@ namespace PharmInventory
             // 
             this.summaryChartsToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287389366_pie_chart;
             this.summaryChartsToolStripMenuItem.Name = "summaryChartsToolStripMenuItem";
-            this.summaryChartsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.summaryChartsToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.summaryChartsToolStripMenuItem.Tag = "Summary Report";
             this.summaryChartsToolStripMenuItem.Text = "Summary Chart";
             this.summaryChartsToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
@@ -463,19 +466,28 @@ namespace PharmInventory
             // 
             this.stockExpiryStatusToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287389359_pie_chart;
             this.stockExpiryStatusToolStripMenuItem.Name = "stockExpiryStatusToolStripMenuItem";
-            this.stockExpiryStatusToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.stockExpiryStatusToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.stockExpiryStatusToolStripMenuItem.Tag = "Stock Expiry Status";
-            this.stockExpiryStatusToolStripMenuItem.Text = "Stock Expiry Status";
+            this.stockExpiryStatusToolStripMenuItem.Text = "Stock  Status";
             this.stockExpiryStatusToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // costSummaryToolStripMenuItem
             // 
             this.costSummaryToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
             this.costSummaryToolStripMenuItem.Name = "costSummaryToolStripMenuItem";
-            this.costSummaryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.costSummaryToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.costSummaryToolStripMenuItem.Tag = "Cost Summary";
             this.costSummaryToolStripMenuItem.Text = "Cost Summary";
             this.costSummaryToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
+            // 
+            // wastageRateToolStripMenuItem
+            // 
+            this.wastageRateToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._3d_bar_chart;
+            this.wastageRateToolStripMenuItem.Name = "wastageRateToolStripMenuItem";
+            this.wastageRateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.wastageRateToolStripMenuItem.Tag = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Text = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // summaryReportToolStripMenuItem
             // 
@@ -718,7 +730,7 @@ namespace PharmInventory
             this.aboutHCMISToolStripMenuItem.Name = "aboutHCMISToolStripMenuItem";
             this.aboutHCMISToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutHCMISToolStripMenuItem.Tag = "About";
-            this.aboutHCMISToolStripMenuItem.Text = "About HCMIS";
+            this.aboutHCMISToolStripMenuItem.Text = "About Dagu";
             this.aboutHCMISToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // mnuCheckForUpdates
@@ -850,7 +862,8 @@ namespace PharmInventory
             this.navBarItem9,
             this.menuItemPriceOnlyReport,
             this.navBarItem10,
-            this.Activitylog});
+            this.Activitylog,
+            this.WastageRate});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.LinkSelectionMode = DevExpress.XtraNavBar.LinkSelectionModeType.OneInGroup;
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
@@ -1111,13 +1124,15 @@ namespace PharmInventory
             // navBarGroup3
             // 
             this.navBarGroup3.Caption = "Summary Reports";
+            this.navBarGroup3.Expanded = true;
             this.navBarGroup3.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiSummaryReport),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiSummaryChart),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiStockExpiryStatus),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiCostSummary)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiCostSummary),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.WastageRate)});
             this.navBarGroup3.Name = "navBarGroup3";
-            this.navBarGroup3.SelectedLinkIndex = 5;
+            this.navBarGroup3.SelectedLinkIndex = 4;
             // 
             // lbiSummaryReport
             // 
@@ -1138,7 +1153,7 @@ namespace PharmInventory
             this.lbiStockExpiryStatus.Caption = "Stock Expiry Status";
             this.lbiStockExpiryStatus.Name = "lbiStockExpiryStatus";
             this.lbiStockExpiryStatus.SmallImage = global::PharmInventory.Properties.Resources._1287389359_pie_chart;
-            this.lbiStockExpiryStatus.Tag = "Stock Expiry Status";
+            this.lbiStockExpiryStatus.Tag = "Stock  Status";
             // 
             // lbiCostSummary
             // 
@@ -1146,6 +1161,13 @@ namespace PharmInventory
             this.lbiCostSummary.Name = "lbiCostSummary";
             this.lbiCostSummary.SmallImage = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
             this.lbiCostSummary.Tag = "Cost Summary";
+            // 
+            // WastageRate
+            // 
+            this.WastageRate.Caption = "Wastage Rate";
+            this.WastageRate.Name = "WastageRate";
+            this.WastageRate.SmallImage = global::PharmInventory.Properties.Resources._3d_bar_chart;
+            this.WastageRate.Tag = "Wastage Rate";
             // 
             // navBarGroup6
             // 
@@ -1453,6 +1475,8 @@ namespace PharmInventory
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private System.Windows.Forms.ToolStripMenuItem activityLogReportsToolStripMenuItem;
         private DevExpress.XtraNavBar.NavBarItem Activitylog;
+        private System.Windows.Forms.ToolStripMenuItem wastageRateToolStripMenuItem;
+        private DevExpress.XtraNavBar.NavBarItem WastageRate;
     }
 }
 
