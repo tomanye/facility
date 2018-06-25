@@ -312,7 +312,7 @@ namespace PharmInventory
                     break;
                 case "Stock Expiry Status":
                     frm = new GeneralExpiryChart();
-                    AddTab("Stock Expiry Status", frm);
+                    AddTab("Stock Status", frm);
                     break;
                 case "DataBase":
                     frm = new DatabaseActions();

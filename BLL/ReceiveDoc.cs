@@ -1009,7 +1009,7 @@ namespace BLL
             string sqlQuery = String.Format(@"
                                            SELECT ISNULL(wast.TotalDisposed,0) WastageQuantity ,
                                            ISNULL(totrec.totalreceive,0) TotalReceived ,
-                                           ISNULL(ROUND(( wast.TotalDisposed / totrec.totalreceive ) * 100, 0),0) WastageRate,
+                                           ISNULL(ROUND(( wast.TotalDisposed / totrec.totalreceive ) * 100, 1),0) WastageRate,
 	                                       totrec.recyear YearR
                                     FROM   (   SELECT   SUM(rd.Quantity * rd.Cost)
                                                         + SUM(ISNULL(yed.Quantity, 0) * rd.Cost) totalreceive ,
