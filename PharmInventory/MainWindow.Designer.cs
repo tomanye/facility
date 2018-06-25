@@ -482,7 +482,7 @@ namespace PharmInventory
             // 
             // wastageRateToolStripMenuItem
             // 
-            this.wastageRateToolStripMenuItem.Image = global::PharmInventory.Properties.Resources._3d_bar_chart;
+            this.wastageRateToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("wastageRateToolStripMenuItem.Image")));
             this.wastageRateToolStripMenuItem.Name = "wastageRateToolStripMenuItem";
             this.wastageRateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.wastageRateToolStripMenuItem.Tag = "Wastage Rate";
@@ -1150,10 +1150,10 @@ namespace PharmInventory
             // 
             // lbiStockExpiryStatus
             // 
-            this.lbiStockExpiryStatus.Caption = "Stock Expiry Status";
+            this.lbiStockExpiryStatus.Caption = "Stock Status";
             this.lbiStockExpiryStatus.Name = "lbiStockExpiryStatus";
             this.lbiStockExpiryStatus.SmallImage = global::PharmInventory.Properties.Resources._1287389359_pie_chart;
-            this.lbiStockExpiryStatus.Tag = "Stock  Status";
+            this.lbiStockExpiryStatus.Tag = "Stock Expiry Status";
             // 
             // lbiCostSummary
             // 
@@ -1166,7 +1166,7 @@ namespace PharmInventory
             // 
             this.WastageRate.Caption = "Wastage Rate";
             this.WastageRate.Name = "WastageRate";
-            this.WastageRate.SmallImage = global::PharmInventory.Properties.Resources._3d_bar_chart;
+            this.WastageRate.SmallImage = ((System.Drawing.Image)(resources.GetObject("WastageRate.SmallImage")));
             this.WastageRate.Tag = "Wastage Rate";
             // 
             // navBarGroup6

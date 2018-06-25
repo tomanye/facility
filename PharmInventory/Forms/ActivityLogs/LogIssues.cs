@@ -206,7 +206,8 @@ namespace PharmInventory.Forms.ActivityLogs
                     if (rec.QuantityLeft > 0)
                         rec.Out = false;
                     rec.Save();
-                    AddIssueLodDelete(iss);
+                    AddIssueLodDelete(iss); 
+                    DeletedRelatedModel(iss);
                     iss.MarkAsDeleted();
                     iss.Save();
 
@@ -242,7 +243,22 @@ namespace PharmInventory.Forms.ActivityLogs
             isdelete.RecomendedQty = iss.RecomendedQty;
             isdelete.Save();
         }
-
+        private static void DeletedRelatedModel(IssueDoc iss)
+        {
+            Model22 md = new Model22();
+            md.Where.IssueDocID.Value = iss.ID;
+            md.Query.Load();
+            md.DeleteAll();
+            md.Save();
+        }
+        private static void DeletedRelatedModel(DataRow dr)
+        {
+            Model22 md = new Model22();
+            md.Where.IssueDocID.Value = (int)dr["ID"];
+            md.Query.Load();
+            md.DeleteAll();
+            md.Save();
+        }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             DataRow dr = grdLogIssue.GetFocusedDataRow();
@@ -486,8 +502,10 @@ namespace PharmInventory.Forms.ActivityLogs
                 foreach (DataRow dataRow in dtbl.Rows)
                 {
                     AddIssueDocDeleted(dataRow);
+                    DeletedRelatedModel(dataRow); 
                     dataRow.Delete();
                 }
+               
                 dis.MarkAsDeleted();
                 dis.Save();
                 XtraMessageBox.Show("Item successfully deleted.", "Success");
