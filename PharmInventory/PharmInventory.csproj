@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PharmInventory</RootNamespace>
-    <AssemblyName>HCMIS</AssemblyName>
+    <AssemblyName>Dagu</AssemblyName>
     <StartupObject>PharmInventory.Program</StartupObject>
     <ManifestCertificateThumbprint>12F722CD5401FCF005991B13D41002CAA51D6B53</ManifestCertificateThumbprint>
     <ManifestKeyFile>PharmInventory_TemporaryKey.pfx</ManifestKeyFile>
@@ -32,7 +32,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>C:\Project\</PublishUrl>
+    <PublishUrl>C:\Users\ehete\Documents\Projects\FEReleases\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -43,7 +43,7 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://fe.hcmisonline.org/labs/</UpdateUrl>
-    <ProductName>HCMIS Facility Edition</ProductName>
+    <ProductName>Dagu Facility Edition</ProductName>
     <PublisherName>USAID DELIVER PROJECT</PublisherName>
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <WebPage>Default.htm</WebPage>
@@ -1430,6 +1430,7 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\ItemConsolidator.resx">
       <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\Model19.resx">
       <DependentUpon>Model19.cs</DependentUpon>
     </EmbeddedResource>
