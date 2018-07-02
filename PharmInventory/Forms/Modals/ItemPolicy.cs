@@ -238,9 +238,10 @@ namespace PharmInventory.Forms.Modals
             }
             //if (rdA.Checked || rdB.Checked || rdC.Checked)
             //    itm.ABC = ((rdA.Checked) ? 1 : (rdB.Checked) ? 2 : 3);
-
+            Items vn = new Items();
+          
              if (rdV.Checked || rdE.Checked || rdN.Checked)
-               itm.VEN = ((rdV.Checked) ? 1 : (rdE.Checked) ? 2 : 3);
+               itm.VEN = ((rdV.Checked) ? vn.GetVENbyValue("V") : (rdE.Checked) ? vn.GetVENbyValue("E") : vn.GetVENbyValue("N"));
           
                 itm.IsInHospitalList = ckExculed.Checked;
             //itm.NeedExpiryBatch = chkNeedExpiryBatch.Checked;
