@@ -1201,6 +1201,7 @@
     <Content Include="Scripts\9992-AddYearEndDetail.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\9992-AddYearEndDetail_Delete.sql" />
     <Content Include="Scripts\9992-AddYearEndDetail_ForeignKey.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -1417,7 +1418,6 @@
     <EmbeddedResource Include="Forms\UtilitiesAndForms\ItemConsolidator.resx">
       <DependentUpon>ItemConsolidator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\Model19.resx">
       <DependentUpon>Model19.cs</DependentUpon>
     </EmbeddedResource>

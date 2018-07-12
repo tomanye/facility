@@ -370,6 +370,7 @@ namespace BLL
             {
                 YearEndDetail yearEndD = new YearEndDetail();
                 yearEndD.Where.YearEndID.Value = dr["ID"];
+                yearEndD.Query.Load();
                 yearEndD.DeleteAll();
                 yearEndD.Save();
             }
