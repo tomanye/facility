@@ -28,7 +28,6 @@ namespace PharmInventory.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dtDate = new CalendarLib.DateTimePickerEx();
             this.rdDrug = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -53,7 +52,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn67 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colbbPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRecQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -87,8 +86,8 @@ namespace PharmInventory.Forms.Reports
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem(this.components);
-            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink(this.components);
+            this.printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+            this.printableComponentLink1 = new DevExpress.XtraPrinting.PrintableComponentLink();
             this.bw = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.rdDrug.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -340,6 +339,7 @@ namespace PharmInventory.Forms.Reports
             // gridItemsList
             // 
             this.gridItemsList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridItemsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridItemsList.Location = new System.Drawing.Point(38, 152);
             this.gridItemsList.MainView = this.gridItemListView;
             this.gridItemsList.Name = "gridItemsList";
@@ -365,7 +365,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn67,
             this.colBB,
             this.colbbPrice,
-            this.gridColumn4,
+            this.colRecQty,
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn1,
@@ -422,7 +422,7 @@ namespace PharmInventory.Forms.Reports
             this.colItemName.OptionsFilter.AllowFilter = false;
             this.colItemName.Visible = true;
             this.colItemName.VisibleIndex = 1;
-            this.colItemName.Width = 441;
+            this.colItemName.Width = 451;
             // 
             // repositoryItemMemoEdit1
             // 
@@ -453,7 +453,6 @@ namespace PharmInventory.Forms.Reports
             this.colBB.Name = "colBB";
             this.colBB.Visible = true;
             this.colBB.VisibleIndex = 2;
-            this.colBB.Width = 87;
             // 
             // colbbPrice
             // 
@@ -466,21 +465,22 @@ namespace PharmInventory.Forms.Reports
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "BBPrice", "{0:n3}")});
             this.colbbPrice.Visible = true;
             this.colbbPrice.VisibleIndex = 3;
+            this.colbbPrice.Width = 87;
             // 
-            // gridColumn4
+            // colRecQty
             // 
-            this.gridColumn4.Caption = "Received Qty";
-            this.gridColumn4.DisplayFormat.FormatString = "#,##0";
-            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "ReceivedQty";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridColumn4.OptionsColumn.AllowMove = false;
-            this.gridColumn4.OptionsFilter.AllowFilter = false;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 87;
+            this.colRecQty.Caption = "Received Qty";
+            this.colRecQty.DisplayFormat.FormatString = "#,##0";
+            this.colRecQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colRecQty.FieldName = "ReceivedQty";
+            this.colRecQty.Name = "colRecQty";
+            this.colRecQty.OptionsColumn.AllowEdit = false;
+            this.colRecQty.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.colRecQty.OptionsColumn.AllowMove = false;
+            this.colRecQty.OptionsFilter.AllowFilter = false;
+            this.colRecQty.Visible = true;
+            this.colRecQty.VisibleIndex = 4;
+            this.colRecQty.Width = 85;
             // 
             // gridColumn6
             // 
@@ -512,7 +512,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 87;
+            this.gridColumn7.Width = 85;
             // 
             // gridColumn1
             // 
@@ -543,6 +543,7 @@ namespace PharmInventory.Forms.Reports
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 8;
+            this.gridColumn3.Width = 85;
             // 
             // gridColumn8
             // 
@@ -958,7 +959,7 @@ namespace PharmInventory.Forms.Reports
         private DevExpress.XtraGrid.Columns.GridColumn colItemName;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn66;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn67;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn colRecQty;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
