@@ -427,6 +427,15 @@ namespace PharmInventory.Forms.Transactions
 
                                 yEnd.AutomaticallyEntered = cRow["Physical Inventory"] == DBNull.Value;
                                 yEnd.Save();
+
+
+                                var rd = new ReceiveDoc();
+                                if(cRow["Batch No."]!= DBNull.Value)
+                                {
+                                    string batchno = Convert.ToString(cRow["Batch No."]); 
+                                    rd.GetTransactionByBatch(itemID, batchno, storeID);
+                                }
+                         
                                 //}
 
 
@@ -453,11 +462,19 @@ namespace PharmInventory.Forms.Transactions
                                                 rec.UnitID = 0;
                                                 rec.Out = rec.QuantityLeft == 0;
                                                 rec.Save();
+
+                                                var yEndD = new YearEndDetail();
+                                                yEndD.AddNew(); 
+                                                yEndD.ReceiveDocID = rec.ID;  
+                                                yEndD.YearEndID = yEnd.ID; 
+                                                yEndD.Quantity = Convert.ToInt64(batchPhysicalInventory); 
+                                                yEndD.Save();
                                             }
                                             k++;
                                             if (k >= yearEndTable.Rows.Count)
                                                 break;
                                         }
+
                                     }
                                 }
                             }
