@@ -49,7 +49,7 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.RecID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grdcolUnit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -214,15 +214,15 @@ namespace PharmInventory.Forms.Transactions
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
-            this.gridColumn11,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn7,
             this.gridColumn8,
             this.RecID,
-            this.gridColumn9,
-            this.gridColumn10});
+            this.grdcolUnit,
+            this.gridColumn10,
+            this.gridColumn11});
             this.grdViewYearEnd.GridControl = this.grdYearEnd;
             this.grdViewYearEnd.Name = "grdViewYearEnd";
             this.grdViewYearEnd.OptionsCustomization.AllowGroup = false;
@@ -348,17 +348,17 @@ namespace PharmInventory.Forms.Transactions
             this.RecID.FieldName = "RecID";
             this.RecID.Name = "RecID";
             // 
-            // gridColumn9
+            // grdcolUnit
             // 
-            this.gridColumn9.Caption = "Unit";
-            this.gridColumn9.ColumnEdit = this.repositoryItemLookUpEdit1;
-            this.gridColumn9.FieldName = "UnitID";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.OptionsColumn.AllowEdit = false;
-            this.gridColumn9.OptionsColumn.ReadOnly = true;
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 5;
-            this.gridColumn9.Width = 77;
+            this.grdcolUnit.Caption = "Unit";
+            this.grdcolUnit.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.grdcolUnit.FieldName = "UnitID";
+            this.grdcolUnit.Name = "grdcolUnit";
+            this.grdcolUnit.OptionsColumn.AllowEdit = false;
+            this.grdcolUnit.OptionsColumn.ReadOnly = true;
+            this.grdcolUnit.Visible = true;
+            this.grdcolUnit.VisibleIndex = 5;
+            this.grdcolUnit.Width = 77;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -708,7 +708,7 @@ namespace PharmInventory.Forms.Transactions
         private DevExpress.XtraEditors.LookUpEdit lkCommodityTypes;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn grdcolUnit;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;

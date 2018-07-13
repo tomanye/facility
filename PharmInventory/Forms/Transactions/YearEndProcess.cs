@@ -369,7 +369,7 @@ namespace PharmInventory.Forms.Transactions
             var yEnd = new YearEnd();
             var rec = new ReceiveDoc();
 
-            if (IsValid())
+            if (IsValid())   
             {
                 dtDate.Value = DateTime.Now;
                 DateTime dtCurent = new DateTime();
