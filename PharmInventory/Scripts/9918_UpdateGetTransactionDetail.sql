@@ -25,9 +25,9 @@ select t.*
 		LEFT JOIN 
 		(SELECT ItemID , SUM(Quantity) Quantity, SUM(QuantityLeft) QuantityLeft, SUM(Quantity * Cost) Price ,SUM(QuantityLeft*Cost) price1 
 		FROM ReceiveDoc WHERE StoreID = @storeid AND (date BETWEEN @fromdate AND @todate) GROUP BY ItemID ) AS rd ON rd.ItemID = vw.ID 
-	LEFT JOIN 
-		(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price ,MAX(Date) receivedate
-		FROM ReceiveDoc WHERE StoreID = @storeid AND (date <=  @fromdate  ) GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
+	--LEFT JOIN 
+	--	(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price ,MAX(Date) receivedate
+	--	FROM ReceiveDoc WHERE StoreID = @storeid AND (date <=  @fromdate  ) GROUP BY ItemID ) AS bb ON bb.ItemID = vw.ID 
 	LEFT JOIN 
 		(SELECT ItemID ,  SUM(QuantityLeft) QuantityLeft, SUM(QuantityLeft * Cost) Price ,MAX(Date) receivedate
 		FROM ReceiveDoc WHERE StoreID = @storeid AND (date <=  @todate  ) GROUP BY ItemID ) AS eb ON eb.ItemID = vw.ID 
@@ -44,5 +44,3 @@ select t.*
 		from IssueDoc where StoreID = @storeid and (date between @fromdate and @todate) group by ItemID ) as id on id.ItemID = vw.ID 
 		where vw.IsInHospitalList = 1) t order by t.FullItemName
 END
-
-
