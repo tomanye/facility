@@ -48,7 +48,13 @@ namespace PharmInventory.Forms.UtilitiesAndForms
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            try
+            string path = "C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\";
+            if (folderBrowserDialog2.ShowDialog() == DialogResult.OK)
+            {
+
+                  path = folderBrowserDialog2.SelectedPath;
+            }
+                    try
             {
                 GeneralInfo info = new GeneralInfo();
                 info.LoadAll();
@@ -67,7 +73,7 @@ namespace PharmInventory.Forms.UtilitiesAndForms
                                 DECLARE @fileDate VARCHAR(20)-- used for file name
 
                                 --specify database backup directory
-                                SET @path = 'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup\'  
+                                SET @path =  '{0}'
 
                                 -- specify filename format
                                 SELECT @fileDate = CONVERT(VARCHAR(20), GETDATE(), 112)
@@ -89,14 +95,14 @@ namespace PharmInventory.Forms.UtilitiesAndForms
                                 END
 
                             CLOSE db_cursor
-                        DEALLOCATE db_cursor");
+                        DEALLOCATE db_cursor", path);
                 com.CommandText = query;
                 com.Connection = conn;
                 com.ExecuteNonQuery();
                 info.LoadAll();
                 info.LastBackUp = DateTime.Now;
                 info.Save();
-                XtraMessageBox.Show("Backup completed to C:\\Program Files\\Microsoft SQL Server\\MSSQL12.MSSQLSERVER\\MSSQL\\Backup\\Pharminventory.bak!", "Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show("Backup completed to "+ path, " Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
             {
