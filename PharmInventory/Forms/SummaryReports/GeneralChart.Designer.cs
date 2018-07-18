@@ -628,7 +628,7 @@ namespace PharmInventory
             // dtDate
             // 
             this.dtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtDate.CalendarFont = new System.Drawing.Font("Nyala", 11.75F);
+            this.dtDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 11.75F);
             this.dtDate.CalendarForeColor = System.Drawing.Color.Black;
             this.dtDate.CustomFormat = "MM/dd/ yy";
             this.dtDate.DayOfWeekCharacters = 1;

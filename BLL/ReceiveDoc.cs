@@ -989,5 +989,40 @@ namespace BLL
 
             return ExecuteSqlOnDatabase(sqlQuery);
         }
+        public DataTable GetWastageRate(int storeId, int selectedType)
+        {
+            string filter = "";
+            if(storeId != 0 & selectedType !=0)
+                filter =    String.Format("@ and rd.StoreID = {0} and vw.TypeID = {1} ", storeId, selectedType);
+            if(storeId!=0 & selectedType ==0)
+                filter = String.Format("@ and rd.StoreID = {0}  ", storeId);
+            if(storeId ==0 & selectedType !=0)
+                filter = String.Format("@ and vw.TypeID  = {0}  ", selectedType);
+            string sqlQuery = String.Format(@"
+                                            SELECT   ISNULL(SUM(dis.Quantity * dis.Cost), 0) WastageQuantity ,
+                                                     YEAR(rd.Date) YearR ,
+                                                     ISNULL(SUM(rd.Quantity * rd.Cost), 0)
+                                                    + ISNULL(SUM(yed.YearEndBalance), 0) TotalReceived
+                                            FROM     ReceiveDoc rd
+                                                    LEFT JOIN Disposal dis ON dis.RecID = rd.ID
+                                                    LEFT JOIN (   SELECT   ISNULL(SUM(ye.Quantity * r.Cost), 0) YearEndBalance ,
+                                                                           y.[Year]
+                                                                  FROM     YearEndDetail ye
+                                                                           JOIN ReceiveDoc r ON ye.ReceiveDocID = r.ID
+                                                                           JOIN YearEnd y ON ye.YearEndID = y.ID
+                                                                  GROUP BY y.[Year]
+                                                              ) yed ON yed.[Year] = YEAR(rd.Date)
+                                            WHERE    ReasonId IN (   SELECT ID
+                                                                    FROM   DisposalReasons
+                                                                    WHERE  CONVERT(VARCHAR, Reason) IN ( 'Expired' ,
+                                                                                                         'Damaged' ,
+                                                                                                         'Low Quality'
+                                                                                                       )
+                                                                )
+                                         {0}
+                                            GROUP BY YEAR(rd.Date) ",filter );
+
+            return ExecuteSqlOnDatabase(sqlQuery);
+        }
     }
 }
