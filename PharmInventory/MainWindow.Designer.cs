@@ -61,6 +61,7 @@ namespace PharmInventory
             this.summaryChartsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stockExpiryStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.costSummaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wastageRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receiveTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,6 +131,7 @@ namespace PharmInventory
             this.lbiSummaryChart = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiStockExpiryStatus = new DevExpress.XtraNavBar.NavBarItem();
             this.lbiCostSummary = new DevExpress.XtraNavBar.NavBarItem();
+            this.WastageRate = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup6 = new DevExpress.XtraNavBar.NavBarGroup();
             this.navBarFacilitySettings = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem2 = new DevExpress.XtraNavBar.NavBarItem();
@@ -148,7 +150,6 @@ namespace PharmInventory
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bwDOSCalculator = new System.ComponentModel.BackgroundWorker();
-            this.wastageRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
@@ -479,6 +480,14 @@ namespace PharmInventory
             this.costSummaryToolStripMenuItem.Text = "Cost Summary";
             this.costSummaryToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
+            // wastageRateToolStripMenuItem
+            // 
+            this.wastageRateToolStripMenuItem.Name = "wastageRateToolStripMenuItem";
+            this.wastageRateToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.wastageRateToolStripMenuItem.Tag = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Text = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
+            // 
             // summaryReportToolStripMenuItem
             // 
             this.summaryReportToolStripMenuItem.Image = global::PharmInventory.Properties.Resources.paper_content_pencil_48;
@@ -720,7 +729,7 @@ namespace PharmInventory
             this.aboutHCMISToolStripMenuItem.Name = "aboutHCMISToolStripMenuItem";
             this.aboutHCMISToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutHCMISToolStripMenuItem.Tag = "About";
-            this.aboutHCMISToolStripMenuItem.Text = "About HCMIS";
+            this.aboutHCMISToolStripMenuItem.Text = "About Dagu";
             this.aboutHCMISToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // mnuCheckForUpdates
@@ -852,7 +861,8 @@ namespace PharmInventory
             this.navBarItem9,
             this.menuItemPriceOnlyReport,
             this.navBarItem10,
-            this.Activitylog});
+            this.Activitylog,
+            this.WastageRate});
             this.navBarControl1.LinkInterval = 5;
             this.navBarControl1.LinkSelectionMode = DevExpress.XtraNavBar.LinkSelectionModeType.OneInGroup;
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
@@ -1117,9 +1127,10 @@ namespace PharmInventory
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiSummaryReport),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiSummaryChart),
             new DevExpress.XtraNavBar.NavBarItemLink(this.lbiStockExpiryStatus),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiCostSummary)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.lbiCostSummary),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.WastageRate)});
             this.navBarGroup3.Name = "navBarGroup3";
-            this.navBarGroup3.SelectedLinkIndex = 5;
+            this.navBarGroup3.SelectedLinkIndex = 4;
             // 
             // lbiSummaryReport
             // 
@@ -1148,6 +1159,12 @@ namespace PharmInventory
             this.lbiCostSummary.Name = "lbiCostSummary";
             this.lbiCostSummary.SmallImage = global::PharmInventory.Properties.Resources._1287390117_chart_curve;
             this.lbiCostSummary.Tag = "Cost Summary";
+            // 
+            // WastageRate
+            // 
+            this.WastageRate.Caption = "Wastage Rate";
+            this.WastageRate.Name = "WastageRate";
+            this.WastageRate.Tag = "Wastage Rate";
             // 
             // navBarGroup6
             // 
@@ -1295,14 +1312,6 @@ namespace PharmInventory
             // 
             this.bwDOSCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDOSCalculator_DoWork);
             this.bwDOSCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDOSCalculator_RunWorkerCompleted);
-            // 
-            // wastageRateToolStripMenuItem
-            // 
-            this.wastageRateToolStripMenuItem.Name = "wastageRateToolStripMenuItem";
-            this.wastageRateToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.wastageRateToolStripMenuItem.Tag = "Wastage Rate";
-            this.wastageRateToolStripMenuItem.Text = "Wastage Rate";
-            this.wastageRateToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
             // 
             // MainWindow
             // 
@@ -1464,6 +1473,7 @@ namespace PharmInventory
         private System.Windows.Forms.ToolStripMenuItem activityLogReportsToolStripMenuItem;
         private DevExpress.XtraNavBar.NavBarItem Activitylog;
         private System.Windows.Forms.ToolStripMenuItem wastageRateToolStripMenuItem;
+        private DevExpress.XtraNavBar.NavBarItem WastageRate;
     }
 }
 

@@ -362,6 +362,12 @@ namespace PharmInventory.Forms.Modals
                 tt = new TimeSpan(_dtCurrent.Ticks - dtTran.Ticks);
                 lblTime.Text = " For the past " + tt.TotalDays.ToString() + " Days";
             }
+            else if (soh>0 && max==0)
+            {
+                lblstat.Text = "Over Stock";
+                lblStatus.Text = "Over Stock";
+                lblCurStatus.Text = "Over Stock";
+            }
             else //if (soh> min && soh <= max)
             {
                 lblstat.Text = "Normal";
@@ -369,6 +375,7 @@ namespace PharmInventory.Forms.Modals
                 lblCurStatus.Text = "Normal";
 
             }
+          
             //}
             //else
             //{

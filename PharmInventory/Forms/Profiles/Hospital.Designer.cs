@@ -541,7 +541,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(396, 24);
-            this.layoutControlItem12.Text = "HCMIS ID";
+            this.layoutControlItem12.Text = "Dagu ID";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(123, 13);
             // 
             // layoutControlItem5
@@ -662,7 +662,7 @@ namespace PharmInventory.Forms.Profiles
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 371);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Size = new System.Drawing.Size(420, 67);
-            this.layoutControlGroup5.Text = "HCMIS FE Setting";
+            this.layoutControlGroup5.Text = "Dagu FE Setting";
             // 
             // layoutControlItem17
             // 

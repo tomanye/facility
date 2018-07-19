@@ -218,8 +218,9 @@ namespace PharmInventory
         {
             GeneralInfo hos = new GeneralInfo();
             hos.LoadAll();
-            this.Text = hos.HospitalName + @" - Health Commodity Management Information System (HCMIS)";
-           // picLogo.ImageLocation = ReadApp.GetValue("logoPath", typeof(string)).ToString() + hos.Logo;
+            //this.Text = hos.HospitalName + @" - Health Commodity Management Information System (HCMIS)";
+            this.Text = hos.HospitalName + @" - Dagu";
+            // picLogo.ImageLocation = ReadApp.GetValue("logoPath", typeof(string)).ToString() + hos.Logo;
         }
 
         private void Login()
@@ -362,14 +363,14 @@ namespace PharmInventory
             if (statusStrip.Items[0].Text == "AMC calculation started for all stores.")
             {
                 MessageBox.Show(@"Automatic AMC calculation is in progress, please wait until it is completed. 
-                    Check the bottom of the window for status update.", "HCMIS FE", MessageBoxButtons.OK);
+                    Check the bottom of the window for status update.", "Dagu FE", MessageBoxButtons.OK);
 
                 e.Cancel = true;
             }
             else if (statusStrip.Items[0].Text == "DOS calculation started for all stores.")
             {
                 MessageBox.Show(@"Automatic DOS calculation/indexing is in progress, please wait until it is completed. 
-                    Check the bottom of the window for status update.", "HCMIS FE", MessageBoxButtons.OK);
+                    Check the bottom of the window for status update.", "Dagu FE", MessageBoxButtons.OK);
 
                 e.Cancel = true;
             }
