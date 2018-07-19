@@ -30,18 +30,20 @@
         {
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.chrtWastageRate = new DevExpress.XtraCharts.ChartControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrtWastageRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +58,34 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // chrtWastageRate
+            // 
+            this.chrtWastageRate.AutoLayoutSettingsEnabled = false;
+            this.chrtWastageRate.CrosshairOptions.ShowValueLabels = true;
+            xyDiagram1.AxisX.Title.Text = "Axis of arguments";
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Title.Text = "Axis of values";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chrtWastageRate.Diagram = xyDiagram1;
+            this.chrtWastageRate.EmptyChartText.Text = "";
+            this.chrtWastageRate.Location = new System.Drawing.Point(12, 12);
+            this.chrtWastageRate.Name = "chrtWastageRate";
+            sideBySideBarSeriesLabel1.ShowForZeroValues = true;
+            sideBySideBarSeriesLabel1.TextPattern = "Wastage Rate \n{A}{V:0%}";
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series1.LegendTextPattern = "{V:n1}";
+            series1.Name = "Wastage Rate";
+            series1.ToolTipSeriesPattern = "{S:n0}%";
+            series2.Name = "Series 2";
+            series2.Visible = false;
+            this.chrtWastageRate.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1,
+        series2};
+            this.chrtWastageRate.Size = new System.Drawing.Size(710, 404);
+            this.chrtWastageRate.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
+            this.chrtWastageRate.TabIndex = 4;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
@@ -68,26 +98,6 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(734, 428);
             this.layoutControlGroup1.Text = "layoutControlGroup1";
             this.layoutControlGroup1.TextVisible = false;
-            // 
-            // chrtWastageRate
-            // 
-            xyDiagram1.AxisX.Title.Text = "Axis of arguments";
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Title.Text = "Axis of values";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chrtWastageRate.Diagram = xyDiagram1;
-            this.chrtWastageRate.EmptyChartText.Text = "";
-            this.chrtWastageRate.Location = new System.Drawing.Point(12, 12);
-            this.chrtWastageRate.Name = "chrtWastageRate";
-            series1.Name = "Series 1";
-            series2.Name = "Series 2";
-            series2.Visible = false;
-            this.chrtWastageRate.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2};
-            this.chrtWastageRate.Size = new System.Drawing.Size(710, 404);
-            this.chrtWastageRate.SmallChartText.Text = "Increase the chart\'s size,\r\nto view its layout.\r\n    ";
-            this.chrtWastageRate.TabIndex = 4;
             // 
             // layoutControlItem1
             // 
@@ -112,11 +122,12 @@
             this.Load += new System.EventHandler(this.WastageRate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrtWastageRate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 

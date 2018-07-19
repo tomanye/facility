@@ -148,6 +148,7 @@ namespace PharmInventory
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.bwDOSCalculator = new System.ComponentModel.BackgroundWorker();
+            this.wastageRateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.logoPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
@@ -435,7 +436,8 @@ namespace PharmInventory
             this.summaryReportToolStripMenuItem1,
             this.summaryChartsToolStripMenuItem,
             this.stockExpiryStatusToolStripMenuItem,
-            this.costSummaryToolStripMenuItem});
+            this.costSummaryToolStripMenuItem,
+            this.wastageRateToolStripMenuItem});
             this.chartsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.chartsToolStripMenuItem.Name = "chartsToolStripMenuItem";
             this.chartsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
@@ -1294,6 +1296,14 @@ namespace PharmInventory
             this.bwDOSCalculator.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDOSCalculator_DoWork);
             this.bwDOSCalculator.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwDOSCalculator_RunWorkerCompleted);
             // 
+            // wastageRateToolStripMenuItem
+            // 
+            this.wastageRateToolStripMenuItem.Name = "wastageRateToolStripMenuItem";
+            this.wastageRateToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.wastageRateToolStripMenuItem.Tag = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Text = "Wastage Rate";
+            this.wastageRateToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuItem);
+            // 
             // MainWindow
             // 
             this.Appearance.Options.UseFont = true;
@@ -1453,6 +1463,7 @@ namespace PharmInventory
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private System.Windows.Forms.ToolStripMenuItem activityLogReportsToolStripMenuItem;
         private DevExpress.XtraNavBar.NavBarItem Activitylog;
+        private System.Windows.Forms.ToolStripMenuItem wastageRateToolStripMenuItem;
     }
 }
 

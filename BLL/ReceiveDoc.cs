@@ -1002,7 +1002,9 @@ namespace BLL
                                             SELECT   ISNULL(SUM(dis.Quantity * dis.Cost), 0) WastageQuantity ,
                                                      YEAR(rd.Date) YearR ,
                                                      ISNULL(SUM(rd.Quantity * rd.Cost), 0)
-                                                    + ISNULL(SUM(yed.YearEndBalance), 0) TotalReceived
+                                                    + ISNULL(SUM(yed.YearEndBalance), 0) TotalReceived,
+                                                       Round(  (ISNULL(SUM(dis.Quantity * dis.Cost), 0)/  (ISNULL(SUM(rd.Quantity * rd.Cost), 0)
+                                                     + ISNULL(SUM(yed.YearEndBalance), 0)))*100,0)  WastageRate 
                                             FROM     ReceiveDoc rd
                                                     LEFT JOIN Disposal dis ON dis.RecID = rd.ID
                                                     LEFT JOIN (   SELECT   ISNULL(SUM(ye.Quantity * r.Cost), 0) YearEndBalance ,
@@ -1020,7 +1022,7 @@ namespace BLL
                                                                                                        )
                                                                 )
                                          {0}
-                                            GROUP BY YEAR(rd.Date) ",filter );
+                                            GROUP BY YEAR(rd.Date) ", filter );
 
             return ExecuteSqlOnDatabase(sqlQuery);
         }
