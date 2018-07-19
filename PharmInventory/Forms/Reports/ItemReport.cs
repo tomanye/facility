@@ -498,6 +498,7 @@ namespace PharmInventory.Forms.Reports
                     }
                     break;
             }
+           
         }
 
         /// <summary>
@@ -511,9 +512,10 @@ namespace PharmInventory.Forms.Reports
             cboStatus.EditValue = _filter;
             if (ckExclude.Checked)
                 gridItemChoiceView.ActiveFilterString =
-                    string.Format("[EverReceived] != '0' or SOH != '0' or AMC != '0'");
+                    string.Format("([EverReceived] != '0' or SOH != '0' or AMC != '0') and IsPFSAVital ={0} ", Convert.ToBoolean(chkIsPFSAVital.EditValue));
             else
-                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0}", Convert.ToInt32(lkCommodityTypes.EditValue));
+                gridItemChoiceView.ActiveFilterString = String.Format("TypeID={0} and IsPFSAVital ={ 1}", Convert.ToInt32(lkCommodityTypes.EditValue), Convert.ToBoolean(chkIsPFSAVital.EditValue));
+            
         }
 
         /// <summary>
