@@ -989,15 +989,23 @@ namespace BLL
 
             return ExecuteSqlOnDatabase(sqlQuery);
         }
-        public DataTable GetWastageRate(int storeId, int selectedType)
+        public DataTable GetWastageRate(int fromyear, int toyear,int storeId, int selectedType)
         {
             string filter = "";
-            if(storeId != 0 & selectedType !=0)
-                filter =    String.Format("@ and rd.StoreID = {0} and vw.TypeID = {1} ", storeId, selectedType);
+            string yearfilter = "";
+            if (fromyear != 0 & toyear != 0)
+                yearfilter = String.Format("and Year(rd.date)>={0} and Year(rd.Date)<={1}", fromyear, toyear);
+            if (fromyear != 0 & toyear == 0)
+                yearfilter = String.Format("and Year(rd.date)>={0}  ", fromyear);
+            if (fromyear == 0 & toyear != 0)
+                yearfilter = String.Format("and  Year(rd.Date)<={0}", toyear);
+
+            if (storeId != 0 & selectedType !=0)
+                filter =    String.Format("and rd.StoreID = {0} and vw.TypeID = {1} ", storeId, selectedType);
             if(storeId!=0 & selectedType ==0)
-                filter = String.Format("@ and rd.StoreID = {0}  ", storeId);
+                filter = String.Format("and rd.StoreID = {0}  ", storeId);
             if(storeId ==0 & selectedType !=0)
-                filter = String.Format("@ and vw.TypeID  = {0}  ", selectedType);
+                filter = String.Format("and vw.TypeID  = {0}  ", selectedType);
             string sqlQuery = String.Format(@"
                                             SELECT   ISNULL(SUM(dis.Quantity * dis.Cost), 0) WastageQuantity ,
                                                      YEAR(rd.Date) YearR ,
@@ -1006,6 +1014,7 @@ namespace BLL
                                                        Round(  (ISNULL(SUM(dis.Quantity * dis.Cost), 0)/  (ISNULL(SUM(rd.Quantity * rd.Cost), 0)
                                                      + ISNULL(SUM(yed.YearEndBalance), 0)))*100,0)  WastageRate 
                                             FROM     ReceiveDoc rd
+                                                     JOIN vwGetAllItems vw on vw.ID = rd.ItemID
                                                     LEFT JOIN Disposal dis ON dis.RecID = rd.ID
                                                     LEFT JOIN (   SELECT   ISNULL(SUM(ye.Quantity * r.Cost), 0) YearEndBalance ,
                                                                            y.[Year]
@@ -1021,8 +1030,8 @@ namespace BLL
                                                                                                          'Low Quality'
                                                                                                        )
                                                                 )
-                                         {0}
-                                            GROUP BY YEAR(rd.Date) ", filter );
+                                         {0}{1}
+                                            GROUP BY YEAR(rd.Date) ", filter,yearfilter );
 
             return ExecuteSqlOnDatabase(sqlQuery);
         }
