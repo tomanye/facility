@@ -198,6 +198,7 @@ namespace PharmInventory.HelperClasses
 
         public static void FixInconsistencies()
         {
+            Balance.GetAndFixInventorydetailInconsistencies();
             Balance.GetAndFixInventoryInconsistencies();
             Balance.GetAndFixLossAdjustmentInconsistencies();            
         }
