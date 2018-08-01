@@ -33,6 +33,7 @@ namespace PharmInventory.Forms.Modals
             this.lstDUs = new System.Windows.Forms.CheckedListBox();
             this.txtItemName = new DevExpress.XtraEditors.TextEdit();
             this.layout = new DevExpress.XtraLayout.LayoutControl();
+            this.rdbSubProgram = new DevExpress.XtraEditors.RadioGroup();
             this.chkIsPFSAVital = new DevExpress.XtraEditors.CheckEdit();
             this.rdSubProgram = new DevExpress.XtraEditors.RadioGroup();
             this.chkIsVaccine = new System.Windows.Forms.CheckBox();
@@ -88,12 +89,12 @@ namespace PharmInventory.Forms.Modals
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup9 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.rdgSubProgram = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rdbSubProgram = new DevExpress.XtraEditors.RadioGroup();
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layout)).BeginInit();
             this.layout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdbSubProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIsPFSAVital.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdSubProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemunitbindingSource)).BeginInit();
@@ -134,9 +135,8 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdgSubProgram)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbSubProgram.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
             this.SuspendLayout();
             // 
             // lstDUs
@@ -194,6 +194,14 @@ namespace PharmInventory.Forms.Modals
             this.layout.Size = new System.Drawing.Size(788, 544);
             this.layout.TabIndex = 2;
             // 
+            // rdbSubProgram
+            // 
+            this.rdbSubProgram.Location = new System.Drawing.Point(255, 315);
+            this.rdbSubProgram.Name = "rdbSubProgram";
+            this.rdbSubProgram.Size = new System.Drawing.Size(130, 27);
+            this.rdbSubProgram.StyleController = this.layout;
+            this.rdbSubProgram.TabIndex = 27;
+            // 
             // chkIsPFSAVital
             // 
             this.chkIsPFSAVital.Location = new System.Drawing.Point(645, 12);
@@ -209,7 +217,7 @@ namespace PharmInventory.Forms.Modals
             // 
             this.rdSubProgram.Location = new System.Drawing.Point(18, 315);
             this.rdSubProgram.Name = "rdSubProgram";
-            this.rdSubProgram.Size = new System.Drawing.Size(181, 27);
+            this.rdSubProgram.Size = new System.Drawing.Size(233, 27);
             this.rdSubProgram.StyleController = this.layout;
             this.rdSubProgram.TabIndex = 25;
             // 
@@ -817,11 +825,23 @@ namespace PharmInventory.Forms.Modals
             this.rdgSubProgram.CustomizationFormText = "rdgSubProgram";
             this.rdgSubProgram.Location = new System.Drawing.Point(0, 0);
             this.rdgSubProgram.Name = "rdgSubProgram";
-            this.rdgSubProgram.Size = new System.Drawing.Size(185, 31);
+            this.rdgSubProgram.Size = new System.Drawing.Size(237, 31);
             this.rdgSubProgram.Text = "rdgSubProgram";
             this.rdgSubProgram.TextSize = new System.Drawing.Size(0, 0);
             this.rdgSubProgram.TextToControlDistance = 0;
             this.rdgSubProgram.TextVisible = false;
+            // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.rdbSubProgram;
+            this.layoutControlItem21.CustomizationFormText = "layoutControlItem21";
+            this.layoutControlItem21.Location = new System.Drawing.Point(237, 0);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(134, 31);
+            this.layoutControlItem21.Text = "layoutControlItem21";
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.TextToControlDistance = 0;
+            this.layoutControlItem21.TextVisible = false;
             // 
             // layoutControlItem20
             // 
@@ -834,26 +854,6 @@ namespace PharmInventory.Forms.Modals
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextToControlDistance = 0;
             this.layoutControlItem20.TextVisible = false;
-            // 
-            // rdbSubProgram
-            // 
-            this.rdbSubProgram.Location = new System.Drawing.Point(203, 315);
-            this.rdbSubProgram.Name = "rdbSubProgram";
-            this.rdbSubProgram.Size = new System.Drawing.Size(182, 27);
-            this.rdbSubProgram.StyleController = this.layout;
-            this.rdbSubProgram.TabIndex = 27;
-            // 
-            // layoutControlItem21
-            // 
-            this.layoutControlItem21.Control = this.rdbSubProgram;
-            this.layoutControlItem21.CustomizationFormText = "layoutControlItem21";
-            this.layoutControlItem21.Location = new System.Drawing.Point(185, 0);
-            this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(186, 31);
-            this.layoutControlItem21.Text = "layoutControlItem21";
-            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem21.TextToControlDistance = 0;
-            this.layoutControlItem21.TextVisible = false;
             // 
             // ItemPolicy
             // 
@@ -874,6 +874,7 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.txtItemName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layout)).EndInit();
             this.layout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rdbSubProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkIsPFSAVital.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdSubProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemunitbindingSource)).EndInit();
@@ -914,9 +915,8 @@ namespace PharmInventory.Forms.Modals
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rdgSubProgram)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbSubProgram.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
             this.ResumeLayout(false);
 
         }
