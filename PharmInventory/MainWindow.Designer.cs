@@ -732,7 +732,7 @@ namespace PharmInventory
             // 
             this.logoPic.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.logoPic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoPic.Image = ((System.Drawing.Image)(resources.GetObject("logoPic.Image")));
+            this.logoPic.Image = global::PharmInventory.Properties.Resources.usaid_deliver21;
             this.logoPic.Location = new System.Drawing.Point(648, 0);
             this.logoPic.Name = "logoPic";
             this.logoPic.Size = new System.Drawing.Size(445, 73);
