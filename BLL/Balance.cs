@@ -98,6 +98,12 @@ namespace BLL
             BLL.Balance bal = new Balance();
             bal.LoadFromRawSql(fixQuery);
         }
+        public static void GetAndFixInventorydetailInconsistencies()
+        {
+            const string fixQuery = "DELETE FROM dbo.YearEndDetail WHERE yearendid IN(SELECT ID from yearend where automaticallyentered=1 and itemid in (select itemid from yearend group by itemid,storeid,year having count(*)>1))";
+            BLL.Balance bal = new Balance();
+            bal.LoadFromRawSql(fixQuery);
+        }
 
 
         /// <summary>
