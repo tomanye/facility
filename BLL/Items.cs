@@ -3792,6 +3792,11 @@ FROM    Items itm
                 itm.LoadFromRawSql(query);
             }
         }
-
+        public int GetVENbyValue(string value)
+        {
+            var query = string.Format(@"SELECT ID FROM VEN WHERE Value = '{0}'", value);
+            this.LoadFromRawSql(query);
+            return Convert.ToInt32(this.GetColumn("ID"));
+        }
     }
 }

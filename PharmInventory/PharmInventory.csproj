@@ -44,7 +44,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://fe.hcmisonline.org/labs/</UpdateUrl>
     <ProductName>Dagu Facility Edition</ProductName>
-    <PublisherName>USAID DELIVER PROJECT</PublisherName>
+    <PublisherName>JSI AIDSFree</PublisherName>
     <MinimumRequiredVersion>2.5.0.205</MinimumRequiredVersion>
     <WebPage>Default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
