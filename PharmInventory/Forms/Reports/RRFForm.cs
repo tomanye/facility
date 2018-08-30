@@ -1214,19 +1214,19 @@ namespace PharmInventory.Forms.Reports
 
         private void cboStores_EditValueChanged(object sender, EventArgs e)
         {
-            if (cboStores.Text.Contains("B"))
-            {
-                Programs prog = new Programs();
-                DataTable dtProg = prog.GetSubPrograms();
-                DataView dtView = dtProg.AsDataView();
-                dtView.RowFilter = "Name = 'All Programs'";
+            //if (cboStores.Text.Contains("B"))
+            //{
+                //Programs prog = new Programs();
+                //DataTable dtProg = prog.GetSubPrograms();
+                //DataView dtView = dtProg.AsDataView();
+                //dtView.RowFilter = "Name = 'All Programs'";
 
-                cboProgram.Properties.DataSource = dtView.ToTable();
-                cboProgram.Properties.DisplayMember = "Name";
-                cboProgram.Properties.ValueMember = "ID";
-            }
-            else
-            {
+                //cboProgram.Properties.DataSource = dtView.ToTable();
+                //cboProgram.Properties.DisplayMember = "Name";
+                //cboProgram.Properties.ValueMember = "ID";
+           // }
+            //else
+            //{
                 Programs prog = new Programs();
                 DataTable dtProg = prog.GetSubPrograms();
                 DataView dtView = dtProg.AsDataView();
@@ -1235,7 +1235,7 @@ namespace PharmInventory.Forms.Reports
                 cboProgram.Properties.DataSource = dtView.ToTable();
                 cboProgram.Properties.DisplayMember = "Name";
                 cboProgram.Properties.ValueMember = "ID";
-            }
+           // }
         }
 
         private void btnsubprogram_Click(object sender, EventArgs e)
