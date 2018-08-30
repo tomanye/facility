@@ -299,10 +299,12 @@ namespace PharmInventory.Forms.Modals
             //}
             if (rdSubProgram.EditValue != null)
             {
+                var pr = new Programs();
+                pr.LoadByPrimaryKey(Convert.ToInt32(rdSubProgram.EditValue));
                 progItm.AddNew();
                 progItm.ItemID = itm.ID;
                 progItm.ProgramID = Convert.ToInt32(rdSubProgram.EditValue);
-                progItm.StoreID = 9;
+                progItm.StoreID = (pr.ProgramCode == "RDFF" || pr.ProgramCode == "RDFO")?8:9; 
                 progItm.Save();
             }
         
