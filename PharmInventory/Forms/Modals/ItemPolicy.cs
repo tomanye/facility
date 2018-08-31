@@ -111,7 +111,9 @@ namespace PharmInventory.Forms.Modals
             }
 
             Programs prog = new Programs();
-            prog.GetSubPrograms();
+            Programs progb = new Programs();
+            prog.GetProgramSubPrograms();
+            progb.GetBudgetSubPrograms();
             ProgramProduct progItem = new ProgramProduct();
             //lstPrograms.Items.Clear();
             //foreach (DataRowView dv in prog.DefaultView)
@@ -123,11 +125,22 @@ namespace PharmInventory.Forms.Modals
             foreach (DataRow dr in prog.DefaultView.ToTable().Rows)
             {
                 bool check = false;
-                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]));
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]), 9);
                 if (Convert.ToString(dr["Name"]) != "All Programs")
                     rdSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
                 if (check)
                     rdSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
+
+            }
+            foreach (DataRow dr in progb.DefaultView.ToTable().Rows)
+            {
+                bool check = false;
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]), 8);
+                if (Convert.ToString(dr["Name"]) != "All Programs")
+                    rdbSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
+                if (check)
+                    rdbSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
+
             }
 
             ReceivingUnits dus = new ReceivingUnits();
@@ -281,8 +294,9 @@ namespace PharmInventory.Forms.Modals
             }
 
             var progItm = new ProgramProduct();
-            progItm.DeleteAllProgramsForItem(_itemId);
-
+            progItm.DeleteAllProgramsForItem(_itemId,9);
+            var progbItm = new ProgramProduct();
+            progbItm.DeleteAllProgramsForItem(_itemId,8);
             var prog = new Programs();
             //prog.AddNew();
             //prog.Name = cboPrograms.Text;
@@ -304,11 +318,20 @@ namespace PharmInventory.Forms.Modals
                 progItm.AddNew();
                 progItm.ItemID = itm.ID;
                 progItm.ProgramID = Convert.ToInt32(rdSubProgram.EditValue);
-                progItm.StoreID = (pr.ProgramCode == "RDFF" || pr.ProgramCode == "RDFO")?8:9; 
+                progItm.StoreID = 9; 
                 progItm.Save();
             }
-        
 
+            if (rdbSubProgram.EditValue != null)
+            {
+                var pr = new Programs();
+                pr.LoadByPrimaryKey(Convert.ToInt32(rdbSubProgram.EditValue));
+                progbItm.AddNew();
+                progbItm.ItemID = itm.ID;
+                progbItm.ProgramID = Convert.ToInt32(rdbSubProgram.EditValue);
+                progbItm.StoreID = 8;
+                progbItm.Save();
+            }
             var duItem = new DUsItemList();
             var dus = new ReceivingUnits();
 
@@ -341,14 +364,16 @@ namespace PharmInventory.Forms.Modals
         {
           //  lstPrograms.Items.Clear(); 
             Programs prog = new Programs();
+            Programs progb = new Programs();
             ProgramProduct progItem = new ProgramProduct();
             if (cboPrograms.SelectedValue != null)
             {
-                prog.GetSubProgramsByParentId(Convert.ToInt32(cboPrograms.SelectedValue));
+                prog.GetSubProgramsByParentId(Convert.ToInt32(cboPrograms.SelectedValue)); 
             }
             else
             {
-                prog.GetSubPrograms();
+                prog.GetProgramSubPrograms();
+                progb.GetBudgetSubPrograms();
             }
             //foreach (DataRowView dv in prog.DefaultView)
             //{
@@ -359,11 +384,22 @@ namespace PharmInventory.Forms.Modals
             foreach (DataRow dr in prog.DefaultView.ToTable().Rows)
             {
                 bool check = false;
-                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]));
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]), 9);
                 if (Convert.ToString(dr["Name"]) != "All Programs")
                     rdSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
                 if (check)
                     rdSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
+              
+            }
+            foreach (DataRow dr in progb.DefaultView.ToTable().Rows)
+            {
+                bool check = false;
+                check = progItem.CheckIfExists(_itemId, Convert.ToInt32(dr["ID"]), 8);
+                if (Convert.ToString(dr["Name"]) != "All Programs")
+                    rdbSubProgram.Properties.Items.Add(new DevExpress.XtraEditors.Controls.RadioGroupItem(dr["ID"], dr["Name"].ToString()));
+                if (check)
+                    rdbSubProgram.EditValue = Convert.ToInt32(dr["ID"]);
+
             }
 
         }

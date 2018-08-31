@@ -29,6 +29,18 @@ namespace BLL
             this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0 Order By Name"));
             return this.DataTable;
         }
+        public DataTable GetProgramSubPrograms()
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0 and ID  not in (SELECT ID From Programs where ProgramCode in('RDFO','RDFF') )Order By Name"));
+            return this.DataTable;
+        }
+        public DataTable GetBudgetSubPrograms()
+        {
+            this.FlushData();
+            this.LoadFromRawSql(String.Format("SELECT * FROM Programs WHERE ParentID != 0 and ProgramCode in('RDFO','RDFF')Order By Name"));
+            return this.DataTable;
+        }
         public DataTable GetAllPrograms()
         {
             this.FlushData();

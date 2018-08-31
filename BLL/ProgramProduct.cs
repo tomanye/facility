@@ -14,7 +14,7 @@ namespace BLL
 		
 		}
 
-        public bool CheckIfExists(int itemId, int programId)
+        public bool CheckIfExists(int itemId, int programId, int storeId)
         {
             bool exist = false;
             this.FlushData();
@@ -22,6 +22,7 @@ namespace BLL
             this.Where.ItemID.Value = itemId;
             this.Where.ProgramID.Conjuction = MyGeneration.dOOdads.WhereParameter.Conj.And;
             this.Where.ProgramID.Value = programId;
+            this.Where.StoreID.Value = storeId;
             this.Query.Load();
             if (this.DataTable.Rows.Count > 0)
                 exist = true;
@@ -29,11 +30,12 @@ namespace BLL
             return exist;
         }
 
-        public void DeleteAllProgramsForItem(int itemId)
+        public void DeleteAllProgramsForItem(int itemId,int storeid)
         {
             this.FlushData();
             this.Where.WhereClauseReset();
             this.Where.ItemID.Value = itemId;
+            this.Where.StoreID.Value = storeid;
             this.Query.Load();
             foreach (DataRowView dv in this.DataTable.DefaultView)
             {
